@@ -1,0 +1,21 @@
+strict digraph class_diagram {
+  rankdir=LR;
+  TypeXMLSA[
+    label="XMLSA",
+    URL="XMLSA.html",
+    tooltip="com.sekati.data.XMLSA",
+    shape="record"
+  ];
+  TypeXML2Object[
+    label="XML2Object",
+    URL="XML2Object.html",
+    tooltip="com.sekati.data.XML2Object",
+    shape="record"
+  ];
+  TypeSharedObj[
+    label="SharedObj",
+    URL="SharedObj.html",
+    tooltip="com.sekati.data.SharedObj",
+    shape="record"
+  ];
+}

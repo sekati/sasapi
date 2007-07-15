@@ -1,0 +1,16 @@
+strict digraph class_diagram {
+  rankdir=LR;
+  TypeCoreClip[
+    label="CoreClip",
+    URL="CoreClip.html",
+    tooltip="com.sekati.display.CoreClip",
+    shape="record"
+  ];
+  TypeAbstractClip[
+    label="AbstractClip",
+    URL="AbstractClip.html",
+    tooltip="com.sekati.display.AbstractClip",
+    shape="record"
+  ];
+  TypeCoreClip -> TypeAbstractClip;
+}

@@ -1,0 +1,10 @@
+strict digraph interface_diagram {
+  rankdir=LR;
+  IEventDispatch[
+    label="IEventDispatch",
+    URL="IEventDispatch.html",
+    tooltip="com.sekati.events.IEventDispatch",
+    fontname="Times-Italic",
+    shape="record"
+  ];
+}

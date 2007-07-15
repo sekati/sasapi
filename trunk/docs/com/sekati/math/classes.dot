@@ -1,0 +1,15 @@
+strict digraph class_diagram {
+  rankdir=LR;
+  TypeTrigoBase[
+    label="TrigoBase",
+    URL="TrigoBase.html",
+    tooltip="com.sekati.math.TrigoBase",
+    shape="record"
+  ];
+  TypeMathBase[
+    label="MathBase",
+    URL="MathBase.html",
+    tooltip="com.sekati.math.MathBase",
+    shape="record"
+  ];
+}

@@ -1,0 +1,21 @@
+strict digraph class_diagram {
+  rankdir=LR;
+  TypeEventDispatch[
+    label="EventDispatch",
+    URL="EventDispatch.html",
+    tooltip="com.sekati.events.EventDispatch",
+    shape="record"
+  ];
+  TypeEvent[
+    label="Event",
+    URL="Event.html",
+    tooltip="com.sekati.events.Event",
+    shape="record"
+  ];
+  TypeBroadcaster[
+    label="Broadcaster",
+    URL="Broadcaster.html",
+    tooltip="com.sekati.events.Broadcaster",
+    shape="record"
+  ];
+}
