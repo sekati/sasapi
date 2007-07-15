@@ -1,6 +1,6 @@
 /**
  * com.sekati.service.AmbientOrb
- * @version 1.0.1
+ * @version 1.0.2
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -9,7 +9,6 @@
 /**
  * Ambient Orb (http://www.ambientdevices.com/) developer channel controller class
  * {@link http://www.ambientdevices.com/developer/Tech%20FAQ.html}
- * devID: RKF-5J8-AEP
  * {@code Usage:
  * var orb:AmbientOrb = new AmbientOrb("AAA-BBB-CCC");
  * orb.config ( getColorByProp("name","red"), getAnimByProp("name","heartbeat"), "Orb Test" );
