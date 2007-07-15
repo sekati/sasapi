@@ -1,0 +1,9 @@
+#summary Sekati ActionScript API Documentation
+#labels Featured,Phase-Deploy
+
+= SASAPI Documentation =
+
+
+== Introduction ==
+
+All class package documentation can be found in the docs directory and is generated with AS2API and the buildfile.xml _doc_ Ant task.
