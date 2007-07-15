@@ -1,0 +1,21 @@
+strict digraph class_diagram {
+  rankdir=LR;
+  TypeTraceObj[
+    label="TraceObj",
+    URL="TraceObj.html",
+    tooltip="com.sekati.log.TraceObj",
+    shape="record"
+  ];
+  TypeOutPanel[
+    label="OutPanel",
+    URL="OutPanel.html",
+    tooltip="com.sekati.log.OutPanel",
+    shape="record"
+  ];
+  TypeOut[
+    label="Out",
+    URL="Out.html",
+    tooltip="com.sekati.log.Out",
+    shape="record"
+  ];
+}

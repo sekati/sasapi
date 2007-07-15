@@ -1,0 +1,10 @@
+strict digraph interface_diagram {
+  rankdir=LR;
+  ICoreClip[
+    label="ICoreClip",
+    URL="ICoreClip.html",
+    tooltip="com.sekati.display.ICoreClip",
+    fontname="Times-Italic",
+    shape="record"
+  ];
+}

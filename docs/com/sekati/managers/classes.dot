@@ -1,0 +1,21 @@
+strict digraph class_diagram {
+  rankdir=LR;
+  TypeStageManager[
+    label="StageManager",
+    URL="StageManager.html",
+    tooltip="com.sekati.managers.StageManager",
+    shape="record"
+  ];
+  TypeSoundManager[
+    label="SoundManager",
+    URL="SoundManager.html",
+    tooltip="com.sekati.managers.SoundManager",
+    shape="record"
+  ];
+  TypeContextMenuManager[
+    label="ContextMenuManager",
+    URL="ContextMenuManager.html",
+    tooltip="com.sekati.managers.ContextMenuManager",
+    shape="record"
+  ];
+}

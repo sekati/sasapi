@@ -1,0 +1,9 @@
+strict digraph class_diagram {
+  rankdir=LR;
+  TypePoint[
+    label="Point",
+    URL="Point.html",
+    tooltip="com.sekati.geom.Point",
+    shape="record"
+  ];
+}

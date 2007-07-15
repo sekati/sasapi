@@ -1,0 +1,9 @@
+strict digraph class_diagram {
+  rankdir=LR;
+  TypeTextEffects[
+    label="TextEffects",
+    URL="TextEffects.html",
+    tooltip="com.sekati.effects.TextEffects",
+    shape="record"
+  ];
+}

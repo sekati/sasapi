@@ -1,0 +1,75 @@
+<?xml version="1.0"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html><head><title>SASAPI</title><script src="../../../quicknav.js" type="text/javascript"></script><script><!--
+document.quicknavBasePath="../../../index-files";
+//--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span><span class="comment doc">/**
+<span class="lineno" id="2">     2  </span> * com.sekati.utils.ArrayUtils
+<span class="lineno" id="3">     3  </span> * @version 1.1.1
+<span class="lineno" id="4">     4  </span> * @author jason m horwitz | sekati.com
+<span class="lineno" id="5">     5  </span> * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
+<span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
+<span class="lineno" id="7">     7  </span> */</span>
+<span class="lineno" id="8">     8  </span> 
+<span class="lineno" id="9">     9  </span> <span class="comment doc">/**
+<span class="lineno" id="10">    10  </span>  * static class wrapping various Array utilities
+<span class="lineno" id="11">    11  </span>  */</span>
+<span class="lineno" id="12">    12  </span><span class="key">class</span> com.sekati.utils.ArrayUtils {
+<span class="lineno" id="13">    13  </span>	<span class="comment doc">/**
+<span class="lineno" id="14">    14  </span>	 * shuffle array items
+<span class="lineno" id="15">    15  </span>	 * @param a (Array)
+<span class="lineno" id="16">    16  </span>	 * @return Void
+<span class="lineno" id="17">    17  </span>	 */</span>
+<span class="lineno" id="18">    18  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> shuffle (a:Array):Void {
+<span class="lineno" id="19">    19  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = <span class="num_const">0</span>; i &lt; a.length; i++) {
+<span class="lineno" id="20">    20  </span>			<span class="key">var</span> tmp:Object = a[i];
+<span class="lineno" id="21">    21  </span>			<span class="key">var</span> randomNum:Number = random (a.length);
+<span class="lineno" id="22">    22  </span>			a[i] = a[randomNum];
+<span class="lineno" id="23">    23  </span>			a[randomNum] = tmp;
+<span class="lineno" id="24">    24  </span>		}
+<span class="lineno" id="25">    25  </span>	}
+<span class="lineno" id="26">    26  </span>	<span class="comment doc">/**
+<span class="lineno" id="27">    27  </span>	 * return alphabetically sorted array
+<span class="lineno" id="28">    28  </span>	 * @param a (Array)
+<span class="lineno" id="29">    29  </span>	 * @return Array
+<span class="lineno" id="30">    30  </span>	 */</span>
+<span class="lineno" id="31">    31  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> asort (a:Array):Array {
+<span class="lineno" id="32">    32  </span>		<span class="key">var</span> aFn = <span class="key">function</span> (element1:String, element2:String) {
+<span class="lineno" id="33">    33  </span>			<span class="key">var</span> element1:String = element1.toUpperCase ();
+<span class="lineno" id="34">    34  </span>			<span class="key">var</span> element2:String = element2.toUpperCase ();
+<span class="lineno" id="35">    35  </span>			<span class="key">return</span> element1 &gt; element2;
+<span class="lineno" id="36">    36  </span>		};
+<span class="lineno" id="37">    37  </span>		<span class="key">return</span> a.sort (aFn);
+<span class="lineno" id="38">    38  </span>	}
+<span class="lineno" id="39">    39  </span>	<span class="comment doc">/**
+<span class="lineno" id="40">    40  </span>	 * return array with duplicate entries removed
+<span class="lineno" id="41">    41  </span>	 * @param a (Array)
+<span class="lineno" id="42">    42  </span>	 * @return Array
+<span class="lineno" id="43">    43  </span>	 */</span>
+<span class="lineno" id="44">    44  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> removeDuplicate (a:Array):Array {
+<span class="lineno" id="45">    45  </span>		a.sort ();
+<span class="lineno" id="46">    46  </span>		<span class="key">var</span> o:Array = <span class="key">new</span> Array ();
+<span class="lineno" id="47">    47  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = <span class="num_const">0</span>; i &lt; a.length; i++) {
+<span class="lineno" id="48">    48  </span>			<span class="key">if</span> (a[i] != a[i + <span class="num_const">1</span>]) {
+<span class="lineno" id="49">    49  </span>				o.push (a[i]);
+<span class="lineno" id="50">    50  </span>			}
+<span class="lineno" id="51">    51  </span>		}
+<span class="lineno" id="52">    52  </span>		<span class="key">return</span> o;
+<span class="lineno" id="53">    53  </span>	}
+<span class="lineno" id="54">    54  </span>	<span class="comment doc">/**
+<span class="lineno" id="55">    55  </span>	 * compare two arrays for a matching value
+<span class="lineno" id="56">    56  </span>	 * @param a1 (Array)
+<span class="lineno" id="57">    57  </span>	 * @param a2 (Array)	
+<span class="lineno" id="58">    58  </span>	 * @return Boolean
+<span class="lineno" id="59">    59  </span>	 */</span>	
+<span class="lineno" id="60">    60  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> matchValues (a1:Array, a2:Array):Boolean {
+<span class="lineno" id="61">    61  </span>		<span class="key">for</span> (<span class="key">var</span> f:Number = <span class="num_const">0</span>; f &lt; a1.length; f++) {
+<span class="lineno" id="62">    62  </span>			<span class="key">for</span> (<span class="key">var</span> l:Number = <span class="num_const">0</span>; l &lt; a2.length; l++) {
+<span class="lineno" id="63">    63  </span>				<span class="key">if</span> (a2[l].toLowerCase () === a1[f].toLowerCase ()) {
+<span class="lineno" id="64">    64  </span>					<span class="key">return</span> <span class="key">true</span>;
+<span class="lineno" id="65">    65  </span>				}
+<span class="lineno" id="66">    66  </span>			}
+<span class="lineno" id="67">    67  </span>		}
+<span class="lineno" id="68">    68  </span>		<span class="key">return</span> <span class="key">false</span>;
+<span class="lineno" id="69">    69  </span>	}
+<span class="lineno" id="70">    70  </span>}
+<span class="lineno" id="71">    71  </span><span class="comment">// eof</span>
+<span class="lineno" id="72">    72  </span></pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of SASAPI" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.utils" class="button">Package</a></li><li><a href="ArrayUtils.html" title="Detail of com.sekati.utils.ArrayUtils API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
