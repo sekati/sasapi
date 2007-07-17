@@ -1,13 +1,14 @@
 <map id="class_diagram" name="class_diagram">
-<area shape="rect" href="XOR.html" title="com.sekati.crypt.XOR" alt="" coords="16,872,88,920" />
-<area shape="rect" href="TEA.html" title="com.sekati.crypt.TEA" alt="" coords="16,800,88,848" />
-<area shape="rect" href="SHA256.html" title="com.sekati.crypt.SHA256" alt="" coords="9,728,94,776" />
-<area shape="rect" href="SHA1.html" title="com.sekati.crypt.SHA1" alt="" coords="16,656,88,704" />
-<area shape="rect" href="ROT13.html" title="com.sekati.crypt.ROT13" alt="" coords="13,584,90,632" />
-<area shape="rect" href="Rijndael.html" title="com.sekati.crypt.Rijndael" alt="" coords="10,512,93,560" />
-<area shape="rect" href="RC4.html" title="com.sekati.crypt.RC4" alt="" coords="16,440,88,488" />
-<area shape="rect" href="MD5.html" title="com.sekati.crypt.MD5" alt="" coords="16,368,88,416" />
-<area shape="rect" href="LZW.html" title="com.sekati.crypt.LZW" alt="" coords="16,296,88,344" />
+<area shape="rect" href="XOR.html" title="com.sekati.crypt.XOR" alt="" coords="16,944,88,992" />
+<area shape="rect" href="TEA.html" title="com.sekati.crypt.TEA" alt="" coords="16,872,88,920" />
+<area shape="rect" href="SHA256.html" title="com.sekati.crypt.SHA256" alt="" coords="9,800,94,848" />
+<area shape="rect" href="SHA1.html" title="com.sekati.crypt.SHA1" alt="" coords="16,728,88,776" />
+<area shape="rect" href="ROT13.html" title="com.sekati.crypt.ROT13" alt="" coords="13,656,90,704" />
+<area shape="rect" href="Rijndael.html" title="com.sekati.crypt.Rijndael" alt="" coords="10,584,93,632" />
+<area shape="rect" href="RC4.html" title="com.sekati.crypt.RC4" alt="" coords="16,512,88,560" />
+<area shape="rect" href="MD5.html" title="com.sekati.crypt.MD5" alt="" coords="16,440,88,488" />
+<area shape="rect" href="LZW.html" title="com.sekati.crypt.LZW" alt="" coords="16,368,88,416" />
+<area shape="rect" href="Luhn.html" title="com.sekati.crypt.Luhn" alt="" coords="16,296,88,344" />
 <area shape="rect" href="GUID.html" title="com.sekati.crypt.GUID" alt="" coords="16,224,88,272" />
 <area shape="rect" href="Goauld.html" title="com.sekati.crypt.Goauld" alt="" coords="14,152,89,200" />
 <area shape="rect" href="Base8.html" title="com.sekati.crypt.Base8" alt="" coords="16,80,88,128" />

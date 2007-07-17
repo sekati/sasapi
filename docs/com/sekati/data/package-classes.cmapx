@@ -1,5 +1,6 @@
 <map id="class_diagram" name="class_diagram">
-<area shape="rect" href="XMLSA.html" title="com.sekati.data.XMLSA" alt="" coords="26,152,112,200" />
-<area shape="rect" href="XML2Object.html" title="com.sekati.data.XML2Object" alt="" coords="9,80,129,128" />
-<area shape="rect" href="SharedObj.html" title="com.sekati.data.SharedObj" alt="" coords="18,8,120,56" />
+<area shape="rect" href="XMLSA.html" title="com.sekati.data.XMLSA" alt="" coords="26,224,112,272" />
+<area shape="rect" href="XML2Object.html" title="com.sekati.data.XML2Object" alt="" coords="9,152,129,200" />
+<area shape="rect" href="SharedObj.html" title="com.sekati.data.SharedObj" alt="" coords="18,80,120,128" />
+<area shape="rect" href="FLV.html" title="com.sekati.data.FLV" alt="" coords="33,8,105,56" />
 </map>

@@ -12,12 +12,6 @@ strict digraph class_diagram {
     tooltip="com.sekati.ui.Image",
     shape="record"
   ];
-  TypeFLVPlayerCore[
-    label="FLVPlayerCore",
-    URL="FLVPlayerCore.html",
-    tooltip="com.sekati.ui.FLVPlayerCore",
-    shape="record"
-  ];
   TypeFLVPlayer[
     label="FLVPlayer",
     URL="FLVPlayer.html",

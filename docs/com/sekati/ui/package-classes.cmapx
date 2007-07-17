@@ -1,6 +1,5 @@
 <map id="class_diagram" name="class_diagram">
-<area shape="rect" href="Scroll.html" title="com.sekati.ui.Scroll" alt="" coords="41,224,113,272" />
-<area shape="rect" href="Image.html" title="com.sekati.ui.Image" alt="" coords="41,152,113,200" />
-<area shape="rect" href="FLVPlayerCore.html" title="com.sekati.ui.FLVPlayerCore" alt="" coords="8,80,146,128" />
-<area shape="rect" href="FLVPlayer.html" title="com.sekati.ui.FLVPlayer" alt="" coords="26,8,128,56" />
+<area shape="rect" href="Scroll.html" title="com.sekati.ui.Scroll" alt="" coords="24,152,96,200" />
+<area shape="rect" href="Image.html" title="com.sekati.ui.Image" alt="" coords="24,80,96,128" />
+<area shape="rect" href="FLVPlayer.html" title="com.sekati.ui.FLVPlayer" alt="" coords="9,8,110,56" />
 </map>
