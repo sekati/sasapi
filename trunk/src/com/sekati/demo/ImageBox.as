@@ -1,5 +1,5 @@
 ﻿/**
- * com.sekati.ui.ImageBox
+ * com.sekati.demo.ImageBox
  * @version 1.0.0
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
