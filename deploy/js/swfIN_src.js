@@ -1,6 +1,6 @@
 /*////////////////////////////////////////////////////////////////////////////////////////
 
-  swfIN 1.0.3  -  2007-03-29
+  swfIN 1.0.4  -  2007-06-27
   javascript toolkit for flash developers
   © 2004-2007 Francis Turmel  |  swfIN.nectere.ca  |  www.nectere.ca  |  francis@nectere.ca
   released under the MIT license
@@ -118,7 +118,8 @@ fd.actions = {
 			//alert(a);
 			
 			//little hack to refresh content, fixes a bug in IE when used inside a table
-			if( fd.tools.ie() ) $id("div_" + id).innerHTML = $id("div_" + id).innerHTML;
+			//DEACTIVATED - IE7 looses flash vars on refresh, debug later
+			//if( fd.tools.ie() ) $id("div_" + id).innerHTML = $id("div_" + id).innerHTML;
 			
 			//remember the initial w/h settings
 			$id("div_" + id).fd_w = w;
@@ -127,6 +128,7 @@ fd.actions = {
 		}else{
 			//ns4, output directly the embed/object, no div since it can't change the width/height
 			document.write(tag);
+			//alert(tag);
 		}
 		
 	},
@@ -365,8 +367,13 @@ fd.tools = {
 			
 			//IE
 			if ( fd.tools.ie7() ){
-				//IE7 - for now IMPOSSIBLE TO DETECT, so return a high version and try to embed anyways with a codebase
-				installedVersion = 15;
+				//IE7 - would this work for IE6 as well?
+				try{
+					var axo = new ActiveXObject("ShockwaveFlash.ShockwaveFlash.7");
+					installedVersion = axo.GetVariable("$version").split(" ")[1].split(",")[0];
+				}catch (e) {
+					installedVersion = 15;
+				}
 				
 			}else{
 				//IE6 and less
@@ -543,7 +550,7 @@ swfIN.prototype = {
 	
 	
 	//swfIN
-	name: "swfIN 1.0.3  -  2007-03-29",
+	name: "swfIN 1.0.4  -  2007-06-27",
 	author: "© 2004-2007 Francis Turmel  |  swfIN.nectere.ca  |  www.nectere.ca  |  francis@nectere.ca",
 	desc: "javascript toolkit for flash developers  |  released under the MIT license"
   
