@@ -16,12 +16,10 @@ import flash.external.ExternalInterface;
  * _uacct = "UA-000000-0";
  * urchinTracker();
  * </script>
- *
  * // enable swLiveConnect:
  * fscommand ("swLiveConnect", "true");
- * 
- * notes: http://www.google.com/support/analytics/bin/answer.py?answer=27243&hl=en
  * }
+ * @see http://www.google.com/support/analytics/bin/answer.py?answer=27243&hl=en
  */
 class com.sekati.service.Urchin {
 	private static var _base:String = '/site/';

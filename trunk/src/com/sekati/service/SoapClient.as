@@ -8,17 +8,15 @@
 import mx.services.SOAPCall;
 import mx.services.WebService;
 /**
- * Soap Client class to be used with JNuSOAP
+ * Soap Client class to be used with JNuSOAP.<br>
  * 
- * {@code Notes:
- * "Can't connect to endpoint" error got you down? Check out:
- * 500_BUG_REF: http://www.intangibleinc.com/movabletype/archives/000007.html
- * REF: http://livedocs.macromedia.com/fms/2/docs/wwhelp/wwhimpl/common/html/wwhelp.htm?context=LiveDocs_Parts&file=00000796.html
- * REF: http://www.flash-db.com/Tutorials/lclasses/lclasses.php?page=2
- *
- * Q: "There are multiple possible ports in the WSDL file; please specify a service name and port name!"
- * A: add port to class instance, seach for "port" in the wsdl & see: http://www.adobe.com/devnet/flash/articles/flmxpro_webservices_03.html
- * }
+ * <br>Q: 'There are multiple possible ports in the WSDL file; please specify a service name and port name!?'
+ * <br>A: add port to class instance, seach for "port" in the wsdl & see url's below for more info.
+ * 
+ * @see http://www.intangibleinc.com/movabletype/archives/000007.html
+ * @see http://livedocs.macromedia.com/fms/2/docs/wwhelp/wwhimpl/common/html/wwhelp.htm?context=LiveDocs_Parts&file=00000796.html
+ * @see http://www.flash-db.com/Tutorials/lclasses/lclasses.php?page=2
+ * @see http://www.adobe.com/devnet/flash/articles/flmxpro_webservices_03.html
  */
 class com.sekati.service.SoapClient {
 	private var _ws:WebService;

@@ -13,7 +13,7 @@ class com.sekati.validate.EmailValidation {
 	/**
 	 * validate a string as a valid email address
 	 * @param str (String)
-	 * @retun Boolean
+	 * @return Boolean
 	 */
 	public static function isValidEmail (str):Boolean {
 		return ((str.length < 6) || (str.indexOf ("@") < 1) || (str.length - (str.indexOf ("@")) < 5) || (str.indexOf ("@") != str.lastIndexOf ("@")) || (str.length - (str.lastIndexOf (".")) < 3) || (str.length - (str.lastIndexOf (".")) > 5) || (Math.abs ((str.indexOf ("@")) - (str.indexOf ("."))) == 1) || (str.indexOf (" ") != -1)) ? false : true;

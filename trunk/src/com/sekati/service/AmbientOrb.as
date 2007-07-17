@@ -7,12 +7,12 @@
  */
  
 /**
- * Ambient Orb (http://www.ambientdevices.com/) developer channel controller class
- * {@link http://www.ambientdevices.com/developer/Tech%20FAQ.html}
+ * Ambient Orb developer channel controller class
  * {@code Usage:
  * var orb:AmbientOrb = new AmbientOrb("AAA-BBB-CCC");
  * orb.config ( getColorByProp("name","red"), getAnimByProp("name","heartbeat"), "Orb Test" );
  * }
+ * @see http://www.ambientdevices.com/developer/Tech%20FAQ.html
  */
 class com.sekati.service.AmbientOrb {
 	private var _devId:String;

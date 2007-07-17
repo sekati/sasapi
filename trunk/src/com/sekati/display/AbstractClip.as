@@ -7,7 +7,7 @@
  */
 import com.sekati.display.CoreClip;
 /**
- * Generic subclass implementation of CoreClip and CoreClipInterface
+ * Generic subclass implementation of {@link com.sekati.display.CoreClip} and the {@link com.sekati.display.ICoreClip} interface.
  * To be used as template for all framework based extend movieclip classes
  */
 class com.sekati.display.AbstractClip extends CoreClip {

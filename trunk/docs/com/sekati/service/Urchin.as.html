@@ -19,46 +19,44 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="16">    16  </span> * _uacct = "UA-000000-0";
 <span class="lineno" id="17">    17  </span> * urchinTracker();
 <span class="lineno" id="18">    18  </span> * &lt;/script&gt;
-<span class="lineno" id="19">    19  </span> *
-<span class="lineno" id="20">    20  </span> * // enable swLiveConnect:
-<span class="lineno" id="21">    21  </span> * fscommand ("swLiveConnect", "true");
-<span class="lineno" id="22">    22  </span> * 
-<span class="lineno" id="23">    23  </span> * notes: http://www.google.com/support/analytics/bin/answer.py?answer=27243&amp;hl=en
-<span class="lineno" id="24">    24  </span> * }
-<span class="lineno" id="25">    25  </span> */</span>
-<span class="lineno" id="26">    26  </span><span class="key">class</span> com.sekati.service.Urchin {
-<span class="lineno" id="27">    27  </span>	<span class="key">private</span> <span class="key">static</span> <span class="key">var</span> _base:String = <span class="str_const">"/site/"</span>;
-<span class="lineno" id="28">    28  </span>	<span class="comment doc">/**
-<span class="lineno" id="29">    29  </span>	 * set site base
-<span class="lineno" id="30">    30  </span>	 * @return Void
-<span class="lineno" id="31">    31  </span>	 * {@code Usage:
-<span class="lineno" id="32">    32  </span>	 *  Urchin.setBase("homepage");	// set optional webroot [default: "site"]
-<span class="lineno" id="33">    33  </span>	 * }
-<span class="lineno" id="34">    34  </span>	 */</span>
-<span class="lineno" id="35">    35  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> setBase (base:String):Void {
-<span class="lineno" id="36">    36  </span>		_base = (base) ? <span class="str_const">"/"</span> + base + <span class="str_const">"/"</span> : _base;
-<span class="lineno" id="37">    37  </span>	}
-<span class="lineno" id="38">    38  </span>	<span class="comment doc">/**
-<span class="lineno" id="39">    39  </span>	 * return site base
-<span class="lineno" id="40">    40  </span>	 * @return String
-<span class="lineno" id="41">    41  </span>	 */</span>
-<span class="lineno" id="42">    42  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> getBase ():String {
-<span class="lineno" id="43">    43  </span>		<span class="key">return</span> (_base);
-<span class="lineno" id="44">    44  </span>	}
-<span class="lineno" id="45">    45  </span>	<span class="comment doc">/**
-<span class="lineno" id="46">    46  </span>	 * track a page event
-<span class="lineno" id="47">    47  </span>	 * @return Void
-<span class="lineno" id="48">    48  </span>	 * {@code Usage
-<span class="lineno" id="49">    49  </span>	 * Urchin.track("projects"); 				// register '/homepage/projects'
-<span class="lineno" id="50">    50  </span>	 * Urchin.track("projects/page1");	// register '/homepage/projects/page1'
-<span class="lineno" id="51">    51  </span>	 * }
-<span class="lineno" id="52">    52  </span>	 */</span>
-<span class="lineno" id="53">    53  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> track (pg:String):Void {
-<span class="lineno" id="54">    54  </span>		<span class="key">var</span> pv:String = _base + pg;
-<span class="lineno" id="55">    55  </span>		trace (<span class="str_const">"*** Urchin.track ('"</span> + pv + <span class="str_const">"')"</span>);
-<span class="lineno" id="56">    56  </span>		ExternalInterface.call (<span class="str_const">"urchinTracker"</span>, pv);
-<span class="lineno" id="57">    57  </span>	}
-<span class="lineno" id="58">    58  </span>	<span class="comment">//</span>
-<span class="lineno" id="59">    59  </span>}
-<span class="lineno" id="60">    60  </span><span class="comment">// eof</span>
-<span class="lineno" id="61">    61  </span></pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of SASAPI" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.service" class="button">Package</a></li><li><a href="Urchin.html" title="Detail of com.sekati.service.Urchin API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
+<span class="lineno" id="19">    19  </span> * // enable swLiveConnect:
+<span class="lineno" id="20">    20  </span> * fscommand ("swLiveConnect", "true");
+<span class="lineno" id="21">    21  </span> * }
+<span class="lineno" id="22">    22  </span> * @see http://www.google.com/support/analytics/bin/answer.py?answer=27243&amp;hl=en
+<span class="lineno" id="23">    23  </span> */</span>
+<span class="lineno" id="24">    24  </span><span class="key">class</span> com.sekati.service.Urchin {
+<span class="lineno" id="25">    25  </span>	<span class="key">private</span> <span class="key">static</span> <span class="key">var</span> _base:String = <span class="str_const">"/site/"</span>;
+<span class="lineno" id="26">    26  </span>	<span class="comment doc">/**
+<span class="lineno" id="27">    27  </span>	 * set site base
+<span class="lineno" id="28">    28  </span>	 * @return Void
+<span class="lineno" id="29">    29  </span>	 * {@code Usage:
+<span class="lineno" id="30">    30  </span>	 *  Urchin.setBase("homepage");	// set optional webroot [default: "site"]
+<span class="lineno" id="31">    31  </span>	 * }
+<span class="lineno" id="32">    32  </span>	 */</span>
+<span class="lineno" id="33">    33  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> setBase (base:String):Void {
+<span class="lineno" id="34">    34  </span>		_base = (base) ? <span class="str_const">"/"</span> + base + <span class="str_const">"/"</span> : _base;
+<span class="lineno" id="35">    35  </span>	}
+<span class="lineno" id="36">    36  </span>	<span class="comment doc">/**
+<span class="lineno" id="37">    37  </span>	 * return site base
+<span class="lineno" id="38">    38  </span>	 * @return String
+<span class="lineno" id="39">    39  </span>	 */</span>
+<span class="lineno" id="40">    40  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> getBase ():String {
+<span class="lineno" id="41">    41  </span>		<span class="key">return</span> (_base);
+<span class="lineno" id="42">    42  </span>	}
+<span class="lineno" id="43">    43  </span>	<span class="comment doc">/**
+<span class="lineno" id="44">    44  </span>	 * track a page event
+<span class="lineno" id="45">    45  </span>	 * @return Void
+<span class="lineno" id="46">    46  </span>	 * {@code Usage
+<span class="lineno" id="47">    47  </span>	 * Urchin.track("projects"); 				// register '/homepage/projects'
+<span class="lineno" id="48">    48  </span>	 * Urchin.track("projects/page1");	// register '/homepage/projects/page1'
+<span class="lineno" id="49">    49  </span>	 * }
+<span class="lineno" id="50">    50  </span>	 */</span>
+<span class="lineno" id="51">    51  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> track (pg:String):Void {
+<span class="lineno" id="52">    52  </span>		<span class="key">var</span> pv:String = _base + pg;
+<span class="lineno" id="53">    53  </span>		trace (<span class="str_const">"*** Urchin.track ('"</span> + pv + <span class="str_const">"')"</span>);
+<span class="lineno" id="54">    54  </span>		ExternalInterface.call (<span class="str_const">"urchinTracker"</span>, pv);
+<span class="lineno" id="55">    55  </span>	}
+<span class="lineno" id="56">    56  </span>	<span class="comment">//</span>
+<span class="lineno" id="57">    57  </span>}
+<span class="lineno" id="58">    58  </span><span class="comment">// eof</span>
+<span class="lineno" id="59">    59  </span></pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of SASAPI" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.service" class="button">Package</a></li><li><a href="Urchin.html" title="Detail of com.sekati.service.Urchin API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
