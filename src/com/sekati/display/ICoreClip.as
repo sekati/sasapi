@@ -5,7 +5,7 @@
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
- 
+
 /**
  * Interface describing CoreClip which all MovieClip classes should be extended with instead of MovieClip
  */
@@ -24,7 +24,7 @@ interface com.sekati.display.ICoreClip {
 	 */
 	function destroy():Void;
 	/**
-	 * override MovieClip toString with more verbose trace output
+	 * use default or override toString with more verbose trace output
 	 */
 	function toString():String;
 	//
