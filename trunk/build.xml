@@ -29,7 +29,7 @@
 	<!-- project specific properties -->
 	<property name="classpath" location="${src}/"/>
 	<property name="package" value="com.*"/>
-	<property name="target_fla" location="${lib}/framework.fla"/>
+	<property name="target_fla" location="${src}/framework.fla"/>
     <property name="target_swf" value="${deploy}framework.swf"/>
     <property name="main_class" value="${src}/com/sekati/core/Document.as"/>
 	<property name="width" value="800"/>
