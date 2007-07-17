@@ -1,6 +1,6 @@
-﻿/**
- * com.sekati.ui.FLVPlayerCore
- * @version 1.1.1
+/**
+ * com.sekati.data.FLV
+ * @version 1.1.3
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -8,10 +8,10 @@
 import com.sekati.core.App;
 import com.sekati.utils.Delegate;
 /**
- * FLVPlayerCore class to be used with {@link com.sekati.ui.FLVPlayer}
+ * FLV class to be used with {@link com.sekati.ui.FLVPlayer}
  */
-class com.sekati.ui.FLVPlayerCore {
-	private var _this:FLVPlayerCore;
+class com.sekati.data.FLV {
+	private var _this:FLV;
 	private var _ns:NetStream;
 	private var _nc:NetConnection;
 	private var _video;
@@ -23,13 +23,11 @@ class com.sekati.ui.FLVPlayerCore {
 	private var _duration:Number;
 	private var _metadata:Object;
 	private var _lastSeekableTime:Number;
-	//events
-	public function onProgress () {
-	}
-	public function onEvent () {
-	}
+	//event stubs
+	public function onProgress () {}
+	public function onEvent () {}
 	//constructor
-	public function FLVPlayerCore () {
+	public function FLV () {
 		_this = this;
 		_paused = false;
 		_started = false;

@@ -112,14 +112,6 @@ class com.sekati.utils.StringUtils {
 		return true;
 	}
 	/**
-	 * check if string is valid email
-	 * @param str (String)
-	 * @return Boolean
-	 */
-	public static function isValidEmail (str):Boolean {
-		return ((str.length < 6) || (str.indexOf ("@") < 1) || (str.length - (str.indexOf ("@")) < 5) || (str.indexOf ("@") != str.lastIndexOf ("@")) || (str.length - (str.lastIndexOf (".")) < 3) || (str.length - (str.lastIndexOf (".")) > 5) || (Math.abs ((str.indexOf ("@")) - (str.indexOf ("."))) == 1) || (str.indexOf (" ") != -1)) ? false : true;
-	}
-	/**
 	 * add cacheKiller
 	 * @param str (String)
 	 * @return String

@@ -1,16 +1,17 @@
 ﻿/**
  * com.sekati.ui.FLVPlayer
- * @version 1.1.1
+ * @version 1.1.3
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 import com.sekati.core.App;
-import com.sekati.ui.FLVPlayerCore;
+import com.sekati.core.FWDepth;
+import com.sekati.data.FLV;
 import com.sekati.utils.Delegate;
 import com.sekati.display.CoreClip;
 /**
- * FLVPlayer controller to be used with {@link com.sekati.ui.FLVPlayerCore}
+ * FLVPlayer controller to be used with {@link com.sekati.data.FLV}
  */
 class com.sekati.ui.FLVPlayer extends CoreClip {
 	private var _video:Object;
@@ -40,7 +41,7 @@ class com.sekati.ui.FLVPlayer extends CoreClip {
 		_buffBar = _this.buffBar;
 		_guttBar = _this.guttBar;
 		_volBtn = _this.volBtn;
-		_audioContainer = _this.audioContainer;
+		_audioContainer = _this.createEmptyMovieClip("audioContainer", FWDepth.FLVAudioContainer);
 		// general ui setup
 		App.bc.subscribe (_this);
 		_progBar._xscale = 0;
@@ -89,7 +90,7 @@ class com.sekati.ui.FLVPlayer extends CoreClip {
 	public function init (url:String):Void {
 		removeMovie ();
 		_playBtn.gotoAndStop (1);
-		_movie = new FLVPlayerCore ();
+		_movie = new FLV ();
 		_movie.onProgress = Delegate.create (_this, movie_onProgress);
 		_movie.onEvent = Delegate.create (_this, movie_onEvent);
 		_movie.load (url, _this.video, 320, 240, _this.audioContainer);

@@ -18,4 +18,10 @@ strict digraph class_diagram {
     tooltip="com.sekati.data.SharedObj",
     shape="record"
   ];
+  TypeFLV[
+    label="FLV",
+    URL="FLV.html",
+    tooltip="com.sekati.data.FLV",
+    shape="record"
+  ];
 }

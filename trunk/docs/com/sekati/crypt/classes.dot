@@ -54,6 +54,12 @@ strict digraph class_diagram {
     tooltip="com.sekati.crypt.LZW",
     shape="record"
   ];
+  TypeLuhn[
+    label="Luhn",
+    URL="Luhn.html",
+    tooltip="com.sekati.crypt.Luhn",
+    shape="record"
+  ];
   TypeGUID[
     label="GUID",
     URL="GUID.html",
