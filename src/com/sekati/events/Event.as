@@ -10,9 +10,9 @@
  * Base Event class, works similarly to the AS3 Event class
  */
 class com.sekati.events.Event {
-	private var _type : String;
-	private var _target : Object;
-	private var route : Array;
+	private var _type:String;
+	private var _target:Object;
+	private var route:Array;
 	
 	public function Event(eventName:String, eventTarget:Object) {
 		_type = eventName;
