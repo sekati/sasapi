@@ -19,7 +19,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="16">    16  </span>	 * private constructor as class is initialized via the MovieClip.onLoad event
 <span class="lineno" id="17">    17  </span>	 */</span>
 <span class="lineno" id="18">    18  </span>	<span class="key">private</span> <span class="key">function</span> CoreClip() {}
-<span class="lineno" id="19">    19  </span>	<span class="key">private</span> <span class="key">function</span> onLoad():Void {
+<span class="lineno" id="19">    19  </span>	<span class="key">public</span> <span class="key">function</span> onLoad():Void {
 <span class="lineno" id="20">    20  </span>		_this = <span class="key">this</span>;
 <span class="lineno" id="21">    21  </span>		_this.cacheAsBitmap = <span class="key">true</span>;
 <span class="lineno" id="22">    22  </span>		configUI();
@@ -27,7 +27,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="24">    24  </span>	<span class="comment doc">/**
 <span class="lineno" id="25">    25  </span>	 * configure UI and initialize behavior - to be overwritten by subclass
 <span class="lineno" id="26">    26  </span>	 */</span>
-<span class="lineno" id="27">    27  </span>	<span class="key">private</span> <span class="key">function</span> configUI():Void {}
+<span class="lineno" id="27">    27  </span>	<span class="key">public</span> <span class="key">function</span> configUI():Void {}
 <span class="lineno" id="28">    28  </span>	<span class="comment doc">/**
 <span class="lineno" id="29">    29  </span>	 * give verbose trace output
 <span class="lineno" id="30">    30  </span>	 * @return String

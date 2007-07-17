@@ -1,33 +1,30 @@
 ﻿/**
-* @class com.sekati.ui.ImageBox
-* @author jason m horwitz // sekati.com
-* @version 1.0.0
-* @description imageBox
-*/
+ * com.sekati.ui.ImageBox
+ * @version 1.0.0
+ * @author jason m horwitz | sekati.com
+ * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
+ * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
+ */
 import com.sekati.core.App;
 import com.sekati.utils.Delegate;
 import com.sekati.display.CoreClip;
-//
-class com.sekati.ui.ImageBox extends MovieClip {
-	// refs
-	public var _this:MovieClip;
+/**
+ * ImageBox demo for framework.fla
+ */
+class com.sekati.demo.ImageBox extends CoreClip {
 	public var _img:MovieClip;
 	public var _btn0:MovieClip;
 	public var _btn1:MovieClip;
 	public var _btn2:MovieClip;
-	//
 	// constructor
 	private function ImageBox () {}
 	public function configUI ():Void {
-		// refs
 		_img = _this.img;
 		_btn0 = _this.btn0;
 		_btn1 = _this.btn1;
 		_btn2 = _this.btn2;
-		//
 		// setup
 		App.bc.subscribe (_this);
-		//
 		// button setup and events
 		_btn0.tf.text = "image 1";
 		_btn1.tf.text = "image 2";
@@ -40,7 +37,6 @@ class com.sekati.ui.ImageBox extends MovieClip {
 		App.debug.trace ("* initializing ImageBox");
 		btn0_onRelease ();
 	}
-	//
 	private function btn0_onRelease ():Void {
 		_img.load (App.IMG1, 300, 225, 0x333333, 0x666666, 75, true);
 	}
@@ -52,4 +48,4 @@ class com.sekati.ui.ImageBox extends MovieClip {
 	}
 	//
 }
-// EOF
+// eof
