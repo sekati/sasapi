@@ -3,10 +3,41 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><link href="package-summary.html" title="Package com.sekati.utils" rel="up"/><link href="../../../com/sekati/utils/BitmapUtils.html" title="Class com.sekati.utils.BitmapUtils" rel="prev"/><link href="../../../com/sekati/utils/AlignUtils.html" title="Class com.sekati.utils.AlignUtils" rel="next"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><h1>Class com.sekati.utils.ArrayUtils</h1><div class="type_hierachy"><ul><li><strong>com.sekati.utils.ArrayUtils</strong></li></ul></div><div class="type_description"><h2>Description</h2><p>
  static class wrapping various Array utilities
-  </p></div><div class="type_indexes"><div class="method_index"><h2>Method Index</h2><a href="#asort" title="static public function asort(a:Array):Array">asort()</a>, <a href="#matchValues" title="static public function matchValues(a1:Array, a2:Array):Boolean">matchValues()</a>, <a href="#removeDuplicate" title="static public function removeDuplicate(a:Array):Array">removeDuplicate()</a>, <a href="#shuffle" title="static public function shuffle(a:Array):Void">shuffle()</a></div></div><div class="type_details"><div class="method_detail_list"><h2>Method Detail</h2><div class="method_details alt_row"><a name="shuffle"></a><h3>shuffle</h3><code class="method_synopsis">static public function <strong class="method_name">shuffle</strong>(a:<span class="unresolved_type_name">Array</span>):<span class="void_name">Void</span></code><div class="method_info"><p>
+  </p></div><div class="type_indexes"><div class="method_index"><h2>Method Index</h2><a href="#asort" title="static public function asort(a:Array):Array">asort()</a>, <a href="#clone" title="static public function clone(a:Array):Array">clone()</a>, <a href="#compare" title="static public function compare(aA:Array, aB:Array):Boolean">compare()</a>, <a href="#insert" title="static public function insert(a:Array, objElement:Object, nIndex:Number):Array">insert()</a>, <a href="#matchValues" title="static public function matchValues(aA:Array, aB:Array):Boolean">matchValues()</a>, <a href="#merge" title="static public function merge(aA:Array, aB:Array):Array">merge()</a>, <a href="#remove" title="static public function remove(a:Array, objElement:Object):Array">remove()</a>, <a href="#removeDuplicate" title="static public function removeDuplicate(a:Array):Array">removeDuplicate()</a>, <a href="#search" title="static public function search(a:Array, objElement:Object):Number">search()</a>, <a href="#shuffle" title="static public function shuffle(a:Array):Void">shuffle()</a>, <a href="#swap" title="static public function swap(a:Array, nA:Number, nB:Number):Array">swap()</a></div></div><div class="type_details"><div class="method_detail_list"><h2>Method Detail</h2><div class="method_details alt_row"><a name="insert"></a><h3>insert</h3><code class="method_synopsis">static public function <strong class="method_name">insert</strong>(a:<span class="unresolved_type_name">Array</span>, objElement:<span class="unresolved_type_name">Object</span>, nIndex:<span class="unresolved_type_name">Number</span>):<span class="unresolved_type_name">Array</span></code><div class="method_info"><p>
+ insert an element into array at a specific index
+ </p><h4>Parameters</h4><table class="arguments extra_info" summary=""><tr><td><code>a</code></td><td>(Array)
+ </td></tr><tr><td><code>objElement</code></td><td>(Object)
+ </td></tr><tr><td><code>nIndex</code></td><td>(Number)
+ </td></tr></table><h4>Return</h4><p class="extra_info"> Array
+	 </p></div></div><div class="method_details"><a name="remove"></a><h3>remove</h3><code class="method_synopsis">static public function <strong class="method_name">remove</strong>(a:<span class="unresolved_type_name">Array</span>, objElement:<span class="unresolved_type_name">Object</span>):<span class="unresolved_type_name">Array</span></code><div class="method_info"><p>
+ remove all instances of an element from an array
+ </p><h4>Parameters</h4><table class="arguments extra_info" summary=""><tr><td><code>a</code></td><td>(Array)
+ </td></tr><tr><td><code>objElement</code></td><td>(Object)
+ </td></tr></table><h4>Return</h4><p class="extra_info"> Array
+	 </p></div></div><div class="method_details alt_row"><a name="search"></a><h3>search</h3><code class="method_synopsis">static public function <strong class="method_name">search</strong>(a:<span class="unresolved_type_name">Array</span>, objElement:<span class="unresolved_type_name">Object</span>):<span class="unresolved_type_name">Number</span></code><div class="method_info"><p>
+ search an array for a given element and return its index or null
+ </p><h4>Parameters</h4><table class="arguments extra_info" summary=""><tr><td><code>a</code></td><td>(Array)
+ </td></tr><tr><td><code>objElement</code></td><td>(Object)
+ </td></tr></table><h4>Return</h4><p class="extra_info"> Number
+	 </p></div></div><div class="method_details"><a name="shuffle"></a><h3>shuffle</h3><code class="method_synopsis">static public function <strong class="method_name">shuffle</strong>(a:<span class="unresolved_type_name">Array</span>):<span class="void_name">Void</span></code><div class="method_info"><p>
  shuffle array items
  </p><h4>Parameters</h4><table class="arguments extra_info" summary=""><tr><td><code>a</code></td><td>(Array)
  </td></tr></table><h4>Return</h4><p class="extra_info"> Void
+	 </p></div></div><div class="method_details alt_row"><a name="clone"></a><h3>clone</h3><code class="method_synopsis">static public function <strong class="method_name">clone</strong>(a:<span class="unresolved_type_name">Array</span>):<span class="unresolved_type_name">Array</span></code><div class="method_info"><p>
+ return a clone of the array
+ </p><h4>Parameters</h4><table class="arguments extra_info" summary=""><tr><td><code>a</code></td><td>(Array)
+ </td></tr></table><h4>Return</h4><p class="extra_info"> Array
+	 </p></div></div><div class="method_details"><a name="merge"></a><h3>merge</h3><code class="method_synopsis">static public function <strong class="method_name">merge</strong>(aA:<span class="unresolved_type_name">Array</span>, aB:<span class="unresolved_type_name">Array</span>):<span class="unresolved_type_name">Array</span></code><div class="method_info"><p>
+ merge two arrays into one
+ </p><h4>Parameters</h4><table class="arguments extra_info" summary=""><tr><td><code>aA</code></td><td>(Array)
+ </td></tr><tr><td><code>aB</code></td><td>(Array)
+ </td></tr></table><h4>Return</h4><p class="extra_info"> Array
+	 </p></div></div><div class="method_details alt_row"><a name="swap"></a><h3>swap</h3><code class="method_synopsis">static public function <strong class="method_name">swap</strong>(a:<span class="unresolved_type_name">Array</span>, nA:<span class="unresolved_type_name">Number</span>, nB:<span class="unresolved_type_name">Number</span>):<span class="unresolved_type_name">Array</span></code><div class="method_info"><p>
+ Swap two elements positions in an array
+ </p><h4>Parameters</h4><table class="arguments extra_info" summary=""><tr><td><code>a</code></td><td>(Array)
+ </td></tr><tr><td><code>nA</code></td><td>(Number) element A's index
+ </td></tr><tr><td><code>nB</code></td><td>(Number) element B's index
+ </td></tr></table><h4>Return</h4><p class="extra_info"> Array
 	 </p></div></div><div class="method_details"><a name="asort"></a><h3>asort</h3><code class="method_synopsis">static public function <strong class="method_name">asort</strong>(a:<span class="unresolved_type_name">Array</span>):<span class="unresolved_type_name">Array</span></code><div class="method_info"><p>
  return alphabetically sorted array
  </p><h4>Parameters</h4><table class="arguments extra_info" summary=""><tr><td><code>a</code></td><td>(Array)
@@ -15,9 +46,14 @@ document.quicknavBasePath="../../../index-files";
  return array with duplicate entries removed
  </p><h4>Parameters</h4><table class="arguments extra_info" summary=""><tr><td><code>a</code></td><td>(Array)
  </td></tr></table><h4>Return</h4><p class="extra_info"> Array
-	 </p></div></div><div class="method_details"><a name="matchValues"></a><h3>matchValues</h3><code class="method_synopsis">static public function <strong class="method_name">matchValues</strong>(a1:<span class="unresolved_type_name">Array</span>, a2:<span class="unresolved_type_name">Array</span>):<span class="unresolved_type_name">Boolean</span></code><div class="method_info"><p>
+	 </p></div></div><div class="method_details"><a name="matchValues"></a><h3>matchValues</h3><code class="method_synopsis">static public function <strong class="method_name">matchValues</strong>(aA:<span class="unresolved_type_name">Array</span>, aB:<span class="unresolved_type_name">Array</span>):<span class="unresolved_type_name">Boolean</span></code><div class="method_info"><p>
  compare two arrays for a matching value
- </p><h4>Parameters</h4><table class="arguments extra_info" summary=""><tr><td><code>a1</code></td><td>(Array)
- </td></tr><tr><td><code>a2</code></td><td>(Array)	
+ </p><h4>Parameters</h4><table class="arguments extra_info" summary=""><tr><td><code>aA</code></td><td>(Array)
+ </td></tr><tr><td><code>aB</code></td><td>(Array)	
+ </td></tr></table><h4>Return</h4><p class="extra_info"> Boolean
+	 </p></div></div><div class="method_details alt_row"><a name="compare"></a><h3>compare</h3><code class="method_synopsis">static public function <strong class="method_name">compare</strong>(aA:<span class="unresolved_type_name">Array</span>, aB:<span class="unresolved_type_name">Array</span>):<span class="unresolved_type_name">Boolean</span></code><div class="method_info"><p>
+ compare two arrays to see if they are identical
+ </p><h4>Parameters</h4><table class="arguments extra_info" summary=""><tr><td><code>aA</code></td><td>(Array)
+ </td></tr><tr><td><code>aB</code></td><td>(Array)
  </td></tr></table><h4>Return</h4><p class="extra_info"> Boolean
 	 </p></div></div></div></div><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of SASAPI" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.utils" class="button">Package</a></li><li><span class="button nav_current">Class</span></li><li><a href="ArrayUtils.as.html" title="Source code of com.sekati.utils.ArrayUtils" class="button">Source</a></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
