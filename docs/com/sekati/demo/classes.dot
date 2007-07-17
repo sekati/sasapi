@@ -1,0 +1,21 @@
+strict digraph class_diagram {
+  rankdir=LR;
+  TypeImageBox[
+    label="ImageBox",
+    URL="ImageBox.html",
+    tooltip="com.sekati.demo.ImageBox",
+    shape="record"
+  ];
+  TypeFilterBtn[
+    label="FilterBtn",
+    URL="FilterBtn.html",
+    tooltip="com.sekati.demo.FilterBtn",
+    shape="record"
+  ];
+  TypeContentBox[
+    label="ContentBox",
+    URL="ContentBox.html",
+    tooltip="com.sekati.demo.ContentBox",
+    shape="record"
+  ];
+}

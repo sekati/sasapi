@@ -4,6 +4,7 @@ com.sekati.effects
 com.sekati.ui
 com.sekati.crypt
 com.sekati.data
+com.sekati.load
 com.sekati.managers
 com.sekati.geom
 com.sekati.log
