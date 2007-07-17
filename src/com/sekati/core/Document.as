@@ -6,6 +6,7 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 import com.sekati.core.App;
+import com.sekati.core.RUID;
 import com.sekati.log.Out;
 /**
  * Document controller simulates an AS3 DocumentClass
@@ -35,6 +36,7 @@ class com.sekati.core.Document extends MovieClip {
 	 * @return Void
 	 */
 	private function init():Void {
+		RUID.key(this);
 		setMovieProps();
 		buildCompositions();
 		App.init();
