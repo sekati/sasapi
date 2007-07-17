@@ -12,18 +12,17 @@ import com.sekati.display.CoreClip;
  */
 class com.sekati.display.AbstractClip extends CoreClip {
 	/**
-	 * Constructor - always empty - use init
+	 * Constructor - always empty: initializes via configUI
 	 */
-	private function AbstractClip() {
-	}
+	private function AbstractClip() {}
 	/**
-	 * overrides CoreClip init with behaviors once clip is loaded/registered on stage
+	 * overrides CoreClip configUI with its own behaviors once clip is loaded/registered on stage
 	 */
 	private function configUI():Void {
 		_this.test();
 	}
 	private function test():Void {
 		trace("AbstractClip subclass instance: "+_this._name);
-		trace(_this);
+		trace(_this+".cacheAsBitmap = "+_this.cacheAsBitmap+";");
 	}
 }

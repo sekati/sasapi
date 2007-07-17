@@ -16,7 +16,7 @@ class com.sekati.display.CoreClip extends MovieClip implements ICoreClip {
 	 * private constructor as class is initialized via the MovieClip.onLoad event
 	 */
 	private function CoreClip() {}
-	private function onLoad():Void {
+	public function onLoad():Void {
 		_this = this;
 		_this.cacheAsBitmap = true;
 		configUI();
@@ -24,7 +24,7 @@ class com.sekati.display.CoreClip extends MovieClip implements ICoreClip {
 	/**
 	 * configure UI and initialize behavior - to be overwritten by subclass
 	 */
-	private function configUI():Void {}
+	public function configUI():Void {}
 	/**
 	 * give verbose trace output
 	 * @return String

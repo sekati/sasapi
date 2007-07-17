@@ -17,8 +17,7 @@ class com.sekati.ui.ImageBox extends MovieClip {
 	public var _btn2:MovieClip;
 	//
 	// constructor
-	private function ImageBox () {
-	}
+	private function ImageBox () {}
 	public function configUI ():Void {
 		// refs
 		_img = _this.img;
