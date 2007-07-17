@@ -6,12 +6,6 @@ strict digraph class_diagram {
     tooltip="com.sekati.ui.Scroll",
     shape="record"
   ];
-  TypeImageBox[
-    label="ImageBox",
-    URL="ImageBox.html",
-    tooltip="com.sekati.ui.ImageBox",
-    shape="record"
-  ];
   TypeImage[
     label="Image",
     URL="Image.html",
@@ -28,18 +22,6 @@ strict digraph class_diagram {
     label="FLVPlayer",
     URL="FLVPlayer.html",
     tooltip="com.sekati.ui.FLVPlayer",
-    shape="record"
-  ];
-  TypeContentBoxH[
-    label="ContentBoxH",
-    URL="ContentBoxH.html",
-    tooltip="com.sekati.ui.ContentBoxH",
-    shape="record"
-  ];
-  TypeContentBox[
-    label="ContentBox",
-    URL="ContentBox.html",
-    tooltip="com.sekati.ui.ContentBox",
     shape="record"
   ];
 }

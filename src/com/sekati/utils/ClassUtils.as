@@ -1,6 +1,6 @@
 ﻿/**
  * com.sekati.utils.ClassUtils
- * @version 2.0.1
+ * @version 2.0.2
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -100,6 +100,20 @@ class com.sekati.utils.ClassUtils {
 		}
 		classRef.apply (mc);
 		return target;
+	}
+	/**
+	 * Create and return a new instance of a defined class
+	 * @param classRef (Function) reference to full class namespace
+	 * @param args (Array) array of constructor arguments
+	 * @return Object - instantiated class object
+	 * {@code Usage:
+	 * var o:Point = ClassUtils.createInstance (com.sekati.geom.Point, [15,50]);
+	 * }
+	 */
+	public static function createInstance (classRef:Function, args:Array):Object {
+		var o = {__constructor__:classRef, __proto__:classRef.prototype};
+		classRef.apply (o, args);
+		return o;		
 	}
 	//
 }

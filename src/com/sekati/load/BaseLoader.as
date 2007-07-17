@@ -1,10 +1,11 @@
 /**
- * com.sekati.core.BaseLoader
+ * com.sekati.load.BaseLoader
  * @version 1.0.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
+import com.sekati.core.FWDepth;
 import com.sekati.utils.Delegate;
 /**
  * generic root preloader - stops movie, preloads, then advances to defined frame label.
@@ -12,7 +13,7 @@ import com.sekati.utils.Delegate;
  * var preload:BaseLoader = new BaseLoader("finalFrameLabel");
  * }
  */
-class com.sekati.core.BaseLoader {
+class com.sekati.load.BaseLoader {
 	private var _nextFrameLabel:String;
 	private var _loader:MovieClip;
 	private var _isLoaded:Boolean;
@@ -27,13 +28,12 @@ class com.sekati.core.BaseLoader {
 		_nextFrameLabel = (!frameLabel) ? "bootstrap" : frameLabel;
 		_isLoaded = false;
 		_root.stop();
-		_loader = _root.createEmptyMovieClip ("loader", 15999);
+		_loader = _root.createEmptyMovieClip ("loader", FWDepth.BaseLoader);
 		_loader.onEnterFrame = Delegate.create(this, preload);
 	}
 	private function preload():Void {
 		_l = _root.getBytesLoaded ();
 		_t = _root.getBytesTotal ();
-		//_p = int (_l * 100 / _t);
 		_p = Math.floor(_l/_t*100);
 		if (_t > 5 && _l >= _t && Stage.width > 5 && Stage.height > 5) {
 			_loader.onEnterFrame = null;

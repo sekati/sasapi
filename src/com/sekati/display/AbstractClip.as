@@ -24,5 +24,6 @@ class com.sekati.display.AbstractClip extends CoreClip {
 	private function test():Void {
 		trace("AbstractClip subclass instance: "+_this._name);
 		trace(_this+".cacheAsBitmap = "+_this.cacheAsBitmap+";");
+		trace(_this+".__RUID = "+_this.__RUID);
 	}
 }

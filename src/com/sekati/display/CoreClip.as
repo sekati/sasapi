@@ -6,6 +6,7 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 import com.sekati.display.ICoreClip;
+import com.sekati.crypt.RUID;
 import com.sekati.utils.Delegate;
 /**
  * All MovieClip subclasses should extend CoreClip instead of MovieClip for standardized initialization
@@ -16,9 +17,14 @@ class com.sekati.display.CoreClip extends MovieClip implements ICoreClip {
 	 * private constructor as class is initialized via the MovieClip.onLoad event
 	 */
 	private function CoreClip() {}
+	/**
+	 * 
+	 * @return Void
+	 */
 	public function onLoad():Void {
 		_this = this;
 		_this.cacheAsBitmap = true;
+		RUID.key(_this);
 		configUI();
 	}
 	/**
