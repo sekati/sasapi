@@ -7,7 +7,7 @@
  */
 
 /**
- * Interface describing CoreClip which all MovieClip classes should be extended with instead of MovieClip
+ * Interface describing {@link com.sekati.display.CoreClip} which all MovieClip classes should be extended with instead of MovieClip
  */
 interface com.sekati.display.ICoreClip {
 	/**
