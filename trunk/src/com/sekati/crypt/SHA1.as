@@ -1,6 +1,6 @@
 /**
  * com.sekati.crypt.SHA1
- * @version 1.0.0
+ * @version 1.0.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -12,11 +12,11 @@
  * Other contributors: Greg Holt, Andrew Kepert, Ydnar, Lostinet
  * @see http://pajhome.org.uk/crypt/md5 for more info.
  */
-
+import com.sekati.crypt.IHash;
 /**
 * Calculates the SHA1 checksum.
 */
-class com.sekati.crypt.SHA1 {
+class com.sekati.crypt.SHA1 implements IHash {
 	/**
  	 * Calculates the SHA1 checksum.
 	 * @param src (String) string to hash

@@ -3,18 +3,18 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span><span class="comment doc">/**
 <span class="lineno" id="2">     2  </span> * com.sekati.crypt.ROT13
-<span class="lineno" id="3">     3  </span> * @version 1.0.0
+<span class="lineno" id="3">     3  </span> * @version 1.0.1
 <span class="lineno" id="4">     4  </span> * @author jason m horwitz | sekati.com
 <span class="lineno" id="5">     5  </span> * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
 <span class="lineno" id="7">     7  </span> * 
 <span class="lineno" id="8">     8  </span> * Sourced from ascrypt for dependencies only - version 2.0, author Mika Pamu
 <span class="lineno" id="9">     9  </span> */</span>
-<span class="lineno" id="10">    10  </span> 
+<span class="lineno" id="10">    10  </span> <span class="key">import</span> com.sekati.crypt.ICipher;
 <span class="lineno" id="11">    11  </span><span class="comment doc">/**
 <span class="lineno" id="12">    12  </span>* Encodes and decodes a ROT13 string.
 <span class="lineno" id="13">    13  </span>*/</span>
-<span class="lineno" id="14">    14  </span><span class="key">class</span> com.sekati.crypt.ROT13 {
+<span class="lineno" id="14">    14  </span><span class="key">class</span> com.sekati.crypt.ROT13 <span class="key">implements</span> ICipher {
 <span class="lineno" id="15">    15  </span>	<span class="key">private</span> <span class="key">static</span> <span class="key">var</span> chars:String = <span class="str_const">"ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMabcdefghijklmnopqrstuvwxyzabcdefghijklm"</span>;
 <span class="lineno" id="16">    16  </span>	<span class="comment doc">/**
 <span class="lineno" id="17">    17  </span>	* Encodes or decodes a ROT13 string.

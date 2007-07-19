@@ -1,0 +1,17 @@
+strict digraph interface_diagram {
+  rankdir=LR;
+  IHash[
+    label="IHash",
+    URL="IHash.html",
+    tooltip="com.sekati.crypt.IHash",
+    fontname="Times-Italic",
+    shape="record"
+  ];
+  ICipher[
+    label="ICipher",
+    URL="ICipher.html",
+    tooltip="com.sekati.crypt.ICipher",
+    fontname="Times-Italic",
+    shape="record"
+  ];
+}

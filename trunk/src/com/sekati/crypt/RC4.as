@@ -1,6 +1,6 @@
 /**
  * com.sekati.crypt.RC4
- * @version 1.0.0
+ * @version 1.0.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -8,11 +8,11 @@
  * Sourced from ascrypt for dependencies only - version 1.0, author Mika Pamu
  * Orginal Flash port by: Gabor Penoff - http://www.fns.hu | fns@fns.hu
  */
- 
+import com.sekati.crypt.ICipher;
 /**
  * Encrypts and decrypts an alleged RC4 hash.
  */
-class com.sekati.crypt.RC4 {
+class com.sekati.crypt.RC4 implements ICipher {
 	private static var sbox:Array = new Array(255);
 	private static var mykey:Array = new Array(255);
 	

@@ -1,6 +1,6 @@
 /**
  * com.sekati.crypt.Base64
- * @version 3.0.0
+ * @version 3.0.1
  * @author jason m horwitz | sekati.com 
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -10,11 +10,11 @@
  * Aardwulf Systems, www.aardwulf.com
  * @see http://www.aardwulf.com/tutor/base64/base64.html 
  */
- 
+import com.sekati.crypt.ICipher;
 /**
  * Encodes and decodes a base64 string.
  */
-class com.sekati.crypt.Base64 {
+class com.sekati.crypt.Base64 implements ICipher {
 	private static var base64chars:String = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
 
 	/**

@@ -24,6 +24,12 @@ strict digraph class_diagram {
     tooltip="com.sekati.crypt.SHA1",
     shape="record"
   ];
+  TypeRUID[
+    label="RUID",
+    URL="RUID.html",
+    tooltip="com.sekati.crypt.RUID",
+    shape="record"
+  ];
   TypeROT13[
     label="ROT13",
     URL="ROT13.html",
