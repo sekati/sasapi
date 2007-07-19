@@ -14,10 +14,8 @@ class com.sekati.core.FWDepth {
 	public static var BaseLoader:Number = 15999;
 	public static var SoundManager:Number = -666;
 	public static var FLVAudioContainer:Number = -667;
-	/*
-	public static var FPSBeacon:Number = -900;
-	public static var FLVAudioContainer:Number = -901;
-	public static var ImgCache:Number = -902;
-	 */	
+	
+	private function FWDepth(){}
+	//
 }
 // eof

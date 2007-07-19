@@ -72,6 +72,8 @@ class com.sekati.validate.TypeValidation {
 	private static function compare(val:Object, as1:String, as2:Function){
 		return (typeof(val) == as1 || val instanceof as2);
 	}
+	
+	private function TypeValidation(){}
 	//	
 }
 // eof

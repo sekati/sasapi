@@ -79,4 +79,8 @@ class com.sekati.log.TraceObj {
 		}
 		return longestPath;
 	}
+	
+	private function TraceObj(){}
+	//
 }
+// eof

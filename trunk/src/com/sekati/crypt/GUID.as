@@ -23,6 +23,8 @@ class com.sekati.crypt.GUID {
 		var id3:String = System.capabilities.serverString;
 		return SHA1.calculate(id1+id3+id2+counter++);
 	}
+	
+	private function GUID(){}
 	//
 }
 // eof

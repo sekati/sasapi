@@ -186,6 +186,8 @@ class com.sekati.utils.MiscUtils {
 			return false;
 		};
 	 */
+	 
+	 private function MiscUtils(){}
 	 //
 }
 // eof

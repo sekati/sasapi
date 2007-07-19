@@ -53,6 +53,8 @@ class com.sekati.service.Urchin {
 		trace ("*** Urchin.track ('" + pv + "')");
 		ExternalInterface.call ("urchinTracker", pv);
 	}
+	
+	private function Urchin(){}
 	//
 }
 // eof

@@ -60,6 +60,8 @@ class com.sekati.utils.DateUtils {
 		returnObj.hours = hour12;
 		return returnObj;
 	}
+	
+	private function DateUtils(){}
 	//
 }
 // eof

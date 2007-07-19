@@ -1,13 +1,13 @@
 ﻿/**
  * com.sekati.utils.StringUtils
- * @version 1.1.1
+ * @version 1.1.3
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  
  /**
-  * static class wrapping various String utilities
+  * Static class wrapping various String utilities
   */
 class com.sekati.utils.StringUtils {
 	/**
@@ -93,24 +93,13 @@ class com.sekati.utils.StringUtils {
 		return o;
 	}
 	/**
-	 * check if a string is blank after a safety trim
+	 * Capitalize the first character in the string.
 	 * @param str (String)
-	 * @return Boolean
-	 */
-	public static function isBlank (s:String):Boolean {
-		var str = trim (s);
-		var i = 0;
-		if (str.length == 0) {
-			return true;
-		}
-		while (i < str.length) {
-			if (str.charCodeAt (0) != 32) {
-				return false;
-			}
-			i++;
-		}
-		return true;
-	}
+	 * @return String
+	 */ 
+	public static function firstToUpper (str:String):String {
+		 return str.charAt(0).toUpperCase() + str.substr(1);
+	}	
 	/**
 	 * add cacheKiller
 	 * @param str (String)
@@ -182,6 +171,27 @@ class com.sekati.utils.StringUtils {
 		var dq:String = String.fromCharCode (34);
 		return str.split (dq).join (sq);
 	}
+	/**
+	 * Remove all formatting and return cleaned numbers from string.
+	 * @param str (String)
+	 * @return String
+	 * {@code Usage: 
+	 * 	StringUtils.toNumeric("123-123-1234"); // returns 1221231234 
+	 * }
+	 */
+	public static function toNumeric (str:String):String {
+		var len:Number = str.length;
+		var result:String = "";
+		for (var i:Number = 0; i < len; i++) {
+			var code:Number = str.charCodeAt(i);
+			if (code >= 48 && code <= 57) {
+				result += str.substr(i, 1);
+			}
+		}
+		return result;
+	}
+	
+	private function StringUtils(){}	
 	//
 }
 // eof

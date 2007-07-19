@@ -120,4 +120,7 @@ class com.sekati.crypt.TEA {
 		return codes;
 	}
 	
+	private function TEA(){}
+	//
 }
+// eof

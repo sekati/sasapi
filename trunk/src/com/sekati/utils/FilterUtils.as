@@ -26,6 +26,8 @@ class com.sekati.utils.FilterUtils {
 	public static function clearFilters (mc:MovieClip):Void {
 		mc.filters = [];
 	}
+	
+	private function FilterUtils(){}
 	//
 }
 // eof

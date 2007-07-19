@@ -169,6 +169,8 @@ class com.sekati.utils.ArrayUtils {
 		}
 		return true;
 	}
+	
+	private function ArrayUtils(){}
 	//
 }
 // eof

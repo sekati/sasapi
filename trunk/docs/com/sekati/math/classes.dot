@@ -6,10 +6,22 @@ strict digraph class_diagram {
     tooltip="com.sekati.math.TrigoBase",
     shape="record"
   ];
+  TypeRuleOf3[
+    label="RuleOf3",
+    URL="RuleOf3.html",
+    tooltip="com.sekati.math.RuleOf3",
+    shape="record"
+  ];
   TypeMathBase[
     label="MathBase",
     URL="MathBase.html",
     tooltip="com.sekati.math.MathBase",
+    shape="record"
+  ];
+  TypeInteger[
+    label="Integer",
+    URL="Integer.html",
+    tooltip="com.sekati.math.Integer",
     shape="record"
   ];
 }

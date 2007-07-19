@@ -1,0 +1,5 @@
+body { margin:0px; padding:0px; font: 9px Verdana, Helvetica, Arial, sans-serif; color: #333;  background-color: #000;}
+h1 {font-size:20px; font-weight:lighter;}
+a, a:link, a:visited { font-size:9px; color: #999; font-weight:bold; text-decoration: none;}
+a:hover {color: #000;}
+#no_flash {position: relative; margin-left:25px; margin-top:25px;  text-align:center}

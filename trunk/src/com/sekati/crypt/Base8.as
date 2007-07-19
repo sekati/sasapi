@@ -38,6 +38,8 @@ class com.sekati.crypt.Base8 {
 		}
 		return result;
 	}
+	
+	private function Base8(){}
 	//
 }
 // eof

@@ -104,5 +104,8 @@ class com.sekati.crypt.RC4 {
 		}
 		return codes;
 	}
-
+	
+	private function RC4(){}
+	//
 }
+// eof

@@ -67,6 +67,8 @@ class com.sekati.crypt.Base64 {
 		}
 		return output;
 	}
+	
+	private function Base64(){}
 	//
 }
 // eof
