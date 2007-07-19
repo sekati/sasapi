@@ -9,6 +9,7 @@
  import com.sekati.utils.StringUtils;
 /**
  * Credit Card Validation class
+ * @see {@link com.sekati.crypt.Luhn}
  */
 class com.sekati.validate.CreditCardValidation {
 	private static var DEFAULT_ENCODE_DIGITS_SHOWN:Number = 4;

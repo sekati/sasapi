@@ -12,7 +12,7 @@
  * var orb:AmbientOrb = new AmbientOrb("AAA-BBB-CCC");
  * orb.config ( getColorByProp("name","red"), getAnimByProp("name","heartbeat"), "Orb Test" );
  * }
- * @see http://www.ambientdevices.com/developer/Tech%20FAQ.html
+ * @see <a href="http://www.ambientdevices.com/developer/Tech%20FAQ.html">http://www.ambientdevices.com/developer/Tech%20FAQ.html</a>
  */
 class com.sekati.service.AmbientOrb {
 	private var _devId:String;

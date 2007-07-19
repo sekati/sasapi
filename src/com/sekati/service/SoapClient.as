@@ -13,10 +13,10 @@ import mx.services.WebService;
  * <br>Q: 'There are multiple possible ports in the WSDL file; please specify a service name and port name!?'
  * <br>A: add port to class instance, seach for "port" in the wsdl & see url's below for more info.
  * 
- * @see http://www.intangibleinc.com/movabletype/archives/000007.html
- * @see http://livedocs.macromedia.com/fms/2/docs/wwhelp/wwhimpl/common/html/wwhelp.htm?context=LiveDocs_Parts&file=00000796.html
- * @see http://www.flash-db.com/Tutorials/lclasses/lclasses.php?page=2
- * @see http://www.adobe.com/devnet/flash/articles/flmxpro_webservices_03.html
+ * @see <a href="http://www.intangibleinc.com/movabletype/archives/000007.html">http://www.intangibleinc.com/movabletype/archives/000007.html</a>
+ * @see <a href="http://livedocs.macromedia.com/fms/2/docs/wwhelp/wwhimpl/common/html/wwhelp.htm?context=LiveDocs_Parts&file=00000796.html">http://livedocs.macromedia.com/fms/2/docs/wwhelp/wwhimpl/common/html/wwhelp.htm?context=LiveDocs_Parts&file=00000796.html</a>
+ * @see <a href="http://www.flash-db.com/Tutorials/lclasses/lclasses.php?page=2">http://www.flash-db.com/Tutorials/lclasses/lclasses.php?page=2</a>
+ * @see <a href="http://www.adobe.com/devnet/flash/articles/flmxpro_webservices_03.html">http://www.adobe.com/devnet/flash/articles/flmxpro_webservices_03.html</a>
  */
 class com.sekati.service.SoapClient {
 	private var _ws:WebService;

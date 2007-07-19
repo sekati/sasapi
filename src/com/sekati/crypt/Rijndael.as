@@ -8,7 +8,7 @@
  * Sourced from ascrypt for dependencies only - version 2.0, author Mika Pamu
  * Original Javascript implementation:Fritz Schneider, University of California
  * Algorithm: Joan Daemen and Vincent Rijmen
- * @see http://www.cs.ucsd.edu/~fritz/rijndael.html
+ * @see <a href="http://www.cs.ucsd.edu/~fritz/rijndael.html">http://www.cs.ucsd.edu/~fritz/rijndael.html</a>
  */
 import com.sekati.crypt.ICipher;
 /**

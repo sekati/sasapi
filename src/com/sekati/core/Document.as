@@ -13,6 +13,7 @@ import com.sekati.log.Out;
  * {@code Usage on first _root frame:
  * Document.main(this);
  * }
+ * @see {@link com.sekati.core.App}
  */
 class com.sekati.core.Document extends MovieClip {
 	public var out:Out; 

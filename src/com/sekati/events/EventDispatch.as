@@ -26,8 +26,8 @@ import com.sekati.events.IEventDispatch;
  * }
  * 
  * Some excellent explanations of the AS2/3 event models and broadcasters vs dispatchers
- * {@link http://www.communitymx.com/content/article.cfm?page=1&cid=76FDB}
- * {@link http://www.kirupa.com/developer/actionscript/eventdispatcher.htm}
+ * @see <a href="http://www.communitymx.com/content/article.cfm?page=1&cid=76FDB">http://www.communitymx.com/content/article.cfm?page=1&cid=76FDB</a>
+ * @see <a href="http://www.kirupa.com/developer/actionscript/eventdispatcher.htm">http://www.kirupa.com/developer/actionscript/eventdispatcher.htm</a>
  */
 class com.sekati.events.EventDispatch implements IEventDispatch {
 	private static var _instance:EventDispatch;

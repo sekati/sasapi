@@ -8,7 +8,8 @@
  
 /**
  * Marker interface for all cryptographic cipher classes
- * @see http://en.wikipedia.org/wiki/Encryption
+ * @see <a href="http://en.wikipedia.org/wiki/Encryption">http://en.wikipedia.org/wiki/Encryption</a>
+ * @see <a href="http://en.wikipedia.org/wiki/Marker_interface_pattern">http://en.wikipedia.org/wiki/Marker_interface_pattern</a>
  */
 interface com.sekati.crypt.ICipher {
 
