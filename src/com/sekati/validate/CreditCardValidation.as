@@ -1,14 +1,14 @@
 /**
  * com.sekati.validate.CreditCardValidation
- * @version 1.0.0
+ * @version 1.0.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  import com.sekati.crypt.Luhn;
+ import com.sekati.utils.StringUtils;
 /**
  * Credit Card Validation class
- * TODO Add number string formatting to remove spaces, dashes, etc.
  */
 class com.sekati.validate.CreditCardValidation {
 	private static var DEFAULT_ENCODE_DIGITS_SHOWN:Number = 4;
@@ -35,13 +35,14 @@ class com.sekati.validate.CreditCardValidation {
 	}
 	/**
 	 * validate a credit card number as much as possible before submitting for approval
-	 * @param strNumber (String) card number as string
+	 * @param strNumber (String) credit card number as string
 	 * @return Boolean
 	 * {@code var isValidNumber:Boolean = CreditCardValidation("1234567890123456"); }
 	 */
 	public static function isValidNumber (strNumber:String):Boolean {
-		if(strNumber.length > 0 && !isNaN(strNumber) && (strNumber.length >= MINIMUM_CARD_LENGTH && strNumber.length <= MAXIMUM_CARD_LENGTH)) {
-			return Luhn.mod10(strNumber);
+		var ccNumber:String = StringUtils.toNumeric(strNumber);
+		if(ccNumber.length > 0 && !isNaN(ccNumber) && (ccNumber.length >= MINIMUM_CARD_LENGTH && ccNumber.length <= MAXIMUM_CARD_LENGTH)) {
+			return Luhn.mod10(ccNumber);
 		}
 		return false;
 	}
@@ -66,6 +67,8 @@ class com.sekati.validate.CreditCardValidation {
 		strEncoded += strNumber.slice(-nDigitsShown);
 		return strEncoded;
 	}
+	
+	private function CreditCardValidation(){}
 	//		
 }
 // eof

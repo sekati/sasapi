@@ -144,5 +144,8 @@ class com.sekati.crypt.MD5 {
 		}
 		return str;
 	}
-
+	
+	private function MD5(){}
+	//
 }
+// eof

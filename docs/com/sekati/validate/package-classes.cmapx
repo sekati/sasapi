@@ -1,6 +1,6 @@
 <map id="class_diagram" name="class_diagram">
 <area shape="rect" href="TypeValidation.html" title="com.sekati.validate.TypeValidation" alt="" coords="31,224,165,272" />
-<area shape="rect" href="OSValidation.html" title="com.sekati.validate.OSValidation" alt="" coords="38,152,158,200" />
-<area shape="rect" href="EmailValidation.html" title="com.sekati.validate.EmailValidation" alt="" coords="27,80,169,128" />
+<area shape="rect" href="StringValidation.html" title="com.sekati.validate.StringValidation" alt="" coords="26,152,170,200" />
+<area shape="rect" href="OSValidation.html" title="com.sekati.validate.OSValidation" alt="" coords="38,80,158,128" />
 <area shape="rect" href="CreditCardValidation.html" title="com.sekati.validate.CreditCardValidation" alt="" coords="7,8,189,56" />
 </map>

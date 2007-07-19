@@ -68,6 +68,8 @@ class com.sekati.service.Flink {
 		trace ("*** Flink.setAvailable: '" + fnName + "'");
 		ExternalInterface.addCallback (fnName, instance, fn);
 	}
+	
+	private function Flink(){}
 	//
 }
 // eof

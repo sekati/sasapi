@@ -25,7 +25,6 @@ class com.sekati.crypt.SHA1 {
 	public static function calculate(src:String):String {
 		return hex_sha1(src);
 	}
-
 	/**
 	 * Private methods.
 	 */
@@ -90,5 +89,8 @@ class com.sekati.crypt.SHA1 {
 		}
 		return str;
 	}
-
+	
+	private function SHA1(){}
+	//
 }
+// eof

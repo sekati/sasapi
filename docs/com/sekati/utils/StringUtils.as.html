@@ -3,14 +3,14 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span><span class="comment doc">/**
 <span class="lineno" id="2">     2  </span> * com.sekati.utils.StringUtils
-<span class="lineno" id="3">     3  </span> * @version 1.1.1
+<span class="lineno" id="3">     3  </span> * @version 1.1.3
 <span class="lineno" id="4">     4  </span> * @author jason m horwitz | sekati.com
 <span class="lineno" id="5">     5  </span> * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
 <span class="lineno" id="7">     7  </span> */</span>
 <span class="lineno" id="8">     8  </span> 
 <span class="lineno" id="9">     9  </span> <span class="comment doc">/**
-<span class="lineno" id="10">    10  </span>  * static class wrapping various String utilities
+<span class="lineno" id="10">    10  </span>  * Static class wrapping various String utilities
 <span class="lineno" id="11">    11  </span>  */</span>
 <span class="lineno" id="12">    12  </span><span class="key">class</span> com.sekati.utils.StringUtils {
 <span class="lineno" id="13">    13  </span>	<span class="comment doc">/**
@@ -96,96 +96,106 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="93">    93  </span>		<span class="key">return</span> o;
 <span class="lineno" id="94">    94  </span>	}
 <span class="lineno" id="95">    95  </span>	<span class="comment doc">/**
-<span class="lineno" id="96">    96  </span>	 * check if a string is blank after a safety trim
+<span class="lineno" id="96">    96  </span>	 * Capitalize the first character in the string.
 <span class="lineno" id="97">    97  </span>	 * @param str (String)
-<span class="lineno" id="98">    98  </span>	 * @return Boolean
-<span class="lineno" id="99">    99  </span>	 */</span>
-<span class="lineno" id="100">   100  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> isBlank (s:String):Boolean {
-<span class="lineno" id="101">   101  </span>		<span class="key">var</span> str = trim (s);
-<span class="lineno" id="102">   102  </span>		<span class="key">var</span> i = <span class="num_const">0</span>;
-<span class="lineno" id="103">   103  </span>		<span class="key">if</span> (str.length == <span class="num_const">0</span>) {
-<span class="lineno" id="104">   104  </span>			<span class="key">return</span> <span class="key">true</span>;
-<span class="lineno" id="105">   105  </span>		}
-<span class="lineno" id="106">   106  </span>		<span class="key">while</span> (i &lt; str.length) {
-<span class="lineno" id="107">   107  </span>			<span class="key">if</span> (str.charCodeAt (<span class="num_const">0</span>) != <span class="num_const">32</span>) {
-<span class="lineno" id="108">   108  </span>				<span class="key">return</span> <span class="key">false</span>;
-<span class="lineno" id="109">   109  </span>			}
-<span class="lineno" id="110">   110  </span>			i++;
-<span class="lineno" id="111">   111  </span>		}
-<span class="lineno" id="112">   112  </span>		<span class="key">return</span> <span class="key">true</span>;
-<span class="lineno" id="113">   113  </span>	}
-<span class="lineno" id="114">   114  </span>	<span class="comment doc">/**
-<span class="lineno" id="115">   115  </span>	 * add cacheKiller
-<span class="lineno" id="116">   116  </span>	 * @param str (String)
-<span class="lineno" id="117">   117  </span>	 * @return String
-<span class="lineno" id="118">   118  </span>	 */</span>
-<span class="lineno" id="119">   119  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> noCache (str:String):String {
-<span class="lineno" id="120">   120  </span>		<span class="key">return</span> str + <span class="str_const">"?"</span> + <span class="key">new</span> Date ().getTime ();
-<span class="lineno" id="121">   121  </span>	}
-<span class="lineno" id="122">   122  </span>	<span class="comment doc">/**
-<span class="lineno" id="123">   123  </span>	* encode html
-<span class="lineno" id="124">   124  </span>	* @param str (String)
-<span class="lineno" id="125">   125  </span>	* @return String
-<span class="lineno" id="126">   126  </span>	*/</span>
-<span class="lineno" id="127">   127  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> htmlEncode (str:String):String {
-<span class="lineno" id="128">   128  </span>		<span class="key">var</span> s:String = str, a = <span class="key">new</span> String ();
-<span class="lineno" id="129">   129  </span>		a = s.split (<span class="str_const">"&amp;"</span>), s = a.join (<span class="str_const">"&amp;amp;"</span>);
-<span class="lineno" id="130">   130  </span>		a = s.split (<span class="str_const">" "</span>), s = a.join (<span class="str_const">"&amp;nbsp;"</span>);
-<span class="lineno" id="131">   131  </span>		a = s.split (<span class="str_const">"&lt;"</span>), s = a.join (<span class="str_const">"&amp;lt;"</span>);
-<span class="lineno" id="132">   132  </span>		a = s.split (<span class="str_const">"&gt;"</span>), s = a.join (<span class="str_const">"&amp;gt;"</span>);
-<span class="lineno" id="133">   133  </span>		a = s.split (<span class="str_const">"\""</span>), s = a.join (<span class="str_const">"&amp;quot;"</span>);
-<span class="lineno" id="134">   134  </span>		<span class="key">return</span> s;
-<span class="lineno" id="135">   135  </span>	}
-<span class="lineno" id="136">   136  </span>	<span class="comment doc">/**
-<span class="lineno" id="137">   137  </span>	* strip html markup tags
-<span class="lineno" id="138">   138  </span>	* @param str (String)
-<span class="lineno" id="139">   139  </span>	* @return String
-<span class="lineno" id="140">   140  </span>	*/</span>
-<span class="lineno" id="141">   141  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> stripTags (str:String):String {
-<span class="lineno" id="142">   142  </span>		<span class="key">var</span> s:Array = <span class="key">new</span> Array ();
-<span class="lineno" id="143">   143  </span>		<span class="key">var</span> c:Array = <span class="key">new</span> Array ();
-<span class="lineno" id="144">   144  </span>		<span class="key">for</span> (<span class="key">var</span> i = <span class="num_const">0</span>; i &lt; str.length; i++) {
-<span class="lineno" id="145">   145  </span>			<span class="key">if</span> (str.charAt (i) == <span class="str_const">"&lt;"</span>) {
-<span class="lineno" id="146">   146  </span>				s.push (i);
-<span class="lineno" id="147">   147  </span>			} <span class="key">else</span> <span class="key">if</span> (str.charAt (i) == <span class="str_const">"&gt;"</span>) {
-<span class="lineno" id="148">   148  </span>				c.push (i);
-<span class="lineno" id="149">   149  </span>			}
-<span class="lineno" id="150">   150  </span>		}
-<span class="lineno" id="151">   151  </span>		<span class="key">var</span> o:String = str.substring (<span class="num_const">0</span>, s[<span class="num_const">0</span>]);
-<span class="lineno" id="152">   152  </span>		<span class="key">for</span> (<span class="key">var</span> j = <span class="num_const">0</span>; j &lt; c.length; j++) {
-<span class="lineno" id="153">   153  </span>			o += str.substring (c[j] + <span class="num_const">1</span>, s[j + <span class="num_const">1</span>]);
-<span class="lineno" id="154">   154  </span>		}
-<span class="lineno" id="155">   155  </span>		<span class="key">return</span> o;
-<span class="lineno" id="156">   156  </span>	}
-<span class="lineno" id="157">   157  </span>	<span class="comment doc">/**
-<span class="lineno" id="158">   158  </span>	* detect html breaks
-<span class="lineno" id="159">   159  </span>	* @param str (String)
-<span class="lineno" id="160">   160  </span>	* @return Boolean
-<span class="lineno" id="161">   161  </span>	*/</span>
-<span class="lineno" id="162">   162  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> detectBr (str:String):Boolean {
-<span class="lineno" id="163">   163  </span>		<span class="key">return</span> (str.split (<span class="str_const">"&lt;br"</span>).length &gt; <span class="num_const">1</span>) ? <span class="key">true</span> : <span class="key">false</span>;
-<span class="lineno" id="164">   164  </span>	}
-<span class="lineno" id="165">   165  </span>	<span class="comment doc">/**
-<span class="lineno" id="166">   166  </span>	* convert single quotes to double quotes
-<span class="lineno" id="167">   167  </span>	* @param str (String)
-<span class="lineno" id="168">   168  </span>	* @return String
-<span class="lineno" id="169">   169  </span>	*/</span>
-<span class="lineno" id="170">   170  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> toDoubleQuote (str:String):String {
-<span class="lineno" id="171">   171  </span>		<span class="key">var</span> sq:String = <span class="str_const">"'"</span>;
-<span class="lineno" id="172">   172  </span>		<span class="key">var</span> dq:String = String.fromCharCode (<span class="num_const">34</span>);
-<span class="lineno" id="173">   173  </span>		<span class="key">return</span> str.split (sq).join (dq);
-<span class="lineno" id="174">   174  </span>	}
-<span class="lineno" id="175">   175  </span>	<span class="comment doc">/**
-<span class="lineno" id="176">   176  </span>	* convert double quotes to single quotes
-<span class="lineno" id="177">   177  </span>	* @param str (String)
-<span class="lineno" id="178">   178  </span>	* @return String
-<span class="lineno" id="179">   179  </span>	*/</span>
-<span class="lineno" id="180">   180  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> toSingleQuote (str:String):String {
-<span class="lineno" id="181">   181  </span>		<span class="key">var</span> sq:String = <span class="str_const">"'"</span>;
-<span class="lineno" id="182">   182  </span>		<span class="key">var</span> dq:String = String.fromCharCode (<span class="num_const">34</span>);
-<span class="lineno" id="183">   183  </span>		<span class="key">return</span> str.split (dq).join (sq);
-<span class="lineno" id="184">   184  </span>	}
-<span class="lineno" id="185">   185  </span>	<span class="comment">//</span>
-<span class="lineno" id="186">   186  </span>}
-<span class="lineno" id="187">   187  </span><span class="comment">// eof</span>
-<span class="lineno" id="188">   188  </span></pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of SASAPI" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.utils" class="button">Package</a></li><li><a href="StringUtils.html" title="Detail of com.sekati.utils.StringUtils API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
+<span class="lineno" id="98">    98  </span>	 * @return String
+<span class="lineno" id="99">    99  </span>	 */</span> 
+<span class="lineno" id="100">   100  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> firstToUpper (str:String):String {
+<span class="lineno" id="101">   101  </span>		 <span class="key">return</span> str.charAt(<span class="num_const">0</span>).toUpperCase() + str.substr(<span class="num_const">1</span>);
+<span class="lineno" id="102">   102  </span>	}	
+<span class="lineno" id="103">   103  </span>	<span class="comment doc">/**
+<span class="lineno" id="104">   104  </span>	 * add cacheKiller
+<span class="lineno" id="105">   105  </span>	 * @param str (String)
+<span class="lineno" id="106">   106  </span>	 * @return String
+<span class="lineno" id="107">   107  </span>	 */</span>
+<span class="lineno" id="108">   108  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> noCache (str:String):String {
+<span class="lineno" id="109">   109  </span>		<span class="key">return</span> str + <span class="str_const">"?"</span> + <span class="key">new</span> Date ().getTime ();
+<span class="lineno" id="110">   110  </span>	}
+<span class="lineno" id="111">   111  </span>	<span class="comment doc">/**
+<span class="lineno" id="112">   112  </span>	* encode html
+<span class="lineno" id="113">   113  </span>	* @param str (String)
+<span class="lineno" id="114">   114  </span>	* @return String
+<span class="lineno" id="115">   115  </span>	*/</span>
+<span class="lineno" id="116">   116  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> htmlEncode (str:String):String {
+<span class="lineno" id="117">   117  </span>		<span class="key">var</span> s:String = str, a = <span class="key">new</span> String ();
+<span class="lineno" id="118">   118  </span>		a = s.split (<span class="str_const">"&amp;"</span>), s = a.join (<span class="str_const">"&amp;amp;"</span>);
+<span class="lineno" id="119">   119  </span>		a = s.split (<span class="str_const">" "</span>), s = a.join (<span class="str_const">"&amp;nbsp;"</span>);
+<span class="lineno" id="120">   120  </span>		a = s.split (<span class="str_const">"&lt;"</span>), s = a.join (<span class="str_const">"&amp;lt;"</span>);
+<span class="lineno" id="121">   121  </span>		a = s.split (<span class="str_const">"&gt;"</span>), s = a.join (<span class="str_const">"&amp;gt;"</span>);
+<span class="lineno" id="122">   122  </span>		a = s.split (<span class="str_const">"\""</span>), s = a.join (<span class="str_const">"&amp;quot;"</span>);
+<span class="lineno" id="123">   123  </span>		<span class="key">return</span> s;
+<span class="lineno" id="124">   124  </span>	}
+<span class="lineno" id="125">   125  </span>	<span class="comment doc">/**
+<span class="lineno" id="126">   126  </span>	* strip html markup tags
+<span class="lineno" id="127">   127  </span>	* @param str (String)
+<span class="lineno" id="128">   128  </span>	* @return String
+<span class="lineno" id="129">   129  </span>	*/</span>
+<span class="lineno" id="130">   130  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> stripTags (str:String):String {
+<span class="lineno" id="131">   131  </span>		<span class="key">var</span> s:Array = <span class="key">new</span> Array ();
+<span class="lineno" id="132">   132  </span>		<span class="key">var</span> c:Array = <span class="key">new</span> Array ();
+<span class="lineno" id="133">   133  </span>		<span class="key">for</span> (<span class="key">var</span> i = <span class="num_const">0</span>; i &lt; str.length; i++) {
+<span class="lineno" id="134">   134  </span>			<span class="key">if</span> (str.charAt (i) == <span class="str_const">"&lt;"</span>) {
+<span class="lineno" id="135">   135  </span>				s.push (i);
+<span class="lineno" id="136">   136  </span>			} <span class="key">else</span> <span class="key">if</span> (str.charAt (i) == <span class="str_const">"&gt;"</span>) {
+<span class="lineno" id="137">   137  </span>				c.push (i);
+<span class="lineno" id="138">   138  </span>			}
+<span class="lineno" id="139">   139  </span>		}
+<span class="lineno" id="140">   140  </span>		<span class="key">var</span> o:String = str.substring (<span class="num_const">0</span>, s[<span class="num_const">0</span>]);
+<span class="lineno" id="141">   141  </span>		<span class="key">for</span> (<span class="key">var</span> j = <span class="num_const">0</span>; j &lt; c.length; j++) {
+<span class="lineno" id="142">   142  </span>			o += str.substring (c[j] + <span class="num_const">1</span>, s[j + <span class="num_const">1</span>]);
+<span class="lineno" id="143">   143  </span>		}
+<span class="lineno" id="144">   144  </span>		<span class="key">return</span> o;
+<span class="lineno" id="145">   145  </span>	}
+<span class="lineno" id="146">   146  </span>	<span class="comment doc">/**
+<span class="lineno" id="147">   147  </span>	* detect html breaks
+<span class="lineno" id="148">   148  </span>	* @param str (String)
+<span class="lineno" id="149">   149  </span>	* @return Boolean
+<span class="lineno" id="150">   150  </span>	*/</span>
+<span class="lineno" id="151">   151  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> detectBr (str:String):Boolean {
+<span class="lineno" id="152">   152  </span>		<span class="key">return</span> (str.split (<span class="str_const">"&lt;br"</span>).length &gt; <span class="num_const">1</span>) ? <span class="key">true</span> : <span class="key">false</span>;
+<span class="lineno" id="153">   153  </span>	}
+<span class="lineno" id="154">   154  </span>	<span class="comment doc">/**
+<span class="lineno" id="155">   155  </span>	* convert single quotes to double quotes
+<span class="lineno" id="156">   156  </span>	* @param str (String)
+<span class="lineno" id="157">   157  </span>	* @return String
+<span class="lineno" id="158">   158  </span>	*/</span>
+<span class="lineno" id="159">   159  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> toDoubleQuote (str:String):String {
+<span class="lineno" id="160">   160  </span>		<span class="key">var</span> sq:String = <span class="str_const">"'"</span>;
+<span class="lineno" id="161">   161  </span>		<span class="key">var</span> dq:String = String.fromCharCode (<span class="num_const">34</span>);
+<span class="lineno" id="162">   162  </span>		<span class="key">return</span> str.split (sq).join (dq);
+<span class="lineno" id="163">   163  </span>	}
+<span class="lineno" id="164">   164  </span>	<span class="comment doc">/**
+<span class="lineno" id="165">   165  </span>	* convert double quotes to single quotes
+<span class="lineno" id="166">   166  </span>	* @param str (String)
+<span class="lineno" id="167">   167  </span>	* @return String
+<span class="lineno" id="168">   168  </span>	*/</span>
+<span class="lineno" id="169">   169  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> toSingleQuote (str:String):String {
+<span class="lineno" id="170">   170  </span>		<span class="key">var</span> sq:String = <span class="str_const">"'"</span>;
+<span class="lineno" id="171">   171  </span>		<span class="key">var</span> dq:String = String.fromCharCode (<span class="num_const">34</span>);
+<span class="lineno" id="172">   172  </span>		<span class="key">return</span> str.split (dq).join (sq);
+<span class="lineno" id="173">   173  </span>	}
+<span class="lineno" id="174">   174  </span>	<span class="comment doc">/**
+<span class="lineno" id="175">   175  </span>	 * Remove all formatting and return cleaned numbers from string.
+<span class="lineno" id="176">   176  </span>	 * @param str (String)
+<span class="lineno" id="177">   177  </span>	 * @return String
+<span class="lineno" id="178">   178  </span>	 * {@code Usage: 
+<span class="lineno" id="179">   179  </span>	 * 	StringUtils.toNumeric("123-123-1234"); // returns 1221231234 
+<span class="lineno" id="180">   180  </span>	 * }
+<span class="lineno" id="181">   181  </span>	 */</span>
+<span class="lineno" id="182">   182  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> toNumeric (str:String):String {
+<span class="lineno" id="183">   183  </span>		<span class="key">var</span> len:Number = str.length;
+<span class="lineno" id="184">   184  </span>		<span class="key">var</span> result:String = <span class="str_const">""</span>;
+<span class="lineno" id="185">   185  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = <span class="num_const">0</span>; i &lt; len; i++) {
+<span class="lineno" id="186">   186  </span>			<span class="key">var</span> code:Number = str.charCodeAt(i);
+<span class="lineno" id="187">   187  </span>			<span class="key">if</span> (code &gt;= <span class="num_const">48</span> &amp;&amp; code &lt;= <span class="num_const">57</span>) {
+<span class="lineno" id="188">   188  </span>				result += str.substr(i, <span class="num_const">1</span>);
+<span class="lineno" id="189">   189  </span>			}
+<span class="lineno" id="190">   190  </span>		}
+<span class="lineno" id="191">   191  </span>		<span class="key">return</span> result;
+<span class="lineno" id="192">   192  </span>	}
+<span class="lineno" id="193">   193  </span>	
+<span class="lineno" id="194">   194  </span>	<span class="key">private</span> <span class="key">function</span> StringUtils(){}	
+<span class="lineno" id="195">   195  </span>	<span class="comment">//</span>
+<span class="lineno" id="196">   196  </span>}
+<span class="lineno" id="197">   197  </span><span class="comment">// eof</span>
+<span class="lineno" id="198">   198  </span></pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of SASAPI" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.utils" class="button">Package</a></li><li><a href="StringUtils.html" title="Detail of com.sekati.utils.StringUtils API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>

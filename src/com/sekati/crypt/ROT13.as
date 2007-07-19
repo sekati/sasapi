@@ -28,5 +28,8 @@ class com.sekati.crypt.ROT13 {
 		}
 		return calculated;
 	}
-
+	
+	private function ROT13(){}
+	//
 }
+// eof

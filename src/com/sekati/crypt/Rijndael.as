@@ -253,5 +253,6 @@ class com.sekati.crypt.Rijndael {
 		}
 		return codes;
 	}
-
+	//
 }
+// eof

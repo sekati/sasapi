@@ -31,6 +31,8 @@ class com.sekati.core.RUID {
 		}
 		return o[_key];		
 	}
+	
+	private function RUID(){}
 	//
 }
 // eof

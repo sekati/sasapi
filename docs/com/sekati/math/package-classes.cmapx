@@ -1,4 +1,6 @@
 <map id="class_diagram" name="class_diagram">
-<area shape="rect" href="TrigoBase.html" title="com.sekati.math.TrigoBase" alt="" coords="8,80,106,128" />
-<area shape="rect" href="MathBase.html" title="com.sekati.math.MathBase" alt="" coords="9,8,105,56" />
+<area shape="rect" href="TrigoBase.html" title="com.sekati.math.TrigoBase" alt="" coords="8,224,106,272" />
+<area shape="rect" href="RuleOf3.html" title="com.sekati.math.RuleOf3" alt="" coords="14,152,100,200" />
+<area shape="rect" href="MathBase.html" title="com.sekati.math.MathBase" alt="" coords="9,80,105,128" />
+<area shape="rect" href="Integer.html" title="com.sekati.math.Integer" alt="" coords="20,8,94,56" />
 </map>

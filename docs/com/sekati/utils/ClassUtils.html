@@ -2,10 +2,10 @@
 <html><head><title>com.sekati.utils.ClassUtils - SASAPI</title><script src="../../../quicknav.js" type="text/javascript"></script><script><!--
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><link href="package-summary.html" title="Package com.sekati.utils" rel="up"/><link href="../../../com/sekati/utils/DateUtils.html" title="Class com.sekati.utils.DateUtils" rel="prev"/><link href="../../../com/sekati/utils/BitmapUtils.html" title="Class com.sekati.utils.BitmapUtils" rel="next"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><h1>Class com.sekati.utils.ClassUtils</h1><div class="type_hierachy"><ul><li><strong>com.sekati.utils.ClassUtils</strong></li></ul></div><div class="type_description"><h2>Description</h2><p>
- static class for linking 'extend MovieClip' type classes to MovieClips thru attachMovie, 
- createEmptyMovieClip or MovieClip Instances on stage.<br/><br/>
+ Static class for wrapping various Class utilities. For example linking 'extend MovieClip' type 
+ classes to MovieClips thru attachMovie, createEmptyMovieClip or MovieClip Instances on stage.<br/><br/>
  
- An initObject param is available in all methods: <a href="#createEmptyMovieClip">createEmptyMovieClip</a>, <a href="#attachMovie">attachMovie</a>
+ An initObject param is available in methods: <a href="#createEmptyMovieClip">createEmptyMovieClip</a>, <a href="#attachMovie">attachMovie</a>
  and <a href="#attachClass">attachClass</a>.  _depth is a custom initObject param which will set the clip to this depth 
  regardless of method but *will not* store _depth as a MovieClip property; use getDepth if needed.
 
@@ -16,7 +16,7 @@ document.quicknavBasePath="../../../index-files";
  	}
  }
  </pre>
-  </p></div><div class="type_indexes"><div class="method_index"><h2>Method Index</h2><a href="#attachClass" title="static public function attachClass(classRef:Function, target:MovieClip, initObject:Object):MovieClip">attachClass()</a>, <a href="#attachMovie" title="static public function attachMovie(classRef:Function, target:MovieClip, idName:String, instanceName:String, initObject:Object):MovieClip">attachMovie()</a>, <a href="#createEmptyMovieClip" title="static public function createEmptyMovieClip(classRef:Function, target:MovieClip, instanceName:String, initObject:Object):MovieClip">createEmptyMovieClip()</a>, <a href="#createInstance" title="static public function createInstance(classRef:Function, args:Array):Object">createInstance()</a></div></div><div class="type_details"><div class="method_detail_list"><h2>Method Detail</h2><div class="method_details alt_row"><a name="createEmptyMovieClip"></a><h3>createEmptyMovieClip</h3><code class="method_synopsis">static public function <strong class="method_name">createEmptyMovieClip</strong>(classRef:<span class="unresolved_type_name">Function</span>, target:<span class="unresolved_type_name">MovieClip</span>, instanceName:<span class="unresolved_type_name">String</span>, initObject:<span class="unresolved_type_name">Object</span>):<span class="unresolved_type_name">MovieClip</span></code><div class="method_info"><p>
+  </p></div><div class="type_indexes"><div class="method_index"><h2>Method Index</h2><a href="#attachClass" title="static public function attachClass(classRef:Function, target:MovieClip, initObject:Object):MovieClip">attachClass()</a>, <a href="#attachMovie" title="static public function attachMovie(classRef:Function, target:MovieClip, idName:String, instanceName:String, initObject:Object):MovieClip">attachMovie()</a>, <a href="#createCleanInstance" title="static public function createCleanInstance(classRef:Function):Object">createCleanInstance()</a>, <a href="#createEmptyMovieClip" title="static public function createEmptyMovieClip(classRef:Function, target:MovieClip, instanceName:String, initObject:Object):MovieClip">createEmptyMovieClip()</a>, <a href="#createInstance" title="static public function createInstance(classRef:Function, args:Array):Object">createInstance()</a>, <a href="#isImplementationOf" title="static public function isImplementationOf(classRef:Function, interfaceRef:Function):Boolean">isImplementationOf()</a>, <a href="#isSubclassOf" title="static public function isSubclassOf(subclassRef:Function, superclassRef:Function):Boolean">isSubclassOf()</a></div></div><div class="type_details"><div class="method_detail_list"><h2>Method Detail</h2><div class="method_details alt_row"><a name="createEmptyMovieClip"></a><h3>createEmptyMovieClip</h3><code class="method_synopsis">static public function <strong class="method_name">createEmptyMovieClip</strong>(classRef:<span class="unresolved_type_name">Function</span>, target:<span class="unresolved_type_name">MovieClip</span>, instanceName:<span class="unresolved_type_name">String</span>, initObject:<span class="unresolved_type_name">Object</span>):<span class="unresolved_type_name">MovieClip</span></code><div class="method_info"><p>
  create a movieclip with linked class (various init options)
  </p><h4>Parameters</h4><table class="arguments extra_info" summary=""><tr><td><code>classRef</code></td><td>(Function) reference to class to attach
  </td></tr><tr><td><code>target</code></td><td>(MovieClip) target scope to create MovieClip
@@ -59,5 +59,29 @@ document.quicknavBasePath="../../../index-files";
  </td></tr></table><h4>Return</h4><p class="extra_info"> Object - instantiated class object
  <pre> Usage:
  <span class="key">var</span> o:Point = ClassUtils.createInstance (com.sekati.geom.Point, [<span class="num_const">15</span>,<span class="num_const">50</span>]);
+ </pre>
+	 </p></div></div><div class="method_details alt_row"><a name="createCleanInstance"></a><h3>createCleanInstance</h3><code class="method_synopsis">static public function <strong class="method_name">createCleanInstance</strong>(classRef:<span class="unresolved_type_name">Function</span>):<span class="unresolved_type_name">Object</span></code><div class="method_info"><p>
+  Create and return a new instance of a defined class without 
+  invoking its constructor
+  @param classRef (Function) reference to full class namespace
+  @return Object - class object
+  <pre> Usage:
+  <span class="key">var</span> scr:Scroll = ClassUtils.createCleanInstance(com.sekati.ui.Scroll);
+  </pre>
+	 </p></div></div><div class="method_details"><a name="isSubclassOf"></a><h3>isSubclassOf</h3><code class="method_synopsis">static public function <strong class="method_name">isSubclassOf</strong>(subclassRef:<span class="unresolved_type_name">Function</span>, superclassRef:<span class="unresolved_type_name">Function</span>):<span class="unresolved_type_name">Boolean</span></code><div class="method_info"><p>
+ Check if a subclass is extended by a superclass
+ </p><h4>Parameters</h4><table class="arguments extra_info" summary=""><tr><td><code>subclassRef</code></td><td>(Function) reference to the full subclass namespace
+ </td></tr><tr><td><code>superclassRef</code></td><td>(Function) reference to the full superclass namespace
+ </td></tr></table><h4>Return</h4><p class="extra_info"> Boolean
+ <pre> Usage:
+ 	trace(ClassUtils.isSubclassOf(com.sekati.display.AbstractClip, com.sekati.display.CoreClip)); <span class="comment">// returns: true</span>
+ </pre>
+	 </p></div></div><div class="method_details alt_row"><a name="isImplementationOf"></a><h3>isImplementationOf</h3><code class="method_synopsis">static public function <strong class="method_name">isImplementationOf</strong>(classRef:<span class="unresolved_type_name">Function</span>, interfaceRef:<span class="unresolved_type_name">Function</span>):<span class="unresolved_type_name">Boolean</span></code><div class="method_info"><p>
+ Check if a class implements an interface
+ </p><h4>Parameters</h4><table class="arguments extra_info" summary=""><tr><td><code>classRef</code></td><td>(Function) reference to the full class namespace
+ </td></tr><tr><td><code>interfaceRef</code></td><td>(Function) reference to the full interface namespace
+ </td></tr></table><h4>Return</h4><p class="extra_info"> Boolean
+ <pre> Usage:
+ 	trace(ClassUtils.isImplementationOf(com.sekati.display.CoreClip, com.sekati.display.ICoreClip)); <span class="comment">// returns: true</span>
  </pre>
 	 </p></div></div></div></div><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of SASAPI" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.utils" class="button">Package</a></li><li><span class="button nav_current">Class</span></li><li><a href="ClassUtils.as.html" title="Source code of com.sekati.utils.ClassUtils" class="button">Source</a></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>

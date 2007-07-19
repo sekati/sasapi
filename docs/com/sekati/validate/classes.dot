@@ -6,16 +6,16 @@ strict digraph class_diagram {
     tooltip="com.sekati.validate.TypeValidation",
     shape="record"
   ];
+  TypeStringValidation[
+    label="StringValidation",
+    URL="StringValidation.html",
+    tooltip="com.sekati.validate.StringValidation",
+    shape="record"
+  ];
   TypeOSValidation[
     label="OSValidation",
     URL="OSValidation.html",
     tooltip="com.sekati.validate.OSValidation",
-    shape="record"
-  ];
-  TypeEmailValidation[
-    label="EmailValidation",
-    URL="EmailValidation.html",
-    tooltip="com.sekati.validate.EmailValidation",
     shape="record"
   ];
   TypeCreditCardValidation[

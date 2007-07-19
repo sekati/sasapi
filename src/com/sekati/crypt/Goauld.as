@@ -27,6 +27,8 @@ class com.sekati.crypt.Goauld {
 		}
 		return result;
 	}
+	
+	private function Goauld(){}
 	//
 }
 // eof

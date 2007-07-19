@@ -57,6 +57,8 @@ class com.sekati.crypt.Luhn {
 		// If the sum is divisible by '10', the card number is valid.
 		return (nSum_Total % 10 == 0);
 	}
+	
+	private function Luhn(){}
 	//
 }
 // eof

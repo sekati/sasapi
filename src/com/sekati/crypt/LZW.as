@@ -88,6 +88,8 @@ class com.sekati.crypt.LZW {
 		}
 		return result;
 	}
-//
+	
+	private function LZW(){}
+	//
 }
 // eof

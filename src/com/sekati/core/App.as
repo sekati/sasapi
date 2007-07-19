@@ -189,6 +189,8 @@ class com.sekati.core.App {
 		var r = ExternalInterface.call ("getRef");
 		return r;
 	}
+
+	private function App() {}
 	//
 }
 // eof

@@ -1,16 +1,16 @@
 ﻿/**
  * com.sekati.utils.ClassUtils
- * @version 2.0.2
+ * @version 2.1.0
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  
  /**
-  * static class for linking 'extend MovieClip' type classes to MovieClips thru attachMovie, 
-  * createEmptyMovieClip or MovieClip Instances on stage.<br/><br/>
+  * Static class for wrapping various Class utilities. For example linking 'extend MovieClip' type 
+  * classes to MovieClips thru attachMovie, createEmptyMovieClip or MovieClip Instances on stage.<br/><br/>
   * 
-  * An initObject param is available in all methods: {@link #createEmptyMovieClip}, {@link #attachMovie}
+  * An initObject param is available in methods: {@link #createEmptyMovieClip}, {@link #attachMovie}
   * and {@link #attachClass}.  _depth is a custom initObject param which will set the clip to this depth 
   * regardless of method but *will not* store _depth as a MovieClip property; use getDepth if needed.
   *
@@ -115,6 +115,61 @@ class com.sekati.utils.ClassUtils {
 		classRef.apply (o, args);
 		return o;		
 	}
+
+	/**
+	 *  Create and return a new instance of a defined class without 
+	 *  invoking its constructor
+	 *  @param classRef (Function) reference to full class namespace
+	 *  @return Object - class object
+	 *  {@code Usage:
+	 *  var scr:Scroll = ClassUtils.createCleanInstance(com.sekati.ui.Scroll);
+	 *  }
+	 */
+	public static function createCleanInstance (classRef:Function):Object {
+		var o:Object = new Object;
+		o.__proto__ = classRef.prototype;
+		o.__constructor__ = classRef;
+		return o;	
+	}
+	
+	/**
+	 * Check if a subclass is extended by a superclass
+	 * @param subclassRef (Function) reference to the full subclass namespace
+	 * @param superclassRef (Function) reference to the full superclass namespace
+	 * @return Boolean
+	 * {@code Usage:
+	 * 	trace(ClassUtils.isSubclassOf(com.sekati.display.AbstractClip, com.sekati.display.CoreClip)); // returns: true
+	 * }
+	 */
+	public static function isSubclassOf(subclassRef:Function, superclassRef:Function):Boolean {
+		var o:Object = subclassRef.prototype;
+		while(o !== undefined) {
+			o = o.__proto__;
+			if(o === superclassRef.prototype) {
+				return true;
+			}	
+		}
+		return false;
+	}
+	/**
+	 * Check if a class implements an interface
+	 * @param classRef (Function) reference to the full class namespace
+	 * @param interfaceRef (Function) reference to the full interface namespace
+	 * @return Boolean
+	 * {@code Usage:
+	 * 	trace(ClassUtils.isImplementationOf(com.sekati.display.CoreClip, com.sekati.display.ICoreClip)); // returns: true
+	 * }
+	 */
+	public static function isImplementationOf(classRef:Function, interfaceRef:Function):Boolean {
+		// interface will not be in prototype chain
+		if(isSubclassOf(classRef, interfaceRef)) {
+			return false;	
+		}
+		// if an instance it is not extended, the class has to be an instance of it
+		return (createCleanInstance(classRef) instanceof interfaceRef);
+	}
+		
+	private function ClassUtils(){}
 	//
 }
 // eof

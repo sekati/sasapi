@@ -58,5 +58,8 @@ class com.sekati.utils.BitmapUtils {
 		bitmap.dispose ();
 		return pixels;
 	}
+	
+	private function BitmapUtils(){}
+	//
 }
 // eof
