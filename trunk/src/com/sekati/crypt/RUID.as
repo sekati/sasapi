@@ -1,13 +1,13 @@
 /**
  * com.sekati.crypt.RUID
- * @version 1.0.3
+ * @version 1.0.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  import com.sekati.crypt.IHash;
 /**
- * Runtime Unique ID generates unique Object ID's for management during application runtime
+ * Runtime Unique ID's for runtime Object management and identification.
  */
 class com.sekati.crypt.RUID implements IHash {
 	private static var _key:String = "__RUID";
@@ -20,16 +20,11 @@ class com.sekati.crypt.RUID implements IHash {
 		return _id++;
 	}
 	/**
-	 * return the RUID key injected into an object - used as both getter and setter.
-	 * @param o (Object) Object to inject RUID key in to
-	 * @return (Number) Runtime Unique ID
+	 * Return the current RUID id
+	 * @return Number
 	 */
-	public static function key(o:Object):Number {
-		if (!o[_key]) {
-			o[_key] = RUID.create();
-			_global.ASSetPropFlags(o, [_key], 7, 1);
-		}
-		return o[_key];		
+	public static function getCurrent():Number {
+		return _id;	
 	}
 	
 	private function RUID(){}

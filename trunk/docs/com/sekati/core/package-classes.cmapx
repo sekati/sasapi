@@ -1,5 +1,6 @@
 <map id="class_diagram" name="class_diagram">
-<area shape="rect" href="FWDepth.html" title="com.sekati.core.FWDepth" alt="" coords="10,152,104,200" />
-<area shape="rect" href="Document.html" title="com.sekati.core.Document" alt="" coords="8,80,106,128" />
-<area shape="rect" href="App.html" title="com.sekati.core.App" alt="" coords="21,8,93,56" />
+<area shape="rect" href="KeyFactory.html" title="com.sekati.core.KeyFactory" alt="" coords="7,224,117,272" />
+<area shape="rect" href="FWDepth.html" title="com.sekati.core.FWDepth" alt="" coords="15,152,109,200" />
+<area shape="rect" href="Document.html" title="com.sekati.core.Document" alt="" coords="13,80,111,128" />
+<area shape="rect" href="App.html" title="com.sekati.core.App" alt="" coords="26,8,98,56" />
 </map>

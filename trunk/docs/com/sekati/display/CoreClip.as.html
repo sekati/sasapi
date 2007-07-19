@@ -9,7 +9,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
 <span class="lineno" id="7">     7  </span> */</span>
 <span class="lineno" id="8">     8  </span><span class="key">import</span> com.sekati.display.ICoreClip;
-<span class="lineno" id="9">     9  </span><span class="key">import</span> com.sekati.crypt.RUID;
+<span class="lineno" id="9">     9  </span><span class="key">import</span> com.sekati.core.KeyFactory;
 <span class="lineno" id="10">    10  </span><span class="key">import</span> com.sekati.utils.Delegate;
 <span class="lineno" id="11">    11  </span><span class="comment doc">/**
 <span class="lineno" id="12">    12  </span> * All MovieClip subclasses should extend CoreClip instead of MovieClip for standardized initialization
@@ -27,7 +27,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="24">    24  </span>	<span class="key">public</span> <span class="key">function</span> onLoad():Void {
 <span class="lineno" id="25">    25  </span>		_this = <span class="key">this</span>;
 <span class="lineno" id="26">    26  </span>		_this.cacheAsBitmap = <span class="key">true</span>;
-<span class="lineno" id="27">    27  </span>		RUID.key(_this);
+<span class="lineno" id="27">    27  </span>		KeyFactory.inject(_this);
 <span class="lineno" id="28">    28  </span>		configUI();
 <span class="lineno" id="29">    29  </span>	}
 <span class="lineno" id="30">    30  </span>	<span class="comment doc">/**

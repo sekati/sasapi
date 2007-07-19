@@ -1,11 +1,11 @@
 ﻿/**
  * com.sekati.utils.ClassUtils
- * @version 2.1.0
+ * @version 2.1.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
- 
+ import com.sekati.core.KeyFactory;
  /**
   * Static class for wrapping various Class utilities. For example linking 'extend MovieClip' type 
   * classes to MovieClips thru attachMovie, createEmptyMovieClip or MovieClip Instances on stage.<br/><br/>
@@ -48,6 +48,7 @@ class com.sekati.utils.ClassUtils {
 			}
 		}
 		classRef.apply (mc);
+		KeyFactory.inject(mc);
 		return mc;
 	}
 	/**
@@ -72,6 +73,7 @@ class com.sekati.utils.ClassUtils {
 			delete mc._depth;
 		}
 		classRef.apply (mc);
+		KeyFactory.inject(mc);
 		return mc;
 	}
 	/**
@@ -99,6 +101,7 @@ class com.sekati.utils.ClassUtils {
 			}
 		}
 		classRef.apply (mc);
+		KeyFactory.inject(mc);
 		return target;
 	}
 	/**
@@ -113,7 +116,8 @@ class com.sekati.utils.ClassUtils {
 	public static function createInstance (classRef:Function, args:Array):Object {
 		var o = {__constructor__:classRef, __proto__:classRef.prototype};
 		classRef.apply (o, args);
-		return o;		
+		KeyFactory.inject(o);
+		return o;
 	}
 
 	/**
@@ -129,6 +133,7 @@ class com.sekati.utils.ClassUtils {
 		var o:Object = new Object;
 		o.__proto__ = classRef.prototype;
 		o.__constructor__ = classRef;
+		KeyFactory.inject(o);
 		return o;	
 	}
 	
