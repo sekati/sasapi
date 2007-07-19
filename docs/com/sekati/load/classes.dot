@@ -1,0 +1,15 @@
+strict digraph class_diagram {
+  rankdir=LR;
+  TypeExpressInstall[
+    label="ExpressInstall",
+    URL="ExpressInstall.html",
+    tooltip="com.sekati.load.ExpressInstall",
+    shape="record"
+  ];
+  TypeBaseLoader[
+    label="BaseLoader",
+    URL="BaseLoader.html",
+    tooltip="com.sekati.load.BaseLoader",
+    shape="record"
+  ];
+}

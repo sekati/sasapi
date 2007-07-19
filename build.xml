@@ -103,6 +103,8 @@
         	<arg line='--dot-exe ${dot_exe}'/>
 		</exec>
 		<copy file="${docs}/frameset.html" tofile="${docs}/index.html" overwrite="true"  failonerror="true"/>
+		<copy file="${lib}/tools/doc_sekati_style.css" tofile="${docs}/style.css" overwrite="true"  failonerror="true"/>
+		<copy file="${lib}/tools/doc_sekati_unnatural.css" tofile="${docs}/unnatural.css" overwrite="true"  failonerror="true"/>
 	</target>
 
 	<!-- target: clean_documentation :remove all old documentation files -->	

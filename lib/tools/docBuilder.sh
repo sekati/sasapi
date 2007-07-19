@@ -1,6 +1,6 @@
 #!/bin/sh
 ####################################################################################
-# AS2 Documentation Builder - v.0.0.1 - jason m horwitz | sekati.com
+# AS2 Documentation Builder - v.0.0.3 - jason m horwitz | sekati.com
 # Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 # Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
 #
@@ -9,11 +9,11 @@
 ####################################################################################
 # CONFIGURATION - edit these to suite your environment
 
-PROJECT_TITLE="SASAPI - Sekati ActionScript API"
+PROJECT_TITLE="SASAPI: Sekati ActionScript API"
 PROJECT_PATH="/Users/jason/workspace/sasapi"
 DOC_PATH="$PROJECT_PATH/docs"
+LIB_PATH="$PROJECT_PATH/lib"
 CLASS_PATH="$PROJECT_PATH/src"
-#PACKAGES="com.sekati.*"
 PACKAGES="com.*"
 
 FDTK_PATH="/Users/jason/workspace/fdtkit"
@@ -31,7 +31,8 @@ cd $AS2API_PATH
 ruby as2api.rb package-spec $PACKAGES --classpath $CLASS_PATH --output-dir $DOC_PATH --title $PROJECT_TITLE --sources --progress --draw-diagram --dot-exe $DOT
 
 cp "$DOC_PATH/frameset.html" "$DOC_PATH/index.html"
-#cd ..
+cp "$LIB_PATH/tools/doc_sekati_style.css" "$DOC_PATH/style.css"
+cp "$LIB_PATH/tools/doc_sekati_unnatural.css" "$DOC_PATH/unnatural.css"
 
 ####################################################################################
 
