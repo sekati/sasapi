@@ -1,0 +1,27 @@
+strict digraph class_diagram {
+  rankdir=LR;
+  TypeTypeValidation[
+    label="TypeValidation",
+    URL="TypeValidation.html",
+    tooltip="com.sekati.validate.TypeValidation",
+    shape="record"
+  ];
+  TypeOSValidation[
+    label="OSValidation",
+    URL="OSValidation.html",
+    tooltip="com.sekati.validate.OSValidation",
+    shape="record"
+  ];
+  TypeEmailValidation[
+    label="EmailValidation",
+    URL="EmailValidation.html",
+    tooltip="com.sekati.validate.EmailValidation",
+    shape="record"
+  ];
+  TypeCreditCardValidation[
+    label="CreditCardValidation",
+    URL="CreditCardValidation.html",
+    tooltip="com.sekati.validate.CreditCardValidation",
+    shape="record"
+  ];
+}

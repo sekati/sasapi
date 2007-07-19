@@ -1,0 +1,21 @@
+strict digraph class_diagram {
+  rankdir=LR;
+  TypeThrottle[
+    label="Throttle",
+    URL="Throttle.html",
+    tooltip="com.sekati.time.Throttle",
+    shape="record"
+  ];
+  TypeStopWatch[
+    label="StopWatch",
+    URL="StopWatch.html",
+    tooltip="com.sekati.time.StopWatch",
+    shape="record"
+  ];
+  TypeBandwidth[
+    label="Bandwidth",
+    URL="Bandwidth.html",
+    tooltip="com.sekati.time.Bandwidth",
+    shape="record"
+  ];
+}

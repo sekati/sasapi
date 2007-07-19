@@ -1,6 +1,6 @@
 ﻿/**
  * com.sekati.utils.ArrayUtils
- * @version 1.1.3
+ * @version 1.1.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -92,6 +92,7 @@ class com.sekati.utils.ArrayUtils {
 	 * @param nA (Number) element A's index
 	 * @param nB (Number) element B's index
 	 * @return Array
+	 * @throws Error on invalid array index
 	 */
 	public static function swap (a:Array, nA:Number, nB:Number):Array {
 		if (nA >= a.length || nA < 0) {
