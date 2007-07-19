@@ -10,7 +10,7 @@
  
 /**
  * Simple Type Validation class. 
- * For more see: {@link com.sekati.utils.StringUtils} for {@link com.sekati.utils.StringUtils#isBlank}
+ * @see {@link com.sekati.validate.StringValidation}
  */
 class com.sekati.validate.TypeValidation {
 	public static function isNumber(val:Object):Boolean{

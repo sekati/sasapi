@@ -9,7 +9,7 @@ import com.sekati.crypt.IHash;
 /**
  * Validate a number with the Luhn Algorithm (aka Mod10) which is standard for pre-validating card numbers before 
  * being processed for approval.
- * @see http://en.wikipedia.org/wiki/Luhn_algorithm
+ * @see <a href="http://en.wikipedia.org/wiki/Luhn_algorithm">http://en.wikipedia.org/wiki/Luhn_algorithm</a>
  */
 class com.sekati.crypt.Luhn implements IHash {
 	/**

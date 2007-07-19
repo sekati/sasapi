@@ -19,7 +19,7 @@ import flash.external.ExternalInterface;
  * // enable swLiveConnect:
  * fscommand ("swLiveConnect", "true");
  * }
- * @see http://www.google.com/support/analytics/bin/answer.py?answer=27243&hl=en
+ * @see <a href="http://www.google.com/support/analytics/bin/answer.py?answer=27243&hl=en">http://www.google.com/support/analytics/bin/answer.py?answer=27243&hl=en</a>
  */
 class com.sekati.service.Urchin {
 	private static var _base:String = '/site/';

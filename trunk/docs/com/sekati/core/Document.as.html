@@ -16,59 +16,60 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="13">    13  </span> * {@code Usage on first _root frame:
 <span class="lineno" id="14">    14  </span> * Document.main(this);
 <span class="lineno" id="15">    15  </span> * }
-<span class="lineno" id="16">    16  </span> */</span>
-<span class="lineno" id="17">    17  </span><span class="key">class</span> com.sekati.core.Document <span class="key">extends</span> MovieClip {
-<span class="lineno" id="18">    18  </span>	<span class="key">public</span> <span class="key">var</span> out:Out; 
-<span class="lineno" id="19">    19  </span>	<span class="comment doc">/**
-<span class="lineno" id="20">    20  </span>	 * Constructor
-<span class="lineno" id="21">    21  </span>	 */</span>
-<span class="lineno" id="22">    22  </span>	<span class="key">private</span> <span class="key">function</span> Document () {
-<span class="lineno" id="23">    23  </span>		init();
-<span class="lineno" id="24">    24  </span>	}
-<span class="lineno" id="25">    25  </span>	<span class="comment doc">/**
-<span class="lineno" id="26">    26  </span>	 * links class to _root timeline via constructor simulating document class
-<span class="lineno" id="27">    27  </span>	 * @param target (MovieClip)
-<span class="lineno" id="28">    28  </span>	 * @return Void
-<span class="lineno" id="29">    29  </span>	 */</span>
-<span class="lineno" id="30">    30  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> main(target:MovieClip):Void {
-<span class="lineno" id="31">    31  </span>		target.__proto__ = Document.prototype;
-<span class="lineno" id="32">    32  </span>		Function(Document).apply(target, <span class="key">null</span>);
-<span class="lineno" id="33">    33  </span>	}
-<span class="lineno" id="34">    34  </span>	<span class="comment doc">/**
-<span class="lineno" id="35">    35  </span>	 * general movie setup and class compositions
-<span class="lineno" id="36">    36  </span>	 * @return Void
-<span class="lineno" id="37">    37  </span>	 */</span>
-<span class="lineno" id="38">    38  </span>	<span class="key">private</span> <span class="key">function</span> init():Void {
-<span class="lineno" id="39">    39  </span>		RUID.key(<span class="key">this</span>);
-<span class="lineno" id="40">    40  </span>		setMovieProps();
-<span class="lineno" id="41">    41  </span>		buildCompositions();
-<span class="lineno" id="42">    42  </span>		App.init();
-<span class="lineno" id="43">    43  </span>	}
-<span class="lineno" id="44">    44  </span>	<span class="comment doc">/**
-<span class="lineno" id="45">    45  </span>	 * general movie setup
-<span class="lineno" id="46">    46  </span>	 * @return Void
-<span class="lineno" id="47">    47  </span>	 */</span>
-<span class="lineno" id="48">    48  </span>	<span class="key">private</span> <span class="key">function</span> setMovieProps():Void {
-<span class="lineno" id="49">    49  </span>		System.security.allowInsecureDomain (<span class="str_const">"*"</span>);
-<span class="lineno" id="50">    50  </span>		System.security.allowDomain (<span class="str_const">"*"</span>);
-<span class="lineno" id="51">    51  </span>		fscommand (<span class="str_const">"swLiveConnect"</span>, <span class="str_const">"true"</span>);
-<span class="lineno" id="52">    52  </span>		fscommand (<span class="str_const">"allowscale"</span>, <span class="str_const">"false"</span>);
-<span class="lineno" id="53">    53  </span>		fscommand (<span class="str_const">"showmenu"</span>, <span class="str_const">"false"</span>);
-<span class="lineno" id="54">    54  </span>		fscommand (<span class="str_const">"fullscreen"</span>, <span class="str_const">"false"</span>);
-<span class="lineno" id="55">    55  </span>		Stage.align = <span class="str_const">"TL"</span>;
-<span class="lineno" id="56">    56  </span>		Stage.scaleMode = <span class="str_const">"noScale"</span>;
-<span class="lineno" id="57">    57  </span>		_quality = <span class="str_const">"HIGH"</span>;
-<span class="lineno" id="58">    58  </span>		_focusrect = <span class="key">false</span>;
-<span class="lineno" id="59">    59  </span>	}
-<span class="lineno" id="60">    60  </span>	<span class="comment doc">/**
-<span class="lineno" id="61">    61  </span>	 * centralize class compositions for core functionalities (Stage, ContextMenu, misc Managers)
-<span class="lineno" id="62">    62  </span>	 * @return Void
-<span class="lineno" id="63">    63  </span>	 */</span>
-<span class="lineno" id="64">    64  </span>	<span class="key">private</span> <span class="key">function</span> buildCompositions():Void {
-<span class="lineno" id="65">    65  </span>		out = Out.getInstance();
-<span class="lineno" id="66">    66  </span>		out.createPanel();
-<span class="lineno" id="67">    67  </span>		out.info(<span class="key">this</span>,<span class="str_const">"Document Initialized ..."</span>);
-<span class="lineno" id="68">    68  </span>	}
-<span class="lineno" id="69">    69  </span>	<span class="comment">//</span>
-<span class="lineno" id="70">    70  </span>}
-<span class="lineno" id="71">    71  </span><span class="comment">// eof</span></pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of SASAPI" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.core" class="button">Package</a></li><li><a href="Document.html" title="Detail of com.sekati.core.Document API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
+<span class="lineno" id="16">    16  </span> * @see {@link com.sekati.core.App}
+<span class="lineno" id="17">    17  </span> */</span>
+<span class="lineno" id="18">    18  </span><span class="key">class</span> com.sekati.core.Document <span class="key">extends</span> MovieClip {
+<span class="lineno" id="19">    19  </span>	<span class="key">public</span> <span class="key">var</span> out:Out; 
+<span class="lineno" id="20">    20  </span>	<span class="comment doc">/**
+<span class="lineno" id="21">    21  </span>	 * Constructor
+<span class="lineno" id="22">    22  </span>	 */</span>
+<span class="lineno" id="23">    23  </span>	<span class="key">private</span> <span class="key">function</span> Document () {
+<span class="lineno" id="24">    24  </span>		init();
+<span class="lineno" id="25">    25  </span>	}
+<span class="lineno" id="26">    26  </span>	<span class="comment doc">/**
+<span class="lineno" id="27">    27  </span>	 * links class to _root timeline via constructor simulating document class
+<span class="lineno" id="28">    28  </span>	 * @param target (MovieClip)
+<span class="lineno" id="29">    29  </span>	 * @return Void
+<span class="lineno" id="30">    30  </span>	 */</span>
+<span class="lineno" id="31">    31  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> main(target:MovieClip):Void {
+<span class="lineno" id="32">    32  </span>		target.__proto__ = Document.prototype;
+<span class="lineno" id="33">    33  </span>		Function(Document).apply(target, <span class="key">null</span>);
+<span class="lineno" id="34">    34  </span>	}
+<span class="lineno" id="35">    35  </span>	<span class="comment doc">/**
+<span class="lineno" id="36">    36  </span>	 * general movie setup and class compositions
+<span class="lineno" id="37">    37  </span>	 * @return Void
+<span class="lineno" id="38">    38  </span>	 */</span>
+<span class="lineno" id="39">    39  </span>	<span class="key">private</span> <span class="key">function</span> init():Void {
+<span class="lineno" id="40">    40  </span>		RUID.key(<span class="key">this</span>);
+<span class="lineno" id="41">    41  </span>		setMovieProps();
+<span class="lineno" id="42">    42  </span>		buildCompositions();
+<span class="lineno" id="43">    43  </span>		App.init();
+<span class="lineno" id="44">    44  </span>	}
+<span class="lineno" id="45">    45  </span>	<span class="comment doc">/**
+<span class="lineno" id="46">    46  </span>	 * general movie setup
+<span class="lineno" id="47">    47  </span>	 * @return Void
+<span class="lineno" id="48">    48  </span>	 */</span>
+<span class="lineno" id="49">    49  </span>	<span class="key">private</span> <span class="key">function</span> setMovieProps():Void {
+<span class="lineno" id="50">    50  </span>		System.security.allowInsecureDomain (<span class="str_const">"*"</span>);
+<span class="lineno" id="51">    51  </span>		System.security.allowDomain (<span class="str_const">"*"</span>);
+<span class="lineno" id="52">    52  </span>		fscommand (<span class="str_const">"swLiveConnect"</span>, <span class="str_const">"true"</span>);
+<span class="lineno" id="53">    53  </span>		fscommand (<span class="str_const">"allowscale"</span>, <span class="str_const">"false"</span>);
+<span class="lineno" id="54">    54  </span>		fscommand (<span class="str_const">"showmenu"</span>, <span class="str_const">"false"</span>);
+<span class="lineno" id="55">    55  </span>		fscommand (<span class="str_const">"fullscreen"</span>, <span class="str_const">"false"</span>);
+<span class="lineno" id="56">    56  </span>		Stage.align = <span class="str_const">"TL"</span>;
+<span class="lineno" id="57">    57  </span>		Stage.scaleMode = <span class="str_const">"noScale"</span>;
+<span class="lineno" id="58">    58  </span>		_quality = <span class="str_const">"HIGH"</span>;
+<span class="lineno" id="59">    59  </span>		_focusrect = <span class="key">false</span>;
+<span class="lineno" id="60">    60  </span>	}
+<span class="lineno" id="61">    61  </span>	<span class="comment doc">/**
+<span class="lineno" id="62">    62  </span>	 * centralize class compositions for core functionalities (Stage, ContextMenu, misc Managers)
+<span class="lineno" id="63">    63  </span>	 * @return Void
+<span class="lineno" id="64">    64  </span>	 */</span>
+<span class="lineno" id="65">    65  </span>	<span class="key">private</span> <span class="key">function</span> buildCompositions():Void {
+<span class="lineno" id="66">    66  </span>		out = Out.getInstance();
+<span class="lineno" id="67">    67  </span>		out.createPanel();
+<span class="lineno" id="68">    68  </span>		out.info(<span class="key">this</span>,<span class="str_const">"Document Initialized ..."</span>);
+<span class="lineno" id="69">    69  </span>	}
+<span class="lineno" id="70">    70  </span>	<span class="comment">//</span>
+<span class="lineno" id="71">    71  </span>}
+<span class="lineno" id="72">    72  </span><span class="comment">// eof</span></pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of SASAPI" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.core" class="button">Package</a></li><li><a href="Document.html" title="Detail of com.sekati.core.Document API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>

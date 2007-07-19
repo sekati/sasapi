@@ -8,7 +8,8 @@
  
 /**
  * Marker interface for all cryptographic hashing classes
- * @see http://en.wikipedia.org/wiki/Cryptographic_hash_function
+ * @see <a href="http://en.wikipedia.org/wiki/Cryptographic_hash_function">http://en.wikipedia.org/wiki/Cryptographic_hash_function</a>
+ * @see <a href="http://en.wikipedia.org/wiki/Marker_interface_pattern">http://en.wikipedia.org/wiki/Marker_interface_pattern</a>
  */
 interface com.sekati.crypt.IHash {
 
