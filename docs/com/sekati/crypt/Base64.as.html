@@ -3,7 +3,7 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span><span class="comment doc">/**
 <span class="lineno" id="2">     2  </span> * com.sekati.crypt.Base64
-<span class="lineno" id="3">     3  </span> * @version 3.0.0
+<span class="lineno" id="3">     3  </span> * @version 3.0.1
 <span class="lineno" id="4">     4  </span> * @author jason m horwitz | sekati.com 
 <span class="lineno" id="5">     5  </span> * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -13,11 +13,11 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="10">    10  </span> * Aardwulf Systems, www.aardwulf.com
 <span class="lineno" id="11">    11  </span> * @see http://www.aardwulf.com/tutor/base64/base64.html 
 <span class="lineno" id="12">    12  </span> */</span>
-<span class="lineno" id="13">    13  </span> 
+<span class="lineno" id="13">    13  </span><span class="key">import</span> com.sekati.crypt.ICipher;
 <span class="lineno" id="14">    14  </span><span class="comment doc">/**
 <span class="lineno" id="15">    15  </span> * Encodes and decodes a base64 string.
 <span class="lineno" id="16">    16  </span> */</span>
-<span class="lineno" id="17">    17  </span><span class="key">class</span> com.sekati.crypt.Base64 {
+<span class="lineno" id="17">    17  </span><span class="key">class</span> com.sekati.crypt.Base64 <span class="key">implements</span> ICipher {
 <span class="lineno" id="18">    18  </span>	<span class="key">private</span> <span class="key">static</span> <span class="key">var</span> base64chars:String = <span class="str_const">"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="</span>;
 <span class="lineno" id="19">    19  </span>
 <span class="lineno" id="20">    20  </span>	<span class="comment doc">/**

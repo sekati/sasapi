@@ -6,7 +6,7 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 import com.sekati.display.ICoreClip;
-import com.sekati.core.RUID;
+import com.sekati.crypt.RUID;
 import com.sekati.utils.Delegate;
 /**
  * All MovieClip subclasses should extend CoreClip instead of MovieClip for standardized initialization

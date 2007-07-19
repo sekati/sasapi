@@ -2,17 +2,17 @@
 <html><head><title>SASAPI</title><script src="../../../quicknav.js" type="text/javascript"></script><script><!--
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span><span class="comment doc">/**
-<span class="lineno" id="2">     2  </span> * com.sekati.core.RUID
-<span class="lineno" id="3">     3  </span> * @version 1.0.1
+<span class="lineno" id="2">     2  </span> * com.sekati.crypt.RUID
+<span class="lineno" id="3">     3  </span> * @version 1.0.3
 <span class="lineno" id="4">     4  </span> * @author jason m horwitz | sekati.com
 <span class="lineno" id="5">     5  </span> * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
 <span class="lineno" id="7">     7  </span> */</span>
-<span class="lineno" id="8">     8  </span> 
+<span class="lineno" id="8">     8  </span> <span class="key">import</span> com.sekati.crypt.IHash;
 <span class="lineno" id="9">     9  </span><span class="comment doc">/**
 <span class="lineno" id="10">    10  </span> * Runtime Unique ID generates unique Object ID's for management during application runtime
 <span class="lineno" id="11">    11  </span> */</span>
-<span class="lineno" id="12">    12  </span><span class="key">class</span> com.sekati.core.RUID {
+<span class="lineno" id="12">    12  </span><span class="key">class</span> com.sekati.crypt.RUID <span class="key">implements</span> IHash {
 <span class="lineno" id="13">    13  </span>	<span class="key">private</span> <span class="key">static</span> <span class="key">var</span> _key:String = <span class="str_const">"__RUID"</span>;
 <span class="lineno" id="14">    14  </span>	<span class="key">private</span> <span class="key">static</span> <span class="key">var</span> _id:Number = <span class="num_const">0</span>;
 <span class="lineno" id="15">    15  </span>	<span class="comment doc">/**
@@ -38,4 +38,4 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="35">    35  </span>	<span class="key">private</span> <span class="key">function</span> RUID(){}
 <span class="lineno" id="36">    36  </span>	<span class="comment">//</span>
 <span class="lineno" id="37">    37  </span>}
-<span class="lineno" id="38">    38  </span><span class="comment">// eof</span></pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of SASAPI" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.core" class="button">Package</a></li><li><a href="RUID.html" title="Detail of com.sekati.core.RUID API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
+<span class="lineno" id="38">    38  </span><span class="comment">// eof</span></pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of SASAPI" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.crypt" class="button">Package</a></li><li><a href="RUID.html" title="Detail of com.sekati.crypt.RUID API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>

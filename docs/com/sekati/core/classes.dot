@@ -1,11 +1,5 @@
 strict digraph class_diagram {
   rankdir=LR;
-  TypeRUID[
-    label="RUID",
-    URL="RUID.html",
-    tooltip="com.sekati.core.RUID",
-    shape="record"
-  ];
   TypeFWDepth[
     label="FWDepth",
     URL="FWDepth.html",

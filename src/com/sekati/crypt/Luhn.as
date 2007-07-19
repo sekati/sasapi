@@ -1,17 +1,17 @@
 /**
  * com.sekati.crypt.Luhn
- * @version 1.0.0
+ * @version 1.0.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
- 
+import com.sekati.crypt.IHash;
 /**
  * Validate a number with the Luhn Algorithm (aka Mod10) which is standard for pre-validating card numbers before 
  * being processed for approval.
  * @see http://en.wikipedia.org/wiki/Luhn_algorithm
  */
-class com.sekati.crypt.Luhn {
+class com.sekati.crypt.Luhn implements IHash {
 	/**
 	 * Validate a credit card number with mod10
 	 * @param strNumber (String) 

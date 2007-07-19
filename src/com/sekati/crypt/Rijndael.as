@@ -1,6 +1,6 @@
 /**
  * com.sekati.crypt.Rijndael
- * @version 1.0.0
+ * @version 1.0.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -10,11 +10,11 @@
  * Algorithm: Joan Daemen and Vincent Rijmen
  * @see http://www.cs.ucsd.edu/~fritz/rijndael.html
  */
-
+import com.sekati.crypt.ICipher;
 /**
 * Encrypts and decrypts text with the Rijndael algorithm.
 */
-class com.sekati.crypt.Rijndael {
+class com.sekati.crypt.Rijndael implements ICipher {
 	private var roundsArray:Array;
 	private var shiftOffsets:Array;
 	private var Nr:Number, Nk:Number, Nb:Number;

@@ -1,6 +1,6 @@
 /**
  * com.sekati.crypt.LZW
- * @version 1.0.0
+ * @version 1.0.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -10,11 +10,11 @@
  * @see http://www.razorberry.com/blog/archives/2004/08/22/lzw-compression-methods-in-as2/
  * @see http://www.lalex.com/blog/comments/200405/164-compression-lzw-actionscript-2.html
  */
- 
+import com.sekati.crypt.ICipher;
 /**
  * Compresses and decompresses text with the LZW algorithm.
  */
-class com.sekati.crypt.LZW {
+class com.sekati.crypt.LZW implements ICipher {
 	/**
 	 * Compresses the specified text.
 	 * @param src (String)

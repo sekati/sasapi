@@ -3,7 +3,7 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span><span class="comment doc">/**
 <span class="lineno" id="2">     2  </span> * com.sekati.crypt.SHA1
-<span class="lineno" id="3">     3  </span> * @version 1.0.0
+<span class="lineno" id="3">     3  </span> * @version 1.0.1
 <span class="lineno" id="4">     4  </span> * @author jason m horwitz | sekati.com
 <span class="lineno" id="5">     5  </span> * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -15,11 +15,11 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="12">    12  </span> * Other contributors: Greg Holt, Andrew Kepert, Ydnar, Lostinet
 <span class="lineno" id="13">    13  </span> * @see http://pajhome.org.uk/crypt/md5 for more info.
 <span class="lineno" id="14">    14  </span> */</span>
-<span class="lineno" id="15">    15  </span>
+<span class="lineno" id="15">    15  </span><span class="key">import</span> com.sekati.crypt.IHash;
 <span class="lineno" id="16">    16  </span><span class="comment doc">/**
 <span class="lineno" id="17">    17  </span>* Calculates the SHA1 checksum.
 <span class="lineno" id="18">    18  </span>*/</span>
-<span class="lineno" id="19">    19  </span><span class="key">class</span> com.sekati.crypt.SHA1 {
+<span class="lineno" id="19">    19  </span><span class="key">class</span> com.sekati.crypt.SHA1 <span class="key">implements</span> IHash {
 <span class="lineno" id="20">    20  </span>	<span class="comment doc">/**
 <span class="lineno" id="21">    21  </span> 	 * Calculates the SHA1 checksum.
 <span class="lineno" id="22">    22  </span>	 * @param src (String) string to hash

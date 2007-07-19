@@ -1,6 +1,6 @@
 /**
  * com.sekati.crypt.TEA
- * @version 1.0.0
+ * @version 1.0.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -11,11 +11,11 @@
  * Algorithm: David Wheeler & Roger Needham, Cambridge University Computer Lab
  * @see http://www.movable-type.co.uk/scripts/TEAblock.html
  */
- 
+import com.sekati.crypt.ICipher;
 /**
 * Encrypts and decrypts text with the TEA (Block) algorithm.
 */
-class com.sekati.crypt.TEA {
+class com.sekati.crypt.TEA implements ICipher {
 	/**
 	 * Encrypts a string with the specified key.
 	 * @param src (String) string to encrypt
