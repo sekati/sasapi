@@ -31,7 +31,7 @@ import mx.events.EventDispatcher;
  * Some excellent explanations of the AS2/3 event models and broadcasters vs dispatchers
  * @see <a href="http://www.communitymx.com/content/article.cfm?page=1&cid=76FDB">http://www.communitymx.com/content/article.cfm?page=1&cid=76FDB</a>
  * @see <a href="http://www.kirupa.com/developer/actionscript/eventdispatcher.htm">http://www.kirupa.com/developer/actionscript/eventdispatcher.htm</a>
- * @see {@link com.sekati.event.Broadcaster}
+ * @see {@link com.sekati.events.Broadcaster}
  */
 class com.sekati.events.Dispatcher implements IDispatchable {
 	private static var _instance:Dispatcher;
