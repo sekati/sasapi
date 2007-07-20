@@ -1,3 +1,4 @@
 <map id="interface_diagram" name="interface_diagram">
-<area shape="rect" href="IEventDispatch.html" title="com.sekati.events.IEventDispatch" alt="" coords="9,8,145,56" />
+<area shape="rect" href="IDispatchable.html" title="com.sekati.events.IDispatchable" alt="" coords="13,80,138,128" />
+<area shape="rect" href="IBroadcastable.html" title="com.sekati.events.IBroadcastable" alt="" coords="8,8,144,56" />
 </map>

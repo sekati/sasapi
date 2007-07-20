@@ -1,11 +1,11 @@
 /**
  * com.sekati.data.SharedObj
- * @version 1.0.0
+ * @version 1.0.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
- import com.sekati.events.EventDispatch;
+ import com.sekati.events.Dispatcher;
  import com.sekati.utils.Delegate;
 /**
  * SharedObject extension
@@ -33,14 +33,14 @@ class com.sekati.data.SharedObj extends SharedObject {
 	 */
 	private function so_onStatus(info) {
 		trace ("status info: " + info);
-		EventDispatch.getInstance().dispatchEvent({type:"SharedObj.status", target:this, data:{info:info}});
+		Dispatcher.getInstance().dispatchEvent({type:"SharedObj.status", target:this, data:{info:info}});
 	}
 	/**
 	 * onSync event handler dispatches event
 	 */
 	private function so_onSync(obj) {
 		trace ("sync obj: " + obj);		
-		EventDispatch.getInstance().dispatchEvent({type:"SharedObj.sync", target:this, data:{obj:obj}});
+		Dispatcher.getInstance().dispatchEvent({type:"SharedObj.sync", target:this, data:{obj:obj}});
 	}
 	/**
 	 * write a property value to the shared object
