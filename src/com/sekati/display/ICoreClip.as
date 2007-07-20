@@ -1,6 +1,6 @@
 /**
  * com.sekati.display.ICoreClip
- * @version 1.0.3
+ * @version 1.0.7
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -11,16 +11,18 @@
  */
 interface com.sekati.display.ICoreClip {
 	/**
-	 * handles the MovieClip onLoad event which much call configUI
+	 * handles the MovieClip.onLoad event which much call configUI
 	 */
-	function onLoad():Void;	
+	function onLoad():Void;
 	/**
 	 * class method called once the clip has loadeded and been registered
+	 * to configure the clip UI and initialize its behavior.
 	 */
 	function configUI():Void;
 	/**
-	 * Removes any internal variables, intervals, enterFrames, internal MovieClips and event observers to allow 
-	 * the object to be garbage collected. Always call destroy() before deleting last object pointer.
+	 * Removes any internal variables, intervals, enterFrames, internal clips
+	 * and event observers to allow the object to be garbage collected. 
+	 * Always call destroy() before deleting last object pointer.
 	 */
 	function destroy():Void;
 	/**

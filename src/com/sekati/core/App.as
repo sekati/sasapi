@@ -10,7 +10,6 @@ import com.sekati.events.Broadcaster;
 import com.sekati.log.OutPanel;
 import com.sekati.managers.ContextMenuManager;
 import com.sekati.managers.StageManager;
-
 import flash.external.ExternalInterface;
  /**
   * static class for centralizing & storing core application instances,  listeners,

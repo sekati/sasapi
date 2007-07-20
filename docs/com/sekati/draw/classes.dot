@@ -1,0 +1,21 @@
+strict digraph class_diagram {
+  rankdir=LR;
+  TypeRectangle[
+    label="Rectangle",
+    URL="Rectangle.html",
+    tooltip="com.sekati.draw.Rectangle",
+    shape="record"
+  ];
+  TypeGraphic[
+    label="Graphic",
+    URL="Graphic.html",
+    tooltip="com.sekati.draw.Graphic",
+    shape="record"
+  ];
+  TypeDrawUtils[
+    label="DrawUtils",
+    URL="DrawUtils.html",
+    tooltip="com.sekati.draw.DrawUtils",
+    shape="record"
+  ];
+}

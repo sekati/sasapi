@@ -32,11 +32,19 @@ class com.sekati.core.KeyFactory {
 		return KeyFactory.inject(o);	
 	}
 	/**
-	 * preview the next RUID to be assigned to an object
+	 * Returns next RUID as String to generate unique name
+	 * for an object.
+	 * @return String
+	 */
+	public static function getNextName():String {
+		return String(KeyFactory.previewNextKey());
+	}
+	/**
+	 * preview the next object RUID to be assigned
 	 * @return Number
 	 */
 	public static function previewNextKey():Number {
-		return RUID.getCurrent+1;
+		return RUID.getCurrentId()+1;
 	}
 	/**
 	 * Debugging method to check if two objects are equal

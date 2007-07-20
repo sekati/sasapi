@@ -5,7 +5,7 @@
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
- import com.sekati.utils.StringUtils;
+import com.sekati.utils.StringUtils;
 /**
  * String Validation methods for form fields
  * @see {@link com.sekati.utils.StringUtils}

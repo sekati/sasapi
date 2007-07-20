@@ -5,16 +5,20 @@ document.quicknavBasePath="../../../index-files";
  Give flash runtime objects a unique ID
  </p><h4>See Also</h4><ul class="extra_info"><li> pixlib's HashCodeFactory
  </li><li> nectere's KeyInjector.
- </li></ul></div><div class="type_indexes"><div class="method_index"><h2>Method Index</h2><a href="#getKey" title="static public function getKey(o:Object):Number">getKey()</a>, <a href="#inject" title="static public function inject(o:Object):Number">inject()</a>, <a href="#isSameObject" title="static public function isSameObject(a:Object, b:Object):Boolean">isSameObject()</a>, <a href="#previewNextKey" title="static public function previewNextKey():Number">previewNextKey()</a></div></div><div class="type_details"><div class="method_detail_list"><h2>Method Detail</h2><div class="method_details alt_row"><a name="inject"></a><h3>inject</h3><code class="method_synopsis">static public function <strong class="method_name">inject</strong>(o:<span class="unresolved_type_name">Object</span>):<span class="unresolved_type_name">Number</span></code><div class="method_info"><p>
+ </li></ul></div><div class="type_indexes"><div class="method_index"><h2>Method Index</h2><a href="#getKey" title="static public function getKey(o:Object):Number">getKey()</a>, <a href="#getNextName" title="static public function getNextName():String">getNextName()</a>, <a href="#inject" title="static public function inject(o:Object):Number">inject()</a>, <a href="#isSameObject" title="static public function isSameObject(a:Object, b:Object):Boolean">isSameObject()</a>, <a href="#previewNextKey" title="static public function previewNextKey():Number">previewNextKey()</a></div></div><div class="type_details"><div class="method_detail_list"><h2>Method Detail</h2><div class="method_details alt_row"><a name="inject"></a><h3>inject</h3><code class="method_synopsis">static public function <strong class="method_name">inject</strong>(o:<span class="unresolved_type_name">Object</span>):<span class="unresolved_type_name">Number</span></code><div class="method_info"><p>
  return the RUID key injected into an object - used as both getter and setter.
  </p><h4>Parameters</h4><table class="arguments extra_info" summary=""><tr><td><code>o</code></td><td>(Object) Object to inject RUID key in to
  </td></tr></table><h4>Return</h4><p class="extra_info"> (Number) Runtime Unique ID
 	 </p></div></div><div class="method_details"><a name="getKey"></a><h3>getKey</h3><code class="method_synopsis">static public function <strong class="method_name">getKey</strong>(o:<span class="unresolved_type_name">Object</span>):<span class="unresolved_type_name">Number</span></code><div class="method_info"><p>
  Injection wrapper to provide saner syntactical getter functionality
-	 </p></div></div><div class="method_details alt_row"><a name="previewNextKey"></a><h3>previewNextKey</h3><code class="method_synopsis">static public function <strong class="method_name">previewNextKey</strong>():<span class="unresolved_type_name">Number</span></code><div class="method_info"><p>
- preview the next RUID to be assigned to an object
+	 </p></div></div><div class="method_details alt_row"><a name="getNextName"></a><h3>getNextName</h3><code class="method_synopsis">static public function <strong class="method_name">getNextName</strong>():<span class="unresolved_type_name">String</span></code><div class="method_info"><p>
+ Returns next RUID as String to generate unique name
+ for an object.
+ </p><h4>Return</h4><p class="extra_info"> String
+	 </p></div></div><div class="method_details"><a name="previewNextKey"></a><h3>previewNextKey</h3><code class="method_synopsis">static public function <strong class="method_name">previewNextKey</strong>():<span class="unresolved_type_name">Number</span></code><div class="method_info"><p>
+ preview the next object RUID to be assigned
  </p><h4>Return</h4><p class="extra_info"> Number
-	 </p></div></div><div class="method_details"><a name="isSameObject"></a><h3>isSameObject</h3><code class="method_synopsis">static public function <strong class="method_name">isSameObject</strong>(a:<span class="unresolved_type_name">Object</span>, b:<span class="unresolved_type_name">Object</span>):<span class="unresolved_type_name">Boolean</span></code><div class="method_info"><p>
+	 </p></div></div><div class="method_details alt_row"><a name="isSameObject"></a><h3>isSameObject</h3><code class="method_synopsis">static public function <strong class="method_name">isSameObject</strong>(a:<span class="unresolved_type_name">Object</span>, b:<span class="unresolved_type_name">Object</span>):<span class="unresolved_type_name">Boolean</span></code><div class="method_info"><p>
  Debugging method to check if two objects are equal
  </p><h4>Parameters</h4><table class="arguments extra_info" summary=""><tr><td><code>a</code></td><td>(Object)
  </td></tr><tr><td><code>b</code></td><td>(Object)

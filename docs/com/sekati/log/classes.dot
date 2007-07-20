@@ -1,11 +1,5 @@
 strict digraph class_diagram {
   rankdir=LR;
-  TypeTraceObj[
-    label="TraceObj",
-    URL="TraceObj.html",
-    tooltip="com.sekati.log.TraceObj",
-    shape="record"
-  ];
   TypeOutPanel[
     label="OutPanel",
     URL="OutPanel.html",
@@ -16,6 +10,12 @@ strict digraph class_diagram {
     label="Out",
     URL="Out.html",
     tooltip="com.sekati.log.Out",
+    shape="record"
+  ];
+  TypeInspector[
+    label="Inspector",
+    URL="Inspector.html",
+    tooltip="com.sekati.log.Inspector",
     shape="record"
   ];
 }

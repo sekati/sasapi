@@ -7,7 +7,7 @@
  */
  
 /**
- * Marker Interface describing {@link com.sekati.events.EventDispatch}, its sub/super classes
+ * Interface describing {@link com.sekati.events.EventDispatch}, its sub/super classes
  */
 interface com.sekati.events.IEventDispatch {
 	function addEventListener (event:String, listener:Object):Void;

@@ -9,7 +9,7 @@ import com.sekati.core.App;
 import com.sekati.utils.Delegate;
 import com.sekati.display.CoreClip;
 /**
- * ImageBox demo for framework.fla
+ * ImageBox demo implementation of {@link com.sekati.ui.Image}
  */
 class com.sekati.demo.ImageBox extends CoreClip {
 	public var _img:MovieClip;

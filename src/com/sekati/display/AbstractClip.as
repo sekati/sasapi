@@ -1,29 +1,35 @@
 /**
  * com.sekati.display.AbstractClip
- * @version 1.0.1
+ * @version 1.0.7
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 import com.sekati.display.CoreClip;
 /**
- * Generic subclass implementation of {@link com.sekati.display.CoreClip} and the {@link com.sekati.display.ICoreClip} interface.
- * To be used as template for all framework based extend movieclip classes
+ * Generic subclass implementation of {@link com.sekati.display.CoreClip}.
+ * To be used as template for all framework based extend movieclip classes.
  */
 class com.sekati.display.AbstractClip extends CoreClip {
 	/**
-	 * Constructor - always empty: initializes via configUI
+	 * private constructor; class is initialized via the MovieClip.onLoad event.
 	 */
 	private function AbstractClip() {}
 	/**
-	 * overrides CoreClip configUI with its own behaviors once clip is loaded/registered on stage
+	 * overrides CoreClip.configUI with its own intialization behavior once clip is loaded, registered on stage.
+	 * @return Void
 	 */
 	private function configUI():Void {
-		_this.test();
+		trace("AbstractClip: "+_this._name+" [cacheAsBitmap:"+_this.cacheAsBitmap+", __RUID:"+_this.__RUID+"]");
 	}
-	private function test():Void {
-		trace("AbstractClip subclass instance: "+_this._name);
-		trace(_this+".cacheAsBitmap = "+_this.cacheAsBitmap+";");
-		trace(_this+".__RUID = "+_this.__RUID);
+	/**
+	 * calls superclasses CoreClip.destroy and executes its own destroy behaviors.
+	 * @return Void
+	 */
+	private function destroy():Void {
+		super.destroy();
+		trace(_this._name+" AbstractClip destroy()");
 	}
+	//
 }
+// eof
