@@ -1,5 +1,5 @@
 <map id="class_diagram" name="class_diagram">
-<area shape="rect" href="TraceObj.html" title="com.sekati.log.TraceObj" alt="" coords="8,152,98,200" />
-<area shape="rect" href="OutPanel.html" title="com.sekati.log.OutPanel" alt="" coords="8,80,98,128" />
-<area shape="rect" href="Out.html" title="com.sekati.log.Out" alt="" coords="17,8,89,56" />
+<area shape="rect" href="OutPanel.html" title="com.sekati.log.OutPanel" alt="" coords="8,152,98,200" />
+<area shape="rect" href="Out.html" title="com.sekati.log.Out" alt="" coords="17,80,89,128" />
+<area shape="rect" href="Inspector.html" title="com.sekati.log.Inspector" alt="" coords="8,8,98,56" />
 </map>

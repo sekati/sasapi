@@ -35,23 +35,31 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="32">    32  </span>		<span class="key">return</span> KeyFactory.inject(o);	
 <span class="lineno" id="33">    33  </span>	}
 <span class="lineno" id="34">    34  </span>	<span class="comment doc">/**
-<span class="lineno" id="35">    35  </span>	 * preview the next RUID to be assigned to an object
-<span class="lineno" id="36">    36  </span>	 * @return Number
-<span class="lineno" id="37">    37  </span>	 */</span>
-<span class="lineno" id="38">    38  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> previewNextKey():Number {
-<span class="lineno" id="39">    39  </span>		<span class="key">return</span> RUID.getCurrent+<span class="num_const">1</span>;
-<span class="lineno" id="40">    40  </span>	}
-<span class="lineno" id="41">    41  </span>	<span class="comment doc">/**
-<span class="lineno" id="42">    42  </span>	 * Debugging method to check if two objects are equal
-<span class="lineno" id="43">    43  </span>	 * @param a (Object)
-<span class="lineno" id="44">    44  </span>	 * @param b (Object)
-<span class="lineno" id="45">    45  </span>	 * @return Boolean
-<span class="lineno" id="46">    46  </span>	 */</span>
-<span class="lineno" id="47">    47  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> isSameObject(a:Object, b:Object):Boolean {
-<span class="lineno" id="48">    48  </span>		<span class="key">return</span> KeyFactory.getKey(a) == KeyFactory.getKey(b);
-<span class="lineno" id="49">    49  </span>	}
-<span class="lineno" id="50">    50  </span>	
-<span class="lineno" id="51">    51  </span>	<span class="key">private</span> <span class="key">function</span> KeyFactory(){}
-<span class="lineno" id="52">    52  </span>	<span class="comment">//</span>
-<span class="lineno" id="53">    53  </span>}
-<span class="lineno" id="54">    54  </span><span class="comment">// eof</span></pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of SASAPI" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.core" class="button">Package</a></li><li><a href="KeyFactory.html" title="Detail of com.sekati.core.KeyFactory API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
+<span class="lineno" id="35">    35  </span>	 * Returns next RUID as String to generate unique name
+<span class="lineno" id="36">    36  </span>	 * for an object.
+<span class="lineno" id="37">    37  </span>	 * @return String
+<span class="lineno" id="38">    38  </span>	 */</span>
+<span class="lineno" id="39">    39  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> getNextName():String {
+<span class="lineno" id="40">    40  </span>		<span class="key">return</span> String(KeyFactory.previewNextKey());
+<span class="lineno" id="41">    41  </span>	}
+<span class="lineno" id="42">    42  </span>	<span class="comment doc">/**
+<span class="lineno" id="43">    43  </span>	 * preview the next object RUID to be assigned
+<span class="lineno" id="44">    44  </span>	 * @return Number
+<span class="lineno" id="45">    45  </span>	 */</span>
+<span class="lineno" id="46">    46  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> previewNextKey():Number {
+<span class="lineno" id="47">    47  </span>		<span class="key">return</span> RUID.getCurrentId()+<span class="num_const">1</span>;
+<span class="lineno" id="48">    48  </span>	}
+<span class="lineno" id="49">    49  </span>	<span class="comment doc">/**
+<span class="lineno" id="50">    50  </span>	 * Debugging method to check if two objects are equal
+<span class="lineno" id="51">    51  </span>	 * @param a (Object)
+<span class="lineno" id="52">    52  </span>	 * @param b (Object)
+<span class="lineno" id="53">    53  </span>	 * @return Boolean
+<span class="lineno" id="54">    54  </span>	 */</span>
+<span class="lineno" id="55">    55  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> isSameObject(a:Object, b:Object):Boolean {
+<span class="lineno" id="56">    56  </span>		<span class="key">return</span> KeyFactory.getKey(a) == KeyFactory.getKey(b);
+<span class="lineno" id="57">    57  </span>	}
+<span class="lineno" id="58">    58  </span>	
+<span class="lineno" id="59">    59  </span>	<span class="key">private</span> <span class="key">function</span> KeyFactory(){}
+<span class="lineno" id="60">    60  </span>	<span class="comment">//</span>
+<span class="lineno" id="61">    61  </span>}
+<span class="lineno" id="62">    62  </span><span class="comment">// eof</span></pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of SASAPI" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.core" class="button">Package</a></li><li><a href="KeyFactory.html" title="Detail of com.sekati.core.KeyFactory API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>

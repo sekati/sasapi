@@ -13,5 +13,6 @@ com.sekati.time
 com.sekati.utils
 com.sekati.core
 com.sekati.demo
+com.sekati.draw
 com.sekati.validate
 com.sekati.service

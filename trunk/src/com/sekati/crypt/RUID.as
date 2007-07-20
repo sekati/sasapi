@@ -23,7 +23,7 @@ class com.sekati.crypt.RUID implements IHash {
 	 * Return the current RUID id
 	 * @return Number
 	 */
-	public static function getCurrent():Number {
+	public static function getCurrentId():Number {
 		return _id;	
 	}
 	

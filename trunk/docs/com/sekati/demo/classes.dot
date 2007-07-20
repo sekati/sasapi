@@ -1,5 +1,11 @@
 strict digraph class_diagram {
   rankdir=LR;
+  TypeTest[
+    label="Test",
+    URL="Test.html",
+    tooltip="com.sekati.demo.Test",
+    shape="record"
+  ];
   TypeImageBox[
     label="ImageBox",
     URL="ImageBox.html",

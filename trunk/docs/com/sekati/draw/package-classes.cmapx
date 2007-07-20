@@ -1,0 +1,5 @@
+<map id="class_diagram" name="class_diagram">
+<area shape="rect" href="Rectangle.html" title="com.sekati.draw.Rectangle" alt="" coords="9,152,105,200" />
+<area shape="rect" href="Graphic.html" title="com.sekati.draw.Graphic" alt="" coords="17,80,97,128" />
+<area shape="rect" href="DrawUtils.html" title="com.sekati.draw.DrawUtils" alt="" coords="8,8,106,56" />
+</map>

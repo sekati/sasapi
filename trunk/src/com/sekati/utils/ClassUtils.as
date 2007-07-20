@@ -5,7 +5,7 @@
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
- import com.sekati.core.KeyFactory;
+import com.sekati.core.KeyFactory;
  /**
   * Static class for wrapping various Class utilities. For example linking 'extend MovieClip' type 
   * classes to MovieClips thru attachMovie, createEmptyMovieClip or MovieClip Instances on stage.<br/><br/>
@@ -17,7 +17,7 @@
   * {@code Example Class:
   * class com.sekati.Test extends MovieClip {
   * 	public function Test(){
-  * 		trace("Test extends "+this._name);
+  * 		trace("Test Class instantiated on: "+this._name);
   * 	}
   * }
   * }

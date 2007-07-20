@@ -5,10 +5,9 @@
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
-import mx.events.EventDispatcher;
-
 import com.sekati.events.Event;
 import com.sekati.events.IEventDispatch;
+import mx.events.EventDispatcher;
 /**
  * 
  * A centralized EventDispatcher to decouple event listeners & dispatchers from direct addressing

@@ -30,12 +30,6 @@ strict digraph class_diagram {
     tooltip="com.sekati.utils.FilterUtils",
     shape="record"
   ];
-  TypeDrawUtils[
-    label="DrawUtils",
-    URL="DrawUtils.html",
-    tooltip="com.sekati.utils.DrawUtils",
-    shape="record"
-  ];
   TypeDelegate[
     label="Delegate",
     URL="Delegate.html",

@@ -1,6 +1,6 @@
 /**
  * com.sekati.validate.TypeValidation
- * @version 1.0.0
+ * @version 1.0.3
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -12,7 +12,45 @@
  * Simple Type Validation class. 
  * @see {@link com.sekati.validate.StringValidation}
  */
-class com.sekati.validate.TypeValidation {
+class com.sekati.validate.TypeValidation {	
+	/**
+	 * get an objects type and return an info object containing properties:
+	 * {@code
+	 * 	.inspectable:Boolean, 
+	 * 	.name:String;
+	 * 	.stringify:Boolean;
+	 * }
+	 * @param o (Object)
+	 * @return Object
+	 */
+	public static function getType(o:Object):Object {
+		var typeOf:String = typeof (o);
+		var type:Object = new Object();
+		type.inspectable = true;
+		type.name = typeOf;
+		if (TypeValidation.isString(o) || TypeValidation.isBoolean(o) || TypeValidation.isNumber(o) || typeOf == "undefined" || typeOf == "null") {
+			type.inspectable = false;
+		} else if (o instanceof Date) {
+			type.inspectable = false;
+			type.name = "date";
+		} else if (o instanceof Array) {
+			type.name = "array";
+		} else if (o instanceof Button) {
+			type.name = "button";
+		} else if (o instanceof MovieClip) {
+			type.name = "movieclip";
+		} else if (o instanceof XML) {
+			type.name = "xml";
+			type.stringify = true;
+		} else if (o instanceof XMLNode) {
+			type.name = "xmlnode";
+			type.stringify = true;
+		} else if (o instanceof Color) {
+			type.name = "color";
+		}
+		return type;
+	}
+		
 	public static function isNumber(val:Object):Boolean{
 		return compare(val, "number", Number);
 	}
