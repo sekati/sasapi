@@ -1,9 +1,16 @@
 strict digraph interface_diagram {
   rankdir=LR;
-  IEventDispatch[
-    label="IEventDispatch",
-    URL="IEventDispatch.html",
-    tooltip="com.sekati.events.IEventDispatch",
+  IDispatchable[
+    label="IDispatchable",
+    URL="IDispatchable.html",
+    tooltip="com.sekati.events.IDispatchable",
+    fontname="Times-Italic",
+    shape="record"
+  ];
+  IBroadcastable[
+    label="IBroadcastable",
+    URL="IBroadcastable.html",
+    tooltip="com.sekati.events.IBroadcastable",
     fontname="Times-Italic",
     shape="record"
   ];

@@ -9,7 +9,7 @@
 		May 22, 2007 - jason m horwitz | Sekati LLC | sekati.com
      ************************************************************************************* -->
 
-<project name="SASAPI : Sekati ActionScript API" default="usage" basedir=".">
+<project name="SASAPI - Sekati ActionScript API" default="usage" basedir=".">
 	<!-- fdtkit properties -->
 	<property name="fdtkit" location="/Users/jason/workspace/fdtkit"/>
 	<property name="project_template" location="${fdtkit}/lib/templates/project"/>
@@ -98,7 +98,7 @@
 			<arg line='--output-dir ${docs}'/>
 			<arg line='--title ${ant.project.name}'/>
 			<arg line='--sources'/>
-        	<arg line='--progress'/>
+			<arg line='--progress'/>
         	<arg line='--draw-diagram'/>
         	<arg line='--dot-exe ${dot_exe}'/>
 		</exec>

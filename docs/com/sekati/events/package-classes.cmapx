@@ -1,5 +1,5 @@
 <map id="class_diagram" name="class_diagram">
-<area shape="rect" href="EventDispatch.html" title="com.sekati.events.EventDispatch" alt="" coords="8,152,138,200" />
-<area shape="rect" href="Event.html" title="com.sekati.events.Event" alt="" coords="37,80,109,128" />
-<area shape="rect" href="Broadcaster.html" title="com.sekati.events.Broadcaster" alt="" coords="18,8,128,56" />
+<area shape="rect" href="Event.html" title="com.sekati.events.Event" alt="" coords="28,152,100,200" />
+<area shape="rect" href="Dispatcher.html" title="com.sekati.events.Dispatcher" alt="" coords="13,80,114,128" />
+<area shape="rect" href="Broadcaster.html" title="com.sekati.events.Broadcaster" alt="" coords="9,8,118,56" />
 </map>
