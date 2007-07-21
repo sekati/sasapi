@@ -18,7 +18,7 @@ class com.sekati.events.Event {
 	private var _type:String;
 	private var _target:Object;
 	private var _data:Object;
-	private var route:Array;
+	private var _route:Array;
 	/**
 	 * Constructor - creates an event object fit for dispatching.
 	 * @param type (String) type of event
@@ -30,7 +30,9 @@ class com.sekati.events.Event {
 		_type = type;
 		_target = target;
 		_data = data;
-		route = new Array();
+		// clone _data properties to the Event instance
+		// for (var i in _data) this[i] = _data[i];
+		_route = new Array();
 	}
 	public function get type():String {
 		return _type;	
@@ -42,7 +44,7 @@ class com.sekati.events.Event {
 		return _data;	
 	}
 	public function bubble(newTarget:Object):Void {
-		route.push(_target);
+		_route.push(_target);
 		_target = newTarget;
 	}
 	//
