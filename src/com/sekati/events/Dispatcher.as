@@ -47,9 +47,9 @@ class com.sekati.events.Dispatcher implements IDispatchable {
 		return _instance;
 	}
 	/**
-	 * shorthand singleton accessor
+	 * shorthand singleton accessor getter
 	 */
-	 public static function $():Dispatcher {
+	 public static function get $():Dispatcher {
 	 	return Dispatcher.getInstance();	
 	 }
 	/**
