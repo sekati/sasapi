@@ -4,6 +4,9 @@
 = Introduction =
 SASAPI is free open source software, licensed under the [http://en.wikipedia.org/wiki/MIT_License MIT License].
 
+This means you may use any or all of the SASAPI framework in both commercial and non-commercial projects with no restrictions outside of leaving the license and credit text featured in the original source code intact and unchanged.
+
+
 = SASAPI License =
 
 Copyright (c) 2007 jason m horwitz | Sekati LLC | [http://sekati.com/ sekati.com]
