@@ -1,4 +1,4 @@
-#summary More information about SASAPI's license
+#summary Who can use this?
 #labels Featured
 
 = Introduction =
