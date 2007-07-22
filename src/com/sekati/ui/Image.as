@@ -5,18 +5,23 @@
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
+ 
 import com.sekati.core.App;
 import com.sekati.display.CoreClip;
+
 /**
  * image loader. Required: mc_tween2
  */
 class com.sekati.ui.Image extends CoreClip {
+
 	var img:MovieClip;
 	var box:MovieClip;
 	var spinner:MovieClip;
+
 	// constructor
 	private function Image () {
 	}
+
 	/**
 	 * init called via CoreClip onLoad event
 	 * @return Void
@@ -24,6 +29,7 @@ class com.sekati.ui.Image extends CoreClip {
 	public function configUI ():Void {
 		_this.spinner._visible = false;
 	}
+
 	/**
 	 * wrapper for setup and init methods
 	 * @param uri (String) image uri
@@ -44,20 +50,21 @@ class com.sekati.ui.Image extends CoreClip {
 		_this.setup (w, h, color, color2, alpha, border);
 		_this.init (uri, cb);
 	}
+
 	/**
-	* draw a rectangle (various init options)
-	* @param w (Number) image width
-	* @param h (Number) image height
-	* @param color (Number) box hexadecimal color
-	* @param color2 (Number) spinner & border hexadecimal color	
-	* @param alpha (Number) box alpha
-	* @param border (Boolean) display border
-	* @return Void
-	* 
-	* {@code Usage:
-	* myMc.setup(160, 120, 0x242424, 0x99abc1, 80, true);
-	* }
-	*/
+	 * draw a rectangle (various init options)
+	 * @param w (Number) image width
+	 * @param h (Number) image height
+	 * @param color (Number) box hexadecimal color
+	 * @param color2 (Number) spinner & border hexadecimal color	
+	 * @param alpha (Number) box alpha
+	 * @param border (Boolean) display border
+	 * @return Void
+	 * 
+	 * {@code Usage:
+	 * myMc.setup(160, 120, 0x242424, 0x99abc1, 80, true);
+	 * }
+	 */
 	public function setup (w:Number, h:Number, color:Number, color2:Number, alpha:Number, border:Boolean):Void {
 		// make instance reusable
 		if (_this.box != undefined) {
@@ -96,6 +103,7 @@ class com.sekati.ui.Image extends CoreClip {
 		_this.spinner._y = int ((h / 2));
 		_this.spinner.colorTo (c2, 0);
 	}
+	
 	/**
 	 * load an image after setup has been called
 	 * @param uri (String) image uri
@@ -118,7 +126,6 @@ class com.sekati.ui.Image extends CoreClip {
 		_this.spinner.onEnterFrame = function () {
 			this._rotation -= 20;
 		};
-		//
 		_this.onEnterFrame = function () {
 			var l:Number = _this.img.getBytesLoaded ();
 			var t:Number = _this.img.getBytesTotal ();
@@ -141,6 +148,4 @@ class com.sekati.ui.Image extends CoreClip {
 			}
 		};
 	}
-	//
 }
-// eof

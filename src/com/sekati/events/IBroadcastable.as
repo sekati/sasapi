@@ -10,12 +10,16 @@
  * Interface describing {@link com.sekati.events.Broadcaster}.
  */
 interface com.sekati.events.IBroadcastable {
+
 	function subscribe(o:Object):Void;
+
 	function unsubscribe(o:Object):Void;
+
 	function reset():Void;
+
 	function broadcast():Void;
+
 	function addListener(o:Object):Number;
+
 	function removeListener(o:Object):Boolean;
-	//
 }
-// eof

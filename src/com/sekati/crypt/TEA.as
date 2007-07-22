@@ -11,11 +11,14 @@
  * Algorithm: David Wheeler & Roger Needham, Cambridge University Computer Lab
  * @see http://www.movable-type.co.uk/scripts/TEAblock.html
  */
+
 import com.sekati.crypt.ICipher;
+
 /**
 * Encrypts and decrypts text with the TEA (Block) algorithm.
 */
 class com.sekati.crypt.TEA implements ICipher {
+
 	/**
 	 * Encrypts a string with the specified key.
 	 * @param src (String) string to encrypt
@@ -73,9 +76,6 @@ class com.sekati.crypt.TEA implements ICipher {
 		return charsToStr(longsToChars(v));
 	}
 	
-	/**
-	* Private methods.
-	*/
 	private static function charsToLongs(chars:Array):Array {
 		var temp:Array = new Array(Math.ceil(chars.length/4));
 		for (var i:Number = 0; i<temp.length; i++) {
@@ -83,6 +83,7 @@ class com.sekati.crypt.TEA implements ICipher {
 		}
 		return temp;
 	}
+
 	private static function longsToChars(longs:Array):Array {
 		var codes:Array = new Array();
 		for (var i:Number = 0; i<longs.length; i++) {
@@ -90,6 +91,7 @@ class com.sekati.crypt.TEA implements ICipher {
 		}
 		return codes;
 	}
+
 	private static function charsToHex(chars:Array):String {
 		var result:String = new String("");
 		var hexes:Array = new Array("0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f");
@@ -98,6 +100,7 @@ class com.sekati.crypt.TEA implements ICipher {
 		}
 		return result;
 	}
+
 	private static function hexToChars(hex:String):Array {
 		var codes:Array = new Array();
 		for (var i:Number = (hex.substr(0, 2) == "0x") ? 2 : 0; i<hex.length; i+=2) {
@@ -105,6 +108,7 @@ class com.sekati.crypt.TEA implements ICipher {
 		}
 		return codes;
 	}
+
 	private static function charsToStr(chars:Array):String {
 		var result:String = new String("");
 		for (var i:Number = 0; i<chars.length; i++) {
@@ -112,6 +116,7 @@ class com.sekati.crypt.TEA implements ICipher {
 		}
 		return result;
 	}
+
 	private static function strToChars(str:String):Array {
 		var codes:Array = new Array();
 		for (var i:Number = 0; i<str.length; i++) {
@@ -120,7 +125,6 @@ class com.sekati.crypt.TEA implements ICipher {
 		return codes;
 	}
 	
-	private function TEA(){}
-	//
+	private function TEA(){
+	}
 }
-// eof

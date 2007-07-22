@@ -5,7 +5,9 @@
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
+
 import com.sekati.crypt.IHash;
+
 /**
  * Validate a number with the Luhn Algorithm (aka Mod10) which is standard for pre-validating card numbers before 
  * being processed for approval.
@@ -18,6 +20,7 @@ class com.sekati.crypt.Luhn implements IHash {
 	 * @return Boolean
 	 */
 	public static function mod10 (strNumber:String):Boolean {
+		
 		// Seperate each number into it's own index in an array.
 		var aNumbers:Array = strNumber.split("");
 		
@@ -58,7 +61,6 @@ class com.sekati.crypt.Luhn implements IHash {
 		return (nSum_Total % 10 == 0);
 	}
 	
-	private function Luhn(){}
-	//
+	private function Luhn(){
+	}
 }
-// eof

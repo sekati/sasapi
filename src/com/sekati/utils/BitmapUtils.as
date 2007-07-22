@@ -5,12 +5,15 @@
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
+
 import flash.display.BitmapData;
 import flash.geom.Matrix;
+
 /**
  * static class wrapping variousBitmap utilities
  */
 class com.sekati.utils.BitmapUtils {
+
 	/**
 	 * copy object to bitmapData object
 	 * @param src (MovieClip)
@@ -34,12 +37,13 @@ class com.sekati.utils.BitmapUtils {
 			target.cacheAsBitmap = true;
 		}
 	}
+
 	/**
-	* returns an array of pixel data from bitmap data object to post/store for later use
-	* @param src (Object)
-	* @param scale (Number)
-	* @return Array
-	*/	
+	 * returns an array of pixel data from bitmap data object to post/store for later use
+	 * @param src (Object)
+	 * @param scale (Number)
+	 * @return Array
+	 */	
 	public static function getPixelData (src:Object, scale:Number):Array {
 		var pixels:Array = new Array ();
 		var bitmap:BitmapData = new BitmapData (src._width, src._height);
@@ -59,7 +63,6 @@ class com.sekati.utils.BitmapUtils {
 		return pixels;
 	}
 	
-	private function BitmapUtils(){}
-	//
+	private function BitmapUtils(){
+	}
 }
-// eof

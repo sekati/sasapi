@@ -20,7 +20,9 @@
   * }
   */
 class com.sekati.utils.Delegate extends Object {
+
 	private var func:Function;
+
 	/**
 	 * Constructor
 	 * @param f (Function)
@@ -29,6 +31,7 @@ class com.sekati.utils.Delegate extends Object {
 	function Delegate (f:Function) {
 		func = f;
 	}
+
 	/**
 	 * Creates a functions wrapper for the original function so that it runs in the provided context.
 	 * @param obj (Object) Context in which to run the function.
@@ -47,6 +50,7 @@ class com.sekati.utils.Delegate extends Object {
 		f.args = arguments;
 		return f;
 	}
+
 	/**
 	* create wrapper
 	* @param obj (Object) Context in which to run the function.
@@ -56,4 +60,3 @@ class com.sekati.utils.Delegate extends Object {
 		return create (obj, func);
 	}
 }
-// eof

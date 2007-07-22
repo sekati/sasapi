@@ -12,6 +12,12 @@ strict digraph class_diagram {
     tooltip="com.sekati.time.StopWatch",
     shape="record"
   ];
+  TypeFrameBeacon[
+    label="FrameBeacon",
+    URL="FrameBeacon.html",
+    tooltip="com.sekati.time.FrameBeacon",
+    shape="record"
+  ];
   TypeBandwidth[
     label="Bandwidth",
     URL="Bandwidth.html",

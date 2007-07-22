@@ -10,7 +10,9 @@
  * Integer Object (a positive or negative natural number including 0).
  */
 class com.sekati.math.Integer extends Number {
+
 	private var _int:Number;
+
 	/**
 	 * Construct a new Integer instance (number will be floored)
 	 * @param n (Number) to convert to an Integer
@@ -23,6 +25,7 @@ class com.sekati.math.Integer extends Number {
 			_int = n-n%1;
 		}
 	}
+
 	/**
 	 * return the value of Integer as Number
 	 * @return Number
@@ -30,6 +33,7 @@ class com.sekati.math.Integer extends Number {
 	public function valueOf():Number {
 		return _int;
 	}
+
 	/**
 	 * return string representation of Integer
 	 * @return String
@@ -37,6 +41,4 @@ class com.sekati.math.Integer extends Number {
 	public function toString():String {
 		return _int.toString();
 	}
-	//
 }
-// eof

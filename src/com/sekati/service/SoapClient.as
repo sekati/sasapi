@@ -1,12 +1,14 @@
 ﻿/**
  * com.sekati.service.SoapClient
- * @version 0.2.7
+ * @version 0.2.9
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
+
 import mx.services.SOAPCall;
 import mx.services.WebService;
+
 /**
  * Soap Client class to be used with JNuSOAP.<br>
  * 
@@ -19,9 +21,11 @@ import mx.services.WebService;
  * @see <a href="http://www.adobe.com/devnet/flash/articles/flmxpro_webservices_03.html">http://www.adobe.com/devnet/flash/articles/flmxpro_webservices_03.html</a>
  */
 class com.sekati.service.SoapClient {
+
 	private var _ws:WebService;
 	private var _wsdl:String;
 	private var debugFn:Function;
+
 	/**
 	 * Constructor
 	 * @param wsdl (String) wsdl url
@@ -31,7 +35,7 @@ class com.sekati.service.SoapClient {
 	 * @param faultFn (Function) service onFault handler
 	 * @return Void
 	 */
-	function SoapClient(wsdl:String, port:String, debugHandler:Function, loadFn:Function, faultFn:Function) {
+	public function SoapClient(wsdl:String, port:String, debugHandler:Function, loadFn:Function, faultFn:Function) {
 		// set passed wsdl to class
 		_wsdl = wsdl;
 		// set passed debug function to class
@@ -41,6 +45,7 @@ class com.sekati.service.SoapClient {
 		// attempt webservice connection
 		wsConnect(loadFn, faultFn, port);
 	}
+	
 	private function wsConnect(loadFn:Function, faultFn:Function, port:String):Void {
 		// instantiate new webservice
 		_ws = new WebService(_wsdl);
@@ -65,6 +70,7 @@ class com.sekati.service.SoapClient {
 			faultFn();
 		};
 	}
+	
 	/**
 	 * webservice method call
 	 * @param method (String) service method name
@@ -112,6 +118,4 @@ class com.sekati.service.SoapClient {
 			faultFn(fault);
 		};
 	}
-	//
 }
-// eof

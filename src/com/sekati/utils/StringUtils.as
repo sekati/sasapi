@@ -10,6 +10,7 @@
   * Static class wrapping various String utilities
   */
 class com.sekati.utils.StringUtils {
+
 	/**
 	 * search for key in string
 	 * @param str (String)
@@ -19,6 +20,7 @@ class com.sekati.utils.StringUtils {
 	public static function search (str:String, key:String):Boolean {
 		return (str.indexOf (key) <= -1) ? false : true;
 	}
+
 	/**
 	 * replace every instance of a string with something else
 	 * @param str (String)
@@ -29,6 +31,7 @@ class com.sekati.utils.StringUtils {
 	public static function replace (str:String, oldChar:String, newChar:String):String {
 		return str.split (oldChar).join (newChar);
 	}
+
 	/**
 	 * remove spaces
 	 * @param str (String)
@@ -37,6 +40,7 @@ class com.sekati.utils.StringUtils {
 	public static function removeSpaces (str:String):String {
 		return replace (str, " ", "");
 	}
+
 	/**
 	 * remove spaces at end and beginning of the string only
 	 * @param str (String)
@@ -53,6 +57,7 @@ class com.sekati.utils.StringUtils {
 		}
 		return str.substring (index0, index1 + 1);
 	}
+
 	/**
 	 * remove spaces  tabs, line feeds, carrige returns from string
 	 * @param str (String)
@@ -71,6 +76,7 @@ class com.sekati.utils.StringUtils {
 		}
 		return o;
 	}
+
 	/**
 	 * trim spaces and camel notate string
 	 * @param str (String)
@@ -92,6 +98,7 @@ class com.sekati.utils.StringUtils {
 		}
 		return o;
 	}
+
 	/**
 	 * Capitalize the first character in the string.
 	 * @param str (String)
@@ -100,6 +107,7 @@ class com.sekati.utils.StringUtils {
 	public static function firstToUpper (str:String):String {
 		 return str.charAt(0).toUpperCase() + str.substr(1);
 	}	
+
 	/**
 	 * add cacheKiller
 	 * @param str (String)
@@ -108,11 +116,12 @@ class com.sekati.utils.StringUtils {
 	public static function noCache (str:String):String {
 		return str + "?" + new Date ().getTime ();
 	}
+
 	/**
-	* encode html
-	* @param str (String)
-	* @return String
-	*/
+	 * encode html
+	 * @param str (String)
+	 * @return String
+	 */
 	public static function htmlEncode (str:String):String {
 		var s:String = str, a = new String ();
 		a = s.split ("&"), s = a.join ("&amp;");
@@ -122,11 +131,12 @@ class com.sekati.utils.StringUtils {
 		a = s.split ('"'), s = a.join ("&quot;");
 		return s;
 	}
+	
 	/**
-	* strip html markup tags
-	* @param str (String)
-	* @return String
-	*/
+	 * strip html markup tags
+	 * @param str (String)
+	 * @return String
+	 */
 	public static function stripTags (str:String):String {
 		var s:Array = new Array ();
 		var c:Array = new Array ();
@@ -143,34 +153,38 @@ class com.sekati.utils.StringUtils {
 		}
 		return o;
 	}
+	
 	/**
-	* detect html breaks
-	* @param str (String)
-	* @return Boolean
-	*/
+	 * detect html breaks
+	 * @param str (String)
+	 * @return Boolean
+	 */
 	public static function detectBr (str:String):Boolean {
 		return (str.split ("<br").length > 1) ? true : false;
 	}
+	
 	/**
-	* convert single quotes to double quotes
-	* @param str (String)
-	* @return String
-	*/
+	 * convert single quotes to double quotes
+	 * @param str (String)
+	 * @return String
+	 */
 	public static function toDoubleQuote (str:String):String {
 		var sq:String = "'";
 		var dq:String = String.fromCharCode (34);
 		return str.split (sq).join (dq);
 	}
+	
 	/**
-	* convert double quotes to single quotes
-	* @param str (String)
-	* @return String
-	*/
+	 * convert double quotes to single quotes
+	 * @param str (String)
+	 * @return String
+	 */
 	public static function toSingleQuote (str:String):String {
 		var sq:String = "'";
 		var dq:String = String.fromCharCode (34);
 		return str.split (dq).join (sq);
 	}
+	
 	/**
 	 * Remove all formatting and return cleaned numbers from string.
 	 * @param str (String)
@@ -191,7 +205,6 @@ class com.sekati.utils.StringUtils {
 		return result;
 	}
 	
-	private function StringUtils(){}	
-	//
+	private function StringUtils(){
+	}	
 }
-// eof

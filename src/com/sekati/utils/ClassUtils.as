@@ -5,7 +5,9 @@
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
+
 import com.sekati.core.KeyFactory;
+
  /**
   * Static class for wrapping various Class utilities. For example linking 'extend MovieClip' type 
   * classes to MovieClips thru attachMovie, createEmptyMovieClip or MovieClip Instances on stage.<br/><br/>
@@ -23,6 +25,7 @@ import com.sekati.core.KeyFactory;
   * }
   */
 class com.sekati.utils.ClassUtils {
+
 	/**
 	 * create a movieclip with linked class (various init options)
 	 * @param classRef (Function) reference to class to attach
@@ -51,6 +54,7 @@ class com.sekati.utils.ClassUtils {
 		KeyFactory.inject(mc);
 		return mc;
 	}
+
 	/**
 	 * attach a MovieClip from library and extend with class (various init options)
 	 * @param classRef (Function) reference to class to attach
@@ -76,6 +80,7 @@ class com.sekati.utils.ClassUtils {
 		KeyFactory.inject(mc);
 		return mc;
 	}
+
 	/**
 	 * extend a MovieClip instance (on stage) with class (various init options)
 	 * @param classRef (Function) reference to class to attach
@@ -104,6 +109,7 @@ class com.sekati.utils.ClassUtils {
 		KeyFactory.inject(mc);
 		return target;
 	}
+
 	/**
 	 * Create and return a new instance of a defined class
 	 * @param classRef (Function) reference to full class namespace
@@ -156,6 +162,7 @@ class com.sekati.utils.ClassUtils {
 		}
 		return false;
 	}
+
 	/**
 	 * Check if a class implements an interface
 	 * @param classRef (Function) reference to the full class namespace
@@ -174,7 +181,6 @@ class com.sekati.utils.ClassUtils {
 		return (createCleanInstance(classRef) instanceof interfaceRef);
 	}
 		
-	private function ClassUtils(){}
-	//
+	private function ClassUtils(){
+	}
 }
-// eof

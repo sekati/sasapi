@@ -10,10 +10,12 @@
  * Simple stopwatch class
  */
 class com.sekati.time.StopWatch {
+
 	private var _initTime:Number;
 	private var _endTime:Number;
 	private var _lastLap:Number;
 	private var _ms:Number;
+
 	/**
 	 * constructor
 	 * @param startNow (Boolean)
@@ -21,6 +23,7 @@ class com.sekati.time.StopWatch {
 	public function StopWatch(startNow:Boolean){
 		if(startNow) start();
 	}
+
 	/**
 	 * start timer
 	 * @return Void
@@ -29,6 +32,7 @@ class com.sekati.time.StopWatch {
 		_initTime = getTimer();
 		_lastLap = _initTime;
 	}
+
 	/**
 	 * stop timer
 	 * @return (Number) ms since start
@@ -38,6 +42,7 @@ class com.sekati.time.StopWatch {
 		_ms = _endTime - _initTime;
 		return _ms;
 	}
+
 	/**
 	 * record and return lap
 	 * @return (Number) ms since last lap
@@ -48,6 +53,7 @@ class com.sekati.time.StopWatch {
 		_lastLap = now;
 		return _ms;
 	}
+
 	/**
 	 * read total time
 	 * @return (Number) ms since stopwatch was initialized
@@ -56,6 +62,4 @@ class com.sekati.time.StopWatch {
 		var now:Number = getTimer();
 		return now - _initTime;
 	}		
-	//
 }
-// eof

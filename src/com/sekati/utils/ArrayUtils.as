@@ -10,6 +10,7 @@
   * static class wrapping various Array utilities
   */
 class com.sekati.utils.ArrayUtils {
+
 	/**
 	 * insert an element into array at a specific index
 	 * @param a (Array)
@@ -23,6 +24,7 @@ class com.sekati.utils.ArrayUtils {
 		aA.push (objElement);
 		return ArrayUtils.merge(aA, aB);
 	}
+
 	/**
 	 * remove all instances of an element from an array
 	 * @param a (Array)
@@ -37,6 +39,7 @@ class com.sekati.utils.ArrayUtils {
 		}
 		return a;
 	}
+
 	/**
 	 * search an array for a given element and return its index or null
 	 * @param a (Array)
@@ -51,6 +54,7 @@ class com.sekati.utils.ArrayUtils {
 		}
  		return null;
 	}
+
 	/**
 	 * shuffle array items
 	 * @param a (Array)
@@ -64,6 +68,7 @@ class com.sekati.utils.ArrayUtils {
 			a[randomNum] = tmp;
 		}
 	}
+
 	/**
 	 * return a clone of the array
 	 * @param a (Array)
@@ -72,6 +77,7 @@ class com.sekati.utils.ArrayUtils {
 	public static function clone (a:Array):Array {
 		return a.concat();
 	}
+
 	/**
 	 * merge two arrays into one
 	 * @param aA (Array)
@@ -85,6 +91,7 @@ class com.sekati.utils.ArrayUtils {
 		}
 		return aC;
 	}	
+
 	// Swaps two elements at the given indexes of the subject array.
 	/**
 	 * Swap two elements positions in an array
@@ -108,6 +115,7 @@ class com.sekati.utils.ArrayUtils {
 		a[nB] = objElement;
 		return a;
 	}	
+
 	/**
 	 * return alphabetically sorted array
 	 * @param a (Array)
@@ -121,6 +129,7 @@ class com.sekati.utils.ArrayUtils {
 		};
 		return a.sort (aFn);
 	}
+
 	/**
 	 * return array with duplicate entries removed
 	 * @param a (Array)
@@ -136,6 +145,7 @@ class com.sekati.utils.ArrayUtils {
 		}
 		return o;
 	}
+
 	/**
 	 * compare two arrays for a matching value
 	 * @param aA (Array)
@@ -152,6 +162,7 @@ class com.sekati.utils.ArrayUtils {
 		}
 		return false;
 	}
+
 	/**
 	 * compare two arrays to see if they are identical
 	 * @param aA (Array)
@@ -170,7 +181,6 @@ class com.sekati.utils.ArrayUtils {
 		return true;
 	}
 	
-	private function ArrayUtils(){}
-	//
+	private function ArrayUtils(){
+	}
 }
-// eof

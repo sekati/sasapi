@@ -5,17 +5,21 @@
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
- import com.sekati.crypt.Luhn;
- import com.sekati.utils.StringUtils;
+
+import com.sekati.crypt.Luhn;
+import com.sekati.utils.StringUtils;
+
 /**
  * Credit Card Validation class
  * @see {@link com.sekati.crypt.Luhn}
  */
 class com.sekati.validate.CreditCardValidation {
+
 	private static var DEFAULT_ENCODE_DIGITS_SHOWN:Number = 4;
 	private static var DEFAULT_ENCODE_CHARACTER:String    = "*";
 	private static var MINIMUM_CARD_LENGTH:Number         = 13;
 	private static var MAXIMUM_CARD_LENGTH:Number         = 16;
+
 	/**
 	 * validate a credit card expiration date
 	 * @param nMonth (Number)
@@ -34,6 +38,7 @@ class com.sekati.validate.CreditCardValidation {
 		}
 		return false;
 	}
+
 	/**
 	 * validate a credit card number as much as possible before submitting for approval
 	 * @param strNumber (String) credit card number as string
@@ -47,6 +52,7 @@ class com.sekati.validate.CreditCardValidation {
 		}
 		return false;
 	}
+
 	/**
 	 * Encode a credit card number as a string and encode all digits except the last nDigitsShown
 	 * @param strNumber (String) credit card number as string
@@ -69,7 +75,6 @@ class com.sekati.validate.CreditCardValidation {
 		return strEncoded;
 	}
 	
-	private function CreditCardValidation(){}
-	//		
+	private function CreditCardValidation(){
+	}
 }
-// eof

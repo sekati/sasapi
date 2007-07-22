@@ -5,7 +5,9 @@
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
+
 import com.sekati.core.KeyFactory;
+
 /**
  * {@code Usage:
  * var gr:Graphics = new Graphics(2);
@@ -23,10 +25,12 @@ import com.sekati.core.KeyFactory;
  * }
  */
 class com.sekati.draw.Graphic extends MovieClip {
+	
 	var _mc;
 	var color:String;
 	var fill:String;
 	var thick:Number;
+	
 	// constructor
 	public function Graphics (target:MovieClip) {
 		_mc = target.createEmptyMovieClip ("graphic_"+KeyFactory.getNextName(),target.getNextHighestDepth());
@@ -36,22 +40,27 @@ class com.sekati.draw.Graphic extends MovieClip {
 		thick = 1;
 		fill = "0x666666";
 	}
+
 	// setters
 	function setColor (_color:String) {
 		color = _color;
 	}
+
 	// set thickness
 	function setThick (_thick:Number) {
 		thick = _thick;
 	}
+
 	// set fill
 	function setFill (_fill:String) {
 		fill = _fill;
 	}
+
 	//change depth
 	function changeDepth (_depth:Number) {
 		_mc.swapDepths (_depth);
 	}
+	
 	//
 	//drawing functions
 	function drawLine (x1:Number, y1:Number, x2:Number, y2:Number) {
@@ -59,6 +68,7 @@ class com.sekati.draw.Graphic extends MovieClip {
 		_mc.moveTo (x1,y1);
 		_mc.lineTo (x2,y2);
 	}
+	
 	function drawRect (x1:Number, y1:Number, width:Number, height:Number) {
 		_mc.lineStyle (thick,color);
 		_mc.moveTo (x1,y1);
@@ -67,6 +77,7 @@ class com.sekati.draw.Graphic extends MovieClip {
 		_mc.lineTo (x1,y1 + height);
 		_mc.lineTo (x1,y1);
 	}
+	
 	// fillRect
 	function fillRect (x1:Number, y1:Number, width:Number, height:Number) {
 		_mc.lineStyle (thick,color);
@@ -78,6 +89,7 @@ class com.sekati.draw.Graphic extends MovieClip {
 		_mc.lineTo (x1,y1);
 		_mc.endFill ();
 	}
+	
 	//------DRAW CURVE-------//
 
 	function drawCurve (startX:Number, startY:Number, curveControlX:Number, curveControlY:Number, endX:Number, endY:Number) {
@@ -85,6 +97,7 @@ class com.sekati.draw.Graphic extends MovieClip {
 		_mc.moveTo (startX,startY);
 		_mc.curveTo (curveControlX,curveControlY,endX,endY);
 	}
+	
 	// draw Oval
 	function drawOval (x:Number, y:Number, width:Number, height:Number) {
 		_mc.lineStyle (thick,color);
@@ -94,6 +107,7 @@ class com.sekati.draw.Graphic extends MovieClip {
 		_mc.curveTo (x + width,y + height,x + width / 2,y + height);
 		_mc.curveTo (x,y + height,x,y + height / 2);
 	}
+	
 	// draw Oval - improved!
 	function drawOval2 (x:Number,y:Number,width:Number,height:Number) {
 		var j = width * 0.70711;
@@ -111,6 +125,7 @@ class com.sekati.draw.Graphic extends MovieClip {
 		_mc.curveTo(x + i, y + height, x + j, y + n);
 		_mc.curveTo(x + width, y + m, x + width, y);
 	}
+	
 	// ---------FILL OVAL------------//
 	function fillOval (x:Number, y:Number, width:Number, height:Number) {
 		_mc.lineStyle (thick,color);
@@ -122,6 +137,7 @@ class com.sekati.draw.Graphic extends MovieClip {
 		_mc.curveTo (x,y + height,x,y + height / 2);
 		_mc.endFill ();
 	}
+	
 	//---------DRAW CIRCLE-----------//
 	//if argument styleMaker == 22.5 you get a full circle 
 	//  66 makes a star like figure
@@ -139,6 +155,7 @@ class com.sekati.draw.Graphic extends MovieClip {
 			_mc.curveTo (cX + x,cY + y,endX + x,endY + y);
 		}
 	}
+	
 	// ---------DRAW FILLED circle, -----------//
 	//if argument styleMaker == 22.5 you get a full circle 
 	//    66 makes a star like figure
@@ -158,6 +175,7 @@ class com.sekati.draw.Graphic extends MovieClip {
 		}
 		_mc.endFill ();
 	}
+	
 	//----- DRAW helix shape ---//
 	//if argument styleMaker == 22.5 you get a full circle 
 	//  66 makes a star like figure
@@ -174,6 +192,7 @@ class com.sekati.draw.Graphic extends MovieClip {
 			_mc.curveTo (cX + x,cY + y,endX + x,endY + y);
 		}
 	}
+	
 	// ---------DRAW FILLED helix SHAPE, -----------//
 	//if argument styleMaker == 22.5 you get a full circle 
 	//    66 makes a star like figure
@@ -192,6 +211,7 @@ class com.sekati.draw.Graphic extends MovieClip {
 		}
 		_mc.endFill ();
 	}
+	
 	//--------------DRAW GRADIENT SHAPE--------------//
 	//this does the same as above only now with a gradient option
 	//useage example : 
@@ -215,6 +235,7 @@ class com.sekati.draw.Graphic extends MovieClip {
 		}
 		_mc.endFill ();
 	}
+	
 	//
 	//-----------GRADIENT RECTANGLE-----------//
 	//gradientRect(0,0,200,200,0x0000ff,0x0000aa,100,100,50,50,100,100)
@@ -232,6 +253,7 @@ class com.sekati.draw.Graphic extends MovieClip {
 		_mc.lineTo (x1,y1);
 		_mc.endFill ();
 	}
+	
 	// 
 	// ----DRAW HEXAGON ----//
 	//
@@ -249,6 +271,7 @@ class com.sekati.draw.Graphic extends MovieClip {
 		_mc.lineTo (sideB + startX,startY - sideA);
 		_mc.lineTo (startX,startY);
 	}
+	
 	//usage would be drawHexagon(sideLength, startX , start Y)
 	// 
 	// ----fill HEXAGON----//
@@ -269,5 +292,6 @@ class com.sekati.draw.Graphic extends MovieClip {
 		_mc.lineTo (startX,startY);
 		_mc.endFill ();
 	}
+	
 	//usage would be fillHexagon(sideLength, startX , start Y)	
 }

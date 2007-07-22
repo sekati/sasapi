@@ -15,6 +15,7 @@
  * @see <a href="http://www.ambientdevices.com/developer/Tech%20FAQ.html">http://www.ambientdevices.com/developer/Tech%20FAQ.html</a>
  */
 class com.sekati.service.AmbientOrb {
+
 	private var _devId:String;
 	private static var _URI:String = "http://myambient.com:8080/java/my_devices/submitdata.jsp";	
 	private static var _SPECTRUM:Array = [{id:"0", hex:"0xFF0000", name:"red"}, 
@@ -78,6 +79,7 @@ class com.sekati.service.AmbientOrb {
 							 {id:"11", type:"warning", desc:"The comment contains invalid characters. Ignoring comment."}, 
 							 {id:"12", type:"error", desc:"Unspecific error"}, 
 							 {id:"13", type:"error", desc:"You are not authorized to submit data to this account (not yet implemented)"}];
+							 
  	/**
  	 * Constructor
  	 * @param devId (String) - orb device id to be controlled by this instance
@@ -86,6 +88,7 @@ class com.sekati.service.AmbientOrb {
 	public function AmbientOrb(devId:String) {
 		_devId = devId;
 	}
+	
 	/**
 	 * devId setter
 	 * @param (String) instance device Id
@@ -96,6 +99,7 @@ class com.sekati.service.AmbientOrb {
 			_devId = devId;
 		}
 	}
+	
 	/**
 	 * devId getter
 	 * @return String - instance device id
@@ -103,24 +107,28 @@ class com.sekati.service.AmbientOrb {
 	public function get devId ():String {
 		return _devId;	
 	}
+	
 	/**
 	 * spectrum getter
 	 */
 	public function get spectrum():Array {
 		return _SPECTRUM;
 	}
+	
 	/**
 	 * anim getter
 	 */
 	public function get anim():Array {
 		return _ANIM;
 	}
+	
 	/**
 	 * server code getter
 	 */
 	public function get code():Array {
 		return _CODE;
 	}		
+	
 	/**
 	 * locate a color object by one of its properties
 	 * @param prop (String) - acceptable props: "id", "hex", "name"
@@ -137,6 +145,7 @@ class com.sekati.service.AmbientOrb {
 		}
 		throw new Error ("@@@ com.sekati.service.AmbientOrb Error: could not find match for "+prop+": "+key);
 	}
+	
 	/**
 	 * locate an animation by one of its properties
 	 * @param prop (String) - acceptable props: "id", "name"
@@ -153,6 +162,7 @@ class com.sekati.service.AmbientOrb {
 		}
 		throw new Error ("@@@ com.sekati.service.AmbientOrb Error: could not find match for "+prop+": "+key);		
 	}
+	
 	/**
 	 * locate a server code by one of its properties
 	 * @param prop (String) - acceptable props: "id", "desc"
@@ -169,6 +179,7 @@ class com.sekati.service.AmbientOrb {
 		}
 		throw new Error ("@@@ com.sekati.service.AmbientOrb Error: could not find match for "+prop+": "+key);		
 	}
+	
 	/**
 	 * send new configuration to the ambient orb device id
 	 * @param colorId (String)
@@ -206,6 +217,7 @@ class com.sekati.service.AmbientOrb {
 		};
 		xm.load (query);
 	}
+	
 	/**
 	 * xml parser
 	 */
@@ -230,6 +242,4 @@ class com.sekati.service.AmbientOrb {
 		}
 		return o;
 	}
-	//	
 }
-// eof

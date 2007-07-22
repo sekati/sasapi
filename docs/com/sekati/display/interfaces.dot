@@ -7,4 +7,12 @@ strict digraph interface_diagram {
     fontname="Times-Italic",
     shape="record"
   ];
+  IBaseClip[
+    label="IBaseClip",
+    URL="IBaseClip.html",
+    tooltip="com.sekati.display.IBaseClip",
+    fontname="Times-Italic",
+    shape="record"
+  ];
+  IBaseClip -> ICoreClip;
 }

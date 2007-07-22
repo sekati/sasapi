@@ -12,11 +12,14 @@
  * Other contributors: Greg Holt, Andrew Kepert, Ydnar, Lostinet
  * @see http://pajhome.org.uk/crypt/md5
  */
- import com.sekati.crypt.IHash;
+
+import com.sekati.crypt.IHash;
+
 /**
  * Calculates the MD5 checksum.
 */
 class com.sekati.crypt.MD5 implements IHash {
+	
 	/**
 	 * Calculates the MD5 checksum.
 	 * @param src (String) hash source
@@ -25,9 +28,11 @@ class com.sekati.crypt.MD5 implements IHash {
 	public static function calculate(src:String):String {
 		return hex_md5(src);
 	}
+	
 	private static function hex_md5(src:String):String {
 		return binl2hex(core_md5(str2binl(src), src.length*8));
 	}
+	
 	private static function core_md5(x:Array, len:Number):Array {
 		x[len >> 5] |= 0x80 << ((len)%32);
 		x[(((len+64) >>> 9) << 4)+14] = len;
@@ -105,29 +110,36 @@ class com.sekati.crypt.MD5 implements IHash {
 		}
 		return new Array(a, b, c, d);
 	}
+	
 	private static function md5_cmn(q:Number, a:Number, b:Number, x:Number, s:Number, t:Number):Number {
 		return safe_add(bit_rol(safe_add(safe_add(a, q), safe_add(x, t)), s), b);
 	}
+	
 	private static function md5_ff(a:Number, b:Number, c:Number, d:Number, x:Number, s:Number, t:Number):Number {
 		return md5_cmn((b & c) | ((~b) & d), a, b, x, s, t);
 	}
+	
 	private static function md5_gg(a:Number, b:Number, c:Number, d:Number, x:Number, s:Number, t:Number):Number {
 		return md5_cmn((b & d) | (c & (~d)), a, b, x, s, t);
 	}
 	private static function md5_hh(a:Number, b:Number, c:Number, d:Number, x:Number, s:Number, t:Number):Number {
 		return md5_cmn(b ^ c ^ d, a, b, x, s, t);
 	}
+	
 	private static function md5_ii(a:Number, b:Number, c:Number, d:Number, x:Number, s:Number, t:Number):Number {
 		return md5_cmn(c ^ (b | (~d)), a, b, x, s, t);
 	}
+	
 	private static function bit_rol(num:Number, cnt:Number):Number {
 		return (num << cnt) | (num >>> (32-cnt));
 	}
+	
 	private static function safe_add(x:Number, y:Number):Number {
 		var lsw:Number = (x & 0xFFFF)+(y & 0xFFFF);
 		var msw:Number = (x >> 16)+(y >> 16)+(lsw >> 16);
 		return (msw << 16) | (lsw & 0xFFFF);
 	}
+	
 	private static function str2binl(str:String):Array {
 		var bin:Array = new Array();
 		var mask:Number = (1 << 8)-1;
@@ -136,6 +148,7 @@ class com.sekati.crypt.MD5 implements IHash {
 		}
 		return bin;
 	}
+	
 	private static function binl2hex(binarray:Array):String {
 		var str:String = new String("");
 		var tab:String = new String("0123456789abcdef");
@@ -145,7 +158,6 @@ class com.sekati.crypt.MD5 implements IHash {
 		return str;
 	}
 	
-	private function MD5(){}
-	//
+	private function MD5(){
+	}
 }
-// eof

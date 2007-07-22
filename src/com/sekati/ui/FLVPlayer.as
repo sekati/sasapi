@@ -5,15 +5,18 @@
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
+
 import com.sekati.core.App;
 import com.sekati.core.FWDepth;
 import com.sekati.data.FLV;
 import com.sekati.utils.Delegate;
 import com.sekati.display.CoreClip;
+
 /**
  * FLVPlayer controller to be used with {@link com.sekati.data.FLV}
  */
 class com.sekati.ui.FLVPlayer extends CoreClip {
+
 	private var _video:Object;
 	private var _playBtn:MovieClip;
 	private var _progBar:MovieClip;
@@ -27,9 +30,11 @@ class com.sekati.ui.FLVPlayer extends CoreClip {
 	private var _wasPlaying:Boolean;
 	private var _keyListener:Object;
 	private var _isKeyEnabled:Boolean;
+
 	// constructor
 	private function FLVPlayer () {
 	}
+
 	/**
 	 * init called via CoreClip onLoad event
 	 * @return Void
@@ -71,17 +76,20 @@ class com.sekati.ui.FLVPlayer extends CoreClip {
 		_keyListener.onKeyDown = Delegate.create (_this, keyManager);
 		Key.addListener (_keyListener);
 	}
+	
 	//--------------------------------------------------------------------------------------------------------------
 	// player init, events, controls
 	private function onAppConfigured ():Void {
 		App.debug.trace ("* initializing FLVPlayer");
 		_this.init (App.FLV_URI);
 	}
+
 	private function onVideoComplete ():Void {
 		App.debug.trace ("... FLV playback complete.");
 		_movie.seekToPercent (0);
 		onPauseFLVPlayer ();
 	}
+
 	/**
 	 * load video and initialize FLVPlayer UI and FLVPlayer Core
 	 * @param url (String) flv url
@@ -96,6 +104,7 @@ class com.sekati.ui.FLVPlayer extends CoreClip {
 		_movie.load (url, _this.video, 320, 240, _this.audioContainer);
 		_movie.playVideo ();
 	}
+
 	public function removeMovie ():Void {
 		if (_movie) {
 			_video._visible = false;
@@ -105,12 +114,14 @@ class com.sekati.ui.FLVPlayer extends CoreClip {
 			resetUI ();
 		}
 	}
+
 	public function resetUI ():Void {
 		_buffBar._xscale = 0;
 		_progBar._xscale = 0;
 		_playBtn.gotoAndStop (2);
 		_video._visible = true;
 	}
+	
 	// events for pausing from screen
 	public function onPauseFLVPlayer ():Void {
 		if (_movie) {
@@ -119,6 +130,7 @@ class com.sekati.ui.FLVPlayer extends CoreClip {
 			_movie.pause ();
 		}
 	}
+	
 	public function onResumeFLVPlayer ():Void {
 		if (_movie) {
 			_isKeyEnabled = true;
@@ -126,7 +138,7 @@ class com.sekati.ui.FLVPlayer extends CoreClip {
 			_movie.resume ();
 		}
 	}
-	//
+
 	private function movie_onProgress (loadPercent:Number, currentTimePercent:Number):Void {
 		var lp:Number = (loadPercent < 100) ? loadPercent : 100;
 		var cp:Number = (currentTimePercent < 100) ? currentTimePercent : 100;
@@ -137,6 +149,7 @@ class com.sekati.ui.FLVPlayer extends CoreClip {
 			_movie.seekToPercent (_this._progBar._xscale);
 		}
 	}
+
 	private function movie_onEvent (info:String):Void {
 		switch (info) {
 		case "bufferEmpty" :
@@ -171,17 +184,19 @@ class com.sekati.ui.FLVPlayer extends CoreClip {
 			App.debug.trace ("movieEvent: unrecognized onStatus value: " + info);
 		}
 	}
-	//
+
 	private function pauseMemory () {
 		_wasPlaying = _movie.isPaused ();
 		_movie.pause ();
 	}
+
 	private function resumeMemory () {
 		if (!_wasPlaying) {
 			_movie.resume ();
 		}
 		_wasPlaying = null;
 	}
+
 	// volumeController
 	private function setVolumeControl (p:Number):Void {
 		// bust into orig/max/min check vars to help flash cope with quick keybound calls (bad flashplayer ... baaaddd)
@@ -191,6 +206,7 @@ class com.sekati.ui.FLVPlayer extends CoreClip {
 		_volBtn.vbar._xscale = v;
 		_movie.setVolume (v);
 	}
+
 	private function seek_ui ():Void {
 		if (_this._isSeeking) {
 			// use guttBar to prevent seek offset inaccuracy while still buffering
@@ -202,6 +218,7 @@ class com.sekati.ui.FLVPlayer extends CoreClip {
 			//trace ("@seek_ui: " + percent + "% | bufferPercent: " + _buffBar._xscale + "% | bufferBar._xmouse=" + _buffBar._xmouse + " | buffBar._width: " + _buffBar._width);
 		}
 	}
+	
 	//--------------------------------------------------------------------------------------------------------------
 	// ui event controllers
 	private function keyManager ():Void {
@@ -220,20 +237,22 @@ class com.sekati.ui.FLVPlayer extends CoreClip {
 			_this.playBtn_onPress ();
 		}
 	}
-	//
+
 	private function buffBar_onPress ():Void {
 		_isSeeking = true;
 		seek_ui ();
 		pauseMemory ();
 	}
+
 	private function buffBar_onRelease ():Void {
 		_isSeeking = false;
 		resumeMemory ();
 	}
+
 	private function buffBar_onMouseMove ():Void {
 		seek_ui ();
 	}
-	//
+	
 	private function playBtn_onPress ():Void {
 		if (_movie) {
 			if (_playBtn._currentframe == 1) {
@@ -245,23 +264,25 @@ class com.sekati.ui.FLVPlayer extends CoreClip {
 			}
 		}
 	}
+	
 	private function playBtn_onRollOver ():Void {
 	}
+	
 	private function playBtn_onRollOut ():Void {
 	}
-	//
+	
 	private function volBtn_onPress ():Void {
 		_this._isDrag = true;
 		_this.setVolumeControl ();
 	}
+	
 	private function volBtn_onRelease ():Void {
 		_this._isDrag = false;
 	}
+	
 	private function volBtn_onMouseMove ():Void {
 		if (_this._isDrag) {
 			_this.setVolumeControl ();
 		}
 	}
-	//
 }
-// eof

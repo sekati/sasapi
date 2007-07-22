@@ -13,6 +13,7 @@
  * @see {@link com.sekati.validate.StringValidation}
  */
 class com.sekati.validate.TypeValidation {	
+
 	/**
 	 * get an objects type and return an info object containing properties:
 	 * {@code
@@ -111,7 +112,6 @@ class com.sekati.validate.TypeValidation {
 		return (typeof(val) == as1 || val instanceof as2);
 	}
 	
-	private function TypeValidation(){}
-	//	
+	private function TypeValidation(){
+	}
 }
-// eof

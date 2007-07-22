@@ -15,24 +15,28 @@
   * }
   */
 class com.sekati.utils.DateUtils {
+
 	/**
 	 * gets 0 indexed array of months for use with Date.getMonth()
 	 */
 	public static function get months ():Array {
 		return new Array ("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
 	}
+
 	/**
 	 * gets 0 indexed array of days for use with Date.getDay()
 	 */
 	public static function get days ():Array {
 		return new Array ("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
 	}
+
 	/**
 	 * pads hours,minutes or seconds with a leading 0, 12:01 doesn't end up 12:1
 	 */
 	public static function padTime (inn):String {
 		return (String (inn).length < 2) ? ("0" + inn) : inn;
 	}
+
 	/**
 	 * converts a db formatted date string into a Flash Date object
 	 * @param dbDate (String) date in YYYY-MM-DD HH:MM:SS format
@@ -45,6 +49,7 @@ class com.sekati.utils.DateUtils {
 		var d = new Date (dates[0], dates[1] - 1, dates[2], hours[0], hours[1], hours[2]);
 		return d;
 	}
+
 	/**
 	 * takes 24hr hours and converts to 12 hour with am/pm
 	 * @param hour24 (Number)
@@ -61,7 +66,6 @@ class com.sekati.utils.DateUtils {
 		return returnObj;
 	}
 	
-	private function DateUtils(){}
-	//
+	private function DateUtils(){
+	}
 }
-// eof
