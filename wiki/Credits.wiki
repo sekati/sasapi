@@ -20,4 +20,5 @@ I have tried to make mention in source comments when code was derived, adapted o
   * [http://www.badgers-in-foil.co.uk/projects/as2api/ as2api]
   * [http://osflash.org/ OSFlash]
   * [http://code.google.com/p/tweener/ Tweener]
+  * [http://osflash.org/projects/pixlib pixlib]
   * [http://code.google.com/p/swfin/ swfIN]
