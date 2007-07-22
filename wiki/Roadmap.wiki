@@ -8,6 +8,8 @@ SASAPI is constantly evolving, being refined, added to and built upon.  Here is 
 
 = Foundation =
 
+  * Incorporate [http://code.google.com/p/tweener/ Tweener] as the main tween engine for both AS2 and AS3.
+  * Work with [http://code.google.com/p/swfin/ swfIN] and port swfAddress to swfIN to replace Flink.
   * Buildfile cleanup and SVN feature additions.
   * Document Buildfile usage.
   * Move to an AS2 & AS3 compatible documentation system (Natural docs?).
