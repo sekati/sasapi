@@ -1,0 +1,9 @@
+strict digraph class_diagram {
+  rankdir=LR;
+  TypeFile[
+    label="File",
+    URL="File.html",
+    tooltip="com.sekati.net.File",
+    shape="record"
+  ];
+}

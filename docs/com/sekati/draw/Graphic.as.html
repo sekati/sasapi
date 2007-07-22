@@ -10,291 +10,292 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="7">     7  </span> */</span>
 <span class="lineno" id="8">     8  </span>
 <span class="lineno" id="9">     9  </span><span class="key">import</span> com.sekati.core.KeyFactory;
-<span class="lineno" id="10">    10  </span>
-<span class="lineno" id="11">    11  </span><span class="comment doc">/**
-<span class="lineno" id="12">    12  </span> * {@code Usage:
-<span class="lineno" id="13">    13  </span> * var gr:Graphics = new Graphics(2);
-<span class="lineno" id="14">    14  </span> * gr.setColor("0xff0000");
-<span class="lineno" id="15">    15  </span> * gr.setThick(3);
-<span class="lineno" id="16">    16  </span> * gr.drawLine(0,0,100,100);
-<span class="lineno" id="17">    17  </span> * gr.setFill("0x0000ff");
-<span class="lineno" id="18">    18  </span> * // draw a rect at (20,20, 200 wide, 100 high 
-<span class="lineno" id="19">    19  </span> * // and fill color blue
-<span class="lineno" id="20">    20  </span> * gr.fillRect(20,20,200,50);
-<span class="lineno" id="21">    21  </span> * gr.drawCircle(50,30,55);
-<span class="lineno" id="22">    22  </span> * // change line color to green
-<span class="lineno" id="23">    23  </span> * gr.setColor("0x00ff00");
-<span class="lineno" id="24">    24  </span> * gr.drawLine(100,100,200,200);
-<span class="lineno" id="25">    25  </span> * }
-<span class="lineno" id="26">    26  </span> */</span>
-<span class="lineno" id="27">    27  </span><span class="key">class</span> com.sekati.draw.Graphic <span class="key">extends</span> MovieClip {
-<span class="lineno" id="28">    28  </span>	
-<span class="lineno" id="29">    29  </span>	<span class="key">var</span> _mc;
-<span class="lineno" id="30">    30  </span>	<span class="key">var</span> color:String;
-<span class="lineno" id="31">    31  </span>	<span class="key">var</span> fill:String;
-<span class="lineno" id="32">    32  </span>	<span class="key">var</span> thick:Number;
-<span class="lineno" id="33">    33  </span>	
-<span class="lineno" id="34">    34  </span>	<span class="comment">// constructor</span>
-<span class="lineno" id="35">    35  </span>	<span class="key">public</span> <span class="key">function</span> Graphics (target:MovieClip) {
-<span class="lineno" id="36">    36  </span>		_mc = target.createEmptyMovieClip (<span class="str_const">"graphic_"</span>+KeyFactory.getNextName(),target.getNextHighestDepth());
-<span class="lineno" id="37">    37  </span>		KeyFactory.inject(_mc);
-<span class="lineno" id="38">    38  </span>		<span class="comment">// set defaults</span>
-<span class="lineno" id="39">    39  </span>		color = <span class="str_const">"0x000000"</span>;
-<span class="lineno" id="40">    40  </span>		thick = <span class="num_const">1</span>;
-<span class="lineno" id="41">    41  </span>		fill = <span class="str_const">"0x666666"</span>;
-<span class="lineno" id="42">    42  </span>	}
-<span class="lineno" id="43">    43  </span>
-<span class="lineno" id="44">    44  </span>	<span class="comment">// setters</span>
-<span class="lineno" id="45">    45  </span>	<span class="key">function</span> setColor (_color:String) {
-<span class="lineno" id="46">    46  </span>		color = _color;
-<span class="lineno" id="47">    47  </span>	}
-<span class="lineno" id="48">    48  </span>
-<span class="lineno" id="49">    49  </span>	<span class="comment">// set thickness</span>
-<span class="lineno" id="50">    50  </span>	<span class="key">function</span> setThick (_thick:Number) {
-<span class="lineno" id="51">    51  </span>		thick = _thick;
-<span class="lineno" id="52">    52  </span>	}
-<span class="lineno" id="53">    53  </span>
-<span class="lineno" id="54">    54  </span>	<span class="comment">// set fill</span>
-<span class="lineno" id="55">    55  </span>	<span class="key">function</span> setFill (_fill:String) {
-<span class="lineno" id="56">    56  </span>		fill = _fill;
-<span class="lineno" id="57">    57  </span>	}
-<span class="lineno" id="58">    58  </span>
-<span class="lineno" id="59">    59  </span>	<span class="comment">//change depth</span>
-<span class="lineno" id="60">    60  </span>	<span class="key">function</span> changeDepth (_depth:Number) {
-<span class="lineno" id="61">    61  </span>		_mc.swapDepths (_depth);
-<span class="lineno" id="62">    62  </span>	}
-<span class="lineno" id="63">    63  </span>	
-<span class="lineno" id="64">    64  </span>	<span class="comment">//</span>
-<span class="lineno" id="65">    65  </span>	<span class="comment">//drawing functions</span>
-<span class="lineno" id="66">    66  </span>	<span class="key">function</span> drawLine (x1:Number, y1:Number, x2:Number, y2:Number) {
-<span class="lineno" id="67">    67  </span>		_mc.lineStyle (thick,color);
-<span class="lineno" id="68">    68  </span>		_mc.moveTo (x1,y1);
-<span class="lineno" id="69">    69  </span>		_mc.lineTo (x2,y2);
-<span class="lineno" id="70">    70  </span>	}
-<span class="lineno" id="71">    71  </span>	
-<span class="lineno" id="72">    72  </span>	<span class="key">function</span> drawRect (x1:Number, y1:Number, width:Number, height:Number) {
-<span class="lineno" id="73">    73  </span>		_mc.lineStyle (thick,color);
-<span class="lineno" id="74">    74  </span>		_mc.moveTo (x1,y1);
-<span class="lineno" id="75">    75  </span>		_mc.lineTo (x1 + width,y1);
-<span class="lineno" id="76">    76  </span>		_mc.lineTo (x1 + width,y1 + height);
-<span class="lineno" id="77">    77  </span>		_mc.lineTo (x1,y1 + height);
-<span class="lineno" id="78">    78  </span>		_mc.lineTo (x1,y1);
-<span class="lineno" id="79">    79  </span>	}
-<span class="lineno" id="80">    80  </span>	
-<span class="lineno" id="81">    81  </span>	<span class="comment">// fillRect</span>
-<span class="lineno" id="82">    82  </span>	<span class="key">function</span> fillRect (x1:Number, y1:Number, width:Number, height:Number) {
-<span class="lineno" id="83">    83  </span>		_mc.lineStyle (thick,color);
-<span class="lineno" id="84">    84  </span>		_mc.moveTo (x1,y1);
-<span class="lineno" id="85">    85  </span>		_mc.beginFill (fill);
-<span class="lineno" id="86">    86  </span>		_mc.lineTo (x1 + width,y1);
-<span class="lineno" id="87">    87  </span>		_mc.lineTo (x1 + width,y1 + height);
-<span class="lineno" id="88">    88  </span>		_mc.lineTo (x1,y1 + height);
-<span class="lineno" id="89">    89  </span>		_mc.lineTo (x1,y1);
-<span class="lineno" id="90">    90  </span>		_mc.endFill ();
-<span class="lineno" id="91">    91  </span>	}
-<span class="lineno" id="92">    92  </span>	
-<span class="lineno" id="93">    93  </span>	<span class="comment">//------DRAW CURVE-------//</span>
-<span class="lineno" id="94">    94  </span>
-<span class="lineno" id="95">    95  </span>	<span class="key">function</span> drawCurve (startX:Number, startY:Number, curveControlX:Number, curveControlY:Number, endX:Number, endY:Number) {
-<span class="lineno" id="96">    96  </span>		_mc.lineStyle (thick,color);
-<span class="lineno" id="97">    97  </span>		_mc.moveTo (startX,startY);
-<span class="lineno" id="98">    98  </span>		_mc.curveTo (curveControlX,curveControlY,endX,endY);
-<span class="lineno" id="99">    99  </span>	}
-<span class="lineno" id="100">   100  </span>	
-<span class="lineno" id="101">   101  </span>	<span class="comment">// draw Oval</span>
-<span class="lineno" id="102">   102  </span>	<span class="key">function</span> drawOval (x:Number, y:Number, width:Number, height:Number) {
-<span class="lineno" id="103">   103  </span>		_mc.lineStyle (thick,color);
-<span class="lineno" id="104">   104  </span>		_mc.moveTo (x,y + height / <span class="num_const">2</span>);
-<span class="lineno" id="105">   105  </span>		_mc.curveTo (x,y,x + width / <span class="num_const">2</span>,y);
-<span class="lineno" id="106">   106  </span>		_mc.curveTo (x + width,y,x + width,y + height / <span class="num_const">2</span>);
-<span class="lineno" id="107">   107  </span>		_mc.curveTo (x + width,y + height,x + width / <span class="num_const">2</span>,y + height);
-<span class="lineno" id="108">   108  </span>		_mc.curveTo (x,y + height,x,y + height / <span class="num_const">2</span>);
-<span class="lineno" id="109">   109  </span>	}
-<span class="lineno" id="110">   110  </span>	
-<span class="lineno" id="111">   111  </span>	<span class="comment">// draw Oval - improved!</span>
-<span class="lineno" id="112">   112  </span>	<span class="key">function</span> drawOval2 (x:Number,y:Number,width:Number,height:Number) {
-<span class="lineno" id="113">   113  </span>		<span class="key">var</span> j = width * <span class="num_const">0</span>.<span class="num_const">70711</span>;
-<span class="lineno" id="114">   114  </span>		<span class="key">var</span> n = height * <span class="num_const">0</span>.<span class="num_const">70711</span>;
-<span class="lineno" id="115">   115  </span>		<span class="key">var</span> i = j - (height - n) * width / height;
-<span class="lineno" id="116">   116  </span>		<span class="key">var</span> m = n - (width - j) * height / width;
-<span class="lineno" id="117">   117  </span>		_mc.lineStyle(thick, color);
-<span class="lineno" id="118">   118  </span>		_mc.moveTo(x + width, y);
-<span class="lineno" id="119">   119  </span>		_mc.curveTo(x + width, y - m, x + j, y - n);
-<span class="lineno" id="120">   120  </span>		_mc.curveTo(x + i, y - height, x, y - height);
-<span class="lineno" id="121">   121  </span>		_mc.curveTo(x - i, y - height, x - j, y - n);
-<span class="lineno" id="122">   122  </span>		_mc.curveTo(x - width, y - m, x - width, y);
-<span class="lineno" id="123">   123  </span>		_mc.curveTo(x - width, y + m, x - j, y + n);
-<span class="lineno" id="124">   124  </span>		_mc.curveTo(x - i, y + height, x, y + height);
-<span class="lineno" id="125">   125  </span>		_mc.curveTo(x + i, y + height, x + j, y + n);
-<span class="lineno" id="126">   126  </span>		_mc.curveTo(x + width, y + m, x + width, y);
-<span class="lineno" id="127">   127  </span>	}
-<span class="lineno" id="128">   128  </span>	
-<span class="lineno" id="129">   129  </span>	<span class="comment">// ---------FILL OVAL------------//</span>
-<span class="lineno" id="130">   130  </span>	<span class="key">function</span> fillOval (x:Number, y:Number, width:Number, height:Number) {
-<span class="lineno" id="131">   131  </span>		_mc.lineStyle (thick,color);
-<span class="lineno" id="132">   132  </span>		_mc.moveTo (x,y + height / <span class="num_const">2</span>);
-<span class="lineno" id="133">   133  </span>		_mc.beginFill (fill);
-<span class="lineno" id="134">   134  </span>		_mc.curveTo (x,y,x + width / <span class="num_const">2</span>,y);
-<span class="lineno" id="135">   135  </span>		_mc.curveTo (x + width,y,x + width,y + height / <span class="num_const">2</span>);
-<span class="lineno" id="136">   136  </span>		_mc.curveTo (x + width,y + height,x + width / <span class="num_const">2</span>,y + height);
-<span class="lineno" id="137">   137  </span>		_mc.curveTo (x,y + height,x,y + height / <span class="num_const">2</span>);
-<span class="lineno" id="138">   138  </span>		_mc.endFill ();
-<span class="lineno" id="139">   139  </span>	}
-<span class="lineno" id="140">   140  </span>	
-<span class="lineno" id="141">   141  </span>	<span class="comment">//---------DRAW CIRCLE-----------//</span>
-<span class="lineno" id="142">   142  </span>	<span class="comment">//if argument styleMaker == 22.5 you get a full circle </span>
-<span class="lineno" id="143">   143  </span>	<span class="comment">//  66 makes a star like figure</span>
-<span class="lineno" id="144">   144  </span>	<span class="comment">// usage :  drawCircle(radius,x,y,22.5)</span>
-<span class="lineno" id="145">   145  </span>	<span class="key">function</span> drawCircle (r:Number, x:Number, y:Number) {
-<span class="lineno" id="146">   146  </span>		<span class="key">var</span> styleMaker:Number = <span class="num_const">22</span>.<span class="num_const">5</span>;
-<span class="lineno" id="147">   147  </span>		_mc.moveTo (x + r,y);
-<span class="lineno" id="148">   148  </span>		_mc.lineStyle (thick,color);
-<span class="lineno" id="149">   149  </span>		<span class="key">var</span> style:Number = Math.tan (styleMaker * Math.PI / <span class="num_const">180</span>);
-<span class="lineno" id="150">   150  </span>		<span class="key">for</span> (<span class="key">var</span> angle:Number = <span class="num_const">45</span>; angle &lt;= <span class="num_const">360</span>; angle += <span class="num_const">45</span>) {
-<span class="lineno" id="151">   151  </span>			<span class="key">var</span> endX:Number = r * Math.cos (angle * Math.PI / <span class="num_const">180</span>);
-<span class="lineno" id="152">   152  </span>			<span class="key">var</span> endY:Number = r * Math.sin (angle * Math.PI / <span class="num_const">180</span>);
-<span class="lineno" id="153">   153  </span>			<span class="key">var</span> cX:Number = endX + r * style * Math.cos ((angle - <span class="num_const">90</span>) * Math.PI / <span class="num_const">180</span>);
-<span class="lineno" id="154">   154  </span>			<span class="key">var</span> cY:Number = endY + r * style * Math.sin ((angle - <span class="num_const">90</span>) * Math.PI / <span class="num_const">180</span>);
-<span class="lineno" id="155">   155  </span>			_mc.curveTo (cX + x,cY + y,endX + x,endY + y);
-<span class="lineno" id="156">   156  </span>		}
-<span class="lineno" id="157">   157  </span>	}
-<span class="lineno" id="158">   158  </span>	
-<span class="lineno" id="159">   159  </span>	<span class="comment">// ---------DRAW FILLED circle, -----------//</span>
-<span class="lineno" id="160">   160  </span>	<span class="comment">//if argument styleMaker == 22.5 you get a full circle </span>
-<span class="lineno" id="161">   161  </span>	<span class="comment">//    66 makes a star like figure</span>
-<span class="lineno" id="162">   162  </span>	<span class="comment">// usage :  fillCircle(radius,x,y,22.5)</span>
-<span class="lineno" id="163">   163  </span>	<span class="key">function</span> fillCircle (r:Number, x:Number, y:Number) {
-<span class="lineno" id="164">   164  </span>		<span class="key">var</span> styleMaker:Number = <span class="num_const">22</span>.<span class="num_const">5</span>;
-<span class="lineno" id="165">   165  </span>		_mc.moveTo (x + r,y);
-<span class="lineno" id="166">   166  </span>		_mc.lineStyle (thick,color);
-<span class="lineno" id="167">   167  </span>		_mc.beginFill (fill);
-<span class="lineno" id="168">   168  </span>		<span class="key">var</span> style:Number = Math.tan (styleMaker * Math.PI / <span class="num_const">180</span>);
-<span class="lineno" id="169">   169  </span>		<span class="key">for</span> (<span class="key">var</span> angle:Number = <span class="num_const">45</span>; angle &lt;= <span class="num_const">360</span>; angle += <span class="num_const">45</span>) {
-<span class="lineno" id="170">   170  </span>			<span class="key">var</span> endX:Number = r * Math.cos (angle * Math.PI / <span class="num_const">180</span>);
-<span class="lineno" id="171">   171  </span>			<span class="key">var</span> endY:Number = r * Math.sin (angle * Math.PI / <span class="num_const">180</span>);
-<span class="lineno" id="172">   172  </span>			<span class="key">var</span> cX:Number = endX + r * style * Math.cos ((angle - <span class="num_const">90</span>) * Math.PI / <span class="num_const">180</span>);
-<span class="lineno" id="173">   173  </span>			<span class="key">var</span> cY:Number = endY + r * style * Math.sin ((angle - <span class="num_const">90</span>) * Math.PI / <span class="num_const">180</span>);
-<span class="lineno" id="174">   174  </span>			_mc.curveTo (cX + x,cY + y,endX + x,endY + y);
-<span class="lineno" id="175">   175  </span>		}
-<span class="lineno" id="176">   176  </span>		_mc.endFill ();
-<span class="lineno" id="177">   177  </span>	}
-<span class="lineno" id="178">   178  </span>	
-<span class="lineno" id="179">   179  </span>	<span class="comment">//----- DRAW helix shape ---//</span>
-<span class="lineno" id="180">   180  </span>	<span class="comment">//if argument styleMaker == 22.5 you get a full circle </span>
-<span class="lineno" id="181">   181  </span>	<span class="comment">//  66 makes a star like figure</span>
-<span class="lineno" id="182">   182  </span>	<span class="comment">// usage :  drawCircle(radius,x,y,22.5)</span>
-<span class="lineno" id="183">   183  </span>	<span class="key">function</span> drawHelix (r:Number, x:Number, y:Number, styleMaker:Number) {
-<span class="lineno" id="184">   184  </span>		_mc.moveTo (x + r,y);
-<span class="lineno" id="185">   185  </span>		_mc.lineStyle (thick,color);
-<span class="lineno" id="186">   186  </span>		<span class="key">var</span> style:Number = Math.tan (styleMaker * Math.PI / <span class="num_const">180</span>);
-<span class="lineno" id="187">   187  </span>		<span class="key">for</span> (<span class="key">var</span> angle:Number = <span class="num_const">45</span>; angle &lt;= <span class="num_const">360</span>; angle += <span class="num_const">45</span>) {
-<span class="lineno" id="188">   188  </span>			<span class="key">var</span> endX:Number = r * Math.cos (angle * Math.PI / <span class="num_const">180</span>);
-<span class="lineno" id="189">   189  </span>			<span class="key">var</span> endY:Number = r * Math.sin (angle * Math.PI / <span class="num_const">180</span>);
-<span class="lineno" id="190">   190  </span>			<span class="key">var</span> cX:Number = endX + r * style * Math.cos ((angle - <span class="num_const">90</span>) * Math.PI / <span class="num_const">180</span>);
-<span class="lineno" id="191">   191  </span>			<span class="key">var</span> cY:Number = endY + r * style * Math.sin ((angle - <span class="num_const">90</span>) * Math.PI / <span class="num_const">180</span>);
-<span class="lineno" id="192">   192  </span>			_mc.curveTo (cX + x,cY + y,endX + x,endY + y);
-<span class="lineno" id="193">   193  </span>		}
-<span class="lineno" id="194">   194  </span>	}
-<span class="lineno" id="195">   195  </span>	
-<span class="lineno" id="196">   196  </span>	<span class="comment">// ---------DRAW FILLED helix SHAPE, -----------//</span>
-<span class="lineno" id="197">   197  </span>	<span class="comment">//if argument styleMaker == 22.5 you get a full circle </span>
-<span class="lineno" id="198">   198  </span>	<span class="comment">//    66 makes a star like figure</span>
-<span class="lineno" id="199">   199  </span>	<span class="comment">// usage :  fillCircle(radius,x,y,22.5)</span>
-<span class="lineno" id="200">   200  </span>	<span class="key">function</span> fillHelix (r:Number, x:Number, y:Number, styleMaker:Number) {
-<span class="lineno" id="201">   201  </span>		_mc.moveTo (x + r,y);
-<span class="lineno" id="202">   202  </span>		_mc.lineStyle (thick,color);
-<span class="lineno" id="203">   203  </span>		_mc.beginFill (fill);
-<span class="lineno" id="204">   204  </span>		<span class="key">var</span> style:Number = Math.tan (styleMaker * Math.PI / <span class="num_const">180</span>);
-<span class="lineno" id="205">   205  </span>		<span class="key">for</span> (<span class="key">var</span> angle:Number = <span class="num_const">45</span>; angle &lt;= <span class="num_const">360</span>; angle += <span class="num_const">45</span>) {
-<span class="lineno" id="206">   206  </span>			<span class="key">var</span> endX:Number = r * Math.cos (angle * Math.PI / <span class="num_const">180</span>);
-<span class="lineno" id="207">   207  </span>			<span class="key">var</span> endY:Number = r * Math.sin (angle * Math.PI / <span class="num_const">180</span>);
-<span class="lineno" id="208">   208  </span>			<span class="key">var</span> cX:Number = endX + r * style * Math.cos ((angle - <span class="num_const">90</span>) * Math.PI / <span class="num_const">180</span>);
-<span class="lineno" id="209">   209  </span>			<span class="key">var</span> cY:Number = endY + r * style * Math.sin ((angle - <span class="num_const">90</span>) * Math.PI / <span class="num_const">180</span>);
-<span class="lineno" id="210">   210  </span>			_mc.curveTo (cX + x,cY + y,endX + x,endY + y);
-<span class="lineno" id="211">   211  </span>		}
-<span class="lineno" id="212">   212  </span>		_mc.endFill ();
-<span class="lineno" id="213">   213  </span>	}
-<span class="lineno" id="214">   214  </span>	
-<span class="lineno" id="215">   215  </span>	<span class="comment">//--------------DRAW GRADIENT SHAPE--------------//</span>
-<span class="lineno" id="216">   216  </span>	<span class="comment">//this does the same as above only now with a gradient option</span>
-<span class="lineno" id="217">   217  </span>	<span class="comment">//useage example : </span>
-<span class="lineno" id="218">   218  </span>	<span class="comment">//drawGradientShape(140,200,40,22.5,</span>
-<span class="lineno" id="219">   219  </span>	<span class="comment">//0x0000ff,0x0000ff,100,50,50,50,100,100);</span>
-<span class="lineno" id="220">   220  </span>	<span class="key">function</span> drawGradientShape (r:Number, x:Number, y:Number, styleMaker:Number, col1:Number, col2:Number, fa1:Number, fa2:Number, matrixX:Number, matrixY:Number, matrixW:Number, matrixH:Number) {
-<span class="lineno" id="221">   221  </span>		_mc.lineStyle (thick,color);
-<span class="lineno" id="222">   222  </span>		_mc.moveTo (x + r,y);
-<span class="lineno" id="223">   223  </span>		<span class="key">var</span> colors:Array = [col1, col2];
-<span class="lineno" id="224">   224  </span>		<span class="key">var</span> alphas:Array = [fa1, fa2];
-<span class="lineno" id="225">   225  </span>		<span class="key">var</span> ratios:Array = [<span class="num_const">7</span>, 0xFF];
-<span class="lineno" id="226">   226  </span>		<span class="key">var</span> matrix:Object = {matrixType:<span class="str_const">"box"</span>, x:matrixX, y:matrixY, w:matrixW, h:matrixH, r:(<span class="num_const">45</span> / <span class="num_const">180</span>) * Math.PI};
-<span class="lineno" id="227">   227  </span>		_mc.beginGradientFill (<span class="str_const">"linear"</span>,colors,alphas,ratios,matrix);
-<span class="lineno" id="228">   228  </span>		<span class="key">var</span> style:Number = Math.tan (styleMaker * Math.PI / <span class="num_const">180</span>);
-<span class="lineno" id="229">   229  </span>		<span class="key">for</span> (<span class="key">var</span> angle:Number = <span class="num_const">45</span>; angle &lt;= <span class="num_const">360</span>; angle += <span class="num_const">45</span>) {
-<span class="lineno" id="230">   230  </span>			<span class="key">var</span> endX:Number = r * Math.cos (angle * Math.PI / <span class="num_const">180</span>);
-<span class="lineno" id="231">   231  </span>			<span class="key">var</span> endY:Number = r * Math.sin (angle * Math.PI / <span class="num_const">180</span>);
-<span class="lineno" id="232">   232  </span>			<span class="key">var</span> cX:Number = endX + r * style * Math.cos ((angle - <span class="num_const">90</span>) * Math.PI / <span class="num_const">180</span>);
-<span class="lineno" id="233">   233  </span>			<span class="key">var</span> cY:Number = endY + r * style * Math.sin ((angle - <span class="num_const">90</span>) * Math.PI / <span class="num_const">180</span>);
-<span class="lineno" id="234">   234  </span>			_mc.curveTo (cX + x,cY + y,endX + x,endY + y);
-<span class="lineno" id="235">   235  </span>		}
-<span class="lineno" id="236">   236  </span>		_mc.endFill ();
-<span class="lineno" id="237">   237  </span>	}
-<span class="lineno" id="238">   238  </span>	
-<span class="lineno" id="239">   239  </span>	<span class="comment">//</span>
-<span class="lineno" id="240">   240  </span>	<span class="comment">//-----------GRADIENT RECTANGLE-----------//</span>
-<span class="lineno" id="241">   241  </span>	<span class="comment">//gradientRect(0,0,200,200,0x0000ff,0x0000aa,100,100,50,50,100,100)</span>
-<span class="lineno" id="242">   242  </span>	<span class="key">function</span> gradientRect (x1:Number, y1:Number, width:Number, height:Number, col1:Number, col2:Number, fa1:Number, fa2:Number, matrixX:Number, matrixY:Number, matrixW:Number, matrixH:Number) {
-<span class="lineno" id="243">   243  </span>		_mc.lineStyle (thick,color);
-<span class="lineno" id="244">   244  </span>		<span class="key">var</span> colors:Array = [col1, col2];
-<span class="lineno" id="245">   245  </span>		<span class="key">var</span> alphas:Array = [fa1, fa2];
-<span class="lineno" id="246">   246  </span>		<span class="key">var</span> ratios:Array = [<span class="num_const">7</span>, 0xFF];
-<span class="lineno" id="247">   247  </span>		<span class="key">var</span> matrix:Object = {matrixType:<span class="str_const">"box"</span>, x:matrixX, y:matrixY, w:matrixW, h:matrixH, r:(<span class="num_const">45</span> / <span class="num_const">180</span>) * Math.PI};
-<span class="lineno" id="248">   248  </span>		_mc.moveTo (x1,y1);
-<span class="lineno" id="249">   249  </span>		_mc.beginGradientFill (<span class="str_const">"linear"</span>,colors,alphas,ratios,matrix);
-<span class="lineno" id="250">   250  </span>		_mc.lineTo (x1 + width,y1);
-<span class="lineno" id="251">   251  </span>		_mc.lineTo (x1 + width,y1 + height);
-<span class="lineno" id="252">   252  </span>		_mc.lineTo (x1,y1 + height);
-<span class="lineno" id="253">   253  </span>		_mc.lineTo (x1,y1);
-<span class="lineno" id="254">   254  </span>		_mc.endFill ();
-<span class="lineno" id="255">   255  </span>	}
-<span class="lineno" id="256">   256  </span>	
-<span class="lineno" id="257">   257  </span>	<span class="comment">// </span>
-<span class="lineno" id="258">   258  </span>	<span class="comment">// ----DRAW HEXAGON ----//</span>
-<span class="lineno" id="259">   259  </span>	<span class="comment">//</span>
-<span class="lineno" id="260">   260  </span>	<span class="key">public</span> <span class="key">function</span> drawHexagon (hexRadius:Number, startX, startY) {
-<span class="lineno" id="261">   261  </span>		<span class="key">var</span> sideC:Number = hexRadius;
-<span class="lineno" id="262">   262  </span>		<span class="key">var</span> sideA:Number = <span class="num_const">0</span>.<span class="num_const">5</span> * sideC;
-<span class="lineno" id="263">   263  </span>		<span class="key">var</span> sideB:Number = Math.sqrt ((hexRadius * hexRadius) - (<span class="num_const">0</span>.<span class="num_const">5</span> * hexRadius) * (<span class="num_const">0</span>.<span class="num_const">5</span> * hexRadius));
-<span class="lineno" id="264">   264  </span>		_mc.lineStyle (thick,color,<span class="num_const">100</span>);
-<span class="lineno" id="265">   265  </span>		_mc.moveTo (startX,startY);
-<span class="lineno" id="266">   266  </span>		_mc.lineTo (startX,sideC + startY);
-<span class="lineno" id="267">   267  </span>		_mc.lineTo (sideB + startX,startY + sideA + sideC);
-<span class="lineno" id="268">   268  </span>		<span class="comment">// bottom point</span>
-<span class="lineno" id="269">   269  </span>		_mc.lineTo (<span class="num_const">2</span> * sideB + startX,startY + sideC);
-<span class="lineno" id="270">   270  </span>		_mc.lineTo (<span class="num_const">2</span> * sideB + startX,startY);
-<span class="lineno" id="271">   271  </span>		_mc.lineTo (sideB + startX,startY - sideA);
-<span class="lineno" id="272">   272  </span>		_mc.lineTo (startX,startY);
-<span class="lineno" id="273">   273  </span>	}
-<span class="lineno" id="274">   274  </span>	
-<span class="lineno" id="275">   275  </span>	<span class="comment">//usage would be drawHexagon(sideLength, startX , start Y)</span>
-<span class="lineno" id="276">   276  </span>	<span class="comment">// </span>
-<span class="lineno" id="277">   277  </span>	<span class="comment">// ----fill HEXAGON----//</span>
-<span class="lineno" id="278">   278  </span>	<span class="comment">//</span>
-<span class="lineno" id="279">   279  </span>	<span class="key">public</span> <span class="key">function</span> fillHexagon (hexRadius:Number, startX, startY) {
-<span class="lineno" id="280">   280  </span>		<span class="key">var</span> sideC:Number = hexRadius;
-<span class="lineno" id="281">   281  </span>		<span class="key">var</span> sideA:Number = <span class="num_const">0</span>.<span class="num_const">5</span> * sideC;
-<span class="lineno" id="282">   282  </span>		<span class="key">var</span> sideB:Number = Math.sqrt ((hexRadius * hexRadius) - (<span class="num_const">0</span>.<span class="num_const">5</span> * hexRadius) * (<span class="num_const">0</span>.<span class="num_const">5</span> * hexRadius));
-<span class="lineno" id="283">   283  </span>		_mc.lineStyle (thick,color,<span class="num_const">100</span>);
-<span class="lineno" id="284">   284  </span>		_mc.beginFill (fill);
-<span class="lineno" id="285">   285  </span>		_mc.moveTo (startX,startY);
-<span class="lineno" id="286">   286  </span>		_mc.lineTo (startX,sideC + startY);
-<span class="lineno" id="287">   287  </span>		_mc.lineTo (sideB + startX,startY + sideA + sideC);
-<span class="lineno" id="288">   288  </span>		<span class="comment">// bottom point</span>
-<span class="lineno" id="289">   289  </span>		_mc.lineTo (<span class="num_const">2</span> * sideB + startX,startY + sideC);
-<span class="lineno" id="290">   290  </span>		_mc.lineTo (<span class="num_const">2</span> * sideB + startX,startY);
-<span class="lineno" id="291">   291  </span>		_mc.lineTo (sideB + startX,startY - sideA);
-<span class="lineno" id="292">   292  </span>		_mc.lineTo (startX,startY);
-<span class="lineno" id="293">   293  </span>		_mc.endFill ();
-<span class="lineno" id="294">   294  </span>	}
-<span class="lineno" id="295">   295  </span>	
-<span class="lineno" id="296">   296  </span>	<span class="comment">//usage would be fillHexagon(sideLength, startX , start Y)	</span>
-<span class="lineno" id="297">   297  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of SASAPI" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.draw" class="button">Package</a></li><li><a href="Graphic.html" title="Detail of com.sekati.draw.Graphic API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
+<span class="lineno" id="10">    10  </span><span class="key">import</span> com.sekati.display.BaseClip;
+<span class="lineno" id="11">    11  </span>
+<span class="lineno" id="12">    12  </span><span class="comment doc">/**
+<span class="lineno" id="13">    13  </span> * {@code Usage:
+<span class="lineno" id="14">    14  </span> * var gr:Graphics = new Graphics(2);
+<span class="lineno" id="15">    15  </span> * gr.setColor("0xff0000");
+<span class="lineno" id="16">    16  </span> * gr.setThick(3);
+<span class="lineno" id="17">    17  </span> * gr.drawLine(0,0,100,100);
+<span class="lineno" id="18">    18  </span> * gr.setFill("0x0000ff");
+<span class="lineno" id="19">    19  </span> * // draw a rect at (20,20, 200 wide, 100 high 
+<span class="lineno" id="20">    20  </span> * // and fill color blue
+<span class="lineno" id="21">    21  </span> * gr.fillRect(20,20,200,50);
+<span class="lineno" id="22">    22  </span> * gr.drawCircle(50,30,55);
+<span class="lineno" id="23">    23  </span> * // change line color to green
+<span class="lineno" id="24">    24  </span> * gr.setColor("0x00ff00");
+<span class="lineno" id="25">    25  </span> * gr.drawLine(100,100,200,200);
+<span class="lineno" id="26">    26  </span> * }
+<span class="lineno" id="27">    27  </span> */</span>
+<span class="lineno" id="28">    28  </span><span class="key">class</span> com.sekati.draw.Graphic <span class="key">extends</span> BaseClip {
+<span class="lineno" id="29">    29  </span>	
+<span class="lineno" id="30">    30  </span>	<span class="key">var</span> _mc;
+<span class="lineno" id="31">    31  </span>	<span class="key">var</span> color:String;
+<span class="lineno" id="32">    32  </span>	<span class="key">var</span> fill:String;
+<span class="lineno" id="33">    33  </span>	<span class="key">var</span> thick:Number;
+<span class="lineno" id="34">    34  </span>	
+<span class="lineno" id="35">    35  </span>	<span class="comment">// constructor</span>
+<span class="lineno" id="36">    36  </span>	<span class="key">public</span> <span class="key">function</span> Graphics (target:MovieClip) {
+<span class="lineno" id="37">    37  </span>		_mc = target.createEmptyMovieClip (<span class="str_const">"graphic_"</span>+KeyFactory.getNextName(),target.getNextHighestDepth());
+<span class="lineno" id="38">    38  </span>		KeyFactory.inject(_mc);
+<span class="lineno" id="39">    39  </span>		<span class="comment">// set defaults</span>
+<span class="lineno" id="40">    40  </span>		color = <span class="str_const">"0x000000"</span>;
+<span class="lineno" id="41">    41  </span>		thick = <span class="num_const">1</span>;
+<span class="lineno" id="42">    42  </span>		fill = <span class="str_const">"0x666666"</span>;
+<span class="lineno" id="43">    43  </span>	}
+<span class="lineno" id="44">    44  </span>
+<span class="lineno" id="45">    45  </span>	<span class="comment">// setters</span>
+<span class="lineno" id="46">    46  </span>	<span class="key">function</span> setColor (_color:String) {
+<span class="lineno" id="47">    47  </span>		color = _color;
+<span class="lineno" id="48">    48  </span>	}
+<span class="lineno" id="49">    49  </span>
+<span class="lineno" id="50">    50  </span>	<span class="comment">// set thickness</span>
+<span class="lineno" id="51">    51  </span>	<span class="key">function</span> setThick (_thick:Number) {
+<span class="lineno" id="52">    52  </span>		thick = _thick;
+<span class="lineno" id="53">    53  </span>	}
+<span class="lineno" id="54">    54  </span>
+<span class="lineno" id="55">    55  </span>	<span class="comment">// set fill</span>
+<span class="lineno" id="56">    56  </span>	<span class="key">function</span> setFill (_fill:String) {
+<span class="lineno" id="57">    57  </span>		fill = _fill;
+<span class="lineno" id="58">    58  </span>	}
+<span class="lineno" id="59">    59  </span>
+<span class="lineno" id="60">    60  </span>	<span class="comment">//change depth</span>
+<span class="lineno" id="61">    61  </span>	<span class="key">function</span> changeDepth (_depth:Number) {
+<span class="lineno" id="62">    62  </span>		_mc.swapDepths (_depth);
+<span class="lineno" id="63">    63  </span>	}
+<span class="lineno" id="64">    64  </span>	
+<span class="lineno" id="65">    65  </span>	<span class="comment">//</span>
+<span class="lineno" id="66">    66  </span>	<span class="comment">//drawing functions</span>
+<span class="lineno" id="67">    67  </span>	<span class="key">function</span> drawLine (x1:Number, y1:Number, x2:Number, y2:Number) {
+<span class="lineno" id="68">    68  </span>		_mc.lineStyle (thick,color);
+<span class="lineno" id="69">    69  </span>		_mc.moveTo (x1,y1);
+<span class="lineno" id="70">    70  </span>		_mc.lineTo (x2,y2);
+<span class="lineno" id="71">    71  </span>	}
+<span class="lineno" id="72">    72  </span>	
+<span class="lineno" id="73">    73  </span>	<span class="key">function</span> drawRect (x1:Number, y1:Number, width:Number, height:Number) {
+<span class="lineno" id="74">    74  </span>		_mc.lineStyle (thick,color);
+<span class="lineno" id="75">    75  </span>		_mc.moveTo (x1,y1);
+<span class="lineno" id="76">    76  </span>		_mc.lineTo (x1 + width,y1);
+<span class="lineno" id="77">    77  </span>		_mc.lineTo (x1 + width,y1 + height);
+<span class="lineno" id="78">    78  </span>		_mc.lineTo (x1,y1 + height);
+<span class="lineno" id="79">    79  </span>		_mc.lineTo (x1,y1);
+<span class="lineno" id="80">    80  </span>	}
+<span class="lineno" id="81">    81  </span>	
+<span class="lineno" id="82">    82  </span>	<span class="comment">// fillRect</span>
+<span class="lineno" id="83">    83  </span>	<span class="key">function</span> fillRect (x1:Number, y1:Number, width:Number, height:Number) {
+<span class="lineno" id="84">    84  </span>		_mc.lineStyle (thick,color);
+<span class="lineno" id="85">    85  </span>		_mc.moveTo (x1,y1);
+<span class="lineno" id="86">    86  </span>		_mc.beginFill (fill);
+<span class="lineno" id="87">    87  </span>		_mc.lineTo (x1 + width,y1);
+<span class="lineno" id="88">    88  </span>		_mc.lineTo (x1 + width,y1 + height);
+<span class="lineno" id="89">    89  </span>		_mc.lineTo (x1,y1 + height);
+<span class="lineno" id="90">    90  </span>		_mc.lineTo (x1,y1);
+<span class="lineno" id="91">    91  </span>		_mc.endFill ();
+<span class="lineno" id="92">    92  </span>	}
+<span class="lineno" id="93">    93  </span>	
+<span class="lineno" id="94">    94  </span>	<span class="comment">//------DRAW CURVE-------//</span>
+<span class="lineno" id="95">    95  </span>
+<span class="lineno" id="96">    96  </span>	<span class="key">function</span> drawCurve (startX:Number, startY:Number, curveControlX:Number, curveControlY:Number, endX:Number, endY:Number) {
+<span class="lineno" id="97">    97  </span>		_mc.lineStyle (thick,color);
+<span class="lineno" id="98">    98  </span>		_mc.moveTo (startX,startY);
+<span class="lineno" id="99">    99  </span>		_mc.curveTo (curveControlX,curveControlY,endX,endY);
+<span class="lineno" id="100">   100  </span>	}
+<span class="lineno" id="101">   101  </span>	
+<span class="lineno" id="102">   102  </span>	<span class="comment">// draw Oval</span>
+<span class="lineno" id="103">   103  </span>	<span class="key">function</span> drawOval (x:Number, y:Number, width:Number, height:Number) {
+<span class="lineno" id="104">   104  </span>		_mc.lineStyle (thick,color);
+<span class="lineno" id="105">   105  </span>		_mc.moveTo (x,y + height / <span class="num_const">2</span>);
+<span class="lineno" id="106">   106  </span>		_mc.curveTo (x,y,x + width / <span class="num_const">2</span>,y);
+<span class="lineno" id="107">   107  </span>		_mc.curveTo (x + width,y,x + width,y + height / <span class="num_const">2</span>);
+<span class="lineno" id="108">   108  </span>		_mc.curveTo (x + width,y + height,x + width / <span class="num_const">2</span>,y + height);
+<span class="lineno" id="109">   109  </span>		_mc.curveTo (x,y + height,x,y + height / <span class="num_const">2</span>);
+<span class="lineno" id="110">   110  </span>	}
+<span class="lineno" id="111">   111  </span>	
+<span class="lineno" id="112">   112  </span>	<span class="comment">// draw Oval - improved!</span>
+<span class="lineno" id="113">   113  </span>	<span class="key">function</span> drawOval2 (x:Number,y:Number,width:Number,height:Number) {
+<span class="lineno" id="114">   114  </span>		<span class="key">var</span> j = width * <span class="num_const">0</span>.<span class="num_const">70711</span>;
+<span class="lineno" id="115">   115  </span>		<span class="key">var</span> n = height * <span class="num_const">0</span>.<span class="num_const">70711</span>;
+<span class="lineno" id="116">   116  </span>		<span class="key">var</span> i = j - (height - n) * width / height;
+<span class="lineno" id="117">   117  </span>		<span class="key">var</span> m = n - (width - j) * height / width;
+<span class="lineno" id="118">   118  </span>		_mc.lineStyle(thick, color);
+<span class="lineno" id="119">   119  </span>		_mc.moveTo(x + width, y);
+<span class="lineno" id="120">   120  </span>		_mc.curveTo(x + width, y - m, x + j, y - n);
+<span class="lineno" id="121">   121  </span>		_mc.curveTo(x + i, y - height, x, y - height);
+<span class="lineno" id="122">   122  </span>		_mc.curveTo(x - i, y - height, x - j, y - n);
+<span class="lineno" id="123">   123  </span>		_mc.curveTo(x - width, y - m, x - width, y);
+<span class="lineno" id="124">   124  </span>		_mc.curveTo(x - width, y + m, x - j, y + n);
+<span class="lineno" id="125">   125  </span>		_mc.curveTo(x - i, y + height, x, y + height);
+<span class="lineno" id="126">   126  </span>		_mc.curveTo(x + i, y + height, x + j, y + n);
+<span class="lineno" id="127">   127  </span>		_mc.curveTo(x + width, y + m, x + width, y);
+<span class="lineno" id="128">   128  </span>	}
+<span class="lineno" id="129">   129  </span>	
+<span class="lineno" id="130">   130  </span>	<span class="comment">// ---------FILL OVAL------------//</span>
+<span class="lineno" id="131">   131  </span>	<span class="key">function</span> fillOval (x:Number, y:Number, width:Number, height:Number) {
+<span class="lineno" id="132">   132  </span>		_mc.lineStyle (thick,color);
+<span class="lineno" id="133">   133  </span>		_mc.moveTo (x,y + height / <span class="num_const">2</span>);
+<span class="lineno" id="134">   134  </span>		_mc.beginFill (fill);
+<span class="lineno" id="135">   135  </span>		_mc.curveTo (x,y,x + width / <span class="num_const">2</span>,y);
+<span class="lineno" id="136">   136  </span>		_mc.curveTo (x + width,y,x + width,y + height / <span class="num_const">2</span>);
+<span class="lineno" id="137">   137  </span>		_mc.curveTo (x + width,y + height,x + width / <span class="num_const">2</span>,y + height);
+<span class="lineno" id="138">   138  </span>		_mc.curveTo (x,y + height,x,y + height / <span class="num_const">2</span>);
+<span class="lineno" id="139">   139  </span>		_mc.endFill ();
+<span class="lineno" id="140">   140  </span>	}
+<span class="lineno" id="141">   141  </span>	
+<span class="lineno" id="142">   142  </span>	<span class="comment">//---------DRAW CIRCLE-----------//</span>
+<span class="lineno" id="143">   143  </span>	<span class="comment">//if argument styleMaker == 22.5 you get a full circle </span>
+<span class="lineno" id="144">   144  </span>	<span class="comment">//  66 makes a star like figure</span>
+<span class="lineno" id="145">   145  </span>	<span class="comment">// usage :  drawCircle(radius,x,y,22.5)</span>
+<span class="lineno" id="146">   146  </span>	<span class="key">function</span> drawCircle (r:Number, x:Number, y:Number) {
+<span class="lineno" id="147">   147  </span>		<span class="key">var</span> styleMaker:Number = <span class="num_const">22</span>.<span class="num_const">5</span>;
+<span class="lineno" id="148">   148  </span>		_mc.moveTo (x + r,y);
+<span class="lineno" id="149">   149  </span>		_mc.lineStyle (thick,color);
+<span class="lineno" id="150">   150  </span>		<span class="key">var</span> style:Number = Math.tan (styleMaker * Math.PI / <span class="num_const">180</span>);
+<span class="lineno" id="151">   151  </span>		<span class="key">for</span> (<span class="key">var</span> angle:Number = <span class="num_const">45</span>; angle &lt;= <span class="num_const">360</span>; angle += <span class="num_const">45</span>) {
+<span class="lineno" id="152">   152  </span>			<span class="key">var</span> endX:Number = r * Math.cos (angle * Math.PI / <span class="num_const">180</span>);
+<span class="lineno" id="153">   153  </span>			<span class="key">var</span> endY:Number = r * Math.sin (angle * Math.PI / <span class="num_const">180</span>);
+<span class="lineno" id="154">   154  </span>			<span class="key">var</span> cX:Number = endX + r * style * Math.cos ((angle - <span class="num_const">90</span>) * Math.PI / <span class="num_const">180</span>);
+<span class="lineno" id="155">   155  </span>			<span class="key">var</span> cY:Number = endY + r * style * Math.sin ((angle - <span class="num_const">90</span>) * Math.PI / <span class="num_const">180</span>);
+<span class="lineno" id="156">   156  </span>			_mc.curveTo (cX + x,cY + y,endX + x,endY + y);
+<span class="lineno" id="157">   157  </span>		}
+<span class="lineno" id="158">   158  </span>	}
+<span class="lineno" id="159">   159  </span>	
+<span class="lineno" id="160">   160  </span>	<span class="comment">// ---------DRAW FILLED circle, -----------//</span>
+<span class="lineno" id="161">   161  </span>	<span class="comment">//if argument styleMaker == 22.5 you get a full circle </span>
+<span class="lineno" id="162">   162  </span>	<span class="comment">//    66 makes a star like figure</span>
+<span class="lineno" id="163">   163  </span>	<span class="comment">// usage :  fillCircle(radius,x,y,22.5)</span>
+<span class="lineno" id="164">   164  </span>	<span class="key">function</span> fillCircle (r:Number, x:Number, y:Number) {
+<span class="lineno" id="165">   165  </span>		<span class="key">var</span> styleMaker:Number = <span class="num_const">22</span>.<span class="num_const">5</span>;
+<span class="lineno" id="166">   166  </span>		_mc.moveTo (x + r,y);
+<span class="lineno" id="167">   167  </span>		_mc.lineStyle (thick,color);
+<span class="lineno" id="168">   168  </span>		_mc.beginFill (fill);
+<span class="lineno" id="169">   169  </span>		<span class="key">var</span> style:Number = Math.tan (styleMaker * Math.PI / <span class="num_const">180</span>);
+<span class="lineno" id="170">   170  </span>		<span class="key">for</span> (<span class="key">var</span> angle:Number = <span class="num_const">45</span>; angle &lt;= <span class="num_const">360</span>; angle += <span class="num_const">45</span>) {
+<span class="lineno" id="171">   171  </span>			<span class="key">var</span> endX:Number = r * Math.cos (angle * Math.PI / <span class="num_const">180</span>);
+<span class="lineno" id="172">   172  </span>			<span class="key">var</span> endY:Number = r * Math.sin (angle * Math.PI / <span class="num_const">180</span>);
+<span class="lineno" id="173">   173  </span>			<span class="key">var</span> cX:Number = endX + r * style * Math.cos ((angle - <span class="num_const">90</span>) * Math.PI / <span class="num_const">180</span>);
+<span class="lineno" id="174">   174  </span>			<span class="key">var</span> cY:Number = endY + r * style * Math.sin ((angle - <span class="num_const">90</span>) * Math.PI / <span class="num_const">180</span>);
+<span class="lineno" id="175">   175  </span>			_mc.curveTo (cX + x,cY + y,endX + x,endY + y);
+<span class="lineno" id="176">   176  </span>		}
+<span class="lineno" id="177">   177  </span>		_mc.endFill ();
+<span class="lineno" id="178">   178  </span>	}
+<span class="lineno" id="179">   179  </span>	
+<span class="lineno" id="180">   180  </span>	<span class="comment">//----- DRAW helix shape ---//</span>
+<span class="lineno" id="181">   181  </span>	<span class="comment">//if argument styleMaker == 22.5 you get a full circle </span>
+<span class="lineno" id="182">   182  </span>	<span class="comment">//  66 makes a star like figure</span>
+<span class="lineno" id="183">   183  </span>	<span class="comment">// usage :  drawCircle(radius,x,y,22.5)</span>
+<span class="lineno" id="184">   184  </span>	<span class="key">function</span> drawHelix (r:Number, x:Number, y:Number, styleMaker:Number) {
+<span class="lineno" id="185">   185  </span>		_mc.moveTo (x + r,y);
+<span class="lineno" id="186">   186  </span>		_mc.lineStyle (thick,color);
+<span class="lineno" id="187">   187  </span>		<span class="key">var</span> style:Number = Math.tan (styleMaker * Math.PI / <span class="num_const">180</span>);
+<span class="lineno" id="188">   188  </span>		<span class="key">for</span> (<span class="key">var</span> angle:Number = <span class="num_const">45</span>; angle &lt;= <span class="num_const">360</span>; angle += <span class="num_const">45</span>) {
+<span class="lineno" id="189">   189  </span>			<span class="key">var</span> endX:Number = r * Math.cos (angle * Math.PI / <span class="num_const">180</span>);
+<span class="lineno" id="190">   190  </span>			<span class="key">var</span> endY:Number = r * Math.sin (angle * Math.PI / <span class="num_const">180</span>);
+<span class="lineno" id="191">   191  </span>			<span class="key">var</span> cX:Number = endX + r * style * Math.cos ((angle - <span class="num_const">90</span>) * Math.PI / <span class="num_const">180</span>);
+<span class="lineno" id="192">   192  </span>			<span class="key">var</span> cY:Number = endY + r * style * Math.sin ((angle - <span class="num_const">90</span>) * Math.PI / <span class="num_const">180</span>);
+<span class="lineno" id="193">   193  </span>			_mc.curveTo (cX + x,cY + y,endX + x,endY + y);
+<span class="lineno" id="194">   194  </span>		}
+<span class="lineno" id="195">   195  </span>	}
+<span class="lineno" id="196">   196  </span>	
+<span class="lineno" id="197">   197  </span>	<span class="comment">// ---------DRAW FILLED helix SHAPE, -----------//</span>
+<span class="lineno" id="198">   198  </span>	<span class="comment">//if argument styleMaker == 22.5 you get a full circle </span>
+<span class="lineno" id="199">   199  </span>	<span class="comment">//    66 makes a star like figure</span>
+<span class="lineno" id="200">   200  </span>	<span class="comment">// usage :  fillCircle(radius,x,y,22.5)</span>
+<span class="lineno" id="201">   201  </span>	<span class="key">function</span> fillHelix (r:Number, x:Number, y:Number, styleMaker:Number) {
+<span class="lineno" id="202">   202  </span>		_mc.moveTo (x + r,y);
+<span class="lineno" id="203">   203  </span>		_mc.lineStyle (thick,color);
+<span class="lineno" id="204">   204  </span>		_mc.beginFill (fill);
+<span class="lineno" id="205">   205  </span>		<span class="key">var</span> style:Number = Math.tan (styleMaker * Math.PI / <span class="num_const">180</span>);
+<span class="lineno" id="206">   206  </span>		<span class="key">for</span> (<span class="key">var</span> angle:Number = <span class="num_const">45</span>; angle &lt;= <span class="num_const">360</span>; angle += <span class="num_const">45</span>) {
+<span class="lineno" id="207">   207  </span>			<span class="key">var</span> endX:Number = r * Math.cos (angle * Math.PI / <span class="num_const">180</span>);
+<span class="lineno" id="208">   208  </span>			<span class="key">var</span> endY:Number = r * Math.sin (angle * Math.PI / <span class="num_const">180</span>);
+<span class="lineno" id="209">   209  </span>			<span class="key">var</span> cX:Number = endX + r * style * Math.cos ((angle - <span class="num_const">90</span>) * Math.PI / <span class="num_const">180</span>);
+<span class="lineno" id="210">   210  </span>			<span class="key">var</span> cY:Number = endY + r * style * Math.sin ((angle - <span class="num_const">90</span>) * Math.PI / <span class="num_const">180</span>);
+<span class="lineno" id="211">   211  </span>			_mc.curveTo (cX + x,cY + y,endX + x,endY + y);
+<span class="lineno" id="212">   212  </span>		}
+<span class="lineno" id="213">   213  </span>		_mc.endFill ();
+<span class="lineno" id="214">   214  </span>	}
+<span class="lineno" id="215">   215  </span>	
+<span class="lineno" id="216">   216  </span>	<span class="comment">//--------------DRAW GRADIENT SHAPE--------------//</span>
+<span class="lineno" id="217">   217  </span>	<span class="comment">//this does the same as above only now with a gradient option</span>
+<span class="lineno" id="218">   218  </span>	<span class="comment">//useage example : </span>
+<span class="lineno" id="219">   219  </span>	<span class="comment">//drawGradientShape(140,200,40,22.5,</span>
+<span class="lineno" id="220">   220  </span>	<span class="comment">//0x0000ff,0x0000ff,100,50,50,50,100,100);</span>
+<span class="lineno" id="221">   221  </span>	<span class="key">function</span> drawGradientShape (r:Number, x:Number, y:Number, styleMaker:Number, col1:Number, col2:Number, fa1:Number, fa2:Number, matrixX:Number, matrixY:Number, matrixW:Number, matrixH:Number) {
+<span class="lineno" id="222">   222  </span>		_mc.lineStyle (thick,color);
+<span class="lineno" id="223">   223  </span>		_mc.moveTo (x + r,y);
+<span class="lineno" id="224">   224  </span>		<span class="key">var</span> colors:Array = [col1, col2];
+<span class="lineno" id="225">   225  </span>		<span class="key">var</span> alphas:Array = [fa1, fa2];
+<span class="lineno" id="226">   226  </span>		<span class="key">var</span> ratios:Array = [<span class="num_const">7</span>, 0xFF];
+<span class="lineno" id="227">   227  </span>		<span class="key">var</span> matrix:Object = {matrixType:<span class="str_const">"box"</span>, x:matrixX, y:matrixY, w:matrixW, h:matrixH, r:(<span class="num_const">45</span> / <span class="num_const">180</span>) * Math.PI};
+<span class="lineno" id="228">   228  </span>		_mc.beginGradientFill (<span class="str_const">"linear"</span>,colors,alphas,ratios,matrix);
+<span class="lineno" id="229">   229  </span>		<span class="key">var</span> style:Number = Math.tan (styleMaker * Math.PI / <span class="num_const">180</span>);
+<span class="lineno" id="230">   230  </span>		<span class="key">for</span> (<span class="key">var</span> angle:Number = <span class="num_const">45</span>; angle &lt;= <span class="num_const">360</span>; angle += <span class="num_const">45</span>) {
+<span class="lineno" id="231">   231  </span>			<span class="key">var</span> endX:Number = r * Math.cos (angle * Math.PI / <span class="num_const">180</span>);
+<span class="lineno" id="232">   232  </span>			<span class="key">var</span> endY:Number = r * Math.sin (angle * Math.PI / <span class="num_const">180</span>);
+<span class="lineno" id="233">   233  </span>			<span class="key">var</span> cX:Number = endX + r * style * Math.cos ((angle - <span class="num_const">90</span>) * Math.PI / <span class="num_const">180</span>);
+<span class="lineno" id="234">   234  </span>			<span class="key">var</span> cY:Number = endY + r * style * Math.sin ((angle - <span class="num_const">90</span>) * Math.PI / <span class="num_const">180</span>);
+<span class="lineno" id="235">   235  </span>			_mc.curveTo (cX + x,cY + y,endX + x,endY + y);
+<span class="lineno" id="236">   236  </span>		}
+<span class="lineno" id="237">   237  </span>		_mc.endFill ();
+<span class="lineno" id="238">   238  </span>	}
+<span class="lineno" id="239">   239  </span>	
+<span class="lineno" id="240">   240  </span>	<span class="comment">//</span>
+<span class="lineno" id="241">   241  </span>	<span class="comment">//-----------GRADIENT RECTANGLE-----------//</span>
+<span class="lineno" id="242">   242  </span>	<span class="comment">//gradientRect(0,0,200,200,0x0000ff,0x0000aa,100,100,50,50,100,100)</span>
+<span class="lineno" id="243">   243  </span>	<span class="key">function</span> gradientRect (x1:Number, y1:Number, width:Number, height:Number, col1:Number, col2:Number, fa1:Number, fa2:Number, matrixX:Number, matrixY:Number, matrixW:Number, matrixH:Number) {
+<span class="lineno" id="244">   244  </span>		_mc.lineStyle (thick,color);
+<span class="lineno" id="245">   245  </span>		<span class="key">var</span> colors:Array = [col1, col2];
+<span class="lineno" id="246">   246  </span>		<span class="key">var</span> alphas:Array = [fa1, fa2];
+<span class="lineno" id="247">   247  </span>		<span class="key">var</span> ratios:Array = [<span class="num_const">7</span>, 0xFF];
+<span class="lineno" id="248">   248  </span>		<span class="key">var</span> matrix:Object = {matrixType:<span class="str_const">"box"</span>, x:matrixX, y:matrixY, w:matrixW, h:matrixH, r:(<span class="num_const">45</span> / <span class="num_const">180</span>) * Math.PI};
+<span class="lineno" id="249">   249  </span>		_mc.moveTo (x1,y1);
+<span class="lineno" id="250">   250  </span>		_mc.beginGradientFill (<span class="str_const">"linear"</span>,colors,alphas,ratios,matrix);
+<span class="lineno" id="251">   251  </span>		_mc.lineTo (x1 + width,y1);
+<span class="lineno" id="252">   252  </span>		_mc.lineTo (x1 + width,y1 + height);
+<span class="lineno" id="253">   253  </span>		_mc.lineTo (x1,y1 + height);
+<span class="lineno" id="254">   254  </span>		_mc.lineTo (x1,y1);
+<span class="lineno" id="255">   255  </span>		_mc.endFill ();
+<span class="lineno" id="256">   256  </span>	}
+<span class="lineno" id="257">   257  </span>	
+<span class="lineno" id="258">   258  </span>	<span class="comment">// </span>
+<span class="lineno" id="259">   259  </span>	<span class="comment">// ----DRAW HEXAGON ----//</span>
+<span class="lineno" id="260">   260  </span>	<span class="comment">//</span>
+<span class="lineno" id="261">   261  </span>	<span class="key">public</span> <span class="key">function</span> drawHexagon (hexRadius:Number, startX, startY) {
+<span class="lineno" id="262">   262  </span>		<span class="key">var</span> sideC:Number = hexRadius;
+<span class="lineno" id="263">   263  </span>		<span class="key">var</span> sideA:Number = <span class="num_const">0</span>.<span class="num_const">5</span> * sideC;
+<span class="lineno" id="264">   264  </span>		<span class="key">var</span> sideB:Number = Math.sqrt ((hexRadius * hexRadius) - (<span class="num_const">0</span>.<span class="num_const">5</span> * hexRadius) * (<span class="num_const">0</span>.<span class="num_const">5</span> * hexRadius));
+<span class="lineno" id="265">   265  </span>		_mc.lineStyle (thick,color,<span class="num_const">100</span>);
+<span class="lineno" id="266">   266  </span>		_mc.moveTo (startX,startY);
+<span class="lineno" id="267">   267  </span>		_mc.lineTo (startX,sideC + startY);
+<span class="lineno" id="268">   268  </span>		_mc.lineTo (sideB + startX,startY + sideA + sideC);
+<span class="lineno" id="269">   269  </span>		<span class="comment">// bottom point</span>
+<span class="lineno" id="270">   270  </span>		_mc.lineTo (<span class="num_const">2</span> * sideB + startX,startY + sideC);
+<span class="lineno" id="271">   271  </span>		_mc.lineTo (<span class="num_const">2</span> * sideB + startX,startY);
+<span class="lineno" id="272">   272  </span>		_mc.lineTo (sideB + startX,startY - sideA);
+<span class="lineno" id="273">   273  </span>		_mc.lineTo (startX,startY);
+<span class="lineno" id="274">   274  </span>	}
+<span class="lineno" id="275">   275  </span>	
+<span class="lineno" id="276">   276  </span>	<span class="comment">//usage would be drawHexagon(sideLength, startX , start Y)</span>
+<span class="lineno" id="277">   277  </span>	<span class="comment">// </span>
+<span class="lineno" id="278">   278  </span>	<span class="comment">// ----fill HEXAGON----//</span>
+<span class="lineno" id="279">   279  </span>	<span class="comment">//</span>
+<span class="lineno" id="280">   280  </span>	<span class="key">public</span> <span class="key">function</span> fillHexagon (hexRadius:Number, startX, startY) {
+<span class="lineno" id="281">   281  </span>		<span class="key">var</span> sideC:Number = hexRadius;
+<span class="lineno" id="282">   282  </span>		<span class="key">var</span> sideA:Number = <span class="num_const">0</span>.<span class="num_const">5</span> * sideC;
+<span class="lineno" id="283">   283  </span>		<span class="key">var</span> sideB:Number = Math.sqrt ((hexRadius * hexRadius) - (<span class="num_const">0</span>.<span class="num_const">5</span> * hexRadius) * (<span class="num_const">0</span>.<span class="num_const">5</span> * hexRadius));
+<span class="lineno" id="284">   284  </span>		_mc.lineStyle (thick,color,<span class="num_const">100</span>);
+<span class="lineno" id="285">   285  </span>		_mc.beginFill (fill);
+<span class="lineno" id="286">   286  </span>		_mc.moveTo (startX,startY);
+<span class="lineno" id="287">   287  </span>		_mc.lineTo (startX,sideC + startY);
+<span class="lineno" id="288">   288  </span>		_mc.lineTo (sideB + startX,startY + sideA + sideC);
+<span class="lineno" id="289">   289  </span>		<span class="comment">// bottom point</span>
+<span class="lineno" id="290">   290  </span>		_mc.lineTo (<span class="num_const">2</span> * sideB + startX,startY + sideC);
+<span class="lineno" id="291">   291  </span>		_mc.lineTo (<span class="num_const">2</span> * sideB + startX,startY);
+<span class="lineno" id="292">   292  </span>		_mc.lineTo (sideB + startX,startY - sideA);
+<span class="lineno" id="293">   293  </span>		_mc.lineTo (startX,startY);
+<span class="lineno" id="294">   294  </span>		_mc.endFill ();
+<span class="lineno" id="295">   295  </span>	}
+<span class="lineno" id="296">   296  </span>	
+<span class="lineno" id="297">   297  </span>	<span class="comment">//usage would be fillHexagon(sideLength, startX , start Y)	</span>
+<span class="lineno" id="298">   298  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of SASAPI" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.draw" class="button">Package</a></li><li><a href="Graphic.html" title="Detail of com.sekati.draw.Graphic API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
