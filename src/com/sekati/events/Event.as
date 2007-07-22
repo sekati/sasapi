@@ -1,6 +1,6 @@
 /**
  * com.sekati.events.Event
- * @version 1.1.0
+ * @version 1.1.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -22,7 +22,9 @@ class com.sekati.events.Event {
 	private var _route:Array;
 
 	/**
-	 * Constructor - creates an event object fit for dispatching.
+	 * Constructor creates an event object fit for dispatching
+	 * Note: the contents of the data parameter are copied to
+	 * the Event object for legacy support.
 	 * @param type (String) type of event
 	 * @param target (Object) the object that dispatched this event.
 	 * @param data (Object) optional data to pass with the event
@@ -33,7 +35,7 @@ class com.sekati.events.Event {
 		_target = target;
 		_data = data;
 		// clone _data properties to the Event instance
-		// for (var i in _data) this[i] = _data[i];
+		for (var i in _data) this[i] = _data[i];
 		_route = new Array();
 	}
 
