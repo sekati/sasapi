@@ -1,9 +1,22 @@
 strict digraph class_diagram {
   rankdir=LR;
+  TypeTrigoBase[
+    label="TrigoBase",
+    URL="TrigoBase.html",
+    tooltip="com.sekati.geom.TrigoBase",
+    shape="record"
+  ];
+  TypePoint3D[
+    label="Point3D",
+    URL="Point3D.html",
+    tooltip="com.sekati.geom.Point3D",
+    shape="record"
+  ];
   TypePoint[
     label="Point",
     URL="Point.html",
     tooltip="com.sekati.geom.Point",
     shape="record"
   ];
+  TypePoint -> TypePoint3D;
 }

@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- *************************************************************************************
-		FDTKit Buildfile v1.0.5
+		FDTKit Buildfile v1.1.0
 		
 		@note	You must run this Buildfile in the same JRE as the workspace, be sure to
-				check this option in the launch configuration. 
+				check this option in the launch configuration.
+				
+		@setup	This Buildfile is currently scoped for OSX,Eclipse,Subclipse,FDT. If you
+				you would like to use it on Windows simply install Cygwin and adjust the 
+				necessary path properties.
 		
 		@see	http://www.dopelogik.com/documents/actionscript_ant/
 			     
@@ -66,9 +70,11 @@
 		<echo message="----------------------"/>
 		<echo message="Available Ant targets:"/>
 		<echo message="sloc_count"/>
+		<echo message="doc_batch"/>
 		<echo message="doc_clean"/>
 		<echo message="doc_build"/>
 		<echo message="doc_deploy"/>
+		<echo message="project_batch"/>
 		<echo message="project_create"/>
 		<echo message="project_deploy"/>
 		<echo message="compile_mtasc"/>
@@ -76,24 +82,22 @@
 		<echo message="compile_all_ide"/>
 		<echo message="launch_external"/>
 		<echo message="launch_fdt"/>
+		<!--
+		<echo message="svn_commit"/>
+		<echo message="svn_set_ignores"/>
+		-->
 		<echo message="backup_swf"/>
 		<echo message="usage"/>
 		<echo message="----------------------"/>
 		<echo message=""/>
-	</target>	
-	
-	<!-- TASK: batch :compile a batch of tasks to execute -->
-    <target name="batch">
+	</target>		
+
+	<!-- TASK: doc_batch :compile a batch of tasks to execute -->
+    <target name="doc_batch">
         <antcall target="sloc_count"/>
         <antcall target="doc_build"/>
         <antcall target="doc_deploy"/>
-    </target>
- 
-	<!-- TASK: sloc_count :count source lines of code -->
-	<target name="sloc_count">
-		<exec executable="${sloccount}">
-		</exec>
-	</target>	
+    </target>	
 	
 	<!-- TASK: doc_clean :remove all old documentation files -->	
 	<target name="doc_clean">
@@ -132,7 +136,20 @@
 			<arg value="${deploy_dest_user}@${deploy_dest_host}:${deploy_dest_docpath}"/>
 		</exec>
 	</target>
+	
+	<!-- TASK: sloc_count :count source lines of code -->
+	<target name="sloc_count">
+		<exec executable="${sloccount}">
+		</exec>
+	</target>	
 
+	<!-- TASK: project_batch :compile a batch of tasks to execute -->
+    <target name="project_batch">
+        <antcall target="sloc_count"/>
+        <antcall target="doc_build"/>
+        <antcall target="project_deploy"/>
+    </target>	
+	
 	<!-- TASK: project_deploy :rsync+ssh documentation to target server -->
 	<target name="project_deploy">
 		<exec executable="${rsync}">
@@ -145,6 +162,26 @@
 			<arg value="${deploy_dest_user}@${deploy_dest_host}:${deploy_dest_path}"/>
 		</exec>
 	</target>	
+	
+	<!-- TASK: svn_commit :commit project base to repository, see: http://subclipse.tigris.org/svnant/svn.html
+	<target name="svn_commit">
+		<svn javahl="true">
+			<commit message="Buildfile automated Ant Task commit." dir="${basedir}"/>
+		</svn>
+	</target>
+	 -->
+	
+	<!-- TASK: svn_set_ignores :set the base ignores we never want to commit
+	<target name="svn_set_ignores">
+		<ignore dir="${basedir}" pattern=".DS_Store" recurse="true"/>
+		<ignore dir="${basedir}" pattern="Thumbs.db" recurse="true"/>
+		<ignore dir="${basedir}" pattern="*.TMP" recurse="true"/>
+		<ignore dir="${basedir}" pattern="*.tmp" recurse="true"/>
+		<ignore dir="${basedir}" pattern="*.BAK" recurse="true"/>
+		<ignore dir="${basedir}" pattern="*.bak" recurse="true"/>
+		<ignore dir="${basedir}" pattern="_archive/*" recurse="true"/>
+	</target>
+	-->
 	
 	<!-- TASK: project_create :create directory structure for a new project -->
 	<target name="project_create">
