@@ -1,32 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- *************************************************************************************
-		FDTKit Buildfile Example Template
+		FDTKit Buildfile v1.0.1
 		
-		note: You have to run the script in the "same JRE as the workspace". 
-		Check this option in the launch configuration. 
-		ref: http://www.dopelogik.com/documents/actionscript_ant/
+		@note	You must run this Buildfile in the same JRE as the workspace, be sure to
+				check this option in the launch configuration. 
+		
+		@see	http://www.dopelogik.com/documents/actionscript_ant/
 			     
 		May 22, 2007 - jason m horwitz | Sekati LLC | sekati.com
      ************************************************************************************* -->
 
 <project name="SASAPI - Sekati ActionScript API" default="usage" basedir=".">
-	<!-- fdtkit properties -->
+
+	<!-- PROPERTIES: fdtkit -->
 	<property name="fdtkit" location="/Users/jason/workspace/fdtkit"/>
 	<property name="project_template" location="${fdtkit}/lib/templates/project"/>
     <property name="mtasc" location="${fdtkit}/bin/mtasc/mtasc"/>
 	<property name="as2api" location="${fdtkit}/bin/as2api/as2api_darwin"/>
 	<property name="dot_exe" location="${fdtkit}/bin/graphviz/Graphviz.app/Contents/MacOS/dot"/>
 	<property name="corelib" location="${fdtkit}/lib/FP8"/>
+
 	
-	<!-- project folder structure template -->
-	<property name="build" location="${basedir}/build"/>
+	<!-- PROPERTIES: project structure template -->
 	<property name="deploy" location="${basedir}/deploy"/>
 	<property name="docs" location="${basedir}/docs"/>
 	<property name="lib" location="${basedir}/lib"/>
 	<property name="src" location="${basedir}/src"/>
 	<property name="tests" location="${basedir}/tests"/>
+
 	
-	<!-- project specific properties -->
+	<!-- PROPERTIES: project specific -->
 	<property name="classpath" location="${src}/"/>
 	<property name="package" value="com.*"/>
 	<property name="target_fla" location="${src}/framework.fla"/>
@@ -35,9 +38,30 @@
 	<property name="width" value="800"/>
 	<property name="height" value="600"/>
 	<property name="fps" value="31"/>
-	<property name="bgcolor" value="000000"/>		
+	<property name="bgcolor" value="000000"/>
 
-	<!-- target: create_project :create directory structure for a new project -->
+
+	<!-- PROPERTIES: deployment server settings 
+	@Note: Always use trailing slashes on paths.
+	@Note: You must have your ssh key installed on the
+			target server to automate deployment.
+	-->
+	<property name="deploy_dest_user" value="jason"/>
+	<property name="deploy_dest_host" value="sekati.com"/>
+	<property name="deploy_excludes" value=".svn"/>
+	<property name="rsync" location="/usr/bin/rsync"/>
+	<property name="ssh" location="/usr/bin/rsync"/>	
+	
+	<!-- project deployment paths -->
+	<property name="deploy_source_path" location="${basedir}/"/>
+	<property name="deploy_dest_path" value="/home/www/dev/"/>	
+	
+	<!-- doc deployment paths -->
+	<property name="deploy_source_docpath" location="${docs}/"/>
+	<property name="deploy_dest_docpath" value="/home/www/dev/sasapi/"/>
+	
+	
+	<!-- TASK: create_project :create directory structure for a new project -->
 	<target name="create_project">
 		<!-- create root struct -->
 		<mkdir dir="${deploy}"/>
@@ -45,15 +69,25 @@
 		<mkdir dir="${lib}"/>
 		<mkdir dir="${src}"/>
 		<mkdir dir="${tests}"/>
-		<mkdir dir="${build}"/>
-		<!-- create build struct -->
+		<!-- create deploy struct -->
+		<mkdir dir="${deploy}/_archive"/>
+		<mkdir dir="${deploy}/assets"/>
+		<mkdir dir="${deploy}/css"/>
+		<mkdir dir="${deploy}/js"/>
+		<mkdir dir="${deploy}/php"/>
+		<!-- create lib struct -->
+		<mkdir dir="${lib}/comps"/>
+		<mkdir dir="${lib}/fonts"/>
+		<mkdir dir="${lib}/misc"/>
+		<mkdir dir="${lib}/tools"/>
 		<!-- copy project template assets -->
 		<copy todir="${build}">
 			<fileset dir="${project_template}/build"/>
 		</copy>
 	</target>
+
 	
-	<!-- target: usage :give overview of available tasks -->
+	<!-- TASK: usage :give overview of available tasks -->
 	<target name="usage">
 		<echo message=""/>
 		<echo message="----------------------"/>
@@ -71,8 +105,9 @@
 		<echo message="----------------------"/>
 		<echo message=""/>
 	</target>	
+
 	
-	<!-- target: batch :compile a batch of tasks to execute -->
+	<!-- TASK: batch :compile a batch of tasks to execute -->
     <target name="batch">
         <!--
         <antcall target="clean_docs"/>
@@ -86,7 +121,8 @@
     	--> 
     </target>
   
-	<!-- target: build_docs :run as2api to build documentation -->	
+	
+	<!-- TASK: build_docs :run as2api to build documentation -->	
 	<target name="build_docs">
 		<!-- 
 		<antcall target="clean_docs"/> 
@@ -107,7 +143,23 @@
 		<copy file="${lib}/tools/doc_sekati_unnatural.css" tofile="${docs}/unnatural.css" overwrite="true"  failonerror="true"/>
 	</target>
 
-	<!-- target: clean_documentation :remove all old documentation files -->	
+	
+	<!-- TASK: deploy_docs :rsync+ssh documentation to target server -->
+	<target name="deploy_docs">
+		<exec executable="${rsync}">
+			<arg value="-ave ssh"/>
+			<!--<arg value="${ssh}"/>-->
+			<arg value="--delete"/>
+			<arg value="--force"/>
+			<arg value="--progress"/>
+			<arg value="--exclude=${deploy_excludes}"/>
+			<arg value="${deploy_source_docpath}"/>
+			<arg value="${deploy_dest_user}@${deploy_dest_host}:${deploy_dest_docpath}"/>
+		</exec>
+	</target>
+	
+	
+	<!-- TASK: clean_documentation :remove all old documentation files -->	
 	<target name="clean_docs">
 		<defaultexcludes echo="true"/>
 		<delete includeemptydirs="true">
@@ -115,7 +167,8 @@
 		</delete>	
 	</target>
 	
-	<!-- target: compile_all_ide :compile all fla's in src dir with Flash IDE -->	
+	
+	<!-- TASK: compile_all_ide :compile all fla's in src dir with Flash IDE -->	
 	<target name="compile_all_ide">
 	    <fdt.flashCompile>
 	        <fileset dir="${src}">
@@ -124,12 +177,14 @@
 	    </fdt.flashCompile>
 	</target>
 	
-	<!-- target: test_movie :testMovie target fla in src dir with Flash IDE -->
+	
+	<!-- TASK: test_movie :testMovie target fla in src dir with Flash IDE -->
 	<target name="test_movie">
 		
 	</target>
 	
-	<!-- target: compile_ide :compile target fla in src dir with Flash IDE -->		
+	
+	<!-- TASK: compile_ide :compile target fla in src dir with Flash IDE -->		
 	<target name="compile_ide">
 	    <fdt.flashCompile>
 	        <fileset dir="${src}">
@@ -138,7 +193,8 @@
 	    </fdt.flashCompile>
 	</target>
 	
-	<!-- target: compile_mtasc :compile target fla in src dir with mtasc -->			
+	
+	<!-- TASK: compile_mtasc :compile target fla in src dir with mtasc -->
     <target name="compile_mtasc">
         <exec executable="${mtasc}" dir="." failonerror="true">
             <arg line="-cp ${corelib}"/>
@@ -148,22 +204,26 @@
         </exec>
     </target>
 
-	<!-- target: launch_fdt :launch target swf in FDT viewer -->			
+	
+	<!-- TASK: launch_fdt :launch target swf in FDT viewer -->			
     <target name="launch_fdt">
     	<fdt.viewDocument location="${target_swf}"/>
     </target>
 	
-	<!-- target: launch_external :launch target swf in FlashPlayer -->	
+	
+	<!-- TASK: launch_external :launch target swf in FlashPlayer -->	
     <target name="launch_external">
     	<fdt.extSWFViewer.startSWF file="${target_swf}" width="${movie.width}" height="${movie.height}" flashvars="${movie.flashvars}"/>
     </target>	
 
-	<!-- target: copy_to_dev :copy swf to dev directory -->	
+	
+	<!-- TASK: copy_to_dev :copy swf to dev directory -->	
 	<target name="copy_to_dev">
 	    <copy file="${target_swf}" tofile="S:\dev\${target_swf}" overwrite="true"  failonerror="true"/>
 	</target>
 
-	<!-- target: backup_swf :use buildnumber to backup swf file -->	
+	
+	<!-- TASK: backup_swf :use buildnumber to backup swf file -->	
 	<target name="backup_swf">
 	<!-- Make backups dir if needed -->
 	    <mkdir dir="backups"/>
