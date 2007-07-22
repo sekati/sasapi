@@ -7,6 +7,7 @@
  */
 
 import com.sekati.core.KeyFactory;
+import com.sekati.display.BaseClip;
 
 /**
  * {@code Usage:
@@ -24,7 +25,7 @@ import com.sekati.core.KeyFactory;
  * gr.drawLine(100,100,200,200);
  * }
  */
-class com.sekati.draw.Graphic extends MovieClip {
+class com.sekati.draw.Graphic extends BaseClip {
 	
 	var _mc;
 	var color:String;

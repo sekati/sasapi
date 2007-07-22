@@ -1,6 +1,6 @@
 /**
  * com.sekati.display.BaseClip
- * @version 1.0.0
+ * @version 1.0.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -17,9 +17,11 @@
 class com.sekati.display.BaseClip extends MovieClip {
 	
 	private var _this:MovieClip;
+	private var __isClean:Boolean;
 	
 	public function BaseClip() {
 		_this = this;
+		__isClean = false;
 		KeyFactory.inject(_this);
 	}
 	
@@ -35,8 +37,19 @@ class com.sekati.display.BaseClip extends MovieClip {
 	 * }
 	 */	
 	public function destroy():Void {
+		__isClean = true;
 		_this.onEnterFrame = null;
 		MovieClipUtils.rmClip(_this);		
+	}
+
+	/**
+	 * if destroy hasnt already been called manually
+	 * run it onUnload.
+	 */
+	public function onUnload():Void {
+		if(!__isClean) {
+			destroy();
+		}	
 	}
 
 	/**

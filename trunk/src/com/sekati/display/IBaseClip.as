@@ -1,6 +1,6 @@
 /**
  * com.sekati.display.IBaseClip
- * @version 1.0.0
+ * @version 1.0.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -19,6 +19,11 @@ interface com.sekati.display.IBaseClip {
 	 * Always call destroy() before deleting last object pointer.
 	 */	
 	function destroy():Void;
+	
+	/**
+	 * if destroy is not called manually onUnload will fire destroy.
+	 */
+	function onUnload():Void;
 	
 	/**
 	 * use default or override toString with more verbose trace output
