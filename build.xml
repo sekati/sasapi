@@ -19,7 +19,7 @@
 	<property name="as2api" location="${fdtkit}/bin/as2api/as2api_darwin"/>
 	<property name="dot_exe" location="${fdtkit}/bin/graphviz/Graphviz.app/Contents/MacOS/dot"/>
 	<property name="corelib" location="${fdtkit}/lib/FP8"/>
-
+	<property name="sloccount" location="${basedir}/lib/tools/slocCount.sh"/>
 	
 	<!-- PROPERTIES: project structure template -->
 	<property name="deploy" location="${basedir}/deploy"/>
@@ -92,8 +92,10 @@
 		<echo message=""/>
 		<echo message="----------------------"/>
 		<echo message="Available Ant targets:"/>
-		<echo message="clean_documentation"/>
-		<echo message="build_documentation"/>
+		<echo message="clean_docs"/>
+		<echo message="build_docs"/>
+		<echo message="deploy_docs"/>
+		<echo message="sloc_count"/>
 		<echo message="test_movie"/>
 		<echo message="compile_mtasc"/>
 		<echo message="compile_ide"/>
@@ -148,7 +150,6 @@
 	<target name="deploy_docs">
 		<exec executable="${rsync}">
 			<arg value="-ave ssh"/>
-			<!--<arg value="${ssh}"/>-->
 			<arg value="--delete"/>
 			<arg value="--force"/>
 			<arg value="--progress"/>
@@ -167,6 +168,11 @@
 		</delete>	
 	</target>
 	
+	<!-- TASK: sloc_count :count source lines of code -->
+	<target name="sloc_count">
+		<exec executable="${sloccount}">
+		</exec>
+	</target>	
 	
 	<!-- TASK: compile_all_ide :compile all fla's in src dir with Flash IDE -->	
 	<target name="compile_all_ide">

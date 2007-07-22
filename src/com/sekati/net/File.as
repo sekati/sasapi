@@ -12,7 +12,7 @@ import com.sekati.utils.Delegate;
 import flash.net.FileReference;
  
 /**
- * File handler class for uploading and downloading files and FileReference Events.
+ * File handler class for uploading and downloading files and FileReference Events.<br>
  * TODO Needs thorough testing to confirm event handling works properly.
  */
 class com.sekati.net.File {
