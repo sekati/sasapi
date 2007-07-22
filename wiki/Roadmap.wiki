@@ -6,13 +6,21 @@
 SASAPI is constantly evolving, being refined, added to and built upon.  Here is some brief commentary on what you can except from future revisions:
 
 
+= Foundation =
+
+  * Buildfile cleanup and SVN feature additions.
+  * Document Buildfile usage.
+  * Move to an AS2 & AS3 compatible documentation system (Natural docs?).
+  * Incorporate automated unit testing for AS3 and possibly AS2 (?).
+
+
 = Actionscript 2.0 =
 
 AS2 development will likely continue spurred by legacy and professional projects:
   * Filling of hole, gaps or other logical voids in functionality.
   * Bug fixes & feature additions.
   * Continued refinement of overall framework.
-  * Buildfile cleanup, setup and usage documentation added.
+
 
 = Actionscript 3.0 =
 
