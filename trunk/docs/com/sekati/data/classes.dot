@@ -12,6 +12,12 @@ strict digraph class_diagram {
     tooltip="com.sekati.data.XML2Object",
     shape="record"
   ];
+  TypeSoundCenter[
+    label="SoundCenter",
+    URL="SoundCenter.html",
+    tooltip="com.sekati.data.SoundCenter",
+    shape="record"
+  ];
   TypeSharedObj[
     label="SharedObj",
     URL="SharedObj.html",

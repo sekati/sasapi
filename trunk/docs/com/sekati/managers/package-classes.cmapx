@@ -1,5 +1,4 @@
 <map id="class_diagram" name="class_diagram">
-<area shape="rect" href="StageManager.html" title="com.sekati.managers.StageManager" alt="" coords="40,152,168,200" />
-<area shape="rect" href="SoundManager.html" title="com.sekati.managers.SoundManager" alt="" coords="36,80,172,128" />
+<area shape="rect" href="StageManager.html" title="com.sekati.managers.StageManager" alt="" coords="40,80,168,128" />
 <area shape="rect" href="ContextMenuManager.html" title="com.sekati.managers.ContextMenuManager" alt="" coords="9,8,198,56" />
 </map>

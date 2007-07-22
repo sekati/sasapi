@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- *************************************************************************************
-		FDTKit Buildfile v1.0.1
+		FDTKit Buildfile v1.0.5
 		
 		@note	You must run this Buildfile in the same JRE as the workspace, be sure to
 				check this option in the launch configuration. 
@@ -27,7 +27,7 @@
 	<property name="lib" location="${basedir}/lib"/>
 	<property name="src" location="${basedir}/src"/>
 	<property name="tests" location="${basedir}/tests"/>
-
+	<property name="archive" location="${deploy}/_archive"/>
 	
 	<!-- PROPERTIES: project specific -->
 	<property name="classpath" location="${src}/"/>
@@ -39,7 +39,6 @@
 	<property name="height" value="600"/>
 	<property name="fps" value="31"/>
 	<property name="bgcolor" value="000000"/>
-
 
 	<!-- PROPERTIES: deployment server settings 
 	@Note: Always use trailing slashes on paths.
@@ -61,8 +60,94 @@
 	<property name="deploy_dest_docpath" value="/home/www/dev/sasapi/"/>
 	
 	
-	<!-- TASK: create_project :create directory structure for a new project -->
-	<target name="create_project">
+	<!-- TASK: usage :give overview of available tasks -->
+	<target name="usage">
+		<echo message=""/>
+		<echo message="----------------------"/>
+		<echo message="Available Ant targets:"/>
+		<echo message="sloc_count"/>
+		<echo message="doc_clean"/>
+		<echo message="doc_build"/>
+		<echo message="doc_deploy"/>
+		<echo message="project_create"/>
+		<echo message="project_deploy"/>
+		<echo message="compile_mtasc"/>
+		<echo message="compile_ide"/>
+		<echo message="compile_all_ide"/>
+		<echo message="launch_external"/>
+		<echo message="launch_fdt"/>
+		<echo message="backup_swf"/>
+		<echo message="usage"/>
+		<echo message="----------------------"/>
+		<echo message=""/>
+	</target>	
+	
+	<!-- TASK: batch :compile a batch of tasks to execute -->
+    <target name="batch">
+        <antcall target="sloc_count"/>
+        <antcall target="doc_build"/>
+        <antcall target="doc_deploy"/>
+    </target>
+ 
+	<!-- TASK: sloc_count :count source lines of code -->
+	<target name="sloc_count">
+		<exec executable="${sloccount}">
+		</exec>
+	</target>	
+	
+	<!-- TASK: doc_clean :remove all old documentation files -->	
+	<target name="doc_clean">
+		<defaultexcludes echo="true"/>
+		<delete includeemptydirs="true">
+			<fileset dir="${docs}" includes="**/*" excludes="**/.svn"/>
+		</delete>	
+	</target>
+	
+	<!-- TASK: doc_build :run as2api to build documentation -->	
+	<target name="doc_build">
+		<exec executable="${as2api}" failonerror="true">
+			<arg line='package-spec ${package}'/>
+			<arg line='--classpath ${src}'/>
+			<arg line='--output-dir ${docs}'/>
+			<arg line='--title ${ant.project.name}'/>
+			<arg line='--sources'/>
+			<arg line='--progress'/>
+        	<arg line='--draw-diagram'/>
+        	<arg line='--dot-exe ${dot_exe}'/>
+		</exec>
+		<copy file="${docs}/frameset.html" tofile="${docs}/index.html" overwrite="true"  failonerror="true"/>
+		<copy file="${lib}/tools/doc_sekati_style.css" tofile="${docs}/style.css" overwrite="true"  failonerror="true"/>
+		<copy file="${lib}/tools/doc_sekati_unnatural.css" tofile="${docs}/unnatural.css" overwrite="true"  failonerror="true"/>
+	</target>
+	
+	<!-- TASK: doc_deploy :rsync+ssh documentation to target server -->
+	<target name="doc_deploy">
+		<exec executable="${rsync}">
+			<arg value="-ave ssh"/>
+			<arg value="--delete"/>
+			<arg value="--force"/>
+			<arg value="--progress"/>
+			<arg value="--exclude=${deploy_excludes}"/>
+			<arg value="${deploy_source_docpath}"/>
+			<arg value="${deploy_dest_user}@${deploy_dest_host}:${deploy_dest_docpath}"/>
+		</exec>
+	</target>
+
+	<!-- TASK: project_deploy :rsync+ssh documentation to target server -->
+	<target name="project_deploy">
+		<exec executable="${rsync}">
+			<arg value="-ave ssh"/>
+			<arg value="--delete"/>
+			<arg value="--force"/>
+			<arg value="--progress"/>
+			<arg value="--exclude=${deploy_excludes}"/>
+			<arg value="${deploy_source_path}"/>
+			<arg value="${deploy_dest_user}@${deploy_dest_host}:${deploy_dest_path}"/>
+		</exec>
+	</target>	
+	
+	<!-- TASK: project_create :create directory structure for a new project -->
+	<target name="project_create">
 		<!-- create root struct -->
 		<mkdir dir="${deploy}"/>
 		<mkdir dir="${docs}"/>
@@ -84,95 +169,26 @@
 		<copy todir="${build}">
 			<fileset dir="${project_template}/build"/>
 		</copy>
-	</target>
-
-	
-	<!-- TASK: usage :give overview of available tasks -->
-	<target name="usage">
-		<echo message=""/>
-		<echo message="----------------------"/>
-		<echo message="Available Ant targets:"/>
-		<echo message="clean_docs"/>
-		<echo message="build_docs"/>
-		<echo message="deploy_docs"/>
-		<echo message="sloc_count"/>
-		<echo message="test_movie"/>
-		<echo message="compile_mtasc"/>
-		<echo message="compile_ide"/>
-		<echo message="compile_all_ide"/>
-		<echo message="launch_fdt"/>
-		<echo message="launch_external"/>
-		<echo message="copy_to_dev"/>
-		<echo message="backup_swf"/>
-		<echo message="----------------------"/>
-		<echo message=""/>
 	</target>	
 
-	
-	<!-- TASK: batch :compile a batch of tasks to execute -->
-    <target name="batch">
-        <!--
-        <antcall target="clean_docs"/>
-        <antcall target="build_docs"/>
-        <antcall target="compile_mtasc"/> 
-    	<antcall target="compile_ide"/>
-    	<antcall target="compile_all_ide"/>
-    	<antcall target="copy_to_dev"/>
-    	<antcall target="backup_swf"/>
-    	<antcall target="launch"/>
-    	--> 
-    </target>
-  
-	
-	<!-- TASK: build_docs :run as2api to build documentation -->	
-	<target name="build_docs">
-		<!-- 
-		<antcall target="clean_docs"/> 
-		<mkdir dir="${doc}"/>
-		-->
-		<exec executable="${as2api}" failonerror="true">
-			<arg line='package-spec ${package}'/>
-			<arg line='--classpath ${src}'/>
-			<arg line='--output-dir ${docs}'/>
-			<arg line='--title ${ant.project.name}'/>
-			<arg line='--sources'/>
-			<arg line='--progress'/>
-        	<arg line='--draw-diagram'/>
-        	<arg line='--dot-exe ${dot_exe}'/>
-		</exec>
-		<copy file="${docs}/frameset.html" tofile="${docs}/index.html" overwrite="true"  failonerror="true"/>
-		<copy file="${lib}/tools/doc_sekati_style.css" tofile="${docs}/style.css" overwrite="true"  failonerror="true"/>
-		<copy file="${lib}/tools/doc_sekati_unnatural.css" tofile="${docs}/unnatural.css" overwrite="true"  failonerror="true"/>
-	</target>
+	<!-- TASK: compile_mtasc :compile target fla in src dir with mtasc -->
+    <target name="compile_mtasc">
+        <exec executable="${mtasc}" dir="." failonerror="true">
+            <arg line="-cp ${corelib}"/>
+            <arg line="-cp ${classpath}"/>
+            <arg line="-v -version 8 -mx -swf"/>
+            <arg line="${target_swf} ${main_class}"/>
+        </exec>
+    </target>	
 
-	
-	<!-- TASK: deploy_docs :rsync+ssh documentation to target server -->
-	<target name="deploy_docs">
-		<exec executable="${rsync}">
-			<arg value="-ave ssh"/>
-			<arg value="--delete"/>
-			<arg value="--force"/>
-			<arg value="--progress"/>
-			<arg value="--exclude=${deploy_excludes}"/>
-			<arg value="${deploy_source_docpath}"/>
-			<arg value="${deploy_dest_user}@${deploy_dest_host}:${deploy_dest_docpath}"/>
-		</exec>
+	<!-- TASK: compile_ide :compile target fla in src dir with Flash IDE -->		
+	<target name="compile_ide">
+	    <fdt.flashCompile>
+	        <fileset dir="${src}">
+	            <include name="${target_fla}"/>
+	        </fileset>
+	    </fdt.flashCompile>
 	</target>
-	
-	
-	<!-- TASK: clean_documentation :remove all old documentation files -->	
-	<target name="clean_docs">
-		<defaultexcludes echo="true"/>
-		<delete includeemptydirs="true">
-			<fileset dir="${docs}" includes="**/*" excludes="**/.svn"/>
-		</delete>	
-	</target>
-	
-	<!-- TASK: sloc_count :count source lines of code -->
-	<target name="sloc_count">
-		<exec executable="${sloccount}">
-		</exec>
-	</target>	
 	
 	<!-- TASK: compile_all_ide :compile all fla's in src dir with Flash IDE -->	
 	<target name="compile_all_ide">
@@ -183,62 +199,26 @@
 	    </fdt.flashCompile>
 	</target>
 	
-	
-	<!-- TASK: test_movie :testMovie target fla in src dir with Flash IDE -->
-	<target name="test_movie">
-		
-	</target>
-	
-	
-	<!-- TASK: compile_ide :compile target fla in src dir with Flash IDE -->		
-	<target name="compile_ide">
-	    <fdt.flashCompile>
-	        <fileset dir="${src}">
-	            <include name="${target_fla}"/>
-	        </fileset>
-	    </fdt.flashCompile>
-	</target>
-	
-	
-	<!-- TASK: compile_mtasc :compile target fla in src dir with mtasc -->
-    <target name="compile_mtasc">
-        <exec executable="${mtasc}" dir="." failonerror="true">
-            <arg line="-cp ${corelib}"/>
-            <arg line="-cp ${classpath}"/>
-            <arg line="-v -version 8 -mx -swf"/>
-            <arg line="${target_swf} ${main_class}"/>
-        </exec>
+	<!-- TASK: launch_external :launch target swf in FlashPlayer -->	
+    <target name="launch_external">
+    	<fdt.extSWFViewer.startSWF file="${target_swf}" width="${movie.width}" height="${movie.height}" flashvars="${movie.flashvars}"/>
     </target>
-
-	
+    		
 	<!-- TASK: launch_fdt :launch target swf in FDT viewer -->			
     <target name="launch_fdt">
     	<fdt.viewDocument location="${target_swf}"/>
     </target>
 	
-	
-	<!-- TASK: launch_external :launch target swf in FlashPlayer -->	
-    <target name="launch_external">
-    	<fdt.extSWFViewer.startSWF file="${target_swf}" width="${movie.width}" height="${movie.height}" flashvars="${movie.flashvars}"/>
-    </target>	
-
-	
-	<!-- TASK: copy_to_dev :copy swf to dev directory -->	
-	<target name="copy_to_dev">
-	    <copy file="${target_swf}" tofile="S:\dev\${target_swf}" overwrite="true"  failonerror="true"/>
-	</target>
-
-	
 	<!-- TASK: backup_swf :use buildnumber to backup swf file -->	
 	<target name="backup_swf">
 	<!-- Make backups dir if needed -->
-	    <mkdir dir="backups"/>
+	    <mkdir dir="${archive}"/>
 	<!-- Increment build number -->
-	    <buildnumber file="backups\build.number"/>
+	    <buildnumber file="${archive}\build.number"/>
 	<!-- Get swf file name without swf extension and store it in the base_name property -->
 	    <basename file="${target_swf}" property="base_name" suffix=".swf"/>
 	<!-- Copy swf to backups dir with build number -->
-	    <copy file="${target_swf}" tofile="backups\${base_name}.${build.number}.swf" overwrite="false"  failonerror="true"/>
+	    <copy file="${target_swf}" tofile="${archive}\${base_name}.${build.number}.swf" overwrite="false"  failonerror="true"/>
 	</target>
 	
 </project>
