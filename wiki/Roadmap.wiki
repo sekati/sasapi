@@ -1,0 +1,21 @@
+#summary Where are we going?
+#labels Featured,Phase-Design,Phase-Requirements
+
+= Project Roadmap =
+
+SASAPI is constantly evolving, being refined, added to and built upon.  Here is some brief commentary on what you can except from future revisions:
+
+
+= Actionscript 2.0 =
+
+AS2 development will likely continue spurred by legacy and professional projects:
+  * Filling of hole, gaps or other logical voids in functionality.
+  * Bug fixes & feature additions.
+  * Continued refinement of overall framework.
+  * Buildfile cleanup, setup and usage documentation added.
+
+= Actionscript 3.0 =
+
+AS3 development will likely begin in the near future, including:
+  * porting large portions of AS2 *SASAPI* wherever logical.
+  * refactoring code to be more AS3 compliant (event systems, etc).
