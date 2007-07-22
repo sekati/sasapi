@@ -9,29 +9,24 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
 <span class="lineno" id="7">     7  </span> */</span>
 <span class="lineno" id="8">     8  </span>
-<span class="lineno" id="9">     9  </span><span class="comment doc">/**
-<span class="lineno" id="10">    10  </span> * Interface describing {@link com.sekati.display.CoreClip} which all MovieClip classes should be extended with instead of MovieClip
-<span class="lineno" id="11">    11  </span> */</span>
-<span class="lineno" id="12">    12  </span><span class="key">interface</span> com.sekati.display.ICoreClip {
-<span class="lineno" id="13">    13  </span>	<span class="comment doc">/**
-<span class="lineno" id="14">    14  </span>	 * handles the MovieClip.onLoad event which much call configUI
-<span class="lineno" id="15">    15  </span>	 */</span>
-<span class="lineno" id="16">    16  </span>	<span class="key">function</span> onLoad():Void;
-<span class="lineno" id="17">    17  </span>	<span class="comment doc">/**
-<span class="lineno" id="18">    18  </span>	 * class method called once the clip has loadeded and been registered
-<span class="lineno" id="19">    19  </span>	 * to configure the clip UI and initialize its behavior.
+<span class="lineno" id="9">     9  </span><span class="key">import</span> com.sekati.display.IBaseClip;
+<span class="lineno" id="10">    10  </span>
+<span class="lineno" id="11">    11  </span><span class="comment doc">/**
+<span class="lineno" id="12">    12  </span> * Interface describing {@link com.sekati.display.CoreClip} which
+<span class="lineno" id="13">    13  </span> * is the core UI building block class for all subclasses to
+<span class="lineno" id="14">    14  </span> * extend instead of {@link com.sekati.display.BaseClip}.
+<span class="lineno" id="15">    15  </span> */</span>
+<span class="lineno" id="16">    16  </span><span class="key">interface</span> com.sekati.display.ICoreClip <span class="key">extends</span> IBaseClip {
+<span class="lineno" id="17">    17  </span>
+<span class="lineno" id="18">    18  </span>	<span class="comment doc">/**
+<span class="lineno" id="19">    19  </span>	 * handles the MovieClip.onLoad event which much call configUI
 <span class="lineno" id="20">    20  </span>	 */</span>
-<span class="lineno" id="21">    21  </span>	<span class="key">function</span> configUI():Void;
-<span class="lineno" id="22">    22  </span>	<span class="comment doc">/**
-<span class="lineno" id="23">    23  </span>	 * Removes any internal variables, intervals, enterFrames, internal clips
-<span class="lineno" id="24">    24  </span>	 * and event observers to allow the object to be garbage collected. 
-<span class="lineno" id="25">    25  </span>	 * Always call destroy() before deleting last object pointer.
+<span class="lineno" id="21">    21  </span>	<span class="key">function</span> onLoad():Void;
+<span class="lineno" id="22">    22  </span>
+<span class="lineno" id="23">    23  </span>	<span class="comment doc">/**
+<span class="lineno" id="24">    24  </span>	 * class method called once the clip has loadeded and been registered
+<span class="lineno" id="25">    25  </span>	 * to configure the clip UI and initialize its behavior.
 <span class="lineno" id="26">    26  </span>	 */</span>
-<span class="lineno" id="27">    27  </span>	<span class="key">function</span> destroy():Void;
-<span class="lineno" id="28">    28  </span>	<span class="comment doc">/**
-<span class="lineno" id="29">    29  </span>	 * use default or override toString with more verbose trace output
-<span class="lineno" id="30">    30  </span>	 */</span>
-<span class="lineno" id="31">    31  </span>	<span class="key">function</span> toString():String;
-<span class="lineno" id="32">    32  </span>	<span class="comment">//</span>
-<span class="lineno" id="33">    33  </span>}
-<span class="lineno" id="34">    34  </span><span class="comment">// eof</span></pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of SASAPI" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.display" class="button">Package</a></li><li><a href="ICoreClip.html" title="Detail of com.sekati.display.ICoreClip API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
+<span class="lineno" id="27">    27  </span>	<span class="key">function</span> configUI():Void;
+<span class="lineno" id="28">    28  </span>	
+<span class="lineno" id="29">    29  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of SASAPI" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.display" class="button">Package</a></li><li><a href="ICoreClip.html" title="Detail of com.sekati.display.ICoreClip API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>

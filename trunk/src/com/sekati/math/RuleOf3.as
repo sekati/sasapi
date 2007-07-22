@@ -16,7 +16,9 @@
  * @see http://en.wikipedia.org/wiki/Rule_of_three_%28mathematics%29
  */
 class com.sekati.math.RuleOf3 extends Number {
+
 	private var _n:Number;
+
 	/**
 	 * @param partialValue (Number)
 	 * @param totalValue (Number)
@@ -51,6 +53,7 @@ class com.sekati.math.RuleOf3 extends Number {
 		//error
 		throw new Error("@@@ com.sekati.math.RuleOf3 Error: could not calculate faulty arguments.");
 	}
+
 	/**
 	 * return the RuleOf3 as Number
 	 * @return Number
@@ -58,6 +61,7 @@ class com.sekati.math.RuleOf3 extends Number {
 	public function valueOf():Number {
 		return _n;	
 	}
+
 	/**
 	 * return string representation of _n
 	 * @return String
@@ -65,6 +69,4 @@ class com.sekati.math.RuleOf3 extends Number {
 	public function toString():String {
 		return _n.toString();
 	}
-	//
 }
-// eof

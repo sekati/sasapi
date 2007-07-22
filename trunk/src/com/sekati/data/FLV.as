@@ -5,12 +5,15 @@
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
+
 import com.sekati.core.App;
 import com.sekati.utils.Delegate;
+
 /**
  * FLV class to be used with {@link com.sekati.ui.FLVPlayer}
  */
 class com.sekati.data.FLV {
+	
 	private var _this:FLV;
 	private var _ns:NetStream;
 	private var _nc:NetConnection;
@@ -23,17 +26,22 @@ class com.sekati.data.FLV {
 	private var _duration:Number;
 	private var _metadata:Object;
 	private var _lastSeekableTime:Number;
+	
 	//event stubs
-	public function onProgress () {}
-	public function onEvent () {}
+	public function onProgress() {
+	}
+	public function onEvent() {
+	}
+	
 	//constructor
-	public function FLV () {
+	public function FLV() {
 		_this = this;
 		_paused = false;
 		_started = false;
 		// fix for bufferPreloader flakiness
 		_duration = 1000000000;
 	}
+	
 	/**
 	 * load video and begin playback
 	 * @param url (String) flv url
@@ -74,6 +82,7 @@ class com.sekati.data.FLV {
 		//init onEnterFrame beacon (this should be a beacon & should clean after itself)
 		audioContainer.onEnterFrame = Delegate.create (_this, _onEnterFrame);
 	}
+	
 	//==========================================================
 	//beacon & cleanup
 	private function _onEnterFrame ():Void {
@@ -81,18 +90,21 @@ class com.sekati.data.FLV {
 		//so that the same event can update the scroller, preloader and time indicator		
 		onProgress (getPercent (), getPercentTimePlayed ());
 	}
+	
 	public function clean (scope, obj:String):Void {
 		//deconstructor that will clean the beacon and then remove the instance
 		delete _audioContainer.onEnterFrame;
 		_audioContainer.onEnterFrame = null;
 		delete scope[obj];
 	}
+	
 	//===========================================================
 	// Basic controls
 	public function playVideo ():Void {
 		_started = true;
 		_ns.play (_videoURL);
 	}
+	
 	public function stopVideo ():Void {
 		_ns.pause (true);
 		// dunno why this was here: maybe important?
@@ -100,18 +112,21 @@ class com.sekati.data.FLV {
 		_started = false;
 		_paused = false;
 	}
+	
 	public function pause ():Void {
 		if (!_paused && _started) {
 			_paused = true;
 			_ns.pause (true);
 		}
 	}
+	
 	public function resume ():Void {
 		if (_paused && _started) {
 			_paused = false;
 			_ns.pause (false);
 		}
 	}
+	
 	public function pauseResume ():Void {
 		if(_paused) {
 			resume();
@@ -119,67 +134,84 @@ class com.sekati.data.FLV {
 			pause();
 		}
 	}
+	
 	public function setVolume (val:Number):Void {
 		_audio.setVolume (val);
 	}
+	
 	//=======================================
 	//seek stuff
 	public function seek (time:Number):Void {
 		_ns.seek (resolveTime (time));
 	}
+	
 	public function seekToPercent (percent:Number):Void {
 		seek (_duration * percent / 100);
 	}
+	
 	public function ff ():Void {
 		//optional step size as param
 		seek (getTime () + 2);
 	}
+	
 	public function rew ():Void {
 		//optional step size as param
 		seek (getTime () - 2);
 	}
+	
 	private function resolveTime (time:Number):Number {
 		//formats time so that it fits inside the available seek scope
 		var maxTime:Number = (_lastSeekableTime != null) ? _lastSeekableTime : _duration;
 		return Math.max (Math.min (time, maxTime), 0);
 	}
+	
 	//=======================================
 	//status tools
 	public function isPaused ():Boolean {
 		return _paused;
 	}
+	
 	public function isPlaying ():Boolean {
 		return _started;
 	}
+	
 	public function isStopped ():Boolean {
 		return !_started;
 	}
+	
 	public function getTime ():Number {
 		return _ns.time;
 	}
+	
 	public function getTotalTime ():Number {
 		return _duration;
 	}
+	
 	public function getPercentTimePlayed ():Number {
 		return getTime () * 100 / _duration;
 	}
+	
 	//========================================
 	//preload status tools
 	public function getPercent ():Number {
 		return Math.round (_ns.bytesLoaded / _ns.bytesTotal * 100);
 	}
+	
 	public function getBufferPercent ():Number {
 		var total = Math.min (_duration, _ns.bufferTime);
 		return Math.min (Math.round (_ns.bufferLength / total * 100), 100);
 	}
+	
 	//=======================================
 	//Netstream & Netconnection events
 	private function nc_onResult (info:Object):Void {
 		trace ("unknown ncOnResult: " + info.code);
 	}
+	
 	private function nc_onStatus (info:Object):Void {
 		trace ("unknown ncOnStatus: " + info.code);
 	}
+	
 	private function ns_onStatus (info:Object):Void {
 		switch (info.code) {
 		case "NetStream.Buffer.Empty" :
@@ -210,6 +242,7 @@ class com.sekati.data.FLV {
 			trace ("unrecognized onStatus value: " + info.code);
 		}
 	}
+	
 	private function ns_onMetaData (metadata:Object):Void {
 		_duration = metadata.duration;
 		_lastSeekableTime = metadata.lastkeyframetimestamp;

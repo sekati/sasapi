@@ -7,12 +7,16 @@
  * 
  * Sourced from ascrypt for dependencies only - version 2.0, author Mika Pamu
  */
- import com.sekati.crypt.ICipher;
+
+import com.sekati.crypt.ICipher;
+
 /**
 * Encodes and decodes a ROT13 string.
 */
 class com.sekati.crypt.ROT13 implements ICipher {
+	
 	private static var chars:String = "ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMabcdefghijklmnopqrstuvwxyzabcdefghijklm";
+	
 	/**
 	* Encodes or decodes a ROT13 string.
 	* @param src (String)
@@ -29,7 +33,6 @@ class com.sekati.crypt.ROT13 implements ICipher {
 		return calculated;
 	}
 	
-	private function ROT13(){}
-	//
+	private function ROT13(){
+	}
 }
-// eof

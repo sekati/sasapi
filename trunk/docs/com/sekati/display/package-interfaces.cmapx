@@ -1,3 +1,4 @@
 <map id="interface_diagram" name="interface_diagram">
-<area shape="rect" href="ICoreClip.html" title="com.sekati.display.ICoreClip" alt="" coords="8,8,104,56" />
+<area shape="rect" href="ICoreClip.html" title="com.sekati.display.ICoreClip" alt="" coords="152,8,248,56" />
+<area shape="rect" href="IBaseClip.html" title="com.sekati.display.IBaseClip" alt="" coords="8,8,104,56" />
 </map>

@@ -5,7 +5,9 @@
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
+
 import flash.external.ExternalInterface;
+
 /**
  * Easily add Google Analytics (Urchin) tracking of Flash events
  * 
@@ -22,7 +24,9 @@ import flash.external.ExternalInterface;
  * @see <a href="http://www.google.com/support/analytics/bin/answer.py?answer=27243&hl=en">http://www.google.com/support/analytics/bin/answer.py?answer=27243&hl=en</a>
  */
 class com.sekati.service.Urchin {
+
 	private static var _base:String = '/site/';
+
 	/**
 	 * set site base
 	 * @return Void
@@ -33,6 +37,7 @@ class com.sekati.service.Urchin {
 	public static function setBase (base:String):Void {
 		_base = (base) ? '/' + base + '/' : _base;
 	}
+
 	/**
 	 * return site base
 	 * @return String
@@ -40,6 +45,7 @@ class com.sekati.service.Urchin {
 	public static function getBase ():String {
 		return (_base);
 	}
+
 	/**
 	 * track a page event
 	 * @return Void
@@ -54,7 +60,6 @@ class com.sekati.service.Urchin {
 		ExternalInterface.call ("urchinTracker", pv);
 	}
 	
-	private function Urchin(){}
-	//
+	private function Urchin(){
+	}
 }
-// eof

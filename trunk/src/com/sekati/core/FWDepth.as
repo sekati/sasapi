@@ -10,12 +10,13 @@
  * FrameWork Depth Manager to avoid collisions, uses negative depths for safety where appropriate
  */
 class com.sekati.core.FWDepth {
+	
 	public static var ExpressInstall:Number = 10000000;
 	public static var BaseLoader:Number = 15999;
-	public static var SoundManager:Number = -666;
+	public static var FrameBeacon:Number = -666;
 	public static var FLVAudioContainer:Number = -667;
-	
-	private function FWDepth(){}
-	//
+	public static var SoundManager:Number = -668;
+		
+	private function FWDepth(){
+	}
 }
-// eof

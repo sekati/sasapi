@@ -8,11 +8,14 @@
  * Sourced from ascrypt for dependencies only - version 1.0, author Mika Pamu
  * Orginal Flash port by: Gabor Penoff - http://www.fns.hu | fns@fns.hu
  */
+
 import com.sekati.crypt.ICipher;
+
 /**
  * Encrypts and decrypts an alleged RC4 hash.
  */
 class com.sekati.crypt.RC4 implements ICipher {
+	
 	private static var sbox:Array = new Array(255);
 	private static var mykey:Array = new Array(255);
 	
@@ -57,6 +60,7 @@ class com.sekati.crypt.RC4 implements ICipher {
 			sbox[b] = tempSwap;
 		}
 	}
+	
 	private static function calculate(plaintxt:Array, psw:Array):Array {
 		initialize(psw);
 		var i:Number = 0; var j:Number = 0;
@@ -75,6 +79,7 @@ class com.sekati.crypt.RC4 implements ICipher {
 		}
 		return cipher;
 	}
+	
 	private static function charsToHex(chars:Array):String {
 		var result:String = new String("");
 		var hexes:Array = new Array("0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f");
@@ -83,6 +88,7 @@ class com.sekati.crypt.RC4 implements ICipher {
 		}
 		return result;
 	}
+
 	private static function hexToChars(hex:String):Array {
 		var codes:Array = new Array();
 		for (var i:Number = (hex.substr(0, 2) == "0x") ? 2 : 0; i<hex.length; i+=2) {
@@ -90,6 +96,7 @@ class com.sekati.crypt.RC4 implements ICipher {
 		}
 		return codes;
 	}
+
 	private static function charsToStr(chars:Array):String {
 		var result:String = new String("");
 		for (var i:Number = 0; i<chars.length; i++) {
@@ -97,6 +104,7 @@ class com.sekati.crypt.RC4 implements ICipher {
 		}
 		return result;
 	}
+
 	private static function strToChars(str:String):Array {
 		var codes:Array = new Array();
 		for (var i:Number = 0; i<str.length; i++) {
@@ -105,7 +113,6 @@ class com.sekati.crypt.RC4 implements ICipher {
 		return codes;
 	}
 	
-	private function RC4(){}
-	//
+	private function RC4(){
+	}
 }
-// eof

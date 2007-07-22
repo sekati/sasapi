@@ -5,11 +5,14 @@
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
+
 import flash.filters.DropShadowFilter;
+
 /**
  * static class wrapping various filter utilities
  */
 class com.sekati.utils.FilterUtils {
+
 	/**
 	 * add a drop shadow to a movieclip
 	 */
@@ -20,6 +23,7 @@ class com.sekati.utils.FilterUtils {
 		filterArray.push (filter);
 		mc.filters = filterArray;
 	}
+
 	/**
 	 * clear all filters on a movieclip
 	 */
@@ -27,7 +31,6 @@ class com.sekati.utils.FilterUtils {
 		mc.filters = [];
 	}
 	
-	private function FilterUtils(){}
-	//
+	private function FilterUtils(){
+	}
 }
-// eof

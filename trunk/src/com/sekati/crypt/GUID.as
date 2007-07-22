@@ -7,13 +7,17 @@
  * 
  * Sourced from ascrypt for dependencies only - version 2.0, author Mika Pamu
  */
+
 import com.sekati.crypt.IHash;
 import com.sekati.crypt.SHA1;
+
 /**
 * Creates a new genuine unique identifier string.
 */
 class com.sekati.crypt.GUID implements IHash {
+	
 	private static var counter:Number = 0;
+	
 	/**
 	 * Creates a new Genuine Unique IDentifier.
 	 * @return String
@@ -25,7 +29,6 @@ class com.sekati.crypt.GUID implements IHash {
 		return SHA1.calculate(id1+id3+id2+counter++);
 	}
 	
-	private function GUID(){}
-	//
+	private function GUID(){
+	}
 }
-// eof

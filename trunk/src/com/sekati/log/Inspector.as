@@ -16,7 +16,9 @@
  * @see {@link com.sekati.validate.TypeValidation}
  */
 class com.sekati.log.Inspector {
+
 	private var _result:String;
+
 	/**
 	 * Constructor - passthru to {@link recurse} loop.
 	 */
@@ -24,9 +26,7 @@ class com.sekati.log.Inspector {
 		_result = "";
 		recurse.apply(this,arguments);
 	}
-	public function toString():String {
-		return _result;	
-	}
+
 	/**
 	 * recursively stringify objects contents
 	 * @param obj (Object) target object
@@ -69,6 +69,7 @@ class com.sekati.log.Inspector {
 			recurse (obj[i], newPath, level + 1, maxPathLength);
 		}
 	}
+
 	/**
 	 * Recurse through everything to find what the biggest path string 
 	 * will be - strictly for formatting purposes.
@@ -94,6 +95,8 @@ class com.sekati.log.Inspector {
 		}
 		return longestPath;
 	}
-	//
+
+	public function toString():String {
+		return _result;	
+	}
 }
-// eof

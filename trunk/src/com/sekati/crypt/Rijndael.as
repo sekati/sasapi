@@ -10,11 +10,14 @@
  * Algorithm: Joan Daemen and Vincent Rijmen
  * @see <a href="http://www.cs.ucsd.edu/~fritz/rijndael.html">http://www.cs.ucsd.edu/~fritz/rijndael.html</a>
  */
+
 import com.sekati.crypt.ICipher;
+
 /**
 * Encrypts and decrypts text with the Rijndael algorithm.
 */
 class com.sekati.crypt.Rijndael implements ICipher {
+	
 	private var roundsArray:Array;
 	private var shiftOffsets:Array;
 	private var Nr:Number, Nk:Number, Nb:Number;
@@ -23,6 +26,7 @@ class com.sekati.crypt.Rijndael implements ICipher {
 	private var SBoxInverse:Array = [ 82, 9, 106, 213, 48, 54, 165, 56, 191, 64, 163, 158, 129, 243, 215, 251, 124, 227, 57, 130, 155, 47, 255, 135, 52, 142, 67, 68, 196, 222, 233, 203, 84, 123, 148, 50, 166, 194, 35, 61, 238, 76, 149, 11, 66, 250, 195, 78, 8, 46, 161, 102, 40, 217, 36, 178, 118, 91, 162, 73, 109, 139, 209, 37, 114, 248, 246, 100, 134, 104, 152, 22, 212, 164, 92, 204, 93, 101, 182, 146, 108, 112, 72, 80, 253, 237, 185, 218, 94, 21, 70, 87, 167, 141, 157, 132, 144, 216, 171, 0, 140, 188, 211, 10, 247, 228, 88, 5, 184, 179, 69, 6, 208, 44, 30, 143, 202, 63, 15, 2, 193, 175, 189, 3, 1, 19, 138, 107, 58, 145, 17, 65, 79, 103,220, 234, 151, 242, 207, 206, 240, 180, 230, 115, 150, 172, 116, 34, 231, 173, 53, 133, 226, 249, 55, 232, 28, 117, 223, 110, 71, 241, 26, 113, 29, 41, 197, 137, 111, 183, 98, 14, 170, 24, 190, 27, 252, 86, 62, 75, 198, 210, 121, 32, 154, 219, 192, 254, 120, 205, 90, 244, 31, 221, 168, 51, 136, 7, 199, 49, 177, 18, 16, 89, 39, 128, 236, 95, 96, 81, 127, 169, 25, 181, 74, 13, 45, 229, 122, 159, 147, 201, 156, 239, 160, 224, 59, 77, 174, 42, 245, 176, 200, 235, 187, 60, 131, 83, 153, 97, 23, 43, 4, 126, 186, 119, 214, 38, 225, 105, 20, 99, 85, 33, 12, 125];
 	public var blockSize:Number = 128;
 	public var keySize:Number = 128;
+	
 	/**
 	* Constructor
 	*/
@@ -81,18 +85,17 @@ class com.sekati.crypt.Rijndael implements ICipher {
 		return charsToStr(pt);
 	}
 
-	/**
-	* Private methods.
-	*/
 	private function cyclicShiftLeft(src:Array, pos:Number):Array {
 		var temp:Array = src.slice(0, pos);
 		src = src.slice(pos).concat(temp);
 		return src;
 	}
+
 	private function xtime(poly:Number):Number {
 		poly <<= 1;
 		return ((poly & 0x100) ? (poly ^ 0x11B) : (poly));
 	}
+
 	private function mult_GF256(x:Number, y:Number):Number {
 		var result:Number = 0;
 		for (var bit:Number = 1; bit<256; bit *= 2, y = xtime(y)) {
@@ -100,6 +103,7 @@ class com.sekati.crypt.Rijndael implements ICipher {
 		}
 		return result;
 	}
+
 	private function byteSub(state:Array, dir:String):Void {
 		if(dir == "encrypt") var S:Array = this.SBox;
 		else var S:Array = this.SBoxInverse;
@@ -107,12 +111,14 @@ class com.sekati.crypt.Rijndael implements ICipher {
 			for (var j = 0; j<this.Nb; j++) state[i][j] = S[state[i][j]];
 		}
 	}
+
 	private function shiftRow(state:Array, dir:String):Void {
 		for (var i:Number = 1; i<4; i++) {
 			if (dir == "encrypt") state[i] = this.cyclicShiftLeft(state[i], this.shiftOffsets[Nb][i]);
 			else state[i] = this.cyclicShiftLeft(state[i], this.Nb-this.shiftOffsets[Nb][i]);
 		}
 	}
+
 	private function mixColumn(state:Array, dir:String):Void {
 		var b:Array = new Array();
 		for (var j:Number = 0; j<this.Nb; j++) {
@@ -125,6 +131,7 @@ class com.sekati.crypt.Rijndael implements ICipher {
 			}
 		}
 	}
+
 	private function addRoundKey(state:Array, roundKey:Array):Void {
 		for (var j:Number = 0; j<this.Nb; j++) {
 			state[0][j] ^= (roundKey[j] & 0xFF);
@@ -133,6 +140,7 @@ class com.sekati.crypt.Rijndael implements ICipher {
 			state[3][j] ^= ((roundKey[j]>>24) &0xFF);
 		}
 	}
+
 	private function keyExpansion(key:Array):Array {
 		var temp:Number = 0;
 		this.Nk = this.keySize/32;
@@ -148,28 +156,33 @@ class com.sekati.crypt.Rijndael implements ICipher {
 		}
 		return expandedKey;
 	}
+
 	private function Round(state:Array, roundKey:Array):Void {
 		this.byteSub(state, "encrypt");
 		this.shiftRow(state, "encrypt");
 		this.mixColumn(state, "encrypt");
 		this.addRoundKey(state, roundKey);
 	}
+
 	private function InverseRound(state:Array, roundKey:Array):Void {
 		this.addRoundKey(state, roundKey);
 		this.mixColumn(state, "decrypt");
 		this.shiftRow(state, "decrypt");
 		this.byteSub(state, "decrypt");
 	}
+
 	private function FinalRound(state:Array, roundKey:Array):Void {
 		this.byteSub(state, "encrypt");
 		this.shiftRow(state, "encrypt");
 		this.addRoundKey(state, roundKey);
 	}
+
 	private function InverseFinalRound(state:Array, roundKey:Array):Void {
 		this.addRoundKey(state, roundKey);
 		this.shiftRow(state, "decrypt");
 		this.byteSub(state, "decrypt");
 	}
+
 	private function encryption(block:Array, expandedKey:Array):Array {
 		block = this.packBytes(block);
 		this.addRoundKey(block, expandedKey);
@@ -179,6 +192,7 @@ class com.sekati.crypt.Rijndael implements ICipher {
 		this.FinalRound(block, expandedKey.slice(this.Nb*this.Nr));
 		return this.unpackBytes(block);
 	}
+
 	private function decryption(block:Array, expandedKey:Array):Array {
 		block = this.packBytes(block);
 		this.InverseFinalRound(block, expandedKey.slice(this.Nb*this.Nr));
@@ -188,6 +202,7 @@ class com.sekati.crypt.Rijndael implements ICipher {
 		this.addRoundKey(block, expandedKey);
 		return this.unpackBytes(block);
 	}
+
 	private function packBytes(octets:Array):Array {
 		var state:Array = new Array();
 		state[0] = new Array(); state[1] = new Array();
@@ -200,6 +215,7 @@ class com.sekati.crypt.Rijndael implements ICipher {
 		}
 		return state;
 	}
+
 	private function unpackBytes(packed:Array):Array {
 		var result:Array = new Array();
 		for (var j:Number = 0; j<packed[0].length; j++) {
@@ -210,6 +226,7 @@ class com.sekati.crypt.Rijndael implements ICipher {
 		}
 		return result;
 	}
+
 	private function formatPlaintext(plaintext:Array):Array {
 		var bpb:Number = blockSize / 8;
 		for (var i:Number = bpb-(plaintext.length % bpb); i>0 && i<bpb; i--) {
@@ -217,6 +234,7 @@ class com.sekati.crypt.Rijndael implements ICipher {
 		}
 		return plaintext;
 	}
+
 	private function getRandomBytes(howMany:Number):Array {
 		var bytes:Array = new Array();
 		for (var i:Number = 0; i<howMany; i++) {
@@ -224,6 +242,7 @@ class com.sekati.crypt.Rijndael implements ICipher {
 		}
 		return bytes;
 	}
+
 	private function hexToChars(hex:String):Array {
 		var codes:Array = new Array();
 		for (var i:Number = (hex.substr(0, 2) == "0x") ? 2 : 0; i<hex.length; i+=2) {
@@ -231,6 +250,7 @@ class com.sekati.crypt.Rijndael implements ICipher {
 		}
 		return codes;
 	}
+
 	private function charsToHex(chars:Array):String {
 		var result:String = new String("");
 		var hexes:Array = new Array("0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f");
@@ -239,6 +259,7 @@ class com.sekati.crypt.Rijndael implements ICipher {
 		}
 		return result;
 	}
+
 	private function charsToStr(chars:Array):String {
 		var result:String = new String("");
 		for (var i:Number = 0; i<chars.length; i++) {
@@ -246,6 +267,7 @@ class com.sekati.crypt.Rijndael implements ICipher {
 		}
 		return result;
 	}
+
 	private function strToChars(str:String):Array {
 		var codes:Array = new Array();
 		for (var i:Number = 0; i<str.length; i++) {
@@ -253,6 +275,4 @@ class com.sekati.crypt.Rijndael implements ICipher {
 		}
 		return codes;
 	}
-	//
 }
-// eof

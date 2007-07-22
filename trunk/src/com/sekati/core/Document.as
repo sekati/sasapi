@@ -5,9 +5,11 @@
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
+ 
 import com.sekati.core.App;
 import com.sekati.core.KeyFactory;
 import com.sekati.log.Out;
+
 /**
  * Document controller simulates an AS3 DocumentClass
  * {@code Usage on first _root frame:
@@ -16,22 +18,27 @@ import com.sekati.log.Out;
  * @see {@link com.sekati.core.App}
  */
 class com.sekati.core.Document extends MovieClip {
+	
 	public var out:Out; 
+	
 	/**
 	 * Constructor
 	 */
 	private function Document () {
 		init();
 	}
+	
 	/**
 	 * links class to _root timeline via constructor simulating document class
 	 * @param target (MovieClip)
 	 * @return Void
 	 */
+	 
 	public static function main(target:MovieClip):Void {
 		target.__proto__ = Document.prototype;
 		Function(Document).apply(target, null);
 	}
+	
 	/**
 	 * general movie setup and class compositions
 	 * @return Void
@@ -42,6 +49,7 @@ class com.sekati.core.Document extends MovieClip {
 		buildCompositions();
 		App.init();
 	}
+	
 	/**
 	 * general movie setup
 	 * @return Void
@@ -58,6 +66,7 @@ class com.sekati.core.Document extends MovieClip {
 		_quality = "HIGH";
 		_focusrect = false;
 	}
+	
 	/**
 	 * centralize class compositions for core functionalities (Stage, ContextMenu, misc Managers)
 	 * @return Void
@@ -67,6 +76,4 @@ class com.sekati.core.Document extends MovieClip {
 		out.createPanel();
 		out.info(this,"Document Initialized ...");
 	}
-	//
 }
-// eof

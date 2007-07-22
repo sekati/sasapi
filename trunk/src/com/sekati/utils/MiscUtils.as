@@ -10,6 +10,7 @@
  * Miscellaneous utilities - to be sorted
  */
 class com.sekati.utils.MiscUtils {
+
 	/**
 	 * get a random hexidecimal color
 	 * @return String
@@ -17,6 +18,7 @@ class com.sekati.utils.MiscUtils {
 	public static function randHex():String  {
 		return "0x" + Math.floor (Math.random () * 16777215).toString (16).toUpperCase ();
 	}	
+
 	/**
 	 * check if client flashplayer matches min version passed
 	 */
@@ -26,24 +28,28 @@ class com.sekati.utils.MiscUtils {
 		}
 		return false;
 	}
+
 	/**
 	 * javascript resize window
 	 */
 	public static function jsResizeWin(w:Number, h:Number):Void {
 		getURL ("javascript:top.resizeTo(" + w + "," + h + ")");
 	}
+
 	/**
 	 * javascript shake window
 	 */
 	public static function jsShakeWin (amount:Number):Void {
 		getURL ("javascript:function shakewin(n){if(parent.moveBy){for(i = 10;i > 0;i--){for(j = n;j > 0;j--){parent.moveBy(0,i);parent.moveBy(i,0);parent.moveBy(0,-i);parent.moveBy(-i,0);}}}};shakewin(" + amount + ");void(0)");
 	}
+
 	/**
 	 * javascript change status message
 	 */
 	public static function jsStatus(msg:String):Void {
 		getURL ("javascript:if(typeof(this.href) != 'undefined') window.status = '" + msg + "' + ' URL: ' + this.href;else return false;void(0)");
 	}
+
 	/**
 	 * javascript pop centered window
 	 */
@@ -52,6 +58,7 @@ class com.sekati.utils.MiscUtils {
 		var cy:Number = Math.round ((System.capabilities.screenResolutionY / 2) - (h / 2));
 		getURL ("javascript:NewWindow=window.open('" + wURL + "','" + wName + "','width=" + w + ",height=" + h + ",left=" + cx + ",top=" + cy + ",screenX=" + cx + ",screenY=" + cy + ",toolbar=no,location=no,scrolling=" + scr + ",directories=no,scrollbars=" + scr + ",status=no,statusbar=no,resizable=no,fullscreen=no'); NewWindow.focus(); void(0);");
 	}
+
 	/**
 	 * javascript pop centered window with single string param - needs revision
 	 */
@@ -67,6 +74,7 @@ class com.sekati.utils.MiscUtils {
 		var centery:Number = Math.round ((System.capabilities.screenResolutionY / 2) - (h / 2));
 		getURL ("javascript:NewWindow=window.open('" + wURL + "','" + wName + "','width=" + w + ",height=" + h + ",left=" + centerx + ",top=" + centery + ",screenX=" + centerx + ",screenY=" + centery + ",toolbar=no,location=no,scrolling=" + scr + ",directories=no,scrollbars=" + scr + ",status=no,statusbar=no,resizable=no,fullscreen=no'); NewWindow.focus(); void(0);");
 	}
+
 	/**
 	 * play a sound linked from library.
 	 * Deprecated: Please see com.sekati.managers.SoundManager
@@ -87,6 +95,7 @@ class com.sekati.utils.MiscUtils {
 		}
 		snd.start (0, 0);
 	}
+
 	/**
 	 * pan sound to stage pos - requires revision
 	 */
@@ -113,6 +122,7 @@ class com.sekati.utils.MiscUtils {
 		snd.setPan (p);
 		snd.start (0, 0);
 	}
+
 	/**
 	 * convert fahrenheit to celsius
 	 * @param f (Number) fahrenheit value
@@ -135,6 +145,7 @@ class com.sekati.utils.MiscUtils {
 		var c = s[0] + "." + d;
 		return Number (c);		
 	}
+
 	/**
 	 * convert celsius to fahrenheit
 	 * @param c (Number) celsius value
@@ -157,7 +168,7 @@ class com.sekati.utils.MiscUtils {
 		var f = s[0] + "." + d;
 		return Number (f);		
 	}
-	//
+
 	/* more to be converted
 		// global menu Delay (pause momentarily before initalizing to give some switch time for user)
 		_global.menuDelay = function (sec:Number, cb:Function):Void  {
@@ -187,7 +198,6 @@ class com.sekati.utils.MiscUtils {
 		};
 	 */
 	 
-	 private function MiscUtils(){}
-	 //
+	 private function MiscUtils(){
+	 }
 }
-// eof

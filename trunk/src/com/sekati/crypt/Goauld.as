@@ -7,11 +7,14 @@
  * 
  * Sourced from ascrypt for dependencies only - version 2.0, author Mika Pamu
  */
+
 import com.sekati.crypt.ICipher;
+
 /**
 * Encodes and decodes a Goauld string.
 */
 class com.sekati.crypt.Goauld implements ICipher {
+	
 	public static var shiftValue:Number = 6;
 	
 	/**
@@ -28,7 +31,6 @@ class com.sekati.crypt.Goauld implements ICipher {
 		return result;
 	}
 	
-	private function Goauld(){}
-	//
+	private function Goauld(){
+	}
 }
-// eof

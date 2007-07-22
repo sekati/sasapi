@@ -10,6 +10,7 @@
  * 
  */
 class com.sekati.draw.Rectangle {
+	
 	public static function draw (target:MovieClip, rName:String, w:Number, h:Number, color:Number, alpha:Number, lineWeight:Number, lineColor:Number):MovieClip {
 		var mc:MovieClip = target.createEmptyMovieClip (rName, target.getNextHighestDepth ());
 		var c:Number = (color) ? color : 0xFFFFFF;
@@ -27,6 +28,4 @@ class com.sekati.draw.Rectangle {
 	}
 	
 	private function Rectangle(){}
-	//	
 }
-// eof

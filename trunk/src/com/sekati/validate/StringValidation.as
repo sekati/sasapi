@@ -5,12 +5,15 @@
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
+
 import com.sekati.utils.StringUtils;
+
 /**
  * String Validation methods for form fields
  * @see {@link com.sekati.utils.StringUtils}
  */
 class com.sekati.validate.StringValidation {
+
 	/**
 	 * validate a string as a valid email address
 	 * @param str (String)
@@ -19,6 +22,7 @@ class com.sekati.validate.StringValidation {
 	public static function isValidEmail (str):Boolean {
 		return ((str.length < 6) || (str.indexOf ("@") < 1) || (str.length - (str.indexOf ("@")) < 5) || (str.indexOf ("@") != str.lastIndexOf ("@")) || (str.length - (str.lastIndexOf (".")) < 3) || (str.length - (str.lastIndexOf (".")) > 5) || (Math.abs ((str.indexOf ("@")) - (str.indexOf ("."))) == 1) || (str.indexOf (" ") != -1)) ? false : true;
 	}	
+
 	/**
 	 * validate if a strings contents are blank after a safety trim is performed
 	 * @param str (String)
@@ -38,6 +42,7 @@ class com.sekati.validate.StringValidation {
 		}
 		return true;
 	}
+
 	/**
 	 * validate if a string is composed entirely of numbers
 	 * @param str (String)
@@ -53,6 +58,7 @@ class com.sekati.validate.StringValidation {
 		}
 		return false;
 	}
+
 	/**
 	 * check if address is a Post Office Box
 	 * @param address (String)
@@ -69,7 +75,6 @@ class com.sekati.validate.StringValidation {
 		return false;
 	}
 	
-	private function StringValidation(){}
-	//
+	private function StringValidation(){
+	}
 }
-// eof

@@ -14,4 +14,3 @@
 interface com.sekati.crypt.IHash {
 
 }
-// eof

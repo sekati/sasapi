@@ -5,9 +5,11 @@
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
+
 import com.sekati.events.Event;
 import com.sekati.events.IDispatchable;
 import mx.events.EventDispatcher;
+
 /**
  * A centralized EventDispatcher to decouple event listeners & dispatchers from direct addressing.
  * {@code Usage:
@@ -34,31 +36,36 @@ import mx.events.EventDispatcher;
  * @see {@link com.sekati.events.Broadcaster}
  */
 class com.sekati.events.Dispatcher implements IDispatchable {
+
 	private static var _instance:Dispatcher;
 	private var _manager:Object;
+
 	/**
-	* Singleton Accessor
-	* @return Dispatcher
-	*/
+	 * Singleton Private Constructor: initializes centralized management of mx.events.EventDispatcher
+	 */
+	private function Dispatcher() {
+		_manager = new Object ();
+		EventDispatcher.initialize (_manager);
+	}
+
+	/**
+ 	 * Singleton Accessor
+	 * @return Dispatcher
+	 */
 	public static function getInstance():Dispatcher {
 		if (!_instance) {
 			_instance = new Dispatcher();
 		}
 		return _instance;
 	}
+	
 	/**
 	 * shorthand singleton accessor getter
 	 */
 	 public static function get $():Dispatcher {
 	 	return Dispatcher.getInstance();	
 	 }
-	/**
-	* Singleton Private Constructor: initializes centralized management of mx.events.EventDispatcher
-	*/
-	private function Dispatcher() {
-		_manager = new Object ();
-		EventDispatcher.initialize (_manager);
-	}
+	
 	/**
 	 * Add the event listener to the centralized event manager
 	 * @param event (String) the name of the event ("click", "change", etc)
@@ -68,6 +75,7 @@ class com.sekati.events.Dispatcher implements IDispatchable {
 	public function addEventListener(event:String, handler:Object):Void {
 		_manager.addEventListener(event,handler);
 	}
+	
 	/**
 	 * Remove the event listener from the centralized event manager
 	 * @param event (String) the name of the event ("click", "change", etc)
@@ -77,6 +85,7 @@ class com.sekati.events.Dispatcher implements IDispatchable {
 	public function removeEventListener(event:String, handler:Object):Void {
 		_manager.removeEventListener(event,handler);
 	}
+	
 	/**
 	 * Dispatch the event to all listeners via the centralized event manager
 	 * @param e (Event) an Event or one of its subclasses describing the event
@@ -88,6 +97,7 @@ class com.sekati.events.Dispatcher implements IDispatchable {
 	public function dispatchEvent(e:Event):Void {
 		_manager.dispatchEvent(e);
 	}
+	
 	/**
 	 * Bubbles event up the chain. The target property is added on the route
 	 * and then replaced by the new target.
@@ -98,6 +108,7 @@ class com.sekati.events.Dispatcher implements IDispatchable {
 		e.bubble(this);
 		dispatchEvent(e);
 	}
+	
 	/**
 	 * Wrapper to dispatchEvent: creates an Event object and dispatchs it to all event listeners
 	 * {@code Usage:
@@ -112,6 +123,4 @@ class com.sekati.events.Dispatcher implements IDispatchable {
  		var event:Event = new Event(_type, _target, _data);
  		_manager.dispatchEvent(event);
 	}
-	//
 }
-// eof

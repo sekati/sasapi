@@ -12,11 +12,14 @@
  * Other contributors: Greg Holt, Andrew Kepert, Ydnar, Lostinet
  * @see <a href="http://pajhome.org.uk/crypt/md5">http://pajhome.org.uk/crypt/md5</a> for more info.
  */
+
 import com.sekati.crypt.IHash;
+
 /**
 * Calculates the SHA1 checksum.
 */
 class com.sekati.crypt.SHA1 implements IHash {
+
 	/**
  	 * Calculates the SHA1 checksum.
 	 * @param src (String) string to hash
@@ -25,12 +28,11 @@ class com.sekati.crypt.SHA1 implements IHash {
 	public static function calculate(src:String):String {
 		return hex_sha1(src);
 	}
-	/**
-	 * Private methods.
-	 */
+
 	private static function hex_sha1(src:String):String {
 		return binb2hex(core_sha1(str2binb(src), src.length*8));
 	}
+
 	private static function core_sha1(x:Array, len:Number):Array {
 		x[len >> 5] |= 0x80 << (24-len%32);
 		x[((len+64 >> 9) << 4)+15] = len;
@@ -56,23 +58,28 @@ class com.sekati.crypt.SHA1 implements IHash {
 		}
 		return new Array(a, b, c, d, e);
 	}
+
 	private static function sha1_ft(t:Number, b:Number, c:Number, d:Number):Number {
 		if (t<20) return (b & c) | ((~b) & d);
 		if (t<40) return b ^ c ^ d;
 		if (t<60) return (b & c) | (b & d) | (c & d);
 		return b ^ c ^ d;
 	}
+
 	private static function sha1_kt(t:Number):Number {
 		return (t<20) ? 1518500249 : (t<40) ? 1859775393 : (t<60) ? -1894007588 : -899497514;
 	}
+
 	private static function safe_add(x:Number, y:Number):Number {
 		var lsw:Number = (x & 0xFFFF)+(y & 0xFFFF);
 		var msw:Number = (x >> 16)+(y >> 16)+(lsw >> 16);
 		return (msw << 16) | (lsw & 0xFFFF);
 	}
+
 	private static function rol(num:Number, cnt:Number):Number {
 		return (num << cnt) | (num >>> (32-cnt));
 	}
+
 	private static function str2binb(str:String):Array {
 		var bin:Array = new Array();
 		var mask:Number = (1 << 8)-1;
@@ -81,6 +88,7 @@ class com.sekati.crypt.SHA1 implements IHash {
 		}
 		return bin;
 	}
+
 	private static function binb2hex(binarray:Array):String {
 		var str:String = new String("");
 		var tab:String = new String("0123456789abcdef");
@@ -90,7 +98,6 @@ class com.sekati.crypt.SHA1 implements IHash {
 		return str;
 	}
 	
-	private function SHA1(){}
-	//
+	private function SHA1(){
+	}
 }
-// eof

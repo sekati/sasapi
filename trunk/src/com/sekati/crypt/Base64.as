@@ -10,11 +10,14 @@
  * Aardwulf Systems, www.aardwulf.com
  * @see http://www.aardwulf.com/tutor/base64/base64.html 
  */
+
 import com.sekati.crypt.ICipher;
+
 /**
  * Encodes and decodes a base64 string.
  */
 class com.sekati.crypt.Base64 implements ICipher {
+	
 	private static var base64chars:String = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
 
 	/**
@@ -68,7 +71,6 @@ class com.sekati.crypt.Base64 implements ICipher {
 		return output;
 	}
 	
-	private function Base64(){}
-	//
+	private function Base64(){
+	}
 }
-// eof

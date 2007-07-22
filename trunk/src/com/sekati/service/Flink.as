@@ -5,7 +5,9 @@
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
+
 import flash.external.ExternalInterface;
+
 /**
  * Easily add deeplinking into flash sites
  * 
@@ -18,8 +20,10 @@ import flash.external.ExternalInterface;
  * }
  */
 class com.sekati.service.Flink {
+
 	private static var _link:String;
 	private static var _isAvailable:Boolean = ExternalInterface.available;
+
 	/**
 	 * get deeplink anchor
 	 * @return String
@@ -32,6 +36,7 @@ class com.sekati.service.Flink {
 		trace ("*** Flink.getLink = '" + _link + "'");
 		return (_link);
 	}
+
 	/**
 	 * set deeplink anchor and page title
 	 * @return String
@@ -44,6 +49,7 @@ class com.sekati.service.Flink {
 		_link = anchor;
 		trace ("*** Flink.setLink = '" + _link + "'");
 	}
+
 	/**
 	 * call a javascript function from actionscript
 	 * @return Void
@@ -54,6 +60,7 @@ class com.sekati.service.Flink {
 	public static function jsCall () {
 		ExternalInterface.call.apply (null, arguments);
 	}
+
 	/**
 	 * allow javascript access to call an actionscript function
 	 * @param fnName (String) as function name as string
@@ -69,7 +76,6 @@ class com.sekati.service.Flink {
 		ExternalInterface.addCallback (fnName, instance, fn);
 	}
 	
-	private function Flink(){}
-	//
+	private function Flink(){
+	}
 }
-// eof

@@ -10,11 +10,14 @@
  * @see http://www.razorberry.com/blog/archives/2004/08/22/lzw-compression-methods-in-as2/
  * @see http://www.lalex.com/blog/comments/200405/164-compression-lzw-actionscript-2.html
  */
+
 import com.sekati.crypt.ICipher;
+
 /**
  * Compresses and decompresses text with the LZW algorithm.
  */
 class com.sekati.crypt.LZW implements ICipher {
+	
 	/**
 	 * Compresses the specified text.
 	 * @param src (String)
@@ -89,7 +92,6 @@ class com.sekati.crypt.LZW implements ICipher {
 		return result;
 	}
 	
-	private function LZW(){}
-	//
+	private function LZW(){
+	}
 }
-// eof

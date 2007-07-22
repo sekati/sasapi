@@ -23,41 +23,43 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="20">    20  </span>  * }
 <span class="lineno" id="21">    21  </span>  */</span>
 <span class="lineno" id="22">    22  </span><span class="key">class</span> com.sekati.utils.Delegate <span class="key">extends</span> Object {
-<span class="lineno" id="23">    23  </span>	<span class="key">private</span> <span class="key">var</span> func:Function;
-<span class="lineno" id="24">    24  </span>	<span class="comment doc">/**
-<span class="lineno" id="25">    25  </span>	 * Constructor
-<span class="lineno" id="26">    26  </span>	 * @param f (Function)
-<span class="lineno" id="27">    27  </span>	 * @return Void
-<span class="lineno" id="28">    28  </span>	 */</span>
-<span class="lineno" id="29">    29  </span>	<span class="key">function</span> Delegate (f:Function) {
-<span class="lineno" id="30">    30  </span>		func = f;
-<span class="lineno" id="31">    31  </span>	}
-<span class="lineno" id="32">    32  </span>	<span class="comment doc">/**
-<span class="lineno" id="33">    33  </span>	 * Creates a functions wrapper for the original function so that it runs in the provided context.
-<span class="lineno" id="34">    34  </span>	 * @param obj (Object) Context in which to run the function.
-<span class="lineno" id="35">    35  </span>	 * @param func (Function) Function to run.
-<span class="lineno" id="36">    36  </span>	 * @return Function
-<span class="lineno" id="37">    37  </span>	 */</span>
-<span class="lineno" id="38">    38  </span>	<span class="key">static</span> <span class="key">function</span> create (obj:Object, func:Function):Function {
-<span class="lineno" id="39">    39  </span>		<span class="key">var</span> f = <span class="key">function</span> () {
-<span class="lineno" id="40">    40  </span>			<span class="key">var</span> target = arguments.callee.target;
-<span class="lineno" id="41">    41  </span>			<span class="key">var</span> func = arguments.callee.func;
-<span class="lineno" id="42">    42  </span>			<span class="key">var</span> args = arguments.callee.args;
-<span class="lineno" id="43">    43  </span>			<span class="key">return</span> func.apply (target, args.concat (arguments));
-<span class="lineno" id="44">    44  </span>		};
-<span class="lineno" id="45">    45  </span>		f.target = arguments.shift ();
-<span class="lineno" id="46">    46  </span>		f.func = arguments.shift ();
-<span class="lineno" id="47">    47  </span>		f.args = arguments;
-<span class="lineno" id="48">    48  </span>		<span class="key">return</span> f;
-<span class="lineno" id="49">    49  </span>	}
-<span class="lineno" id="50">    50  </span>	<span class="comment doc">/**
-<span class="lineno" id="51">    51  </span>	* create wrapper
-<span class="lineno" id="52">    52  </span>	* @param obj (Object) Context in which to run the function.
-<span class="lineno" id="53">    53  </span>	* @return Function
-<span class="lineno" id="54">    54  </span>	*/</span>
-<span class="lineno" id="55">    55  </span>	<span class="key">function</span> createDelegate (obj:Object):Function {
-<span class="lineno" id="56">    56  </span>		<span class="key">return</span> create (obj, func);
-<span class="lineno" id="57">    57  </span>	}
-<span class="lineno" id="58">    58  </span>}
-<span class="lineno" id="59">    59  </span><span class="comment">// eof</span>
-<span class="lineno" id="60">    60  </span></pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of SASAPI" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.utils" class="button">Package</a></li><li><a href="Delegate.html" title="Detail of com.sekati.utils.Delegate API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
+<span class="lineno" id="23">    23  </span>
+<span class="lineno" id="24">    24  </span>	<span class="key">private</span> <span class="key">var</span> func:Function;
+<span class="lineno" id="25">    25  </span>
+<span class="lineno" id="26">    26  </span>	<span class="comment doc">/**
+<span class="lineno" id="27">    27  </span>	 * Constructor
+<span class="lineno" id="28">    28  </span>	 * @param f (Function)
+<span class="lineno" id="29">    29  </span>	 * @return Void
+<span class="lineno" id="30">    30  </span>	 */</span>
+<span class="lineno" id="31">    31  </span>	<span class="key">function</span> Delegate (f:Function) {
+<span class="lineno" id="32">    32  </span>		func = f;
+<span class="lineno" id="33">    33  </span>	}
+<span class="lineno" id="34">    34  </span>
+<span class="lineno" id="35">    35  </span>	<span class="comment doc">/**
+<span class="lineno" id="36">    36  </span>	 * Creates a functions wrapper for the original function so that it runs in the provided context.
+<span class="lineno" id="37">    37  </span>	 * @param obj (Object) Context in which to run the function.
+<span class="lineno" id="38">    38  </span>	 * @param func (Function) Function to run.
+<span class="lineno" id="39">    39  </span>	 * @return Function
+<span class="lineno" id="40">    40  </span>	 */</span>
+<span class="lineno" id="41">    41  </span>	<span class="key">static</span> <span class="key">function</span> create (obj:Object, func:Function):Function {
+<span class="lineno" id="42">    42  </span>		<span class="key">var</span> f = <span class="key">function</span> () {
+<span class="lineno" id="43">    43  </span>			<span class="key">var</span> target = arguments.callee.target;
+<span class="lineno" id="44">    44  </span>			<span class="key">var</span> func = arguments.callee.func;
+<span class="lineno" id="45">    45  </span>			<span class="key">var</span> args = arguments.callee.args;
+<span class="lineno" id="46">    46  </span>			<span class="key">return</span> func.apply (target, args.concat (arguments));
+<span class="lineno" id="47">    47  </span>		};
+<span class="lineno" id="48">    48  </span>		f.target = arguments.shift ();
+<span class="lineno" id="49">    49  </span>		f.func = arguments.shift ();
+<span class="lineno" id="50">    50  </span>		f.args = arguments;
+<span class="lineno" id="51">    51  </span>		<span class="key">return</span> f;
+<span class="lineno" id="52">    52  </span>	}
+<span class="lineno" id="53">    53  </span>
+<span class="lineno" id="54">    54  </span>	<span class="comment doc">/**
+<span class="lineno" id="55">    55  </span>	* create wrapper
+<span class="lineno" id="56">    56  </span>	* @param obj (Object) Context in which to run the function.
+<span class="lineno" id="57">    57  </span>	* @return Function
+<span class="lineno" id="58">    58  </span>	*/</span>
+<span class="lineno" id="59">    59  </span>	<span class="key">function</span> createDelegate (obj:Object):Function {
+<span class="lineno" id="60">    60  </span>		<span class="key">return</span> create (obj, func);
+<span class="lineno" id="61">    61  </span>	}
+<span class="lineno" id="62">    62  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of SASAPI" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.utils" class="button">Package</a></li><li><a href="Delegate.html" title="Detail of com.sekati.utils.Delegate API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>

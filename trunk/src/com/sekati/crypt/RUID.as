@@ -5,13 +5,17 @@
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
- import com.sekati.crypt.IHash;
+
+import com.sekati.crypt.IHash;
+
 /**
  * Runtime Unique ID's for runtime Object management and identification.
  */
 class com.sekati.crypt.RUID implements IHash {
+
 	private static var _key:String = "__RUID";
 	private static var _id:Number = 0;
+
 	/**
 	 * Generate a runtime unique id
 	 * @return (Number) RUID
@@ -19,6 +23,7 @@ class com.sekati.crypt.RUID implements IHash {
 	public static function create():Number {
 		return _id++;
 	}
+
 	/**
 	 * Return the current RUID id
 	 * @return Number
@@ -27,7 +32,6 @@ class com.sekati.crypt.RUID implements IHash {
 		return _id;	
 	}
 	
-	private function RUID(){}
-	//
+	private function RUID(){
+	}
 }
-// eof

@@ -12,6 +12,7 @@
  * Operating System Validation
  */
 class com.sekati.validate.OSValidation {
+
 	/**
 	 * is client a PC?
 	 * @return Boolean
@@ -20,6 +21,7 @@ class com.sekati.validate.OSValidation {
 		var v:String = String(_root.$version).toLowerCase();
 		return (v.indexOf("win") > -1);
 	}
+
 	/**
 	 * is client a Mac?
 	 * @return Boolean
@@ -29,7 +31,6 @@ class com.sekati.validate.OSValidation {
 		return (v.indexOf("mac") > -1);
 	}
 	
-	private function OSValidation(){}
-	//
+	private function OSValidation(){
+	}
 }
-// eof

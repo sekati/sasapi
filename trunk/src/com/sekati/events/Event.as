@@ -15,10 +15,12 @@
  * you wish to pass along with the event.
  */
 class com.sekati.events.Event {
+
 	private var _type:String;
 	private var _target:Object;
 	private var _data:Object;
 	private var _route:Array;
+
 	/**
 	 * Constructor - creates an event object fit for dispatching.
 	 * @param type (String) type of event
@@ -34,19 +36,21 @@ class com.sekati.events.Event {
 		// for (var i in _data) this[i] = _data[i];
 		_route = new Array();
 	}
+
 	public function get type():String {
 		return _type;	
 	}
+
 	public function get target():Object {
 		return _target;
 	}
+
 	public function get data():Object {
 		return _data;	
 	}
+
 	public function bubble(newTarget:Object):Void {
 		_route.push(_target);
 		_target = newTarget;
 	}
-	//
 }
-// eof

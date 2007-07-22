@@ -17,14 +17,16 @@
  * }
  */
 class com.sekati.time.Throttle {
+
 	private var _fn:Function;
 	private var _delay:Number;
 	private var _finalInt:Number = -1;
 	private var _delayInt:Number = -1;
 	private var _isThrottled:Boolean = false;
 	private var _finalCallPending:Boolean = false;
+
 	/**
-	 * constructor
+	 * Constructor
 	 * @param proxyFunc (Function) Function to throttle calls to
 	 * @param ms (Number) millisecond delay between calls
 	 */
@@ -32,6 +34,7 @@ class com.sekati.time.Throttle {
 		_fn = proxyFunc;
 		_delay = msDelay;
 	}
+
 	/**
 	 * trigger call to method
 	 */
@@ -49,6 +52,7 @@ class com.sekati.time.Throttle {
 			_delayInt = setInterval(this, 'clearThrottle', _delay);
 		}
 	}
+
 	/**
 	 * clear throttling
 	 */
@@ -60,11 +64,10 @@ class com.sekati.time.Throttle {
 			_doFunctionCall();
 		}
 	}
+
 	private function _doFunctionCall() {
 		//trace('[Throttle] Calling Function at '+getTimer());
 		_finalCallPending = false;
 		_fn.call(null);		
 	}
-	//		
 }
-// eof

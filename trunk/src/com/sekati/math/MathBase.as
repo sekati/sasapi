@@ -5,11 +5,14 @@
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
- import com.sekati.math.Integer;
+
+import com.sekati.math.Integer;
+
  /**
   * static class wrapping various Math utilities
   */
 class com.sekati.math.MathBase {			
+
 	/**
 	 * Returns the highest value of all passed arguments
 	 * Like Math.max() but supports any number of args passed to it
@@ -17,6 +20,7 @@ class com.sekati.math.MathBase {
 	public static function max ():Number {
 		return maxArray (arguments);
 	}
+
 	/**
 	 * Returns the lowest value of all passed arguments
 	 * Like Math.min() but supports any number of args passed to it
@@ -24,6 +28,7 @@ class com.sekati.math.MathBase {
 	public static function min ():Number {
 		return minArray (arguments);
 	}
+
 	/**
 	 * Returns the highest value of all items in array
 	 * Like Math.max() but supports any number of items
@@ -37,6 +42,7 @@ class com.sekati.math.MathBase {
 		}
 		return val;
 	}
+
 	/**
 	 * Returns the lowest value of all items in array
 	 * Like Math.min() but supports any number of items
@@ -50,6 +56,7 @@ class com.sekati.math.MathBase {
 		}
 		return val;
 	}
+
 	/**
 	 * Same as Math.foor with extra argument to specify number of decimals
 	 */
@@ -57,12 +64,14 @@ class com.sekati.math.MathBase {
 		var n:Number = Math.pow(10,decimal);
 		return Math.floor(val*n)/n;
 	}	
+
 	/**
 	 * Round to a given amount of decimals
 	 */
 	public static function round (val:Number, decimal:Number):Number {
 		return Math.round (val * Math.pow (10, decimal)) / Math.pow (10, decimal);
 	}
+
 	/**
 	 * Round to nearest .5
 	 * {@code Example:
@@ -84,6 +93,7 @@ class com.sekati.math.MathBase {
 		}
 		return Number (integer + "." + decimal);
 	}
+
 	/**
 	 * Will constrain a value to the defined boundaries
 	 * {@code Examples:
@@ -99,6 +109,7 @@ class com.sekati.math.MathBase {
 		}
 		return val;
 	}
+
 	/**
 	 * Check if number is Odd (convert to Integer if necessary)
 	 */
@@ -106,6 +117,7 @@ class com.sekati.math.MathBase {
 		var int:Integer = new Integer(n);
 		return Boolean(int%2);	
 	}
+
 	/**
 	 * Check if number is Even (convert to Integer if necessary)
 	 */
@@ -113,18 +125,21 @@ class com.sekati.math.MathBase {
 		var int:Integer = new Integer(n);
 		return (int%2 == 0);
 	}
+
 	/**
 	 * Check if number is an Integer
 	 */
 	public static function isInteger (n:Number):Boolean {
 		return (n%1 == 0);
 	}
+
 	/**
 	 * Check if number is Natural (positive Integer)
 	 */
 	public static function isNatural(n:Number):Boolean {
 		return (n >= 0 && n%1 == 0);
 	}	
+
 	////////////////////////////////////////////////////////////////////////////////////////////
 	// RANDOMS
 	/**
@@ -133,6 +148,7 @@ class com.sekati.math.MathBase {
 	public static function rnd(start:Number, end:Number):Number {
 		return Math.round( Math.random()*(end-start))+start;
 	}
+
 	/**
 	 * Returns a set of random numbers inside a specific range (unique numbers is optional)
 	 */
@@ -159,12 +175,14 @@ class com.sekati.math.MathBase {
 		}
 		return rnds;
 	}
+
 	/**
 	 * Returns a random float number within a given range
 	 */
 	public static function randRangeFloat (min:Number, max:Number):Number {
 		return Math.random () * (max - min) + min;
 	}
+
 	/**
 	 * Returns a random int number within a given range
 	 */
@@ -172,7 +190,6 @@ class com.sekati.math.MathBase {
 		return Math.floor (Math.random () * (max - min + 1) + min);
 	}
 	
-	private function MathBase(){}
-	//
+	private function MathBase(){
+	}
 }
-// eof

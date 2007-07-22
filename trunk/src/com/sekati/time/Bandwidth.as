@@ -5,8 +5,10 @@
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
- import com.sekati.time.StopWatch;
- import com.sekati.utils.Delegate;
+
+import com.sekati.time.StopWatch;
+import com.sekati.utils.Delegate;
+
 /**
  * Simple bandwidth throughput test
  * {@code Usage:
@@ -17,9 +19,11 @@
  * } 
  */
 class com.sekati.time.Bandwidth {
+
 	private var _timer:StopWatch;
 	private var _cb:Function;
 	private var _con:LoadVars;	
+
 	/**
 	 * constructor
 	 * @param uri (String) uri to bandwidth test file (should be non tcp/ip compressable random "junk data" see deploy/assets/bandwidth_data) 
@@ -32,6 +36,7 @@ class com.sekati.time.Bandwidth {
 		_con.onLoad = Delegate.create(this, testLoaded);
 		_con.load(uri+"?"+Math.random());		
 	}
+
 	private function testLoaded (success:Boolean):Void {
 		if (success) {
 			var ms:Number = _timer.stop();
@@ -42,6 +47,4 @@ class com.sekati.time.Bandwidth {
 			throw new Error ("@@@ com.sekati.time.Bandwidth Error: data file loading failed.");
 		}
 	}
-	//
 }
-// eof

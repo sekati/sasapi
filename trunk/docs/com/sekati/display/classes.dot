@@ -6,11 +6,18 @@ strict digraph class_diagram {
     tooltip="com.sekati.display.CoreClip",
     shape="record"
   ];
+  TypeBaseClip[
+    label="BaseClip",
+    URL="BaseClip.html",
+    tooltip="com.sekati.display.BaseClip",
+    shape="record"
+  ];
   TypeAbstractClip[
     label="AbstractClip",
     URL="AbstractClip.html",
     tooltip="com.sekati.display.AbstractClip",
     shape="record"
   ];
+  TypeBaseClip -> TypeCoreClip;
   TypeCoreClip -> TypeAbstractClip;
 }

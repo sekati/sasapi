@@ -7,7 +7,9 @@
  * 
  * Sourced from ascrypt for dependencies only - version 2.0, author Mika Pamu
  */
+
 import com.sekati.crypt.ICipher;
+
 /**
  * Encodes and decodes a base8 (hex) string.
  */
@@ -39,7 +41,6 @@ class com.sekati.crypt.Base8 implements ICipher {
 		return result;
 	}
 	
-	private function Base8(){}
-	//
+	private function Base8(){
+	}
 }
-// eof

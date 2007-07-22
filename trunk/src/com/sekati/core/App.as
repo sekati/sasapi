@@ -5,12 +5,14 @@
   * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
   * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
   */
+  
 import com.sekati.data.XML2Object;
 import com.sekati.events.Broadcaster;
 import com.sekati.log.OutPanel;
 import com.sekati.managers.ContextMenuManager;
 import com.sekati.managers.StageManager;
 import flash.external.ExternalInterface;
+ 
  /**
   * static class for centralizing & storing core application instances,  listeners,
   * broadcasters, debuggers, objects, vars & constants.
@@ -44,6 +46,7 @@ import flash.external.ExternalInterface;
   * }
   */
 class com.sekati.core.App {
+
 	public static var PATH:String = (_root._url.substring (0, 7) == "http://") ? _root._url.substr (0, _root._url.lastIndexOf ('/') + 1) : "";
 	public static var CONF_URI:String = (!_root.conf_uri) ? App.PATH + "config.xml" : _root.conf_uri;
 	public static var APP_NAME:String;
@@ -67,6 +70,7 @@ class com.sekati.core.App {
 	public static var db:Object = new Object ();
 	public static var mot:Object = {e:"easeInOutQuint", e2:"easeOutQuint", e3:"easeInOutQuad", e4:"easeOutQuad", s:0.6, d:0.4};
 	public static var col:Object = {b:0x000000, w:0xFFFFFF, r:0xFF0000, g:0x00FF00, b:0x0000FF, y:0xFFFF00, c:0x00FFFF, m:0xFF00FF};
+
 	/**
 	 * App bootstrap props
 	 * _bootstrapChain (Array) list of methods to run to bootstrap App
@@ -74,6 +78,7 @@ class com.sekati.core.App {
 	 */
 	private static var _bootstrapChain:Array = ['loadConfig'];
 	private static var _bootstrapCounter:Number = -1;
+	
 	/**
 	 * init begins the bootstrap process
 	 * @return Void
@@ -83,6 +88,7 @@ class com.sekati.core.App {
 		App.bc.broadcast ("onBootstrap");
 		App.bootstrap ();
 	}
+	
 	/**
 	 *loop through bootstrapChain method array
 	 * @return Void
@@ -96,6 +102,7 @@ class com.sekati.core.App {
 			App.bc.broadcast ("onAppConfigured");
 		}
 	}
+	
 	/**
 	 * loads and parses config.xml then broadcasts "onConfig"
 	 * @return Void
@@ -144,6 +151,7 @@ class com.sekati.core.App {
 		oXML.onLoad = xmlLoaded;
 		oXML.load (App.CONF_URI);
 	}
+	
 	/**
 	* wrappers to JavaScript tracking & flink deeplinking methods
 	* @param page (String) page to be tracked 
@@ -156,6 +164,7 @@ class com.sekati.core.App {
 		App.debug.trace ("* App.track: " + "(" + page + ")");
 		ExternalInterface.call ("urchinTracker", page);
 	}
+	
 	/**
 	 * wrapper to getFlink JavaScript lib - returns object from deeplink anchor
 	 * @return Object
@@ -168,6 +177,7 @@ class com.sekati.core.App {
 		var flink:Object = {page:p};
 		return flink;
 	}
+	
 	/**
 	 * wrapper to setFlink JavaScript lib - sets the current deeplink anchor
 	 * @param page (String)
@@ -180,6 +190,7 @@ class com.sekati.core.App {
 		App.debug.trace ("* App.setFlink (" + page + ")");
 		ExternalInterface.call ("setFlink", null, page);
 	}
+	
 	/**
 	 * wrapper to Flink JavaScript lib - returns the entire current url
 	 * @return String
@@ -189,7 +200,6 @@ class com.sekati.core.App {
 		return r;
 	}
 
-	private function App() {}
-	//
+	private function App() {
+	}
 }
-// eof

@@ -26,8 +26,10 @@
  * }
  */
 class com.sekati.data.XML2Object {
+	
 	private var oResult:Object = new Object ();
 	private var oXML:XML;
+	
 	/**
 	 * return the xml passed in the parseXML method
 	 * {@code Usage: 
@@ -37,6 +39,7 @@ class com.sekati.data.XML2Object {
 	public function get xml ():XML {
 		return oXML;
 	}
+	
 	/**
 	 * parse an XMLObject
 	 * @param sFile (XML)
@@ -51,6 +54,7 @@ class com.sekati.data.XML2Object {
 		this.oResult = this.translateXML ();
 		return this.oResult;
 	}
+	
 	/**
 	 * core of the XML2Object class
 	 */
@@ -108,6 +112,4 @@ class com.sekati.data.XML2Object {
 		}
 		return this.oResult;
 	}
-	//
 }
-// eof

@@ -13,184 +13,194 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="10">    10  </span> * Miscellaneous utilities - to be sorted
 <span class="lineno" id="11">    11  </span> */</span>
 <span class="lineno" id="12">    12  </span><span class="key">class</span> com.sekati.utils.MiscUtils {
-<span class="lineno" id="13">    13  </span>	<span class="comment doc">/**
-<span class="lineno" id="14">    14  </span>	 * get a random hexidecimal color
-<span class="lineno" id="15">    15  </span>	 * @return String
-<span class="lineno" id="16">    16  </span>	 */</span>
-<span class="lineno" id="17">    17  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> randHex():String  {
-<span class="lineno" id="18">    18  </span>		<span class="key">return</span> <span class="str_const">"0x"</span> + Math.floor (Math.random () * <span class="num_const">16777215</span>).toString (<span class="num_const">16</span>).toUpperCase ();
-<span class="lineno" id="19">    19  </span>	}	
-<span class="lineno" id="20">    20  </span>	<span class="comment doc">/**
-<span class="lineno" id="21">    21  </span>	 * check if client flashplayer matches min version passed
-<span class="lineno" id="22">    22  </span>	 */</span>
-<span class="lineno" id="23">    23  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> checkVersion(minVersion:Number):Boolean  {
-<span class="lineno" id="24">    24  </span>		<span class="key">if</span> (Number (getVersion ().split (<span class="str_const">" "</span>)[<span class="num_const">1</span>].split (<span class="str_const">","</span>)[<span class="num_const">0</span>]) &gt;= minVersion) {
-<span class="lineno" id="25">    25  </span>			<span class="key">return</span> <span class="key">true</span>;
-<span class="lineno" id="26">    26  </span>		}
-<span class="lineno" id="27">    27  </span>		<span class="key">return</span> <span class="key">false</span>;
-<span class="lineno" id="28">    28  </span>	}
-<span class="lineno" id="29">    29  </span>	<span class="comment doc">/**
-<span class="lineno" id="30">    30  </span>	 * javascript resize window
-<span class="lineno" id="31">    31  </span>	 */</span>
-<span class="lineno" id="32">    32  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> jsResizeWin(w:Number, h:Number):Void {
-<span class="lineno" id="33">    33  </span>		getURL (<span class="str_const">"javascript:top.resizeTo("</span> + w + <span class="str_const">","</span> + h + <span class="str_const">")"</span>);
-<span class="lineno" id="34">    34  </span>	}
-<span class="lineno" id="35">    35  </span>	<span class="comment doc">/**
-<span class="lineno" id="36">    36  </span>	 * javascript shake window
-<span class="lineno" id="37">    37  </span>	 */</span>
-<span class="lineno" id="38">    38  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> jsShakeWin (amount:Number):Void {
-<span class="lineno" id="39">    39  </span>		getURL (<span class="str_const">"javascript:function shakewin(n){if(parent.moveBy){for(i = 10;i &gt; 0;i--){for(j = n;j &gt; 0;j--){parent.moveBy(0,i);parent.moveBy(i,0);parent.moveBy(0,-i);parent.moveBy(-i,0);}}}};shakewin("</span> + amount + <span class="str_const">");void(0)"</span>);
-<span class="lineno" id="40">    40  </span>	}
-<span class="lineno" id="41">    41  </span>	<span class="comment doc">/**
-<span class="lineno" id="42">    42  </span>	 * javascript change status message
-<span class="lineno" id="43">    43  </span>	 */</span>
-<span class="lineno" id="44">    44  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> jsStatus(msg:String):Void {
-<span class="lineno" id="45">    45  </span>		getURL (<span class="str_const">"javascript:if(typeof(this.href) != 'undefined') window.status = '"</span> + msg + <span class="str_const">"' + ' URL: ' + this.href;else return false;void(0)"</span>);
-<span class="lineno" id="46">    46  </span>	}
-<span class="lineno" id="47">    47  </span>	<span class="comment doc">/**
-<span class="lineno" id="48">    48  </span>	 * javascript pop centered window
-<span class="lineno" id="49">    49  </span>	 */</span>
-<span class="lineno" id="50">    50  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> jsCenterWin (wURL:String, wName:String, w:Number, h:Number, scr:Boolean):Void {
-<span class="lineno" id="51">    51  </span>		<span class="key">var</span> cx:Number = Math.round ((System.capabilities.screenResolutionX / <span class="num_const">2</span>) - (w / <span class="num_const">2</span>));
-<span class="lineno" id="52">    52  </span>		<span class="key">var</span> cy:Number = Math.round ((System.capabilities.screenResolutionY / <span class="num_const">2</span>) - (h / <span class="num_const">2</span>));
-<span class="lineno" id="53">    53  </span>		getURL (<span class="str_const">"javascript:NewWindow=window.open('"</span> + wURL + <span class="str_const">"','"</span> + wName + <span class="str_const">"','width="</span> + w + <span class="str_const">",height="</span> + h + <span class="str_const">",left="</span> + cx + <span class="str_const">",top="</span> + cy + <span class="str_const">",screenX="</span> + cx + <span class="str_const">",screenY="</span> + cy + <span class="str_const">",toolbar=no,location=no,scrolling="</span> + scr + <span class="str_const">",directories=no,scrollbars="</span> + scr + <span class="str_const">",status=no,statusbar=no,resizable=no,fullscreen=no'); NewWindow.focus(); void(0);"</span>);
-<span class="lineno" id="54">    54  </span>	}
-<span class="lineno" id="55">    55  </span>	<span class="comment doc">/**
-<span class="lineno" id="56">    56  </span>	 * javascript pop centered window with single string param - needs revision
-<span class="lineno" id="57">    57  </span>	 */</span>
-<span class="lineno" id="58">    58  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> centerPop(x:String):Void {
-<span class="lineno" id="59">    59  </span>		trace (<span class="str_const">"__________centerPop"</span>);
-<span class="lineno" id="60">    60  </span>		<span class="key">var</span> a:Array = x.split (<span class="str_const">"|"</span>);
-<span class="lineno" id="61">    61  </span>		<span class="key">var</span> wURL:String = a[<span class="num_const">0</span>];
-<span class="lineno" id="62">    62  </span>		<span class="key">var</span> wName:String = a[<span class="num_const">1</span>];
-<span class="lineno" id="63">    63  </span>		<span class="key">var</span> w:Number = a[<span class="num_const">2</span>];
-<span class="lineno" id="64">    64  </span>		<span class="key">var</span> h:Number = a[<span class="num_const">3</span>];
-<span class="lineno" id="65">    65  </span>		<span class="key">var</span> scr:Boolean = a[<span class="num_const">4</span>];
-<span class="lineno" id="66">    66  </span>		<span class="key">var</span> centerx:Number = Math.round ((System.capabilities.screenResolutionX / <span class="num_const">2</span>) - (w / <span class="num_const">2</span>));
-<span class="lineno" id="67">    67  </span>		<span class="key">var</span> centery:Number = Math.round ((System.capabilities.screenResolutionY / <span class="num_const">2</span>) - (h / <span class="num_const">2</span>));
-<span class="lineno" id="68">    68  </span>		getURL (<span class="str_const">"javascript:NewWindow=window.open('"</span> + wURL + <span class="str_const">"','"</span> + wName + <span class="str_const">"','width="</span> + w + <span class="str_const">",height="</span> + h + <span class="str_const">",left="</span> + centerx + <span class="str_const">",top="</span> + centery + <span class="str_const">",screenX="</span> + centerx + <span class="str_const">",screenY="</span> + centery + <span class="str_const">",toolbar=no,location=no,scrolling="</span> + scr + <span class="str_const">",directories=no,scrollbars="</span> + scr + <span class="str_const">",status=no,statusbar=no,resizable=no,fullscreen=no'); NewWindow.focus(); void(0);"</span>);
-<span class="lineno" id="69">    69  </span>	}
-<span class="lineno" id="70">    70  </span>	<span class="comment doc">/**
-<span class="lineno" id="71">    71  </span>	 * play a sound linked from library.
-<span class="lineno" id="72">    72  </span>	 * Deprecated: Please see com.sekati.managers.SoundManager
-<span class="lineno" id="73">    73  </span>	 * @param s (String) sound linkage id
-<span class="lineno" id="74">    74  </span>	 * @param v (Number) volume [0 - 100]
-<span class="lineno" id="75">    75  </span>	 * @param p (Number) pan [-100 - 100]
-<span class="lineno" id="76">    76  </span>	 */</span>
-<span class="lineno" id="77">    77  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> sound(s:String, v:Number, p:Number){
-<span class="lineno" id="78">    78  </span>		<span class="key">var</span> snd = <span class="key">new</span> Sound ();
-<span class="lineno" id="79">    79  </span>		snd.attachSound (s);
-<span class="lineno" id="80">    80  </span>		<span class="key">if</span> (v == undefined) {
-<span class="lineno" id="81">    81  </span>			snd.setVolume (<span class="num_const">100</span>);
-<span class="lineno" id="82">    82  </span>		} <span class="key">else</span> {
-<span class="lineno" id="83">    83  </span>			snd.setVolume (v);
-<span class="lineno" id="84">    84  </span>		}
-<span class="lineno" id="85">    85  </span>		<span class="key">if</span> (p != undefined) {
-<span class="lineno" id="86">    86  </span>			snd.setPan (p);
-<span class="lineno" id="87">    87  </span>		}
-<span class="lineno" id="88">    88  </span>		snd.start (<span class="num_const">0</span>, <span class="num_const">0</span>);
-<span class="lineno" id="89">    89  </span>	}
-<span class="lineno" id="90">    90  </span>	<span class="comment doc">/**
-<span class="lineno" id="91">    91  </span>	 * pan sound to stage pos - requires revision
-<span class="lineno" id="92">    92  </span>	 */</span>
-<span class="lineno" id="93">    93  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> panSound(s:String, v:Number, x:Number, y:Number):Void  {
-<span class="lineno" id="94">    94  </span>		<span class="key">var</span> snd = <span class="key">new</span> Sound ();
-<span class="lineno" id="95">    95  </span>		snd.attachSound (s);
-<span class="lineno" id="96">    96  </span>		<span class="key">if</span> (x &gt; Stage.width / <span class="num_const">2</span>) {
-<span class="lineno" id="97">    97  </span>			<span class="key">var</span> p = Math.round (x * <span class="num_const">100</span> / Stage.width);
-<span class="lineno" id="98">    98  </span>		} <span class="key">else</span> {
-<span class="lineno" id="99">    99  </span>			<span class="key">var</span> p = Math.round ((x - Stage.width) * <span class="num_const">100</span> / (Stage.width / <span class="num_const">2</span>)) + <span class="num_const">100</span>;
-<span class="lineno" id="100">   100  </span>		}
-<span class="lineno" id="101">   101  </span>		<span class="key">var</span> vp = <span class="num_const">100</span> - (Math.round (y * <span class="num_const">100</span> / Stage.height));
-<span class="lineno" id="102">   102  </span>		<span class="comment">// v percent</span>
-<span class="lineno" id="103">   103  </span>		<span class="key">var</span> vl = Math.round (v / <span class="num_const">100</span> * vp);
-<span class="lineno" id="104">   104  </span>		<span class="comment">// actual v </span>
-<span class="lineno" id="105">   105  </span>		<span class="key">if</span> (vl &lt; <span class="num_const">0</span>) {
-<span class="lineno" id="106">   106  </span>			<span class="key">if</span> (v &gt; <span class="num_const">0</span>) {
-<span class="lineno" id="107">   107  </span>				vl = <span class="num_const">5</span>;
-<span class="lineno" id="108">   108  </span>			} <span class="key">else</span> {
-<span class="lineno" id="109">   109  </span>				vl = <span class="num_const">0</span>;
-<span class="lineno" id="110">   110  </span>			}
-<span class="lineno" id="111">   111  </span>		}
-<span class="lineno" id="112">   112  </span>		snd.setVolume (vl);
-<span class="lineno" id="113">   113  </span>		snd.setPan (p);
-<span class="lineno" id="114">   114  </span>		snd.start (<span class="num_const">0</span>, <span class="num_const">0</span>);
-<span class="lineno" id="115">   115  </span>	}
-<span class="lineno" id="116">   116  </span>	<span class="comment doc">/**
-<span class="lineno" id="117">   117  </span>	 * convert fahrenheit to celsius
-<span class="lineno" id="118">   118  </span>	 * @param f (Number) fahrenheit value
-<span class="lineno" id="119">   119  </span>	 * @param p (Number) number of decimal after int '.' without round
-<span class="lineno" id="120">   120  </span>	 * @return Number
-<span class="lineno" id="121">   121  </span>	 */</span>
-<span class="lineno" id="122">   122  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> f2c(f:Number, p:Number):Number {
-<span class="lineno" id="123">   123  </span>		<span class="key">var</span> d;
-<span class="lineno" id="124">   124  </span>		<span class="key">var</span> r = (<span class="num_const">5</span> / <span class="num_const">9</span>) * (f - <span class="num_const">32</span>);
-<span class="lineno" id="125">   125  </span>		<span class="key">var</span> s = r.toString ().split (<span class="str_const">"."</span>);
-<span class="lineno" id="126">   126  </span>		<span class="key">if</span> (s[<span class="num_const">1</span>] != undefined) {
-<span class="lineno" id="127">   127  </span>			d = s[<span class="num_const">1</span>].substr (<span class="num_const">0</span>, p);
-<span class="lineno" id="128">   128  </span>		} <span class="key">else</span> {
-<span class="lineno" id="129">   129  </span>			<span class="key">var</span> i = p;
-<span class="lineno" id="130">   130  </span>			<span class="key">while</span> (i &gt; <span class="num_const">0</span>) {
-<span class="lineno" id="131">   131  </span>				d += <span class="str_const">"0"</span>;
-<span class="lineno" id="132">   132  </span>				i--;
-<span class="lineno" id="133">   133  </span>			}
-<span class="lineno" id="134">   134  </span>		}
-<span class="lineno" id="135">   135  </span>		<span class="key">var</span> c = s[<span class="num_const">0</span>] + <span class="str_const">"."</span> + d;
-<span class="lineno" id="136">   136  </span>		<span class="key">return</span> Number (c);		
-<span class="lineno" id="137">   137  </span>	}
-<span class="lineno" id="138">   138  </span>	<span class="comment doc">/**
-<span class="lineno" id="139">   139  </span>	 * convert celsius to fahrenheit
-<span class="lineno" id="140">   140  </span>	 * @param c (Number) celsius value
-<span class="lineno" id="141">   141  </span>	 * @param p (Number) number of decimal after int '.' without round
-<span class="lineno" id="142">   142  </span>	 * @return Number
-<span class="lineno" id="143">   143  </span>	 */</span>
-<span class="lineno" id="144">   144  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> c2f(c:Number, p:Number):Number {
-<span class="lineno" id="145">   145  </span>		<span class="key">var</span> d;
-<span class="lineno" id="146">   146  </span>		<span class="key">var</span> r = (c / (<span class="num_const">5</span> / <span class="num_const">9</span>)) + <span class="num_const">32</span>;
-<span class="lineno" id="147">   147  </span>		<span class="key">var</span> s = r.toString ().split (<span class="str_const">"."</span>);
-<span class="lineno" id="148">   148  </span>		<span class="key">if</span> (s[<span class="num_const">1</span>] != undefined) {
-<span class="lineno" id="149">   149  </span>			d = s[<span class="num_const">1</span>].substr (<span class="num_const">0</span>, p);
-<span class="lineno" id="150">   150  </span>		} <span class="key">else</span> {
-<span class="lineno" id="151">   151  </span>			<span class="key">var</span> i = p;
-<span class="lineno" id="152">   152  </span>			<span class="key">while</span> (i &gt; <span class="num_const">0</span>) {
-<span class="lineno" id="153">   153  </span>				d += <span class="str_const">"0"</span>;
-<span class="lineno" id="154">   154  </span>				i--;
-<span class="lineno" id="155">   155  </span>			}
-<span class="lineno" id="156">   156  </span>		}
-<span class="lineno" id="157">   157  </span>		<span class="key">var</span> f = s[<span class="num_const">0</span>] + <span class="str_const">"."</span> + d;
-<span class="lineno" id="158">   158  </span>		<span class="key">return</span> Number (f);		
-<span class="lineno" id="159">   159  </span>	}
-<span class="lineno" id="160">   160  </span>	<span class="comment">//</span>
-<span class="lineno" id="161">   161  </span>	<span class="comment">/* more to be converted
-<span class="lineno" id="162">   162  </span>		// global menu Delay (pause momentarily before initalizing to give some switch time for user)
-<span class="lineno" id="163">   163  </span>		_global.menuDelay = function (sec:Number, cb:Function):Void  {
-<span class="lineno" id="164">   164  </span>			var di = $menuDelayInt, fireTime = getTimer () + (sec * 1000);
-<span class="lineno" id="165">   165  </span>			if (di || _global.countMenuInt) {
-<span class="lineno" id="166">   166  </span>				clearInterval (di);
-<span class="lineno" id="167">   167  </span>				delete _global.countMenuInt;
-<span class="lineno" id="168">   168  </span>			}
-<span class="lineno" id="169">   169  </span>			_global.countMenuInt = function () {
-<span class="lineno" id="170">   170  </span>				if (fireTime &lt;= getTimer ()) {
-<span class="lineno" id="171">   171  </span>					clearInterval (di);
-<span class="lineno" id="172">   172  </span>					delete _global.countMenuInt;
-<span class="lineno" id="173">   173  </span>					cb ();
-<span class="lineno" id="174">   174  </span>				}
-<span class="lineno" id="175">   175  </span>			};
-<span class="lineno" id="176">   176  </span>			di = setInterval (this, "countMenuInt", 500);
-<span class="lineno" id="177">   177  </span>		};
-<span class="lineno" id="178">   178  </span>		
-<span class="lineno" id="179">   179  </span>		 _global.dblClick = function (clickSpeed:Number):Boolean  {
-<span class="lineno" id="180">   180  </span>			if (!clickSpeed) {
-<span class="lineno" id="181">   181  </span>				clickSpeed = 500;
-<span class="lineno" id="182">   182  </span>			}
-<span class="lineno" id="183">   183  </span>			if (lastclick - (lastclick = getTimer ()) + clickSpeed &gt; 0) {
-<span class="lineno" id="184">   184  </span>				return true;
-<span class="lineno" id="185">   185  </span>			}
-<span class="lineno" id="186">   186  </span>			return false;
-<span class="lineno" id="187">   187  </span>		};
-<span class="lineno" id="188">   188  </span>	 */</span>
-<span class="lineno" id="189">   189  </span>	 
-<span class="lineno" id="190">   190  </span>	 <span class="key">private</span> <span class="key">function</span> MiscUtils(){}
-<span class="lineno" id="191">   191  </span>	 <span class="comment">//</span>
-<span class="lineno" id="192">   192  </span>}
-<span class="lineno" id="193">   193  </span><span class="comment">// eof</span></pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of SASAPI" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.utils" class="button">Package</a></li><li><a href="MiscUtils.html" title="Detail of com.sekati.utils.MiscUtils API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
+<span class="lineno" id="13">    13  </span>
+<span class="lineno" id="14">    14  </span>	<span class="comment doc">/**
+<span class="lineno" id="15">    15  </span>	 * get a random hexidecimal color
+<span class="lineno" id="16">    16  </span>	 * @return String
+<span class="lineno" id="17">    17  </span>	 */</span>
+<span class="lineno" id="18">    18  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> randHex():String  {
+<span class="lineno" id="19">    19  </span>		<span class="key">return</span> <span class="str_const">"0x"</span> + Math.floor (Math.random () * <span class="num_const">16777215</span>).toString (<span class="num_const">16</span>).toUpperCase ();
+<span class="lineno" id="20">    20  </span>	}	
+<span class="lineno" id="21">    21  </span>
+<span class="lineno" id="22">    22  </span>	<span class="comment doc">/**
+<span class="lineno" id="23">    23  </span>	 * check if client flashplayer matches min version passed
+<span class="lineno" id="24">    24  </span>	 */</span>
+<span class="lineno" id="25">    25  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> checkVersion(minVersion:Number):Boolean  {
+<span class="lineno" id="26">    26  </span>		<span class="key">if</span> (Number (getVersion ().split (<span class="str_const">" "</span>)[<span class="num_const">1</span>].split (<span class="str_const">","</span>)[<span class="num_const">0</span>]) &gt;= minVersion) {
+<span class="lineno" id="27">    27  </span>			<span class="key">return</span> <span class="key">true</span>;
+<span class="lineno" id="28">    28  </span>		}
+<span class="lineno" id="29">    29  </span>		<span class="key">return</span> <span class="key">false</span>;
+<span class="lineno" id="30">    30  </span>	}
+<span class="lineno" id="31">    31  </span>
+<span class="lineno" id="32">    32  </span>	<span class="comment doc">/**
+<span class="lineno" id="33">    33  </span>	 * javascript resize window
+<span class="lineno" id="34">    34  </span>	 */</span>
+<span class="lineno" id="35">    35  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> jsResizeWin(w:Number, h:Number):Void {
+<span class="lineno" id="36">    36  </span>		getURL (<span class="str_const">"javascript:top.resizeTo("</span> + w + <span class="str_const">","</span> + h + <span class="str_const">")"</span>);
+<span class="lineno" id="37">    37  </span>	}
+<span class="lineno" id="38">    38  </span>
+<span class="lineno" id="39">    39  </span>	<span class="comment doc">/**
+<span class="lineno" id="40">    40  </span>	 * javascript shake window
+<span class="lineno" id="41">    41  </span>	 */</span>
+<span class="lineno" id="42">    42  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> jsShakeWin (amount:Number):Void {
+<span class="lineno" id="43">    43  </span>		getURL (<span class="str_const">"javascript:function shakewin(n){if(parent.moveBy){for(i = 10;i &gt; 0;i--){for(j = n;j &gt; 0;j--){parent.moveBy(0,i);parent.moveBy(i,0);parent.moveBy(0,-i);parent.moveBy(-i,0);}}}};shakewin("</span> + amount + <span class="str_const">");void(0)"</span>);
+<span class="lineno" id="44">    44  </span>	}
+<span class="lineno" id="45">    45  </span>
+<span class="lineno" id="46">    46  </span>	<span class="comment doc">/**
+<span class="lineno" id="47">    47  </span>	 * javascript change status message
+<span class="lineno" id="48">    48  </span>	 */</span>
+<span class="lineno" id="49">    49  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> jsStatus(msg:String):Void {
+<span class="lineno" id="50">    50  </span>		getURL (<span class="str_const">"javascript:if(typeof(this.href) != 'undefined') window.status = '"</span> + msg + <span class="str_const">"' + ' URL: ' + this.href;else return false;void(0)"</span>);
+<span class="lineno" id="51">    51  </span>	}
+<span class="lineno" id="52">    52  </span>
+<span class="lineno" id="53">    53  </span>	<span class="comment doc">/**
+<span class="lineno" id="54">    54  </span>	 * javascript pop centered window
+<span class="lineno" id="55">    55  </span>	 */</span>
+<span class="lineno" id="56">    56  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> jsCenterWin (wURL:String, wName:String, w:Number, h:Number, scr:Boolean):Void {
+<span class="lineno" id="57">    57  </span>		<span class="key">var</span> cx:Number = Math.round ((System.capabilities.screenResolutionX / <span class="num_const">2</span>) - (w / <span class="num_const">2</span>));
+<span class="lineno" id="58">    58  </span>		<span class="key">var</span> cy:Number = Math.round ((System.capabilities.screenResolutionY / <span class="num_const">2</span>) - (h / <span class="num_const">2</span>));
+<span class="lineno" id="59">    59  </span>		getURL (<span class="str_const">"javascript:NewWindow=window.open('"</span> + wURL + <span class="str_const">"','"</span> + wName + <span class="str_const">"','width="</span> + w + <span class="str_const">",height="</span> + h + <span class="str_const">",left="</span> + cx + <span class="str_const">",top="</span> + cy + <span class="str_const">",screenX="</span> + cx + <span class="str_const">",screenY="</span> + cy + <span class="str_const">",toolbar=no,location=no,scrolling="</span> + scr + <span class="str_const">",directories=no,scrollbars="</span> + scr + <span class="str_const">",status=no,statusbar=no,resizable=no,fullscreen=no'); NewWindow.focus(); void(0);"</span>);
+<span class="lineno" id="60">    60  </span>	}
+<span class="lineno" id="61">    61  </span>
+<span class="lineno" id="62">    62  </span>	<span class="comment doc">/**
+<span class="lineno" id="63">    63  </span>	 * javascript pop centered window with single string param - needs revision
+<span class="lineno" id="64">    64  </span>	 */</span>
+<span class="lineno" id="65">    65  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> centerPop(x:String):Void {
+<span class="lineno" id="66">    66  </span>		trace (<span class="str_const">"__________centerPop"</span>);
+<span class="lineno" id="67">    67  </span>		<span class="key">var</span> a:Array = x.split (<span class="str_const">"|"</span>);
+<span class="lineno" id="68">    68  </span>		<span class="key">var</span> wURL:String = a[<span class="num_const">0</span>];
+<span class="lineno" id="69">    69  </span>		<span class="key">var</span> wName:String = a[<span class="num_const">1</span>];
+<span class="lineno" id="70">    70  </span>		<span class="key">var</span> w:Number = a[<span class="num_const">2</span>];
+<span class="lineno" id="71">    71  </span>		<span class="key">var</span> h:Number = a[<span class="num_const">3</span>];
+<span class="lineno" id="72">    72  </span>		<span class="key">var</span> scr:Boolean = a[<span class="num_const">4</span>];
+<span class="lineno" id="73">    73  </span>		<span class="key">var</span> centerx:Number = Math.round ((System.capabilities.screenResolutionX / <span class="num_const">2</span>) - (w / <span class="num_const">2</span>));
+<span class="lineno" id="74">    74  </span>		<span class="key">var</span> centery:Number = Math.round ((System.capabilities.screenResolutionY / <span class="num_const">2</span>) - (h / <span class="num_const">2</span>));
+<span class="lineno" id="75">    75  </span>		getURL (<span class="str_const">"javascript:NewWindow=window.open('"</span> + wURL + <span class="str_const">"','"</span> + wName + <span class="str_const">"','width="</span> + w + <span class="str_const">",height="</span> + h + <span class="str_const">",left="</span> + centerx + <span class="str_const">",top="</span> + centery + <span class="str_const">",screenX="</span> + centerx + <span class="str_const">",screenY="</span> + centery + <span class="str_const">",toolbar=no,location=no,scrolling="</span> + scr + <span class="str_const">",directories=no,scrollbars="</span> + scr + <span class="str_const">",status=no,statusbar=no,resizable=no,fullscreen=no'); NewWindow.focus(); void(0);"</span>);
+<span class="lineno" id="76">    76  </span>	}
+<span class="lineno" id="77">    77  </span>
+<span class="lineno" id="78">    78  </span>	<span class="comment doc">/**
+<span class="lineno" id="79">    79  </span>	 * play a sound linked from library.
+<span class="lineno" id="80">    80  </span>	 * Deprecated: Please see com.sekati.managers.SoundManager
+<span class="lineno" id="81">    81  </span>	 * @param s (String) sound linkage id
+<span class="lineno" id="82">    82  </span>	 * @param v (Number) volume [0 - 100]
+<span class="lineno" id="83">    83  </span>	 * @param p (Number) pan [-100 - 100]
+<span class="lineno" id="84">    84  </span>	 */</span>
+<span class="lineno" id="85">    85  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> sound(s:String, v:Number, p:Number){
+<span class="lineno" id="86">    86  </span>		<span class="key">var</span> snd = <span class="key">new</span> Sound ();
+<span class="lineno" id="87">    87  </span>		snd.attachSound (s);
+<span class="lineno" id="88">    88  </span>		<span class="key">if</span> (v == undefined) {
+<span class="lineno" id="89">    89  </span>			snd.setVolume (<span class="num_const">100</span>);
+<span class="lineno" id="90">    90  </span>		} <span class="key">else</span> {
+<span class="lineno" id="91">    91  </span>			snd.setVolume (v);
+<span class="lineno" id="92">    92  </span>		}
+<span class="lineno" id="93">    93  </span>		<span class="key">if</span> (p != undefined) {
+<span class="lineno" id="94">    94  </span>			snd.setPan (p);
+<span class="lineno" id="95">    95  </span>		}
+<span class="lineno" id="96">    96  </span>		snd.start (<span class="num_const">0</span>, <span class="num_const">0</span>);
+<span class="lineno" id="97">    97  </span>	}
+<span class="lineno" id="98">    98  </span>
+<span class="lineno" id="99">    99  </span>	<span class="comment doc">/**
+<span class="lineno" id="100">   100  </span>	 * pan sound to stage pos - requires revision
+<span class="lineno" id="101">   101  </span>	 */</span>
+<span class="lineno" id="102">   102  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> panSound(s:String, v:Number, x:Number, y:Number):Void  {
+<span class="lineno" id="103">   103  </span>		<span class="key">var</span> snd = <span class="key">new</span> Sound ();
+<span class="lineno" id="104">   104  </span>		snd.attachSound (s);
+<span class="lineno" id="105">   105  </span>		<span class="key">if</span> (x &gt; Stage.width / <span class="num_const">2</span>) {
+<span class="lineno" id="106">   106  </span>			<span class="key">var</span> p = Math.round (x * <span class="num_const">100</span> / Stage.width);
+<span class="lineno" id="107">   107  </span>		} <span class="key">else</span> {
+<span class="lineno" id="108">   108  </span>			<span class="key">var</span> p = Math.round ((x - Stage.width) * <span class="num_const">100</span> / (Stage.width / <span class="num_const">2</span>)) + <span class="num_const">100</span>;
+<span class="lineno" id="109">   109  </span>		}
+<span class="lineno" id="110">   110  </span>		<span class="key">var</span> vp = <span class="num_const">100</span> - (Math.round (y * <span class="num_const">100</span> / Stage.height));
+<span class="lineno" id="111">   111  </span>		<span class="comment">// v percent</span>
+<span class="lineno" id="112">   112  </span>		<span class="key">var</span> vl = Math.round (v / <span class="num_const">100</span> * vp);
+<span class="lineno" id="113">   113  </span>		<span class="comment">// actual v </span>
+<span class="lineno" id="114">   114  </span>		<span class="key">if</span> (vl &lt; <span class="num_const">0</span>) {
+<span class="lineno" id="115">   115  </span>			<span class="key">if</span> (v &gt; <span class="num_const">0</span>) {
+<span class="lineno" id="116">   116  </span>				vl = <span class="num_const">5</span>;
+<span class="lineno" id="117">   117  </span>			} <span class="key">else</span> {
+<span class="lineno" id="118">   118  </span>				vl = <span class="num_const">0</span>;
+<span class="lineno" id="119">   119  </span>			}
+<span class="lineno" id="120">   120  </span>		}
+<span class="lineno" id="121">   121  </span>		snd.setVolume (vl);
+<span class="lineno" id="122">   122  </span>		snd.setPan (p);
+<span class="lineno" id="123">   123  </span>		snd.start (<span class="num_const">0</span>, <span class="num_const">0</span>);
+<span class="lineno" id="124">   124  </span>	}
+<span class="lineno" id="125">   125  </span>
+<span class="lineno" id="126">   126  </span>	<span class="comment doc">/**
+<span class="lineno" id="127">   127  </span>	 * convert fahrenheit to celsius
+<span class="lineno" id="128">   128  </span>	 * @param f (Number) fahrenheit value
+<span class="lineno" id="129">   129  </span>	 * @param p (Number) number of decimal after int '.' without round
+<span class="lineno" id="130">   130  </span>	 * @return Number
+<span class="lineno" id="131">   131  </span>	 */</span>
+<span class="lineno" id="132">   132  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> f2c(f:Number, p:Number):Number {
+<span class="lineno" id="133">   133  </span>		<span class="key">var</span> d;
+<span class="lineno" id="134">   134  </span>		<span class="key">var</span> r = (<span class="num_const">5</span> / <span class="num_const">9</span>) * (f - <span class="num_const">32</span>);
+<span class="lineno" id="135">   135  </span>		<span class="key">var</span> s = r.toString ().split (<span class="str_const">"."</span>);
+<span class="lineno" id="136">   136  </span>		<span class="key">if</span> (s[<span class="num_const">1</span>] != undefined) {
+<span class="lineno" id="137">   137  </span>			d = s[<span class="num_const">1</span>].substr (<span class="num_const">0</span>, p);
+<span class="lineno" id="138">   138  </span>		} <span class="key">else</span> {
+<span class="lineno" id="139">   139  </span>			<span class="key">var</span> i = p;
+<span class="lineno" id="140">   140  </span>			<span class="key">while</span> (i &gt; <span class="num_const">0</span>) {
+<span class="lineno" id="141">   141  </span>				d += <span class="str_const">"0"</span>;
+<span class="lineno" id="142">   142  </span>				i--;
+<span class="lineno" id="143">   143  </span>			}
+<span class="lineno" id="144">   144  </span>		}
+<span class="lineno" id="145">   145  </span>		<span class="key">var</span> c = s[<span class="num_const">0</span>] + <span class="str_const">"."</span> + d;
+<span class="lineno" id="146">   146  </span>		<span class="key">return</span> Number (c);		
+<span class="lineno" id="147">   147  </span>	}
+<span class="lineno" id="148">   148  </span>
+<span class="lineno" id="149">   149  </span>	<span class="comment doc">/**
+<span class="lineno" id="150">   150  </span>	 * convert celsius to fahrenheit
+<span class="lineno" id="151">   151  </span>	 * @param c (Number) celsius value
+<span class="lineno" id="152">   152  </span>	 * @param p (Number) number of decimal after int '.' without round
+<span class="lineno" id="153">   153  </span>	 * @return Number
+<span class="lineno" id="154">   154  </span>	 */</span>
+<span class="lineno" id="155">   155  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> c2f(c:Number, p:Number):Number {
+<span class="lineno" id="156">   156  </span>		<span class="key">var</span> d;
+<span class="lineno" id="157">   157  </span>		<span class="key">var</span> r = (c / (<span class="num_const">5</span> / <span class="num_const">9</span>)) + <span class="num_const">32</span>;
+<span class="lineno" id="158">   158  </span>		<span class="key">var</span> s = r.toString ().split (<span class="str_const">"."</span>);
+<span class="lineno" id="159">   159  </span>		<span class="key">if</span> (s[<span class="num_const">1</span>] != undefined) {
+<span class="lineno" id="160">   160  </span>			d = s[<span class="num_const">1</span>].substr (<span class="num_const">0</span>, p);
+<span class="lineno" id="161">   161  </span>		} <span class="key">else</span> {
+<span class="lineno" id="162">   162  </span>			<span class="key">var</span> i = p;
+<span class="lineno" id="163">   163  </span>			<span class="key">while</span> (i &gt; <span class="num_const">0</span>) {
+<span class="lineno" id="164">   164  </span>				d += <span class="str_const">"0"</span>;
+<span class="lineno" id="165">   165  </span>				i--;
+<span class="lineno" id="166">   166  </span>			}
+<span class="lineno" id="167">   167  </span>		}
+<span class="lineno" id="168">   168  </span>		<span class="key">var</span> f = s[<span class="num_const">0</span>] + <span class="str_const">"."</span> + d;
+<span class="lineno" id="169">   169  </span>		<span class="key">return</span> Number (f);		
+<span class="lineno" id="170">   170  </span>	}
+<span class="lineno" id="171">   171  </span>
+<span class="lineno" id="172">   172  </span>	<span class="comment">/* more to be converted
+<span class="lineno" id="173">   173  </span>		// global menu Delay (pause momentarily before initalizing to give some switch time for user)
+<span class="lineno" id="174">   174  </span>		_global.menuDelay = function (sec:Number, cb:Function):Void  {
+<span class="lineno" id="175">   175  </span>			var di = $menuDelayInt, fireTime = getTimer () + (sec * 1000);
+<span class="lineno" id="176">   176  </span>			if (di || _global.countMenuInt) {
+<span class="lineno" id="177">   177  </span>				clearInterval (di);
+<span class="lineno" id="178">   178  </span>				delete _global.countMenuInt;
+<span class="lineno" id="179">   179  </span>			}
+<span class="lineno" id="180">   180  </span>			_global.countMenuInt = function () {
+<span class="lineno" id="181">   181  </span>				if (fireTime &lt;= getTimer ()) {
+<span class="lineno" id="182">   182  </span>					clearInterval (di);
+<span class="lineno" id="183">   183  </span>					delete _global.countMenuInt;
+<span class="lineno" id="184">   184  </span>					cb ();
+<span class="lineno" id="185">   185  </span>				}
+<span class="lineno" id="186">   186  </span>			};
+<span class="lineno" id="187">   187  </span>			di = setInterval (this, "countMenuInt", 500);
+<span class="lineno" id="188">   188  </span>		};
+<span class="lineno" id="189">   189  </span>		
+<span class="lineno" id="190">   190  </span>		 _global.dblClick = function (clickSpeed:Number):Boolean  {
+<span class="lineno" id="191">   191  </span>			if (!clickSpeed) {
+<span class="lineno" id="192">   192  </span>				clickSpeed = 500;
+<span class="lineno" id="193">   193  </span>			}
+<span class="lineno" id="194">   194  </span>			if (lastclick - (lastclick = getTimer ()) + clickSpeed &gt; 0) {
+<span class="lineno" id="195">   195  </span>				return true;
+<span class="lineno" id="196">   196  </span>			}
+<span class="lineno" id="197">   197  </span>			return false;
+<span class="lineno" id="198">   198  </span>		};
+<span class="lineno" id="199">   199  </span>	 */</span>
+<span class="lineno" id="200">   200  </span>	 
+<span class="lineno" id="201">   201  </span>	 <span class="key">private</span> <span class="key">function</span> MiscUtils(){
+<span class="lineno" id="202">   202  </span>	 }
+<span class="lineno" id="203">   203  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of SASAPI" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.utils" class="button">Package</a></li><li><a href="MiscUtils.html" title="Detail of com.sekati.utils.MiscUtils API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
