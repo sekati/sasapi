@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Sekati Framework Core App Configuration - by jason m horwitz / sekati.com -->
-<config name="Sekati Framework" version="0.9.0">
+<config name="Sekati Framework" version="0.9.5">
 
 	<!-- crossdomain should live on same dom/subdom as SWF-->
 	<crossdomain_uri>crossdomain.xml</crossdomain_uri>

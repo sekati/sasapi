@@ -1,6 +1,6 @@
 #!/bin/sh
 ####################################################################################
-# AS2 Documentation Builder - v.0.0.3 - jason m horwitz | sekati.com
+# AS2 Documentation Builder - v.0.0.5 - jason m horwitz | sekati.com
 # Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 # Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
 #
@@ -30,7 +30,8 @@ rm -rf $DOC_PATH/*
 cd $AS2API_PATH
 ruby as2api.rb package-spec $PACKAGES --classpath $CLASS_PATH --output-dir $DOC_PATH --title $PROJECT_TITLE --sources --progress --draw-diagram --dot-exe $DOT
 
-cp "$DOC_PATH/frameset.html" "$DOC_PATH/index.html"
+# cp "$DOC_PATH/frameset.html" "$DOC_PATH/index.html"
+cp "$LIB_PATH/tools/doc_sekati_index.html" "$DOC_PATH/index.html"
 cp "$LIB_PATH/tools/doc_sekati_style.css" "$DOC_PATH/style.css"
 cp "$LIB_PATH/tools/doc_sekati_unnatural.css" "$DOC_PATH/unnatural.css"
 

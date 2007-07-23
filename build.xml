@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- *************************************************************************************
-		FDTKit Buildfile v1.1.0
+		FDTKit Buildfile v1.1.1
 		
 		@note	You must run this Buildfile in the same JRE as the workspace, be sure to
 				check this option in the launch configuration.
@@ -119,7 +119,7 @@
         	<arg line='--draw-diagram'/>
         	<arg line='--dot-exe ${dot_exe}'/>
 		</exec>
-		<copy file="${docs}/frameset.html" tofile="${docs}/index.html" overwrite="true"  failonerror="true"/>
+		<copy file="${lib}/tools/doc_sekati_index.html" tofile="${docs}/index.html" overwrite="true"  failonerror="true"/>
 		<copy file="${lib}/tools/doc_sekati_style.css" tofile="${docs}/style.css" overwrite="true"  failonerror="true"/>
 		<copy file="${lib}/tools/doc_sekati_unnatural.css" tofile="${docs}/unnatural.css" overwrite="true"  failonerror="true"/>
 	</target>

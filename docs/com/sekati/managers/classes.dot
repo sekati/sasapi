@@ -6,10 +6,4 @@ strict digraph class_diagram {
     tooltip="com.sekati.managers.StageManager",
     shape="record"
   ];
-  TypeContextMenuManager[
-    label="ContextMenuManager",
-    URL="ContextMenuManager.html",
-    tooltip="com.sekati.managers.ContextMenuManager",
-    shape="record"
-  ];
 }

@@ -1,6 +1,6 @@
 ﻿ /**
   * com.sekati.core.App
-  * @version 3.0.0
+  * @version 3.0.1
   * @author jason m horwitz | sekati.com
   * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
   * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -9,8 +9,8 @@
 import com.sekati.data.XML2Object;
 import com.sekati.events.Broadcaster;
 import com.sekati.log.OutPanel;
-import com.sekati.managers.ContextMenuManager;
 import com.sekati.managers.StageManager;
+import com.sekati.ui.CMenu;
 import flash.external.ExternalInterface;
  
  /**
@@ -138,7 +138,9 @@ class com.sekati.core.App {
 				}
 				// enable context menu                    
 				App.debug.trace ("@@@ Setting ContextMenu ...");
-				var cm = new ContextMenuManager ();
+				var cm:CMenu = new CMenu(_level0);
+				cm.addItem(App.APP_NAME);
+				
 				// load crossdomain policy
 				App.debug.trace ("@@@ loading crossdomain policy: " + App.CROSSDOMAIN_URI);
 				System.security.loadPolicyFile (App.CROSSDOMAIN_URI);
