@@ -5,58 +5,39 @@ SASAPI Documentation Stylesheet
 */
 body {
 	padding-left: 10px;
-	/*
-	font-family: "Lucida Sans Unicode", "Lucida Grande", "Trebuchet MS", Geneva, Arial, sans-serif;
-	font-size: 12px;
-	*/
 	font-family: "Lucida Grande",verdana,arial,sans-serif; 
 	line-height: 1.4em;
 	font-size: x-small;
 	background-color: transparent;
 }
+img { border: none; }
 h1,h2,h3 { font-family:"Myriad Apple", Myriad, Arial, Helvetica, Lucida Grande, sans-serif; line-height:100%;}
 h1 {
 	color: #9b101c;
-	/*color:#7f991c;*/
 	font-weight: lighter;
 	font-size:2.2em; 
 	line-height:1.1em;
-	/*font-size: 18px;*/
 }
 h2, caption {
 	color:#a00;
-	/*color:#729b12;*/
 	margin-bottom:.5em; padding:4px 0px; font-size:1.4em;
-	/*border-bottom:1px solid #a2a6a9;*/
 	border-bottom:1px solid #999;
 	font-weight: light;
-	/*
-	padding: 4px;
-	color: #ffffff;
-	padding-left: 8px;
-	background-color: #285090;
-	font-weight: bold;
-	font-size: 12px;
-	*/
 }
 h3, h4 {
 	font-size: 13px;
-	/*display:inline; margin:1em 0 0 0; color:#000; font-size:1.25em;*/
 }
 a {
 	color: #285090;
 	text-decoration: none;
-	border-bottom:1px solid #ededed; /*#c8c8c8;*/
+	border-bottom:1px solid #ededed;
 	background-color:transparent;
 	padding: 2px;
 }
 a:hover {
-	/*color: #a30000;*/
 	text-decoration:none;
-	/*background-color:#e60000;*/
 	background-color:#729b12;
 	color:#fff;
-	/*background-color:#e60000; border-color:#e60000;*/
 	border-bottom:none;
 	width: 100%;
 }
@@ -67,7 +48,6 @@ a:hover {
 	padding-top: 10px;
 }
 .method_details {
-	/*border-bottom: 1px solid #285090;*/
 	border-bottom: 1px solid #ccc;
 }
 .method_details p {
@@ -86,7 +66,6 @@ a:hover {
 	display: inline;
 }
 .main_nav span {
-	/*color: #000000;*/
 	color: #999;
 }
 table.summary_list {
@@ -112,10 +91,8 @@ table.summary_list caption {
 	padding: 4px;
 	text-align: left;
 	padding-left: 8px;
-	/*margin-left: -1px;*/
 	background-color: #FFF;
 	width: 100.5%;
-	/*font-weight: bold;*/
 	font-size: 12px;
 }
 ul.navigation_list {
@@ -136,11 +113,6 @@ ul.navigation_list li {
   	background-color: #F7F7F7;
   	border-right: 1px solid #EDEDED;
 	margin-right: 5px;
-	/*
-	color: #666666;
-	border-right: 1px solid #666666;
-	margin-right: 5px;
-	*/
 }
 .comment { 
 	color: #008000;

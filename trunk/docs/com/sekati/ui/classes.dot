@@ -18,4 +18,10 @@ strict digraph class_diagram {
     tooltip="com.sekati.ui.FLVPlayer",
     shape="record"
   ];
+  TypeCMenu[
+    label="CMenu",
+    URL="CMenu.html",
+    tooltip="com.sekati.ui.CMenu",
+    shape="record"
+  ];
 }
