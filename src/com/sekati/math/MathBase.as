@@ -1,6 +1,6 @@
 ﻿/**
  * com.sekati.math.MathBase
- * @version 1.0.5
+ * @version 1.0.7
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -189,6 +189,14 @@ class com.sekati.math.MathBase {
 	public static function randRangeInt (min:Number, max:Number):Number {
 		return Math.floor (Math.random () * (max - min + 1) + min);
 	}
+	
+	/**
+	 * get a random hexidecimal color
+	 * @return String
+	 */
+	public static function randHex():String  {
+		return "0x" + Math.floor (Math.random () * 16777215).toString (16).toUpperCase ();
+	}	
 	
 	private function MathBase(){
 	}

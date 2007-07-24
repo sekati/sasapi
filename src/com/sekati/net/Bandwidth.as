@@ -1,5 +1,5 @@
 /**
- * com.sekati.time.BandwidthTest
+ * com.sekati.net.Bandwidth
  * @version 1.0.0
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
@@ -15,10 +15,10 @@ import com.sekati.utils.Delegate;
  * function bandwidthResult(speed:Number, testsize:Number, ms:Number){
  * 	trace("bandwidth speed: "+speed+"kbps, test filesize: "+testsize+", test time: "+ms+"ms");
  * }
- * var bandwidthTest = new com.sekati.time.Bandwidth("assets/bandwidth_data/50k", bandwidthResult);
+ * var bandwidthTest = new com.sekati.net.Bandwidth("assets/bandwidth_data/50k", bandwidthResult);
  * } 
  */
-class com.sekati.time.Bandwidth {
+class com.sekati.net.Bandwidth {
 
 	private var _timer:StopWatch;
 	private var _cb:Function;
@@ -44,7 +44,7 @@ class com.sekati.time.Bandwidth {
 			var speed:Number = Math.round( (filesize / 1024 * 8) / (ms / 1000) );
 			_cb (speed, filesize, ms);	
 		} else {
-			throw new Error ("@@@ com.sekati.time.Bandwidth Error: data file loading failed.");
+			throw new Error ("@@@ com.sekati.net.Bandwidth Error: data file loading failed.");
 		}
 	}
 }

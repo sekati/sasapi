@@ -1,6 +1,6 @@
 /*////////////////////////////////////////////////////////////////////////////////////////
 
-  swfIN 1.0.4  -  2007-06-27
+  swfIN 1.0.5  -  2007-07-24
   javascript toolkit for flash developers
   © 2004-2007 Francis Turmel  |  swfIN.nectere.ca  |  www.nectere.ca  |  francis@nectere.ca
   released under the MIT license
