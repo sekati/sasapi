@@ -12,24 +12,6 @@
 class com.sekati.utils.MiscUtils {
 
 	/**
-	 * get a random hexidecimal color
-	 * @return String
-	 */
-	public static function randHex():String  {
-		return "0x" + Math.floor (Math.random () * 16777215).toString (16).toUpperCase ();
-	}	
-
-	/**
-	 * check if client flashplayer matches min version passed
-	 */
-	public static function checkVersion(minVersion:Number):Boolean  {
-		if (Number (getVersion ().split (" ")[1].split (",")[0]) >= minVersion) {
-			return true;
-		}
-		return false;
-	}
-
-	/**
 	 * javascript resize window
 	 */
 	public static function jsResizeWin(w:Number, h:Number):Void {

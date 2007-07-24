@@ -1,6 +1,6 @@
 /*////////////////////////////////////////////////////////////////////////////////////////
 
-  swfIN 1.0.4  -  2007-06-27
+  swfIN 1.0.5  -  2007-07-24
   javascript toolkit for flash developers
   © 2004-2007 Francis Turmel  |  swfIN.nectere.ca  |  www.nectere.ca  |  francis@nectere.ca
   released under the MIT license
@@ -372,7 +372,7 @@ fd.tools = {
 					var axo = new ActiveXObject("ShockwaveFlash.ShockwaveFlash.7");
 					installedVersion = axo.GetVariable("$version").split(" ")[1].split(",")[0];
 				}catch (e) {
-					installedVersion = 15;
+					installedVersion = 0;
 				}
 				
 			}else{
@@ -548,9 +548,24 @@ swfIN.prototype = {
 		this.fd.size.refresh();
 	},
 	
+	getDivStringID: function(){
+		return "div_"+this.id;
+	},
+	
+	getDivRef: function(){
+		return $id( this.getDivStringID() );
+	},
+	
+	getEmbedStringID: function(){
+		return this.id;
+	},
+	
+	getEmbedRef: function(){
+		return $id( this.getEmbedStringID() );;
+	},
 	
 	//swfIN
-	name: "swfIN 1.0.4  -  2007-06-27",
+	name: "swfIN 1.0.5  -  2007-07-24",
 	author: "© 2004-2007 Francis Turmel  |  swfIN.nectere.ca  |  www.nectere.ca  |  francis@nectere.ca",
 	desc: "javascript toolkit for flash developers  |  released under the MIT license"
   
