@@ -1,0 +1,15 @@
+strict digraph class_diagram {
+  rankdir=LR;
+  TypeTempConversion[
+    label="TempConversion",
+    URL="TempConversion.html",
+    tooltip="com.sekati.convert.TempConversion",
+    shape="record"
+  ];
+  TypeBoolConversion[
+    label="BoolConversion",
+    URL="BoolConversion.html",
+    tooltip="com.sekati.convert.BoolConversion",
+    shape="record"
+  ];
+}
