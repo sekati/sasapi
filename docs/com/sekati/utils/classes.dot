@@ -18,12 +18,6 @@ strict digraph class_diagram {
     tooltip="com.sekati.utils.MovieClipUtils",
     shape="record"
   ];
-  TypeMiscUtils[
-    label="MiscUtils",
-    URL="MiscUtils.html",
-    tooltip="com.sekati.utils.MiscUtils",
-    shape="record"
-  ];
   TypeFilterUtils[
     label="FilterUtils",
     URL="FilterUtils.html",

@@ -18,6 +18,12 @@ strict digraph class_diagram {
     tooltip="com.sekati.validate.OSValidation",
     shape="record"
   ];
+  TypeFlashValidation[
+    label="FlashValidation",
+    URL="FlashValidation.html",
+    tooltip="com.sekati.validate.FlashValidation",
+    shape="record"
+  ];
   TypeCreditCardValidation[
     label="CreditCardValidation",
     URL="CreditCardValidation.html",

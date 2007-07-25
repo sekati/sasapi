@@ -1,8 +1,7 @@
 <map id="class_diagram" name="class_diagram">
-<area shape="rect" href="TextUtils.html" title="com.sekati.utils.TextUtils" alt="" coords="32,728,122,776" />
-<area shape="rect" href="StringUtils.html" title="com.sekati.utils.StringUtils" alt="" coords="26,656,128,704" />
-<area shape="rect" href="MovieClipUtils.html" title="com.sekati.utils.MovieClipUtils" alt="" coords="8,584,146,632" />
-<area shape="rect" href="MiscUtils.html" title="com.sekati.utils.MiscUtils" alt="" coords="30,512,124,560" />
+<area shape="rect" href="TextUtils.html" title="com.sekati.utils.TextUtils" alt="" coords="32,656,122,704" />
+<area shape="rect" href="StringUtils.html" title="com.sekati.utils.StringUtils" alt="" coords="26,584,128,632" />
+<area shape="rect" href="MovieClipUtils.html" title="com.sekati.utils.MovieClipUtils" alt="" coords="8,512,146,560" />
 <area shape="rect" href="FilterUtils.html" title="com.sekati.utils.FilterUtils" alt="" coords="28,440,126,488" />
 <area shape="rect" href="Delegate.html" title="com.sekati.utils.Delegate" alt="" coords="33,368,121,416" />
 <area shape="rect" href="DateUtils.html" title="com.sekati.utils.DateUtils" alt="" coords="30,296,124,344" />

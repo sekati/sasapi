@@ -1,0 +1,9 @@
+strict digraph class_diagram {
+  rankdir=LR;
+  TypeJsBase[
+    label="JsBase",
+    URL="JsBase.html",
+    tooltip="com.sekati.external.JsBase",
+    shape="record"
+  ];
+}

@@ -18,10 +18,4 @@ strict digraph class_diagram {
     tooltip="com.sekati.time.FrameBeacon",
     shape="record"
   ];
-  TypeBandwidth[
-    label="Bandwidth",
-    URL="Bandwidth.html",
-    tooltip="com.sekati.time.Bandwidth",
-    shape="record"
-  ];
 }
