@@ -36,6 +36,12 @@ strict digraph class_diagram {
     tooltip="com.sekati.utils.DateUtils",
     shape="record"
   ];
+  TypeClone[
+    label="Clone",
+    URL="Clone.html",
+    tooltip="com.sekati.utils.Clone",
+    shape="record"
+  ];
   TypeClassUtils[
     label="ClassUtils",
     URL="ClassUtils.html",

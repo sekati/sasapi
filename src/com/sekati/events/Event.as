@@ -6,6 +6,8 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  
+ import com.sekati.events.IEvent;
+ 
 /**
  * Base Event class, works similarly to the AS3 Event class<br><br>
  * The {@link com.sekati.events.Dispatcher} class excepts an object with at least one property: 'type:String'
@@ -14,7 +16,7 @@
  * are:'target:Object', which is the source of the event & 'data:Object', which may contain any information 
  * you wish to pass along with the event.
  */
-class com.sekati.events.Event {
+class com.sekati.events.Event implements IEvent {
 
 	private var _type:String;
 	private var _target:Object;

@@ -18,6 +18,12 @@ strict digraph class_diagram {
     tooltip="com.sekati.core.Document",
     shape="record"
   ];
+  TypeCoreObject[
+    label="CoreObject",
+    URL="CoreObject.html",
+    tooltip="com.sekati.core.CoreObject",
+    shape="record"
+  ];
   TypeApp[
     label="App",
     URL="App.html",
