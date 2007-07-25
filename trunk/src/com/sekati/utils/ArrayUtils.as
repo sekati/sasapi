@@ -181,6 +181,22 @@ class com.sekati.utils.ArrayUtils {
 		return true;
 	}
 	
+	/**
+	 * Search for a specific value of a property in an array of objects
+	 * @param objArr (Array) array of objects
+	 * @param prop (String) property to search
+	 * @param val (Object) value to locates
+	 * @return Object - that matches property value
+	 */
+	public static function locatePropVal(objArr:Array, prop:String, val:Object) {
+		for(var o in objArr) {
+			if(objArr[o][prop] == val) {
+				return objArr[o];
+			}
+		}
+		return undefined;
+	}	
+	
 	private function ArrayUtils(){
 	}
 }

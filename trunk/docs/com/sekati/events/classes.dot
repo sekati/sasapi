@@ -1,5 +1,11 @@
 strict digraph class_diagram {
   rankdir=LR;
+  TypePulse[
+    label="Pulse",
+    URL="Pulse.html",
+    tooltip="com.sekati.events.Pulse",
+    shape="record"
+  ];
   TypeEvent[
     label="Event",
     URL="Event.html",

@@ -6,4 +6,10 @@ strict digraph class_diagram {
     tooltip="com.sekati.effects.TextEffects",
     shape="record"
   ];
+  TypeAnimHandler[
+    label="AnimHandler",
+    URL="AnimHandler.html",
+    tooltip="com.sekati.effects.AnimHandler",
+    shape="record"
+  ];
 }

@@ -3,16 +3,21 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><link href="../../../com/sekati/display/package-summary.html" title="Package com.sekati.display" rel="next"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><h1>Package com.sekati.events</h1><table class="summary_list" summary=""><caption>Interface Summary</caption><tr><td><a href="IBroadcastable.html">IBroadcastable</a></td><td>
  Interface describing <a href="../../../com/sekati/events/Broadcaster.html" class="class_name" title="Class com.sekati.events.Broadcaster">Broadcaster</a></td></tr><tr><td><a href="IDispatchable.html">IDispatchable</a></td><td>
- Interface describing <a href="../../../com/sekati/events/Dispatcher.html" class="class_name" title="Class com.sekati.events.Dispatcher">Dispatcher</a></td></tr></table><table class="summary_list" summary=""><caption>Class Summary</caption><tr><td><a href="Broadcaster.html">Broadcaster</a></td><td> Singleton Broadcaster with bulk subscribe/unsubscribe & the  ability to pass arguments through broadcast events</td></tr><tr><td><a href="Dispatcher.html">Dispatcher</a></td><td>
+ Interface describing <a href="../../../com/sekati/events/Dispatcher.html" class="class_name" title="Class com.sekati.events.Dispatcher">Dispatcher</a></td></tr><tr><td><a href="IEvent.html">IEvent</a></td><td>
+ Interface describing <a href="../../../com/sekati/events/Event.html" class="class_name" title="Class com.sekati.events.Event">Event</a></td></tr></table><table class="summary_list" summary=""><caption>Class Summary</caption><tr><td><a href="Broadcaster.html">Broadcaster</a></td><td> Singleton Broadcaster with bulk subscribe/unsubscribe & the  ability to pass arguments through broadcast events</td></tr><tr><td><a href="Dispatcher.html">Dispatcher</a></td><td>
  A centralized EventDispatcher to decouple event listeners & dispatchers from direct addressing</td></tr><tr><td><a href="Event.html">Event</a></td><td>
  Base Event class, works similarly to the AS3 Event class<br><br>
  The <a href="../../../com/sekati/events/Dispatcher.html" class="class_name" title="Class com.sekati.events.Dispatcher">Dispatcher</a> class excepts an object with at least one property: 'type:String'
- which is the identifier of the event</td></tr></table><h1>Class Inheritance Diagram</h1><div class="diagram"><map name="class_diagram" id="class_diagram">
+ which is the identifier of the event</td></tr><tr><td><a href="Pulse.html">Pulse</a></td><td>
+ Framerate Pulse Broadcaster
+ </td></tr></table><h1>Class Inheritance Diagram</h1><div class="diagram"><map name="class_diagram" id="class_diagram">
+<area href="Pulse.html" title="com.sekati.events.Pulse" shape="rect" coords="28,224,100,272" alt=""></area>
 <area href="Event.html" title="com.sekati.events.Event" shape="rect" coords="28,152,100,200" alt=""></area>
 <area href="Dispatcher.html" title="com.sekati.events.Dispatcher" shape="rect" coords="13,80,114,128" alt=""></area>
 <area href="Broadcaster.html" title="com.sekati.events.Broadcaster" shape="rect" coords="9,8,118,56" alt=""></area>
 </map>
 <img src="package-classes.png" usemap="class_diagram"/></div><h1>Interface Inheritance Diagram</h1><div class="diagram"><map name="interface_diagram" id="interface_diagram">
+<area href="IEvent.html" title="com.sekati.events.IEvent" shape="rect" coords="40,152,112,200" alt=""></area>
 <area href="IDispatchable.html" title="com.sekati.events.IDispatchable" shape="rect" coords="13,80,138,128" alt=""></area>
 <area href="IBroadcastable.html" title="com.sekati.events.IBroadcastable" shape="rect" coords="8,8,144,56" alt=""></area>
 </map>
