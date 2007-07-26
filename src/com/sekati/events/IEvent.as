@@ -11,5 +11,5 @@
  */
 interface com.sekati.events.IEvent {
 	
-	function bubble():Void;
+	function bubble(newTarget:Object):Void;
 }

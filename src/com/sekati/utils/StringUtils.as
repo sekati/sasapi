@@ -109,15 +109,6 @@ class com.sekati.utils.StringUtils {
 	}	
 
 	/**
-	 * add cacheKiller
-	 * @param str (String)
-	 * @return String
-	 */
-	public static function noCache (str:String):String {
-		return str + "?" + new Date ().getTime ();
-	}
-
-	/**
 	 * encode html
 	 * @param str (String)
 	 * @return String
