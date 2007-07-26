@@ -1,6 +1,6 @@
 /**
- * com.sekati.ui.CMenu
- * @version 1.7.0
+ * com.sekati.ui.ContextualMenu
+ * @version 1.7.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -9,17 +9,18 @@
 /**
  * Context Menu management for right clicks!
  * {@code Usage:
- * 	var cm:CMenu = new CMenu(_level0);
+ * 	var cm:ContextualMenu = new ContextualMenu(_level0);
  * 	cm.addItem("Item One", Delegate.create(this, myFunction), true, true);
  * 	cm.addItem("Item Two");
  * 	cm.removeItem("Item One"); // remove the first item
  * 	cm.enabled = false; // disable this menu
  * }
  */
-class com.sekati.ui.CMenu {
+class com.sekati.ui.ContextualMenu {
 	
 	private var _target:MovieClip;
 	private var _isEnabled:Boolean;
+	private var _hasBuiltInItems:Boolean;
 	private var _items:Array;
 	private var _backup:Array;
 
@@ -29,13 +30,14 @@ class com.sekati.ui.CMenu {
 	 * @return Void
 	 * @throws Error if no target is provided and returns without proper instantiation.
 	 */	
-	public function CMenu(target:MovieClip) {
+	public function ContextualMenu(target:MovieClip) {
 		if(!target) {
-			throw new Error ("@@@ com.sekati.ui.CMenu Error: constructor expects a 'target:MovieClip' parameter.");
+			throw new Error ("@@@ com.sekati.ui.ContextualMenu Error: constructor expects a 'target:MovieClip' parameter.");
 			return;	
 		}
 		_target = target;
 		_isEnabled = true;
+		_hasBuiltInItems = false;
 		_items = new Array();
 		_backup = new Array();
 	}
@@ -78,7 +80,9 @@ class com.sekati.ui.CMenu {
 	 */	
 	private function buildMenu():Void {
 		var m:ContextMenu = new ContextMenu ();
-		m.hideBuiltInItems ();		
+		if(!_hasBuiltInItems) {
+			m.hideBuiltInItems ();
+		}
 		for(var i:Number=0; i<_items.length; i++) {
 			var cmi:ContextMenuItem = new ContextMenuItem (_items[i]._caption, _items[i]._cb, _items[i]._isDiv, _items[i]._isEnabled);
 			m.customItems.push(cmi);
@@ -87,8 +91,8 @@ class com.sekati.ui.CMenu {
 	}
 	
 	/**
-	 * CMenu enable setter
-	 * @param b (Boolean) - enable (true) or disable (false) the custom Context Menu.
+	 * Menu enabled setter
+	 * @param b (Boolean) - enable (true) or disable (false) the custom Context Menu [default: true].
 	 * @return Void
 	 */
 	public function set enabled(b:Boolean):Void {
@@ -109,12 +113,29 @@ class com.sekati.ui.CMenu {
 	}
 	
 	/**
-	 * CMenu enable getter
+	 * Menu enabled getter
 	 * @return Boolean
 	 */
 	public function get enabled():Boolean {
 		return _isEnabled;	
 	}	
+	
+	/**
+	 * Menu builtInItems setter
+	 * @param b (Boolean) - enable (true) or disable (false) the Context Menu's built in items [default: false].
+	 * @return Void
+	 */
+	public function set builtInItems(b:Boolean):Void {
+		_hasBuiltInItems = b;	
+	}
+	
+	/**
+	 * Menu builtInItems getter
+	 * @return Boolean
+	 */
+	public function get builtInItems():Boolean {
+		return _hasBuiltInItems;	
+	}
 	
 	/**
 	 * Void function to assign to items added without callback
