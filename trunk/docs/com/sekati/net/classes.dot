@@ -1,5 +1,11 @@
 strict digraph class_diagram {
   rankdir=LR;
+  TypeNetBase[
+    label="NetBase",
+    URL="NetBase.html",
+    tooltip="com.sekati.net.NetBase",
+    shape="record"
+  ];
   TypeFile[
     label="File",
     URL="File.html",

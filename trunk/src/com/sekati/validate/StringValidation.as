@@ -1,6 +1,6 @@
 /**
  * com.sekati.validate.StringValidation
- * @version 1.0.0
+ * @version 1.0.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -19,9 +19,18 @@ class com.sekati.validate.StringValidation {
 	 * @param str (String)
 	 * @return Boolean
 	 */
-	public static function isValidEmail (str):Boolean {
+	public static function isValidEmail (str:String):Boolean {
 		return ((str.length < 6) || (str.indexOf ("@") < 1) || (str.length - (str.indexOf ("@")) < 5) || (str.indexOf ("@") != str.lastIndexOf ("@")) || (str.length - (str.lastIndexOf (".")) < 3) || (str.length - (str.lastIndexOf (".")) > 5) || (Math.abs ((str.indexOf ("@")) - (str.indexOf ("."))) == 1) || (str.indexOf (" ") != -1)) ? false : true;
-	}	
+	}
+	
+	/**
+	 * validate a string begins with "http://"
+	 * @param str (String)
+	 * @return Boolean
+	 */
+	public static function isURL (str:String):Boolean {
+		return (str.substring (0, 7) == "http://");
+	}		
 
 	/**
 	 * validate if a strings contents are blank after a safety trim is performed

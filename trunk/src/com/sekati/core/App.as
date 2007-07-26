@@ -1,6 +1,6 @@
 ﻿ /**
   * com.sekati.core.App
-  * @version 3.0.1
+  * @version 3.0.3
   * @author jason m horwitz | sekati.com
   * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
   * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -9,8 +9,10 @@
 import com.sekati.data.XML2Object;
 import com.sekati.events.Broadcaster;
 import com.sekati.log.OutPanel;
+import com.sekati.net.NetBase;
 import com.sekati.managers.StageManager;
 import com.sekati.ui.ContextualMenu;
+import com.sekati.validate.StringValidation;
 import flash.external.ExternalInterface;
  
  /**
@@ -47,7 +49,7 @@ import flash.external.ExternalInterface;
   */
 class com.sekati.core.App {
 
-	public static var PATH:String = (_root._url.substring (0, 7) == "http://") ? _root._url.substr (0, _root._url.lastIndexOf ('/') + 1) : "";
+	public static var PATH:String = (NetBase.isOnline()) ? NetBase.getPath() : "";
 	public static var CONF_URI:String = (!_root.conf_uri) ? App.PATH + "config.xml" : _root.conf_uri;
 	public static var APP_NAME:String;
 	public static var CROSSDOMAIN_URI:String;
@@ -117,6 +119,7 @@ class com.sekati.core.App {
 				// dump object data into static App vars
 				App.APP_NAME = o.config.attributes.name + " v" + o.config.attributes.version;
 				App.CROSSDOMAIN_URI = (o.config.crossdomain_uri.data != undefined) ? o.config.crossdomain_uri.data : "crossdomain.xml";
+				App.CROSSDOMAIN_URI = (StringValidation.isURL(App.CROSSDOMAIN_URI)) ? App.CROSSDOMAIN_URI : NetBase.getPath()+App.CROSSDOMAIN_URI;
 				App.DEBUG_ENABLE = (o.config.debug_enable.data == "true") ? true : false;
 				App.FLINK_ENABLE = (o.config.flink_enable.data == "true") ? true : false;
 				App.TRACK_ENABLE = (o.config.track_enable.data == "true") ? true : false;
@@ -141,7 +144,7 @@ class com.sekati.core.App {
 				var cm:ContextualMenu = new ContextualMenu(_level0);
 				cm.addItem(App.APP_NAME);
 				
-				// load crossdomain policy
+				// load crossdomain policy 
 				App.debug.trace ("@@@ loading crossdomain policy: " + App.CROSSDOMAIN_URI);
 				System.security.loadPolicyFile (App.CROSSDOMAIN_URI);
 				delete oXML;
