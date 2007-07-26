@@ -10,7 +10,7 @@ import com.sekati.data.XML2Object;
 import com.sekati.events.Broadcaster;
 import com.sekati.log.OutPanel;
 import com.sekati.managers.StageManager;
-import com.sekati.ui.CMenu;
+import com.sekati.ui.ContextualMenu;
 import flash.external.ExternalInterface;
  
  /**
@@ -138,7 +138,7 @@ class com.sekati.core.App {
 				}
 				// enable context menu                    
 				App.debug.trace ("@@@ Setting ContextMenu ...");
-				var cm:CMenu = new CMenu(_level0);
+				var cm:ContextualMenu = new ContextualMenu(_level0);
 				cm.addItem(App.APP_NAME);
 				
 				// load crossdomain policy
