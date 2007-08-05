@@ -1,10 +1,11 @@
 <map id="class_diagram" name="class_diagram">
-<area shape="rect" href="TextUtils.html" title="com.sekati.utils.TextUtils" alt="" coords="32,728,122,776" />
-<area shape="rect" href="StringUtils.html" title="com.sekati.utils.StringUtils" alt="" coords="26,656,128,704" />
-<area shape="rect" href="MovieClipUtils.html" title="com.sekati.utils.MovieClipUtils" alt="" coords="8,584,146,632" />
-<area shape="rect" href="FilterUtils.html" title="com.sekati.utils.FilterUtils" alt="" coords="28,512,126,560" />
-<area shape="rect" href="Delegate.html" title="com.sekati.utils.Delegate" alt="" coords="33,440,121,488" />
-<area shape="rect" href="DateUtils.html" title="com.sekati.utils.DateUtils" alt="" coords="30,368,124,416" />
+<area shape="rect" href="TextUtils.html" title="com.sekati.utils.TextUtils" alt="" coords="32,800,122,848" />
+<area shape="rect" href="StringUtils.html" title="com.sekati.utils.StringUtils" alt="" coords="26,728,128,776" />
+<area shape="rect" href="MovieClipUtils.html" title="com.sekati.utils.MovieClipUtils" alt="" coords="8,656,146,704" />
+<area shape="rect" href="FilterUtils.html" title="com.sekati.utils.FilterUtils" alt="" coords="28,584,126,632" />
+<area shape="rect" href="Delegate.html" title="com.sekati.utils.Delegate" alt="" coords="33,512,121,560" />
+<area shape="rect" href="DateUtils.html" title="com.sekati.utils.DateUtils" alt="" coords="30,440,124,488" />
+<area shape="rect" href="ColorUtils.html" title="com.sekati.utils.ColorUtils" alt="" coords="28,368,126,416" />
 <area shape="rect" href="Clone.html" title="com.sekati.utils.Clone" alt="" coords="41,296,113,344" />
 <area shape="rect" href="ClassUtils.html" title="com.sekati.utils.ClassUtils" alt="" coords="28,224,126,272" />
 <area shape="rect" href="BitmapUtils.html" title="com.sekati.utils.BitmapUtils" alt="" coords="21,152,133,200" />

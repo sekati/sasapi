@@ -1,5 +1,11 @@
 strict digraph class_diagram {
   rankdir=LR;
+  TypeTile[
+    label="Tile",
+    URL="Tile.html",
+    tooltip="com.sekati.draw.Tile",
+    shape="record"
+  ];
   TypeRectangle[
     label="Rectangle",
     URL="Rectangle.html",
