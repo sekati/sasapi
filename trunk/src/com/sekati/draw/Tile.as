@@ -37,4 +37,7 @@ class com.sekati.draw.Tile {
 			endFill();				
 		}
 	}
+	
+	private function Tile(){
+	}
 }
