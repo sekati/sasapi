@@ -27,7 +27,7 @@ class com.sekati.draw.RoundRectangle {
 	 * @return Void
 	 * {@code Usage:
 	 * 	var box:MovieClip = this.createEmptyMovieClip ("box", this.getNextHighestDepth ());
-	 * 	RoundRectangle.draw(box, new Point(50, 50), new Point(100, 100), 0xff00ff, 100, 1, 0x00fffff, 100);
+	 * 	RoundRectangle.draw(rbox, new Point(150, 150), new Point(250, 250), 12, 0xff00ff, 100, 1, 0x00fffff, 100);
 	 * }
 	 */
 	public static function draw (mc:MovieClip, topLeft:Point, bottomRight:Point, cornerRadius:Number, fillColor:Number, fillAlpha:Number, strokeWeight:Number, strokeColor:Number, strokeAlpha:Number):Void{
@@ -50,7 +50,7 @@ class com.sekati.draw.RoundRectangle {
 		mc.clear();
 		mc.lineStyle(strokeWeight, strokeColor, strokeAlpha, true, "none", "round", "round", 8);
 		if (fillColor) {
-			mc.beginFill(fillColor, fillAlpha);
+			mc.beginFill(fillColor, fa);
 		}
 
 		// draw top line
