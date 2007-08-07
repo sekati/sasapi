@@ -33,8 +33,8 @@ class com.sekati.draw.Triangle {
 	public static function draw (mc:MovieClip, p1:Point, p2:Point, p3:Point, fillColor:Number, fillAlpha:Number, strokeWeight:Number, strokeColor:Number, strokeAlpha:Number):Void {
 		var sw:Number = (!strokeWeight) ? undefined : strokeWeight;
 		var sc:Number = (!strokeColor) ? 0x000000 : strokeColor;
-		var fa:Number = (!fillAlpha) ? 100 : fillAlpha;
 		var sa:Number = (!strokeAlpha) ? 100 : strokeAlpha;
+		var fa:Number = (!fillAlpha) ? 100 : fillAlpha;
 		
 		mc.clear();
 		mc.lineStyle (sw, sc, sa, true, "none", "square", "miter", 1.414);

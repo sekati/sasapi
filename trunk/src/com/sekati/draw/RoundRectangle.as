@@ -33,8 +33,8 @@ class com.sekati.draw.RoundRectangle {
 	public static function draw (mc:MovieClip, topLeft:Point, bottomRight:Point, cornerRadius:Number, fillColor:Number, fillAlpha:Number, strokeWeight:Number, strokeColor:Number, strokeAlpha:Number):Void{
 		var sw:Number = (!strokeWeight) ? undefined : strokeWeight;
 		var sc:Number = (!strokeColor) ? 0x000000 : strokeColor;
-		var fa:Number = (!fillAlpha) ? 100 : fillAlpha;
 		var sa:Number = (!strokeAlpha) ? 100 : strokeAlpha;
+		var fa:Number = (!fillAlpha) ? 100 : fillAlpha;
 
 		var x:Number = topLeft.x;
 		var y:Number = topLeft.y;
