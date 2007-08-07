@@ -1,47 +1,49 @@
 /**
  * com.sekati.draw.Rectangle
- * @version 1.0.1
+ * @version 1.0.3
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  
-import com.sekati.core.KeyFactory;
+import com.sekati.geom.Point;
  
 /**
- * Rectangle drawing utilities.
+ * Rectangle drawing utility.
  */
 class com.sekati.draw.Rectangle {
 
 	/**
 	 * Draw a rectangle in an existing clip
 	 * @param mc (Movie	Clip) target clip to draw in
-	 * @param x (Number) x position [default: 0]
-	 * @param y (Number) y position [default: 0]
-	 * @param w (Number) width
-	 * @param h (Number) height
-	 * @param strokeWeight (Number) border line width, if undefined no border will be drawn
-	 * @param borderColor (Number) hex border color 
+	 * @param topLeft (Point)
+	 * @param bottomRight (Point)
 	 * @param fillColor (Number) hex fill, if undefined rectangle will not be filled
-	 * @param alpha (Number) rectangle alpha value (border & fill)
+	 * @param fillAlpha (Number) fill alpha transparency [default: 100]
+	 * @param strokeWeight (Number) border line width, if 0 or undefined no border will be drawn
+	 * @param strokeColor (Number) hex border color 
+	 * @param strokeAlpha (Number) stroke alpha transparancy [default: 100]
 	 * @return Void
 	 * {@code Usage:
 	 * 	var box:MovieClip = this.createEmptyMovieClip ("box", this.getNextHighestDepth ());
-	 * 	Rectangle.draw(box, 50, 50, 100, 100, 1, 0xff00ff, 0xffff00, 100);
+	 * 	Rectangle.draw(box, new Point(50, 50), new Point(100, 100), 0xff00ff, 100, 1, 0x00fffff, 100);
 	 * }
 	 */
-	public static function draw (mc:MovieClip, x:Number, y:Number, w:Number, h:Number, strokeWeight:Number, borderColor:Number, fillColor:Number, alpha:Number):Void {
-		var l:Number = (!strokeWeight) ? undefined : strokeWeight;
-		var b:Number = (!borderColor) ? 0x000000 : borderColor;
-		var a:Number = (!alpha) ? 100 : alpha;
-		var tl:Number = (!x) ? 0 : x;
-		var bl:Number = (!y) ? 0 : y;
-		var tr:Number = x+w;
-		var br:Number = y+h;
+	public static function draw (mc:MovieClip, topLeft:Point, bottomRight:Point, fillColor:Number, fillAlpha:Number, strokeWeight:Number, strokeColor:Number, strokeAlpha:Number):Void {
+		var sw:Number = (!strokeWeight) ? undefined : strokeWeight;
+		var sc:Number = (!strokeColor) ? 0x000000 : strokeColor;
+		var fa:Number = (!fillAlpha) ? 100 : fillAlpha;
+		var sa:Number = (!strokeAlpha) ? 100 : strokeAlpha;
+		
+		var tl:Number = topLeft.x;
+		var bl:Number = topLeft.y;
+		var tr:Number = bottomRight.x;
+		var br:Number = bottomRight.y;
+		
 		mc.clear();
-		mc.lineStyle (l, b, a, true, "none", "square", "miter", 1.414);
+		mc.lineStyle (sw, sc, sa, true, "none", "square", "miter", 1.414);
 		if (fillColor) {
-			mc.beginFill (fillColor, a);
+			mc.beginFill (fillColor, fa);
 		}
 		mc.moveTo (tl,bl);
 		mc.lineTo (tr,bl);
@@ -49,15 +51,9 @@ class com.sekati.draw.Rectangle {
 		mc.lineTo (tl,br);
 		if (fillColor) {
 			mc.endFill ();
+		} else {
+			mc.lineTo (bl,tl);
 		}
-	}
-	
-	public static function drawRound (mc:MovieClip, x:Number, y:Number, w:Number, h:Number, cornerRadius:Number, borderColor:Number, fillColor:Number, alpha:Number):Void {
-		var l:Number = (!borderColor) ? undefined : 1;
-		var b:Number = (!borderColor) ? 0x000000 : borderColor;
-		var a:Number = (!alpha) ? 100 : alpha;
-		mc.clear();
-				
 	}
 	
 	private function Rectangle(){
