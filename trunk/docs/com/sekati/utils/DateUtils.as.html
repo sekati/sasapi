@@ -3,7 +3,7 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span><span class="comment doc">/**
 <span class="lineno" id="2">     2  </span> * com.sekati.utils.DateUtils
-<span class="lineno" id="3">     3  </span> * @version 1.0.0
+<span class="lineno" id="3">     3  </span> * @version 1.0.1
 <span class="lineno" id="4">     4  </span> * @author jason m horwitz | sekati.com
 <span class="lineno" id="5">     5  </span> * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -25,50 +25,64 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="22">    22  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> get months ():Array {
 <span class="lineno" id="23">    23  </span>		<span class="key">return</span> <span class="key">new</span> Array (<span class="str_const">"January"</span>, <span class="str_const">"February"</span>, <span class="str_const">"March"</span>, <span class="str_const">"April"</span>, <span class="str_const">"May"</span>, <span class="str_const">"June"</span>, <span class="str_const">"July"</span>, <span class="str_const">"August"</span>, <span class="str_const">"September"</span>, <span class="str_const">"October"</span>, <span class="str_const">"November"</span>, <span class="str_const">"December"</span>);
 <span class="lineno" id="24">    24  </span>	}
-<span class="lineno" id="25">    25  </span>
+<span class="lineno" id="25">    25  </span>	
 <span class="lineno" id="26">    26  </span>	<span class="comment doc">/**
-<span class="lineno" id="27">    27  </span>	 * gets 0 indexed array of days for use with Date.getDay()
+<span class="lineno" id="27">    27  </span>	 * gets 0 indexed array of short months for use with Date.getMonth()
 <span class="lineno" id="28">    28  </span>	 */</span>
-<span class="lineno" id="29">    29  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> get days ():Array {
-<span class="lineno" id="30">    30  </span>		<span class="key">return</span> <span class="key">new</span> Array (<span class="str_const">"Sunday"</span>, <span class="str_const">"Monday"</span>, <span class="str_const">"Tuesday"</span>, <span class="str_const">"Wednesday"</span>, <span class="str_const">"Thursday"</span>, <span class="str_const">"Friday"</span>, <span class="str_const">"Saturday"</span>);
+<span class="lineno" id="29">    29  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> get smonths ():Array {
+<span class="lineno" id="30">    30  </span>		<span class="key">return</span> <span class="key">new</span> Array (<span class="str_const">"Jan"</span>,<span class="str_const">"Feb"</span>,<span class="str_const">"Mar"</span>,<span class="str_const">"Apr"</span>,<span class="str_const">"May"</span>,<span class="str_const">"Jun"</span>,<span class="str_const">"Jul"</span>,<span class="str_const">"Aug"</span>,<span class="str_const">"Sep"</span>,<span class="str_const">"Oct"</span>,<span class="str_const">"Nov"</span>,<span class="str_const">"Dec"</span>);	
 <span class="lineno" id="31">    31  </span>	}
 <span class="lineno" id="32">    32  </span>
 <span class="lineno" id="33">    33  </span>	<span class="comment doc">/**
-<span class="lineno" id="34">    34  </span>	 * pads hours,minutes or seconds with a leading 0, 12:01 doesn't end up 12:1
+<span class="lineno" id="34">    34  </span>	 * gets 0 indexed array of days for use with Date.getDay()
 <span class="lineno" id="35">    35  </span>	 */</span>
-<span class="lineno" id="36">    36  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> padTime (inn):String {
-<span class="lineno" id="37">    37  </span>		<span class="key">return</span> (String (inn).length &lt; <span class="num_const">2</span>) ? (<span class="str_const">"0"</span> + inn) : inn;
+<span class="lineno" id="36">    36  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> get days ():Array {
+<span class="lineno" id="37">    37  </span>		<span class="key">return</span> <span class="key">new</span> Array (<span class="str_const">"Sunday"</span>, <span class="str_const">"Monday"</span>, <span class="str_const">"Tuesday"</span>, <span class="str_const">"Wednesday"</span>, <span class="str_const">"Thursday"</span>, <span class="str_const">"Friday"</span>, <span class="str_const">"Saturday"</span>);
 <span class="lineno" id="38">    38  </span>	}
-<span class="lineno" id="39">    39  </span>
+<span class="lineno" id="39">    39  </span>	
 <span class="lineno" id="40">    40  </span>	<span class="comment doc">/**
-<span class="lineno" id="41">    41  </span>	 * converts a db formatted date string into a Flash Date object
-<span class="lineno" id="42">    42  </span>	 * @param dbDate (String) date in YYYY-MM-DD HH:MM:SS format
-<span class="lineno" id="43">    43  </span>	 * @return Date
-<span class="lineno" id="44">    44  </span>	 */</span>
-<span class="lineno" id="45">    45  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> dateFromDB (dbdate):Date {
-<span class="lineno" id="46">    46  </span>		<span class="key">var</span> tmp = dbdate.split (<span class="str_const">" "</span>);
-<span class="lineno" id="47">    47  </span>		<span class="key">var</span> dates = tmp[<span class="num_const">0</span>].split (<span class="str_const">"-"</span>);
-<span class="lineno" id="48">    48  </span>		<span class="key">var</span> hours = tmp[<span class="num_const">1</span>].split (<span class="str_const">":"</span>);
-<span class="lineno" id="49">    49  </span>		<span class="key">var</span> d = <span class="key">new</span> Date (dates[<span class="num_const">0</span>], dates[<span class="num_const">1</span>] - <span class="num_const">1</span>, dates[<span class="num_const">2</span>], hours[<span class="num_const">0</span>], hours[<span class="num_const">1</span>], hours[<span class="num_const">2</span>]);
-<span class="lineno" id="50">    50  </span>		<span class="key">return</span> d;
-<span class="lineno" id="51">    51  </span>	}
-<span class="lineno" id="52">    52  </span>
-<span class="lineno" id="53">    53  </span>	<span class="comment doc">/**
-<span class="lineno" id="54">    54  </span>	 * takes 24hr hours and converts to 12 hour with am/pm
-<span class="lineno" id="55">    55  </span>	 * @param hour24 (Number)
-<span class="lineno" id="56">    56  </span>	 * @return Object
-<span class="lineno" id="57">    57  </span>	 */</span>
-<span class="lineno" id="58">    58  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> getHoursAmPm (hour24:Number):Object {
-<span class="lineno" id="59">    59  </span>		<span class="key">var</span> returnObj:Object = <span class="key">new</span> Object ();
-<span class="lineno" id="60">    60  </span>		returnObj.ampm = (hour24 &lt; <span class="num_const">12</span>) ? <span class="str_const">"am"</span> : <span class="str_const">"pm"</span>;
-<span class="lineno" id="61">    61  </span>		<span class="key">var</span> hour12:Number = hour24 % <span class="num_const">12</span>;
-<span class="lineno" id="62">    62  </span>		<span class="key">if</span> (hour12 == <span class="num_const">0</span>) {
-<span class="lineno" id="63">    63  </span>			hour12 = <span class="num_const">12</span>;
-<span class="lineno" id="64">    64  </span>		}
-<span class="lineno" id="65">    65  </span>		returnObj.hours = hour12;
-<span class="lineno" id="66">    66  </span>		<span class="key">return</span> returnObj;
-<span class="lineno" id="67">    67  </span>	}
-<span class="lineno" id="68">    68  </span>	
-<span class="lineno" id="69">    69  </span>	<span class="key">private</span> <span class="key">function</span> DateUtils(){
-<span class="lineno" id="70">    70  </span>	}
-<span class="lineno" id="71">    71  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of SASAPI" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.utils" class="button">Package</a></li><li><a href="DateUtils.html" title="Detail of com.sekati.utils.DateUtils API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
+<span class="lineno" id="41">    41  </span>	 * get 0 indexed array of days for use with Date.getDay();
+<span class="lineno" id="42">    42  </span>	 */</span>
+<span class="lineno" id="43">    43  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> get sdays ():Array {
+<span class="lineno" id="44">    44  </span>		<span class="key">return</span> <span class="key">new</span> Array (<span class="str_const">"Sun"</span>,<span class="str_const">"Mon"</span>,<span class="str_const">"Tue"</span>,<span class="str_const">"Wed"</span>,<span class="str_const">"Thur"</span>,<span class="str_const">"Fri"</span>,<span class="str_const">"Sat"</span>);
+<span class="lineno" id="45">    45  </span>	}
+<span class="lineno" id="46">    46  </span>
+<span class="lineno" id="47">    47  </span>	<span class="comment doc">/**
+<span class="lineno" id="48">    48  </span>	 * pads hours,minutes or seconds with a leading 0, 12:01 doesn't end up 12:1
+<span class="lineno" id="49">    49  </span>	 */</span>
+<span class="lineno" id="50">    50  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> padTime (inn):String {
+<span class="lineno" id="51">    51  </span>		<span class="key">return</span> (String (inn).length &lt; <span class="num_const">2</span>) ? (<span class="str_const">"0"</span> + inn) : inn;
+<span class="lineno" id="52">    52  </span>	}
+<span class="lineno" id="53">    53  </span>
+<span class="lineno" id="54">    54  </span>	<span class="comment doc">/**
+<span class="lineno" id="55">    55  </span>	 * converts a db formatted date string into a Flash Date object
+<span class="lineno" id="56">    56  </span>	 * @param dbDate (String) date in YYYY-MM-DD HH:MM:SS format
+<span class="lineno" id="57">    57  </span>	 * @return Date
+<span class="lineno" id="58">    58  </span>	 */</span>
+<span class="lineno" id="59">    59  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> dateFromDB (dbdate):Date {
+<span class="lineno" id="60">    60  </span>		<span class="key">var</span> tmp = dbdate.split (<span class="str_const">" "</span>);
+<span class="lineno" id="61">    61  </span>		<span class="key">var</span> dates = tmp[<span class="num_const">0</span>].split (<span class="str_const">"-"</span>);
+<span class="lineno" id="62">    62  </span>		<span class="key">var</span> hours = tmp[<span class="num_const">1</span>].split (<span class="str_const">":"</span>);
+<span class="lineno" id="63">    63  </span>		<span class="key">var</span> d = <span class="key">new</span> Date (dates[<span class="num_const">0</span>], dates[<span class="num_const">1</span>] - <span class="num_const">1</span>, dates[<span class="num_const">2</span>], hours[<span class="num_const">0</span>], hours[<span class="num_const">1</span>], hours[<span class="num_const">2</span>]);
+<span class="lineno" id="64">    64  </span>		<span class="key">return</span> d;
+<span class="lineno" id="65">    65  </span>	}
+<span class="lineno" id="66">    66  </span>
+<span class="lineno" id="67">    67  </span>	<span class="comment doc">/**
+<span class="lineno" id="68">    68  </span>	 * takes 24hr hours and converts to 12 hour with am/pm
+<span class="lineno" id="69">    69  </span>	 * @param hour24 (Number)
+<span class="lineno" id="70">    70  </span>	 * @return Object
+<span class="lineno" id="71">    71  </span>	 */</span>
+<span class="lineno" id="72">    72  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> getHoursAmPm (hour24:Number):Object {
+<span class="lineno" id="73">    73  </span>		<span class="key">var</span> returnObj:Object = <span class="key">new</span> Object ();
+<span class="lineno" id="74">    74  </span>		returnObj.ampm = (hour24 &lt; <span class="num_const">12</span>) ? <span class="str_const">"am"</span> : <span class="str_const">"pm"</span>;
+<span class="lineno" id="75">    75  </span>		<span class="key">var</span> hour12:Number = hour24 % <span class="num_const">12</span>;
+<span class="lineno" id="76">    76  </span>		<span class="key">if</span> (hour12 == <span class="num_const">0</span>) {
+<span class="lineno" id="77">    77  </span>			hour12 = <span class="num_const">12</span>;
+<span class="lineno" id="78">    78  </span>		}
+<span class="lineno" id="79">    79  </span>		returnObj.hours = hour12;
+<span class="lineno" id="80">    80  </span>		<span class="key">return</span> returnObj;
+<span class="lineno" id="81">    81  </span>	}
+<span class="lineno" id="82">    82  </span>	
+<span class="lineno" id="83">    83  </span>	<span class="key">private</span> <span class="key">function</span> DateUtils(){
+<span class="lineno" id="84">    84  </span>	}
+<span class="lineno" id="85">    85  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of SASAPI" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.utils" class="button">Package</a></li><li><a href="DateUtils.html" title="Detail of com.sekati.utils.DateUtils API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>

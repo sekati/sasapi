@@ -30,6 +30,12 @@ strict digraph class_diagram {
     tooltip="com.sekati.draw.Rectangle",
     shape="record"
   ];
+  TypeOval[
+    label="Oval",
+    URL="Oval.html",
+    tooltip="com.sekati.draw.Oval",
+    shape="record"
+  ];
   TypeLine[
     label="Line",
     URL="Line.html",
@@ -46,6 +52,12 @@ strict digraph class_diagram {
     label="DrawUtils",
     URL="DrawUtils.html",
     tooltip="com.sekati.draw.DrawUtils",
+    shape="record"
+  ];
+  TypeCurve[
+    label="Curve",
+    URL="Curve.html",
+    tooltip="com.sekati.draw.Curve",
     shape="record"
   ];
 }
