@@ -9,7 +9,7 @@
 import com.sekati.events.Event;
 
 /**
- * Interface describing {@link com.sekati.events.Dispatcher}.
+ * Interface describing Event Dispatchers such as {@link com.sekati.events.Dispatcher}.
  */
 interface com.sekati.events.IDispatchable {
 

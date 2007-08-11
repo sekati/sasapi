@@ -1,6 +1,10 @@
 <map id="class_diagram" name="class_diagram">
-<area shape="rect" href="Tile.html" title="com.sekati.draw.Tile" alt="" coords="21,224,93,272" />
-<area shape="rect" href="Rectangle.html" title="com.sekati.draw.Rectangle" alt="" coords="9,152,105,200" />
-<area shape="rect" href="Graphic.html" title="com.sekati.draw.Graphic" alt="" coords="17,80,97,128" />
-<area shape="rect" href="DrawUtils.html" title="com.sekati.draw.DrawUtils" alt="" coords="8,8,106,56" />
+<area shape="rect" href="Triangle.html" title="com.sekati.draw.Triangle" alt="" coords="40,512,122,560" />
+<area shape="rect" href="Tile.html" title="com.sekati.draw.Tile" alt="" coords="45,440,117,488" />
+<area shape="rect" href="RoundRectangle.html" title="com.sekati.draw.RoundRectangle" alt="" coords="9,368,153,416" />
+<area shape="rect" href="Ring.html" title="com.sekati.draw.Ring" alt="" coords="45,296,117,344" />
+<area shape="rect" href="Rectangle.html" title="com.sekati.draw.Rectangle" alt="" coords="33,224,129,272" />
+<area shape="rect" href="Line.html" title="com.sekati.draw.Line" alt="" coords="45,152,117,200" />
+<area shape="rect" href="Graphic.html" title="com.sekati.draw.Graphic" alt="" coords="41,80,121,128" />
+<area shape="rect" href="DrawUtils.html" title="com.sekati.draw.DrawUtils" alt="" coords="32,8,130,56" />
 </map>
