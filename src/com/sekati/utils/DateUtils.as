@@ -1,6 +1,6 @@
 ﻿/**
  * com.sekati.utils.DateUtils
- * @version 1.0.0
+ * @version 1.0.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -22,12 +22,26 @@ class com.sekati.utils.DateUtils {
 	public static function get months ():Array {
 		return new Array ("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
 	}
+	
+	/**
+	 * gets 0 indexed array of short months for use with Date.getMonth()
+	 */
+	public static function get smonths ():Array {
+		return new Array ("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");	
+	}
 
 	/**
 	 * gets 0 indexed array of days for use with Date.getDay()
 	 */
 	public static function get days ():Array {
 		return new Array ("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
+	}
+	
+	/**
+	 * get 0 indexed array of days for use with Date.getDay();
+	 */
+	public static function get sdays ():Array {
+		return new Array ("Sun","Mon","Tue","Wed","Thur","Fri","Sat");
 	}
 
 	/**
