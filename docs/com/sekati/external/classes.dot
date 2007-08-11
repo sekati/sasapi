@@ -1,5 +1,11 @@
 strict digraph class_diagram {
   rankdir=LR;
+  TypeMouseWheel[
+    label="MouseWheel",
+    URL="MouseWheel.html",
+    tooltip="com.sekati.external.MouseWheel",
+    shape="record"
+  ];
   TypeJsBase[
     label="JsBase",
     URL="JsBase.html",

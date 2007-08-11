@@ -7,7 +7,7 @@
  */
  
 /**
- * Interface describing {@link com.sekati.events.Broadcaster}.
+ * Interface describing Event Broadcasters such as {@link com.sekati.events.Broadcaster}.
  */
 interface com.sekati.events.IBroadcastable {
 

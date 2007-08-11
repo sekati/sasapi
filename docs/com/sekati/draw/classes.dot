@@ -1,15 +1,39 @@
 strict digraph class_diagram {
   rankdir=LR;
+  TypeTriangle[
+    label="Triangle",
+    URL="Triangle.html",
+    tooltip="com.sekati.draw.Triangle",
+    shape="record"
+  ];
   TypeTile[
     label="Tile",
     URL="Tile.html",
     tooltip="com.sekati.draw.Tile",
     shape="record"
   ];
+  TypeRoundRectangle[
+    label="RoundRectangle",
+    URL="RoundRectangle.html",
+    tooltip="com.sekati.draw.RoundRectangle",
+    shape="record"
+  ];
+  TypeRing[
+    label="Ring",
+    URL="Ring.html",
+    tooltip="com.sekati.draw.Ring",
+    shape="record"
+  ];
   TypeRectangle[
     label="Rectangle",
     URL="Rectangle.html",
     tooltip="com.sekati.draw.Rectangle",
+    shape="record"
+  ];
+  TypeLine[
+    label="Line",
+    URL="Line.html",
+    tooltip="com.sekati.draw.Line",
     shape="record"
   ];
   TypeGraphic[

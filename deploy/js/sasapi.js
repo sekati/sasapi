@@ -1,6 +1,6 @@
 /**
  * SASAPI Javascript Companion Library
- * @version 1.0.1
+ * @version 1.0.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -8,89 +8,8 @@
 
 if (typeof sekati == "undefined") var sekati = new Object();
 
-sekati.mw = {
-	// ported from osxmousewheel (c) Ali Rantakari http://hasseg.org/blog
-	_container: null,
-	
-	// the id/name of your flash apps HTML DOM elementÊ
-	_flashMovieId: null,
-	
-	// the id/name of the flash elements surrounding div element	
-	_flashContainerId: null,
-	
-	thisMovie: function (movieName) {
-    	if (navigator.appName.indexOf("Microsoft") != -1) {
-        	return window[movieName];
-    	} else {
-    	    return document[movieName];
-    	}
-	},
-
-	init: function (movieId, containerId) {
-		
-		sekati.mw._flashMovieId = movieId;
-		sekati.mw._flashContainerId = containerId;
-	
-		// initialize mouse wheel capturing:
-		if (navigator.userAgent.indexOf('Mac') != -1) {
-			
-			sekati.mw._container = document.getElementById(_flashContainerId);
-			if (sekati.mw._container != null) {
-				if (sekati.mw._container.addEventListener) {
-					// Firefox
-					sekati.mw._container.addEventListener('DOMMouseScroll', sekati.mw.onWheelHandler, false); 
-				}
-				// Safari
-				sekati.mw._container.onmousewheel = sekati.mw.onWheelHandler; 
-			} else {
-				alert("osxmousewheel: can not find flash container div element");
-			}
-		}
-	},	
-	
-	// mouse wheel event handler
-	onWheelHandler: function (event){
-		
-		var delta = 0;
-		if (!event) event = window.event;
-		if (event.wheelDelta) {
-			// Safari
-			delta = event.wheelDelta/120;
-			if (window.opera) delta = -delta;
-		} else if (event.detail) {
-			// Firefox
-			delta = -event.detail*3;
-		}
-		
-		// keep delta in flashplayer range
-		if (delta > 0) { 
-			delta = 3;
-		} else { 
-			delta = -3;
-		}
-		
-		alert("delta: "+delta);
-		
-		if (delta) {
-			// handle mouse events here:
-			
-			var thisMouse;
-			if ((navigator.userAgent.indexOf('Firefox') != -1) || (navigator.userAgent.indexOf('Camino') != -1)) thisMouse = {x:event.layerX, y:event.layerY};
-			else if (navigator.userAgent.indexOf('Safari') != -1) thisMouse = {x:event.offsetX, y:event.offsetY};
-			else if (navigator.userAgent.indexOf('Opera') != -1) thisMouse = {x:event.offsetX, y:event.offsetY};
-			else thisMouse = {x:event.offsetX, y:event.offsetY};
-			
-			if (sekati.mw.thisMovie(_flashMovieId).dispatchExternalMouseWheelEvent) sekati.mw.thisMovie(_flashMovieId).dispatchExternalMouseWheelEvent(delta, thisMouse.x, thisMouse.y);
-			else alert("osxmousewheel: ExternalInferface function dispatchExternalMouseWheelEvent not found");
-			
-		};
-		// Prevent default actions caused by mouse wheel.
-		if (event.preventDefault) event.preventDefault();
-		event.returnValue = false;
-	}
-
-
-}
+/////////////////////////////////////////////////////////////////////////////////
+// deeplinking
 
 sekati.swflink = {
 	
@@ -113,6 +32,9 @@ sekati.swflink = {
 		document[id][fn](argArr);
 	}
 };
+
+/////////////////////////////////////////////////////////////////////////////////
+// interface
 
 sekati.ui = {
 	
@@ -161,6 +83,9 @@ sekati.ui = {
 	}	
 };
 
+/////////////////////////////////////////////////////////////////////////////////
+// tools
+
 sekati.util = {
 
 	browserSize: function(){
@@ -189,4 +114,44 @@ sekati.util = {
 		return document.location.href;
 	}
 	
+};
+
+/////////////////////////////////////////////////////////////////////////////////
+// swfIN mac mousewheel support - based on osxmousewheel & swfmacmousewheel.
+// Usage: var mousewheel = new MouseWheel(swfIN_instance);
+
+function MouseWheel (swfIN) {
+ 	this.so = swfIN;
+ 	var isMac = navigator.appVersion.toLowerCase().indexOf( "mac" ) != -1;
+ 	if(isMac) this.init();
+ } 
+ 
+MouseWheel.prototype = {	
+	init: function() {
+		MouseWheel.instance = this;	
+		if (window.addEventListener) window.addEventListener('DOMMouseScroll', MouseWheel.instance.wheel, false);
+		window.onmousewheel = document.onmousewheel = MouseWheel.instance.wheel;
+	},
+	handle: function(delta){
+		document[this.so.getEmbedStringID()].externalMouseEvent(delta);
+	},
+	wheel: function(event){
+		var delta = 0;
+		if (event.wheelDelta) {
+			// IE, Opera
+			delta = event.wheelDelta/120;
+			if (window.opera) delta = -delta;
+		} else if (event.detail) {
+			// Mozilla
+			delta = -event.detail/3;
+		}		
+		// safari
+       	if(/AppleWebKit/.test(navigator.userAgent)) delta /= 3;
+		// constrain
+		if (delta > 3) { delta = 3; } else if (delta < -3) { delta = -3; }		
+		//
+		if (delta) MouseWheel.instance.handle(delta);
+		if (event.preventDefault) event.preventDefault();
+		event.returnValue = false;
+	}
 };

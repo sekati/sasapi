@@ -1,6 +1,6 @@
 /**
  * com.sekati.time.StopWatch
- * @version 1.0.0
+ * @version 1.0.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -26,11 +26,12 @@ class com.sekati.time.StopWatch {
 
 	/**
 	 * start timer
-	 * @return Void
+	 * @return Number ms since start (0)
 	 */
-	public function start():Void{
+	public function start():Number {
 		_initTime = getTimer();
 		_lastLap = _initTime;
+		return read();
 	}
 
 	/**
