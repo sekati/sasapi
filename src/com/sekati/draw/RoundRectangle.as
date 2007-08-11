@@ -1,6 +1,6 @@
 /**
  * com.sekati.draw.RoundRectangle
- * @version 1.0.0
+ * @version 1.0.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -12,7 +12,6 @@ import com.sekati.geom.Point;
  * Rounded rectangle drawing utility.
  */
 class com.sekati.draw.RoundRectangle {
-
 
 	/**
 	 * Draw a rectangle in an existing clip
@@ -48,7 +47,7 @@ class com.sekati.draw.RoundRectangle {
 		cornerRadius = (cornerRadius > Math.min(w, h)/2) ? cornerRadius = Math.min(w, h)/2 : cornerRadius;
 		
 		mc.clear();
-		mc.lineStyle(strokeWeight, strokeColor, strokeAlpha, true, "none", "round", "round", 8);
+		mc.lineStyle(sw, sc, sa, true, "none", "round", "round", 8);
 		if (fillColor) {
 			mc.beginFill(fillColor, fa);
 		}
