@@ -1,0 +1,10 @@
+strict digraph interface_diagram {
+  rankdir=LR;
+  IPoint[
+    label="IPoint",
+    URL="IPoint.html",
+    tooltip="com.sekati.geom.IPoint",
+    fontname="Times-Italic",
+    shape="record"
+  ];
+}
