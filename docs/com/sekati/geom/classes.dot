@@ -6,6 +6,12 @@ strict digraph class_diagram {
     tooltip="com.sekati.geom.TrigoBase",
     shape="record"
   ];
+  TypeSort[
+    label="Sort",
+    URL="Sort.html",
+    tooltip="com.sekati.geom.Sort",
+    shape="record"
+  ];
   TypePoint3D[
     label="Point3D",
     URL="Point3D.html",
