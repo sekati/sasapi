@@ -1,5 +1,11 @@
 strict digraph class_diagram {
   rankdir=LR;
+  TypeTypo[
+    label="Typo",
+    URL="Typo.html",
+    tooltip="com.sekati.effects.Typo",
+    shape="record"
+  ];
   TypeTextEffects[
     label="TextEffects",
     URL="TextEffects.html",
