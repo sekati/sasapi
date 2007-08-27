@@ -1,6 +1,6 @@
 /**
  * com.sekati.draw.Triangle
- * @version 1.0.3
+ * @version 1.0.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -38,14 +38,14 @@ class com.sekati.draw.Triangle {
 		
 		mc.clear();
 		mc.lineStyle (sw, sc, sa, true, "none", "square", "miter", 1.414);
-		if (fillColor) {
+		if (!isNaN(fillColor)) {
 			mc.beginFill (fillColor, fa);
 		}
 		mc.moveTo(p1.x, p1.y);
 		mc.lineTo(p2.x, p2.y);
 		mc.lineTo(p3.x, p3.y);
 		mc.lineTo(p1.x, p1.y);
-		if (fillColor) {
+		if (!isNaN(fillColor)) {
 			mc.endFill ();
 		}
 	}

@@ -1,6 +1,6 @@
 /**
  * com.sekati.draw.RoundRectangle
- * @version 1.0.1
+ * @version 1.0.3
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -48,7 +48,7 @@ class com.sekati.draw.RoundRectangle {
 		
 		mc.clear();
 		mc.lineStyle(sw, sc, sa, true, "none", "round", "round", 8);
-		if (fillColor) {
+		if (!isNaN(fillColor)) {
 			mc.beginFill(fillColor, fa);
 		}
 
@@ -80,7 +80,7 @@ class com.sekati.draw.RoundRectangle {
 			
 			angle += theta;
 		}
-		if (fillColor) {
+		if (!isNaN(fillColor)) {
 			mc.endFill();
 		}
 	}

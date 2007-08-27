@@ -16,6 +16,7 @@ class com.sekati.core.FWDepth {
 	public static var Pulse:Number = -666;
 	public static var FLVAudioContainer:Number = -667;
 	public static var SoundCenter:Number = -668;
+	public static var ScreenProtector = 9996;
 		
 	private function FWDepth(){
 	}

@@ -1,11 +1,12 @@
 /**
  * com.sekati.display.BaseClip
- * @version 1.0.1
+ * @version 1.0.3
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  
+ import com.sekati.display.IBaseClip;
  import com.sekati.core.KeyFactory;
  import com.sekati.utils.MovieClipUtils;
  
@@ -14,7 +15,7 @@
  * thought of as the main building block of the SASAPI framework.
  * @see {@link com.sekati.display.CoreClip}
  */
-class com.sekati.display.BaseClip extends MovieClip {
+class com.sekati.display.BaseClip extends MovieClip implements IBaseClip {
 	
 	private var _this:MovieClip;
 	private var __isClean:Boolean;
@@ -39,6 +40,9 @@ class com.sekati.display.BaseClip extends MovieClip {
 	public function destroy():Void {
 		__isClean = true;
 		_this.onEnterFrame = null;
+		for(var i in _this) {
+			MovieClipUtils.rmClip(_this[i]);	
+		}
 		MovieClipUtils.rmClip(_this);		
 	}
 

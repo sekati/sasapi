@@ -14,6 +14,7 @@ if (typeof sekati == "undefined") var sekati = new Object();
 sekati.swflink = {
 	
 	_location: document.location.href.split("#")[0],
+
 	_title: document.title,
 	
 	set: function(t, a) {
