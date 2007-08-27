@@ -1,6 +1,6 @@
 ﻿/**
  * com.sekati.math.MathBase
- * @version 1.0.9
+ * @version 1.1.0
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -109,6 +109,21 @@ class com.sekati.math.MathBase {
 		}
 		return val;
 	}
+	
+	/**
+	 * Return the proportional value of two pairs of numbers.
+	 * @param x1 (Number)
+	 * @param x2 (Number)
+	 * @param y1 (Number)
+	 * @param y2 (Number)
+	 * @param x (Number) optional
+	 * @return Number
+	 */
+	public static function proportion (x1:Number, x2:Number, y1:Number, y2:Number, x:Number):Number {
+		var n:Number = (!x) ? 1 : x;
+		var slope:Number = (y2 - y1) / (x2 - x1);
+		return (slope * (n - x1) + y1);
+	} 
 
 	/**
 	 * Check if number is Odd (convert to Integer if necessary)

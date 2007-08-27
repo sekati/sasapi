@@ -1,6 +1,6 @@
 ﻿/**
  * com.sekati.utils.ClassUtils
- * @version 2.1.1
+ * @version 2.1.2
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -53,7 +53,7 @@ class com.sekati.utils.ClassUtils {
 		classRef.apply (mc);
 		KeyFactory.inject(mc);
 		return mc;
-	}
+	}	
 
 	/**
 	 * attach a MovieClip from library and extend with class (various init options)

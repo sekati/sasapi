@@ -29,7 +29,7 @@ class com.sekati.display.AbstractClip extends CoreClip {
 	}
 
 	/**
-	 * calls superclasses CoreClip.destroy and executes its own destroy behaviors.
+	 * calls superclasses destroy and executes its own destroy behaviors.
 	 * @return Void
 	 */
 	private function destroy():Void {

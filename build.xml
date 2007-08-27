@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- *************************************************************************************
-		FDTKit Buildfile v1.1.1
+		FDTKit Buildfile v1.1.5
 		
 		@note	You must run this Buildfile in the same JRE as the workspace, be sure to
 				check this option in the launch configuration.
@@ -21,13 +21,21 @@
 	<property name="project_template" location="${fdtkit}/lib/templates/project"/>
     <property name="mtasc" location="${fdtkit}/bin/mtasc/mtasc"/>
 	<property name="as2api" location="${fdtkit}/bin/as2api/as2api_darwin"/>
+	<property name="naturaldocs" location="${fdtkit}/bin/NaturalDocs/NaturalDocs"/>
 	<property name="dot_exe" location="${fdtkit}/bin/graphviz/Graphviz.app/Contents/MacOS/dot"/>
 	<property name="corelib" location="${fdtkit}/lib/FP8"/>
 	<property name="sloccount" location="${basedir}/lib/tools/slocCount.sh"/>
+	<property name="safe_test_movie" location="${fdtkit}/bin/scripts/SafeTestMovie.jsfl"/>
+	
+	<!-- PROPERTIES: Flex 2 SDK -->
+	<property name="FLEX_HOME" location="${fdtkit}/lib/F2"/>
+	<property name="asdoc" location="${FLEX_HOME}/bin/asdoc"/>
 	
 	<!-- PROPERTIES: project structure template -->
 	<property name="deploy" location="${basedir}/deploy"/>
 	<property name="docs" location="${basedir}/docs"/>
+	<property name="naturaldoc_output" location="${basedir}/naturaldocs"/>
+	<property name="asdoc_output" location="${basedir}/asdocs"/>
 	<property name="lib" location="${basedir}/lib"/>
 	<property name="src" location="${basedir}/src"/>
 	<property name="tests" location="${basedir}/tests"/>
@@ -73,6 +81,7 @@
 		<echo message="doc_batch"/>
 		<echo message="doc_clean"/>
 		<echo message="doc_build"/>
+		<echo message="asdoc_build"/>
 		<echo message="doc_deploy"/>
 		<echo message="project_batch"/>
 		<echo message="project_create"/>
@@ -123,6 +132,42 @@
 		<copy file="${lib}/tools/doc_sekati_style.css" tofile="${docs}/style.css" overwrite="true"  failonerror="true"/>
 		<copy file="${lib}/tools/doc_sekati_unnatural.css" tofile="${docs}/unnatural.css" overwrite="true"  failonerror="true"/>
 	</target>
+	
+	<!-- TASK: naturaldoc_build :run NaturalDocs to build documentation -->	
+	<target name="naturaldoc_build">		
+		<exec executable="${naturaldocs}" failonerror="true">
+			<arg line='-i ${src}'/>
+			<arg line='-o FramedHTML ${naturaldoc_output}'/>
+			<arg line='-p ${naturaldoc_output}/_ndp'/>
+			<arg line='-s Small'/>
+			<arg line='-r'/>
+		</exec>
+	</target>	
+
+	<!-- TASK: asdoc_build : run asdoc to build documentation for AS3 classes -->
+	<target name="asdoc_build">
+		<exec executable="${asdoc}" failonerror="true">
+			<arg line = "-source-path ${src} -doc-sources ${src}/com/ -window-title 'Documentation' -output ${asdoc_output} -templates-path '${FLEX_HOME}/asdoc/templates'" />
+		</exec>
+	</target>
+
+	<!-- TASK asdoc_main, asdoc_clean, asdoc_compile : busted out	
+	<target name="asdoc_main" depends="asdoc_clean,asdoc_compile" description="full build of asdocs"/>
+	
+	<target name="asdoc_clean">
+		<delete dir="${asdoc_output}" failOnError="false" includeEmptyDirs="true"/>
+		<mkdir dir="${asdoc_output}"/>
+	</target>
+
+	<target name="asdoc_compile">
+		<exec executable="${asdoc}" failonerror="true">
+			<arg line='-doc-sources ${src}'/>
+			<arg line='-main-title "${ant.project.name}"'/>
+			<arg line='-window-title "sasapi_asdocs"'/>
+			<arg line='-output ${asdoc_output}'/>
+		</exec>
+	</target>
+	-->
 	
 	<!-- TASK: doc_deploy :rsync+ssh documentation to target server -->
 	<target name="doc_deploy">
@@ -235,6 +280,11 @@
 	        </fileset>
 	    </fdt.flashCompile>
 	</target>
+	
+	<!-- TASK: compile_current :compile current opened fla in src dir with Flash IDE -->		
+	<target name="compile_current">
+		<exec executable="${safe_test_movie}"/>	
+	</target>	
 	
 	<!-- TASK: launch_external :launch target swf in FlashPlayer -->	
     <target name="launch_external">

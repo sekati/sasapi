@@ -1,6 +1,6 @@
 /**
  * com.sekati.math.RuleOfThree
- * @version 1.0.0
+ * @version 1.0.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -55,7 +55,7 @@ class com.sekati.math.RuleOf3 extends Number {
 	}
 
 	/**
-	 * return the RuleOf3 as Number
+	 * return number of representation of _n
 	 * @return Number
 	 */
 	public function valueOf():Number {

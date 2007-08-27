@@ -1,6 +1,6 @@
 /**
  * com.sekati.draw.Oval
- * @version 1.0.1
+ * @version 1.0.3
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -53,7 +53,7 @@ class com.sekati.draw.Oval {
 	public function draw ():Void {
 		_mc.clear();
 		_mc.lineStyle(_sw, _sc, _sa, true, "none", "round", "round", 8);
-		if (_fc) {
+		if (!isNaN(_fc)) {
 			_mc.beginFill(_fc, _fa);
 		}
 		var angleMid, px, py, cx, cy;
@@ -84,7 +84,7 @@ class com.sekati.draw.Oval {
 			// draw the circle segment
 			_mc.curveTo(cx, cy, px, py);
 		}
-		if (_fc) {	
+		if (!isNaN(_fc)) {	
 			_mc.endFill();
 		}	
 	}

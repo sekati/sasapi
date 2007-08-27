@@ -1,6 +1,6 @@
 /**
  * com.sekati.external.MouseWheel
- * @version 1.0.1
+ * @version 1.0.3
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -43,7 +43,7 @@ class com.sekati.external.MouseWheel {
 	 * @return Void
 	 */
 	private static function externalMouseEvent(delta:Number):Void {
-		if(OSValidation.isMac()){
+		if(_isMac){
 			Broadcaster.$.broadcast("onMouseWheel",delta);	
 		}
 	}

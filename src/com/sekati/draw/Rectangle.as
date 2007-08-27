@@ -1,6 +1,6 @@
 /**
  * com.sekati.draw.Rectangle
- * @version 1.0.3
+ * @version 1.0.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -42,14 +42,14 @@ class com.sekati.draw.Rectangle {
 		
 		mc.clear();
 		mc.lineStyle (sw, sc, sa, true, "none", "square", "miter", 1.414);
-		if (fillColor) {
+		if (!isNaN(fillColor)) {
 			mc.beginFill (fillColor, fa);
 		}
 		mc.moveTo (tl,bl);
 		mc.lineTo (tr,bl);
 		mc.lineTo (tr,br);
 		mc.lineTo (tl,br);
-		if (fillColor) {
+		if (!isNaN(fillColor)) {
 			mc.endFill ();
 		} else {
 			mc.lineTo (bl,tl);
