@@ -12,4 +12,10 @@ strict digraph class_diagram {
     tooltip="com.sekati.time.StopWatch",
     shape="record"
   ];
+  TypeFPS[
+    label="FPS",
+    URL="FPS.html",
+    tooltip="com.sekati.time.FPS",
+    shape="record"
+  ];
 }

@@ -1,5 +1,10 @@
 <map id="class_diagram" name="class_diagram">
-<area shape="rect" href="OutPanel.html" title="com.sekati.log.OutPanel" alt="" coords="8,152,98,200" />
-<area shape="rect" href="Out.html" title="com.sekati.log.Out" alt="" coords="17,80,89,128" />
-<area shape="rect" href="Inspector.html" title="com.sekati.log.Inspector" alt="" coords="8,8,98,56" />
+<area shape="rect" href="OutPanel.html" title="com.sekati.log.OutPanel" alt="" coords="50,512,141,560" />
+<area shape="rect" href="Out.html" title="com.sekati.log.Out" alt="" coords="60,440,132,488" />
+<area shape="rect" href="Logger.html" title="com.sekati.log.Logger" alt="" coords="58,368,133,416" />
+<area shape="rect" href="Inspector.html" title="com.sekati.log.Inspector" alt="" coords="50,296,141,344" />
+<area shape="rect" href="ConsoleStyle.html" title="com.sekati.log.ConsoleStyle" alt="" coords="36,224,156,272" />
+<area shape="rect" href="ConsoleItem.html" title="com.sekati.log.ConsoleItem" alt="" coords="37,152,154,200" />
+<area shape="rect" href="ConsoleFPSMonitor.html" title="com.sekati.log.ConsoleFPSMonitor" alt="" coords="9,80,182,128" />
+<area shape="rect" href="Console.html" title="com.sekati.log.Console" alt="" coords="54,8,137,56" />
 </map>

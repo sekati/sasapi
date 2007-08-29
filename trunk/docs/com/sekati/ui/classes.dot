@@ -6,6 +6,12 @@ strict digraph class_diagram {
     tooltip="com.sekati.ui.Scroll",
     shape="record"
   ];
+  TypeScreenProtector[
+    label="ScreenProtector",
+    URL="ScreenProtector.html",
+    tooltip="com.sekati.ui.ScreenProtector",
+    shape="record"
+  ];
   TypeImage[
     label="Image",
     URL="Image.html",

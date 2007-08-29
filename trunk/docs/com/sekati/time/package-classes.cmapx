@@ -1,4 +1,5 @@
 <map id="class_diagram" name="class_diagram">
-<area shape="rect" href="Throttle.html" title="com.sekati.time.Throttle" alt="" coords="20,80,100,128" />
-<area shape="rect" href="StopWatch.html" title="com.sekati.time.StopWatch" alt="" coords="9,8,110,56" />
+<area shape="rect" href="Throttle.html" title="com.sekati.time.Throttle" alt="" coords="20,152,100,200" />
+<area shape="rect" href="StopWatch.html" title="com.sekati.time.StopWatch" alt="" coords="9,80,110,128" />
+<area shape="rect" href="FPS.html" title="com.sekati.time.FPS" alt="" coords="24,8,96,56" />
 </map>

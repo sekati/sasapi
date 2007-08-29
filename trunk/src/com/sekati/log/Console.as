@@ -43,6 +43,7 @@ class com.sekati.log.Console {
 	// manager props
 	private var _logItems:Array;
 	private var _logIndex:Number;
+	private var _key:Object;
 	
 	/**
 	 * Singleton Private Constructor
@@ -97,12 +98,14 @@ class com.sekati.log.Console {
 		_mask = _cs.createStyledRectangle(_holder, _style.console.holder.mask);
 		_gutter = _cs.createStyledRectangle(_holder, _style.console.holder.gutter);
 		_bar = _cs.createStyledRectangle(_holder, _style.console.holder.bar);
+		_bar._visible = false;
 		
 		// mask item list
 		_list.setMask(_mask);
 		
 		// create scrollable functionality
-		_scroll = new Scroll("_y", _list, _mask, _gutter, _bar, true, true, true, true, _list);
+		//_scroll = new Scroll("_y", _list, _mask, _gutter, _bar, true, true, true, true, _list);
+		_scroll = new Scroll("_y", _list, _mask, _gutter, _bar, true, true, true, true, _list, 0.05, 0.5);
 	
 		// EVENTS start
 		
@@ -120,6 +123,20 @@ class com.sekati.log.Console {
 		ClassUtils.createEmptyMovieClip (com.sekati.log.ConsoleItem, _list, "metaItem", {_x:0, _y:0, _data:{_isMeta:true}});
 		
 		//runItemTest();
+		
+		// keylistener
+		_key = new Object ();
+		_key.onKeyDown = function ():Void  {
+			if (Key.isDown (Key.UP) && Key.isDown (Key.LEFT)) {
+				_console._visible = !_console._visible;
+			}
+			/*
+			if ((Key.isDown (Key.SHIFT) && (Key.isDown (Key.BACKSPACE) || Key.isDown (Key.DELETEKEY)))) {
+				Delegate.create (_this,clearOutput);
+			}
+			 */
+		};
+		Key.addListener (_key);		
 	}
 
 	/**
@@ -156,12 +173,10 @@ class com.sekati.log.Console {
 	 */
 	public function addItem (data:Object):MovieClip {
 		var item:MovieClip = ClassUtils.createEmptyMovieClip (com.sekati.log.ConsoleItem, _list, "consoleItem_"+data.id, {_x:0, _y:_list._height, _data:data});
-		updateScroll(item._y+item._height);
+		
+		_global['setTimeout'](_scroll,'slideContent',50, item._y+item._height);
+
 		return item;
-	}
-	
-	private function updateScroll(n:Number):Void {
-		//_scroll.slideContent(n);
 	}
 	
 	/**

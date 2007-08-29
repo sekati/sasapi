@@ -12,10 +12,40 @@ strict digraph class_diagram {
     tooltip="com.sekati.log.Out",
     shape="record"
   ];
+  TypeLogger[
+    label="Logger",
+    URL="Logger.html",
+    tooltip="com.sekati.log.Logger",
+    shape="record"
+  ];
   TypeInspector[
     label="Inspector",
     URL="Inspector.html",
     tooltip="com.sekati.log.Inspector",
+    shape="record"
+  ];
+  TypeConsoleStyle[
+    label="ConsoleStyle",
+    URL="ConsoleStyle.html",
+    tooltip="com.sekati.log.ConsoleStyle",
+    shape="record"
+  ];
+  TypeConsoleItem[
+    label="ConsoleItem",
+    URL="ConsoleItem.html",
+    tooltip="com.sekati.log.ConsoleItem",
+    shape="record"
+  ];
+  TypeConsoleFPSMonitor[
+    label="ConsoleFPSMonitor",
+    URL="ConsoleFPSMonitor.html",
+    tooltip="com.sekati.log.ConsoleFPSMonitor",
+    shape="record"
+  ];
+  TypeConsole[
+    label="Console",
+    URL="Console.html",
+    tooltip="com.sekati.log.Console",
     shape="record"
   ];
 }

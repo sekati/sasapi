@@ -1,5 +1,6 @@
 <map id="class_diagram" name="class_diagram">
-<area shape="rect" href="CoreClip.html" title="com.sekati.display.CoreClip" alt="" coords="148,8,236,56" />
-<area shape="rect" href="AbstractClip.html" title="com.sekati.display.AbstractClip" alt="" coords="285,8,402,56" />
-<area shape="rect" href="BaseClip.html" title="com.sekati.display.BaseClip" alt="" coords="9,8,97,56" />
+<area shape="rect" href="MultiLanguageTextField.html" title="com.sekati.display.MultiLanguageTextField" alt="" coords="8,80,216,128" />
+<area shape="rect" href="CoreClip.html" title="com.sekati.display.CoreClip" alt="" coords="265,8,353,56" />
+<area shape="rect" href="AbstractClip.html" title="com.sekati.display.AbstractClip" alt="" coords="402,8,520,56" />
+<area shape="rect" href="BaseClip.html" title="com.sekati.display.BaseClip" alt="" coords="68,8,156,56" />
 </map>
