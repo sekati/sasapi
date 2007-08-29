@@ -50,7 +50,7 @@ class com.sekati.log.ConsoleStyle {
 				list:{n:"listMc", x:0, y:0, w:0, h:0},
 				mask:{n:"maskMc", x:0, y:0, w:IW, h:CH-IH, c:0x00ffff, a:100},
 				gutter:{n:"gutterMc", x:CW-10, y:0, w:10, h:CH-IH, c:0x000000, a:100},
-				bar:{n:"barMc", x:CW-10, y:0, w:9, h:165, c:0xCC3300, a:100} // a:40
+				bar:{n:"barMc", x:CW-10, y:0, w:10, h:165, c:0xCC3300, a:100} // a:40
 			}
 		},	
 		item:{

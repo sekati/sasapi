@@ -1,10 +1,12 @@
 <map id="class_diagram" name="class_diagram">
-<area shape="rect" href="OutPanel.html" title="com.sekati.log.OutPanel" alt="" coords="50,512,141,560" />
-<area shape="rect" href="Out.html" title="com.sekati.log.Out" alt="" coords="60,440,132,488" />
-<area shape="rect" href="Logger.html" title="com.sekati.log.Logger" alt="" coords="58,368,133,416" />
-<area shape="rect" href="Inspector.html" title="com.sekati.log.Inspector" alt="" coords="50,296,141,344" />
-<area shape="rect" href="ConsoleStyle.html" title="com.sekati.log.ConsoleStyle" alt="" coords="36,224,156,272" />
-<area shape="rect" href="ConsoleItem.html" title="com.sekati.log.ConsoleItem" alt="" coords="37,152,154,200" />
-<area shape="rect" href="ConsoleFPSMonitor.html" title="com.sekati.log.ConsoleFPSMonitor" alt="" coords="9,80,182,128" />
-<area shape="rect" href="Console.html" title="com.sekati.log.Console" alt="" coords="54,8,137,56" />
+<area shape="rect" href="OutPanel.html" title="com.sekati.log.OutPanel" alt="" coords="58,656,149,704" />
+<area shape="rect" href="Out.html" title="com.sekati.log.Out" alt="" coords="68,584,140,632" />
+<area shape="rect" href="Logger.html" title="com.sekati.log.Logger" alt="" coords="66,512,141,560" />
+<area shape="rect" href="LogEvent.html" title="com.sekati.log.LogEvent" alt="" coords="57,440,150,488" />
+<area shape="rect" href="LogConsoleConnector.html" title="com.sekati.log.LogConsoleConnector" alt="" coords="9,368,198,416" />
+<area shape="rect" href="Inspector.html" title="com.sekati.log.Inspector" alt="" coords="58,296,149,344" />
+<area shape="rect" href="ConsoleStyle.html" title="com.sekati.log.ConsoleStyle" alt="" coords="44,224,164,272" />
+<area shape="rect" href="ConsoleItem.html" title="com.sekati.log.ConsoleItem" alt="" coords="45,152,162,200" />
+<area shape="rect" href="ConsoleFPSMonitor.html" title="com.sekati.log.ConsoleFPSMonitor" alt="" coords="17,80,190,128" />
+<area shape="rect" href="Console.html" title="com.sekati.log.Console" alt="" coords="62,8,145,56" />
 </map>

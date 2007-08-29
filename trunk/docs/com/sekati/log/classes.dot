@@ -18,6 +18,18 @@ strict digraph class_diagram {
     tooltip="com.sekati.log.Logger",
     shape="record"
   ];
+  TypeLogEvent[
+    label="LogEvent",
+    URL="LogEvent.html",
+    tooltip="com.sekati.log.LogEvent",
+    shape="record"
+  ];
+  TypeLogConsoleConnector[
+    label="LogConsoleConnector",
+    URL="LogConsoleConnector.html",
+    tooltip="com.sekati.log.LogConsoleConnector",
+    shape="record"
+  ];
   TypeInspector[
     label="Inspector",
     URL="Inspector.html",
