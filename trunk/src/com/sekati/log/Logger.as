@@ -11,6 +11,7 @@ import com.sekati.events.Dispatcher;
 import com.sekati.events.Event;
 import com.sekati.log.Inspector;
 import com.sekati.log.LogConsoleConnector;
+import com.sekati.log.LogEvent;
 import com.sekati.time.StopWatch;
  
 /**
@@ -36,7 +37,7 @@ class com.sekati.log.Logger implements CoreInterface {
 
 	private var _levels:Object;
 	private var _filters:Array;
-	private var _proxyObj;
+	private var _proxyObj:Object;
 	private var _watch:StopWatch;	
 	private var _isEnabled:Boolean;
 	private var _logId:Number;
@@ -160,6 +161,17 @@ class com.sekati.log.Logger implements CoreInterface {
 		return "_levels={" + a.toString () + "};";
 	}
 	
+	/**
+	 * object is a special level (method) which handles object recursion via {@link com.sekati.log.Inspector}
+	 * @param origin (Object) origin for filtering purposes
+	 * @param obj (Object) object to be recursed thru Out
+	 * @return Void 
+	 */
+	public function object (origin:Object, obj:Object):Void {
+		var insp:Inspector = new Inspector(obj,origin);
+		_output ("OBJECT", origin, insp);
+	}	
+	
 	//////////////////////////////////////////////////////////////
 	// Filter Handlers
 	
@@ -255,10 +267,10 @@ class com.sekati.log.Logger implements CoreInterface {
 	private function _output (level:String, origin, msg):Void {
 		if (_isEnabled == false || _levels[level] == false || isFiltered (origin) == true) {
 			return;
-		}		
+		}
 		var benchmark:Number = _watch.lap();
 		var id:Number = _logId++;
-		var e:Event = new Event("LOG_EVENT",this,{id:id, type:level.toLowerCase(), origin:String(origin), message:String(msg), benchmark:benchmark});
+		var e:LogEvent = new LogEvent({id:id, type:level.toLowerCase(), origin:String(origin), message:String(msg), benchmark:benchmark});
 		
 		// dispatch event to embedded Console
 		Dispatcher.$.dispatchEvent(e);
@@ -267,21 +279,11 @@ class com.sekati.log.Logger implements CoreInterface {
 		lcDispatch(e);
 		
 		// dispatch event to output panel
-		trace("LOG_EVENT"+"\t"+id+"\t"+level+"\t"+origin+"\t"+msg+"\t"+benchmark);
-		
-		/*
-		var o:String = level + ":[" + String (origin) + "]: " + msg;
-		 if(!_isPanel) {
-			trace(o);
-		} else {
-			var e:Event = new Event("OUT_EVENT",this,{message:o, level:level});
-			Dispatcher.$.dispatchEvent(e);
-		}
-		 */
+		trace(id+"\t"+level.toUpperCase()+"\t"+origin+"\t"+msg+"\t("+benchmark+" ms)");
 	}
 	
 	/**
-	 * dispatch LOG_EVENT to Console via LocalConnection.
+	 * dispatch LogEvent to Console via LocalConnection.
 	 * @param eventObj (event)
 	 * @return Void
 	 */
@@ -290,12 +292,16 @@ class com.sekati.log.Logger implements CoreInterface {
 		tx_lc.send(LogConsoleConnector.connectionName, LogConsoleConnector.methodName, eventObj.data);
 	}
 	
+	public function setOutputMode(isLocal:Boolean, isRemote:Boolean, isIDE):Void {	
+	
+	}
+	
 	//////////////////////////////////////////////////////////////
-	// Level Overloading	
+	// Level Overload	
 
 	// __resolve catches all wrapper & invented levels and processes them thru the proxy to _output: cool!
 	private function __resolve (name:String):Function {
-		if (name.indexOf ("LOG_EVENT") > 1) {
+		if (name.indexOf (LogEvent.onLogEVENT) > 1) {
 			return;
 		}
 		var f:Function = function() {
@@ -308,25 +314,11 @@ class com.sekati.log.Logger implements CoreInterface {
 
 	private function __proxy (name:String) {
 		arguments.shift ();
-		var n:String = String (name).toUpperCase ();
+		var n:String = String (name).toLowerCase ();
 		var o:String = String (arguments[0]);
 		var s:String = String (arguments[1]);
 		_instance._output (n,o,s);
-	}
-	
-	//////////////////////////////////////////////////////////////
-	// Special Level Method(s)
-	
-	/**
-	 * object is a special level (method) which handles object recursion via {@link com.sekati.log.Inspector}
-	 * @param origin (Object) origin for filtering purposes
-	 * @param obj (Object) object to be recursed thru Out
-	 * @return Void 
-	 */
-	public function object (origin:Object, obj:Object):Void {
-		var insp:Inspector = new Inspector(obj,origin);
-		_output ("OBJECT", origin, insp);
-	}
+	}	
 	
 	//////////////////////////////////////////////////////////////
 	// Destroy Handler
