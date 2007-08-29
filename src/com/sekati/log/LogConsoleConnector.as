@@ -14,7 +14,7 @@ import com.sekati.utils.Delegate;
  */
 class com.sekati.log.LogConsoleConnector {
 	
-	public static var connectionName:String = "com.sekati.log.LogConsoleConnector";
+	public static var connectionName:String = "_com.sekati.log.LogConsoleConnector";
 	public static var methodName:String = "addItem";
 	
 	private function LogConsoleConnector(){	
