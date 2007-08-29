@@ -1,6 +1,6 @@
 /**
  * com.sekati.log.Console
- * @version 1.0.7
+ * @version 1.1.0
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -12,10 +12,10 @@ import com.sekati.events.Event;
 import com.sekati.log.ConsoleFPSMonitor;
 import com.sekati.log.ConsoleItem;
 import com.sekati.log.ConsoleStyle;
+import com.sekati.log.LogConsoleConnector;
 import com.sekati.ui.Scroll;
 import com.sekati.utils.ClassUtils; 
 import com.sekati.utils.Delegate;
-//import flash.filters.DropShadowFilter;
  
 /**
  * UI Console for attaching or connecting too
@@ -44,6 +44,7 @@ class com.sekati.log.Console {
 	private var _logItems:Array;
 	private var _logIndex:Number;
 	private var _key:Object;
+	private var _rx_lc:LocalConnection;
 	
 	/**
 	 * Singleton Private Constructor
@@ -53,6 +54,7 @@ class com.sekati.log.Console {
 		_cs = ConsoleStyle.getInstance();
 		_style = _cs.CSS;
 		Dispatcher.$.addEventListener("LOG_EVENT", Delegate.create (_this, onLogEvent));
+		logConsoleConnect();
 		createUI();
 	}
 
@@ -81,7 +83,6 @@ class com.sekati.log.Console {
 		// rect	- createStyledRect (target:MovieClip, style:Object)
 		_console = _cs.createStyledRectangle(_level0, _style.console);
 		_console._quality = "LOW";
-		//_console.filters = [new DropShadowFilter (3, 45, 0x000000, .5, 5, 5, 1, 3, false, false, false)];			
 		_head = _cs.createStyledRectangle(_console, _style.console.head);
 		
 		// text - createStyledTextField (target:MovieClip, style:Object, str:String)
@@ -137,6 +138,16 @@ class com.sekati.log.Console {
 			 */
 		};
 		Key.addListener (_key);		
+	}
+	
+	/**
+	 * Create a LocalConnection to Logger
+	 * @return Void
+	 */
+	private function logConsoleConnect():Void {
+		_rx_lc = new LocalConnection();
+		_rx_lc[LogConsoleConnector.methodName]= Delegate.create(_this, addItem);
+		_rx_lc.connect(LogConsoleConnector.connectionName);
 	}
 
 	/**
