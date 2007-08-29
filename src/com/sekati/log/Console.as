@@ -13,6 +13,7 @@ import com.sekati.log.ConsoleFPSMonitor;
 import com.sekati.log.ConsoleItem;
 import com.sekati.log.ConsoleStyle;
 import com.sekati.log.LogConsoleConnector;
+import com.sekati.log.LogEvent;
 import com.sekati.ui.Scroll;
 import com.sekati.utils.ClassUtils; 
 import com.sekati.utils.Delegate;
@@ -53,7 +54,7 @@ class com.sekati.log.Console {
 		_this = this;
 		_cs = ConsoleStyle.getInstance();
 		_style = _cs.CSS;
-		Dispatcher.$.addEventListener("LOG_EVENT", Delegate.create (_this, onLogEvent));
+		Dispatcher.$.addEventListener(LogEvent.onLogEVENT, Delegate.create (_this, onLogEvent));
 		logConsoleConnect();
 		createUI();
 	}
@@ -198,5 +199,15 @@ class com.sekati.log.Console {
 	private function onLogEvent (eventObj:Event):Void {
 		//trace ("eventObj{target:" + eventObj.target + ",type:" + eventObj.type + ",message:" + eventObj.data.message + "};");
 		addItem(eventObj.data);
+	}
+	
+	/**
+	 * Clean and destroy
+	 * @return Void
+	 */
+	public function destroy():Void {
+		Dispatcher.$.removeEventListener("LOG_EVENT",Delegate.create (_this, onLogEvent));
+		_rx_lc.close();
+		_fps.destroy();
 	}
 }

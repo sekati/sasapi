@@ -6,8 +6,8 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  
- import com.sekati.log.Console;
- import com.sekati.utils.Delegate;
+import com.sekati.log.Console;
+import com.sekati.utils.Delegate;
  
 /**
  * Centralize {@link Console} & {@link Logger} LocalConnections.
