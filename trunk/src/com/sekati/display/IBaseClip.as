@@ -6,12 +6,14 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  
+ import com.sekati.core.CoreInterface;
+ 
 /**
  * Interface describing {@link com.sekati.display.BaseClip} which is 
  * the foundational building block class for all subclasses to 
  * extend instead of MovieClip.
  */
-interface com.sekati.display.IBaseClip {
+interface com.sekati.display.IBaseClip extends CoreInterface {
 
 	/**
 	 * Removes any internal variables, intervals, enterFrames, internal clips
