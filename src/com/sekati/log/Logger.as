@@ -1,6 +1,6 @@
 /**
  * com.sekati.log.Logger
- * @version 1.0.1
+ * @version 1.0.3
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -10,6 +10,7 @@ import com.sekati.core.CoreInterface;
 import com.sekati.events.Dispatcher;
 import com.sekati.events.Event;
 import com.sekati.log.Inspector;
+import com.sekati.log.LogConsoleConnector;
 import com.sekati.time.StopWatch;
  
 /**
@@ -25,7 +26,7 @@ import com.sekati.time.StopWatch;
  * Logger can be configured to display its output in several different ways:
  * 	- Flash IDE Output Panel.
  * 	- {@link Console} hidden inside compiled swf.
- * 	- {@link Console} via {@link http://debug.sekati.com} localConnection.
+ * 	- {@link Console} via <a href="http://debug.sekati.com">http://debug.sekati.com</a> localConnection.
  * 
  * @see {@link com.sekati.log.Console}
  */
@@ -258,7 +259,16 @@ class com.sekati.log.Logger implements CoreInterface {
 		var benchmark:Number = _watch.lap();
 		var id:Number = _logId++;
 		var e:Event = new Event("LOG_EVENT",this,{id:id, type:level.toLowerCase(), origin:String(origin), message:String(msg), benchmark:benchmark});
+		
+		// dispatch event to embedded Console
 		Dispatcher.$.dispatchEvent(e);
+		
+		// dispatch event to localConnection Console
+		lcDispatch(e);
+		
+		// dispatch event to output panel
+		trace("LOG_EVENT"+"\t"+id+"\t"+level+"\t"+origin+"\t"+msg+"\t"+benchmark);
+		
 		/*
 		var o:String = level + ":[" + String (origin) + "]: " + msg;
 		 if(!_isPanel) {
@@ -269,7 +279,16 @@ class com.sekati.log.Logger implements CoreInterface {
 		}
 		 */
 	}
-
+	
+	/**
+	 * dispatch LOG_EVENT to Console via LocalConnection.
+	 * @param eventObj (event)
+	 * @return Void
+	 */
+	private function lcDispatch (eventObj:Event):Void {
+		var tx_lc:LocalConnection = new LocalConnection();
+		tx_lc.send(LogConsoleConnector.connectionName, LogConsoleConnector.methodName, eventObj.data);
+	}
 	
 	//////////////////////////////////////////////////////////////
 	// Level Overloading	
