@@ -3,7 +3,7 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span><span class="comment doc">/**
 <span class="lineno" id="2">     2  </span> * com.sekati.math.MathBase
-<span class="lineno" id="3">     3  </span> * @version 1.0.9
+<span class="lineno" id="3">     3  </span> * @version 1.1.0
 <span class="lineno" id="4">     4  </span> * @author jason m horwitz | sekati.com
 <span class="lineno" id="5">     5  </span> * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -112,87 +112,102 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="109">   109  </span>		}
 <span class="lineno" id="110">   110  </span>		<span class="key">return</span> val;
 <span class="lineno" id="111">   111  </span>	}
-<span class="lineno" id="112">   112  </span>
+<span class="lineno" id="112">   112  </span>	
 <span class="lineno" id="113">   113  </span>	<span class="comment doc">/**
-<span class="lineno" id="114">   114  </span>	 * Check if number is Odd (convert to Integer if necessary)
-<span class="lineno" id="115">   115  </span>	 */</span>
-<span class="lineno" id="116">   116  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> isOdd (n:Number):Boolean {
-<span class="lineno" id="117">   117  </span>		<span class="key">var</span> int:Integer = <span class="key">new</span> Integer(n);
-<span class="lineno" id="118">   118  </span>		<span class="key">return</span> Boolean(int%<span class="num_const">2</span>);	
-<span class="lineno" id="119">   119  </span>	}
-<span class="lineno" id="120">   120  </span>
-<span class="lineno" id="121">   121  </span>	<span class="comment doc">/**
-<span class="lineno" id="122">   122  </span>	 * Check if number is Even (convert to Integer if necessary)
-<span class="lineno" id="123">   123  </span>	 */</span>
-<span class="lineno" id="124">   124  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> isEven (n:Number):Boolean {
-<span class="lineno" id="125">   125  </span>		<span class="key">var</span> int:Integer = <span class="key">new</span> Integer(n);
-<span class="lineno" id="126">   126  </span>		<span class="key">return</span> (int%<span class="num_const">2</span> == <span class="num_const">0</span>);
-<span class="lineno" id="127">   127  </span>	}
-<span class="lineno" id="128">   128  </span>
-<span class="lineno" id="129">   129  </span>	<span class="comment doc">/**
-<span class="lineno" id="130">   130  </span>	 * Check if number is an Integer
-<span class="lineno" id="131">   131  </span>	 */</span>
-<span class="lineno" id="132">   132  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> isInteger (n:Number):Boolean {
-<span class="lineno" id="133">   133  </span>		<span class="key">return</span> (n%<span class="num_const">1</span> == <span class="num_const">0</span>);
+<span class="lineno" id="114">   114  </span>	 * Return the proportional value of two pairs of numbers.
+<span class="lineno" id="115">   115  </span>	 * @param x1 (Number)
+<span class="lineno" id="116">   116  </span>	 * @param x2 (Number)
+<span class="lineno" id="117">   117  </span>	 * @param y1 (Number)
+<span class="lineno" id="118">   118  </span>	 * @param y2 (Number)
+<span class="lineno" id="119">   119  </span>	 * @param x (Number) optional
+<span class="lineno" id="120">   120  </span>	 * @return Number
+<span class="lineno" id="121">   121  </span>	 */</span>
+<span class="lineno" id="122">   122  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> proportion (x1:Number, x2:Number, y1:Number, y2:Number, x:Number):Number {
+<span class="lineno" id="123">   123  </span>		<span class="key">var</span> n:Number = (!x) ? <span class="num_const">1</span> : x;
+<span class="lineno" id="124">   124  </span>		<span class="key">var</span> slope:Number = (y2 - y1) / (x2 - x1);
+<span class="lineno" id="125">   125  </span>		<span class="key">return</span> (slope * (n - x1) + y1);
+<span class="lineno" id="126">   126  </span>	} 
+<span class="lineno" id="127">   127  </span>
+<span class="lineno" id="128">   128  </span>	<span class="comment doc">/**
+<span class="lineno" id="129">   129  </span>	 * Check if number is Odd (convert to Integer if necessary)
+<span class="lineno" id="130">   130  </span>	 */</span>
+<span class="lineno" id="131">   131  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> isOdd (n:Number):Boolean {
+<span class="lineno" id="132">   132  </span>		<span class="key">var</span> int:Integer = <span class="key">new</span> Integer(n);
+<span class="lineno" id="133">   133  </span>		<span class="key">return</span> Boolean(int%<span class="num_const">2</span>);	
 <span class="lineno" id="134">   134  </span>	}
 <span class="lineno" id="135">   135  </span>
 <span class="lineno" id="136">   136  </span>	<span class="comment doc">/**
-<span class="lineno" id="137">   137  </span>	 * Check if number is Natural (positive Integer)
+<span class="lineno" id="137">   137  </span>	 * Check if number is Even (convert to Integer if necessary)
 <span class="lineno" id="138">   138  </span>	 */</span>
-<span class="lineno" id="139">   139  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> isNatural(n:Number):Boolean {
-<span class="lineno" id="140">   140  </span>		<span class="key">return</span> (n &gt;= <span class="num_const">0</span> &amp;&amp; n%<span class="num_const">1</span> == <span class="num_const">0</span>);
-<span class="lineno" id="141">   141  </span>	}	
-<span class="lineno" id="142">   142  </span>
-<span class="lineno" id="143">   143  </span>	<span class="comment">////////////////////////////////////////////////////////////////////////////////////////////</span>
-<span class="lineno" id="144">   144  </span>	<span class="comment">// RANDOMS</span>
-<span class="lineno" id="145">   145  </span>	<span class="comment doc">/**
-<span class="lineno" id="146">   146  </span>	 * Returns a random number inside a specific range
-<span class="lineno" id="147">   147  </span>	 */</span>	
-<span class="lineno" id="148">   148  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> rnd(start:Number, end:Number):Number {
-<span class="lineno" id="149">   149  </span>		<span class="key">return</span> Math.round( Math.random()*(end-start))+start;
-<span class="lineno" id="150">   150  </span>	}
-<span class="lineno" id="151">   151  </span>
-<span class="lineno" id="152">   152  </span>	<span class="comment doc">/**
-<span class="lineno" id="153">   153  </span>	 * Returns a set of random numbers inside a specific range (unique numbers is optional)
-<span class="lineno" id="154">   154  </span>	 */</span>
-<span class="lineno" id="155">   155  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> inRangeSet (min:Number, max:Number, count:Number, unique:Boolean):Array {
-<span class="lineno" id="156">   156  </span>		<span class="key">var</span> rnds:Array = <span class="key">new</span> Array ();
-<span class="lineno" id="157">   157  </span>		<span class="key">if</span> (unique &amp;&amp; count &lt;= max - min + <span class="num_const">1</span>) {
-<span class="lineno" id="158">   158  </span>			<span class="comment">//unique</span>
-<span class="lineno" id="159">   159  </span>			<span class="comment">// create num range array</span>
-<span class="lineno" id="160">   160  </span>			<span class="key">var</span> nums:Array = <span class="key">new</span> Array ();
-<span class="lineno" id="161">   161  </span>			<span class="key">for</span> (<span class="key">var</span> i = min; i &lt;= max; i++) {
-<span class="lineno" id="162">   162  </span>				nums.push (i);
-<span class="lineno" id="163">   163  </span>			}
-<span class="lineno" id="164">   164  </span>			<span class="key">for</span> (<span class="key">var</span> i = <span class="num_const">1</span>; i &lt;= count; i++) {
-<span class="lineno" id="165">   165  </span>				<span class="comment">// random number</span>
-<span class="lineno" id="166">   166  </span>				<span class="key">var</span> rn = Math.floor (Math.random () * nums.length);
-<span class="lineno" id="167">   167  </span>				rnds.push (nums[rn]);
-<span class="lineno" id="168">   168  </span>				nums.splice (rn, <span class="num_const">1</span>);
-<span class="lineno" id="169">   169  </span>			}
-<span class="lineno" id="170">   170  </span>		} <span class="key">else</span> {
-<span class="lineno" id="171">   171  </span>			<span class="comment">//non unique</span>
-<span class="lineno" id="172">   172  </span>			<span class="key">for</span> (<span class="key">var</span> i = <span class="num_const">1</span>; i &lt;= count; i++) {
-<span class="lineno" id="173">   173  </span>				rnds.push (randRangeInt (min, max));
-<span class="lineno" id="174">   174  </span>			}
-<span class="lineno" id="175">   175  </span>		}
-<span class="lineno" id="176">   176  </span>		<span class="key">return</span> rnds;
-<span class="lineno" id="177">   177  </span>	}
-<span class="lineno" id="178">   178  </span>
-<span class="lineno" id="179">   179  </span>	<span class="comment doc">/**
-<span class="lineno" id="180">   180  </span>	 * Returns a random float number within a given range
-<span class="lineno" id="181">   181  </span>	 */</span>
-<span class="lineno" id="182">   182  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> randRangeFloat (min:Number, max:Number):Number {
-<span class="lineno" id="183">   183  </span>		<span class="key">return</span> Math.random () * (max - min) + min;
-<span class="lineno" id="184">   184  </span>	}
-<span class="lineno" id="185">   185  </span>
-<span class="lineno" id="186">   186  </span>	<span class="comment doc">/**
-<span class="lineno" id="187">   187  </span>	 * Returns a random int number within a given range
-<span class="lineno" id="188">   188  </span>	 */</span>
-<span class="lineno" id="189">   189  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> randRangeInt (min:Number, max:Number):Number {
-<span class="lineno" id="190">   190  </span>		<span class="key">return</span> Math.floor (Math.random () * (max - min + <span class="num_const">1</span>) + min);
-<span class="lineno" id="191">   191  </span>	}	
-<span class="lineno" id="192">   192  </span>	
-<span class="lineno" id="193">   193  </span>	<span class="key">private</span> <span class="key">function</span> MathBase(){
-<span class="lineno" id="194">   194  </span>	}
-<span class="lineno" id="195">   195  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of SASAPI" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.math" class="button">Package</a></li><li><a href="MathBase.html" title="Detail of com.sekati.math.MathBase API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
+<span class="lineno" id="139">   139  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> isEven (n:Number):Boolean {
+<span class="lineno" id="140">   140  </span>		<span class="key">var</span> int:Integer = <span class="key">new</span> Integer(n);
+<span class="lineno" id="141">   141  </span>		<span class="key">return</span> (int%<span class="num_const">2</span> == <span class="num_const">0</span>);
+<span class="lineno" id="142">   142  </span>	}
+<span class="lineno" id="143">   143  </span>
+<span class="lineno" id="144">   144  </span>	<span class="comment doc">/**
+<span class="lineno" id="145">   145  </span>	 * Check if number is an Integer
+<span class="lineno" id="146">   146  </span>	 */</span>
+<span class="lineno" id="147">   147  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> isInteger (n:Number):Boolean {
+<span class="lineno" id="148">   148  </span>		<span class="key">return</span> (n%<span class="num_const">1</span> == <span class="num_const">0</span>);
+<span class="lineno" id="149">   149  </span>	}
+<span class="lineno" id="150">   150  </span>
+<span class="lineno" id="151">   151  </span>	<span class="comment doc">/**
+<span class="lineno" id="152">   152  </span>	 * Check if number is Natural (positive Integer)
+<span class="lineno" id="153">   153  </span>	 */</span>
+<span class="lineno" id="154">   154  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> isNatural(n:Number):Boolean {
+<span class="lineno" id="155">   155  </span>		<span class="key">return</span> (n &gt;= <span class="num_const">0</span> &amp;&amp; n%<span class="num_const">1</span> == <span class="num_const">0</span>);
+<span class="lineno" id="156">   156  </span>	}	
+<span class="lineno" id="157">   157  </span>
+<span class="lineno" id="158">   158  </span>	<span class="comment">////////////////////////////////////////////////////////////////////////////////////////////</span>
+<span class="lineno" id="159">   159  </span>	<span class="comment">// RANDOMS</span>
+<span class="lineno" id="160">   160  </span>	<span class="comment doc">/**
+<span class="lineno" id="161">   161  </span>	 * Returns a random number inside a specific range
+<span class="lineno" id="162">   162  </span>	 */</span>	
+<span class="lineno" id="163">   163  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> rnd(start:Number, end:Number):Number {
+<span class="lineno" id="164">   164  </span>		<span class="key">return</span> Math.round( Math.random()*(end-start))+start;
+<span class="lineno" id="165">   165  </span>	}
+<span class="lineno" id="166">   166  </span>
+<span class="lineno" id="167">   167  </span>	<span class="comment doc">/**
+<span class="lineno" id="168">   168  </span>	 * Returns a set of random numbers inside a specific range (unique numbers is optional)
+<span class="lineno" id="169">   169  </span>	 */</span>
+<span class="lineno" id="170">   170  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> inRangeSet (min:Number, max:Number, count:Number, unique:Boolean):Array {
+<span class="lineno" id="171">   171  </span>		<span class="key">var</span> rnds:Array = <span class="key">new</span> Array ();
+<span class="lineno" id="172">   172  </span>		<span class="key">if</span> (unique &amp;&amp; count &lt;= max - min + <span class="num_const">1</span>) {
+<span class="lineno" id="173">   173  </span>			<span class="comment">//unique</span>
+<span class="lineno" id="174">   174  </span>			<span class="comment">// create num range array</span>
+<span class="lineno" id="175">   175  </span>			<span class="key">var</span> nums:Array = <span class="key">new</span> Array ();
+<span class="lineno" id="176">   176  </span>			<span class="key">for</span> (<span class="key">var</span> i = min; i &lt;= max; i++) {
+<span class="lineno" id="177">   177  </span>				nums.push (i);
+<span class="lineno" id="178">   178  </span>			}
+<span class="lineno" id="179">   179  </span>			<span class="key">for</span> (<span class="key">var</span> i = <span class="num_const">1</span>; i &lt;= count; i++) {
+<span class="lineno" id="180">   180  </span>				<span class="comment">// random number</span>
+<span class="lineno" id="181">   181  </span>				<span class="key">var</span> rn = Math.floor (Math.random () * nums.length);
+<span class="lineno" id="182">   182  </span>				rnds.push (nums[rn]);
+<span class="lineno" id="183">   183  </span>				nums.splice (rn, <span class="num_const">1</span>);
+<span class="lineno" id="184">   184  </span>			}
+<span class="lineno" id="185">   185  </span>		} <span class="key">else</span> {
+<span class="lineno" id="186">   186  </span>			<span class="comment">//non unique</span>
+<span class="lineno" id="187">   187  </span>			<span class="key">for</span> (<span class="key">var</span> i = <span class="num_const">1</span>; i &lt;= count; i++) {
+<span class="lineno" id="188">   188  </span>				rnds.push (randRangeInt (min, max));
+<span class="lineno" id="189">   189  </span>			}
+<span class="lineno" id="190">   190  </span>		}
+<span class="lineno" id="191">   191  </span>		<span class="key">return</span> rnds;
+<span class="lineno" id="192">   192  </span>	}
+<span class="lineno" id="193">   193  </span>
+<span class="lineno" id="194">   194  </span>	<span class="comment doc">/**
+<span class="lineno" id="195">   195  </span>	 * Returns a random float number within a given range
+<span class="lineno" id="196">   196  </span>	 */</span>
+<span class="lineno" id="197">   197  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> randRangeFloat (min:Number, max:Number):Number {
+<span class="lineno" id="198">   198  </span>		<span class="key">return</span> Math.random () * (max - min) + min;
+<span class="lineno" id="199">   199  </span>	}
+<span class="lineno" id="200">   200  </span>
+<span class="lineno" id="201">   201  </span>	<span class="comment doc">/**
+<span class="lineno" id="202">   202  </span>	 * Returns a random int number within a given range
+<span class="lineno" id="203">   203  </span>	 */</span>
+<span class="lineno" id="204">   204  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> randRangeInt (min:Number, max:Number):Number {
+<span class="lineno" id="205">   205  </span>		<span class="key">return</span> Math.floor (Math.random () * (max - min + <span class="num_const">1</span>) + min);
+<span class="lineno" id="206">   206  </span>	}	
+<span class="lineno" id="207">   207  </span>	
+<span class="lineno" id="208">   208  </span>	<span class="key">private</span> <span class="key">function</span> MathBase(){
+<span class="lineno" id="209">   209  </span>	}
+<span class="lineno" id="210">   210  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of SASAPI" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.math" class="button">Package</a></li><li><a href="MathBase.html" title="Detail of com.sekati.math.MathBase API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
