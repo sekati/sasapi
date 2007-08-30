@@ -14,7 +14,7 @@ import com.sekati.utils.Delegate;
 /**
  * Console Item UI
  * {@code Usage:
- * var meta:MovieClip = ClassUtils.createEmptyMovieClip (com.sekati.log.ConsoleItem, this, "consoleMetaItem", {_x:5, _y:5, _isMeta:true});
+ * 	var meta:MovieClip = ClassUtils.createEmptyMovieClip (com.sekati.log.ConsoleItem, this, "consoleMetaItem", {_x:5, _y:5, _isMeta:true});
  *	var data0:Object = {id:0, type:"status", origin:"_level0", message:"Generic status report.", benchmark:0.3339};
  * 	var c0:MovieClip = ClassUtils.createEmptyMovieClip (com.sekati.log.ConsoleItem, this, "consoleItem0", {_x:5, _y:21, _data:data0});
  * }
