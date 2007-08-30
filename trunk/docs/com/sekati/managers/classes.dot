@@ -6,4 +6,10 @@ strict digraph class_diagram {
     tooltip="com.sekati.managers.StageManager",
     shape="record"
   ];
+  TypeKeyManager[
+    label="KeyManager",
+    URL="KeyManager.html",
+    tooltip="com.sekati.managers.KeyManager",
+    shape="record"
+  ];
 }

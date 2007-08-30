@@ -24,10 +24,10 @@ strict digraph class_diagram {
     tooltip="com.sekati.log.LogEvent",
     shape="record"
   ];
-  TypeLogConsoleConnector[
-    label="LogConsoleConnector",
-    URL="LogConsoleConnector.html",
-    tooltip="com.sekati.log.LogConsoleConnector",
+  TypeLCBinding[
+    label="LCBinding",
+    URL="LCBinding.html",
+    tooltip="com.sekati.log.LCBinding",
     shape="record"
   ];
   TypeInspector[

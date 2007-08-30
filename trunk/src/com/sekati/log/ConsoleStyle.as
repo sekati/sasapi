@@ -1,6 +1,6 @@
 /**
  * com.sekati.log.ConsoleStyle
- * @version 1.2.3
+ * @version 1.2.9
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -8,6 +8,7 @@
 
 import com.sekati.display.BaseClip;
 import com.sekati.draw.Rectangle;
+import com.sekati.draw.Triangle;
 import com.sekati.geom.Point;
 import com.sekati.utils.ClassUtils;
 import com.sekati.utils.TextUtils; 
@@ -18,23 +19,25 @@ import com.sekati.utils.TextUtils;
 class com.sekati.log.ConsoleStyle {
 	
 	private static var _instance:ConsoleStyle;
-	
-	private var CW:Number = 900; // console width, height
-	private var CH:Number = 500; // was 600
-	private var IW:Number = 889; // item width, height
-	private var IH:Number = 12;
-	private var TH:Number = 14; // text height
+
+	public var CW:Number = 900; // console width
+	public var CH:Number = 500; // console height
+	public var IW:Number = 889; // item width
+	public var IH:Number = 12; // item height
+	public var TH:Number = 14; // text height
 	
 	// style definition
 	public var CSS:Object = {
 		console:{
-			n:"$___Console___", x:0, y:0, w:CW, h:CH, c:0x1D1D1D, a:95, startx:5, starty:5,
+			n:"$___Console___", x:5, y:5, w:CW, h:CH,
+			bg:{n:"bgMc", x:0, y:0, w:CW, h:CH, c:0x1D1D1D, a:95},
 			head:{
-				n:"headMc", x:0, y:0, w:900, h:IH, c:0xFFFFFF, a:100,
+				n:"headMc", x:0, y:0, w:CW, h:IH,
+				bg:{n:"bcMc", x:0, y:0, w:CW, h:IH, c:0xFFFFFF, a:100},
 				textfields:{
 					head:{n:"headTf", t:"<a href='http://sasapi.googlecode.com/' target='_blank'>com.sekati.log.Console</a>", html:true, x:5, y:-1, w:500, h:TH, c:0x6C8297, a:100}
 				},
-				fps:{n:"fpsMc", x:780, y:0, w:110, h:TH,
+				fps:{n:"fpsMc", x:CW-120, y:0, w:110, h:TH,
 					bg:{n:"bgMc", x:0, y:0, w:110, h:TH-2, c:0xFFFFFF, a:0},
 					textfields:{
 						trend_colors:{up:"#009900", down:"#CC0000"},
@@ -50,12 +53,13 @@ class com.sekati.log.ConsoleStyle {
 				list:{n:"listMc", x:0, y:0, w:0, h:0},
 				mask:{n:"maskMc", x:0, y:0, w:IW, h:CH-IH, c:0x00ffff, a:100},
 				gutter:{n:"gutterMc", x:CW-10, y:0, w:10, h:CH-IH, c:0x000000, a:100},
-				bar:{n:"barMc", x:CW-10, y:0, w:10, h:165, c:0xCC3300, a:100} // a:40
-			}
-		},	
+				bar:{n:"barMc", x:CW-10, y:0, w:10, h:165, c:0x6C8297, a:50} // c:0xCC3300, a:30
+			},
+			resizer:{n:"resizerMc", x:CW-10, y:CH-10, w:10, h:10, mx:450, my:150, c:0x6C8297, a:75}
+		},
 		item:{
 			n:"itemMc", x:0, y:0, w:IW, h:IH,
-			bg:{n:"bgMc", x:0, y:0, w:IW, h:IH, c:[0x202020, 0x000000], cindex:1, a:95},
+			bg:{n:"bgMc", x:0, y:0, w:IW, h:IH, c:[0x202020, 0x000000], cindex:1, a:50},
 			line:{n:"lineMc", x:0, y:0, w:IW, h:1, c:0xFFFFFF, a:50},
 			textfields:{
 				id:{n:"idTf", t:"id", x:5, y:0, w:30, h:TH, c:0x999999, a:100},
@@ -70,7 +74,7 @@ class com.sekati.log.ConsoleStyle {
 					custom:0x0066FF}
 				},
 				origin:{n:"originTf", t:"origin", x:85, y:0, w:90, h:TH, c:0x6C8297, a:100},
-				message:{n:"messageTf", t:"message", x:180, y:0, w:650, h:TH, c:0xFFFFFF, a:100},
+				message:{n:"messageTf", t:"message", x:180, y:0, w:650, h:TH, c:0xF7F7F7, a:100},
 				benchmark:{n:"benchmarkTf", t:"benchmark", x:835, y:0, w:51, h:TH, c:0x999999, a:100}					
 			}
 		},
@@ -153,8 +157,24 @@ class com.sekati.log.ConsoleStyle {
 		// sanitize style.c - if it is an array (instead of a number) it means we need to alternate colors with style.cindex
 		var c:Number = (style.c instanceof Array) ? alternateItemBgColor() : style.c;
 		//trace("drawing rect: "+style.n+": "+c);
-		Rectangle.draw (r, new Point(style.x, style.y), new Point(style.x+style.w, style.y+style.h), c, style.a);
+		Rectangle.draw (r, new Point(0, 0), new Point(style.w, style.h), c, style.a);
+		r._x = style.x;
+		r._y = style.y;
 		return r;
+	}
+	
+	/**
+	 * Create a styled triangle BaseClip
+	 * @param target (MovieClip)
+	 * @param style (Object) ConsoleStyle.CSS reference obj
+	 * @return MovieClip
+	 */
+	public function createStyledTriangle (target:MovieClip, style:Object):MovieClip {
+		var t:MovieClip = createClip(target, style);
+		Triangle.draw (t, new Point(style.w,style.h), new Point(0,style.h), new Point(style.w,0), style.c, style.a, 0);
+		t._x = style.x;
+		t._y = style.y;
+		return t;	
 	}
 	
 	/**
@@ -187,7 +207,7 @@ class com.sekati.log.ConsoleStyle {
 		// see if we want to be an html textfield
 		var isHtml:Boolean = (style.html == true) ? true : false;
 		// build properties and format objects
-		var props:Object = {type:"dynamic", html:isHtml, autoSize:isMessage, wordWrap:isMessage, multiline:isMessage, selectable:isMessage, mouseWheelEnabled:false, embedFonts:false, _alpha:style.a, htmlText:s};		
+		var props:Object = {type:"dynamic", html:isHtml, autoSize:isMessage, wordWrap:isMessage, multiline:isMessage, selectable:true, mouseWheelEnabled:false, embedFonts:false, _alpha:style.a, htmlText:s};		
 		var format:Object = {font:"Arial",size:9, color:c};
 		// create the TextField now that we have good properties, formats and string.
 		var t:TextField = TextUtils.create(target, style.n, style.x, style.y, style.w, style.h, props, format);

@@ -1,12 +1,13 @@
 /**
  * com.sekati.log.ConsoleItem
- * @version 1.1.0
+ * @version 1.1.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  
 import com.sekati.display.BaseClip;
+import com.sekati.events.Event;
 import com.sekati.log.ConsoleStyle;
 import com.sekati.utils.Delegate;
  
@@ -25,13 +26,13 @@ class com.sekati.log.ConsoleItem extends BaseClip {
 	public var _data:Object;
 	private var _cs:ConsoleStyle;
 	private var _style:Object;
-	private var _bg:MovieClip;
-	private var _line:MovieClip;
-	private var _idTf:TextField;
-	private var _typeTf:TextField;
-	private var _originTf:TextField;
-	private var _messageTf:TextField;
-	private var _benchmarkTf:TextField;
+	public var _bg:MovieClip;
+	public var _line:MovieClip;
+	public var _idTf:TextField;
+	public var _typeTf:TextField;
+	public var _originTf:TextField;
+	public var _messageTf:TextField;
+	public var _benchmarkTf:TextField;
 	
 	/**
 	 * ConsoleItem Constructor.
@@ -60,7 +61,7 @@ class com.sekati.log.ConsoleItem extends BaseClip {
 		_bg.onPress = Delegate.create(_this, toClipboard);
 		_bg.useHandCursor = false;		
 	}
-
+	
 	/**
 	 * Copy string data to clipboard.
 	 */	
