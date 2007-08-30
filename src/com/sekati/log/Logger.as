@@ -1,6 +1,6 @@
 /**
  * com.sekati.log.Logger
- * @version 1.0.3
+ * @version 1.1.0
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -10,7 +10,7 @@ import com.sekati.core.CoreInterface;
 import com.sekati.events.Dispatcher;
 import com.sekati.events.Event;
 import com.sekati.log.Inspector;
-import com.sekati.log.LogConsoleConnector;
+import com.sekati.log.LCBinding;
 import com.sekati.log.LogEvent;
 import com.sekati.time.StopWatch;
  
@@ -23,6 +23,7 @@ import com.sekati.time.StopWatch;
  * 	
  * New level (methods) may be created dynamically "overloading" the singleton class 
  * via {@link setLevel}, __resolve & proxy as illustrated in the example usage below.
+ * NOTE: custom levels/overloading requires publishing >= Flash 9.
  * 
  * Logger can be configured to display its output in several different ways:
  * 	- Flash IDE Output Panel.
@@ -38,9 +39,14 @@ class com.sekati.log.Logger implements CoreInterface {
 	private var _levels:Object;
 	private var _filters:Array;
 	private var _proxyObj:Object;
-	private var _watch:StopWatch;	
-	private var _isEnabled:Boolean;
+	private var _watch:StopWatch;
 	private var _logId:Number;
+	
+	// output modes
+	private var _isEnabled:Boolean;
+	private var _isOutputLC:Boolean;
+	private var _isOutputSWF:Boolean;
+	private var _isOutputIDE:Boolean;	
 	
 	// default level stubs
 	public var trace:Function;
@@ -58,8 +64,12 @@ class com.sekati.log.Logger implements CoreInterface {
 		resetFilters();
 		_proxyObj = new Object();
 		_watch = new StopWatch(true);
-		_isEnabled = true;
 		_logId = 0;
+		
+		_isEnabled = true;		
+		_isOutputLC = false;
+		_isOutputSWF = false;
+		_isOutputIDE = false;
 	}
 
 	/**
@@ -117,6 +127,15 @@ class com.sekati.log.Logger implements CoreInterface {
 		resetFilters ();
 	}
 	
+	public function set isLC(b:Boolean):Void {
+		_isOutputLC = b;	
+	}
+	public function set isSWF(b:Boolean):Void {
+		_isOutputSWF = b;	
+	}
+	public function set isIDE(b:Boolean):Void {
+		_isOutputIDE = b;	
+	}		
 	//////////////////////////////////////////////////////////////
 	// Level Handlers
 
@@ -245,20 +264,6 @@ class com.sekati.log.Logger implements CoreInterface {
 				break;
 			}
 		}
-	}
-
-	/**
-	 * Currently unused; AS3 has getNameSpace - when Logger is ported origin will change from string/mc to class  namespace.
-	 * For now it may be better to keep filtering on object/string rather than class(?)
-	 * @param origin (Object)
-	 * @return Void
-	 */
-	private function resolveOrigin (origin):Void {
-		var o = (typeof (origin) == "string") ? origin : origin._classname;
-		if (!o) {
-			o = origin;
-		}
-		trace (o);
 	}	
 	 
 	//////////////////////////////////////////////////////////////
@@ -273,23 +278,18 @@ class com.sekati.log.Logger implements CoreInterface {
 		var e:LogEvent = new LogEvent({id:id, type:level.toLowerCase(), origin:String(origin), message:String(msg), benchmark:benchmark});
 		
 		// dispatch event to embedded Console
-		Dispatcher.$.dispatchEvent(e);
-		
+		if(_isOutputSWF) {
+			Dispatcher.$.dispatchEvent(e);
+		}
 		// dispatch event to localConnection Console
-		lcDispatch(e);
+		if(_isOutputLC) {
+			LCBinding.send(e);
+		}
 		
 		// dispatch event to output panel
-		trace(id+"\t"+level.toUpperCase()+"\t"+origin+"\t"+msg+"\t("+benchmark+" ms)");
-	}
-	
-	/**
-	 * dispatch LogEvent to Console via LocalConnection.
-	 * @param eventObj (event)
-	 * @return Void
-	 */
-	private function lcDispatch (eventObj:Event):Void {
-		var tx_lc:LocalConnection = new LocalConnection();
-		tx_lc.send(LogConsoleConnector.connectionName, LogConsoleConnector.methodName, eventObj.data);
+		if(_isOutputIDE) {
+			trace(id+"\t"+level.toUpperCase()+"\t"+origin+"\t"+msg+"\t("+benchmark+" ms)");
+		}
 	}
 	
 	public function setOutputMode(isLocal:Boolean, isRemote:Boolean, isIDE):Void {	

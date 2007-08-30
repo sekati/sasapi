@@ -1,3 +1,4 @@
 <map id="class_diagram" name="class_diagram">
-<area shape="rect" href="StageManager.html" title="com.sekati.managers.StageManager" alt="" coords="9,8,137,56" />
+<area shape="rect" href="StageManager.html" title="com.sekati.managers.StageManager" alt="" coords="9,80,137,128" />
+<area shape="rect" href="KeyManager.html" title="com.sekati.managers.KeyManager" alt="" coords="14,8,132,56" />
 </map>
