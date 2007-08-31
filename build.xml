@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- *************************************************************************************
-		FDTKit Buildfile v1.2.1
+		FDTKit Buildfile v1.2.2
 		
 		@note	You must run this Buildfile in the same JRE as the workspace, be sure to
 				check this option in the launch configuration.
@@ -14,7 +14,7 @@
 		May 22, 2007 - jason m horwitz | Sekati LLC | sekati.com
      ************************************************************************************* -->
 
-<project name="Sekati ActionScript API" default="usage" basedir=".">
+<project name="Sekati ActionScript API" default="SafeTestMovie" basedir=".">
 
 	<!-- FDTKit Structure -->
 	<property name="fdtkit" location="/Users/jason/workspace/fdtkit"/>
@@ -107,6 +107,7 @@
 
 	<!-- TASK: compile current opened fla in src dir with Flash IDE -->		
 	<target name="SafeTestMovie">
+		<echo message="@@@@@ Clearing ASO Cache, saving FLA, and executing TestMovie() in IDE @@@@@"/>
 		<exec executable="open"><arg line="${compile.jsfl}"/></exec>
 	</target>
 	
