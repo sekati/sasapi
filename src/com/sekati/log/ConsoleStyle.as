@@ -1,6 +1,6 @@
 /**
  * com.sekati.log.ConsoleStyle
- * @version 1.2.9
+ * @version 1.3.0
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -29,15 +29,15 @@ class com.sekati.log.ConsoleStyle {
 	// style definition
 	public var CSS:Object = {
 		console:{
-			n:"$___Console___", x:5, y:5, w:CW, h:CH,
+			n:"$___Console___", x:5, y:5, w:CW, h:CH, minW:450, minH:150, maxW:Stage.width, maxH:Stage.height,
 			bg:{n:"bgMc", x:0, y:0, w:CW, h:CH, c:0x1D1D1D, a:95},
 			head:{
 				n:"headMc", x:0, y:0, w:CW, h:IH,
 				bg:{n:"bcMc", x:0, y:0, w:CW, h:IH, c:0xFFFFFF, a:100},
 				textfields:{
-					head:{n:"headTf", t:"<a href='http://sasapi.googlecode.com/' target='_blank'>com.sekati.log.Console</a>", html:true, x:5, y:-1, w:500, h:TH, c:0x6C8297, a:100}
+					head:{n:"headTf", t:"com.sekati.log.Console", url:"http://sasapi.googlecode.com/", x:5, y:-1, w:500, h:TH, c:0x6C8297, a:100}
 				},
-				fps:{n:"fpsMc", x:CW-120, y:0, w:110, h:TH,
+				fps:{n:"fpsMc", x:CW-120, y:0, w:110, h:TH, updateRate:10,
 					bg:{n:"bgMc", x:0, y:0, w:110, h:TH-2, c:0xFFFFFF, a:0},
 					textfields:{
 						trend_colors:{up:"#009900", down:"#CC0000"},
@@ -53,9 +53,9 @@ class com.sekati.log.ConsoleStyle {
 				list:{n:"listMc", x:0, y:0, w:0, h:0},
 				mask:{n:"maskMc", x:0, y:0, w:IW, h:CH-IH, c:0x00ffff, a:100},
 				gutter:{n:"gutterMc", x:CW-10, y:0, w:10, h:CH-IH, c:0x000000, a:100},
-				bar:{n:"barMc", x:CW-10, y:0, w:10, h:165, c:0x6C8297, a:50} // c:0xCC3300, a:30
+				bar:{n:"barMc", x:CW-10, y:0, w:10, h:165, c:0x6C8297, a:100} // c:0xCC3300, a:30
 			},
-			resizer:{n:"resizerMc", x:CW-10, y:CH-10, w:10, h:10, mx:450, my:150, c:0x6C8297, a:75}
+			resizer:{n:"resizerMc", x:CW-10, y:CH-10, w:10, h:10, c:0xFFFFFF, a:100}
 		},
 		item:{
 			n:"itemMc", x:0, y:0, w:IW, h:IH,
@@ -73,8 +73,8 @@ class com.sekati.log.ConsoleStyle {
 					object:0x9900FF,
 					custom:0x0066FF}
 				},
-				origin:{n:"originTf", t:"origin", x:85, y:0, w:90, h:TH, c:0x6C8297, a:100},
-				message:{n:"messageTf", t:"message", x:180, y:0, w:650, h:TH, c:0xF7F7F7, a:100},
+				origin:{n:"originTf", t:"origin", selectable:true, x:85, y:0, w:90, h:TH, c:0x6C8297, a:100},
+				message:{n:"messageTf", t:"message", selectable:true, x:180, y:0, w:650, h:TH, c:0xF7F7F7, a:100},
 				benchmark:{n:"benchmarkTf", t:"benchmark", x:835, y:0, w:51, h:TH, c:0x999999, a:100}					
 			}
 		},
@@ -139,7 +139,7 @@ class com.sekati.log.ConsoleStyle {
 	 * }
 	 */
 	public function createPositionClip (target:MovieClip, style:Object):MovieClip {
-		return ClassUtils.createEmptyMovieClip (com.sekati.display.BaseClip, target, style.n, {_x:style.x, _y:style.y, _alpha:100});
+		return ClassUtils.createEmptyMovieClip (com.sekati.display.BaseClip, target, style.n, {_x:style.x, _y:style.y, _alpha:style.a});
 	}
 	
 	/**
@@ -206,8 +206,10 @@ class com.sekati.log.ConsoleStyle {
 		var isMessage:Boolean = (style.n == CSS.item.textfields.message.n);
 		// see if we want to be an html textfield
 		var isHtml:Boolean = (style.html == true) ? true : false;
+		// see if we want a selectable textfield
+		var isSelectable:Boolean = (style.selectable == true) ? true : false;
 		// build properties and format objects
-		var props:Object = {type:"dynamic", html:isHtml, autoSize:isMessage, wordWrap:isMessage, multiline:isMessage, selectable:true, mouseWheelEnabled:false, embedFonts:false, _alpha:style.a, htmlText:s};		
+		var props:Object = {type:"dynamic", html:isHtml, autoSize:isMessage, wordWrap:isMessage, multiline:isMessage, selectable:isSelectable, mouseWheelEnabled:false, embedFonts:false, _alpha:style.a, htmlText:s};		
 		var format:Object = {font:"Arial",size:9, color:c};
 		// create the TextField now that we have good properties, formats and string.
 		var t:TextField = TextUtils.create(target, style.n, style.x, style.y, style.w, style.h, props, format);

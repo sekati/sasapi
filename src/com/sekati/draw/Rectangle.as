@@ -31,9 +31,9 @@ class com.sekati.draw.Rectangle {
 	 */
 	public static function draw (mc:MovieClip, topLeft:Point, bottomRight:Point, fillColor:Number, fillAlpha:Number, strokeWeight:Number, strokeColor:Number, strokeAlpha:Number):Void {
 		var sw:Number = (!strokeWeight) ? undefined : strokeWeight;
-		var sc:Number = (!strokeColor) ? 0x000000 : strokeColor;
-		var sa:Number = (!strokeAlpha) ? 100 : strokeAlpha;
-		var fa:Number = (!fillAlpha) ? 100 : fillAlpha;
+		var sc:Number = (isNaN(strokeColor)) ? 0x000000 : strokeColor;
+		var sa:Number = (isNaN(strokeAlpha)) ? 100 : strokeAlpha;
+		var fa:Number = (isNaN(fillAlpha)) ? 100 : fillAlpha;
 				
 		var tl:Number = topLeft.x;
 		var bl:Number = topLeft.y;

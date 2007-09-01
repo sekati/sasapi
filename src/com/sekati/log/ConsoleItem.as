@@ -1,6 +1,6 @@
 /**
  * com.sekati.log.ConsoleItem
- * @version 1.1.1
+ * @version 1.1.2
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -59,24 +59,33 @@ class com.sekati.log.ConsoleItem extends BaseClip {
 		
 		// event
 		_bg.onPress = Delegate.create(_this, toClipboard);
-		_bg.useHandCursor = false;		
+		//_bg.useHandCursor = false;		
 	}
 	
 	/**
 	 * Copy string data to clipboard.
+	 * @return Void
 	 */	
 	private function toClipboard():Void {
+		System.setClipboard (toString());
+	}
+
+	/**
+	 * Return ConsoleItem string data 
+	 * @return String
+	 */
+	public function toString():String {
 		var tab:String = "\t";
 		var str:String = _idTf.text +tab+ _typeTf.text +tab+ _originTf.text +tab+ _messageTf.text +tab+ _benchmarkTf.text;
-		System.setClipboard (str);
+		return str;		
 	}
-	
+		
 	/**
 	 * calls superclasses BaseClip.destroy and executes its own destroy behaviors.
 	 * @return Void
 	 */
-	private function destroy():Void {
+	public function destroy():Void {
 		super.destroy();
-		trace(_this._name+" ConsoleItem destroy()");
+		//trace(_this._name+" ConsoleItem destroy()");
 	}	
 }

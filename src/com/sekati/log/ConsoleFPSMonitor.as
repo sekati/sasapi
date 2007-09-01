@@ -1,6 +1,6 @@
 /**
  * com.sekati.log.ConsoleFPSMonitor
- * @version 1.0.3
+ * @version 1.0.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -47,15 +47,21 @@ class com.sekati.log.ConsoleFPSMonitor extends BaseClip {
 		_averageFps = _cs.createStyledTextField(_this, _style.textfields.average_fps);
 	
 		// start monitoring	
-		_fps = new FPS(Delegate.create(_this, updateFPS), 1);
+		_fps = new FPS(Delegate.create(_this, updateFPS), _style.updateRate);
 
+		/*
 		// events
 		_bg.onPress = Delegate.create(_this, toClipboard);
 		_bg.useHandCursor = false;
+		 */
 	}
 	
 	/**
-	 * 
+	 * Update the FPS textfields.
+	 * @param current (Number) the current swf's FPS
+	 * @param average (Number) the average swf's FPS since inception
+	 * @param currentTrend (String) direction is the current fps trending: "+"|"-" 
+	 * @param averageTrend (String) direction is the average fps trending: "+"|"-" 
 	 */
 	private function updateFPS(current:Number, average:Number, currentTrend:String, averageTrend:String):Void {
 	 	var cc:Number = (currentTrend == "+") ? _style.textfields.trend_colors.up : _style.textfields.trend_colors.down;
@@ -65,20 +71,28 @@ class com.sekati.log.ConsoleFPSMonitor extends BaseClip {
 	}	
 	
 	/**
-	 * Copy string data to clipboard.
+	 * Copy FPS string data to clipboard.
+	 * @return Void
 	 */
-	private function toClipboard():Void {
+	public function toClipboard():Void {
+		System.setClipboard (toString());
+	}
+	
+	/**
+	 * Return FPS string data
+	 * @return String
+	 */
+	public function toString():String {
 		var tab:String = "\t";
-		var str:String = "FPS:"+tab+_currentLabel.text+": "+_currentFps.text+tab+_averageLabel.text+": "+_averageFps.text;
-		trace("ConsoleFPSMonitor.copyToClipboard(): "+str);
-		System.setClipboard (str);
+		var str:String = "FPS:"+tab+_currentLabel.text+": "+_currentFps.text+tab+_averageLabel.text+": "+_averageFps.text;	
+		return str;
 	}
 		
 	/**
 	 * calls superclasses BaseClip.destroy and executes its own destroy behaviors.
 	 * @return Void
 	 */
-	private function destroy():Void {
+	public function destroy():Void {
 		super.destroy();
 		_fps.destroy();
 		trace(_this._name+" ConsoleFPSMonitor destroy()");
