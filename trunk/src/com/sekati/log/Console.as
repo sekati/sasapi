@@ -1,6 +1,6 @@
 /**
  * com.sekati.log.Console
- * @version 1.1.9
+ * @version 1.2.0
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -14,6 +14,8 @@ import com.sekati.log.ConsoleItem;
 import com.sekati.log.ConsoleStyle;
 import com.sekati.log.LCBinding;
 import com.sekati.log.LogEvent;
+import com.sekati.math.MathBase;
+import com.sekati.ui.ContextualMenu;
 import com.sekati.ui.Scroll;
 import com.sekati.utils.ClassUtils; 
 import com.sekati.utils.Delegate;
@@ -40,6 +42,7 @@ class com.sekati.log.Console {
 	private var _list:MovieClip;
 	private var _mask:MovieClip;
 	private var _scroll:Scroll;
+	private var _cmenu:ContextualMenu;
 	private var _gutter:MovieClip;
 	private var _bar:MovieClip;
 	private var _resizer:MovieClip;
@@ -89,6 +92,8 @@ class com.sekati.log.Console {
 		// rect	- createStyledRect (target:MovieClip, style:Object)
 		// text - createStyledTextField (target:MovieClip, style:Object, str:String)
 		_console = _cs.createClip(_level0, _style.console);
+		_console._x = _style.console.x;
+		_console._y = _style.console.y;
 		_console._quality = "LOW";
 		_bg = _cs.createStyledRectangle(_console, _style.console.bg);
 		
@@ -114,18 +119,31 @@ class com.sekati.log.Console {
 		// create resizer
 		_resizer = _cs.createStyledTriangle(_console, _style.console.resizer);
 	
+		// create the meta item
+		_metaItem = ClassUtils.createEmptyMovieClip (com.sekati.log.ConsoleItem, _list, "metaItem", {_x:0, _y:0, _data:{_isMeta:true}});
+		_items.push(_metaItem);	
+	
+		// set masking & initialize _scroll
 		_list.setMask(_mask);
 		_scroll = new Scroll("_y", _list, _mask, _gutter, _bar, true, true, true, true, _list);
+		
+		// initialize contextMenu
+		_cmenu = new ContextualMenu(_console);
+		var cb:Function = function():Void {
+			getURL(_style.console.head.textfields.head.url,"_blank");	
+		};
+		_cmenu.addItem(_style.console.head.textfields.head.t, Delegate.create(this, cb), true);
+		_cmenu.addItem("Play / Pause", null, true);
+		_cmenu.addItem("Copy Log", Delegate.create(this, toClipboard), false);
+		_cmenu.addItem("Clear Log", Delegate.create(this, reset), false);
+		_cmenu.addItem("Minimize", Delegate.create(this, resize, _style.console.minW, _style.console.minH), true);
+		_cmenu.addItem("Maximize", Delegate.create(this, resize, _style.console.maxW, _style.console.maxH), false);
 	
 		// events
-		_head.onPress  = Delegate.create (_console, startDrag);
+		_head.onPress = Delegate.create (_console, startDrag, false, _style.console.x, _style.console.y, _style.console.maxW, _style.console.maxH);
 		_head.onRelease = _head.onReleaseOutside = Delegate.create (_console, stopDrag);
 		_resizer.onPress = Delegate.create(this, resizer_onPress);
 		_resizer.onRelease = _resizer.onReleaseOutside = Delegate.create(this, resizer_onRelease);
-		
-		// create the meta item
-		_metaItem = ClassUtils.createEmptyMovieClip (com.sekati.log.ConsoleItem, _list, "metaItem", {_x:0, _y:0, _data:{_isMeta:true}});
-		_items.push(_metaItem);
 		
 		// keylistener
 		_key = new Object ();
@@ -138,7 +156,10 @@ class com.sekati.log.Console {
 			}
 		};
 		*/
-		Key.addListener (_key);		
+		Key.addListener (_key);
+		
+		// resize console to fit swf
+		resize(Stage.width-_style.console.x*4, Stage.height-_style.console.y*4);
 	}
 	
 	/**
@@ -157,7 +178,7 @@ class com.sekati.log.Console {
 	 * Resizing methods
 	 */
 	private function resizer_onPress():Void {
-		_resizer.startDrag (false, _style.console.resizer.mx, _style.console.resizer.my, Stage.width, Stage.height);
+		_resizer.startDrag (false, (_console._x+_style.console.minW), (_console._y+_style.console.minH), _style.console.maxW, _style.console.maxH);
 	}
 	private function resizer_onRelease():Void {
 		_resizer.stopDrag();
@@ -171,8 +192,14 @@ class com.sekati.log.Console {
 	 * @return Void
 	 */
 	public function resize (nw:Number, nh:Number):Void {
-		var w:Number = (!nw) ? int(_console._xmouse) : nw;
-		var h:Number = (!nh) ? int(_console._ymouse) : nh;
+		var _w:Number = (!nw) ? int(_console._xmouse) : nw;
+		var _h:Number = (!nh) ? int(_console._ymouse) : nh;
+		
+		// add constraints to sanitize resizing
+		var w:Number = MathBase.constrain(_w,_style.console.minW, _style.console.maxW);
+		var h:Number = MathBase.constrain(_h,_style.console.minH, _style.console.maxH);
+		
+		// new mask width/height
 		var mw:Number = w-11;
 		var mh:Number = h-_cs.IH;
 		
@@ -263,6 +290,33 @@ class com.sekati.log.Console {
 	private function onLogEvent (eventObj:Event):Void {
 		//trace ("eventObj{target:" + eventObj.target + ",type:" + eventObj.type + ",message:" + eventObj.data.message + "};");
 		addItem(eventObj.data);
+	}
+	
+	/**
+	 * Select all item _data and put it in clipboard
+	 * @return Void
+	 */
+	public function toClipboard():Void {
+		System.setClipboard (toString());
+	}
+
+	/**
+	 * Return Console string data 
+	 * @return String
+	 */
+	public function toString():String {
+		var o:String = _style.console.head.textfields.head.t+"\t"+_fps.toString()+"\n";
+		for (var i:Number = 0; i<_items.length; i++) {
+			o += "\n"+_items[i].toString();
+		}
+		return o;	
+	}
+	
+	public function reset():Void {
+		for(var i:Number = 0; i<_items.length; i++){
+			_items[i].destroy();	
+		}
+		_items = [];
 	}
 	
 	/**
