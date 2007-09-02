@@ -1,19 +1,21 @@
 /**
- * com.sekati.events.Pulse
- * @version 1.0.1
+ * com.sekati.events.FramePulse
+ * @version 1.0.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
- 
+
+import com.sekati.core.CoreInterface; 
 import com.sekati.core.FWDepth;
+import com.sekati.reflect.Stringifier;
 import com.sekati.utils.ClassUtils;
 import com.sekati.utils.Delegate;
  
 /**
- * Framerate Pulse Broadcaster
+ * Framerate FramePulse Broadcaster
  */
-class com.sekati.events.Pulse {
+class com.sekati.events.FramePulse implements CoreInterface {
 	
 	// AsBroadcaster stubs
 	private var addListener:Function;
@@ -21,7 +23,7 @@ class com.sekati.events.Pulse {
 	private var broadcastMessage:Function;
 	private var _listeners:Array;
 		
-	private static var _instance:Pulse;
+	private static var _instance:FramePulse;
 	private var _mc:MovieClip;
 	private var _f:Function;
 	
@@ -30,9 +32,9 @@ class com.sekati.events.Pulse {
 	/**
 	 * Singleton Private Constructor: initializes centralized management of mx.events.EventDispatcher
 	 */
-	private function Pulse() {
+	private function FramePulse() {
 		AsBroadcaster.initialize(this);
-		_mc = ClassUtils.createEmptyMovieClip(com.sekati.display.BaseClip, _level0, "___FramePulse", {_depth:FWDepth.Pulse});
+		_mc = ClassUtils.createEmptyMovieClip(com.sekati.display.BaseClip, _level0, "___FramePulse", {_depth:FWDepth.FramePulse});
 		_f = Delegate.create(this, broadcastMessage, onEnterFrameEVENT);
 	}
 
@@ -40,9 +42,9 @@ class com.sekati.events.Pulse {
  	 * Singleton Accessor
 	 * @return Dispatcher
 	 */
-	public static function getInstance():Pulse {
+	public static function getInstance():FramePulse {
 		if (!_instance) {
-			_instance = new Pulse();
+			_instance = new FramePulse();
 		}
 		return _instance;
 	}
@@ -50,12 +52,12 @@ class com.sekati.events.Pulse {
 	/**
 	 * Shorthand singleton accessor getter
 	 */
-	 public static function get $():Pulse {
-	 	return Pulse.getInstance();	
+	 public static function get $():FramePulse {
+	 	return FramePulse.getInstance();	
 	 }
 	
 	/**
-	 * Start OEF Pulse
+	 * Start OEF FramePulse
 	 * @return Void
 	 */
 	public function start():Void {
@@ -63,32 +65,22 @@ class com.sekati.events.Pulse {
 	}	
 	
 	/**
-	 * Stop OEF Pulse
+	 * Stop OEF FramePulse
 	 */
 	public function stop():Void {
 		_mc.onEnterFrame = null;
 	}
 	
 	/**
-	 * Check if OEF Pulse is running
+	 * Check if OEF FramePulse is running
 	 * @return Boolean
 	 */
 	public function isRunning():Boolean{
 		return _mc.onEnterFrame == _f;
 	}	
-
-	/**
-	 * Destroy OEF Pulse
-	 * @return Void
-	 */
-	public function destroy():Void {
-		_instance.stop();
-		_mc.destroy();
-		delete _instance;
-	}
 	
 	/**
-	 * Add a Pulse listener and auto-start Pulse if not running
+	 * Add a FramePulse listener and auto-start FramePulse if not running
 	 * @param o (Object) to register
 	 * @return Void
 	 */
@@ -98,7 +90,7 @@ class com.sekati.events.Pulse {
 	}
 	
 	/**
-	 * Add an array of Pulse listeners
+	 * Add an array of FramePulse listeners
 	 * @param a (Array) of objects to register
 	 * @return Void
 	 */
@@ -109,7 +101,7 @@ class com.sekati.events.Pulse {
 	}
 	
 	/**
-	 * remove a Pulse listener and auto-stop Pulse if no listeners remain
+	 * remove a FramePulse listener and auto-stop FramePulse if no listeners remain
 	 * @param o (Object) to unregister
 	 * @return Void
 	 */
@@ -119,7 +111,7 @@ class com.sekati.events.Pulse {
 	}
 
 	/**
-	 * Remove an array of Pulse listeners
+	 * Remove an array of FramePulse listeners
 	 * @param a (Array) of objects to unregister
 	 * @return Void
 	 */
@@ -130,11 +122,29 @@ class com.sekati.events.Pulse {
 	}
 
 	/**
-	 * check is a Pulse listener is registered
+	 * check is a FramePulse listener is registered
 	 * @return Boolean
 	 */
 	public function isListenerRegistered(o:Object):Boolean{
 		for (var i in _listeners) if(_listeners[i] === o) return true;
 		return false;
 	}
+	
+	/**
+	 * Destroy OEF FramePulse
+	 * @return Void
+	 */
+	public function destroy():Void {
+		_instance.stop();
+		_mc.destroy();
+		delete _instance;
+	}
+	
+	/**
+	 * Override with reflective output.
+	 * @return String
+	 */
+	public function toString():String {
+		return Stringifier.stringify(this);	
+	}	
 }

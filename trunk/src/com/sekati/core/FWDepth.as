@@ -13,7 +13,7 @@ class com.sekati.core.FWDepth {
 	
 	public static var ExpressInstall:Number = 10000000;
 	public static var BaseLoader:Number = 15999;
-	public static var Pulse:Number = -666;
+	public static var FramePulse:Number = -666;
 	public static var FLVAudioContainer:Number = -667;
 	public static var SoundCenter:Number = -668;
 	public static var ScreenProtector = 9996;

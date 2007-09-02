@@ -10,6 +10,7 @@ import com.sekati.core.KeyFactory;
 import com.sekati.display.BaseClip;
 
 /**
+ * @XXX Currently unimplemented - DO NOT USE.
  * {@code Usage:
  * var gr:Graphics = new Graphics(2);
  * gr.setColor("0xff0000");

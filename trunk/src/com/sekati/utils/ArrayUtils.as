@@ -7,7 +7,7 @@
  */
  
  /**
-  * static class wrapping various Array utilities
+  * Static class wrapping various Array utilities.
   */
 class com.sekati.utils.ArrayUtils {
 

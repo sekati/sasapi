@@ -9,7 +9,7 @@
 import com.sekati.crypt.RUID;
 
 /**
- * Give flash runtime objects a unique ID
+ * Give flash runtime objects a unique ID.
  * @see pixlib's HashCodeFactory
  * @see nectere's KeyInjector.
  */
@@ -18,7 +18,7 @@ class com.sekati.core.KeyFactory {
 	private static var _key:String = "__RUID";
 	
 	/**
-	 * return the RUID key injected into an object - used as both getter and setter.
+	 * Return the RUID key injected into an object - used as both getter and setter.
 	 * @param o (Object) Object to inject RUID key in to
 	 * @return (Number) Runtime Unique ID
 	 */
@@ -31,7 +31,7 @@ class com.sekati.core.KeyFactory {
 	}
 	
 	/**
-	 * Injection wrapper to provide saner syntactical getter functionality
+	 * Injection wrapper to provide saner syntactical getter functionality.
 	 */
 	public static function getKey(o:Object):Number {
 		return KeyFactory.inject(o);	
@@ -47,7 +47,7 @@ class com.sekati.core.KeyFactory {
 	}
 	
 	/**
-	 * preview the next object RUID to be assigned
+	 * Preview the next object RUID to be assigned.
 	 * @return Number
 	 */
 	public static function previewNextKey():Number {
@@ -55,7 +55,7 @@ class com.sekati.core.KeyFactory {
 	}
 	
 	/**
-	 * Debugging method to check if two objects are equal
+	 * Debugging method to check if two objects are equal.
 	 * @param a (Object)
 	 * @param b (Object)
 	 * @return Boolean

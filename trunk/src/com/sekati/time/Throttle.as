@@ -8,6 +8,8 @@
  * Sourced/adapted from bumpslide lib
  */
  
+ import com.sekati.reflect.Stringifier;
+ 
 /**
  * Throttle time between method calls
  * {@code Usage:
@@ -70,4 +72,12 @@ class com.sekati.time.Throttle {
 		_finalCallPending = false;
 		_fn.call(null);		
 	}
+	
+	/**
+	 * Override with reflective output.
+	 * @return String
+	 */
+	public function toString():String {
+		return Stringifier.stringify(this);	
+	}	
 }

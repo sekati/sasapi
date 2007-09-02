@@ -10,7 +10,7 @@ import flash.display.BitmapData;
 import flash.geom.Matrix;
 
 /**
- * static class wrapping variousBitmap utilities
+ * Static class wrapping variousBitmap utilities.
  */
 class com.sekati.utils.BitmapUtils {
 

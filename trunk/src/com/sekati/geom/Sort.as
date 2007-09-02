@@ -1,6 +1,6 @@
 /**
  * com.sekati.geom.Sort
- * @version 1.0.1
+ * @version 1.0.3
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -8,6 +8,7 @@
 
 import com.sekati.geom.Point;
 import com.sekati.math.MathBase;
+import com.sekati.reflect.Stringifier;
  
 /**
  * Sort an array of Objects positions into various shapes and patterns.
@@ -302,4 +303,12 @@ class com.sekati.geom.Sort {
 		}
 		return _sort;
 	}
+	
+	/**
+	 * Override with reflective output.
+	 * @return String
+	 */
+	public function toString():String {
+		return Stringifier.stringify(this);	
+	}	
 }

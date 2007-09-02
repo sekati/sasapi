@@ -9,7 +9,7 @@
 import flash.filters.DropShadowFilter;
 
 /**
- * static class wrapping various filter utilities
+ * Static class wrapping various filter utilities.
  */
 class com.sekati.utils.FilterUtils {
 
