@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- *************************************************************************************
-		FDTKit Buildfile v1.2.3
+		FDTKit Buildfile v1.2.5
 		
 		@note	You must run this Buildfile in the same JRE as the workspace, be sure to
 				check this option in the launch configuration.
@@ -88,6 +88,7 @@
 		<echo message="clean_doc"/>
 		<echo message="compile_ide"/>
 		<echo message="compile_all_ide"/>
+		<echo message="compile_all_tests_ide"/>
 		<echo message="compile_doc_as2api"/>
 		<echo message="compile_doc_asdoc"/>
 		<echo message="compile_doc_naturaldoc"/>
@@ -251,6 +252,14 @@
 	        </fileset>
 	    </fdt.flashCompile>
 	</target>
+	
+	<target name="compile_all_tests_ide">
+		 <fdt.flashCompile>
+		   <fileset dir="${tests}">
+		    <include name="*.fla"/>
+		   </fileset>
+		  </fdt.flashCompile>
+	</target>	
 	
 	<!-- TASK: launch target swf in FlashPlayer -->	
     <target name="launch_external">
