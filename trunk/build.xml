@@ -71,7 +71,7 @@
 	<property name="ssh" location="/usr/bin/ssh"/>		
 
 	<!-- Project Deployment Paths -->
-	<property name="deploy_source_path" location="${deploy}/"/>
+	<property name="deploy_source_path" location="${basedir}/"/>
 	<property name="deploy_dest_path" value="/home/www/dev/"/>	
 	
 	<!-- Documentation Deployment Paths -->
