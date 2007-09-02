@@ -1,8 +1,7 @@
 #summary How do I work this?
-#labels Featured,Phase-Implementation
+#labels Phase-Implementation
 
 = Documentation =
 
 You may [http://docs.sekati.com/ view the SASAPI Documentation online], which is also packaged in each [http://code.google.com/p/sasapi/downloads/list Revision Download].
-
 
