@@ -1,0 +1,10 @@
+strict digraph interface_diagram {
+  rankdir=LR;
+  IScrollable[
+    label="IScrollable",
+    URL="IScrollable.html",
+    tooltip="com.sekati.ui.IScrollable",
+    fontname="Times-Italic",
+    shape="record"
+  ];
+}

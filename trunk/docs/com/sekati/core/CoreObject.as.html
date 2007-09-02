@@ -11,25 +11,26 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="8">     8  </span> 
 <span class="lineno" id="9">     9  </span><span class="key">import</span> com.sekati.core.CoreInterface;
 <span class="lineno" id="10">    10  </span><span class="key">import</span> com.sekati.core.KeyFactory;
-<span class="lineno" id="11">    11  </span> 
-<span class="lineno" id="12">    12  </span><span class="comment doc">/**
-<span class="lineno" id="13">    13  </span> * The basic object for the SASAPI framework.
-<span class="lineno" id="14">    14  </span> */</span>
-<span class="lineno" id="15">    15  </span><span class="key">class</span> com.sekati.core.CoreObject <span class="key">extends</span> Object <span class="key">implements</span> CoreInterface {
-<span class="lineno" id="16">    16  </span>	
-<span class="lineno" id="17">    17  </span>	<span class="key">public</span> <span class="key">function</span> CoreObject() {
-<span class="lineno" id="18">    18  </span>		<span class="key">super</span>();
-<span class="lineno" id="19">    19  </span>		KeyFactory.inject(<span class="key">this</span>);
-<span class="lineno" id="20">    20  </span>	}
-<span class="lineno" id="21">    21  </span>	
-<span class="lineno" id="22">    22  </span>	<span class="key">public</span> <span class="key">function</span> toString():String {
-<span class="lineno" id="23">    23  </span>		<span class="key">return</span> String(<span class="key">this</span>);	
-<span class="lineno" id="24">    24  </span>	}
-<span class="lineno" id="25">    25  </span>	
-<span class="lineno" id="26">    26  </span>	<span class="key">public</span> <span class="key">function</span> destroy():Void {
-<span class="lineno" id="27">    27  </span>		<span class="key">for</span>(<span class="key">var</span> i <span class="key">in</span> <span class="key">this</span>){
-<span class="lineno" id="28">    28  </span>			<span class="key">delete</span> <span class="key">this</span>[i];	
-<span class="lineno" id="29">    29  </span>		}
-<span class="lineno" id="30">    30  </span>		<span class="key">delete</span> <span class="key">this</span>;
-<span class="lineno" id="31">    31  </span>	}
-<span class="lineno" id="32">    32  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of Sekati" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.core" class="button">Package</a></li><li><a href="CoreObject.html" title="Detail of com.sekati.core.CoreObject API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
+<span class="lineno" id="11">    11  </span><span class="key">import</span> com.sekati.reflect.Stringifier;
+<span class="lineno" id="12">    12  </span> 
+<span class="lineno" id="13">    13  </span><span class="comment doc">/**
+<span class="lineno" id="14">    14  </span> * The core object for the SASAPI framework.
+<span class="lineno" id="15">    15  </span> */</span>
+<span class="lineno" id="16">    16  </span><span class="key">class</span> com.sekati.core.CoreObject <span class="key">extends</span> Object <span class="key">implements</span> CoreInterface {
+<span class="lineno" id="17">    17  </span>	
+<span class="lineno" id="18">    18  </span>	<span class="key">public</span> <span class="key">function</span> CoreObject() {
+<span class="lineno" id="19">    19  </span>		<span class="key">super</span>();
+<span class="lineno" id="20">    20  </span>		KeyFactory.inject(<span class="key">this</span>);
+<span class="lineno" id="21">    21  </span>	}
+<span class="lineno" id="22">    22  </span>	
+<span class="lineno" id="23">    23  </span>	<span class="key">public</span> <span class="key">function</span> toString():String {
+<span class="lineno" id="24">    24  </span>		<span class="key">return</span> Stringifier.stringify(<span class="key">this</span>);	
+<span class="lineno" id="25">    25  </span>	}
+<span class="lineno" id="26">    26  </span>	
+<span class="lineno" id="27">    27  </span>	<span class="key">public</span> <span class="key">function</span> destroy():Void {
+<span class="lineno" id="28">    28  </span>		<span class="key">for</span>(<span class="key">var</span> i <span class="key">in</span> <span class="key">this</span>){
+<span class="lineno" id="29">    29  </span>			<span class="key">delete</span> <span class="key">this</span>[i];	
+<span class="lineno" id="30">    30  </span>		}
+<span class="lineno" id="31">    31  </span>		<span class="key">delete</span> <span class="key">this</span>;
+<span class="lineno" id="32">    32  </span>	}
+<span class="lineno" id="33">    33  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of Sekati" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.core" class="button">Package</a></li><li><a href="CoreObject.html" title="Detail of com.sekati.core.CoreObject API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
