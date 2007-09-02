@@ -12,7 +12,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="9">     9  </span><span class="key">import</span> com.sekati.crypt.RUID;
 <span class="lineno" id="10">    10  </span>
 <span class="lineno" id="11">    11  </span><span class="comment doc">/**
-<span class="lineno" id="12">    12  </span> * Give flash runtime objects a unique ID
+<span class="lineno" id="12">    12  </span> * Give flash runtime objects a unique ID.
 <span class="lineno" id="13">    13  </span> * @see pixlib's HashCodeFactory
 <span class="lineno" id="14">    14  </span> * @see nectere's KeyInjector.
 <span class="lineno" id="15">    15  </span> */</span>
@@ -21,7 +21,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="18">    18  </span>	<span class="key">private</span> <span class="key">static</span> <span class="key">var</span> _key:String = <span class="str_const">"__RUID"</span>;
 <span class="lineno" id="19">    19  </span>	
 <span class="lineno" id="20">    20  </span>	<span class="comment doc">/**
-<span class="lineno" id="21">    21  </span>	 * return the RUID key injected into an object - used as both getter and setter.
+<span class="lineno" id="21">    21  </span>	 * Return the RUID key injected into an object - used as both getter and setter.
 <span class="lineno" id="22">    22  </span>	 * @param o (Object) Object to inject RUID key in to
 <span class="lineno" id="23">    23  </span>	 * @return (Number) Runtime Unique ID
 <span class="lineno" id="24">    24  </span>	 */</span>
@@ -34,7 +34,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="31">    31  </span>	}
 <span class="lineno" id="32">    32  </span>	
 <span class="lineno" id="33">    33  </span>	<span class="comment doc">/**
-<span class="lineno" id="34">    34  </span>	 * Injection wrapper to provide saner syntactical getter functionality
+<span class="lineno" id="34">    34  </span>	 * Injection wrapper to provide saner syntactical getter functionality.
 <span class="lineno" id="35">    35  </span>	 */</span>
 <span class="lineno" id="36">    36  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> getKey(o:Object):Number {
 <span class="lineno" id="37">    37  </span>		<span class="key">return</span> KeyFactory.inject(o);	
@@ -50,7 +50,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="47">    47  </span>	}
 <span class="lineno" id="48">    48  </span>	
 <span class="lineno" id="49">    49  </span>	<span class="comment doc">/**
-<span class="lineno" id="50">    50  </span>	 * preview the next object RUID to be assigned
+<span class="lineno" id="50">    50  </span>	 * Preview the next object RUID to be assigned.
 <span class="lineno" id="51">    51  </span>	 * @return Number
 <span class="lineno" id="52">    52  </span>	 */</span>
 <span class="lineno" id="53">    53  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> previewNextKey():Number {
@@ -58,7 +58,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="55">    55  </span>	}
 <span class="lineno" id="56">    56  </span>	
 <span class="lineno" id="57">    57  </span>	<span class="comment doc">/**
-<span class="lineno" id="58">    58  </span>	 * Debugging method to check if two objects are equal
+<span class="lineno" id="58">    58  </span>	 * Debugging method to check if two objects are equal.
 <span class="lineno" id="59">    59  </span>	 * @param a (Object)
 <span class="lineno" id="60">    60  </span>	 * @param b (Object)
 <span class="lineno" id="61">    61  </span>	 * @return Boolean

@@ -280,7 +280,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="277">   277  </span>	 * @return Void
 <span class="lineno" id="278">   278  </span>	 */</span>
 <span class="lineno" id="279">   279  </span>	<span class="key">public</span> <span class="key">function</span> updateScroll(item:MovieClip):Void {
-<span class="lineno" id="280">   280  </span>		<span class="key">if</span>(!_scroll.isMouseInArea() &amp;&amp; !_scroll.isDrag &amp;&amp; _console._visible == <span class="key">true</span>) {
+<span class="lineno" id="280">   280  </span>		<span class="key">if</span>(!_scroll.isMouseInArea() &amp;&amp; !_scroll.isDragging() &amp;&amp; _console._visible == <span class="key">true</span>) {
 <span class="lineno" id="281">   281  </span>			_global[<span class="str_const">"setTimeout"</span>](_scroll,<span class="str_const">"slideContent"</span>,<span class="num_const">50</span>, item._y+item._height, <span class="num_const">0</span>.<span class="num_const">02</span>);
 <span class="lineno" id="282">   282  </span>		}
 <span class="lineno" id="283">   283  </span>	}
