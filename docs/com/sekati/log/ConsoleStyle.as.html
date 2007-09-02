@@ -1,9 +1,9 @@
 <?xml version="1.0"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html><head><title>FDTKit</title><script src="../../../quicknav.js" type="text/javascript"></script><script><!--
+<html><head><title>Sekati</title><script src="../../../quicknav.js" type="text/javascript"></script><script><!--
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span><span class="comment doc">/**
 <span class="lineno" id="2">     2  </span> * com.sekati.log.ConsoleStyle
-<span class="lineno" id="3">     3  </span> * @version 1.2.9
+<span class="lineno" id="3">     3  </span> * @version 1.3.0
 <span class="lineno" id="4">     4  </span> * @author jason m horwitz | sekati.com
 <span class="lineno" id="5">     5  </span> * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -32,15 +32,15 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="29">    29  </span>	<span class="comment">// style definition</span>
 <span class="lineno" id="30">    30  </span>	<span class="key">public</span> <span class="key">var</span> CSS:Object = {
 <span class="lineno" id="31">    31  </span>		console:{
-<span class="lineno" id="32">    32  </span>			n:<span class="str_const">"$___Console___"</span>, x:<span class="num_const">5</span>, y:<span class="num_const">5</span>, w:CW, h:CH,
+<span class="lineno" id="32">    32  </span>			n:<span class="str_const">"$___Console___"</span>, x:<span class="num_const">5</span>, y:<span class="num_const">5</span>, w:CW, h:CH, minW:<span class="num_const">450</span>, minH:<span class="num_const">150</span>, maxW:Stage.width, maxH:Stage.height,
 <span class="lineno" id="33">    33  </span>			bg:{n:<span class="str_const">"bgMc"</span>, x:<span class="num_const">0</span>, y:<span class="num_const">0</span>, w:CW, h:CH, c:0x1D1D1D, a:<span class="num_const">95</span>},
 <span class="lineno" id="34">    34  </span>			head:{
 <span class="lineno" id="35">    35  </span>				n:<span class="str_const">"headMc"</span>, x:<span class="num_const">0</span>, y:<span class="num_const">0</span>, w:CW, h:IH,
 <span class="lineno" id="36">    36  </span>				bg:{n:<span class="str_const">"bcMc"</span>, x:<span class="num_const">0</span>, y:<span class="num_const">0</span>, w:CW, h:IH, c:0xFFFFFF, a:<span class="num_const">100</span>},
 <span class="lineno" id="37">    37  </span>				textfields:{
-<span class="lineno" id="38">    38  </span>					head:{n:<span class="str_const">"headTf"</span>, t:<span class="str_const">"&lt;a href='http://sasapi.googlecode.com/' target='_blank'&gt;com.sekati.log.Console&lt;/a&gt;"</span>, html:<span class="key">true</span>, x:<span class="num_const">5</span>, y:-<span class="num_const">1</span>, w:<span class="num_const">500</span>, h:TH, c:0x6C8297, a:<span class="num_const">100</span>}
+<span class="lineno" id="38">    38  </span>					head:{n:<span class="str_const">"headTf"</span>, t:<span class="str_const">"com.sekati.log.Console"</span>, url:<span class="str_const">"http://sasapi.googlecode.com/"</span>, x:<span class="num_const">5</span>, y:-<span class="num_const">1</span>, w:<span class="num_const">500</span>, h:TH, c:0x6C8297, a:<span class="num_const">100</span>}
 <span class="lineno" id="39">    39  </span>				},
-<span class="lineno" id="40">    40  </span>				fps:{n:<span class="str_const">"fpsMc"</span>, x:CW-<span class="num_const">120</span>, y:<span class="num_const">0</span>, w:<span class="num_const">110</span>, h:TH,
+<span class="lineno" id="40">    40  </span>				fps:{n:<span class="str_const">"fpsMc"</span>, x:CW-<span class="num_const">120</span>, y:<span class="num_const">0</span>, w:<span class="num_const">110</span>, h:TH, updateRate:<span class="num_const">10</span>,
 <span class="lineno" id="41">    41  </span>					bg:{n:<span class="str_const">"bgMc"</span>, x:<span class="num_const">0</span>, y:<span class="num_const">0</span>, w:<span class="num_const">110</span>, h:TH-<span class="num_const">2</span>, c:0xFFFFFF, a:<span class="num_const">0</span>},
 <span class="lineno" id="42">    42  </span>					textfields:{
 <span class="lineno" id="43">    43  </span>						trend_colors:{up:<span class="str_const">"#009900"</span>, down:<span class="str_const">"#CC0000"</span>},
@@ -56,9 +56,9 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="53">    53  </span>				list:{n:<span class="str_const">"listMc"</span>, x:<span class="num_const">0</span>, y:<span class="num_const">0</span>, w:<span class="num_const">0</span>, h:<span class="num_const">0</span>},
 <span class="lineno" id="54">    54  </span>				mask:{n:<span class="str_const">"maskMc"</span>, x:<span class="num_const">0</span>, y:<span class="num_const">0</span>, w:IW, h:CH-IH, c:0x00ffff, a:<span class="num_const">100</span>},
 <span class="lineno" id="55">    55  </span>				gutter:{n:<span class="str_const">"gutterMc"</span>, x:CW-<span class="num_const">10</span>, y:<span class="num_const">0</span>, w:<span class="num_const">10</span>, h:CH-IH, c:0x000000, a:<span class="num_const">100</span>},
-<span class="lineno" id="56">    56  </span>				bar:{n:<span class="str_const">"barMc"</span>, x:CW-<span class="num_const">10</span>, y:<span class="num_const">0</span>, w:<span class="num_const">10</span>, h:<span class="num_const">165</span>, c:0x6C8297, a:<span class="num_const">50</span>} <span class="comment">// c:0xCC3300, a:30</span>
+<span class="lineno" id="56">    56  </span>				bar:{n:<span class="str_const">"barMc"</span>, x:CW-<span class="num_const">10</span>, y:<span class="num_const">0</span>, w:<span class="num_const">10</span>, h:<span class="num_const">165</span>, c:0x6C8297, a:<span class="num_const">100</span>} <span class="comment">// c:0xCC3300, a:30</span>
 <span class="lineno" id="57">    57  </span>			},
-<span class="lineno" id="58">    58  </span>			resizer:{n:<span class="str_const">"resizerMc"</span>, x:CW-<span class="num_const">10</span>, y:CH-<span class="num_const">10</span>, w:<span class="num_const">10</span>, h:<span class="num_const">10</span>, mx:<span class="num_const">450</span>, my:<span class="num_const">150</span>, c:0x6C8297, a:<span class="num_const">75</span>}
+<span class="lineno" id="58">    58  </span>			resizer:{n:<span class="str_const">"resizerMc"</span>, x:CW-<span class="num_const">10</span>, y:CH-<span class="num_const">10</span>, w:<span class="num_const">10</span>, h:<span class="num_const">10</span>, c:0xFFFFFF, a:<span class="num_const">100</span>}
 <span class="lineno" id="59">    59  </span>		},
 <span class="lineno" id="60">    60  </span>		item:{
 <span class="lineno" id="61">    61  </span>			n:<span class="str_const">"itemMc"</span>, x:<span class="num_const">0</span>, y:<span class="num_const">0</span>, w:IW, h:IH,
@@ -76,8 +76,8 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="73">    73  </span>					object:0x9900FF,
 <span class="lineno" id="74">    74  </span>					custom:0x0066FF}
 <span class="lineno" id="75">    75  </span>				},
-<span class="lineno" id="76">    76  </span>				origin:{n:<span class="str_const">"originTf"</span>, t:<span class="str_const">"origin"</span>, x:<span class="num_const">85</span>, y:<span class="num_const">0</span>, w:<span class="num_const">90</span>, h:TH, c:0x6C8297, a:<span class="num_const">100</span>},
-<span class="lineno" id="77">    77  </span>				message:{n:<span class="str_const">"messageTf"</span>, t:<span class="str_const">"message"</span>, x:<span class="num_const">180</span>, y:<span class="num_const">0</span>, w:<span class="num_const">650</span>, h:TH, c:0xF7F7F7, a:<span class="num_const">100</span>},
+<span class="lineno" id="76">    76  </span>				origin:{n:<span class="str_const">"originTf"</span>, t:<span class="str_const">"origin"</span>, selectable:<span class="key">true</span>, x:<span class="num_const">85</span>, y:<span class="num_const">0</span>, w:<span class="num_const">90</span>, h:TH, c:0x6C8297, a:<span class="num_const">100</span>},
+<span class="lineno" id="77">    77  </span>				message:{n:<span class="str_const">"messageTf"</span>, t:<span class="str_const">"message"</span>, selectable:<span class="key">true</span>, x:<span class="num_const">180</span>, y:<span class="num_const">0</span>, w:<span class="num_const">650</span>, h:TH, c:0xF7F7F7, a:<span class="num_const">100</span>},
 <span class="lineno" id="78">    78  </span>				benchmark:{n:<span class="str_const">"benchmarkTf"</span>, t:<span class="str_const">"benchmark"</span>, x:<span class="num_const">835</span>, y:<span class="num_const">0</span>, w:<span class="num_const">51</span>, h:TH, c:0x999999, a:<span class="num_const">100</span>}					
 <span class="lineno" id="79">    79  </span>			}
 <span class="lineno" id="80">    80  </span>		},
@@ -142,7 +142,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="139">   139  </span>	 * }
 <span class="lineno" id="140">   140  </span>	 */</span>
 <span class="lineno" id="141">   141  </span>	<span class="key">public</span> <span class="key">function</span> createPositionClip (target:MovieClip, style:Object):MovieClip {
-<span class="lineno" id="142">   142  </span>		<span class="key">return</span> ClassUtils.createEmptyMovieClip (com.sekati.display.BaseClip, target, style.n, {_x:style.x, _y:style.y, _alpha:<span class="num_const">100</span>});
+<span class="lineno" id="142">   142  </span>		<span class="key">return</span> ClassUtils.createEmptyMovieClip (com.sekati.display.BaseClip, target, style.n, {_x:style.x, _y:style.y, _alpha:style.a});
 <span class="lineno" id="143">   143  </span>	}
 <span class="lineno" id="144">   144  </span>	
 <span class="lineno" id="145">   145  </span>	<span class="comment doc">/**
@@ -209,28 +209,30 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="206">   206  </span>		<span class="key">var</span> isMessage:Boolean = (style.n == CSS.item.textfields.message.n);
 <span class="lineno" id="207">   207  </span>		<span class="comment">// see if we want to be an html textfield</span>
 <span class="lineno" id="208">   208  </span>		<span class="key">var</span> isHtml:Boolean = (style.html == <span class="key">true</span>) ? <span class="key">true</span> : <span class="key">false</span>;
-<span class="lineno" id="209">   209  </span>		<span class="comment">// build properties and format objects</span>
-<span class="lineno" id="210">   210  </span>		<span class="key">var</span> props:Object = {type:<span class="str_const">"dynamic"</span>, html:isHtml, autoSize:isMessage, wordWrap:isMessage, multiline:isMessage, selectable:<span class="key">true</span>, mouseWheelEnabled:<span class="key">false</span>, embedFonts:<span class="key">false</span>, _alpha:style.a, htmlText:s};		
-<span class="lineno" id="211">   211  </span>		<span class="key">var</span> format:Object = {font:<span class="str_const">"Arial"</span>,size:<span class="num_const">9</span>, color:c};
-<span class="lineno" id="212">   212  </span>		<span class="comment">// create the TextField now that we have good properties, formats and string.</span>
-<span class="lineno" id="213">   213  </span>		<span class="key">var</span> t:TextField = TextUtils.create(target, style.n, style.x, style.y, style.w, style.h, props, format);
-<span class="lineno" id="214">   214  </span>		<span class="key">return</span> t;
-<span class="lineno" id="215">   215  </span>	}		
-<span class="lineno" id="216">   216  </span>	
-<span class="lineno" id="217">   217  </span>	<span class="comment doc">/**
-<span class="lineno" id="218">   218  </span>	 * Compare the type string argument to those existing in the ConsoleStyle.COLOR.item.textfields.type style,
-<span class="lineno" id="219">   219  </span>	 * if one matches return it, else default to the 'custom' style.
-<span class="lineno" id="220">   220  </span>	 * @param type (String) type as string
-<span class="lineno" id="221">   221  </span>	 * @return Number
-<span class="lineno" id="222">   222  </span>	 * {@code Usage:
-<span class="lineno" id="223">   223  </span>	 * 	var c:Number = resolveTypeColor("trace"); // returns CSS.item.textfields.type.c.trace
-<span class="lineno" id="224">   224  </span>	 * 	var c:Number = resolveTypeColor("sekati"); // returns CSS.item.textfields.type.c.custom
-<span class="lineno" id="225">   225  </span>	 * }
-<span class="lineno" id="226">   226  </span>	 */</span>
-<span class="lineno" id="227">   227  </span>	<span class="key">private</span> <span class="key">function</span> resolveTypeColor (type:String):Number {
-<span class="lineno" id="228">   228  </span>		<span class="key">var</span> t:String = type.toLowerCase();
-<span class="lineno" id="229">   229  </span>		<span class="key">var</span> c:Number = (!CSS.item.textfields.type.c[t]) ? CSS.item.textfields.type.c.custom : CSS.item.textfields.type.c[t];
-<span class="lineno" id="230">   230  </span>		<span class="comment">//trace("resolveTypeColor: "+t+": "+ c);</span>
-<span class="lineno" id="231">   231  </span>		<span class="key">return</span> c;
-<span class="lineno" id="232">   232  </span>	}
-<span class="lineno" id="233">   233  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of FDTKit" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.log" class="button">Package</a></li><li><a href="ConsoleStyle.html" title="Detail of com.sekati.log.ConsoleStyle API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
+<span class="lineno" id="209">   209  </span>		<span class="comment">// see if we want a selectable textfield</span>
+<span class="lineno" id="210">   210  </span>		<span class="key">var</span> isSelectable:Boolean = (style.selectable == <span class="key">true</span>) ? <span class="key">true</span> : <span class="key">false</span>;
+<span class="lineno" id="211">   211  </span>		<span class="comment">// build properties and format objects</span>
+<span class="lineno" id="212">   212  </span>		<span class="key">var</span> props:Object = {type:<span class="str_const">"dynamic"</span>, html:isHtml, autoSize:isMessage, wordWrap:isMessage, multiline:isMessage, selectable:isSelectable, mouseWheelEnabled:<span class="key">false</span>, embedFonts:<span class="key">false</span>, _alpha:style.a, htmlText:s};		
+<span class="lineno" id="213">   213  </span>		<span class="key">var</span> format:Object = {font:<span class="str_const">"Arial"</span>,size:<span class="num_const">9</span>, color:c};
+<span class="lineno" id="214">   214  </span>		<span class="comment">// create the TextField now that we have good properties, formats and string.</span>
+<span class="lineno" id="215">   215  </span>		<span class="key">var</span> t:TextField = TextUtils.create(target, style.n, style.x, style.y, style.w, style.h, props, format);
+<span class="lineno" id="216">   216  </span>		<span class="key">return</span> t;
+<span class="lineno" id="217">   217  </span>	}		
+<span class="lineno" id="218">   218  </span>	
+<span class="lineno" id="219">   219  </span>	<span class="comment doc">/**
+<span class="lineno" id="220">   220  </span>	 * Compare the type string argument to those existing in the ConsoleStyle.COLOR.item.textfields.type style,
+<span class="lineno" id="221">   221  </span>	 * if one matches return it, else default to the 'custom' style.
+<span class="lineno" id="222">   222  </span>	 * @param type (String) type as string
+<span class="lineno" id="223">   223  </span>	 * @return Number
+<span class="lineno" id="224">   224  </span>	 * {@code Usage:
+<span class="lineno" id="225">   225  </span>	 * 	var c:Number = resolveTypeColor("trace"); // returns CSS.item.textfields.type.c.trace
+<span class="lineno" id="226">   226  </span>	 * 	var c:Number = resolveTypeColor("sekati"); // returns CSS.item.textfields.type.c.custom
+<span class="lineno" id="227">   227  </span>	 * }
+<span class="lineno" id="228">   228  </span>	 */</span>
+<span class="lineno" id="229">   229  </span>	<span class="key">private</span> <span class="key">function</span> resolveTypeColor (type:String):Number {
+<span class="lineno" id="230">   230  </span>		<span class="key">var</span> t:String = type.toLowerCase();
+<span class="lineno" id="231">   231  </span>		<span class="key">var</span> c:Number = (!CSS.item.textfields.type.c[t]) ? CSS.item.textfields.type.c.custom : CSS.item.textfields.type.c[t];
+<span class="lineno" id="232">   232  </span>		<span class="comment">//trace("resolveTypeColor: "+t+": "+ c);</span>
+<span class="lineno" id="233">   233  </span>		<span class="key">return</span> c;
+<span class="lineno" id="234">   234  </span>	}
+<span class="lineno" id="235">   235  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of Sekati" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.log" class="button">Package</a></li><li><a href="ConsoleStyle.html" title="Detail of com.sekati.log.ConsoleStyle API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>

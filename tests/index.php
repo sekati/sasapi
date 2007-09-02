@@ -56,11 +56,11 @@ function indexTests() {
 function template ($swf) {
 	$str = '<div id="no_flash" style="display:none;"><h1>Flash Player Upgrade Required</h1><br /><a href="http://www.macromedia.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" target="_blank">&raquo; Download Flash plugin to view this site</a>&nbsp; &nbsp; &nbsp; &nbsp;<a href="javascript:location.reload(true)">&raquo; Enter Site</a></div>';
 	$str .= '<script type="text/javascript">';
-	$str .= 'var f = new swfIN("'.$swf.'", "unitTest", "800", "600");';
+	$str .= 'var f = new swfIN("'.$swf.'", "unitTest", "950", "650");';
 	$str .= 'f.minSize(950, 650);';
 	$str .= 'f.useExpressInstall();';
 	$str .= 'f.detect(8, "d", "no_flash");';
-	$str .= 'f.addParam("bgcolor", "#000000");';
+	$str .= 'f.addParam("bgcolor", "#292929");';
 	$str .= 'f.addParam("menu", "true");';
 	$str .= 'f.addParam("quality", "high");';
 	$str .= 'f.addParam("scale", "noScale");';

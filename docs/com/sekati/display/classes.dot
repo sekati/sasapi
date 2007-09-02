@@ -1,11 +1,5 @@
 strict digraph class_diagram {
   rankdir=LR;
-  TypeMultiLanguageTextField[
-    label="MultiLanguageTextField",
-    URL="MultiLanguageTextField.html",
-    tooltip="com.sekati.display.MultiLanguageTextField",
-    shape="record"
-  ];
   TypeCoreClip[
     label="CoreClip",
     URL="CoreClip.html",

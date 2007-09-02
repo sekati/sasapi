@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- *************************************************************************************
-		FDTKit Buildfile v1.2.2
+		FDTKit Buildfile v1.2.3
 		
 		@note	You must run this Buildfile in the same JRE as the workspace, be sure to
 				check this option in the launch configuration.
@@ -8,8 +8,6 @@
 		@setup	This Buildfile is currently scoped for OSX,Eclipse,Subclipse,FDT. If you
 				you would like to use it on Windows simply install Cygwin and adjust the 
 				necessary path properties.
-		
-		@see	http://www.dopelogik.com/documents/actionscript_ant/
 			     
 		May 22, 2007 - jason m horwitz | Sekati LLC | sekati.com
      ************************************************************************************* -->
@@ -54,7 +52,8 @@
 	<!-- Project Details -->
 	<property name="corelib" location="${flash8}"/>
 	<property name="target_player" value="8"/>
-	<property name="classpath" value="com.*"/>
+	<property name="classpath" location="${src}/"/>
+	<property name="package" value="com.*"/>
 	<property name="main_class" location="${src}/com/sekati/core/Document.as"/>
 	<property name="target_fla" location="${src}/framework.fla"/>
 	<property name="target_swf" location="${deploy}/framework.swf"/>
@@ -114,9 +113,9 @@
 	<!-- TASK: compile a batch of tasks to execute -->
     <target name="batch_doc">
         <antcall target="sloc_count"/>
-    	<antcall target="doc_clean"/>
-        <antcall target="doc_compile_as2api"/>
-        <antcall target="doc_deploy"/>
+    	<antcall target="clean_doc"/>
+        <antcall target="compile_doc_as2api"/>
+        <antcall target="deploy_doc"/>
     </target>	
 	
 	<!-- TASK: remove all old documentation files -->	
