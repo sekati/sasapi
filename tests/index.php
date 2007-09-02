@@ -8,57 +8,72 @@
  */
  
 ///////////////////////////////////////////////////////
-// SETUP
-header('Content-type: text/xml');
+header('Content-type: text/html');
 header('Cache-Control: no-cache, must-revalidate');
 header('Pragma: no-cache');
 header('Expires: -1');
 error_reporting(E_ALL ^ E_NOTICE);
 
-// --- CONFIG ---
-$root = ".;
-$appName = "Sekati Unit Test Browser // jason m horwitz | sekati.com";
-// --- CONFIG ---
+$appName = 'Sekati Unit Test Browser | jason m horwitz | sekati.com';
+
+$header = '<!-- saved from url=(0013)about:internet -->';
+$header .= '<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />';
+$header .= '<script language="javascript" src="../deploy/js/sasapi.js" type="text/javascript"></script>';
+$header .= '<script language="javascript" src="../deploy/js/swfIN.js" type="text/javascript"></script>';
+$header .= '<link rel="stylesheet" type="text/css" href="../deploy/css/style.css" />';
+$header .= "<title>".$appName.'</title></head><body>';
+$header .= '<br/><a href="?" target="_self"><strong>Tests Index &raquo;</strong></a><hr/><br/>';
+
+$footer = '<br/><hr/></body></html>';
+
+$root = ".";
 $path = reverse_strrchr($_SERVER['SCRIPT_FILENAME'],'/',0)."/".$root;
 $self   = $_SERVER['SCRIPT_NAME'];
-$edit	= $_GET['c'];
-//
-///////////////////////////////////////////////////////
-// TOOLKIT
+$swf	= $_GET['swf'];
+$html	= $_GET['html'];
 
-// REVERSE STRRRCHR (return everything up to last occurance of $needle + $trail num) | usage: $ns = reverse_strrchr($_SERVER["SCRIPT_URI"], "/", 1);
+// (return everything up to last occurance of $needle + $trail num) | usage: $ns = reverse_strrchr($_SERVER["SCRIPT_URI"], "/", 1);
 function reverse_strrchr($haystack, $needle, $trail) {
    return strrpos($haystack, $needle) ? substr($haystack, 0, strrpos($haystack, $needle) + $trail) : false;
 }
 
-// READ FILE
-function read_file($file) {
-	$fp = fopen($file, "r");
-	$content = fread($fp, filesize($file));
-	fclose($fp);
-	return $content;
-}
-
-// INDEX DIR
-function indexXML() {
-	global $path, $header, $footer, $self;
-	$str = $header;
+function indexTests() {
+	global $path;
+	$str = "";
 	if ($dir = @opendir($path)) {
 		while (false !== ($item = readdir($dir))) {  
-			if (eregi(".xml", $item)) {
-				$file = $path.'/'.$item;
-				$name = substr($item, 0, -4);
-				$time = date("D, d M Y H:i:s", filemtime($file));
-				$size = filesize($file);
-				$url = $_SERVER['SCRIPT_URI']."?edit=".$name;
-				$str .= "<item name=\"$name\" url=\"$url\" time=\"$time\" size=\"$size\"/>";
+			if (eregi(".html", $item)) {
+				$str .= "&bull; <a href=\"?html=$item\"><strong>$item</strong></a><br/>";
+			} else if (eregi(".swf", $item)) {
+				$str .= "&bull; <a href=\"?swf=$item\">$item</a><br/>";				
 			}
 		}
 		closedir($dir);
 	}
-	$str .= $footer;
+	return $str;
+}
+
+function template ($swf) {
+	$str = '<div id="no_flash" style="display:none;"><h1>Flash Player Upgrade Required</h1><br /><a href="http://www.macromedia.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" target="_blank">&raquo; Download Flash plugin to view this site</a>&nbsp; &nbsp; &nbsp; &nbsp;<a href="javascript:location.reload(true)">&raquo; Enter Site</a></div>';
+	$str .= '<script type="text/javascript">';
+	$str .= 'var f = new swfIN("'.$swf.'", "unitTest", "800", "600");';
+	$str .= 'f.minSize(950, 650);';
+	$str .= 'f.useExpressInstall();';
+	$str .= 'f.detect(8, "d", "no_flash");';
+	$str .= 'f.addParam("bgcolor", "#000000");';
+	$str .= 'f.addParam("menu", "true");';
+	$str .= 'f.addParam("quality", "high");';
+	$str .= 'f.addParam("scale", "noScale");';
+	$str .= 'f.addParam("allowScriptAccess", "always");';
+	$str .= 'f.addParam("swLiveConnect", "true");';
+	$str .= 'f.write();';
+	$str .= 'var mousewheel = new MouseWheel(f);';
+	$str .= '</script>';
 	return $str;
 }
 ///////////////////////////////////////////////////////
- 
+
+if($swf) die($header.template($swf).$footer);
+if($html) die ($header."Loading Test: $html ...<meta HTTP-EQUIV='Refresh' CONTENT='0;URL=$html'>.$footer");
+echo ($header.indexTests().$footer);
 ?>
