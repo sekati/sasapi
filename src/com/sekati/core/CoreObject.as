@@ -8,9 +8,10 @@
  
 import com.sekati.core.CoreInterface;
 import com.sekati.core.KeyFactory;
+import com.sekati.reflect.Stringifier;
  
 /**
- * The basic object for the SASAPI framework.
+ * The core object for the SASAPI framework.
  */
 class com.sekati.core.CoreObject extends Object implements CoreInterface {
 	
@@ -20,7 +21,7 @@ class com.sekati.core.CoreObject extends Object implements CoreInterface {
 	}
 	
 	public function toString():String {
-		return String(this);	
+		return Stringifier.stringify(this);	
 	}
 	
 	public function destroy():Void {

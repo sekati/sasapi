@@ -6,7 +6,7 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  
- import com.sekati.core.CoreInterface;
+import com.sekati.core.CoreInterface;
  
 /**
  * Interface describing {@link com.sekati.display.BaseClip} which is 
@@ -28,7 +28,7 @@ interface com.sekati.display.IBaseClip extends CoreInterface {
 	function onUnload():Void;
 	
 	/**
-	 * use default or override toString with more verbose trace output
+	 * override toString with reflective output
 	 */	
 	function toString():String;
 	

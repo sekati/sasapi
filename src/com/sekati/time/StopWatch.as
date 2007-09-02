@@ -6,6 +6,8 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  
+ import com.sekati.reflect.Stringifier;
+ 
 /**
  * Simple stopwatch class
  */
@@ -62,5 +64,13 @@ class com.sekati.time.StopWatch {
 	public function read():Number{
 		var now:Number = getTimer();
 		return now - _initTime;
-	}		
+	}
+	
+	/**
+	 * Override with reflective output.
+	 * @return String
+	 */
+	public function toString():String {
+		return Stringifier.stringify(this);	
+	}			
 }

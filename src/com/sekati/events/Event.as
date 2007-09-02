@@ -7,6 +7,7 @@
  */
  
  import com.sekati.events.IEvent;
+ import com.sekati.reflect.Stringifier;
  
 /**
  * Base Event class, works similarly to the AS3 Event class<br><br>
@@ -57,4 +58,12 @@ class com.sekati.events.Event implements IEvent {
 		_route.push(_target);
 		_target = newTarget;
 	}
+	
+	/**
+	 * Override with reflective output.
+	 * @return String
+	 */
+	public function toString():String {
+		return Stringifier.stringify(this);	
+	}	
 }

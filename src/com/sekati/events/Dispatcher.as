@@ -9,6 +9,7 @@
 import com.sekati.events.Event;
 import com.sekati.events.IDispatchable;
 import mx.events.EventDispatcher;
+import com.sekati.reflect.Stringifier;
 
 /**
  * A centralized EventDispatcher to decouple event listeners & dispatchers from direct addressing.
@@ -123,4 +124,12 @@ class com.sekati.events.Dispatcher implements IDispatchable {
  		var event:Event = new Event(_type, _target, _data);
  		_manager.dispatchEvent(event);
 	}
+	
+	/**
+	 * Override with reflective output.
+	 * @return String
+	 */
+	public function toString():String {
+		return Stringifier.stringify(this);	
+	}	
 }

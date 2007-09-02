@@ -11,7 +11,7 @@
 import com.sekati.math.MathBase;
  
 /**
- * static class wrapping various Color utilities
+ * Static class wrapping various Color utilities.
  */
 class com.sekati.utils.ColorUtils {
 

@@ -6,12 +6,13 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
+import com.sekati.core.CoreInterface;
 import com.sekati.geom.Point;
 
 /**
  * Interface describing {@link com.sekati.geom.Point}
  */
-interface com.sekati.geom.IPoint {
+interface com.sekati.geom.IPoint extends CoreInterface {
 
 	function isEqual(p:Point):Boolean;
 	
@@ -22,9 +23,5 @@ interface com.sekati.geom.IPoint {
 	function offset(x:Number, y:Number):Void;
 	
 	function clone():Point;
-	
-	function destroy():Void;
-	
-	function toString():String;
 	
 }

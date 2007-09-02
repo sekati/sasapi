@@ -7,7 +7,7 @@
  */
  
  /**
-  * Static class wrapping various String utilities
+  * Static class wrapping various String utilities.
   */
 class com.sekati.utils.StringUtils {
 

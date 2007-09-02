@@ -8,6 +8,7 @@
  
  import com.sekati.display.IBaseClip;
  import com.sekati.core.KeyFactory;
+ import com.sekati.reflect.Stringifier;
  import com.sekati.utils.MovieClipUtils;
  
 /**
@@ -57,15 +58,10 @@ class com.sekati.display.BaseClip extends MovieClip implements IBaseClip {
 	}
 
 	/**
-	 * give verbose trace output
+	 * return reflective output
 	 * @return String
 	 */	
 	public function toString():String {
-		var str:String = _this._name + "= { \n";
-		for (var i in _this) {
-			str += "\t" + i + ": " + _this[i].toString() + "\n";
-		}
-		str += "};";
-		return str;
+		return Stringifier.stringify(this);
 	}
 }

@@ -277,7 +277,7 @@ class com.sekati.log.Console {
 	 * @return Void
 	 */
 	public function updateScroll(item:MovieClip):Void {
-		if(!_scroll.isMouseInArea() && !_scroll.isDrag && _console._visible == true) {
+		if(!_scroll.isMouseInArea() && !_scroll.isDragging() && _console._visible == true) {
 			_global['setTimeout'](_scroll,'slideContent',50, item._y+item._height, 0.02);
 		}
 	}
