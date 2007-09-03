@@ -1,6 +1,6 @@
 /**
  * com.sekati.log.ConsoleStyle
- * @version 1.3.0
+ * @version 1.3.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -202,14 +202,14 @@ class com.sekati.log.ConsoleStyle {
 		var s:String = (str != undefined) ? str : style.t;
 		// if style.c is an Object (instead of number) assume we are a message type and resolve the color based on 'str' arg.
 		var c:Number = (!isNaN(style.c)) ? style.c : resolveTypeColor(str);
-		// if 'messageTf' then make autoSize, multiLine, wordWrap, selectable true; else default to false.
-		var isMessage:Boolean = (style.n == CSS.item.textfields.message.n);
+		// if 'messageTf' || 'originTf' then make autoSize, multiLine, wordWrap, selectable true; else default to false.
+		var isSizable:Boolean = (style.n == CSS.item.textfields.message.n || style.n == CSS.item.textfields.origin.n);
 		// see if we want to be an html textfield
 		var isHtml:Boolean = (style.html == true) ? true : false;
 		// see if we want a selectable textfield
 		var isSelectable:Boolean = (style.selectable == true) ? true : false;
 		// build properties and format objects
-		var props:Object = {type:"dynamic", html:isHtml, autoSize:isMessage, wordWrap:isMessage, multiline:isMessage, selectable:isSelectable, mouseWheelEnabled:false, embedFonts:false, _alpha:style.a, htmlText:s};		
+		var props:Object = {type:"dynamic", html:isHtml, autoSize:isSizable, wordWrap:isSizable, multiline:isSizable, selectable:isSelectable, mouseWheelEnabled:false, embedFonts:false, _alpha:style.a, htmlText:s};		
 		var format:Object = {font:"Arial",size:9, color:c};
 		// create the TextField now that we have good properties, formats and string.
 		var t:TextField = TextUtils.create(target, style.n, style.x, style.y, style.w, style.h, props, format);

@@ -1,6 +1,6 @@
 /**
  * com.sekati.log.ConsoleItem
- * @version 1.1.2
+ * @version 1.1.3
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -54,9 +54,12 @@ class com.sekati.log.ConsoleItem extends BaseClip {
 		_benchmarkTf = _cs.createStyledTextField(_this, _style.textfields.benchmark, _data.benchmark);
 		
 		// alignments
-		_bg._height = _messageTf._height;
-		_line._y = _messageTf._height;
-		
+		//_bg._height = _messageTf._height;
+		//_line._y = _messageTf._height;
+		var tallestTf:TextField = (_messageTf._height > _originTf._height) ? _messageTf : _originTf;
+		_bg._height = tallestTf._height;
+		_line._y = tallestTf._height;	
+				
 		// event
 		_bg.onPress = Delegate.create(_this, toClipboard);
 		//_bg.useHandCursor = false;		

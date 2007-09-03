@@ -1,0 +1,33 @@
+strict digraph class_diagram {
+  rankdir=LR;
+  TypeUrchin[
+    label="Urchin",
+    URL="Urchin.html",
+    tooltip="com.sekati.services.Urchin",
+    shape="record"
+  ];
+  TypeSOAPEvent[
+    label="SOAPEvent",
+    URL="SOAPEvent.html",
+    tooltip="com.sekati.services.SOAPEvent",
+    shape="record"
+  ];
+  TypeSOAPClient[
+    label="SOAPClient",
+    URL="SOAPClient.html",
+    tooltip="com.sekati.services.SOAPClient",
+    shape="record"
+  ];
+  TypeFlink[
+    label="Flink",
+    URL="Flink.html",
+    tooltip="com.sekati.services.Flink",
+    shape="record"
+  ];
+  TypeAmbientOrb[
+    label="AmbientOrb",
+    URL="AmbientOrb.html",
+    tooltip="com.sekati.services.AmbientOrb",
+    shape="record"
+  ];
+}

@@ -3,7 +3,7 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span><span class="comment doc">/**
 <span class="lineno" id="2">     2  </span> * com.sekati.log.Console
-<span class="lineno" id="3">     3  </span> * @version 1.2.0
+<span class="lineno" id="3">     3  </span> * @version 1.2.1
 <span class="lineno" id="4">     4  </span> * @author jason m horwitz | sekati.com
 <span class="lineno" id="5">     5  </span> * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -245,90 +245,91 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="242">   242  </span>		item._benchmarkTf._x = item._messageTf._x+item._messageTf._width+<span class="num_const">6</span>;
 <span class="lineno" id="243">   243  </span>		
 <span class="lineno" id="244">   244  </span>		<span class="comment">// realign</span>
-<span class="lineno" id="245">   245  </span>		item._bg._height = item._messageTf._height;
-<span class="lineno" id="246">   246  </span>		item._line._y = item._messageTf._height;	
-<span class="lineno" id="247">   247  </span>		
-<span class="lineno" id="248">   248  </span>		<span class="comment">// reposition</span>
-<span class="lineno" id="249">   249  </span>		<span class="key">var</span> prevItem:MovieClip = _items[itemIndex-<span class="num_const">1</span>];
-<span class="lineno" id="250">   250  </span>		<span class="key">if</span>(prevItem) {
-<span class="lineno" id="251">   251  </span>			item._y = prevItem._y+prevItem._height;
-<span class="lineno" id="252">   252  </span>		}
-<span class="lineno" id="253">   253  </span>		
-<span class="lineno" id="254">   254  </span>		<span class="comment">// reset _style for future items</span>
-<span class="lineno" id="255">   255  </span>		<span class="key">var</span> _istyle:Object = _cs.CSS.item;
-<span class="lineno" id="256">   256  </span>		_istyle.bg.w = w;
-<span class="lineno" id="257">   257  </span>		_istyle.line.w = w;
-<span class="lineno" id="258">   258  </span>		_istyle.textfields.message.w = item._messageTf._width;
-<span class="lineno" id="259">   259  </span>		_istyle.textfields.benchmark.x = item._benchmarkTf._x;
-<span class="lineno" id="260">   260  </span>	}	
-<span class="lineno" id="261">   261  </span>	
-<span class="lineno" id="262">   262  </span>	<span class="comment doc">/**
-<span class="lineno" id="263">   263  </span>	 * Add and return a new ConsoleItem
-<span class="lineno" id="264">   264  </span>	 * @param data (Object) ConsoleItem._data = {id:Number, type:String, origin:String, message:String, benchmark:Number, _isMeta:Boolean}
-<span class="lineno" id="265">   265  </span>	 * @return 	MovieClip
-<span class="lineno" id="266">   266  </span>	 */</span>
-<span class="lineno" id="267">   267  </span>	<span class="key">public</span> <span class="key">function</span> addItem (data:Object):MovieClip {
-<span class="lineno" id="268">   268  </span>		<span class="key">var</span> item:MovieClip = ClassUtils.createEmptyMovieClip (com.sekati.log.ConsoleItem, _list, <span class="str_const">"consoleItem_"</span>+data.id, {_x:<span class="num_const">0</span>, _y:_list._height, _data:data});
-<span class="lineno" id="269">   269  </span>		updateScroll(item);
-<span class="lineno" id="270">   270  </span>		_items.push(item);
-<span class="lineno" id="271">   271  </span>		<span class="key">return</span> item;
-<span class="lineno" id="272">   272  </span>	}
-<span class="lineno" id="273">   273  </span>	
-<span class="lineno" id="274">   274  </span>	<span class="comment doc">/**
-<span class="lineno" id="275">   275  </span>	 * Update the {@link Scroll} to the last added item if we are not mousing the area.
-<span class="lineno" id="276">   276  </span>	 * @param item (MovieClip) last added item
-<span class="lineno" id="277">   277  </span>	 * @return Void
-<span class="lineno" id="278">   278  </span>	 */</span>
-<span class="lineno" id="279">   279  </span>	<span class="key">public</span> <span class="key">function</span> updateScroll(item:MovieClip):Void {
-<span class="lineno" id="280">   280  </span>		<span class="key">if</span>(!_scroll.isMouseInArea() &amp;&amp; !_scroll.isDragging() &amp;&amp; _console._visible == <span class="key">true</span>) {
-<span class="lineno" id="281">   281  </span>			_global[<span class="str_const">"setTimeout"</span>](_scroll,<span class="str_const">"slideContent"</span>,<span class="num_const">50</span>, item._y+item._height, <span class="num_const">0</span>.<span class="num_const">02</span>);
-<span class="lineno" id="282">   282  </span>		}
-<span class="lineno" id="283">   283  </span>	}
-<span class="lineno" id="284">   284  </span>	
-<span class="lineno" id="285">   285  </span>	<span class="comment doc">/**
-<span class="lineno" id="286">   286  </span>	 * Handle events from Logger and parse them to addItem
-<span class="lineno" id="287">   287  </span>	 * @param eventObj (Event)
-<span class="lineno" id="288">   288  </span>	 * @return Void
-<span class="lineno" id="289">   289  </span>	 */</span> 
-<span class="lineno" id="290">   290  </span>	<span class="key">private</span> <span class="key">function</span> onLogEvent (eventObj:Event):Void {
-<span class="lineno" id="291">   291  </span>		<span class="comment">//trace ("eventObj{target:" + eventObj.target + ",type:" + eventObj.type + ",message:" + eventObj.data.message + "};");</span>
-<span class="lineno" id="292">   292  </span>		addItem(eventObj.data);
-<span class="lineno" id="293">   293  </span>	}
-<span class="lineno" id="294">   294  </span>	
-<span class="lineno" id="295">   295  </span>	<span class="comment doc">/**
-<span class="lineno" id="296">   296  </span>	 * Select all item _data and put it in clipboard
-<span class="lineno" id="297">   297  </span>	 * @return Void
-<span class="lineno" id="298">   298  </span>	 */</span>
-<span class="lineno" id="299">   299  </span>	<span class="key">public</span> <span class="key">function</span> toClipboard():Void {
-<span class="lineno" id="300">   300  </span>		System.setClipboard (toString());
-<span class="lineno" id="301">   301  </span>	}
-<span class="lineno" id="302">   302  </span>
-<span class="lineno" id="303">   303  </span>	<span class="comment doc">/**
-<span class="lineno" id="304">   304  </span>	 * Return Console string data 
-<span class="lineno" id="305">   305  </span>	 * @return String
-<span class="lineno" id="306">   306  </span>	 */</span>
-<span class="lineno" id="307">   307  </span>	<span class="key">public</span> <span class="key">function</span> toString():String {
-<span class="lineno" id="308">   308  </span>		<span class="key">var</span> o:String = _style.console.head.textfields.head.t+<span class="str_const">"\t"</span>+_fps.toString()+<span class="str_const">"\n"</span>;
-<span class="lineno" id="309">   309  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = <span class="num_const">0</span>; i&lt;_items.length; i++) {
-<span class="lineno" id="310">   310  </span>			o += <span class="str_const">"\n"</span>+_items[i].toString();
-<span class="lineno" id="311">   311  </span>		}
-<span class="lineno" id="312">   312  </span>		<span class="key">return</span> o;	
-<span class="lineno" id="313">   313  </span>	}
-<span class="lineno" id="314">   314  </span>	
-<span class="lineno" id="315">   315  </span>	<span class="key">public</span> <span class="key">function</span> reset():Void {
-<span class="lineno" id="316">   316  </span>		<span class="key">for</span>(<span class="key">var</span> i:Number = <span class="num_const">0</span>; i&lt;_items.length; i++){
-<span class="lineno" id="317">   317  </span>			_items[i].destroy();	
-<span class="lineno" id="318">   318  </span>		}
-<span class="lineno" id="319">   319  </span>		_items = [];
-<span class="lineno" id="320">   320  </span>	}
-<span class="lineno" id="321">   321  </span>	
-<span class="lineno" id="322">   322  </span>	<span class="comment doc">/**
-<span class="lineno" id="323">   323  </span>	 * Clean and destroy
-<span class="lineno" id="324">   324  </span>	 * @return Void
-<span class="lineno" id="325">   325  </span>	 */</span>
-<span class="lineno" id="326">   326  </span>	<span class="key">public</span> <span class="key">function</span> destroy():Void {
-<span class="lineno" id="327">   327  </span>		Dispatcher.$.removeEventListener(<span class="str_const">"LOG_EVENT"</span>,Delegate.create (_this, onLogEvent));
-<span class="lineno" id="328">   328  </span>		LCBinding.disconnect();
-<span class="lineno" id="329">   329  </span>		_fps.destroy();
-<span class="lineno" id="330">   330  </span>	}
-<span class="lineno" id="331">   331  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of Sekati" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.log" class="button">Package</a></li><li><a href="Console.html" title="Detail of com.sekati.log.Console API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
+<span class="lineno" id="245">   245  </span>		<span class="key">var</span> tallestTf:TextField = (item._messageTf._height &gt; item._originTf._height) ? item._messageTf : item._originTf;
+<span class="lineno" id="246">   246  </span>		item._bg._height = tallestTf._height;
+<span class="lineno" id="247">   247  </span>		item._line._y = tallestTf._height;	
+<span class="lineno" id="248">   248  </span>		
+<span class="lineno" id="249">   249  </span>		<span class="comment">// reposition</span>
+<span class="lineno" id="250">   250  </span>		<span class="key">var</span> prevItem:MovieClip = _items[itemIndex-<span class="num_const">1</span>];
+<span class="lineno" id="251">   251  </span>		<span class="key">if</span>(prevItem) {
+<span class="lineno" id="252">   252  </span>			item._y = prevItem._y+prevItem._height;
+<span class="lineno" id="253">   253  </span>		}
+<span class="lineno" id="254">   254  </span>		
+<span class="lineno" id="255">   255  </span>		<span class="comment">// reset _style for future items</span>
+<span class="lineno" id="256">   256  </span>		<span class="key">var</span> _istyle:Object = _cs.CSS.item;
+<span class="lineno" id="257">   257  </span>		_istyle.bg.w = w;
+<span class="lineno" id="258">   258  </span>		_istyle.line.w = w;
+<span class="lineno" id="259">   259  </span>		_istyle.textfields.message.w = item._messageTf._width;
+<span class="lineno" id="260">   260  </span>		_istyle.textfields.benchmark.x = item._benchmarkTf._x;
+<span class="lineno" id="261">   261  </span>	}	
+<span class="lineno" id="262">   262  </span>	
+<span class="lineno" id="263">   263  </span>	<span class="comment doc">/**
+<span class="lineno" id="264">   264  </span>	 * Add and return a new ConsoleItem
+<span class="lineno" id="265">   265  </span>	 * @param data (Object) ConsoleItem._data = {id:Number, type:String, origin:String, message:String, benchmark:Number, _isMeta:Boolean}
+<span class="lineno" id="266">   266  </span>	 * @return 	MovieClip
+<span class="lineno" id="267">   267  </span>	 */</span>
+<span class="lineno" id="268">   268  </span>	<span class="key">public</span> <span class="key">function</span> addItem (data:Object):MovieClip {
+<span class="lineno" id="269">   269  </span>		<span class="key">var</span> item:MovieClip = ClassUtils.createEmptyMovieClip (com.sekati.log.ConsoleItem, _list, <span class="str_const">"consoleItem_"</span>+data.id, {_x:<span class="num_const">0</span>, _y:_list._height, _data:data});
+<span class="lineno" id="270">   270  </span>		updateScroll(item);
+<span class="lineno" id="271">   271  </span>		_items.push(item);
+<span class="lineno" id="272">   272  </span>		<span class="key">return</span> item;
+<span class="lineno" id="273">   273  </span>	}
+<span class="lineno" id="274">   274  </span>	
+<span class="lineno" id="275">   275  </span>	<span class="comment doc">/**
+<span class="lineno" id="276">   276  </span>	 * Update the {@link Scroll} to the last added item if we are not mousing the area.
+<span class="lineno" id="277">   277  </span>	 * @param item (MovieClip) last added item
+<span class="lineno" id="278">   278  </span>	 * @return Void
+<span class="lineno" id="279">   279  </span>	 */</span>
+<span class="lineno" id="280">   280  </span>	<span class="key">public</span> <span class="key">function</span> updateScroll(item:MovieClip):Void {
+<span class="lineno" id="281">   281  </span>		<span class="key">if</span>(!_scroll.isMouseInArea() &amp;&amp; !_scroll.isDragging() &amp;&amp; _console._visible == <span class="key">true</span>) {
+<span class="lineno" id="282">   282  </span>			_global[<span class="str_const">"setTimeout"</span>](_scroll,<span class="str_const">"slideContent"</span>,<span class="num_const">50</span>, item._y+item._height, <span class="num_const">0</span>.<span class="num_const">02</span>);
+<span class="lineno" id="283">   283  </span>		}
+<span class="lineno" id="284">   284  </span>	}
+<span class="lineno" id="285">   285  </span>	
+<span class="lineno" id="286">   286  </span>	<span class="comment doc">/**
+<span class="lineno" id="287">   287  </span>	 * Handle events from Logger and parse them to addItem
+<span class="lineno" id="288">   288  </span>	 * @param eventObj (Event)
+<span class="lineno" id="289">   289  </span>	 * @return Void
+<span class="lineno" id="290">   290  </span>	 */</span> 
+<span class="lineno" id="291">   291  </span>	<span class="key">private</span> <span class="key">function</span> onLogEvent (eventObj:Event):Void {
+<span class="lineno" id="292">   292  </span>		<span class="comment">//trace ("eventObj{target:" + eventObj.target + ",type:" + eventObj.type + ",message:" + eventObj.data.message + "};");</span>
+<span class="lineno" id="293">   293  </span>		addItem(eventObj.data);
+<span class="lineno" id="294">   294  </span>	}
+<span class="lineno" id="295">   295  </span>	
+<span class="lineno" id="296">   296  </span>	<span class="comment doc">/**
+<span class="lineno" id="297">   297  </span>	 * Select all item _data and put it in clipboard
+<span class="lineno" id="298">   298  </span>	 * @return Void
+<span class="lineno" id="299">   299  </span>	 */</span>
+<span class="lineno" id="300">   300  </span>	<span class="key">public</span> <span class="key">function</span> toClipboard():Void {
+<span class="lineno" id="301">   301  </span>		System.setClipboard (toString());
+<span class="lineno" id="302">   302  </span>	}
+<span class="lineno" id="303">   303  </span>
+<span class="lineno" id="304">   304  </span>	<span class="comment doc">/**
+<span class="lineno" id="305">   305  </span>	 * Return Console string data 
+<span class="lineno" id="306">   306  </span>	 * @return String
+<span class="lineno" id="307">   307  </span>	 */</span>
+<span class="lineno" id="308">   308  </span>	<span class="key">public</span> <span class="key">function</span> toString():String {
+<span class="lineno" id="309">   309  </span>		<span class="key">var</span> o:String = _style.console.head.textfields.head.t+<span class="str_const">"\t"</span>+_fps.toString()+<span class="str_const">"\n"</span>;
+<span class="lineno" id="310">   310  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = <span class="num_const">0</span>; i&lt;_items.length; i++) {
+<span class="lineno" id="311">   311  </span>			o += <span class="str_const">"\n"</span>+_items[i].toString();
+<span class="lineno" id="312">   312  </span>		}
+<span class="lineno" id="313">   313  </span>		<span class="key">return</span> o;	
+<span class="lineno" id="314">   314  </span>	}
+<span class="lineno" id="315">   315  </span>	
+<span class="lineno" id="316">   316  </span>	<span class="key">public</span> <span class="key">function</span> reset():Void {
+<span class="lineno" id="317">   317  </span>		<span class="key">for</span>(<span class="key">var</span> i:Number = <span class="num_const">0</span>; i&lt;_items.length; i++){
+<span class="lineno" id="318">   318  </span>			_items[i].destroy();	
+<span class="lineno" id="319">   319  </span>		}
+<span class="lineno" id="320">   320  </span>		_items = [];
+<span class="lineno" id="321">   321  </span>	}
+<span class="lineno" id="322">   322  </span>	
+<span class="lineno" id="323">   323  </span>	<span class="comment doc">/**
+<span class="lineno" id="324">   324  </span>	 * Clean and destroy
+<span class="lineno" id="325">   325  </span>	 * @return Void
+<span class="lineno" id="326">   326  </span>	 */</span>
+<span class="lineno" id="327">   327  </span>	<span class="key">public</span> <span class="key">function</span> destroy():Void {
+<span class="lineno" id="328">   328  </span>		Dispatcher.$.removeEventListener(<span class="str_const">"LOG_EVENT"</span>,Delegate.create (_this, onLogEvent));
+<span class="lineno" id="329">   329  </span>		LCBinding.disconnect();
+<span class="lineno" id="330">   330  </span>		_fps.destroy();
+<span class="lineno" id="331">   331  </span>	}
+<span class="lineno" id="332">   332  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of Sekati" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.log" class="button">Package</a></li><li><a href="Console.html" title="Detail of com.sekati.log.Console API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>

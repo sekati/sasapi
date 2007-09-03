@@ -2,6 +2,7 @@ com.sekati.events
 com.sekati.except
 com.sekati.display
 com.sekati.effects
+com.sekati.services
 com.sekati.ui
 com.sekati.crypt
 com.sekati.data
@@ -20,4 +21,3 @@ com.sekati.net
 com.sekati.reflect
 com.sekati.draw
 com.sekati.validate
-com.sekati.service
