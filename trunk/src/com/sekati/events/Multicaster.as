@@ -6,8 +6,8 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  
- import com.sekati.core.CoreInterface;
  import com.sekati.core.KeyFactory;
+ import com.sekati.events.IMulticastable;
  import com.sekati.reflect.Stringifier;
  import com.sekati.utils.Delegate;
  import com.sekati.validate.TypeValidation;
@@ -22,7 +22,7 @@
  * granularity not tied to the {@link Event} object or the mx.events.EventDispatcher
  * and is more optimized than {@link Broadcaster}. 
  */
-class com.sekati.events.Multicaster implements CoreInterface {
+class com.sekati.events.Multicaster implements IMulticastable {
 
 	private static var _instance:Multicaster;
 	private var _listeners:Array;

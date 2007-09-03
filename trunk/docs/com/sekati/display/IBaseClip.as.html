@@ -3,7 +3,7 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span><span class="comment doc">/**
 <span class="lineno" id="2">     2  </span> * com.sekati.display.IBaseClip
-<span class="lineno" id="3">     3  </span> * @version 1.0.1
+<span class="lineno" id="3">     3  </span> * @version 1.0.3
 <span class="lineno" id="4">     4  </span> * @author jason m horwitz | sekati.com
 <span class="lineno" id="5">     5  </span> * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -17,22 +17,10 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="14">    14  </span> * extend instead of MovieClip.
 <span class="lineno" id="15">    15  </span> */</span>
 <span class="lineno" id="16">    16  </span><span class="key">interface</span> com.sekati.display.IBaseClip <span class="key">extends</span> CoreInterface {
-<span class="lineno" id="17">    17  </span>
+<span class="lineno" id="17">    17  </span>	
 <span class="lineno" id="18">    18  </span>	<span class="comment doc">/**
-<span class="lineno" id="19">    19  </span>	 * Removes any internal variables, intervals, enterFrames, internal clips
-<span class="lineno" id="20">    20  </span>	 * and event observers to allow the object to be garbage collected. 
-<span class="lineno" id="21">    21  </span>	 * Always call destroy() before deleting last object pointer.
-<span class="lineno" id="22">    22  </span>	 */</span>	
-<span class="lineno" id="23">    23  </span>	<span class="key">function</span> destroy():Void;
-<span class="lineno" id="24">    24  </span>	
-<span class="lineno" id="25">    25  </span>	<span class="comment doc">/**
-<span class="lineno" id="26">    26  </span>	 * if destroy is not called manually onUnload will fire destroy.
-<span class="lineno" id="27">    27  </span>	 */</span>
-<span class="lineno" id="28">    28  </span>	<span class="key">function</span> onUnload():Void;
-<span class="lineno" id="29">    29  </span>	
-<span class="lineno" id="30">    30  </span>	<span class="comment doc">/**
-<span class="lineno" id="31">    31  </span>	 * override toString with reflective output
-<span class="lineno" id="32">    32  </span>	 */</span>	
-<span class="lineno" id="33">    33  </span>	<span class="key">function</span> toString():String;
-<span class="lineno" id="34">    34  </span>	
-<span class="lineno" id="35">    35  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of Sekati" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.display" class="button">Package</a></li><li><a href="IBaseClip.html" title="Detail of com.sekati.display.IBaseClip API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
+<span class="lineno" id="19">    19  </span>	 * if destroy is not called manually onUnload will fire destroy.
+<span class="lineno" id="20">    20  </span>	 */</span>
+<span class="lineno" id="21">    21  </span>	<span class="key">function</span> onUnload():Void;
+<span class="lineno" id="22">    22  </span>	
+<span class="lineno" id="23">    23  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of Sekati" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.display" class="button">Package</a></li><li><a href="IBaseClip.html" title="Detail of com.sekati.display.IBaseClip API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>

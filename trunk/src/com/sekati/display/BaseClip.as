@@ -26,6 +26,16 @@ class com.sekati.display.BaseClip extends MovieClip implements IBaseClip {
 		__isClean = false;
 		KeyFactory.inject(_this);
 	}
+
+	/**
+	 * if destroy hasnt already been called manually
+	 * run it onUnload.
+	 */
+	public function onUnload():Void {
+		if(!__isClean) {
+			destroy();
+		}	
+	}
 	
 	/**
 	 * Destroy object elements and events for proper garbage collection.
@@ -45,16 +55,6 @@ class com.sekati.display.BaseClip extends MovieClip implements IBaseClip {
 			MovieClipUtils.rmClip(_this[i]);	
 		}
 		MovieClipUtils.rmClip(_this);		
-	}
-
-	/**
-	 * if destroy hasnt already been called manually
-	 * run it onUnload.
-	 */
-	public function onUnload():Void {
-		if(!__isClean) {
-			destroy();
-		}	
 	}
 
 	/**

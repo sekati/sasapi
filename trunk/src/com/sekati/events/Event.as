@@ -1,13 +1,12 @@
 /**
  * com.sekati.events.Event
- * @version 1.1.3
+ * @version 1.1.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  
  import com.sekati.core.CoreObject;
- import com.sekati.core.CoreInterface;
  import com.sekati.events.IEvent;
  import com.sekati.reflect.Stringifier;
  
@@ -19,7 +18,7 @@
  * are:'target:Object', which is the source of the event & 'data:Object', which may contain any information 
  * you wish to pass along with the event.
  */
-class com.sekati.events.Event extends CoreObject implements IEvent, CoreInterface {
+class com.sekati.events.Event extends CoreObject implements IEvent {
 
 	private var _type:String;
 	private var _target:Object;

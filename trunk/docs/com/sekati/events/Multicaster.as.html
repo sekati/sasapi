@@ -9,8 +9,8 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
 <span class="lineno" id="7">     7  </span> */</span>
 <span class="lineno" id="8">     8  </span> 
-<span class="lineno" id="9">     9  </span> <span class="key">import</span> com.sekati.core.CoreInterface;
-<span class="lineno" id="10">    10  </span> <span class="key">import</span> com.sekati.core.KeyFactory;
+<span class="lineno" id="9">     9  </span> <span class="key">import</span> com.sekati.core.KeyFactory;
+<span class="lineno" id="10">    10  </span> <span class="key">import</span> com.sekati.events.IMulticastable;
 <span class="lineno" id="11">    11  </span> <span class="key">import</span> com.sekati.reflect.Stringifier;
 <span class="lineno" id="12">    12  </span> <span class="key">import</span> com.sekati.utils.Delegate;
 <span class="lineno" id="13">    13  </span> <span class="key">import</span> com.sekati.validate.TypeValidation;
@@ -25,7 +25,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="22">    22  </span> * granularity not tied to the {@link Event} object or the mx.events.EventDispatcher
 <span class="lineno" id="23">    23  </span> * and is more optimized than {@link Broadcaster}. 
 <span class="lineno" id="24">    24  </span> */</span>
-<span class="lineno" id="25">    25  </span><span class="key">class</span> com.sekati.events.Multicaster <span class="key">implements</span> CoreInterface {
+<span class="lineno" id="25">    25  </span><span class="key">class</span> com.sekati.events.Multicaster <span class="key">implements</span> IMulticastable {
 <span class="lineno" id="26">    26  </span>
 <span class="lineno" id="27">    27  </span>	<span class="key">private</span> <span class="key">static</span> <span class="key">var</span> _instance:Multicaster;
 <span class="lineno" id="28">    28  </span>	<span class="key">private</span> <span class="key">var</span> _listeners:Array;
