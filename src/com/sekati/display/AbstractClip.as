@@ -25,7 +25,7 @@ class com.sekati.display.AbstractClip extends CoreClip {
 	 * @return Void
 	 */
 	private function configUI():Void {
-		trace("AbstractClip: "+_this._name+" [cacheAsBitmap:"+_this.cacheAsBitmap+", __RUID:"+_this.__RUID+"]");
+		trace(toString()+" | "+_this._name+" [cacheAsBitmap:"+_this.cacheAsBitmap+", __RUID:"+_this.__RUID+"]");
 	}
 
 	/**
@@ -34,6 +34,6 @@ class com.sekati.display.AbstractClip extends CoreClip {
 	 */
 	private function destroy():Void {
 		super.destroy();
-		trace(_this._name+" AbstractClip destroy()");
+		trace(toString()+" | "+_this._name+"  called destroy()");
 	}
 }

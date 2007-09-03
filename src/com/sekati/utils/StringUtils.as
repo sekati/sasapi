@@ -1,6 +1,6 @@
 ﻿/**
  * com.sekati.utils.StringUtils
- * @version 1.1.3
+ * @version 1.1.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -20,6 +20,16 @@ class com.sekati.utils.StringUtils {
 	public static function search (str:String, key:String):Boolean {
 		return (str.indexOf (key) <= -1) ? false : true;
 	}
+	
+	/**
+	 * search for key in string - case insensitive.
+	 * @param str (String)
+	 * @param key (String)
+	 * @return Boolean
+	 */	
+	public static function searchCaseInsensitive (str:String, key:String):Boolean {
+		return StringUtils.search(str.toUpperCase(), key.toUpperCase());
+	}	
 
 	/**
 	 * replace every instance of a string with something else

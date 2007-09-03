@@ -1,6 +1,6 @@
 /**
  * com.sekati.log.Logger
- * @version 1.1.0
+ * @version 1.1.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -12,10 +12,13 @@ import com.sekati.events.Event;
 import com.sekati.log.Inspector;
 import com.sekati.log.LCBinding;
 import com.sekati.log.LogEvent;
+import com.sekati.reflect.Stringifier;
 import com.sekati.time.StopWatch;
  
 /**
- * Logger is a multi-tiered debugging tool designed to clarify the debugging process.
+ * Logger is a multi-tiered debugging tool designed to clarify the debugging process.\
+ * 
+ * @TODO Add reflection to origin & clarify mode usage.
  * 
  * The Logger consists of two main tiered components:
  * 	- "levels" (method calls, i.e. 'trace', 'info', 'status', etc).
@@ -287,8 +290,8 @@ class com.sekati.log.Logger implements CoreInterface {
 		}
 		
 		// dispatch event to output panel
-		if(_isOutputIDE) {
-			trace(id+"\t"+level.toUpperCase()+"\t"+origin+"\t"+msg+"\t("+benchmark+" ms)");
+		if(_isOutputIDE && level.toUpperCase().indexOf("__GET__") <= -1) {
+			trace (id+"\t"+level.toUpperCase()+"\t"+origin+"\t"+msg+"\t("+benchmark+" ms)");
 		}
 	}
 	
@@ -302,6 +305,7 @@ class com.sekati.log.Logger implements CoreInterface {
 	// __resolve catches all wrapper & invented levels and processes them thru the proxy to _output: cool!
 	private function __resolve (name:String):Function {
 		if (name.indexOf (LogEvent.onLogEVENT) > 1) {
+			//trace("!!!!!!!!! logger returning: "+name+" reflects: "+Stringifier.stringify(LogEvent));
 			return;
 		}
 		var f:Function = function() {
@@ -327,6 +331,19 @@ class com.sekati.log.Logger implements CoreInterface {
 	 * Destroy the Singleton instance.
 	 */
 	public function destroy():Void {
-		
+		_watch.destroy();
+		LCBinding.disconnect();
+		for(var i in _instance){
+			delete _instance[i];	
+		}
+		delete _instance;
 	}
+	
+	/**
+	 * Override with reflective output.
+	 * @return String
+	 */
+	public function toString():String {
+		return Stringifier.stringify(this);	
+	}	
 }

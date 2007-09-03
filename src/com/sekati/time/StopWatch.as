@@ -1,12 +1,13 @@
 /**
  * com.sekati.time.StopWatch
- * @version 1.0.1
+ * @version 1.0.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
- 
- import com.sekati.reflect.Stringifier;
+
+import com.sekati.core.CoreInterface; 
+import com.sekati.reflect.Stringifier;
  
 /**
  * Simple stopwatch class
@@ -64,6 +65,17 @@ class com.sekati.time.StopWatch {
 	public function read():Number{
 		var now:Number = getTimer();
 		return now - _initTime;
+	}
+
+	/**
+	 * Destroy instance.
+	 */
+	public function destroy():Void {
+		this.stop();
+		for(var i in this){
+			delete this[i];	
+		}
+		delete this;
 	}
 	
 	/**

@@ -1,6 +1,6 @@
 /**
  * com.sekati.core.Document
- * @version 1.0.0
+ * @version 1.0.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -8,7 +8,9 @@
  
 import com.sekati.core.App;
 import com.sekati.core.KeyFactory;
-import com.sekati.log.Out;
+import com.sekati.display.BaseClip;
+import com.sekati.reflect.Stringifier;
+import com.sekati.log.Logger;
 
 /**
  * Document controller simulates an AS3 DocumentClass
@@ -17,9 +19,9 @@ import com.sekati.log.Out;
  * }
  * @see {@link com.sekati.core.App}
  */
-class com.sekati.core.Document extends MovieClip {
+class com.sekati.core.Document extends BaseClip {
 	
-	public var out:Out; 
+	public var log:Logger;
 	
 	/**
 	 * Constructor
@@ -29,7 +31,7 @@ class com.sekati.core.Document extends MovieClip {
 	}
 	
 	/**
-	 * links class to _root timeline via constructor simulating document class
+	 * Link the Document class to the _root timeline via constructor simulating an AS3 document class.
 	 * @param target (MovieClip)
 	 * @return Void
 	 */
@@ -40,7 +42,7 @@ class com.sekati.core.Document extends MovieClip {
 	}
 	
 	/**
-	 * general movie setup and class compositions
+	 * General movie setup and class compositions.
 	 * @return Void
 	 */
 	private function init():Void {
@@ -72,8 +74,8 @@ class com.sekati.core.Document extends MovieClip {
 	 * @return Void
 	 */
 	private function buildCompositions():Void {
-		out = Out.getInstance();
-		out.createPanel();
-		out.info(this,"Document Initialized ...");
+		log = Logger.getInstance();
+		log.isIDE = true;
+		log.info(this.toString(),"Document Initialized ...");
 	}
 }
