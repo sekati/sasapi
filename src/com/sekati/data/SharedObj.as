@@ -20,7 +20,7 @@ class com.sekati.data.SharedObj extends SharedObject implements CoreInterface {
 	private var _so:SharedObject;
 	
 	/**
-	 * constructor
+	 * SharedObj Constructor
 	 * @param so_name (String) shared object name
 	 * @return Void
 	 * @throws Error if no so_name was passed.
