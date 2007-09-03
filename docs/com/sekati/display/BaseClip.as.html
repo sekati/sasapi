@@ -29,35 +29,35 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="26">    26  </span>		__isClean = <span class="key">false</span>;
 <span class="lineno" id="27">    27  </span>		KeyFactory.inject(_this);
 <span class="lineno" id="28">    28  </span>	}
-<span class="lineno" id="29">    29  </span>	
+<span class="lineno" id="29">    29  </span>
 <span class="lineno" id="30">    30  </span>	<span class="comment doc">/**
-<span class="lineno" id="31">    31  </span>	 * Destroy object elements and events for proper garbage collection.
-<span class="lineno" id="32">    32  </span>	 * This is a generic destroy method to insure that, at a minimum, the 
-<span class="lineno" id="33">    33  </span>	 * enterFrame and clip itself are removed when destroy is called. 
-<span class="lineno" id="34">    34  </span>	 * This behavior can be overwritten by BaseClip's subclasses. 
-<span class="lineno" id="35">    35  </span>	 * If you wish to use BaseClip's destroy in addition to your subclass 
-<span class="lineno" id="36">    36  </span>	 * destroy you may do so via: 
-<span class="lineno" id="37">    37  </span>	 * {@code
-<span class="lineno" id="38">    38  </span>	 * 	super.destroy(); 
-<span class="lineno" id="39">    39  </span>	 * }
-<span class="lineno" id="40">    40  </span>	 */</span>	
-<span class="lineno" id="41">    41  </span>	<span class="key">public</span> <span class="key">function</span> destroy():Void {
-<span class="lineno" id="42">    42  </span>		__isClean = <span class="key">true</span>;
-<span class="lineno" id="43">    43  </span>		_this.onEnterFrame = <span class="key">null</span>;
-<span class="lineno" id="44">    44  </span>		<span class="key">for</span>(<span class="key">var</span> i <span class="key">in</span> _this) {
-<span class="lineno" id="45">    45  </span>			MovieClipUtils.rmClip(_this[i]);	
-<span class="lineno" id="46">    46  </span>		}
-<span class="lineno" id="47">    47  </span>		MovieClipUtils.rmClip(_this);		
-<span class="lineno" id="48">    48  </span>	}
-<span class="lineno" id="49">    49  </span>
-<span class="lineno" id="50">    50  </span>	<span class="comment doc">/**
-<span class="lineno" id="51">    51  </span>	 * if destroy hasnt already been called manually
-<span class="lineno" id="52">    52  </span>	 * run it onUnload.
-<span class="lineno" id="53">    53  </span>	 */</span>
-<span class="lineno" id="54">    54  </span>	<span class="key">public</span> <span class="key">function</span> onUnload():Void {
-<span class="lineno" id="55">    55  </span>		<span class="key">if</span>(!__isClean) {
-<span class="lineno" id="56">    56  </span>			destroy();
-<span class="lineno" id="57">    57  </span>		}	
+<span class="lineno" id="31">    31  </span>	 * if destroy hasnt already been called manually
+<span class="lineno" id="32">    32  </span>	 * run it onUnload.
+<span class="lineno" id="33">    33  </span>	 */</span>
+<span class="lineno" id="34">    34  </span>	<span class="key">public</span> <span class="key">function</span> onUnload():Void {
+<span class="lineno" id="35">    35  </span>		<span class="key">if</span>(!__isClean) {
+<span class="lineno" id="36">    36  </span>			destroy();
+<span class="lineno" id="37">    37  </span>		}	
+<span class="lineno" id="38">    38  </span>	}
+<span class="lineno" id="39">    39  </span>	
+<span class="lineno" id="40">    40  </span>	<span class="comment doc">/**
+<span class="lineno" id="41">    41  </span>	 * Destroy object elements and events for proper garbage collection.
+<span class="lineno" id="42">    42  </span>	 * This is a generic destroy method to insure that, at a minimum, the 
+<span class="lineno" id="43">    43  </span>	 * enterFrame and clip itself are removed when destroy is called. 
+<span class="lineno" id="44">    44  </span>	 * This behavior can be overwritten by BaseClip's subclasses. 
+<span class="lineno" id="45">    45  </span>	 * If you wish to use BaseClip's destroy in addition to your subclass 
+<span class="lineno" id="46">    46  </span>	 * destroy you may do so via: 
+<span class="lineno" id="47">    47  </span>	 * {@code
+<span class="lineno" id="48">    48  </span>	 * 	super.destroy(); 
+<span class="lineno" id="49">    49  </span>	 * }
+<span class="lineno" id="50">    50  </span>	 */</span>	
+<span class="lineno" id="51">    51  </span>	<span class="key">public</span> <span class="key">function</span> destroy():Void {
+<span class="lineno" id="52">    52  </span>		__isClean = <span class="key">true</span>;
+<span class="lineno" id="53">    53  </span>		_this.onEnterFrame = <span class="key">null</span>;
+<span class="lineno" id="54">    54  </span>		<span class="key">for</span>(<span class="key">var</span> i <span class="key">in</span> _this) {
+<span class="lineno" id="55">    55  </span>			MovieClipUtils.rmClip(_this[i]);	
+<span class="lineno" id="56">    56  </span>		}
+<span class="lineno" id="57">    57  </span>		MovieClipUtils.rmClip(_this);		
 <span class="lineno" id="58">    58  </span>	}
 <span class="lineno" id="59">    59  </span>
 <span class="lineno" id="60">    60  </span>	<span class="comment doc">/**

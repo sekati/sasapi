@@ -6,7 +6,6 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
-import com.sekati.core.CoreInterface;
 import com.sekati.events.Event;
 import com.sekati.events.IDispatchable;
 import mx.events.EventDispatcher;
@@ -37,7 +36,7 @@ import com.sekati.reflect.Stringifier;
  * @see <a href="http://www.kirupa.com/developer/actionscript/eventdispatcher.htm">http://www.kirupa.com/developer/actionscript/eventdispatcher.htm</a>
  * @see {@link com.sekati.events.Broadcaster}
  */
-class com.sekati.events.Dispatcher implements IDispatchable, CoreInterface {
+class com.sekati.events.Dispatcher implements IDispatchable {
 
 	private static var _instance:Dispatcher;
 	private var _manager:Object;

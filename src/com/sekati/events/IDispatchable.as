@@ -5,13 +5,14 @@
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
-
+ 
+import com.sekati.core.CoreInterface;
 import com.sekati.events.Event;
 
 /**
  * Interface describing Event Dispatchers such as {@link com.sekati.events.Dispatcher}.
  */
-interface com.sekati.events.IDispatchable {
+interface com.sekati.events.IDispatchable extends CoreInterface {
 
 	function addEventListener (event:String, listener:Object):Void;
 

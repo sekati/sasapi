@@ -114,7 +114,7 @@
 	<!-- TASK: compile a batch of tasks to execute -->
     <target name="batch_doc">
         <antcall target="sloc_count"/>
-    	<antcall target="clean_doc"/>
+    	<!--<antcall target="clean_doc"/>-->
         <antcall target="compile_doc_as2api"/>
         <antcall target="deploy_doc"/>
     </target>	
