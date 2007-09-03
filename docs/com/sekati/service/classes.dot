@@ -6,6 +6,12 @@ strict digraph class_diagram {
     tooltip="com.sekati.service.Urchin",
     shape="record"
   ];
+  TypeSoapEvent[
+    label="SoapEvent",
+    URL="SoapEvent.html",
+    tooltip="com.sekati.service.SoapEvent",
+    shape="record"
+  ];
   TypeSoapClient[
     label="SoapClient",
     URL="SoapClient.html",

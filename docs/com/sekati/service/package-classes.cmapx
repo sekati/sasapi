@@ -1,5 +1,6 @@
 <map id="class_diagram" name="class_diagram">
-<area shape="rect" href="Urchin.html" title="com.sekati.service.Urchin" alt="" coords="30,224,102,272" />
+<area shape="rect" href="Urchin.html" title="com.sekati.service.Urchin" alt="" coords="30,296,102,344" />
+<area shape="rect" href="SoapEvent.html" title="com.sekati.service.SoapEvent" alt="" coords="15,224,117,272" />
 <area shape="rect" href="SoapClient.html" title="com.sekati.service.SoapClient" alt="" coords="14,152,118,200" />
 <area shape="rect" href="Flink.html" title="com.sekati.service.Flink" alt="" coords="30,80,102,128" />
 <area shape="rect" href="AmbientOrb.html" title="com.sekati.service.AmbientOrb" alt="" coords="9,8,123,56" />
