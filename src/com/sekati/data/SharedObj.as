@@ -1,19 +1,21 @@
 /**
  * com.sekati.data.SharedObj
- * @version 1.0.3
+ * @version 1.0.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
+import com.sekati.core.CoreInterface;
 import com.sekati.events.Dispatcher;
 import com.sekati.events.Event;
+import com.sekati.reflect.Stringifier;
 import com.sekati.utils.Delegate;
 
 /**
  * SharedObject extension
  */
-class com.sekati.data.SharedObj extends SharedObject {
+class com.sekati.data.SharedObj extends SharedObject implements CoreInterface {
 	
 	private var _so:SharedObject;
 	
@@ -86,14 +88,32 @@ class com.sekati.data.SharedObj extends SharedObject {
 	}
 	
 	/**
+	 * Destroy sharedObject data and instance
+	 * @return Void
+	 */
+	public function destroy():Void {
+		_so.data = null;
+		_so.flush();
+		delete this;
+	}	
+	
+	/**
 	 * return recursively formatted data of shared object
 	 */
-	private function toString():String {
+	private function getData():String {
 		var str:String = _so._name+"={\n";
 		for (var prop in _so.data) {
 			str += prop+": "+_so.data[prop]+"\n";
 		}
 		str += "\n};";
 		return str;
-	}	
+	}
+	
+	/**
+	 * return reflective output
+	 * @return String
+	 */	
+	public function toString():String {
+		return Stringifier.stringify(this);
+	}		
 }

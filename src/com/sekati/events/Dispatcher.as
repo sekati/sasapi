@@ -127,7 +127,7 @@ class com.sekati.events.Dispatcher implements IDispatchable, CoreInterface {
 	}
 	
 	/**
-	 * Destroy Dispatcher
+	 * Destroy singleton instance.
 	 * @return Void
 	 */
 	public function destroy():Void {
