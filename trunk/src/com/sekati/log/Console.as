@@ -1,6 +1,6 @@
 /**
  * com.sekati.log.Console
- * @version 1.2.0
+ * @version 1.2.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -242,8 +242,9 @@ class com.sekati.log.Console {
 		item._benchmarkTf._x = item._messageTf._x+item._messageTf._width+6;
 		
 		// realign
-		item._bg._height = item._messageTf._height;
-		item._line._y = item._messageTf._height;	
+		var tallestTf:TextField = (item._messageTf._height > item._originTf._height) ? item._messageTf : item._originTf;
+		item._bg._height = tallestTf._height;
+		item._line._y = tallestTf._height;	
 		
 		// reposition
 		var prevItem:MovieClip = _items[itemIndex-1];

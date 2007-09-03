@@ -137,7 +137,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="134">   134  </span>		_isOutputLC = b;	
 <span class="lineno" id="135">   135  </span>	}
 <span class="lineno" id="136">   136  </span>	<span class="key">public</span> <span class="key">function</span> set isSWF(b:Boolean):Void {
-<span class="lineno" id="137">   137  </span>		_isOutputSWF = b;	
+<span class="lineno" id="137">   137  </span>		_isOutputSWF = b;
 <span class="lineno" id="138">   138  </span>	}
 <span class="lineno" id="139">   139  </span>	<span class="key">public</span> <span class="key">function</span> set isIDE(b:Boolean):Void {
 <span class="lineno" id="140">   140  </span>		_isOutputIDE = b;	
@@ -276,24 +276,24 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="273">   273  </span>	<span class="comment">// Output Handlers</span>
 <span class="lineno" id="274">   274  </span>	
 <span class="lineno" id="275">   275  </span>	<span class="key">private</span> <span class="key">function</span> _output (level:String, origin, msg):Void {
-<span class="lineno" id="276">   276  </span>		<span class="key">if</span> (_isEnabled == <span class="key">false</span> || _levels[level] == <span class="key">false</span> || isFiltered (origin) == <span class="key">true</span>) {
-<span class="lineno" id="277">   277  </span>			<span class="key">return</span>;
-<span class="lineno" id="278">   278  </span>		}
-<span class="lineno" id="279">   279  </span>		<span class="key">var</span> benchmark:Number = _watch.lap();
-<span class="lineno" id="280">   280  </span>		<span class="key">var</span> id:Number = _logId++;
-<span class="lineno" id="281">   281  </span>		<span class="key">var</span> e:LogEvent = <span class="key">new</span> LogEvent({id:id, type:level.toLowerCase(), origin:String(origin), message:String(msg), benchmark:benchmark});
-<span class="lineno" id="282">   282  </span>		
-<span class="lineno" id="283">   283  </span>		<span class="comment">// dispatch event to embedded Console</span>
-<span class="lineno" id="284">   284  </span>		<span class="key">if</span>(_isOutputSWF) {
-<span class="lineno" id="285">   285  </span>			Dispatcher.$.dispatchEvent(e);
-<span class="lineno" id="286">   286  </span>		}
-<span class="lineno" id="287">   287  </span>		<span class="comment">// dispatch event to localConnection Console</span>
-<span class="lineno" id="288">   288  </span>		<span class="key">if</span>(_isOutputLC) {
-<span class="lineno" id="289">   289  </span>			LCBinding.send(e);
-<span class="lineno" id="290">   290  </span>		}
-<span class="lineno" id="291">   291  </span>		
+<span class="lineno" id="276">   276  </span>		<span class="comment">// validate that we should be outputting this content: Logger enabled, level enabled, origin unfiltered &amp; proper LogEvent.</span>
+<span class="lineno" id="277">   277  </span>		<span class="key">if</span> (_isEnabled == <span class="key">false</span> || _levels[level] == <span class="key">false</span> || isFiltered (origin) == <span class="key">true</span> || !(level.toLowerCase().indexOf(<span class="str_const">"__get__"</span>) &lt;= -<span class="num_const">1</span>)) {
+<span class="lineno" id="278">   278  </span>			<span class="key">return</span>;
+<span class="lineno" id="279">   279  </span>		}
+<span class="lineno" id="280">   280  </span>		<span class="key">var</span> benchmark:Number = _watch.lap();
+<span class="lineno" id="281">   281  </span>		<span class="key">var</span> id:Number = _logId++;
+<span class="lineno" id="282">   282  </span>		<span class="key">var</span> e:LogEvent = <span class="key">new</span> LogEvent({id:id, type:level.toLowerCase(), origin:String(origin), message:String(msg), benchmark:benchmark});
+<span class="lineno" id="283">   283  </span>		
+<span class="lineno" id="284">   284  </span>		<span class="comment">// dispatch event to localConnection Console</span>
+<span class="lineno" id="285">   285  </span>		<span class="key">if</span>(_isOutputLC) {
+<span class="lineno" id="286">   286  </span>			LCBinding.send(e);
+<span class="lineno" id="287">   287  </span>		}
+<span class="lineno" id="288">   288  </span>		<span class="comment">// dispatch event to embedded Console (only if isOutputLC is disabled to avoid duplicate Console entries)</span>
+<span class="lineno" id="289">   289  </span>		<span class="key">if</span>(_isOutputSWF &amp;&amp; !_isOutputLC) {
+<span class="lineno" id="290">   290  </span>			Dispatcher.$.dispatchEvent(e);
+<span class="lineno" id="291">   291  </span>		}		
 <span class="lineno" id="292">   292  </span>		<span class="comment">// dispatch event to output panel</span>
-<span class="lineno" id="293">   293  </span>		<span class="key">if</span>(_isOutputIDE &amp;&amp; level.toUpperCase().indexOf(<span class="str_const">"__GET__"</span>) &lt;= -<span class="num_const">1</span>) {
+<span class="lineno" id="293">   293  </span>		<span class="key">if</span>(_isOutputIDE) {
 <span class="lineno" id="294">   294  </span>			trace (id+<span class="str_const">"\t"</span>+level.toUpperCase()+<span class="str_const">"\t"</span>+origin+<span class="str_const">"\t"</span>+msg+<span class="str_const">"\t("</span>+benchmark+<span class="str_const">" ms)"</span>);
 <span class="lineno" id="295">   295  </span>		}
 <span class="lineno" id="296">   296  </span>	}

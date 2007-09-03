@@ -134,7 +134,7 @@ class com.sekati.log.Logger implements CoreInterface {
 		_isOutputLC = b;	
 	}
 	public function set isSWF(b:Boolean):Void {
-		_isOutputSWF = b;	
+		_isOutputSWF = b;
 	}
 	public function set isIDE(b:Boolean):Void {
 		_isOutputIDE = b;	
@@ -273,24 +273,24 @@ class com.sekati.log.Logger implements CoreInterface {
 	// Output Handlers
 	
 	private function _output (level:String, origin, msg):Void {
-		if (_isEnabled == false || _levels[level] == false || isFiltered (origin) == true) {
+		// validate that we should be outputting this content: Logger enabled, level enabled, origin unfiltered & proper LogEvent.
+		if (_isEnabled == false || _levels[level] == false || isFiltered (origin) == true || !(level.toLowerCase().indexOf("__get__") <= -1)) {
 			return;
 		}
 		var benchmark:Number = _watch.lap();
 		var id:Number = _logId++;
 		var e:LogEvent = new LogEvent({id:id, type:level.toLowerCase(), origin:String(origin), message:String(msg), benchmark:benchmark});
 		
-		// dispatch event to embedded Console
-		if(_isOutputSWF) {
-			Dispatcher.$.dispatchEvent(e);
-		}
 		// dispatch event to localConnection Console
 		if(_isOutputLC) {
 			LCBinding.send(e);
 		}
-		
+		// dispatch event to embedded Console (only if isOutputLC is disabled to avoid duplicate Console entries)
+		if(_isOutputSWF && !_isOutputLC) {
+			Dispatcher.$.dispatchEvent(e);
+		}		
 		// dispatch event to output panel
-		if(_isOutputIDE && level.toUpperCase().indexOf("__GET__") <= -1) {
+		if(_isOutputIDE) {
 			trace (id+"\t"+level.toUpperCase()+"\t"+origin+"\t"+msg+"\t("+benchmark+" ms)");
 		}
 	}
