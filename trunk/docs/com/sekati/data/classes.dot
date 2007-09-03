@@ -24,10 +24,23 @@ strict digraph class_diagram {
     tooltip="com.sekati.data.SharedObj",
     shape="record"
   ];
+  TypeLoopIterator[
+    label="LoopIterator",
+    URL="LoopIterator.html",
+    tooltip="com.sekati.data.LoopIterator",
+    shape="record"
+  ];
+  TypeIterator[
+    label="Iterator",
+    URL="Iterator.html",
+    tooltip="com.sekati.data.Iterator",
+    shape="record"
+  ];
   TypeFLV[
     label="FLV",
     URL="FLV.html",
     tooltip="com.sekati.data.FLV",
     shape="record"
   ];
+  TypeIterator -> TypeLoopIterator;
 }
