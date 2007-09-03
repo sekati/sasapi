@@ -1,6 +1,6 @@
 /**
  * com.sekati.log.LogEvent
- * @version 1.0.0
+ * @version 1.0.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -14,7 +14,7 @@ import com.sekati.log.Logger;
  */
 class com.sekati.log.LogEvent extends Event {
 	
-	public static var onLogEVENT:String = "com.sekati.log.onLogEvent";
+	public static var onLogEVENT:String = "onLogEvent";
 	private static var target:Logger = Logger.getInstance();
 	
 	/**

@@ -6,12 +6,12 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
-import com.sekati.reflect.Stringifier;
+import com.sekati.core.CoreObject;
 import mx.services.SOAPCall;
 import mx.services.WebService;
 
 /**
- * Soap Client class to be used with JNuSOAP.<br>
+ * Soap Client class to be used with <a href="http://consume.sekati.com/?sid=swsdk">JNuSOAP</a>.<br>
  * 
  * <br>Q: 'There are multiple possible ports in the WSDL file; please specify a service name and port name!?'
  * <br>A: add port to class instance, seach for "port" in the wsdl & see url's below for more info.
@@ -21,8 +21,10 @@ import mx.services.WebService;
  * @see <a href="http://www.flash-db.com/Tutorials/lclasses/lclasses.php?page=2">http://www.flash-db.com/Tutorials/lclasses/lclasses.php?page=2</a>
  * @see <a href="http://www.adobe.com/devnet/flash/articles/flmxpro_webservices_03.html">http://www.adobe.com/devnet/flash/articles/flmxpro_webservices_03.html</a>
  */
-class com.sekati.service.SoapClient {
+class com.sekati.service.SoapClient extends CoreObject {
 
+	private static var _instance:SoapClient;
+	
 	private var _ws:WebService;
 	private var _wsdl:String;
 	private var debugFn:Function;
@@ -118,13 +120,5 @@ class com.sekati.service.SoapClient {
 			debugFn("SOAP RESPONSE ENVELOPE: "+cb.response);
 			faultFn(fault);
 		};
-	}
-	
-	/**
-	 * Override with reflective output.
-	 * @return String
-	 */
-	public function toString():String {
-		return Stringifier.stringify(this);	
 	}	
 }
