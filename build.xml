@@ -183,8 +183,8 @@
 
 	<!-- TASK: compile a batch of tasks to execute -->
     <target name="batch_project">
-        <antcall target="batch_doc"/>
-        <antcall target="project_deploy"/>
+        <!--<antcall target="batch_doc"/>-->
+        <antcall target="deploy_project"/>
     </target>	
 	
 	<!-- TASK: rsync+ssh documentation to target server -->
