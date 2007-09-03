@@ -1,5 +1,11 @@
 strict digraph class_diagram {
   rankdir=LR;
+  TypeMulticaster[
+    label="Multicaster",
+    URL="Multicaster.html",
+    tooltip="com.sekati.events.Multicaster",
+    shape="record"
+  ];
   TypeFramePulse[
     label="FramePulse",
     URL="FramePulse.html",

@@ -1,18 +1,20 @@
 /**
  * com.sekati.data.FLV
- * @version 1.1.3
+ * @version 1.1.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
 import com.sekati.core.App;
+import com.sekati.core.CoreObject;
+import com.sekati.events.FramePulse;
 import com.sekati.utils.Delegate;
 
 /**
  * FLV class to be used with {@link com.sekati.ui.FLVPlayer}
  */
-class com.sekati.data.FLV {
+class com.sekati.data.FLV extends CoreObject {
 	
 	private var _this:FLV;
 	private var _ns:NetStream;
@@ -35,6 +37,7 @@ class com.sekati.data.FLV {
 	
 	//constructor
 	public function FLV() {
+		super();
 		_this = this;
 		_paused = false;
 		_started = false;
@@ -80,7 +83,8 @@ class com.sekati.data.FLV {
 		playVideo ();
 		stopVideo ();
 		//init onEnterFrame beacon (this should be a beacon & should clean after itself)
-		audioContainer.onEnterFrame = Delegate.create (_this, _onEnterFrame);
+		//audioContainer.onEnterFrame = Delegate.create (_this, _onEnterFrame);
+		FramePulse.getInstance().addFrameListener(_this);
 	}
 	
 	//==========================================================
@@ -275,5 +279,14 @@ class com.sekati.data.FLV {
 			}
 		}
 		*/
+	}
+	
+	/**
+	 * calls superclasses destroy and executes its own destroy behaviors.
+	 * @return Void
+	 */
+	public function destroy():Void {
+		super.destroy();
+		FramePulse.getInstance().removeFrameListener(_this);
 	}
 }
