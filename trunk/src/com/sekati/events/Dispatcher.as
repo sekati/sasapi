@@ -1,11 +1,12 @@
 /**
  * com.sekati.events.Dispatcher
- * @version 1.1.1
+ * @version 1.1.3
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
+import com.sekati.core.CoreInterface;
 import com.sekati.events.Event;
 import com.sekati.events.IDispatchable;
 import mx.events.EventDispatcher;
@@ -36,7 +37,7 @@ import com.sekati.reflect.Stringifier;
  * @see <a href="http://www.kirupa.com/developer/actionscript/eventdispatcher.htm">http://www.kirupa.com/developer/actionscript/eventdispatcher.htm</a>
  * @see {@link com.sekati.events.Broadcaster}
  */
-class com.sekati.events.Dispatcher implements IDispatchable {
+class com.sekati.events.Dispatcher implements IDispatchable, CoreInterface {
 
 	private static var _instance:Dispatcher;
 	private var _manager:Object;
@@ -124,6 +125,15 @@ class com.sekati.events.Dispatcher implements IDispatchable {
  		var event:Event = new Event(_type, _target, _data);
  		_manager.dispatchEvent(event);
 	}
+	
+	/**
+	 * Destroy Dispatcher
+	 * @return Void
+	 */
+	public function destroy():Void {
+		delete _manager;
+		delete _instance;
+	}	
 	
 	/**
 	 * Override with reflective output.
