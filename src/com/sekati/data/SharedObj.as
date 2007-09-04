@@ -17,6 +17,7 @@
  */
 class com.sekati.data.SharedObj extends SharedObject implements CoreInterface {
 	
+	private var _this:SharedObj;
 	private var _so:SharedObject;
 	
 	/**
@@ -25,12 +26,14 @@ class com.sekati.data.SharedObj extends SharedObject implements CoreInterface {
 	 * @return Void
 	 * @throws Error if no so_name was passed.
 	 */
-	public function SharedObject(so_name:String) {
+	public function SharedObj (so_name:String) {
 		if(!so_name) {
-			throw new Error ("@@@ com.sekati.data.SharedObj Error: instance constructor expects so_name param.");
+			throw new Error ("@@@ "+this.toString()+" Error: instance constructor expects so_name param.");
 			return;	
 		}
-		_so = SharedObject.getLocal(so_name);
+		super();
+		_this = this;
+		_so = SharedObj.getLocal(so_name);
 		_so.onStatus = Delegate.create(_this, so_onStatus);
 		_so.onSync = Delegate.create(_this, so_onSync);
 	}
@@ -38,18 +41,18 @@ class com.sekati.data.SharedObj extends SharedObject implements CoreInterface {
 	/**
 	 * onStatus event handler dispatches event
 	 */
-	private function so_onStatus(info) {
+	private function so_onStatus(info):Void {
 		trace ("status info: " + info);
-		var e:Event = new Event("SharedObj_status", this, {info:info});
+		var e:Event = new Event("so_onStatus", this, {info:info});
 		Dispatcher.$.dispatchEvent(e);
 	}
 	
 	/**
 	 * onSync event handler dispatches event
 	 */
-	private function so_onSync(obj) {
+	private function so_onSync(obj):Void {
 		trace ("sync obj: " + obj);
-		var e:Event = new Event("SharedObj_sync", this, {obj:obj});
+		var e:Event = new Event("so_onSync", this, {obj:obj});
 		Dispatcher.$.dispatchEvent(e);
 	}
 	
@@ -76,14 +79,14 @@ class com.sekati.data.SharedObj extends SharedObject implements CoreInterface {
 	/**
 	 * destroy the shared object
 	 */
-	public function clear () {
+	public function clear ():Void {
 		_so.clear ();
 	}
 	
 	/**
 	 * get the size of the shared object
 	 */
-	public function getSize () {
+	public function getSize ():Void {
 		_so.getSize ();
 	}
 	
