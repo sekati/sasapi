@@ -22,7 +22,7 @@ $header .= '<script language="javascript" src="../deploy/js/sasapi.js" type="tex
 $header .= '<script language="javascript" src="../deploy/js/swfIN.js" type="text/javascript"></script>';
 $header .= '<link rel="stylesheet" type="text/css" href="../deploy/css/style.css" />';
 $header .= "<title>".$appName.'</title></head><body>';
-$header .= '<a href="?" target="_self"><strong>&laquo; Test Runner Index</strong></a><hr/><br/>';
+$header .= '<a href="?" target="_self"><strong>Test Runner &raquo;</strong></a><hr/><br/>';
 
 $footer = '<br/><hr/></body></html>';
 
