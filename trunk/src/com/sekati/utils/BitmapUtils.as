@@ -6,8 +6,8 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
-import flash.display.BitmapData;
-import flash.geom.Matrix;
+ import flash.display.BitmapData;
+ import flash.geom.Matrix;
 
 /**
  * Static class wrapping variousBitmap utilities.

@@ -6,10 +6,10 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  
-import com.sekati.events.Broadcaster;
-import com.sekati.net.NetBase;
-import com.sekati.validate.OSValidation;
-import flash.external.*;
+ import com.sekati.events.Broadcaster;
+ import com.sekati.net.NetBase;
+ import com.sekati.validate.OSValidation;
+ import flash.external.*;
  
 /**
  * MouseWheel support for Mac & PC. Requires: sasapi.js

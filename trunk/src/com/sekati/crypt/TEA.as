@@ -12,11 +12,11 @@
  * @see http://www.movable-type.co.uk/scripts/TEAblock.html
  */
 
-import com.sekati.crypt.ICipher;
+ import com.sekati.crypt.ICipher;
 
 /**
-* Encrypts and decrypts text with the TEA (Block) algorithm.
-*/
+ * Encrypts and decrypts text with the TEA (Block) algorithm.
+ */
 class com.sekati.crypt.TEA implements ICipher {
 
 	/**
@@ -49,11 +49,11 @@ class com.sekati.crypt.TEA implements ICipher {
 	}
 
 	/**
-	* Decrypts a string with the specified key.
-	* @param src (String) string to decrypt
-	* @param key (String) decryption key
-	* @return String 
-	*/
+	 * Decrypts a string with the specified key.
+	 * @param src (String) string to decrypt
+	 * @param key (String) decryption key
+	 * @return String 
+	 */
 	public static function decrypt(src:String, key:String):String {
 		var v:Array = charsToLongs(hexToChars(src));
 		var k:Array = charsToLongs(strToChars(key));

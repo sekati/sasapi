@@ -6,7 +6,7 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
-import flash.filters.DropShadowFilter;
+ import flash.filters.DropShadowFilter;
 
 /**
  * Static class wrapping various filter utilities.

@@ -13,7 +13,7 @@
  * @see <a href="http://pajhome.org.uk/crypt/md5">http://pajhome.org.uk/crypt/md5</a> for more info.
  */
 
-import com.sekati.crypt.IHash;
+ import com.sekati.crypt.IHash;
 
 /**
 * Calculates the SHA1 checksum.

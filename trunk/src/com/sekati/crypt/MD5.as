@@ -13,7 +13,7 @@
  * @see http://pajhome.org.uk/crypt/md5
  */
 
-import com.sekati.crypt.IHash;
+ import com.sekati.crypt.IHash;
 
 /**
  * Calculates the MD5 checksum.

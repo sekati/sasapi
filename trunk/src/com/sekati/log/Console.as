@@ -6,19 +6,19 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
-import com.sekati.display.BaseClip; 
-import com.sekati.events.Dispatcher;
-import com.sekati.events.Event;
-import com.sekati.log.ConsoleFPSMonitor;
-import com.sekati.log.ConsoleItem;
-import com.sekati.log.ConsoleStyle;
-import com.sekati.log.LCBinding;
-import com.sekati.log.LogEvent;
-import com.sekati.math.MathBase;
-import com.sekati.ui.ContextualMenu;
-import com.sekati.ui.Scroll;
-import com.sekati.utils.ClassUtils; 
-import com.sekati.utils.Delegate;
+ import com.sekati.display.BaseClip; 
+ import com.sekati.events.Dispatcher;
+ import com.sekati.events.Event;
+ import com.sekati.log.ConsoleFPSMonitor;
+ import com.sekati.log.ConsoleItem;
+ import com.sekati.log.ConsoleStyle;
+ import com.sekati.log.LCBinding;
+ import com.sekati.log.LogEvent;
+ import com.sekati.math.MathBase;
+ import com.sekati.ui.ContextualMenu;
+ import com.sekati.ui.Scroll;
+ import com.sekati.utils.ClassUtils; 
+ import com.sekati.utils.Delegate;
  
 /**
  * UI Console for attaching or connecting too

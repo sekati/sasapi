@@ -6,13 +6,13 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
-import com.sekati.display.BaseClip;
-import com.sekati.draw.Rectangle;
-import com.sekati.draw.Triangle;
-import com.sekati.geom.Point;
-import com.sekati.utils.ClassUtils;
-import com.sekati.utils.TextUtils; 
-
+ import com.sekati.display.BaseClip;
+ import com.sekati.draw.Rectangle;
+ import com.sekati.draw.Triangle;
+ import com.sekati.geom.Point;
+ import com.sekati.utils.ClassUtils;
+ import com.sekati.utils.TextUtils; 
+ 
 /**
  * Singleton class defining {@link com.sekati.log.Console} style and layout.
  */

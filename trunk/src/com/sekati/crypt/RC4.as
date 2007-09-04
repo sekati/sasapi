@@ -9,7 +9,7 @@
  * Orginal Flash port by: Gabor Penoff - http://www.fns.hu | fns@fns.hu
  */
 
-import com.sekati.crypt.ICipher;
+ import com.sekati.crypt.ICipher;
 
 /**
  * Encrypts and decrypts an alleged RC4 hash.
@@ -33,11 +33,11 @@ class com.sekati.crypt.RC4 implements ICipher {
 	}
 	
 	/**
-	* Decrypts a string with the specified key.
-	* @param src (String) string to decrypt
-	* @param key (String) decryption key
-	* @return String
-	*/
+	 * Decrypts a string with the specified key.
+	 * @param src (String) string to decrypt
+	 * @param key (String) decryption key
+	 * @return String
+	 */
 	public static function decrypt(src:String, key:String):String {
 		var mtxt:Array = hexToChars(src);
 		var mkey:Array = strToChars(key);

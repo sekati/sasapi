@@ -6,10 +6,10 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
-import com.sekati.events.Event;
-import com.sekati.events.IDispatchable;
-import mx.events.EventDispatcher;
-import com.sekati.reflect.Stringifier;
+ import com.sekati.events.Event;
+ import com.sekati.events.IDispatchable;
+ import mx.events.EventDispatcher;
+ import com.sekati.reflect.Stringifier;
 
 /**
  * A centralized EventDispatcher to decouple event listeners & dispatchers from direct addressing.

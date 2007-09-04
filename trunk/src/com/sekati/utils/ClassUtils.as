@@ -6,7 +6,7 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
-import com.sekati.core.KeyFactory;
+ import com.sekati.core.KeyFactory;
 
  /**
   * Static class for wrapping various Class utilities. For example linking 'extend MovieClip' type 

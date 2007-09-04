@@ -6,7 +6,7 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  
-import com.sekati.core.CoreInterface;
+ import com.sekati.core.CoreInterface;
  
 /**
  * Interface describing {@link com.sekati.display.BaseClip} which is 

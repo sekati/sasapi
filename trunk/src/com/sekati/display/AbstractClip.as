@@ -6,7 +6,7 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
-import com.sekati.display.CoreClip;
+ import com.sekati.display.CoreClip;
 
 /**
  * Generic subclass implementation of {@link com.sekati.display.CoreClip}.

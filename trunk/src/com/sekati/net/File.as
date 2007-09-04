@@ -6,11 +6,11 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  
-import com.sekati.events.Event;
-import com.sekati.events.Dispatcher;
-import com.sekati.reflect.Stringifier;
-import com.sekati.utils.Delegate;
-import flash.net.FileReference;
+ import com.sekati.events.Event;
+ import com.sekati.events.Dispatcher;
+ import com.sekati.reflect.Stringifier;
+ import com.sekati.utils.Delegate;
+ import flash.net.FileReference;
  
 /**
  * File handler class for uploading and downloading files and FileReference Events.<br>

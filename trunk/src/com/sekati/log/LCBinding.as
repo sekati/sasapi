@@ -6,7 +6,7 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
-import com.sekati.events.Event;
+ import com.sekati.events.Event;
  
 /**
  * Centralize {@link Console} & {@link Logger} LocalConnections.
