@@ -1,6 +1,6 @@
 /**
  * com.sekati.data.SharedObj
- * @version 1.0.5
+ * @version 1.0.7
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -19,6 +19,7 @@ class com.sekati.data.SharedObj extends SharedObject implements CoreInterface {
 	
 	private var _this:SharedObj;
 	private var _so:SharedObject;
+	private var _name:String;
 	
 	/**
 	 * SharedObj Constructor
@@ -32,8 +33,9 @@ class com.sekati.data.SharedObj extends SharedObject implements CoreInterface {
 			return;	
 		}
 		super();
+		_name = so_name;
 		_this = this;
-		_so = SharedObj.getLocal(so_name);
+		_so = SharedObj.getLocal(_name);
 		_so.onStatus = Delegate.create(_this, so_onStatus);
 		_so.onSync = Delegate.create(_this, so_onSync);
 	}
@@ -41,7 +43,7 @@ class com.sekati.data.SharedObj extends SharedObject implements CoreInterface {
 	/**
 	 * onStatus event handler dispatches event
 	 */
-	private function so_onStatus(info):Void {
+	private function so_onStatus(info:Object):Void {
 		trace ("status info: " + info);
 		var e:Event = new Event("so_onStatus", this, {info:info});
 		Dispatcher.$.dispatchEvent(e);
@@ -50,7 +52,7 @@ class com.sekati.data.SharedObj extends SharedObject implements CoreInterface {
 	/**
 	 * onSync event handler dispatches event
 	 */
-	private function so_onSync(obj):Void {
+	private function so_onSync(obj:Object):Void {
 		trace ("sync obj: " + obj);
 		var e:Event = new Event("so_onSync", this, {obj:obj});
 		Dispatcher.$.dispatchEvent(e);
@@ -63,7 +65,7 @@ class com.sekati.data.SharedObj extends SharedObject implements CoreInterface {
 	 * @return Void
 	 */
 	public function write (prop:String, val:Object):Void {
-		_so.data.prop = val;
+		_so.data[prop] = val;
 		_so.flush ();
 	}
 	
@@ -73,7 +75,7 @@ class com.sekati.data.SharedObj extends SharedObject implements CoreInterface {
 	 * @return Object - property value
 	 */
 	public function read (prop:String):Object {
-		return _so.data.prop;
+		return _so.data[prop];
 	}
 	
 	/**
@@ -94,7 +96,7 @@ class com.sekati.data.SharedObj extends SharedObject implements CoreInterface {
 	 * return recursively formatted data of shared object
 	 */
 	private function getData():String {
-		var str:String = _so._name+"={\n";
+		var str:String = _name+"={\n";
 		for (var prop in _so.data) {
 			str += prop+": "+_so.data[prop]+"\n";
 		}
