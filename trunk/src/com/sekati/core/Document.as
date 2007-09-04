@@ -1,15 +1,13 @@
 /**
  * com.sekati.core.Document
- * @version 1.0.1
+ * @version 1.0.3
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  
  import com.sekati.core.App;
- import com.sekati.core.KeyFactory;
  import com.sekati.display.BaseClip;
- import com.sekati.reflect.Stringifier;
  import com.sekati.log.Logger;
 
 /**
@@ -26,7 +24,8 @@ class com.sekati.core.Document extends BaseClip {
 	/**
 	 * Constructor
 	 */
-	private function Document () {
+	private function Document() {
+		super();
 		init();
 	}
 	
@@ -46,7 +45,6 @@ class com.sekati.core.Document extends BaseClip {
 	 * @return Void
 	 */
 	private function init():Void {
-		KeyFactory.inject(this);
 		setMovieProps();
 		buildCompositions();
 		App.init();

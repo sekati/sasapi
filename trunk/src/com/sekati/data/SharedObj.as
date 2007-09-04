@@ -88,16 +88,6 @@ class com.sekati.data.SharedObj extends SharedObject implements CoreInterface {
 	}
 	
 	/**
-	 * Destroy sharedObject data and instance
-	 * @return Void
-	 */
-	public function destroy():Void {
-		_so.data = null;
-		_so.flush();
-		delete this;
-	}	
-	
-	/**
 	 * return recursively formatted data of shared object
 	 */
 	private function getData():String {
@@ -109,6 +99,16 @@ class com.sekati.data.SharedObj extends SharedObject implements CoreInterface {
 		return str;
 	}
 	
+	/**
+	 * Destroy sharedObject data and instance
+	 * @return Void
+	 */
+	public function destroy():Void {
+		_so.data = null;
+		_so.flush();
+		delete this;
+	}	
+		
 	/**
 	 * return reflective output
 	 * @return String

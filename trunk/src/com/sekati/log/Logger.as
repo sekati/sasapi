@@ -1,12 +1,12 @@
 /**
  * com.sekati.log.Logger
- * @version 1.1.5
+ * @version 1.1.7
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
- import com.sekati.core.CoreInterface; 
+ import com.sekati.core.CoreObject; 
  import com.sekati.events.Dispatcher;
  import com.sekati.events.Event;
  import com.sekati.log.Inspector;
@@ -35,7 +35,7 @@
  * 
  * @see {@link com.sekati.log.Console}
  */
-class com.sekati.log.Logger implements CoreInterface {
+class com.sekati.log.Logger extends CoreObject {
 
 	private static var _instance:Logger;
 
@@ -63,6 +63,7 @@ class com.sekati.log.Logger implements CoreInterface {
 	 * Singleton Private Constructor
 	 */
 	private function Logger() {
+		super();
 		resetLevels();
 		resetFilters();
 		_proxyObj = new Object();
@@ -329,21 +330,12 @@ class com.sekati.log.Logger implements CoreInterface {
 	
 	/**
 	 * Destroy the Singleton instance.
+	 * @return Void
 	 */
 	public function destroy():Void {
 		_watch.destroy();
 		LCBinding.disconnect();
-		for(var i in _instance){
-			delete _instance[i];	
-		}
 		delete _instance;
+		super.destroy();
 	}
-	
-	/**
-	 * Override with reflective output.
-	 * @return String
-	 */
-	public function toString():String {
-		return Stringifier.stringify(this);	
-	}	
 }

@@ -286,7 +286,7 @@ class com.sekati.data.FLV extends CoreObject {
 	 * @return Void
 	 */
 	public function destroy():Void {
-		super.destroy();
 		FramePulse.getInstance().removeFrameListener(_this);
+		super.destroy();
 	}
 }

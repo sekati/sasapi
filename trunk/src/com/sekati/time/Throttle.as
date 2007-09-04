@@ -78,7 +78,7 @@ class com.sekati.time.Throttle extends CoreObject {
 	 * Destroy instance.
 	 */
 	public function destroy():Void {
-		super.destroy();
 		clearThrottle();
+		super.destroy();
 	}	
 }

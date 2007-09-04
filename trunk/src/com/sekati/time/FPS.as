@@ -68,8 +68,8 @@ class com.sekati.time.FPS extends CoreObject {
 	 * @return Void
 	 */
 	public function destroy():Void {
-		super.destroy();
 		FramePulse.$.removeFrameListener(_this);
-		delete _this;		
+		delete _this;
+		super.destroy();
 	}	
 }

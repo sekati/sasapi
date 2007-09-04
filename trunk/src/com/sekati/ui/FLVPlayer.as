@@ -1,6 +1,6 @@
 ﻿/**
  * com.sekati.ui.FLVPlayer
- * @version 1.1.3
+ * @version 1.1.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -9,8 +9,8 @@
  import com.sekati.core.App;
  import com.sekati.core.FWDepth;
  import com.sekati.data.FLV;
+ import com.sekati.display.CoreClip; 
  import com.sekati.utils.Delegate;
- import com.sekati.display.CoreClip;
 
 /**
  * FLVPlayer controller to be used with {@link com.sekati.data.FLV}

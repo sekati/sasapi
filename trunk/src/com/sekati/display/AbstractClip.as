@@ -33,7 +33,7 @@ class com.sekati.display.AbstractClip extends CoreClip {
 	 * @return Void
 	 */
 	private function destroy():Void {
-		super.destroy();
 		trace(toString()+" | "+_this._name+"  called destroy()");
+		super.destroy();
 	}
 }
