@@ -34,7 +34,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="31">    31  </span>		<span class="comment">// verify that each item in the array has an _x,_y or x,y property to be sorted.</span>
 <span class="lineno" id="32">    32  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = <span class="num_const">0</span>; i &lt; items.length; i++) {
 <span class="lineno" id="33">    33  </span>			<span class="key">if</span>((!items[i]._x &amp;&amp; !items[i]._y) &amp;&amp; (!items[i].x &amp;&amp; !items[i].y)) {
-<span class="lineno" id="34">    34  </span>				<span class="key">throw</span> <span class="key">new</span> Error(<span class="str_const">"@@@ com.sekati.geom.Sort Error: constructor expects 'items' argument array to contain objects with '_x',_y' or 'x','y' properties."</span>);
+<span class="lineno" id="34">    34  </span>				<span class="key">throw</span> <span class="key">new</span> Error(<span class="str_const">"@@@ "</span>+<span class="key">this</span>.toString()+<span class="str_const">" Error: constructor expects 'items' argument array to contain objects with '_x',_y' or 'x','y' properties."</span>);
 <span class="lineno" id="35">    35  </span>				<span class="key">return</span>;
 <span class="lineno" id="36">    36  </span>			}
 <span class="lineno" id="37">    37  </span>		}
