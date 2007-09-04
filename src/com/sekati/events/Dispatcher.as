@@ -132,8 +132,8 @@ class com.sekati.events.Dispatcher extends CoreObject implements IDispatchable {
 	 * @return Void
 	 */
 	public function destroy():Void {
-		super.destroy();
 		delete _manager;
 		delete _instance;
+		super.destroy();
 	}	
 }

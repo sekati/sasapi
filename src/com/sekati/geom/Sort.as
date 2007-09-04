@@ -31,7 +31,7 @@ class com.sekati.geom.Sort extends CoreObject {
 		// verify that each item in the array has an _x,_y or x,y property to be sorted.
 		for (var i:Number = 0; i < items.length; i++) {
 			if((!items[i]._x && !items[i]._y) && (!items[i].x && !items[i].y)) {
-				throw new Error("@@@ com.sekati.geom.Sort Error: constructor expects 'items' argument array to contain objects with '_x',_y' or 'x','y' properties.");
+				throw new Error("@@@ "+this.toString()+" Error: constructor expects 'items' argument array to contain objects with '_x',_y' or 'x','y' properties.");
 				return;
 			}
 		}

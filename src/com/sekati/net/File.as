@@ -1,14 +1,14 @@
 /**
  * com.sekati.net.File
- * @version 1.0.1
+ * @version 1.0.3
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  
+ import com.sekati.core.CoreObject;
  import com.sekati.events.Event;
  import com.sekati.events.Dispatcher;
- import com.sekati.reflect.Stringifier;
  import com.sekati.utils.Delegate;
  import flash.net.FileReference;
  
@@ -16,7 +16,7 @@
  * File handler class for uploading and downloading files and FileReference Events.<br>
  * TODO Needs thorough testing to confirm event handling works properly.
  */
-class com.sekati.net.File {
+class com.sekati.net.File extends CoreObject {
 	
 	private var _this:File;
 	private var _ref:FileReference;
@@ -46,6 +46,7 @@ class com.sekati.net.File {
 	 * Constructor
 	 */
 	public function File() {
+		super();
 		_this = this;
 		_listener = new Object();
 		_ref = new FileReference();
@@ -186,12 +187,4 @@ class com.sekati.net.File {
 	    trace("onSecurityError: " + file.name + " errorString: " + errorString);
 	    Dispatcher(new Event(onSecurityErrorEVENT, _this, {name: file.name, errorString: errorString}));
 	}
-	
-	/**
-	 * Override with reflective output.
-	 * @return String
-	 */
-	public function toString():String {
-		return Stringifier.stringify(this);	
-	}	
 }

@@ -24,7 +24,7 @@ class com.sekati.data.Iterator extends CoreObject {
 	public function Iterator(data:Array) {
 		super();
 		if(!data) {
-			throw new Error ("@@@ com.sekati.data.Iterator Error: instance constructor expects data:Array argument.");
+			throw new Error ("@@@ "+this.toString()+" Error: instance constructor expects data:Array argument.");
 			return;	
 		} else {
 			_data = data;

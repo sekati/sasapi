@@ -136,9 +136,9 @@ class com.sekati.events.FramePulse extends CoreObject implements IPulsable {
 	 * @return Void
 	 */
 	public function destroy():Void {
-		super.destroy();
 		_instance.stop();
 		_mc.destroy();
 		delete _instance;
+		super.destroy();
 	}	
 }

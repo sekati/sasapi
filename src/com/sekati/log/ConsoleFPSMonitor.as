@@ -93,8 +93,7 @@ class com.sekati.log.ConsoleFPSMonitor extends BaseClip {
 	 * @return Void
 	 */
 	public function destroy():Void {
-		super.destroy();
 		_fps.destroy();
-		trace(_this._name+" ConsoleFPSMonitor destroy()");
+		super.destroy();
 	}	
 }

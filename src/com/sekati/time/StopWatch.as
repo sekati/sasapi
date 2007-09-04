@@ -71,7 +71,7 @@ class com.sekati.time.StopWatch extends CoreObject {
 	 * Destroy instance.
 	 */
 	public function destroy():Void {
-		super.destroy();
 		stop();
+		super.destroy();
 	}			
 }

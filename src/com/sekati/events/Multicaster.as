@@ -153,8 +153,8 @@ class com.sekati.events.Multicaster extends CoreObject implements IMulticastable
 	 * @return Void
 	 */
 	public function destroy():Void {
-		super.destroy();
 		delete _listeners;
 		delete _instance;
+		super.destroy();
 	}	
 }
