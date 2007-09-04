@@ -6,8 +6,9 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
- import com.sekati.core.CoreInterface; 
+ import com.sekati.core.CoreObject;
  import com.sekati.core.FWDepth;
+ import com.sekati.events.IPulsable;
  import com.sekati.reflect.Stringifier;
  import com.sekati.utils.ClassUtils;
  import com.sekati.utils.Delegate;
@@ -15,7 +16,7 @@
 /**
  * Framerate FramePulse Broadcaster
  */
-class com.sekati.events.FramePulse implements CoreInterface {
+class com.sekati.events.FramePulse extends CoreObject implements IPulsable {
 	
 	// AsBroadcaster stubs
 	private var addListener:Function;
@@ -75,7 +76,7 @@ class com.sekati.events.FramePulse implements CoreInterface {
 	 * Check if OEF FramePulse is running
 	 * @return Boolean
 	 */
-	public function isRunning():Boolean{
+	public function isRunning():Boolean {
 		return _mc.onEnterFrame == _f;
 	}	
 	
@@ -84,7 +85,7 @@ class com.sekati.events.FramePulse implements CoreInterface {
 	 * @param o (Object) to register
 	 * @return Void
 	 */
-	public function addFrameListener(o:Object):Void{
+	public function addFrameListener(o:Object):Void {
 		if (_listeners.length < 1) start();
 		addListener(o);
 	}
@@ -105,7 +106,7 @@ class com.sekati.events.FramePulse implements CoreInterface {
 	 * @param o (Object) to unregister
 	 * @return Void
 	 */
-	public function removeFrameListener(o:Object):Void{
+	public function removeFrameListener(o:Object):Void {
 		removeListener(o);
 		if (_listeners.length < 1) stop();
 	}
@@ -125,7 +126,7 @@ class com.sekati.events.FramePulse implements CoreInterface {
 	 * check is a FramePulse listener is registered
 	 * @return Boolean
 	 */
-	public function isListenerRegistered(o:Object):Boolean{
+	public function isListenerRegistered(o:Object):Boolean {
 		for (var i in _listeners) if(_listeners[i] === o) return true;
 		return false;
 	}
@@ -135,16 +136,9 @@ class com.sekati.events.FramePulse implements CoreInterface {
 	 * @return Void
 	 */
 	public function destroy():Void {
+		super.destroy();
 		_instance.stop();
 		_mc.destroy();
 		delete _instance;
-	}
-	
-	/**
-	 * Override with reflective output.
-	 * @return String
-	 */
-	public function toString():String {
-		return Stringifier.stringify(this);	
 	}	
 }

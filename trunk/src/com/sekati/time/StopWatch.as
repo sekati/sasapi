@@ -1,18 +1,17 @@
 /**
  * com.sekati.time.StopWatch
- * @version 1.0.5
+ * @version 1.0.7
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
- import com.sekati.core.CoreInterface; 
- import com.sekati.reflect.Stringifier;
+ import com.sekati.core.CoreObject;
  
 /**
  * Simple stopwatch class
  */
-class com.sekati.time.StopWatch {
+class com.sekati.time.StopWatch extends CoreObject {
 
 	private var _initTime:Number;
 	private var _endTime:Number;
@@ -24,6 +23,7 @@ class com.sekati.time.StopWatch {
 	 * @param startNow (Boolean)
 	 */
 	public function StopWatch(startNow:Boolean){
+		super();
 		if(startNow) start();
 	}
 
@@ -71,18 +71,7 @@ class com.sekati.time.StopWatch {
 	 * Destroy instance.
 	 */
 	public function destroy():Void {
-		this.stop();
-		for(var i in this){
-			delete this[i];	
-		}
-		delete this;
-	}
-	
-	/**
-	 * Override with reflective output.
-	 * @return String
-	 */
-	public function toString():String {
-		return Stringifier.stringify(this);	
+		super.destroy();
+		stop();
 	}			
 }

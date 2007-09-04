@@ -1,6 +1,6 @@
 /**
  * com.sekati.time.Throttle
- * @version 1.0.0
+ * @version 1.0.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -8,7 +8,7 @@
  * Sourced/adapted from bumpslide lib
  */
  
- import com.sekati.reflect.Stringifier;
+ import com.sekati.core.CoreObject;
  
 /**
  * Throttle time between method calls
@@ -18,7 +18,7 @@
  * function doUpdate() { trace("throttled method!"); }
  * }
  */
-class com.sekati.time.Throttle {
+class com.sekati.time.Throttle extends CoreObject {
 
 	private var _fn:Function;
 	private var _delay:Number;
@@ -33,6 +33,7 @@ class com.sekati.time.Throttle {
 	 * @param ms (Number) millisecond delay between calls
 	 */
 	public function Throttle (proxyFunc:Function, msDelay:Number) {
+		super();
 		_fn = proxyFunc;
 		_delay = msDelay;
 	}
@@ -74,10 +75,10 @@ class com.sekati.time.Throttle {
 	}
 	
 	/**
-	 * Override with reflective output.
-	 * @return String
+	 * Destroy instance.
 	 */
-	public function toString():String {
-		return Stringifier.stringify(this);	
+	public function destroy():Void {
+		super.destroy();
+		clearThrottle();
 	}	
 }

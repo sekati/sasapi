@@ -46,7 +46,7 @@ class com.sekati.net.Bandwidth extends CoreObject {
 			var speed:Number = Math.round( (filesize / 1024 * 8) / (ms / 1000) );
 			_cb (speed, filesize, ms);	
 		} else {
-			throw new Error ("@@@ "+_this.toString()+" Error: data file loading failed.");
+			throw new Error ("@@@ "+this.toString()+" Error: data file loading failed.");
 		}
 	}
 }

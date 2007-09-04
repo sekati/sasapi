@@ -1,5 +1,5 @@
 /**
- * com.sekati.events.IEvent
+ * com.sekati.services.ISOAPClient
  * @version 1.0.0
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
@@ -9,10 +9,12 @@
  import com.sekati.core.CoreInterface;
  
 /**
- * Interface describing {@link com.sekati.events.Event}.
+ * Interface describing {@link SOAPClient}.
  */
-interface com.sekati.events.IEvent extends CoreInterface {
+interface com.sekati.services.ISOAPClient extends CoreInterface {
 	
-	function bubble(newTarget:Object):Void;
+	function connect (wsdl:String, port:String):Void;
+	
+	function call (method:String, args:Array):Void;
 	
 }

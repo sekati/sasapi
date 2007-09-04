@@ -1,0 +1,10 @@
+strict digraph interface_diagram {
+  rankdir=LR;
+  ISOAPClient[
+    label="ISOAPClient",
+    URL="ISOAPClient.html",
+    tooltip="com.sekati.services.ISOAPClient",
+    fontname="Times-Italic",
+    shape="record"
+  ];
+}
