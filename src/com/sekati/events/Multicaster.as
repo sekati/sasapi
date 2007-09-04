@@ -1,11 +1,12 @@
 /**
  * com.sekati.events.Multicaster
- * @version 1.0.0
+ * @version 1.0.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  
+ import com.sekati.core.CoreObject;
  import com.sekati.core.KeyFactory;
  import com.sekati.events.IMulticastable;
  import com.sekati.reflect.Stringifier;
@@ -22,7 +23,7 @@
  * granularity not tied to the {@link Event} object or the mx.events.EventDispatcher
  * and is more optimized than {@link Broadcaster}. 
  */
-class com.sekati.events.Multicaster implements IMulticastable {
+class com.sekati.events.Multicaster extends CoreObject implements IMulticastable {
 
 	private static var _instance:Multicaster;
 	private var _listeners:Array;
@@ -152,15 +153,8 @@ class com.sekati.events.Multicaster implements IMulticastable {
 	 * @return Void
 	 */
 	public function destroy():Void {
+		super.destroy();
 		delete _listeners;
 		delete _instance;
-	}	
-	
-	/**
-	 * Override with reflective output.
-	 * @return String
-	 */
-	public function toString():String {
-		return Stringifier.stringify(this);	
 	}	
 }

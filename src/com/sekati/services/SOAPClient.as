@@ -9,6 +9,7 @@
  import com.sekati.core.CoreObject;
  import com.sekati.events.Dispatcher;
  import com.sekati.log.Logger;
+ import com.sekati.services.ISOAPClient;
  import com.sekati.services.SOAPEvent;
  import com.sekati.utils.Delegate;
  import com.sekati.validate.TypeValidation;
@@ -26,7 +27,7 @@
  * @see <a href="http://www.flash-db.com/Tutorials/lclasses/lclasses.php?page=2">http://www.flash-db.com/Tutorials/lclasses/lclasses.php?page=2</a>
  * @see <a href="http://www.adobe.com/devnet/flash/articles/flmxpro_webservices_03.html">http://www.adobe.com/devnet/flash/articles/flmxpro_webservices_03.html</a>
  */
-class com.sekati.services.SOAPClient extends CoreObject {
+class com.sekati.services.SOAPClient extends CoreObject implements ISOAPClient {
 
 	private static var _instance:SOAPClient;
 	private var _ws:WebService;
@@ -38,7 +39,8 @@ class com.sekati.services.SOAPClient extends CoreObject {
 	/**
 	 * Singleton Private Constructor
 	 */
-	private function SOAPClient () {
+	private function SOAPClient() {
+		super();
 		_isConnected = false;
 		_isVerbose = false;
 	}

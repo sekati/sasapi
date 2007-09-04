@@ -3,30 +3,30 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span><span class="comment doc">/**
 <span class="lineno" id="2">     2  </span> * com.sekati.time.StopWatch
-<span class="lineno" id="3">     3  </span> * @version 1.0.5
+<span class="lineno" id="3">     3  </span> * @version 1.0.7
 <span class="lineno" id="4">     4  </span> * @author jason m horwitz | sekati.com
 <span class="lineno" id="5">     5  </span> * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
 <span class="lineno" id="7">     7  </span> */</span>
 <span class="lineno" id="8">     8  </span>
-<span class="lineno" id="9">     9  </span> <span class="key">import</span> com.sekati.core.CoreInterface; 
-<span class="lineno" id="10">    10  </span> <span class="key">import</span> com.sekati.reflect.Stringifier;
-<span class="lineno" id="11">    11  </span> 
-<span class="lineno" id="12">    12  </span><span class="comment doc">/**
-<span class="lineno" id="13">    13  </span> * Simple stopwatch class
-<span class="lineno" id="14">    14  </span> */</span>
-<span class="lineno" id="15">    15  </span><span class="key">class</span> com.sekati.time.StopWatch {
-<span class="lineno" id="16">    16  </span>
-<span class="lineno" id="17">    17  </span>	<span class="key">private</span> <span class="key">var</span> _initTime:Number;
-<span class="lineno" id="18">    18  </span>	<span class="key">private</span> <span class="key">var</span> _endTime:Number;
-<span class="lineno" id="19">    19  </span>	<span class="key">private</span> <span class="key">var</span> _lastLap:Number;
-<span class="lineno" id="20">    20  </span>	<span class="key">private</span> <span class="key">var</span> _ms:Number;
-<span class="lineno" id="21">    21  </span>
-<span class="lineno" id="22">    22  </span>	<span class="comment doc">/**
-<span class="lineno" id="23">    23  </span>	 * constructor
-<span class="lineno" id="24">    24  </span>	 * @param startNow (Boolean)
-<span class="lineno" id="25">    25  </span>	 */</span>
-<span class="lineno" id="26">    26  </span>	<span class="key">public</span> <span class="key">function</span> StopWatch(startNow:Boolean){
+<span class="lineno" id="9">     9  </span> <span class="key">import</span> com.sekati.core.CoreObject;
+<span class="lineno" id="10">    10  </span> 
+<span class="lineno" id="11">    11  </span><span class="comment doc">/**
+<span class="lineno" id="12">    12  </span> * Simple stopwatch class
+<span class="lineno" id="13">    13  </span> */</span>
+<span class="lineno" id="14">    14  </span><span class="key">class</span> com.sekati.time.StopWatch <span class="key">extends</span> CoreObject {
+<span class="lineno" id="15">    15  </span>
+<span class="lineno" id="16">    16  </span>	<span class="key">private</span> <span class="key">var</span> _initTime:Number;
+<span class="lineno" id="17">    17  </span>	<span class="key">private</span> <span class="key">var</span> _endTime:Number;
+<span class="lineno" id="18">    18  </span>	<span class="key">private</span> <span class="key">var</span> _lastLap:Number;
+<span class="lineno" id="19">    19  </span>	<span class="key">private</span> <span class="key">var</span> _ms:Number;
+<span class="lineno" id="20">    20  </span>
+<span class="lineno" id="21">    21  </span>	<span class="comment doc">/**
+<span class="lineno" id="22">    22  </span>	 * constructor
+<span class="lineno" id="23">    23  </span>	 * @param startNow (Boolean)
+<span class="lineno" id="24">    24  </span>	 */</span>
+<span class="lineno" id="25">    25  </span>	<span class="key">public</span> <span class="key">function</span> StopWatch(startNow:Boolean){
+<span class="lineno" id="26">    26  </span>		<span class="key">super</span>();
 <span class="lineno" id="27">    27  </span>		<span class="key">if</span>(startNow) start();
 <span class="lineno" id="28">    28  </span>	}
 <span class="lineno" id="29">    29  </span>
@@ -74,18 +74,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="71">    71  </span>	 * Destroy instance.
 <span class="lineno" id="72">    72  </span>	 */</span>
 <span class="lineno" id="73">    73  </span>	<span class="key">public</span> <span class="key">function</span> destroy():Void {
-<span class="lineno" id="74">    74  </span>		<span class="key">this</span>.stop();
-<span class="lineno" id="75">    75  </span>		<span class="key">for</span>(<span class="key">var</span> i <span class="key">in</span> <span class="key">this</span>){
-<span class="lineno" id="76">    76  </span>			<span class="key">delete</span> <span class="key">this</span>[i];	
-<span class="lineno" id="77">    77  </span>		}
-<span class="lineno" id="78">    78  </span>		<span class="key">delete</span> <span class="key">this</span>;
-<span class="lineno" id="79">    79  </span>	}
-<span class="lineno" id="80">    80  </span>	
-<span class="lineno" id="81">    81  </span>	<span class="comment doc">/**
-<span class="lineno" id="82">    82  </span>	 * Override with reflective output.
-<span class="lineno" id="83">    83  </span>	 * @return String
-<span class="lineno" id="84">    84  </span>	 */</span>
-<span class="lineno" id="85">    85  </span>	<span class="key">public</span> <span class="key">function</span> toString():String {
-<span class="lineno" id="86">    86  </span>		<span class="key">return</span> Stringifier.stringify(<span class="key">this</span>);	
-<span class="lineno" id="87">    87  </span>	}			
-<span class="lineno" id="88">    88  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of Sekati" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.time" class="button">Package</a></li><li><a href="StopWatch.html" title="Detail of com.sekati.time.StopWatch API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
+<span class="lineno" id="74">    74  </span>		<span class="key">super</span>.destroy();
+<span class="lineno" id="75">    75  </span>		stop();
+<span class="lineno" id="76">    76  </span>	}			
+<span class="lineno" id="77">    77  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of Sekati" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.time" class="button">Package</a></li><li><a href="StopWatch.html" title="Detail of com.sekati.time.StopWatch API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>

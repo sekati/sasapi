@@ -1,14 +1,13 @@
 /**
  * com.sekati.time.FPS
- * @version 1.1.0
+ * @version 1.1.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
- import com.sekati.core.CoreInterface;
+ import com.sekati.core.CoreObject;
  import com.sekati.events.FramePulse;
- import com.sekati.reflect.Stringifier;
  
 /**
  * Monitor the current applications framerate (fps).
@@ -19,7 +18,7 @@
  * 	}
  * }
  */
-class com.sekati.time.FPS implements CoreInterface {
+class com.sekati.time.FPS extends CoreObject {
 
 	private var _this:FPS;
 	private var _frame:Number;
@@ -37,6 +36,7 @@ class com.sekati.time.FPS implements CoreInterface {
 	 * @param updateEachFrame (Number) frame ticks between cb updates
 	 */
 	public function FPS (cb:Function, updateEachFrame:Number) {
+		super();
 		_this = this;
 		_frame = 1;
 		_cb = cb;
@@ -68,15 +68,8 @@ class com.sekati.time.FPS implements CoreInterface {
 	 * @return Void
 	 */
 	public function destroy():Void {
+		super.destroy();
 		FramePulse.$.removeFrameListener(_this);
 		delete _this;		
-	}
-	
-	/**
-	 * Override with reflective output.
-	 * @return String
-	 */
-	public function toString():String {
-		return Stringifier.stringify(this);	
 	}	
 }

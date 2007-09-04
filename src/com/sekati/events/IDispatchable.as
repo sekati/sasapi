@@ -23,4 +23,5 @@ interface com.sekati.events.IDispatchable extends CoreInterface {
 	function bubbleEvent (e:Event):Void;
 
 	function broadcastEvent (_type:String, _target:Object, _data:Object):Void;
+
 }

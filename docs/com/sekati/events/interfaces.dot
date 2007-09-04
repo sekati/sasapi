@@ -1,5 +1,12 @@
 strict digraph interface_diagram {
   rankdir=LR;
+  IPulsable[
+    label="IPulsable",
+    URL="IPulsable.html",
+    tooltip="com.sekati.events.IPulsable",
+    fontname="Times-Italic",
+    shape="record"
+  ];
   IMulticastable[
     label="IMulticastable",
     URL="IMulticastable.html",
