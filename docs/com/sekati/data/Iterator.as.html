@@ -27,7 +27,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="24">    24  </span>	<span class="key">public</span> <span class="key">function</span> Iterator(data:Array) {
 <span class="lineno" id="25">    25  </span>		<span class="key">super</span>();
 <span class="lineno" id="26">    26  </span>		<span class="key">if</span>(!data) {
-<span class="lineno" id="27">    27  </span>			<span class="key">throw</span> <span class="key">new</span> Error (<span class="str_const">"@@@ com.sekati.data.Iterator Error: instance constructor expects data:Array argument."</span>);
+<span class="lineno" id="27">    27  </span>			<span class="key">throw</span> <span class="key">new</span> Error (<span class="str_const">"@@@ "</span>+<span class="key">this</span>.toString()+<span class="str_const">" Error: instance constructor expects data:Array argument."</span>);
 <span class="lineno" id="28">    28  </span>			<span class="key">return</span>;	
 <span class="lineno" id="29">    29  </span>		} <span class="key">else</span> {
 <span class="lineno" id="30">    30  </span>			_data = data;
