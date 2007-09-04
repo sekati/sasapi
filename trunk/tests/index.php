@@ -1,6 +1,6 @@
 <?php
 /*
- * Unit Test Browser - Created on Sep 2, 2007
+ * Unit Test Runner - Created on Sep 2, 2007
  * @version 1.0.0
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
@@ -14,7 +14,7 @@ header('Pragma: no-cache');
 header('Expires: -1');
 error_reporting(E_ALL ^ E_NOTICE);
 
-$appName = 'Sekati Unit Test Browser | jason m horwitz | sekati.com';
+$appName = 'Sekati Unit Test Runner | jason m horwitz | sekati.com';
 
 $header = '<!-- saved from url=(0013)about:internet -->';
 $header .= '<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />';
@@ -22,7 +22,7 @@ $header .= '<script language="javascript" src="../deploy/js/sasapi.js" type="tex
 $header .= '<script language="javascript" src="../deploy/js/swfIN.js" type="text/javascript"></script>';
 $header .= '<link rel="stylesheet" type="text/css" href="../deploy/css/style.css" />';
 $header .= "<title>".$appName.'</title></head><body>';
-$header .= '<a href="?" target="_self"><strong>&laquo; Tests Index</strong></a><hr/><br/>';
+$header .= '<a href="?" target="_self"><strong>&laquo; Test Runner Index &raquo;</strong></a><hr/><br/>';
 
 $footer = '<br/><hr/></body></html>';
 
@@ -74,6 +74,6 @@ function template ($swf) {
 ///////////////////////////////////////////////////////
 
 if($swf) die($header.template($swf).$footer);
-if($html) die ($header."Loading Test: $html ...<meta HTTP-EQUIV='Refresh' CONTENT='0;URL=$html'>.$footer");
+if($html) die ($header."Loading Test: $html ...<meta HTTP-EQUIV='Refresh' CONTENT='1;URL=$html'>.$footer");
 echo ($header.indexTests().$footer);
 ?>
