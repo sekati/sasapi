@@ -8,12 +8,12 @@
  * Sourced from ascrypt for dependencies only - version 2.0, author Mika Pamu
  */
 
-import com.sekati.crypt.IHash;
-import com.sekati.crypt.SHA1;
+ import com.sekati.crypt.IHash;
+ import com.sekati.crypt.SHA1;
 
 /**
-* Creates a new genuine unique identifier string.
-*/
+ * Creates a new genuine unique identifier string.
+ */
 class com.sekati.crypt.GUID implements IHash {
 	
 	private static var counter:Number = 0;

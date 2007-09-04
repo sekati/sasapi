@@ -6,7 +6,7 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
-import com.sekati.crypt.IHash;
+ import com.sekati.crypt.IHash;
 
 /**
  * Validate a number with the Luhn Algorithm (aka Mod10) which is standard for pre-validating card numbers before 

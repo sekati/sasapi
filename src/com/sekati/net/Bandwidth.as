@@ -6,8 +6,9 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
-import com.sekati.time.StopWatch;
-import com.sekati.utils.Delegate;
+ import com.sekati.core.CoreObject;
+ import com.sekati.time.StopWatch;
+ import com.sekati.utils.Delegate;
 
 /**
  * Simple bandwidth throughput test
@@ -18,7 +19,7 @@ import com.sekati.utils.Delegate;
  * var bandwidthTest = new com.sekati.net.Bandwidth("assets/bandwidth_data/50k", bandwidthResult);
  * } 
  */
-class com.sekati.net.Bandwidth {
+class com.sekati.net.Bandwidth extends CoreObject {
 
 	private var _timer:StopWatch;
 	private var _cb:Function;
@@ -30,6 +31,7 @@ class com.sekati.net.Bandwidth {
 	 * @param cb (Function) callback function for test to return speed, filesize, ms results.
 	 */
 	public function Bandwidth (uri:String, cb:Function) {
+		super();
 		_cb = cb;
 		_timer = new StopWatch(true);
 		_con = new LoadVars();
@@ -44,7 +46,7 @@ class com.sekati.net.Bandwidth {
 			var speed:Number = Math.round( (filesize / 1024 * 8) / (ms / 1000) );
 			_cb (speed, filesize, ms);	
 		} else {
-			throw new Error ("@@@ com.sekati.net.Bandwidth Error: data file loading failed.");
+			throw new Error ("@@@ "+_this.toString()+" Error: data file loading failed.");
 		}
 	}
 }

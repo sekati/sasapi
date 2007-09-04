@@ -6,9 +6,9 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
-import com.sekati.core.CoreInterface;
-import com.sekati.events.FramePulse;
-import com.sekati.reflect.Stringifier;
+ import com.sekati.core.CoreInterface;
+ import com.sekati.events.FramePulse;
+ import com.sekati.reflect.Stringifier;
  
 /**
  * Monitor the current applications framerate (fps).

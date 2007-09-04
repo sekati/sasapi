@@ -6,8 +6,8 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
-import com.sekati.core.CoreInterface; 
-import com.sekati.reflect.Stringifier;
+ import com.sekati.core.CoreInterface; 
+ import com.sekati.reflect.Stringifier;
  
 /**
  * Simple stopwatch class

@@ -11,7 +11,7 @@
  * @see http://www.lalex.com/blog/comments/200405/164-compression-lzw-actionscript-2.html
  */
 
-import com.sekati.crypt.ICipher;
+ import com.sekati.crypt.ICipher;
 
 /**
  * Compresses and decompresses text with the LZW algorithm.

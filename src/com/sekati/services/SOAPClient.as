@@ -6,14 +6,14 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
-import com.sekati.core.CoreObject;
-import com.sekati.events.Dispatcher;
-import com.sekati.log.Logger;
-import com.sekati.services.SOAPEvent;
-import com.sekati.utils.Delegate;
-import com.sekati.validate.TypeValidation;
-import mx.services.SOAPCall;
-import mx.services.WebService;
+ import com.sekati.core.CoreObject;
+ import com.sekati.events.Dispatcher;
+ import com.sekati.log.Logger;
+ import com.sekati.services.SOAPEvent;
+ import com.sekati.utils.Delegate;
+ import com.sekati.validate.TypeValidation;
+ import mx.services.SOAPCall;
+ import mx.services.WebService;
 
 /**
  * Soap Client class to be used with <a href="http://consume.sekati.com/?sid=swsdk">JNuSOAP</a>.<br>

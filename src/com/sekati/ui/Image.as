@@ -6,8 +6,8 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  
-import com.sekati.core.App;
-import com.sekati.display.CoreClip;
+ import com.sekati.core.App;
+ import com.sekati.display.CoreClip;
 
 /**
  * image loader. Required: mc_tween2

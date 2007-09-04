@@ -6,7 +6,7 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  
-import com.sekati.validate.StringValidation;
+ import com.sekati.validate.StringValidation;
  
 /**
  * static class wrapping various Network utilities

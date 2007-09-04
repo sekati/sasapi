@@ -6,8 +6,8 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  
-import com.sekati.events.Event;
-import com.sekati.services.SOAPClient;
+ import com.sekati.events.Event;
+ import com.sekati.services.SOAPClient;
  
 /**
  * SoapEvent object for use by {@link Logger} for {@link Console}.

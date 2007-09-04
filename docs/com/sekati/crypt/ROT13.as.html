@@ -11,20 +11,20 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="8">     8  </span> * Sourced from ascrypt for dependencies only - version 2.0, author Mika Pamu
 <span class="lineno" id="9">     9  </span> */</span>
 <span class="lineno" id="10">    10  </span>
-<span class="lineno" id="11">    11  </span><span class="key">import</span> com.sekati.crypt.ICipher;
+<span class="lineno" id="11">    11  </span> <span class="key">import</span> com.sekati.crypt.ICipher;
 <span class="lineno" id="12">    12  </span>
 <span class="lineno" id="13">    13  </span><span class="comment doc">/**
-<span class="lineno" id="14">    14  </span>* Encodes and decodes a ROT13 string.
-<span class="lineno" id="15">    15  </span>*/</span>
+<span class="lineno" id="14">    14  </span> * Encodes and decodes a ROT13 string.
+<span class="lineno" id="15">    15  </span> */</span>
 <span class="lineno" id="16">    16  </span><span class="key">class</span> com.sekati.crypt.ROT13 <span class="key">implements</span> ICipher {
 <span class="lineno" id="17">    17  </span>	
 <span class="lineno" id="18">    18  </span>	<span class="key">private</span> <span class="key">static</span> <span class="key">var</span> chars:String = <span class="str_const">"ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMabcdefghijklmnopqrstuvwxyzabcdefghijklm"</span>;
 <span class="lineno" id="19">    19  </span>	
 <span class="lineno" id="20">    20  </span>	<span class="comment doc">/**
-<span class="lineno" id="21">    21  </span>	* Encodes or decodes a ROT13 string.
-<span class="lineno" id="22">    22  </span>	* @param src (String)
-<span class="lineno" id="23">    23  </span>	* @return String
-<span class="lineno" id="24">    24  </span>	*/</span>
+<span class="lineno" id="21">    21  </span>	 * Encodes or decodes a ROT13 string.
+<span class="lineno" id="22">    22  </span>	 * @param src (String)
+<span class="lineno" id="23">    23  </span>	 * @return String
+<span class="lineno" id="24">    24  </span>	 */</span>
 <span class="lineno" id="25">    25  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> calculate(src:String):String {
 <span class="lineno" id="26">    26  </span>		<span class="key">var</span> calculated:String = <span class="key">new</span> String(<span class="str_const">""</span>);
 <span class="lineno" id="27">    27  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = <span class="num_const">0</span>; i&lt;src.length; i++) {

@@ -11,7 +11,7 @@
  * @see http://www.aardwulf.com/tutor/base64/base64.html 
  */
 
-import com.sekati.crypt.ICipher;
+ import com.sekati.crypt.ICipher;
 
 /**
  * Encodes and decodes a base64 string.
@@ -21,10 +21,10 @@ class com.sekati.crypt.Base64 implements ICipher {
 	private static var base64chars:String = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
 
 	/**
-	* Encodes a base64 string.
-	* @param src (String) - string to encode
-	* @return String
-	*/
+	 * Encodes a base64 string.
+	 * @param src (String) - string to encode
+	 * @return String
+	 */
 	public static function encode(src:String):String {
 		var i:Number = 0;
 		var output:String = new String("");
@@ -47,10 +47,10 @@ class com.sekati.crypt.Base64 implements ICipher {
 	}
 
 	/**
-	* Decodes a base64 string
-	* @param src (String) - string to decode
-	* @return String
-	*/
+	 * Decodes a base64 string
+	 * @param src (String) - string to decode
+	 * @return String
+	 */
 	public static function decode(src:String):String {
 		var i:Number = 0;
 		var output:String = new String("");

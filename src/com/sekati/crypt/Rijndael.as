@@ -11,11 +11,11 @@
  * @see <a href="http://www.cs.ucsd.edu/~fritz/rijndael.html">http://www.cs.ucsd.edu/~fritz/rijndael.html</a>
  */
 
-import com.sekati.crypt.ICipher;
+ import com.sekati.crypt.ICipher;
 
 /**
-* Encrypts and decrypts text with the Rijndael algorithm.
-*/
+ * Encrypts and decrypts text with the Rijndael algorithm.
+ */
 class com.sekati.crypt.Rijndael implements ICipher {
 	
 	private var roundsArray:Array;
@@ -28,8 +28,8 @@ class com.sekati.crypt.Rijndael implements ICipher {
 	public var keySize:Number = 128;
 	
 	/**
-	* Constructor
-	*/
+	 * Constructor
+	 */
 	public function Rijndael(keySize:Number, blockSize:Number){
 		if (keySize != null) this.keySize = keySize;
 		if (blockSize != null) this.blockSize = blockSize;
@@ -40,8 +40,8 @@ class com.sekati.crypt.Rijndael implements ICipher {
 	}
 
 	/**
-	* Encrypts a string with the specified key and mode.
-	*/
+	 * Encrypts a string with the specified key and mode.
+	 */
 	public function encrypt(src:String, key:String, mode:String):String {
 		var ct:Array = new Array();
 		var aBlock:Array = new Array();
@@ -62,8 +62,8 @@ class com.sekati.crypt.Rijndael implements ICipher {
 	}
 
 	/**
-	* Decrypts a string with the specified key and mode.
-	*/
+	 * Decrypts a string with the specified key and mode.
+	 */
 	public function decrypt(src:String, key:String, mode:String):String {
 		var pt:Array = new Array();
 		var aBlock:Array = new Array();

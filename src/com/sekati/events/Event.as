@@ -6,9 +6,9 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  
- import com.sekati.core.CoreObject;
- import com.sekati.events.IEvent;
- import com.sekati.reflect.Stringifier;
+  import com.sekati.core.CoreObject;
+  import com.sekati.events.IEvent;
+  import com.sekati.reflect.Stringifier;
  
 /**
  * Base Event class, works similarly to the AS3 Event class<br><br>

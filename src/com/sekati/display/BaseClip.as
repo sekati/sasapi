@@ -6,10 +6,10 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  
- import com.sekati.display.IBaseClip;
- import com.sekati.core.KeyFactory;
- import com.sekati.reflect.Stringifier;
- import com.sekati.utils.MovieClipUtils;
+  import com.sekati.display.IBaseClip;
+  import com.sekati.core.KeyFactory;
+  import com.sekati.reflect.Stringifier;
+  import com.sekati.utils.MovieClipUtils;
  
 /**
  * This is the foundational MovieClip class and should be

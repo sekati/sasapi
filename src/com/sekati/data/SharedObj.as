@@ -6,11 +6,11 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
-import com.sekati.core.CoreInterface;
-import com.sekati.events.Dispatcher;
-import com.sekati.events.Event;
-import com.sekati.reflect.Stringifier;
-import com.sekati.utils.Delegate;
+ import com.sekati.core.CoreInterface;
+ import com.sekati.events.Dispatcher;
+ import com.sekati.events.Event;
+ import com.sekati.reflect.Stringifier;
+ import com.sekati.utils.Delegate;
 
 /**
  * SharedObject extension

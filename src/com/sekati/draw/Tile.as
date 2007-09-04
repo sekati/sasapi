@@ -6,7 +6,7 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
-import flash.display.BitmapData;
+ import flash.display.BitmapData;
 
 /**
  * Tiles a bitmap as wallpaper

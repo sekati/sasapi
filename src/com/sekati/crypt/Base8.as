@@ -8,7 +8,7 @@
  * Sourced from ascrypt for dependencies only - version 2.0, author Mika Pamu
  */
 
-import com.sekati.crypt.ICipher;
+ import com.sekati.crypt.ICipher;
 
 /**
  * Encodes and decodes a base8 (hex) string.
@@ -16,10 +16,10 @@ import com.sekati.crypt.ICipher;
 class com.sekati.crypt.Base8 implements ICipher {
 
 	/**
-	* Encodes a base8 string.
-	* @param src (String) - string to encode
-	* @return String 
-    */
+	 * Encodes a base8 string.
+	 * @param src (String) - string to encode
+	 * @return String 
+     */
 	public static function encode(src:String):String {
 		var result:String = new String("");
 		for (var i:Number = 0; i<src.length; i++) {
@@ -29,10 +29,10 @@ class com.sekati.crypt.Base8 implements ICipher {
 	}
 
 	/**
-	* Decodes a base8 string.
-	* @param src (String) - string to decode
-	* @return String 
-	*/
+	 * Decodes a base8 string.
+	 * @param src (String) - string to decode
+	 * @return String 
+	 */
 	public static function decode(src:String):String {
 		var result:String = new String("");
 		for (var i:Number = 0; i<src.length; i+=2) {

@@ -6,7 +6,7 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
-import flash.external.ExternalInterface;
+ import flash.external.ExternalInterface;
 
 /**
  * Easily add deeplinking into flash sites

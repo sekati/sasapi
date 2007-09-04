@@ -11,7 +11,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="8">     8  </span> * Sourced from ascrypt for dependencies only - version 2.0, author Mika Pamu
 <span class="lineno" id="9">     9  </span> */</span>
 <span class="lineno" id="10">    10  </span>
-<span class="lineno" id="11">    11  </span><span class="key">import</span> com.sekati.crypt.ICipher;
+<span class="lineno" id="11">    11  </span> <span class="key">import</span> com.sekati.crypt.ICipher;
 <span class="lineno" id="12">    12  </span>
 <span class="lineno" id="13">    13  </span><span class="comment doc">/**
 <span class="lineno" id="14">    14  </span> * Encodes and decodes a base8 (hex) string.
@@ -19,10 +19,10 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="16">    16  </span><span class="key">class</span> com.sekati.crypt.Base8 <span class="key">implements</span> ICipher {
 <span class="lineno" id="17">    17  </span>
 <span class="lineno" id="18">    18  </span>	<span class="comment doc">/**
-<span class="lineno" id="19">    19  </span>	* Encodes a base8 string.
-<span class="lineno" id="20">    20  </span>	* @param src (String) - string to encode
-<span class="lineno" id="21">    21  </span>	* @return String 
-<span class="lineno" id="22">    22  </span>    */</span>
+<span class="lineno" id="19">    19  </span>	 * Encodes a base8 string.
+<span class="lineno" id="20">    20  </span>	 * @param src (String) - string to encode
+<span class="lineno" id="21">    21  </span>	 * @return String 
+<span class="lineno" id="22">    22  </span>     */</span>
 <span class="lineno" id="23">    23  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> encode(src:String):String {
 <span class="lineno" id="24">    24  </span>		<span class="key">var</span> result:String = <span class="key">new</span> String(<span class="str_const">""</span>);
 <span class="lineno" id="25">    25  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = <span class="num_const">0</span>; i&lt;src.length; i++) {
@@ -32,10 +32,10 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="29">    29  </span>	}
 <span class="lineno" id="30">    30  </span>
 <span class="lineno" id="31">    31  </span>	<span class="comment doc">/**
-<span class="lineno" id="32">    32  </span>	* Decodes a base8 string.
-<span class="lineno" id="33">    33  </span>	* @param src (String) - string to decode
-<span class="lineno" id="34">    34  </span>	* @return String 
-<span class="lineno" id="35">    35  </span>	*/</span>
+<span class="lineno" id="32">    32  </span>	 * Decodes a base8 string.
+<span class="lineno" id="33">    33  </span>	 * @param src (String) - string to decode
+<span class="lineno" id="34">    34  </span>	 * @return String 
+<span class="lineno" id="35">    35  </span>	 */</span>
 <span class="lineno" id="36">    36  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> decode(src:String):String {
 <span class="lineno" id="37">    37  </span>		<span class="key">var</span> result:String = <span class="key">new</span> String(<span class="str_const">""</span>);
 <span class="lineno" id="38">    38  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = <span class="num_const">0</span>; i&lt;src.length; i+=<span class="num_const">2</span>) {

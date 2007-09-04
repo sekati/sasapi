@@ -6,7 +6,7 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
-import com.sekati.crypt.IHash;
+ import com.sekati.crypt.IHash;
 
 /**
  * Runtime Unique ID's for runtime Object management and identification.

@@ -6,7 +6,7 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
-import flash.external.ExternalInterface;
+ import flash.external.ExternalInterface;
 
 /**
  * Easily add Google Analytics (Urchin) tracking of Flash events
@@ -31,7 +31,7 @@ class com.sekati.services.Urchin {
 	 * set site base
 	 * @return Void
 	 * {@code Usage:
-	 *  Urchin.setBase("homepage");	// set optional webroot [default: "site"]
+	 *  Urchin.setBase("homepage"); // set optional webroot [default: "site"]
 	 * }
 	 */
 	public static function setBase (base:String):Void {
@@ -50,8 +50,8 @@ class com.sekati.services.Urchin {
 	 * track a page event
 	 * @return Void
 	 * {@code Usage
-	 * Urchin.track("projects"); 				// register '/homepage/projects'
-	 * Urchin.track("projects/page1");	// register '/homepage/projects/page1'
+	 * 	Urchin.track("projects"); // register '/homepage/projects'
+	 * 	Urchin.track("projects/page1");	// register '/homepage/projects/page1'
 	 * }
 	 */
 	public static function track (pg:String):Void {

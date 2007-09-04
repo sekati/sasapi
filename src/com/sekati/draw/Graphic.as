@@ -6,8 +6,8 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
-import com.sekati.core.KeyFactory;
-import com.sekati.display.BaseClip;
+ import com.sekati.core.KeyFactory;
+ import com.sekati.display.BaseClip;
 
 /**
  * @XXX Currently unimplemented - DO NOT USE.

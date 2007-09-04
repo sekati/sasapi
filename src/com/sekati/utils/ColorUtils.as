@@ -8,7 +8,7 @@
  * Some methods adopted from ca.nectere and gskinner for dependencies only
  */
  
-import com.sekati.math.MathBase;
+ import com.sekati.math.MathBase;
  
 /**
  * Static class wrapping various Color utilities.

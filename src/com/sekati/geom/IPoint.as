@@ -6,8 +6,8 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
-import com.sekati.core.CoreInterface;
-import com.sekati.geom.Point;
+ import com.sekati.core.CoreInterface;
+ import com.sekati.geom.Point;
 
 /**
  * Interface describing {@link com.sekati.geom.Point}

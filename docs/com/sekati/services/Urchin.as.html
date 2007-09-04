@@ -9,7 +9,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
 <span class="lineno" id="7">     7  </span> */</span>
 <span class="lineno" id="8">     8  </span>
-<span class="lineno" id="9">     9  </span><span class="key">import</span> flash.external.ExternalInterface;
+<span class="lineno" id="9">     9  </span> <span class="key">import</span> flash.external.ExternalInterface;
 <span class="lineno" id="10">    10  </span>
 <span class="lineno" id="11">    11  </span><span class="comment doc">/**
 <span class="lineno" id="12">    12  </span> * Easily add Google Analytics (Urchin) tracking of Flash events
@@ -34,7 +34,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="31">    31  </span>	 * set site base
 <span class="lineno" id="32">    32  </span>	 * @return Void
 <span class="lineno" id="33">    33  </span>	 * {@code Usage:
-<span class="lineno" id="34">    34  </span>	 *  Urchin.setBase("homepage");	// set optional webroot [default: "site"]
+<span class="lineno" id="34">    34  </span>	 *  Urchin.setBase("homepage"); // set optional webroot [default: "site"]
 <span class="lineno" id="35">    35  </span>	 * }
 <span class="lineno" id="36">    36  </span>	 */</span>
 <span class="lineno" id="37">    37  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> setBase (base:String):Void {
@@ -53,8 +53,8 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="50">    50  </span>	 * track a page event
 <span class="lineno" id="51">    51  </span>	 * @return Void
 <span class="lineno" id="52">    52  </span>	 * {@code Usage
-<span class="lineno" id="53">    53  </span>	 * Urchin.track("projects"); 				// register '/homepage/projects'
-<span class="lineno" id="54">    54  </span>	 * Urchin.track("projects/page1");	// register '/homepage/projects/page1'
+<span class="lineno" id="53">    53  </span>	 * 	Urchin.track("projects"); // register '/homepage/projects'
+<span class="lineno" id="54">    54  </span>	 * 	Urchin.track("projects/page1");	// register '/homepage/projects/page1'
 <span class="lineno" id="55">    55  </span>	 * }
 <span class="lineno" id="56">    56  </span>	 */</span>
 <span class="lineno" id="57">    57  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> track (pg:String):Void {

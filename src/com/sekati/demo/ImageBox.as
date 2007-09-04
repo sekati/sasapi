@@ -6,9 +6,9 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
-import com.sekati.core.App;
-import com.sekati.utils.Delegate;
-import com.sekati.display.CoreClip;
+ import com.sekati.core.App;
+ import com.sekati.utils.Delegate;
+ import com.sekati.display.CoreClip;
 
 /**
  * ImageBox demo implementation of {@link com.sekati.ui.Image}
