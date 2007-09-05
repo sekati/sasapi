@@ -1,17 +1,16 @@
 /**
  * com.sekati.log.Logger
- * @version 1.1.9
+ * @version 1.2.0
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
- import com.sekati.core.CoreInterface; 
+ import com.sekati.core.CoreObject; 
  import com.sekati.events.Dispatcher;
  import com.sekati.log.Inspector;
  import com.sekati.log.LCBinding;
  import com.sekati.log.LogEvent;
- import com.sekati.reflect.Stringifier;
  import com.sekati.time.StopWatch;
  
 /**
@@ -34,7 +33,7 @@
  * 
  * @see {@link com.sekati.log.Console}
  */
-class com.sekati.log.Logger implements CoreInterface {
+class com.sekati.log.Logger extends CoreObject {
 
 	private static var _instance:Logger;
 
@@ -62,6 +61,7 @@ class com.sekati.log.Logger implements CoreInterface {
 	 * Singleton Private Constructor
 	 */
 	private function Logger() {
+		super();
 		resetLevels();
 		resetFilters();
 		_proxyObj = new Object();
@@ -267,6 +267,17 @@ class com.sekati.log.Logger implements CoreInterface {
 			}
 		}
 	}	
+	
+	/*
+	// currently unused - as3 has getNameSpace - for now maybe better to keep filtering on object/string rather than class?
+	private function resolveOrigin ($origin) {
+		var o = (typeof ($origin) == "string") ? $origin : $origin._classname;
+		if (!o) {
+			o = $origin;
+		}
+		trace (o);
+	}
+	 */	
 	 
 	//////////////////////////////////////////////////////////////
 	// Output Handlers
@@ -337,14 +348,7 @@ class com.sekati.log.Logger implements CoreInterface {
 			delete _instance[i];	
 		}
 		delete _instance;
+		super.destroy();
 	}
-	
-	/**
-	 * Return the Fully Qualified Class Name string representation of
-	 * the instance object via {@link com.sekati.reflect.Stringifier}.
-	 * @return String
-	 */		
-	public function toString():String {
-		return Stringifier.stringify(this);	
-	}		
+			
 }
