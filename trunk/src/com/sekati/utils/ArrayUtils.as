@@ -117,15 +117,13 @@ class com.sekati.utils.ArrayUtils {
 	}	
 
 	/**
-	 * return alphabetically sorted array
+	 * Return alphabetically sorted array.
 	 * @param a (Array)
 	 * @return Array
 	 */
 	public static function asort (a:Array):Array {
-		var aFn = function (element1:String, element2:String) {
-			var element1:String = element1.toUpperCase ();
-			var element2:String = element2.toUpperCase ();
-			return element1 > element2;
+		var aFn:Function = function (element1:String, element2:String):Boolean {
+			return element1.toUpperCase() > element2.toUpperCase();
 		};
 		return a.sort (aFn);
 	}
