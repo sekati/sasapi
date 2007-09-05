@@ -30,6 +30,12 @@ strict digraph class_diagram {
     tooltip="com.sekati.data.LoopIterator",
     shape="record"
   ];
+  TypeJSON[
+    label="JSON",
+    URL="JSON.html",
+    tooltip="com.sekati.data.JSON",
+    shape="record"
+  ];
   TypeIterator[
     label="Iterator",
     URL="Iterator.html",

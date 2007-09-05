@@ -1,6 +1,6 @@
 /**
  * com.sekati.core.KeyInjector
- * @version 1.0.0
+ * @version 1.0.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -25,7 +25,7 @@ class com.sekati.core.KeyFactory {
 	public static function inject (o:Object):Number {
 		if (!o[_key]) {
 			o[_key] = RUID.create();
-			_global.ASSetPropFlags(o, [_key], 7, 1);
+			_global["ASSetPropFlags"](o, [_key], 7, 1);
 		}
 		return o[_key];	
 	}

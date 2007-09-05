@@ -10,7 +10,8 @@
   import com.sekati.events.IEvent;
  
 /**
- * Base Event class, works similarly to the AS3 Event class<br><br>
+ * SASAPI Base Event class, works similarly to the AS3 Event class<br><br>
+ * 
  * The {@link com.sekati.events.Dispatcher} class excepts an object with at least one property: 'type:String'
  * which is the identifier of the event. This is either the listener's function that is called when the event
  * is dispatched, or the link through Delegate to the function to be called. Other optional properties 
