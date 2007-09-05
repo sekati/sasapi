@@ -1,6 +1,6 @@
 /**
  * com.sekati.events.Multicaster
- * @version 1.0.3
+ * @version 1.0.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -9,7 +9,6 @@
  import com.sekati.core.CoreObject;
  import com.sekati.core.KeyFactory;
  import com.sekati.events.IMulticastable;
- import com.sekati.utils.Delegate;
  import com.sekati.validate.TypeValidation;
  
 /**
@@ -60,7 +59,7 @@ class com.sekati.events.Multicaster extends CoreObject implements IMulticastable
 	 * @param fn (Delegate) the delegated function to fire upon the event broadcast.
 	 * @return Number
 	 */
-	public function addListener (o:Object, event:String, fn:Delegate):Number {
+	public function addListener (o:Object, event:String, fn:Function):Number {
 		var index:Object = getIndex(o);
 		if( !_listeners[index] ) _listeners[index] = new Array();
 		if( !_listeners[index][event] ) _listeners[index][event] = new Array();
@@ -74,7 +73,7 @@ class com.sekati.events.Multicaster extends CoreObject implements IMulticastable
 	 * @param fn (Delegate) the delegated function.
 	 * @return Boolean
 	 */
-	public function removeListener (o:Object, event:String, fn:Delegate):Boolean {
+	public function removeListener (o:Object, event:String, fn:Function):Boolean {
 		var index:Object = getIndex(o);
 		var e:Array = _listeners[index][event];
 		for(var i in e){
@@ -91,7 +90,7 @@ class com.sekati.events.Multicaster extends CoreObject implements IMulticastable
 	 * @param fn (Delegate) the delegated function to fire upon the event broadcast.
 	 * @return Number
 	 */	
-	public function subscribe(o:Object, event:String, fn:Delegate):Void {
+	public function subscribe(o:Object, event:String, fn:Function):Void {
 		addListener(o, event, fn);
 	}
 
@@ -102,7 +101,7 @@ class com.sekati.events.Multicaster extends CoreObject implements IMulticastable
 	 * @param fn (Delegate) the delegated function.
 	 * @return Boolean
 	 */	
-	public function unsubscribe(o:Object, event:String, fn:Delegate):Void {
+	public function unsubscribe(o:Object, event:String, fn:Function):Void {
 		removeListener(o, event, fn);
 	}
 	
