@@ -84,7 +84,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="81">    81  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> roundHalf (val:Number):Number {
 <span class="lineno" id="82">    82  </span>		<span class="key">var</span> num:String = String (Math.round (val * <span class="num_const">10</span>) / <span class="num_const">10</span>);
 <span class="lineno" id="83">    83  </span>		<span class="key">var</span> tmp:Array = num.split (<span class="str_const">"."</span>);
-<span class="lineno" id="84">    84  </span>		<span class="key">var</span> integer:String = tmp[<span class="num_const">0</span>];
+<span class="lineno" id="84">    84  </span>		<span class="key">var</span> integer:Object = tmp[<span class="num_const">0</span>]; <span class="comment">// loose type since we swap from String to Number (cheap!)</span>
 <span class="lineno" id="85">    85  </span>		<span class="key">var</span> decimal:Number = tmp[<span class="num_const">1</span>];
 <span class="lineno" id="86">    86  </span>		<span class="key">if</span> (decimal &gt;= <span class="num_const">3</span> &amp;&amp; decimal &lt;= <span class="num_const">7</span> &amp;&amp; decimal != <span class="key">null</span>) {
 <span class="lineno" id="87">    87  </span>			decimal = <span class="num_const">5</span>;
@@ -176,10 +176,10 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="173">   173  </span>			<span class="comment">//unique</span>
 <span class="lineno" id="174">   174  </span>			<span class="comment">// create num range array</span>
 <span class="lineno" id="175">   175  </span>			<span class="key">var</span> nums:Array = <span class="key">new</span> Array ();
-<span class="lineno" id="176">   176  </span>			<span class="key">for</span> (<span class="key">var</span> i = min; i &lt;= max; i++) {
+<span class="lineno" id="176">   176  </span>			<span class="key">for</span> (<span class="key">var</span> i:Number = min; i &lt;= max; i++) {
 <span class="lineno" id="177">   177  </span>				nums.push (i);
 <span class="lineno" id="178">   178  </span>			}
-<span class="lineno" id="179">   179  </span>			<span class="key">for</span> (<span class="key">var</span> i = <span class="num_const">1</span>; i &lt;= count; i++) {
+<span class="lineno" id="179">   179  </span>			<span class="key">for</span> (<span class="key">var</span> j:Number = <span class="num_const">1</span>; j &lt;= count; j++) {
 <span class="lineno" id="180">   180  </span>				<span class="comment">// random number</span>
 <span class="lineno" id="181">   181  </span>				<span class="key">var</span> rn = Math.floor (Math.random () * nums.length);
 <span class="lineno" id="182">   182  </span>				rnds.push (nums[rn]);
@@ -187,7 +187,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="184">   184  </span>			}
 <span class="lineno" id="185">   185  </span>		} <span class="key">else</span> {
 <span class="lineno" id="186">   186  </span>			<span class="comment">//non unique</span>
-<span class="lineno" id="187">   187  </span>			<span class="key">for</span> (<span class="key">var</span> i = <span class="num_const">1</span>; i &lt;= count; i++) {
+<span class="lineno" id="187">   187  </span>			<span class="key">for</span> (<span class="key">var</span> k:Number = <span class="num_const">1</span>; k &lt;= count; k++) {
 <span class="lineno" id="188">   188  </span>				rnds.push (randRangeInt (min, max));
 <span class="lineno" id="189">   189  </span>			}
 <span class="lineno" id="190">   190  </span>		}

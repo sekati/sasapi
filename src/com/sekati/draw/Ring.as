@@ -40,11 +40,15 @@ class com.sekati.draw.Ring {
 
 		// draw the 30-degree segments
 		var a:Number = 0.268;  // tan(15)
-		for (var i=0; i < 12; i++) {
-			var endx:Number = r1*Math.cos((i+1)*30*_rad);
-			var endy:Number = r1*Math.sin((i+1)*30*_rad);
-			var ax:Number = endx+r1*a*Math.cos(((i+1)*30-90)*_rad);
-			var ay:Number = endy+r1*a*Math.sin(((i+1)*30-90)*_rad);
+		var endx:Number;
+		var endy:Number;
+		var ax:Number;
+		var ay:Number;
+		for (var i:Number = 0; i < 12; i++) {
+			endx = r1*Math.cos((i+1)*30*_rad);
+			endy = r1*Math.sin((i+1)*30*_rad);
+			ax = endx+r1*a*Math.cos(((i+1)*30-90)*_rad);
+			ay = endy+r1*a*Math.sin(((i+1)*30-90)*_rad);
 			mc.curveTo(ax, ay, endx, endy);   
 	   }		
 		
@@ -52,11 +56,11 @@ class com.sekati.draw.Ring {
 		mc.moveTo(0, 0);
  		mc.lineTo(r2, 0);		
 
-		for (var i=12; i > 0; i--) {
-			var endx = r2*Math.cos((i-1)*30*_rad);
-			var endy = r2*Math.sin((i-1)*30*_rad);
-			var ax = endx+r2*(0-a)*Math.cos(((i-1)*30-90)*_rad);
-			var ay = endy+r2*(0-a)*Math.sin(((i-1)*30-90)*_rad);
+		for (var j = 12; j > 0; j--) {
+			endx = r2*Math.cos((j-1)*30*_rad);
+			endy = r2*Math.sin((j-1)*30*_rad);
+			ax = endx+r2*(0-a)*Math.cos(((j-1)*30-90)*_rad);
+			ay = endy+r2*(0-a)*Math.sin(((j-1)*30-90)*_rad);
 			mc.curveTo(ax, ay, endx, endy);   
 		}
 		mc.endFill();		

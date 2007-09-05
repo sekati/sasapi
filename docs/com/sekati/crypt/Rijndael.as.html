@@ -3,7 +3,7 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span><span class="comment doc">/**
 <span class="lineno" id="2">     2  </span> * com.sekati.crypt.Rijndael
-<span class="lineno" id="3">     3  </span> * @version 1.0.1
+<span class="lineno" id="3">     3  </span> * @version 1.0.3
 <span class="lineno" id="4">     4  </span> * @author jason m horwitz | sekati.com
 <span class="lineno" id="5">     5  </span> * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -108,174 +108,177 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="105">   105  </span>	}
 <span class="lineno" id="106">   106  </span>
 <span class="lineno" id="107">   107  </span>	<span class="key">private</span> <span class="key">function</span> byteSub(state:Array, dir:String):Void {
-<span class="lineno" id="108">   108  </span>		<span class="key">if</span>(dir == <span class="str_const">"encrypt"</span>) <span class="key">var</span> S:Array = <span class="key">this</span>.SBox;
-<span class="lineno" id="109">   109  </span>		<span class="key">else</span> <span class="key">var</span> S:Array = <span class="key">this</span>.SBoxInverse;
-<span class="lineno" id="110">   110  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = <span class="num_const">0</span>; i&lt;<span class="num_const">4</span>; i++) {
-<span class="lineno" id="111">   111  </span>			<span class="key">for</span> (<span class="key">var</span> j = <span class="num_const">0</span>; j&lt;<span class="key">this</span>.Nb; j++) state[i][j] = S[state[i][j]];
-<span class="lineno" id="112">   112  </span>		}
-<span class="lineno" id="113">   113  </span>	}
-<span class="lineno" id="114">   114  </span>
-<span class="lineno" id="115">   115  </span>	<span class="key">private</span> <span class="key">function</span> shiftRow(state:Array, dir:String):Void {
-<span class="lineno" id="116">   116  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = <span class="num_const">1</span>; i&lt;<span class="num_const">4</span>; i++) {
-<span class="lineno" id="117">   117  </span>			<span class="key">if</span> (dir == <span class="str_const">"encrypt"</span>) state[i] = <span class="key">this</span>.cyclicShiftLeft(state[i], <span class="key">this</span>.shiftOffsets[Nb][i]);
-<span class="lineno" id="118">   118  </span>			<span class="key">else</span> state[i] = <span class="key">this</span>.cyclicShiftLeft(state[i], <span class="key">this</span>.Nb-<span class="key">this</span>.shiftOffsets[Nb][i]);
-<span class="lineno" id="119">   119  </span>		}
-<span class="lineno" id="120">   120  </span>	}
-<span class="lineno" id="121">   121  </span>
-<span class="lineno" id="122">   122  </span>	<span class="key">private</span> <span class="key">function</span> mixColumn(state:Array, dir:String):Void {
-<span class="lineno" id="123">   123  </span>		<span class="key">var</span> b:Array = <span class="key">new</span> Array();
-<span class="lineno" id="124">   124  </span>		<span class="key">for</span> (<span class="key">var</span> j:Number = <span class="num_const">0</span>; j&lt;<span class="key">this</span>.Nb; j++) {
-<span class="lineno" id="125">   125  </span>			<span class="key">for</span>(<span class="key">var</span> i:Number = <span class="num_const">0</span>; i&lt;<span class="num_const">4</span>; i++) {
-<span class="lineno" id="126">   126  </span>				<span class="key">if</span> (dir == <span class="str_const">"encrypt"</span>) b[i] = <span class="key">this</span>.mult_GF256(state[i][j], <span class="num_const">2</span>) ^ <span class="key">this</span>.mult_GF256(state[(i+<span class="num_const">1</span>)%<span class="num_const">4</span>][j], <span class="num_const">3</span>) ^ state[(i+<span class="num_const">2</span>)%<span class="num_const">4</span>][j] ^ state[(i+<span class="num_const">3</span>)%<span class="num_const">4</span>][j];
-<span class="lineno" id="127">   127  </span>				<span class="key">else</span> b[i] = <span class="key">this</span>.mult_GF256(state[i][j], 0xE) ^ <span class="key">this</span>.mult_GF256(state[(i+<span class="num_const">1</span>)%<span class="num_const">4</span>][j], 0xB) ^ <span class="key">this</span>.mult_GF256(state[(i+<span class="num_const">2</span>)%<span class="num_const">4</span>][j], 0xD) ^ <span class="key">this</span>.mult_GF256(state[(i+<span class="num_const">3</span>)%<span class="num_const">4</span>][j], <span class="num_const">9</span>);
-<span class="lineno" id="128">   128  </span>			}
-<span class="lineno" id="129">   129  </span>			<span class="key">for</span> (<span class="key">var</span> i:Number = <span class="num_const">0</span>; i&lt;<span class="num_const">4</span>; i++) {
-<span class="lineno" id="130">   130  </span>				state[i][j] = b[i];
-<span class="lineno" id="131">   131  </span>			}
-<span class="lineno" id="132">   132  </span>		}
-<span class="lineno" id="133">   133  </span>	}
-<span class="lineno" id="134">   134  </span>
-<span class="lineno" id="135">   135  </span>	<span class="key">private</span> <span class="key">function</span> addRoundKey(state:Array, roundKey:Array):Void {
-<span class="lineno" id="136">   136  </span>		<span class="key">for</span> (<span class="key">var</span> j:Number = <span class="num_const">0</span>; j&lt;<span class="key">this</span>.Nb; j++) {
-<span class="lineno" id="137">   137  </span>			state[<span class="num_const">0</span>][j] ^= (roundKey[j] &amp; 0xFF);
-<span class="lineno" id="138">   138  </span>			state[<span class="num_const">1</span>][j] ^= ((roundKey[j]&gt;&gt;<span class="num_const">8</span>) &amp;0xFF);
-<span class="lineno" id="139">   139  </span>			state[<span class="num_const">2</span>][j] ^= ((roundKey[j]&gt;&gt;<span class="num_const">16</span>) &amp;0xFF);
-<span class="lineno" id="140">   140  </span>			state[<span class="num_const">3</span>][j] ^= ((roundKey[j]&gt;&gt;<span class="num_const">24</span>) &amp;0xFF);
-<span class="lineno" id="141">   141  </span>		}
-<span class="lineno" id="142">   142  </span>	}
-<span class="lineno" id="143">   143  </span>
-<span class="lineno" id="144">   144  </span>	<span class="key">private</span> <span class="key">function</span> keyExpansion(key:Array):Array {
-<span class="lineno" id="145">   145  </span>		<span class="key">var</span> temp:Number = <span class="num_const">0</span>;
-<span class="lineno" id="146">   146  </span>		<span class="key">this</span>.Nk = <span class="key">this</span>.keySize/<span class="num_const">32</span>;
-<span class="lineno" id="147">   147  </span>		<span class="key">this</span>.Nb = <span class="key">this</span>.blockSize/<span class="num_const">32</span>;
-<span class="lineno" id="148">   148  </span>		<span class="key">var</span> expandedKey:Array = <span class="key">new</span> Array();
-<span class="lineno" id="149">   149  </span>		<span class="key">this</span>.Nr = <span class="key">this</span>.roundsArray[<span class="key">this</span>.Nk][<span class="key">this</span>.Nb];
-<span class="lineno" id="150">   150  </span>		<span class="key">for</span> (<span class="key">var</span> j:Number = <span class="num_const">0</span>; j&lt;<span class="key">this</span>.Nk; j++) expandedKey[j] = (key[<span class="num_const">4</span>*j]) | (key[<span class="num_const">4</span>*j+<span class="num_const">1</span>]&lt;&lt;<span class="num_const">8</span>) | (key[<span class="num_const">4</span>*j+<span class="num_const">2</span>]&lt;&lt;<span class="num_const">16</span>) | (key[<span class="num_const">4</span>*j+<span class="num_const">3</span>]&lt;&lt;<span class="num_const">24</span>);
-<span class="lineno" id="151">   151  </span>		<span class="key">for</span> (<span class="key">var</span> j:Number = <span class="key">this</span>.Nk; j&lt;<span class="key">this</span>.Nb*(<span class="key">this</span>.Nr+<span class="num_const">1</span>); j++) {
-<span class="lineno" id="152">   152  </span>			temp = expandedKey[j-<span class="num_const">1</span>];
-<span class="lineno" id="153">   153  </span>			<span class="key">if</span> (j % <span class="key">this</span>.Nk == <span class="num_const">0</span>) temp = ( (<span class="key">this</span>.SBox[(temp&gt;&gt;<span class="num_const">8</span>) &amp; 0xFF]) | (<span class="key">this</span>.SBox[(temp&gt;&gt;<span class="num_const">16</span>) &amp; 0xFF]&lt;&lt;<span class="num_const">8</span>) | (<span class="key">this</span>.SBox[(temp&gt;&gt;<span class="num_const">24</span>) &amp; 0xFF]&lt;&lt;<span class="num_const">16</span>) | (<span class="key">this</span>.SBox[temp &amp; 0xFF]&lt;&lt;<span class="num_const">24</span>) ) ^ <span class="key">this</span>.Rcon[Math.floor(j / <span class="key">this</span>.Nk) - <span class="num_const">1</span>];
-<span class="lineno" id="154">   154  </span>			<span class="key">else</span> <span class="key">if</span> (<span class="key">this</span>.Nk &gt; <span class="num_const">6</span> &amp;&amp; j % <span class="key">this</span>.Nk == <span class="num_const">4</span>) temp = (<span class="key">this</span>.SBox[(temp&gt;&gt;<span class="num_const">24</span>) &amp; 0xFF]&lt;&lt;<span class="num_const">24</span>) | (<span class="key">this</span>.SBox[(temp&gt;&gt;<span class="num_const">16</span>) &amp; 0xFF]&lt;&lt;<span class="num_const">16</span>) | (<span class="key">this</span>.SBox[(temp&gt;&gt;<span class="num_const">8</span>) &amp; 0xFF]&lt;&lt;<span class="num_const">8</span>) | (<span class="key">this</span>.SBox[temp &amp; 0xFF]);
-<span class="lineno" id="155">   155  </span>			expandedKey[j] = expandedKey[j-<span class="key">this</span>.Nk] ^ temp;
-<span class="lineno" id="156">   156  </span>		}
-<span class="lineno" id="157">   157  </span>		<span class="key">return</span> expandedKey;
-<span class="lineno" id="158">   158  </span>	}
-<span class="lineno" id="159">   159  </span>
-<span class="lineno" id="160">   160  </span>	<span class="key">private</span> <span class="key">function</span> Round(state:Array, roundKey:Array):Void {
-<span class="lineno" id="161">   161  </span>		<span class="key">this</span>.byteSub(state, <span class="str_const">"encrypt"</span>);
-<span class="lineno" id="162">   162  </span>		<span class="key">this</span>.shiftRow(state, <span class="str_const">"encrypt"</span>);
-<span class="lineno" id="163">   163  </span>		<span class="key">this</span>.mixColumn(state, <span class="str_const">"encrypt"</span>);
-<span class="lineno" id="164">   164  </span>		<span class="key">this</span>.addRoundKey(state, roundKey);
-<span class="lineno" id="165">   165  </span>	}
-<span class="lineno" id="166">   166  </span>
-<span class="lineno" id="167">   167  </span>	<span class="key">private</span> <span class="key">function</span> InverseRound(state:Array, roundKey:Array):Void {
-<span class="lineno" id="168">   168  </span>		<span class="key">this</span>.addRoundKey(state, roundKey);
-<span class="lineno" id="169">   169  </span>		<span class="key">this</span>.mixColumn(state, <span class="str_const">"decrypt"</span>);
-<span class="lineno" id="170">   170  </span>		<span class="key">this</span>.shiftRow(state, <span class="str_const">"decrypt"</span>);
-<span class="lineno" id="171">   171  </span>		<span class="key">this</span>.byteSub(state, <span class="str_const">"decrypt"</span>);
-<span class="lineno" id="172">   172  </span>	}
-<span class="lineno" id="173">   173  </span>
-<span class="lineno" id="174">   174  </span>	<span class="key">private</span> <span class="key">function</span> FinalRound(state:Array, roundKey:Array):Void {
-<span class="lineno" id="175">   175  </span>		<span class="key">this</span>.byteSub(state, <span class="str_const">"encrypt"</span>);
-<span class="lineno" id="176">   176  </span>		<span class="key">this</span>.shiftRow(state, <span class="str_const">"encrypt"</span>);
-<span class="lineno" id="177">   177  </span>		<span class="key">this</span>.addRoundKey(state, roundKey);
-<span class="lineno" id="178">   178  </span>	}
-<span class="lineno" id="179">   179  </span>
-<span class="lineno" id="180">   180  </span>	<span class="key">private</span> <span class="key">function</span> InverseFinalRound(state:Array, roundKey:Array):Void {
-<span class="lineno" id="181">   181  </span>		<span class="key">this</span>.addRoundKey(state, roundKey);
-<span class="lineno" id="182">   182  </span>		<span class="key">this</span>.shiftRow(state, <span class="str_const">"decrypt"</span>);
-<span class="lineno" id="183">   183  </span>		<span class="key">this</span>.byteSub(state, <span class="str_const">"decrypt"</span>);
-<span class="lineno" id="184">   184  </span>	}
-<span class="lineno" id="185">   185  </span>
-<span class="lineno" id="186">   186  </span>	<span class="key">private</span> <span class="key">function</span> encryption(block:Array, expandedKey:Array):Array {
-<span class="lineno" id="187">   187  </span>		block = <span class="key">this</span>.packBytes(block);
-<span class="lineno" id="188">   188  </span>		<span class="key">this</span>.addRoundKey(block, expandedKey);
-<span class="lineno" id="189">   189  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = <span class="num_const">1</span>; i&lt;Nr; i++) {
-<span class="lineno" id="190">   190  </span>			<span class="key">this</span>.Round(block, expandedKey.slice(<span class="key">this</span>.Nb*i, <span class="key">this</span>.Nb*(i+<span class="num_const">1</span>)));
-<span class="lineno" id="191">   191  </span>		}
-<span class="lineno" id="192">   192  </span>		<span class="key">this</span>.FinalRound(block, expandedKey.slice(<span class="key">this</span>.Nb*<span class="key">this</span>.Nr));
-<span class="lineno" id="193">   193  </span>		<span class="key">return</span> <span class="key">this</span>.unpackBytes(block);
-<span class="lineno" id="194">   194  </span>	}
-<span class="lineno" id="195">   195  </span>
-<span class="lineno" id="196">   196  </span>	<span class="key">private</span> <span class="key">function</span> decryption(block:Array, expandedKey:Array):Array {
-<span class="lineno" id="197">   197  </span>		block = <span class="key">this</span>.packBytes(block);
-<span class="lineno" id="198">   198  </span>		<span class="key">this</span>.InverseFinalRound(block, expandedKey.slice(<span class="key">this</span>.Nb*<span class="key">this</span>.Nr));
-<span class="lineno" id="199">   199  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = Nr-<span class="num_const">1</span>; i&gt;<span class="num_const">0</span>; i--) {
-<span class="lineno" id="200">   200  </span>			<span class="key">this</span>.InverseRound(block, expandedKey.slice(<span class="key">this</span>.Nb*i, <span class="key">this</span>.Nb*(i+<span class="num_const">1</span>)));
-<span class="lineno" id="201">   201  </span>		}
-<span class="lineno" id="202">   202  </span>		<span class="key">this</span>.addRoundKey(block, expandedKey);
-<span class="lineno" id="203">   203  </span>		<span class="key">return</span> <span class="key">this</span>.unpackBytes(block);
-<span class="lineno" id="204">   204  </span>	}
-<span class="lineno" id="205">   205  </span>
-<span class="lineno" id="206">   206  </span>	<span class="key">private</span> <span class="key">function</span> packBytes(octets:Array):Array {
-<span class="lineno" id="207">   207  </span>		<span class="key">var</span> state:Array = <span class="key">new</span> Array();
-<span class="lineno" id="208">   208  </span>		state[<span class="num_const">0</span>] = <span class="key">new</span> Array(); state[<span class="num_const">1</span>] = <span class="key">new</span> Array();
-<span class="lineno" id="209">   209  </span>		state[<span class="num_const">2</span>] = <span class="key">new</span> Array(); state[<span class="num_const">3</span>] = <span class="key">new</span> Array();
-<span class="lineno" id="210">   210  </span>		<span class="key">for</span> (<span class="key">var</span> j:Number = <span class="num_const">0</span>; j&lt;octets.length; j+= <span class="num_const">4</span>) {
-<span class="lineno" id="211">   211  </span>			state[<span class="num_const">0</span>][j/<span class="num_const">4</span>] = octets[j];
-<span class="lineno" id="212">   212  </span>			state[<span class="num_const">1</span>][j/<span class="num_const">4</span>] = octets[j+<span class="num_const">1</span>];
-<span class="lineno" id="213">   213  </span>			state[<span class="num_const">2</span>][j/<span class="num_const">4</span>] = octets[j+<span class="num_const">2</span>];
-<span class="lineno" id="214">   214  </span>			state[<span class="num_const">3</span>][j/<span class="num_const">4</span>] = octets[j+<span class="num_const">3</span>];
-<span class="lineno" id="215">   215  </span>		}
-<span class="lineno" id="216">   216  </span>		<span class="key">return</span> state;
-<span class="lineno" id="217">   217  </span>	}
-<span class="lineno" id="218">   218  </span>
-<span class="lineno" id="219">   219  </span>	<span class="key">private</span> <span class="key">function</span> unpackBytes(packed:Array):Array {
-<span class="lineno" id="220">   220  </span>		<span class="key">var</span> result:Array = <span class="key">new</span> Array();
-<span class="lineno" id="221">   221  </span>		<span class="key">for</span> (<span class="key">var</span> j:Number = <span class="num_const">0</span>; j&lt;packed[<span class="num_const">0</span>].length; j++) {
-<span class="lineno" id="222">   222  </span>			result[result.length] = packed[<span class="num_const">0</span>][j];
-<span class="lineno" id="223">   223  </span>			result[result.length] = packed[<span class="num_const">1</span>][j];
-<span class="lineno" id="224">   224  </span>			result[result.length] = packed[<span class="num_const">2</span>][j];
-<span class="lineno" id="225">   225  </span>			result[result.length] = packed[<span class="num_const">3</span>][j];
-<span class="lineno" id="226">   226  </span>		}
-<span class="lineno" id="227">   227  </span>		<span class="key">return</span> result;
-<span class="lineno" id="228">   228  </span>	}
-<span class="lineno" id="229">   229  </span>
-<span class="lineno" id="230">   230  </span>	<span class="key">private</span> <span class="key">function</span> formatPlaintext(plaintext:Array):Array {
-<span class="lineno" id="231">   231  </span>		<span class="key">var</span> bpb:Number = blockSize / <span class="num_const">8</span>;
-<span class="lineno" id="232">   232  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = bpb-(plaintext.length % bpb); i&gt;<span class="num_const">0</span> &amp;&amp; i&lt;bpb; i--) {
-<span class="lineno" id="233">   233  </span>			plaintext[plaintext.length] = <span class="num_const">0</span>;
-<span class="lineno" id="234">   234  </span>		}
-<span class="lineno" id="235">   235  </span>		<span class="key">return</span> plaintext;
-<span class="lineno" id="236">   236  </span>	}
-<span class="lineno" id="237">   237  </span>
-<span class="lineno" id="238">   238  </span>	<span class="key">private</span> <span class="key">function</span> getRandomBytes(howMany:Number):Array {
-<span class="lineno" id="239">   239  </span>		<span class="key">var</span> bytes:Array = <span class="key">new</span> Array();
-<span class="lineno" id="240">   240  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = <span class="num_const">0</span>; i&lt;howMany; i++) {
-<span class="lineno" id="241">   241  </span>			bytes[i] = Math.round(Math.random()*<span class="num_const">255</span>);
-<span class="lineno" id="242">   242  </span>		}
-<span class="lineno" id="243">   243  </span>		<span class="key">return</span> bytes;
-<span class="lineno" id="244">   244  </span>	}
-<span class="lineno" id="245">   245  </span>
-<span class="lineno" id="246">   246  </span>	<span class="key">private</span> <span class="key">function</span> hexToChars(hex:String):Array {
-<span class="lineno" id="247">   247  </span>		<span class="key">var</span> codes:Array = <span class="key">new</span> Array();
-<span class="lineno" id="248">   248  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = (hex.substr(<span class="num_const">0</span>, <span class="num_const">2</span>) == <span class="str_const">"0x"</span>) ? <span class="num_const">2</span> : <span class="num_const">0</span>; i&lt;hex.length; i+=<span class="num_const">2</span>) {
-<span class="lineno" id="249">   249  </span>			codes.push(parseInt(hex.substr(i, <span class="num_const">2</span>), <span class="num_const">16</span>));
-<span class="lineno" id="250">   250  </span>		}
-<span class="lineno" id="251">   251  </span>		<span class="key">return</span> codes;
-<span class="lineno" id="252">   252  </span>	}
-<span class="lineno" id="253">   253  </span>
-<span class="lineno" id="254">   254  </span>	<span class="key">private</span> <span class="key">function</span> charsToHex(chars:Array):String {
-<span class="lineno" id="255">   255  </span>		<span class="key">var</span> result:String = <span class="key">new</span> String(<span class="str_const">""</span>);
-<span class="lineno" id="256">   256  </span>		<span class="key">var</span> hexes:Array = <span class="key">new</span> Array(<span class="str_const">"0"</span>,<span class="str_const">"1"</span>,<span class="str_const">"2"</span>,<span class="str_const">"3"</span>,<span class="str_const">"4"</span>,<span class="str_const">"5"</span>,<span class="str_const">"6"</span>,<span class="str_const">"7"</span>,<span class="str_const">"8"</span>,<span class="str_const">"9"</span>,<span class="str_const">"a"</span>,<span class="str_const">"b"</span>,<span class="str_const">"c"</span>,<span class="str_const">"d"</span>,<span class="str_const">"e"</span>,<span class="str_const">"f"</span>);
-<span class="lineno" id="257">   257  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = <span class="num_const">0</span>; i&lt;chars.length; i++) {
-<span class="lineno" id="258">   258  </span>			result += hexes[chars[i] &gt;&gt; <span class="num_const">4</span>] + hexes[chars[i] &amp; 0xf];
-<span class="lineno" id="259">   259  </span>		}
-<span class="lineno" id="260">   260  </span>		<span class="key">return</span> result;
-<span class="lineno" id="261">   261  </span>	}
-<span class="lineno" id="262">   262  </span>
-<span class="lineno" id="263">   263  </span>	<span class="key">private</span> <span class="key">function</span> charsToStr(chars:Array):String {
-<span class="lineno" id="264">   264  </span>		<span class="key">var</span> result:String = <span class="key">new</span> String(<span class="str_const">""</span>);
-<span class="lineno" id="265">   265  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = <span class="num_const">0</span>; i&lt;chars.length; i++) {
-<span class="lineno" id="266">   266  </span>			result += String.fromCharCode(chars[i]);
-<span class="lineno" id="267">   267  </span>		}
-<span class="lineno" id="268">   268  </span>		<span class="key">return</span> result;
-<span class="lineno" id="269">   269  </span>	}
-<span class="lineno" id="270">   270  </span>
-<span class="lineno" id="271">   271  </span>	<span class="key">private</span> <span class="key">function</span> strToChars(str:String):Array {
-<span class="lineno" id="272">   272  </span>		<span class="key">var</span> codes:Array = <span class="key">new</span> Array();
-<span class="lineno" id="273">   273  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = <span class="num_const">0</span>; i&lt;str.length; i++) {
-<span class="lineno" id="274">   274  </span>			codes.push(str.charCodeAt(i));
-<span class="lineno" id="275">   275  </span>		}
-<span class="lineno" id="276">   276  </span>		<span class="key">return</span> codes;
-<span class="lineno" id="277">   277  </span>	}
-<span class="lineno" id="278">   278  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of Sekati" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.crypt" class="button">Package</a></li><li><a href="Rijndael.html" title="Detail of com.sekati.crypt.Rijndael API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
+<span class="lineno" id="108">   108  </span>		<span class="key">var</span> S:Array;
+<span class="lineno" id="109">   109  </span>		<span class="key">if</span>(dir == <span class="str_const">"encrypt"</span>) S = <span class="key">this</span>.SBox;
+<span class="lineno" id="110">   110  </span>		<span class="key">else</span> S = <span class="key">this</span>.SBoxInverse;
+<span class="lineno" id="111">   111  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = <span class="num_const">0</span>; i&lt;<span class="num_const">4</span>; i++) {
+<span class="lineno" id="112">   112  </span>			<span class="key">for</span> (<span class="key">var</span> j = <span class="num_const">0</span>; j&lt;<span class="key">this</span>.Nb; j++) state[i][j] = S[state[i][j]];
+<span class="lineno" id="113">   113  </span>		}
+<span class="lineno" id="114">   114  </span>	}
+<span class="lineno" id="115">   115  </span>
+<span class="lineno" id="116">   116  </span>	<span class="key">private</span> <span class="key">function</span> shiftRow(state:Array, dir:String):Void {
+<span class="lineno" id="117">   117  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = <span class="num_const">1</span>; i&lt;<span class="num_const">4</span>; i++) {
+<span class="lineno" id="118">   118  </span>			<span class="key">if</span> (dir == <span class="str_const">"encrypt"</span>) state[i] = <span class="key">this</span>.cyclicShiftLeft(state[i], <span class="key">this</span>.shiftOffsets[Nb][i]);
+<span class="lineno" id="119">   119  </span>			<span class="key">else</span> state[i] = <span class="key">this</span>.cyclicShiftLeft(state[i], <span class="key">this</span>.Nb-<span class="key">this</span>.shiftOffsets[Nb][i]);
+<span class="lineno" id="120">   120  </span>		}
+<span class="lineno" id="121">   121  </span>	}
+<span class="lineno" id="122">   122  </span>
+<span class="lineno" id="123">   123  </span>	<span class="key">private</span> <span class="key">function</span> mixColumn(state:Array, dir:String):Void {
+<span class="lineno" id="124">   124  </span>		<span class="key">var</span> b:Array = <span class="key">new</span> Array();
+<span class="lineno" id="125">   125  </span>		<span class="key">var</span> i:Number;
+<span class="lineno" id="126">   126  </span>		<span class="key">for</span> (<span class="key">var</span> j:Number = <span class="num_const">0</span>; j&lt;<span class="key">this</span>.Nb; j++) {
+<span class="lineno" id="127">   127  </span>			<span class="key">for</span>(i = <span class="num_const">0</span>; i&lt;<span class="num_const">4</span>; i++) {
+<span class="lineno" id="128">   128  </span>				<span class="key">if</span> (dir == <span class="str_const">"encrypt"</span>) b[i] = <span class="key">this</span>.mult_GF256(state[i][j], <span class="num_const">2</span>) ^ <span class="key">this</span>.mult_GF256(state[(i+<span class="num_const">1</span>)%<span class="num_const">4</span>][j], <span class="num_const">3</span>) ^ state[(i+<span class="num_const">2</span>)%<span class="num_const">4</span>][j] ^ state[(i+<span class="num_const">3</span>)%<span class="num_const">4</span>][j];
+<span class="lineno" id="129">   129  </span>				<span class="key">else</span> b[i] = <span class="key">this</span>.mult_GF256(state[i][j], 0xE) ^ <span class="key">this</span>.mult_GF256(state[(i+<span class="num_const">1</span>)%<span class="num_const">4</span>][j], 0xB) ^ <span class="key">this</span>.mult_GF256(state[(i+<span class="num_const">2</span>)%<span class="num_const">4</span>][j], 0xD) ^ <span class="key">this</span>.mult_GF256(state[(i+<span class="num_const">3</span>)%<span class="num_const">4</span>][j], <span class="num_const">9</span>);
+<span class="lineno" id="130">   130  </span>			}
+<span class="lineno" id="131">   131  </span>			<span class="key">for</span> (i = <span class="num_const">0</span>; i&lt;<span class="num_const">4</span>; i++) {
+<span class="lineno" id="132">   132  </span>				state[i][j] = b[i];
+<span class="lineno" id="133">   133  </span>			}
+<span class="lineno" id="134">   134  </span>		}
+<span class="lineno" id="135">   135  </span>	}
+<span class="lineno" id="136">   136  </span>
+<span class="lineno" id="137">   137  </span>	<span class="key">private</span> <span class="key">function</span> addRoundKey(state:Array, roundKey:Array):Void {
+<span class="lineno" id="138">   138  </span>		<span class="key">for</span> (<span class="key">var</span> j:Number = <span class="num_const">0</span>; j&lt;<span class="key">this</span>.Nb; j++) {
+<span class="lineno" id="139">   139  </span>			state[<span class="num_const">0</span>][j] ^= (roundKey[j] &amp; 0xFF);
+<span class="lineno" id="140">   140  </span>			state[<span class="num_const">1</span>][j] ^= ((roundKey[j]&gt;&gt;<span class="num_const">8</span>) &amp;0xFF);
+<span class="lineno" id="141">   141  </span>			state[<span class="num_const">2</span>][j] ^= ((roundKey[j]&gt;&gt;<span class="num_const">16</span>) &amp;0xFF);
+<span class="lineno" id="142">   142  </span>			state[<span class="num_const">3</span>][j] ^= ((roundKey[j]&gt;&gt;<span class="num_const">24</span>) &amp;0xFF);
+<span class="lineno" id="143">   143  </span>		}
+<span class="lineno" id="144">   144  </span>	}
+<span class="lineno" id="145">   145  </span>
+<span class="lineno" id="146">   146  </span>	<span class="key">private</span> <span class="key">function</span> keyExpansion(key:Array):Array {
+<span class="lineno" id="147">   147  </span>		<span class="key">var</span> temp:Number = <span class="num_const">0</span>;
+<span class="lineno" id="148">   148  </span>		<span class="key">var</span> j:Number;
+<span class="lineno" id="149">   149  </span>		<span class="key">this</span>.Nk = <span class="key">this</span>.keySize/<span class="num_const">32</span>;
+<span class="lineno" id="150">   150  </span>		<span class="key">this</span>.Nb = <span class="key">this</span>.blockSize/<span class="num_const">32</span>;
+<span class="lineno" id="151">   151  </span>		<span class="key">var</span> expandedKey:Array = <span class="key">new</span> Array();
+<span class="lineno" id="152">   152  </span>		<span class="key">this</span>.Nr = <span class="key">this</span>.roundsArray[<span class="key">this</span>.Nk][<span class="key">this</span>.Nb];
+<span class="lineno" id="153">   153  </span>		<span class="key">for</span> (j = <span class="num_const">0</span>; j&lt;<span class="key">this</span>.Nk; j++) expandedKey[j] = (key[<span class="num_const">4</span>*j]) | (key[<span class="num_const">4</span>*j+<span class="num_const">1</span>]&lt;&lt;<span class="num_const">8</span>) | (key[<span class="num_const">4</span>*j+<span class="num_const">2</span>]&lt;&lt;<span class="num_const">16</span>) | (key[<span class="num_const">4</span>*j+<span class="num_const">3</span>]&lt;&lt;<span class="num_const">24</span>);
+<span class="lineno" id="154">   154  </span>		<span class="key">for</span> (j = <span class="key">this</span>.Nk; j&lt;<span class="key">this</span>.Nb*(<span class="key">this</span>.Nr+<span class="num_const">1</span>); j++) {
+<span class="lineno" id="155">   155  </span>			temp = expandedKey[j-<span class="num_const">1</span>];
+<span class="lineno" id="156">   156  </span>			<span class="key">if</span> (j % <span class="key">this</span>.Nk == <span class="num_const">0</span>) temp = ( (<span class="key">this</span>.SBox[(temp&gt;&gt;<span class="num_const">8</span>) &amp; 0xFF]) | (<span class="key">this</span>.SBox[(temp&gt;&gt;<span class="num_const">16</span>) &amp; 0xFF]&lt;&lt;<span class="num_const">8</span>) | (<span class="key">this</span>.SBox[(temp&gt;&gt;<span class="num_const">24</span>) &amp; 0xFF]&lt;&lt;<span class="num_const">16</span>) | (<span class="key">this</span>.SBox[temp &amp; 0xFF]&lt;&lt;<span class="num_const">24</span>) ) ^ <span class="key">this</span>.Rcon[Math.floor(j / <span class="key">this</span>.Nk) - <span class="num_const">1</span>];
+<span class="lineno" id="157">   157  </span>			<span class="key">else</span> <span class="key">if</span> (<span class="key">this</span>.Nk &gt; <span class="num_const">6</span> &amp;&amp; j % <span class="key">this</span>.Nk == <span class="num_const">4</span>) temp = (<span class="key">this</span>.SBox[(temp&gt;&gt;<span class="num_const">24</span>) &amp; 0xFF]&lt;&lt;<span class="num_const">24</span>) | (<span class="key">this</span>.SBox[(temp&gt;&gt;<span class="num_const">16</span>) &amp; 0xFF]&lt;&lt;<span class="num_const">16</span>) | (<span class="key">this</span>.SBox[(temp&gt;&gt;<span class="num_const">8</span>) &amp; 0xFF]&lt;&lt;<span class="num_const">8</span>) | (<span class="key">this</span>.SBox[temp &amp; 0xFF]);
+<span class="lineno" id="158">   158  </span>			expandedKey[j] = expandedKey[j-<span class="key">this</span>.Nk] ^ temp;
+<span class="lineno" id="159">   159  </span>		}
+<span class="lineno" id="160">   160  </span>		<span class="key">return</span> expandedKey;
+<span class="lineno" id="161">   161  </span>	}
+<span class="lineno" id="162">   162  </span>
+<span class="lineno" id="163">   163  </span>	<span class="key">private</span> <span class="key">function</span> Round(state:Array, roundKey:Array):Void {
+<span class="lineno" id="164">   164  </span>		<span class="key">this</span>.byteSub(state, <span class="str_const">"encrypt"</span>);
+<span class="lineno" id="165">   165  </span>		<span class="key">this</span>.shiftRow(state, <span class="str_const">"encrypt"</span>);
+<span class="lineno" id="166">   166  </span>		<span class="key">this</span>.mixColumn(state, <span class="str_const">"encrypt"</span>);
+<span class="lineno" id="167">   167  </span>		<span class="key">this</span>.addRoundKey(state, roundKey);
+<span class="lineno" id="168">   168  </span>	}
+<span class="lineno" id="169">   169  </span>
+<span class="lineno" id="170">   170  </span>	<span class="key">private</span> <span class="key">function</span> InverseRound(state:Array, roundKey:Array):Void {
+<span class="lineno" id="171">   171  </span>		<span class="key">this</span>.addRoundKey(state, roundKey);
+<span class="lineno" id="172">   172  </span>		<span class="key">this</span>.mixColumn(state, <span class="str_const">"decrypt"</span>);
+<span class="lineno" id="173">   173  </span>		<span class="key">this</span>.shiftRow(state, <span class="str_const">"decrypt"</span>);
+<span class="lineno" id="174">   174  </span>		<span class="key">this</span>.byteSub(state, <span class="str_const">"decrypt"</span>);
+<span class="lineno" id="175">   175  </span>	}
+<span class="lineno" id="176">   176  </span>
+<span class="lineno" id="177">   177  </span>	<span class="key">private</span> <span class="key">function</span> FinalRound(state:Array, roundKey:Array):Void {
+<span class="lineno" id="178">   178  </span>		<span class="key">this</span>.byteSub(state, <span class="str_const">"encrypt"</span>);
+<span class="lineno" id="179">   179  </span>		<span class="key">this</span>.shiftRow(state, <span class="str_const">"encrypt"</span>);
+<span class="lineno" id="180">   180  </span>		<span class="key">this</span>.addRoundKey(state, roundKey);
+<span class="lineno" id="181">   181  </span>	}
+<span class="lineno" id="182">   182  </span>
+<span class="lineno" id="183">   183  </span>	<span class="key">private</span> <span class="key">function</span> InverseFinalRound(state:Array, roundKey:Array):Void {
+<span class="lineno" id="184">   184  </span>		<span class="key">this</span>.addRoundKey(state, roundKey);
+<span class="lineno" id="185">   185  </span>		<span class="key">this</span>.shiftRow(state, <span class="str_const">"decrypt"</span>);
+<span class="lineno" id="186">   186  </span>		<span class="key">this</span>.byteSub(state, <span class="str_const">"decrypt"</span>);
+<span class="lineno" id="187">   187  </span>	}
+<span class="lineno" id="188">   188  </span>
+<span class="lineno" id="189">   189  </span>	<span class="key">private</span> <span class="key">function</span> encryption(block:Array, expandedKey:Array):Array {
+<span class="lineno" id="190">   190  </span>		block = <span class="key">this</span>.packBytes(block);
+<span class="lineno" id="191">   191  </span>		<span class="key">this</span>.addRoundKey(block, expandedKey);
+<span class="lineno" id="192">   192  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = <span class="num_const">1</span>; i&lt;Nr; i++) {
+<span class="lineno" id="193">   193  </span>			<span class="key">this</span>.Round(block, expandedKey.slice(<span class="key">this</span>.Nb*i, <span class="key">this</span>.Nb*(i+<span class="num_const">1</span>)));
+<span class="lineno" id="194">   194  </span>		}
+<span class="lineno" id="195">   195  </span>		<span class="key">this</span>.FinalRound(block, expandedKey.slice(<span class="key">this</span>.Nb*<span class="key">this</span>.Nr));
+<span class="lineno" id="196">   196  </span>		<span class="key">return</span> <span class="key">this</span>.unpackBytes(block);
+<span class="lineno" id="197">   197  </span>	}
+<span class="lineno" id="198">   198  </span>
+<span class="lineno" id="199">   199  </span>	<span class="key">private</span> <span class="key">function</span> decryption(block:Array, expandedKey:Array):Array {
+<span class="lineno" id="200">   200  </span>		block = <span class="key">this</span>.packBytes(block);
+<span class="lineno" id="201">   201  </span>		<span class="key">this</span>.InverseFinalRound(block, expandedKey.slice(<span class="key">this</span>.Nb*<span class="key">this</span>.Nr));
+<span class="lineno" id="202">   202  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = Nr-<span class="num_const">1</span>; i&gt;<span class="num_const">0</span>; i--) {
+<span class="lineno" id="203">   203  </span>			<span class="key">this</span>.InverseRound(block, expandedKey.slice(<span class="key">this</span>.Nb*i, <span class="key">this</span>.Nb*(i+<span class="num_const">1</span>)));
+<span class="lineno" id="204">   204  </span>		}
+<span class="lineno" id="205">   205  </span>		<span class="key">this</span>.addRoundKey(block, expandedKey);
+<span class="lineno" id="206">   206  </span>		<span class="key">return</span> <span class="key">this</span>.unpackBytes(block);
+<span class="lineno" id="207">   207  </span>	}
+<span class="lineno" id="208">   208  </span>
+<span class="lineno" id="209">   209  </span>	<span class="key">private</span> <span class="key">function</span> packBytes(octets:Array):Array {
+<span class="lineno" id="210">   210  </span>		<span class="key">var</span> state:Array = <span class="key">new</span> Array();
+<span class="lineno" id="211">   211  </span>		state[<span class="num_const">0</span>] = <span class="key">new</span> Array(); state[<span class="num_const">1</span>] = <span class="key">new</span> Array();
+<span class="lineno" id="212">   212  </span>		state[<span class="num_const">2</span>] = <span class="key">new</span> Array(); state[<span class="num_const">3</span>] = <span class="key">new</span> Array();
+<span class="lineno" id="213">   213  </span>		<span class="key">for</span> (<span class="key">var</span> j:Number = <span class="num_const">0</span>; j&lt;octets.length; j+= <span class="num_const">4</span>) {
+<span class="lineno" id="214">   214  </span>			state[<span class="num_const">0</span>][j/<span class="num_const">4</span>] = octets[j];
+<span class="lineno" id="215">   215  </span>			state[<span class="num_const">1</span>][j/<span class="num_const">4</span>] = octets[j+<span class="num_const">1</span>];
+<span class="lineno" id="216">   216  </span>			state[<span class="num_const">2</span>][j/<span class="num_const">4</span>] = octets[j+<span class="num_const">2</span>];
+<span class="lineno" id="217">   217  </span>			state[<span class="num_const">3</span>][j/<span class="num_const">4</span>] = octets[j+<span class="num_const">3</span>];
+<span class="lineno" id="218">   218  </span>		}
+<span class="lineno" id="219">   219  </span>		<span class="key">return</span> state;
+<span class="lineno" id="220">   220  </span>	}
+<span class="lineno" id="221">   221  </span>
+<span class="lineno" id="222">   222  </span>	<span class="key">private</span> <span class="key">function</span> unpackBytes(packed:Array):Array {
+<span class="lineno" id="223">   223  </span>		<span class="key">var</span> result:Array = <span class="key">new</span> Array();
+<span class="lineno" id="224">   224  </span>		<span class="key">for</span> (<span class="key">var</span> j:Number = <span class="num_const">0</span>; j&lt;packed[<span class="num_const">0</span>].length; j++) {
+<span class="lineno" id="225">   225  </span>			result[result.length] = packed[<span class="num_const">0</span>][j];
+<span class="lineno" id="226">   226  </span>			result[result.length] = packed[<span class="num_const">1</span>][j];
+<span class="lineno" id="227">   227  </span>			result[result.length] = packed[<span class="num_const">2</span>][j];
+<span class="lineno" id="228">   228  </span>			result[result.length] = packed[<span class="num_const">3</span>][j];
+<span class="lineno" id="229">   229  </span>		}
+<span class="lineno" id="230">   230  </span>		<span class="key">return</span> result;
+<span class="lineno" id="231">   231  </span>	}
+<span class="lineno" id="232">   232  </span>
+<span class="lineno" id="233">   233  </span>	<span class="key">private</span> <span class="key">function</span> formatPlaintext(plaintext:Array):Array {
+<span class="lineno" id="234">   234  </span>		<span class="key">var</span> bpb:Number = blockSize / <span class="num_const">8</span>;
+<span class="lineno" id="235">   235  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = bpb-(plaintext.length % bpb); i&gt;<span class="num_const">0</span> &amp;&amp; i&lt;bpb; i--) {
+<span class="lineno" id="236">   236  </span>			plaintext[plaintext.length] = <span class="num_const">0</span>;
+<span class="lineno" id="237">   237  </span>		}
+<span class="lineno" id="238">   238  </span>		<span class="key">return</span> plaintext;
+<span class="lineno" id="239">   239  </span>	}
+<span class="lineno" id="240">   240  </span>
+<span class="lineno" id="241">   241  </span>	<span class="key">private</span> <span class="key">function</span> getRandomBytes(howMany:Number):Array {
+<span class="lineno" id="242">   242  </span>		<span class="key">var</span> bytes:Array = <span class="key">new</span> Array();
+<span class="lineno" id="243">   243  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = <span class="num_const">0</span>; i&lt;howMany; i++) {
+<span class="lineno" id="244">   244  </span>			bytes[i] = Math.round(Math.random()*<span class="num_const">255</span>);
+<span class="lineno" id="245">   245  </span>		}
+<span class="lineno" id="246">   246  </span>		<span class="key">return</span> bytes;
+<span class="lineno" id="247">   247  </span>	}
+<span class="lineno" id="248">   248  </span>
+<span class="lineno" id="249">   249  </span>	<span class="key">private</span> <span class="key">function</span> hexToChars(hex:String):Array {
+<span class="lineno" id="250">   250  </span>		<span class="key">var</span> codes:Array = <span class="key">new</span> Array();
+<span class="lineno" id="251">   251  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = (hex.substr(<span class="num_const">0</span>, <span class="num_const">2</span>) == <span class="str_const">"0x"</span>) ? <span class="num_const">2</span> : <span class="num_const">0</span>; i&lt;hex.length; i+=<span class="num_const">2</span>) {
+<span class="lineno" id="252">   252  </span>			codes.push(parseInt(hex.substr(i, <span class="num_const">2</span>), <span class="num_const">16</span>));
+<span class="lineno" id="253">   253  </span>		}
+<span class="lineno" id="254">   254  </span>		<span class="key">return</span> codes;
+<span class="lineno" id="255">   255  </span>	}
+<span class="lineno" id="256">   256  </span>
+<span class="lineno" id="257">   257  </span>	<span class="key">private</span> <span class="key">function</span> charsToHex(chars:Array):String {
+<span class="lineno" id="258">   258  </span>		<span class="key">var</span> result:String = <span class="key">new</span> String(<span class="str_const">""</span>);
+<span class="lineno" id="259">   259  </span>		<span class="key">var</span> hexes:Array = <span class="key">new</span> Array(<span class="str_const">"0"</span>,<span class="str_const">"1"</span>,<span class="str_const">"2"</span>,<span class="str_const">"3"</span>,<span class="str_const">"4"</span>,<span class="str_const">"5"</span>,<span class="str_const">"6"</span>,<span class="str_const">"7"</span>,<span class="str_const">"8"</span>,<span class="str_const">"9"</span>,<span class="str_const">"a"</span>,<span class="str_const">"b"</span>,<span class="str_const">"c"</span>,<span class="str_const">"d"</span>,<span class="str_const">"e"</span>,<span class="str_const">"f"</span>);
+<span class="lineno" id="260">   260  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = <span class="num_const">0</span>; i&lt;chars.length; i++) {
+<span class="lineno" id="261">   261  </span>			result += hexes[chars[i] &gt;&gt; <span class="num_const">4</span>] + hexes[chars[i] &amp; 0xf];
+<span class="lineno" id="262">   262  </span>		}
+<span class="lineno" id="263">   263  </span>		<span class="key">return</span> result;
+<span class="lineno" id="264">   264  </span>	}
+<span class="lineno" id="265">   265  </span>
+<span class="lineno" id="266">   266  </span>	<span class="key">private</span> <span class="key">function</span> charsToStr(chars:Array):String {
+<span class="lineno" id="267">   267  </span>		<span class="key">var</span> result:String = <span class="key">new</span> String(<span class="str_const">""</span>);
+<span class="lineno" id="268">   268  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = <span class="num_const">0</span>; i&lt;chars.length; i++) {
+<span class="lineno" id="269">   269  </span>			result += String.fromCharCode(chars[i]);
+<span class="lineno" id="270">   270  </span>		}
+<span class="lineno" id="271">   271  </span>		<span class="key">return</span> result;
+<span class="lineno" id="272">   272  </span>	}
+<span class="lineno" id="273">   273  </span>
+<span class="lineno" id="274">   274  </span>	<span class="key">private</span> <span class="key">function</span> strToChars(str:String):Array {
+<span class="lineno" id="275">   275  </span>		<span class="key">var</span> codes:Array = <span class="key">new</span> Array();
+<span class="lineno" id="276">   276  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = <span class="num_const">0</span>; i&lt;str.length; i++) {
+<span class="lineno" id="277">   277  </span>			codes.push(str.charCodeAt(i));
+<span class="lineno" id="278">   278  </span>		}
+<span class="lineno" id="279">   279  </span>		<span class="key">return</span> codes;
+<span class="lineno" id="280">   280  </span>	}
+<span class="lineno" id="281">   281  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of Sekati" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.crypt" class="button">Package</a></li><li><a href="Rijndael.html" title="Detail of com.sekati.crypt.Rijndael API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>

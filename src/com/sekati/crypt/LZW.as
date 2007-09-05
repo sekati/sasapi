@@ -1,6 +1,6 @@
 /**
  * com.sekati.crypt.LZW
- * @version 1.0.1
+ * @version 1.0.3
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -27,14 +27,16 @@ class com.sekati.crypt.LZW implements ICipher {
 		var chars:Number = 256;
 		var original:String = src;
 		var dict:Array = new Array();
-		for (var i:Number = 0; i<chars; i++) dict[String(i)] = i;
+		var i:Number;
+		var xstr:String;
+		for (i = 0; i<chars; i++) dict[String(i)] = i;
 		var result:String = new String("");
 		var splitted:Array = original.split("");
 		var buffer:Array = new Array();
-		for (var i:Number = 0; i<=splitted.length; i++) {
+		for (i = 0; i<=splitted.length; i++) {
 			var current:String = splitted[i];
-			if (buffer.length == 0) var xstr:String = String(current.charCodeAt(0));
-			else var xstr:String = buffer.join("-")+"-"+String(current.charCodeAt(0));
+			if (buffer.length == 0) xstr = String(current.charCodeAt(0));
+			else xstr = buffer.join("-")+"-"+String(current.charCodeAt(0));
 			if (dict[xstr] !== undefined){
 				buffer.push(current.charCodeAt(0));
 			} else {
@@ -57,7 +59,8 @@ class com.sekati.crypt.LZW implements ICipher {
 	public static function decompress(src:String):String {
 		var chars:Number = 256;
 		var dict:Array = new Array();
-		for (var i:Number = 0; i<chars; i++) {
+		var i:Number;
+		for (i = 0; i<chars; i++) {
 			var c:String = String.fromCharCode(i);
 			dict[i] = c;
 		}
@@ -66,7 +69,7 @@ class com.sekati.crypt.LZW implements ICipher {
 		var buffer:String = new String("");
 		var chain:String = new String("");
 		var result:String = new String("");
-		for (var i:Number = 0; i<splitted.length; i++) {
+		for (i = 0; i<splitted.length; i++) {
 			var code:Number = original.charCodeAt(i);
 			var current:String = dict[code];
 			if (buffer == "") {

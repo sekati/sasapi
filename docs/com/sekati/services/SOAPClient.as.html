@@ -3,7 +3,7 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span><span class="comment doc">/**
 <span class="lineno" id="2">     2  </span> * com.sekati.services.SOAPClient
-<span class="lineno" id="3">     3  </span> * @version 1.0.0
+<span class="lineno" id="3">     3  </span> * @version 1.0.3
 <span class="lineno" id="4">     4  </span> * @author jason m horwitz | sekati.com
 <span class="lineno" id="5">     5  </span> * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -161,8 +161,8 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="158">   158  </span>		Dispatcher.$.dispatchEvent(<span class="key">new</span> SOAPEvent(SOAPEvent.onCallFaultEVENT, {method:method, fault:fault}));
 <span class="lineno" id="159">   159  </span>		<span class="key">if</span> (_isVerbose) {
 <span class="lineno" id="160">   160  </span>			<span class="key">var</span> props:String=<span class="str_const">""</span>, call:String=<span class="str_const">""</span>;
-<span class="lineno" id="161">   161  </span>			<span class="key">for</span>(<span class="key">var</span> i <span class="key">in</span> SOAPCall) props += <span class="str_const">"\nSOAPCall Properties: "</span>+i+<span class="str_const">"  "</span>+<span class="key">this</span>[i];
-<span class="lineno" id="162">   162  </span>			<span class="key">for</span> (<span class="key">var</span> i <span class="key">in</span> SOAPCall) call += <span class="str_const">"\nSOAPCall-&gt; "</span>+i+<span class="str_const">" "</span>+SOAPCall[i];
+<span class="lineno" id="161">   161  </span>			<span class="key">for</span>(<span class="key">var</span> i:String <span class="key">in</span> SOAPCall) props += <span class="str_const">"\nSOAPCall Properties: "</span>+i+<span class="str_const">"  "</span>+<span class="key">this</span>[i];
+<span class="lineno" id="162">   162  </span>			<span class="key">for</span> (<span class="key">var</span> j:String <span class="key">in</span> SOAPCall) call += <span class="str_const">"\nSOAPCall-&gt; "</span>+j+<span class="str_const">" "</span>+SOAPCall[j];
 <span class="lineno" id="163">   163  </span>			Logger.$.error(_instance.toString(), <span class="str_const">"Webservice Call Fault: '"</span>+method+<span class="str_const">"'\nfaultstring: "</span>+fault.faultstring+<span class="str_const">"\nfaultcode: "</span>+fault.faultcode+<span class="str_const">"\ndetail: "</span>+fault.detail+<span class="str_const">"\nfaultactor: "</span>+fault.faultactor+<span class="str_const">"\nrequest: "</span>+request+<span class="str_const">"\nSOAP response envelope: "</span>+response+<span class="str_const">"\nfault: "</span>+fault+<span class="str_const">"\n"</span>+props+<span class="str_const">"\n"</span>+call);
 <span class="lineno" id="164">   164  </span>		}		
 <span class="lineno" id="165">   165  </span>	}	

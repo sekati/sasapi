@@ -9,7 +9,6 @@
  import com.sekati.core.CoreObject;
  import com.sekati.geom.Point;
  import com.sekati.math.MathBase;
- import com.sekati.reflect.Stringifier;
  
 /**
  * Sort an array of Objects positions into various shapes and patterns.
@@ -131,20 +130,21 @@ class com.sekati.geom.Sort extends CoreObject {
 	    var posArray:Array = new Array();
 	    var radAngle:Number = Math.PI/3;
 	    
+	    var spacing:Number;
 	    for (var i:Number=0; i<_items.length; i++) {
 	        posArray[i] = new Point();
 	        if (i<objBySide){
-	            var spacing:Number = sideLength/objBySide;
+	            spacing = sideLength/objBySide;
 	            posArray[i].x = (spacing*i)*Math.cos(radAngle);
 	            posArray[i].y = (spacing*i)*Math.sin(radAngle);
 	        }
 	        if (i>=objBySide && i<objBySide*2+Math.ceil(leftObj/2)) {
-	            var spacing:Number = (leftObj != 0) ? sideLength/(objBySide+1) : sideLength/objBySide;
+	            spacing = (leftObj != 0) ? sideLength/(objBySide+1) : sideLength/objBySide;
 	            posArray[i].x = (sideLength*Math.cos(radAngle))-(spacing*(i-objBySide));
 	            posArray[i].y = sideLength*Math.sin(radAngle);
 	        }
 	        if (i>=objBySide*2+Math.ceil(leftObj/2)) {
-	            var spacing:Number = (leftObj == 2) ? sideLength/(objBySide+1) : sideLength/objBySide;
+	            spacing = (leftObj == 2) ? sideLength/(objBySide+1) : sideLength/objBySide;
 	            posArray[i].x = -sideLength*Math.cos(radAngle)+(spacing*(i-(objBySide*2+Math.ceil(leftObj/2))))*Math.cos(radAngle);
 	            posArray[i].y = sideLength*Math.sin(radAngle)-(spacing*(i-(objBySide*2+Math.ceil(leftObj/2))))*Math.sin(radAngle);
 	        }
@@ -193,7 +193,7 @@ class com.sekati.geom.Sort extends CoreObject {
 	 * }
 	 */
 	public function hedron (center:Point, heightCap:Number, corners:Number, rotate:Number, isIntraRadial:Boolean):Array {
-	    var heightCap:Number = (!heightCap) ? 0.8 : heightCap;
+	    heightCap = (!heightCap) ? 0.8 : heightCap;
 	    var outerRadius:Number = center.y * heightCap;
 	    var innerRadius:Number = (!isIntraRadial) ? outerRadius * Math.sqrt((1+Math.cos((2*Math.PI)/corners))/2) : outerRadius/2;
 	    var cursors:Number = _items.length;
@@ -204,6 +204,11 @@ class com.sekati.geom.Sort extends CoreObject {
 	    rotate = (Math.PI/180) * rotate;
 	    var alpha:Number = rotate;
 	    var actualCursor:Number = 0;
+	    var cursorsOnActualLine:Number;
+	    var xStep:Number;
+	    var yStep:Number;
+	    var xAct:Number;
+	    var yAct:Number;	    
 	    for (var i:Number = 0; i < corners; i++) {
 	        var xOuter1:Number = Math.sin(alpha) * outerRadius;
 	        var yOuter1:Number = Math.cos(alpha) * outerRadius;
@@ -212,15 +217,15 @@ class com.sekati.geom.Sort extends CoreObject {
 	        var xOuter2:Number = Math.sin(alpha - alphaStep) * outerRadius;
 	        var yOuter2:Number = Math.cos(alpha - alphaStep) * outerRadius;
 	        // plot first line
-	        var cursorsOnActualLine:Number = cursorsPerLine;
+	        cursorsOnActualLine = cursorsPerLine;
 	        if (cursorsLeftOver > 0) {
 	            cursorsOnActualLine++; // add one of the left over cursors on the line
 	            cursorsLeftOver--; // one was adopted!
 	        }
-	        var xStep:Number = (xInner - xOuter1) / cursorsOnActualLine;
-	        var yStep:Number = (yInner - yOuter1) / cursorsOnActualLine;
-	        var xAct:Number = center.x + xOuter1;
-	        var yAct:Number = center.y + yOuter1;
+	        xStep = (xInner - xOuter1) / cursorsOnActualLine;
+	        yStep = (yInner - yOuter1) / cursorsOnActualLine;
+	        xAct = center.x + xOuter1;
+	        yAct = center.y + yOuter1;
 	        for (var j:Number = 0; j < cursorsOnActualLine; j++) {
 	            _sort[actualCursor] = new Point(int(xAct), int(yAct));
 	            xAct += xStep;
@@ -228,16 +233,16 @@ class com.sekati.geom.Sort extends CoreObject {
 	            actualCursor++;
 	        }
 	        // plot second line
-	        var cursorsOnActualLine:Number = cursorsPerLine;
+	        cursorsOnActualLine = cursorsPerLine;
 	        if (cursorsLeftOver > 0) {
 	            cursorsOnActualLine++; // add one of the left over cursors on the line
 	            cursorsLeftOver--; // another one was adopted!
 	        }
-	        var xStep:Number = (xOuter2 - xInner) / cursorsOnActualLine;
-	        var yStep:Number = (yOuter2 - yInner) / cursorsOnActualLine;
-	        var xAct:Number = center.x + xInner;
-	        var yAct:Number = center.y + yInner;
-	        for (var j:Number = 0; j < cursorsOnActualLine; j++) {
+	        xStep = (xOuter2 - xInner) / cursorsOnActualLine;
+	        yStep = (yOuter2 - yInner) / cursorsOnActualLine;
+	        xAct = center.x + xInner;
+	        yAct = center.y + yInner;
+	        for (var k:Number = 0; k < cursorsOnActualLine; k++) {
 	             _sort[actualCursor] = new Point(int(xAct), int(yAct));
 	            xAct += xStep;
 	            yAct += yStep;

@@ -120,86 +120,84 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="117">   117  </span>	}	
 <span class="lineno" id="118">   118  </span>
 <span class="lineno" id="119">   119  </span>	<span class="comment doc">/**
-<span class="lineno" id="120">   120  </span>	 * return alphabetically sorted array
+<span class="lineno" id="120">   120  </span>	 * Return alphabetically sorted array.
 <span class="lineno" id="121">   121  </span>	 * @param a (Array)
 <span class="lineno" id="122">   122  </span>	 * @return Array
 <span class="lineno" id="123">   123  </span>	 */</span>
 <span class="lineno" id="124">   124  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> asort (a:Array):Array {
-<span class="lineno" id="125">   125  </span>		<span class="key">var</span> aFn = <span class="key">function</span> (element1:String, element2:String) {
-<span class="lineno" id="126">   126  </span>			<span class="key">var</span> element1:String = element1.toUpperCase ();
-<span class="lineno" id="127">   127  </span>			<span class="key">var</span> element2:String = element2.toUpperCase ();
-<span class="lineno" id="128">   128  </span>			<span class="key">return</span> element1 &gt; element2;
-<span class="lineno" id="129">   129  </span>		};
-<span class="lineno" id="130">   130  </span>		<span class="key">return</span> a.sort (aFn);
-<span class="lineno" id="131">   131  </span>	}
-<span class="lineno" id="132">   132  </span>
-<span class="lineno" id="133">   133  </span>	<span class="comment doc">/**
-<span class="lineno" id="134">   134  </span>	 * return array with duplicate entries removed
-<span class="lineno" id="135">   135  </span>	 * @param a (Array)
-<span class="lineno" id="136">   136  </span>	 * @return Array
-<span class="lineno" id="137">   137  </span>	 */</span>
-<span class="lineno" id="138">   138  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> removeDuplicate (a:Array):Array {
-<span class="lineno" id="139">   139  </span>		a.sort ();
-<span class="lineno" id="140">   140  </span>		<span class="key">var</span> o:Array = <span class="key">new</span> Array ();
-<span class="lineno" id="141">   141  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = <span class="num_const">0</span>; i &lt; a.length; i++) {
-<span class="lineno" id="142">   142  </span>			<span class="key">if</span> (a[i] != a[i + <span class="num_const">1</span>]) {
-<span class="lineno" id="143">   143  </span>				o.push (a[i]);
-<span class="lineno" id="144">   144  </span>			}
-<span class="lineno" id="145">   145  </span>		}
-<span class="lineno" id="146">   146  </span>		<span class="key">return</span> o;
-<span class="lineno" id="147">   147  </span>	}
-<span class="lineno" id="148">   148  </span>
-<span class="lineno" id="149">   149  </span>	<span class="comment doc">/**
-<span class="lineno" id="150">   150  </span>	 * compare two arrays for a matching value
-<span class="lineno" id="151">   151  </span>	 * @param aA (Array)
-<span class="lineno" id="152">   152  </span>	 * @param aB (Array)	
-<span class="lineno" id="153">   153  </span>	 * @return Boolean
-<span class="lineno" id="154">   154  </span>	 */</span>	
-<span class="lineno" id="155">   155  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> matchValues (aA:Array, aB:Array):Boolean {
-<span class="lineno" id="156">   156  </span>		<span class="key">for</span> (<span class="key">var</span> f:Number = <span class="num_const">0</span>; f &lt; aA.length; f++) {
-<span class="lineno" id="157">   157  </span>			<span class="key">for</span> (<span class="key">var</span> l:Number = <span class="num_const">0</span>; l &lt; aB.length; l++) {
-<span class="lineno" id="158">   158  </span>				<span class="key">if</span> (aB[l].toLowerCase () === aA[f].toLowerCase ()) {
-<span class="lineno" id="159">   159  </span>					<span class="key">return</span> <span class="key">true</span>;
-<span class="lineno" id="160">   160  </span>				}
-<span class="lineno" id="161">   161  </span>			}
-<span class="lineno" id="162">   162  </span>		}
-<span class="lineno" id="163">   163  </span>		<span class="key">return</span> <span class="key">false</span>;
-<span class="lineno" id="164">   164  </span>	}
-<span class="lineno" id="165">   165  </span>
-<span class="lineno" id="166">   166  </span>	<span class="comment doc">/**
-<span class="lineno" id="167">   167  </span>	 * compare two arrays to see if they are identical
-<span class="lineno" id="168">   168  </span>	 * @param aA (Array)
-<span class="lineno" id="169">   169  </span>	 * @param aB (Array)
-<span class="lineno" id="170">   170  </span>	 * @return Boolean
-<span class="lineno" id="171">   171  </span>	 */</span>
-<span class="lineno" id="172">   172  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> compare(aA:Array, aB:Array):Boolean {
-<span class="lineno" id="173">   173  </span>		<span class="key">if</span>(aA.length != aB.length) {
-<span class="lineno" id="174">   174  </span>			<span class="key">return</span> <span class="key">false</span>;
-<span class="lineno" id="175">   175  </span>		}
-<span class="lineno" id="176">   176  </span>		<span class="key">for</span>(<span class="key">var</span> i:Number = <span class="num_const">0</span>; i &lt; aA.length; i++) {
-<span class="lineno" id="177">   177  </span>			<span class="key">if</span>(aA[i] !== aB[i]) {
-<span class="lineno" id="178">   178  </span>				<span class="key">return</span> <span class="key">false</span>;
-<span class="lineno" id="179">   179  </span>			}
-<span class="lineno" id="180">   180  </span>		}
-<span class="lineno" id="181">   181  </span>		<span class="key">return</span> <span class="key">true</span>;
-<span class="lineno" id="182">   182  </span>	}
-<span class="lineno" id="183">   183  </span>	
-<span class="lineno" id="184">   184  </span>	<span class="comment doc">/**
-<span class="lineno" id="185">   185  </span>	 * Search for a specific value of a property in an array of objects
-<span class="lineno" id="186">   186  </span>	 * @param objArr (Array) array of objects
-<span class="lineno" id="187">   187  </span>	 * @param prop (String) property to search
-<span class="lineno" id="188">   188  </span>	 * @param val (Object) value to locates
-<span class="lineno" id="189">   189  </span>	 * @return Object - that matches property value
-<span class="lineno" id="190">   190  </span>	 */</span>
-<span class="lineno" id="191">   191  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> locatePropVal(objArr:Array, prop:String, val:Object) {
-<span class="lineno" id="192">   192  </span>		<span class="key">for</span>(<span class="key">var</span> o <span class="key">in</span> objArr) {
-<span class="lineno" id="193">   193  </span>			<span class="key">if</span>(objArr[o][prop] == val) {
-<span class="lineno" id="194">   194  </span>				<span class="key">return</span> objArr[o];
-<span class="lineno" id="195">   195  </span>			}
-<span class="lineno" id="196">   196  </span>		}
-<span class="lineno" id="197">   197  </span>		<span class="key">return</span> undefined;
-<span class="lineno" id="198">   198  </span>	}	
-<span class="lineno" id="199">   199  </span>	
-<span class="lineno" id="200">   200  </span>	<span class="key">private</span> <span class="key">function</span> ArrayUtils(){
-<span class="lineno" id="201">   201  </span>	}
-<span class="lineno" id="202">   202  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of Sekati" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.utils" class="button">Package</a></li><li><a href="ArrayUtils.html" title="Detail of com.sekati.utils.ArrayUtils API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
+<span class="lineno" id="125">   125  </span>		<span class="key">var</span> aFn:Function = <span class="key">function</span> (element1:String, element2:String):Boolean {
+<span class="lineno" id="126">   126  </span>			<span class="key">return</span> element1.toUpperCase() &gt; element2.toUpperCase();
+<span class="lineno" id="127">   127  </span>		};
+<span class="lineno" id="128">   128  </span>		<span class="key">return</span> a.sort (aFn);
+<span class="lineno" id="129">   129  </span>	}
+<span class="lineno" id="130">   130  </span>
+<span class="lineno" id="131">   131  </span>	<span class="comment doc">/**
+<span class="lineno" id="132">   132  </span>	 * return array with duplicate entries removed
+<span class="lineno" id="133">   133  </span>	 * @param a (Array)
+<span class="lineno" id="134">   134  </span>	 * @return Array
+<span class="lineno" id="135">   135  </span>	 */</span>
+<span class="lineno" id="136">   136  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> removeDuplicate (a:Array):Array {
+<span class="lineno" id="137">   137  </span>		a.sort ();
+<span class="lineno" id="138">   138  </span>		<span class="key">var</span> o:Array = <span class="key">new</span> Array ();
+<span class="lineno" id="139">   139  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = <span class="num_const">0</span>; i &lt; a.length; i++) {
+<span class="lineno" id="140">   140  </span>			<span class="key">if</span> (a[i] != a[i + <span class="num_const">1</span>]) {
+<span class="lineno" id="141">   141  </span>				o.push (a[i]);
+<span class="lineno" id="142">   142  </span>			}
+<span class="lineno" id="143">   143  </span>		}
+<span class="lineno" id="144">   144  </span>		<span class="key">return</span> o;
+<span class="lineno" id="145">   145  </span>	}
+<span class="lineno" id="146">   146  </span>
+<span class="lineno" id="147">   147  </span>	<span class="comment doc">/**
+<span class="lineno" id="148">   148  </span>	 * compare two arrays for a matching value
+<span class="lineno" id="149">   149  </span>	 * @param aA (Array)
+<span class="lineno" id="150">   150  </span>	 * @param aB (Array)	
+<span class="lineno" id="151">   151  </span>	 * @return Boolean
+<span class="lineno" id="152">   152  </span>	 */</span>	
+<span class="lineno" id="153">   153  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> matchValues (aA:Array, aB:Array):Boolean {
+<span class="lineno" id="154">   154  </span>		<span class="key">for</span> (<span class="key">var</span> f:Number = <span class="num_const">0</span>; f &lt; aA.length; f++) {
+<span class="lineno" id="155">   155  </span>			<span class="key">for</span> (<span class="key">var</span> l:Number = <span class="num_const">0</span>; l &lt; aB.length; l++) {
+<span class="lineno" id="156">   156  </span>				<span class="key">if</span> (aB[l].toLowerCase () === aA[f].toLowerCase ()) {
+<span class="lineno" id="157">   157  </span>					<span class="key">return</span> <span class="key">true</span>;
+<span class="lineno" id="158">   158  </span>				}
+<span class="lineno" id="159">   159  </span>			}
+<span class="lineno" id="160">   160  </span>		}
+<span class="lineno" id="161">   161  </span>		<span class="key">return</span> <span class="key">false</span>;
+<span class="lineno" id="162">   162  </span>	}
+<span class="lineno" id="163">   163  </span>
+<span class="lineno" id="164">   164  </span>	<span class="comment doc">/**
+<span class="lineno" id="165">   165  </span>	 * compare two arrays to see if they are identical
+<span class="lineno" id="166">   166  </span>	 * @param aA (Array)
+<span class="lineno" id="167">   167  </span>	 * @param aB (Array)
+<span class="lineno" id="168">   168  </span>	 * @return Boolean
+<span class="lineno" id="169">   169  </span>	 */</span>
+<span class="lineno" id="170">   170  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> compare(aA:Array, aB:Array):Boolean {
+<span class="lineno" id="171">   171  </span>		<span class="key">if</span>(aA.length != aB.length) {
+<span class="lineno" id="172">   172  </span>			<span class="key">return</span> <span class="key">false</span>;
+<span class="lineno" id="173">   173  </span>		}
+<span class="lineno" id="174">   174  </span>		<span class="key">for</span>(<span class="key">var</span> i:Number = <span class="num_const">0</span>; i &lt; aA.length; i++) {
+<span class="lineno" id="175">   175  </span>			<span class="key">if</span>(aA[i] !== aB[i]) {
+<span class="lineno" id="176">   176  </span>				<span class="key">return</span> <span class="key">false</span>;
+<span class="lineno" id="177">   177  </span>			}
+<span class="lineno" id="178">   178  </span>		}
+<span class="lineno" id="179">   179  </span>		<span class="key">return</span> <span class="key">true</span>;
+<span class="lineno" id="180">   180  </span>	}
+<span class="lineno" id="181">   181  </span>	
+<span class="lineno" id="182">   182  </span>	<span class="comment doc">/**
+<span class="lineno" id="183">   183  </span>	 * Search for a specific value of a property in an array of objects
+<span class="lineno" id="184">   184  </span>	 * @param objArr (Array) array of objects
+<span class="lineno" id="185">   185  </span>	 * @param prop (String) property to search
+<span class="lineno" id="186">   186  </span>	 * @param val (Object) value to locates
+<span class="lineno" id="187">   187  </span>	 * @return Object - that matches property value
+<span class="lineno" id="188">   188  </span>	 */</span>
+<span class="lineno" id="189">   189  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> locatePropVal(objArr:Array, prop:String, val:Object) {
+<span class="lineno" id="190">   190  </span>		<span class="key">for</span>(<span class="key">var</span> o <span class="key">in</span> objArr) {
+<span class="lineno" id="191">   191  </span>			<span class="key">if</span>(objArr[o][prop] == val) {
+<span class="lineno" id="192">   192  </span>				<span class="key">return</span> objArr[o];
+<span class="lineno" id="193">   193  </span>			}
+<span class="lineno" id="194">   194  </span>		}
+<span class="lineno" id="195">   195  </span>		<span class="key">return</span> undefined;
+<span class="lineno" id="196">   196  </span>	}	
+<span class="lineno" id="197">   197  </span>	
+<span class="lineno" id="198">   198  </span>	<span class="key">private</span> <span class="key">function</span> ArrayUtils(){
+<span class="lineno" id="199">   199  </span>	}
+<span class="lineno" id="200">   200  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of Sekati" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.utils" class="button">Package</a></li><li><a href="ArrayUtils.html" title="Detail of com.sekati.utils.ArrayUtils API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>

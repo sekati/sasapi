@@ -225,12 +225,13 @@ class com.sekati.ui.FLVPlayer extends CoreClip {
 		if (!App.KEY_ENABLE) {
 			return;
 		}
+		var v:Number;
 		if (Key.getCode () == Key.UP && _volBtn.vbar._xscale < 100) {
-			var v:Number = int (_volBtn.vbar._xscale + 10);
+			v = int (_volBtn.vbar._xscale + 10);
 			_this.setVolumeControl (v);
 		}
 		if (Key.getCode () == Key.DOWN && _volBtn.vbar._xscale > 0) {
-			var v:Number = int (_volBtn.vbar._xscale - 10);
+			v = int (_volBtn.vbar._xscale - 10);
 			_this.setVolumeControl (v);
 		}
 		if (Key.getCode () == Key.SPACE && _isKeyEnabled) {

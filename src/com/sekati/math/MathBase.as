@@ -81,7 +81,7 @@ class com.sekati.math.MathBase {
 	public static function roundHalf (val:Number):Number {
 		var num:String = String (Math.round (val * 10) / 10);
 		var tmp:Array = num.split (".");
-		var integer:String = tmp[0];
+		var integer:Object = tmp[0]; // loose type since we swap from String to Number (cheap!)
 		var decimal:Number = tmp[1];
 		if (decimal >= 3 && decimal <= 7 && decimal != null) {
 			decimal = 5;
@@ -173,10 +173,10 @@ class com.sekati.math.MathBase {
 			//unique
 			// create num range array
 			var nums:Array = new Array ();
-			for (var i = min; i <= max; i++) {
+			for (var i:Number = min; i <= max; i++) {
 				nums.push (i);
 			}
-			for (var i = 1; i <= count; i++) {
+			for (var j:Number = 1; j <= count; j++) {
 				// random number
 				var rn = Math.floor (Math.random () * nums.length);
 				rnds.push (nums[rn]);
@@ -184,7 +184,7 @@ class com.sekati.math.MathBase {
 			}
 		} else {
 			//non unique
-			for (var i = 1; i <= count; i++) {
+			for (var k:Number = 1; k <= count; k++) {
 				rnds.push (randRangeInt (min, max));
 			}
 		}

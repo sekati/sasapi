@@ -10,7 +10,6 @@
  import com.sekati.events.Event;
  import com.sekati.events.IDispatchable;
  import mx.events.EventDispatcher;
- import com.sekati.reflect.Stringifier;
 
 /**
  * A centralized EventDispatcher to decouple event listeners & dispatchers from direct addressing.

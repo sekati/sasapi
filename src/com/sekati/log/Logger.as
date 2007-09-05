@@ -8,7 +8,6 @@
 
  import com.sekati.core.CoreInterface; 
  import com.sekati.events.Dispatcher;
- import com.sekati.events.Event;
  import com.sekati.log.Inspector;
  import com.sekati.log.LCBinding;
  import com.sekati.log.LogEvent;
