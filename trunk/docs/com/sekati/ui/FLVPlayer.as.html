@@ -228,64 +228,65 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="225">   225  </span>		<span class="key">if</span> (!App.KEY_ENABLE) {
 <span class="lineno" id="226">   226  </span>			<span class="key">return</span>;
 <span class="lineno" id="227">   227  </span>		}
-<span class="lineno" id="228">   228  </span>		<span class="key">if</span> (Key.getCode () == Key.UP &amp;&amp; _volBtn.vbar._xscale &lt; <span class="num_const">100</span>) {
-<span class="lineno" id="229">   229  </span>			<span class="key">var</span> v:Number = int (_volBtn.vbar._xscale + <span class="num_const">10</span>);
-<span class="lineno" id="230">   230  </span>			_this.setVolumeControl (v);
-<span class="lineno" id="231">   231  </span>		}
-<span class="lineno" id="232">   232  </span>		<span class="key">if</span> (Key.getCode () == Key.DOWN &amp;&amp; _volBtn.vbar._xscale &gt; <span class="num_const">0</span>) {
-<span class="lineno" id="233">   233  </span>			<span class="key">var</span> v:Number = int (_volBtn.vbar._xscale - <span class="num_const">10</span>);
-<span class="lineno" id="234">   234  </span>			_this.setVolumeControl (v);
-<span class="lineno" id="235">   235  </span>		}
-<span class="lineno" id="236">   236  </span>		<span class="key">if</span> (Key.getCode () == Key.SPACE &amp;&amp; _isKeyEnabled) {
-<span class="lineno" id="237">   237  </span>			_this.playBtn_onPress ();
-<span class="lineno" id="238">   238  </span>		}
-<span class="lineno" id="239">   239  </span>	}
-<span class="lineno" id="240">   240  </span>
-<span class="lineno" id="241">   241  </span>	<span class="key">private</span> <span class="key">function</span> buffBar_onPress ():Void {
-<span class="lineno" id="242">   242  </span>		_isSeeking = <span class="key">true</span>;
-<span class="lineno" id="243">   243  </span>		seek_ui ();
-<span class="lineno" id="244">   244  </span>		pauseMemory ();
-<span class="lineno" id="245">   245  </span>	}
-<span class="lineno" id="246">   246  </span>
-<span class="lineno" id="247">   247  </span>	<span class="key">private</span> <span class="key">function</span> buffBar_onRelease ():Void {
-<span class="lineno" id="248">   248  </span>		_isSeeking = <span class="key">false</span>;
-<span class="lineno" id="249">   249  </span>		resumeMemory ();
-<span class="lineno" id="250">   250  </span>	}
-<span class="lineno" id="251">   251  </span>
-<span class="lineno" id="252">   252  </span>	<span class="key">private</span> <span class="key">function</span> buffBar_onMouseMove ():Void {
-<span class="lineno" id="253">   253  </span>		seek_ui ();
-<span class="lineno" id="254">   254  </span>	}
-<span class="lineno" id="255">   255  </span>	
-<span class="lineno" id="256">   256  </span>	<span class="key">private</span> <span class="key">function</span> playBtn_onPress ():Void {
-<span class="lineno" id="257">   257  </span>		<span class="key">if</span> (_movie) {
-<span class="lineno" id="258">   258  </span>			<span class="key">if</span> (_playBtn._currentframe == <span class="num_const">1</span>) {
-<span class="lineno" id="259">   259  </span>				_playBtn.gotoAndStop (<span class="num_const">2</span>);
-<span class="lineno" id="260">   260  </span>				_movie.pause ();
-<span class="lineno" id="261">   261  </span>			} <span class="key">else</span> {
-<span class="lineno" id="262">   262  </span>				_playBtn.gotoAndStop (<span class="num_const">1</span>);
-<span class="lineno" id="263">   263  </span>				_movie.resume ();
-<span class="lineno" id="264">   264  </span>			}
-<span class="lineno" id="265">   265  </span>		}
-<span class="lineno" id="266">   266  </span>	}
-<span class="lineno" id="267">   267  </span>	
-<span class="lineno" id="268">   268  </span>	<span class="key">private</span> <span class="key">function</span> playBtn_onRollOver ():Void {
-<span class="lineno" id="269">   269  </span>	}
-<span class="lineno" id="270">   270  </span>	
-<span class="lineno" id="271">   271  </span>	<span class="key">private</span> <span class="key">function</span> playBtn_onRollOut ():Void {
-<span class="lineno" id="272">   272  </span>	}
-<span class="lineno" id="273">   273  </span>	
-<span class="lineno" id="274">   274  </span>	<span class="key">private</span> <span class="key">function</span> volBtn_onPress ():Void {
-<span class="lineno" id="275">   275  </span>		_this._isDrag = <span class="key">true</span>;
-<span class="lineno" id="276">   276  </span>		_this.setVolumeControl ();
-<span class="lineno" id="277">   277  </span>	}
-<span class="lineno" id="278">   278  </span>	
-<span class="lineno" id="279">   279  </span>	<span class="key">private</span> <span class="key">function</span> volBtn_onRelease ():Void {
-<span class="lineno" id="280">   280  </span>		_this._isDrag = <span class="key">false</span>;
-<span class="lineno" id="281">   281  </span>	}
-<span class="lineno" id="282">   282  </span>	
-<span class="lineno" id="283">   283  </span>	<span class="key">private</span> <span class="key">function</span> volBtn_onMouseMove ():Void {
-<span class="lineno" id="284">   284  </span>		<span class="key">if</span> (_this._isDrag) {
-<span class="lineno" id="285">   285  </span>			_this.setVolumeControl ();
-<span class="lineno" id="286">   286  </span>		}
-<span class="lineno" id="287">   287  </span>	}
-<span class="lineno" id="288">   288  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of Sekati" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.ui" class="button">Package</a></li><li><a href="FLVPlayer.html" title="Detail of com.sekati.ui.FLVPlayer API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
+<span class="lineno" id="228">   228  </span>		<span class="key">var</span> v:Number;
+<span class="lineno" id="229">   229  </span>		<span class="key">if</span> (Key.getCode () == Key.UP &amp;&amp; _volBtn.vbar._xscale &lt; <span class="num_const">100</span>) {
+<span class="lineno" id="230">   230  </span>			v = int (_volBtn.vbar._xscale + <span class="num_const">10</span>);
+<span class="lineno" id="231">   231  </span>			_this.setVolumeControl (v);
+<span class="lineno" id="232">   232  </span>		}
+<span class="lineno" id="233">   233  </span>		<span class="key">if</span> (Key.getCode () == Key.DOWN &amp;&amp; _volBtn.vbar._xscale &gt; <span class="num_const">0</span>) {
+<span class="lineno" id="234">   234  </span>			v = int (_volBtn.vbar._xscale - <span class="num_const">10</span>);
+<span class="lineno" id="235">   235  </span>			_this.setVolumeControl (v);
+<span class="lineno" id="236">   236  </span>		}
+<span class="lineno" id="237">   237  </span>		<span class="key">if</span> (Key.getCode () == Key.SPACE &amp;&amp; _isKeyEnabled) {
+<span class="lineno" id="238">   238  </span>			_this.playBtn_onPress ();
+<span class="lineno" id="239">   239  </span>		}
+<span class="lineno" id="240">   240  </span>	}
+<span class="lineno" id="241">   241  </span>
+<span class="lineno" id="242">   242  </span>	<span class="key">private</span> <span class="key">function</span> buffBar_onPress ():Void {
+<span class="lineno" id="243">   243  </span>		_isSeeking = <span class="key">true</span>;
+<span class="lineno" id="244">   244  </span>		seek_ui ();
+<span class="lineno" id="245">   245  </span>		pauseMemory ();
+<span class="lineno" id="246">   246  </span>	}
+<span class="lineno" id="247">   247  </span>
+<span class="lineno" id="248">   248  </span>	<span class="key">private</span> <span class="key">function</span> buffBar_onRelease ():Void {
+<span class="lineno" id="249">   249  </span>		_isSeeking = <span class="key">false</span>;
+<span class="lineno" id="250">   250  </span>		resumeMemory ();
+<span class="lineno" id="251">   251  </span>	}
+<span class="lineno" id="252">   252  </span>
+<span class="lineno" id="253">   253  </span>	<span class="key">private</span> <span class="key">function</span> buffBar_onMouseMove ():Void {
+<span class="lineno" id="254">   254  </span>		seek_ui ();
+<span class="lineno" id="255">   255  </span>	}
+<span class="lineno" id="256">   256  </span>	
+<span class="lineno" id="257">   257  </span>	<span class="key">private</span> <span class="key">function</span> playBtn_onPress ():Void {
+<span class="lineno" id="258">   258  </span>		<span class="key">if</span> (_movie) {
+<span class="lineno" id="259">   259  </span>			<span class="key">if</span> (_playBtn._currentframe == <span class="num_const">1</span>) {
+<span class="lineno" id="260">   260  </span>				_playBtn.gotoAndStop (<span class="num_const">2</span>);
+<span class="lineno" id="261">   261  </span>				_movie.pause ();
+<span class="lineno" id="262">   262  </span>			} <span class="key">else</span> {
+<span class="lineno" id="263">   263  </span>				_playBtn.gotoAndStop (<span class="num_const">1</span>);
+<span class="lineno" id="264">   264  </span>				_movie.resume ();
+<span class="lineno" id="265">   265  </span>			}
+<span class="lineno" id="266">   266  </span>		}
+<span class="lineno" id="267">   267  </span>	}
+<span class="lineno" id="268">   268  </span>	
+<span class="lineno" id="269">   269  </span>	<span class="key">private</span> <span class="key">function</span> playBtn_onRollOver ():Void {
+<span class="lineno" id="270">   270  </span>	}
+<span class="lineno" id="271">   271  </span>	
+<span class="lineno" id="272">   272  </span>	<span class="key">private</span> <span class="key">function</span> playBtn_onRollOut ():Void {
+<span class="lineno" id="273">   273  </span>	}
+<span class="lineno" id="274">   274  </span>	
+<span class="lineno" id="275">   275  </span>	<span class="key">private</span> <span class="key">function</span> volBtn_onPress ():Void {
+<span class="lineno" id="276">   276  </span>		_this._isDrag = <span class="key">true</span>;
+<span class="lineno" id="277">   277  </span>		_this.setVolumeControl ();
+<span class="lineno" id="278">   278  </span>	}
+<span class="lineno" id="279">   279  </span>	
+<span class="lineno" id="280">   280  </span>	<span class="key">private</span> <span class="key">function</span> volBtn_onRelease ():Void {
+<span class="lineno" id="281">   281  </span>		_this._isDrag = <span class="key">false</span>;
+<span class="lineno" id="282">   282  </span>	}
+<span class="lineno" id="283">   283  </span>	
+<span class="lineno" id="284">   284  </span>	<span class="key">private</span> <span class="key">function</span> volBtn_onMouseMove ():Void {
+<span class="lineno" id="285">   285  </span>		<span class="key">if</span> (_this._isDrag) {
+<span class="lineno" id="286">   286  </span>			_this.setVolumeControl ();
+<span class="lineno" id="287">   287  </span>		}
+<span class="lineno" id="288">   288  </span>	}
+<span class="lineno" id="289">   289  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of Sekati" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.ui" class="button">Package</a></li><li><a href="FLVPlayer.html" title="Detail of com.sekati.ui.FLVPlayer API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>

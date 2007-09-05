@@ -8,7 +8,6 @@
  
   import com.sekati.core.CoreObject;
   import com.sekati.events.IEvent;
-  import com.sekati.reflect.Stringifier;
  
 /**
  * Base Event class, works similarly to the AS3 Event class<br><br>

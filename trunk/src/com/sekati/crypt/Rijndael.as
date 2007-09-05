@@ -1,6 +1,6 @@
 /**
  * com.sekati.crypt.Rijndael
- * @version 1.0.1
+ * @version 1.0.3
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -105,8 +105,9 @@ class com.sekati.crypt.Rijndael implements ICipher {
 	}
 
 	private function byteSub(state:Array, dir:String):Void {
-		if(dir == "encrypt") var S:Array = this.SBox;
-		else var S:Array = this.SBoxInverse;
+		var S:Array;
+		if(dir == "encrypt") S = this.SBox;
+		else S = this.SBoxInverse;
 		for (var i:Number = 0; i<4; i++) {
 			for (var j = 0; j<this.Nb; j++) state[i][j] = S[state[i][j]];
 		}
@@ -121,12 +122,13 @@ class com.sekati.crypt.Rijndael implements ICipher {
 
 	private function mixColumn(state:Array, dir:String):Void {
 		var b:Array = new Array();
+		var i:Number;
 		for (var j:Number = 0; j<this.Nb; j++) {
-			for(var i:Number = 0; i<4; i++) {
+			for(i = 0; i<4; i++) {
 				if (dir == "encrypt") b[i] = this.mult_GF256(state[i][j], 2) ^ this.mult_GF256(state[(i+1)%4][j], 3) ^ state[(i+2)%4][j] ^ state[(i+3)%4][j];
 				else b[i] = this.mult_GF256(state[i][j], 0xE) ^ this.mult_GF256(state[(i+1)%4][j], 0xB) ^ this.mult_GF256(state[(i+2)%4][j], 0xD) ^ this.mult_GF256(state[(i+3)%4][j], 9);
 			}
-			for (var i:Number = 0; i<4; i++) {
+			for (i = 0; i<4; i++) {
 				state[i][j] = b[i];
 			}
 		}
@@ -143,12 +145,13 @@ class com.sekati.crypt.Rijndael implements ICipher {
 
 	private function keyExpansion(key:Array):Array {
 		var temp:Number = 0;
+		var j:Number;
 		this.Nk = this.keySize/32;
 		this.Nb = this.blockSize/32;
 		var expandedKey:Array = new Array();
 		this.Nr = this.roundsArray[this.Nk][this.Nb];
-		for (var j:Number = 0; j<this.Nk; j++) expandedKey[j] = (key[4*j]) | (key[4*j+1]<<8) | (key[4*j+2]<<16) | (key[4*j+3]<<24);
-		for (var j:Number = this.Nk; j<this.Nb*(this.Nr+1); j++) {
+		for (j = 0; j<this.Nk; j++) expandedKey[j] = (key[4*j]) | (key[4*j+1]<<8) | (key[4*j+2]<<16) | (key[4*j+3]<<24);
+		for (j = this.Nk; j<this.Nb*(this.Nr+1); j++) {
 			temp = expandedKey[j-1];
 			if (j % this.Nk == 0) temp = ( (this.SBox[(temp>>8) & 0xFF]) | (this.SBox[(temp>>16) & 0xFF]<<8) | (this.SBox[(temp>>24) & 0xFF]<<16) | (this.SBox[temp & 0xFF]<<24) ) ^ this.Rcon[Math.floor(j / this.Nk) - 1];
 			else if (this.Nk > 6 && j % this.Nk == 4) temp = (this.SBox[(temp>>24) & 0xFF]<<24) | (this.SBox[(temp>>16) & 0xFF]<<16) | (this.SBox[(temp>>8) & 0xFF]<<8) | (this.SBox[temp & 0xFF]);

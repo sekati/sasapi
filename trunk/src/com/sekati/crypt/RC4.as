@@ -1,6 +1,6 @@
 /**
  * com.sekati.crypt.RC4
- * @version 1.0.1
+ * @version 1.0.3
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -49,11 +49,12 @@ class com.sekati.crypt.RC4 implements ICipher {
 		var b:Number = 0;
 		var tempSwap:Number;
 		var intLength:Number = pwd.length;
-		for (var a:Number = 0; a <= 255; a++) {
+		var a:Number;
+		for (a = 0; a <= 255; a++) {
 			mykey[a] = pwd[(a%intLength)];
 			sbox[a] = a;
 		}
-		for (var a:Number=0; a<=255; a++) {
+		for (a = 0; a<=255; a++) {
 			b = (b+sbox[a]+mykey[a]) % 256;
 			tempSwap = sbox[a];
 			sbox[a] = sbox[b];

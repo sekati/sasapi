@@ -1,6 +1,6 @@
 ﻿/**
  * com.sekati.data.XML2Object
- * @version 1.0.0
+ * @version 1.0.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -73,7 +73,7 @@ class com.sekati.data.XML2Object {
 		if (from.hasChildNodes ()) {
 			nodes = from.childNodes;
 			if (position != undefined) {
-				var old_path = path;
+				old_path = path;
 				path = path[position];
 			}
 			while (nodes.length > 0) {
@@ -84,7 +84,7 @@ class com.sekati.data.XML2Object {
 					__obj__.attributes = node.attributes;
 					__obj__.data = node.firstChild.nodeValue;
 					if (position != undefined) {
-						var old_path = path;
+						old_path = path;
 					}
 					if (path[xmlName] != undefined) {
 						if (path[xmlName].__proto__ == Array.prototype) {

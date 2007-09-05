@@ -3,7 +3,7 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span><span class="comment doc">/**
 <span class="lineno" id="2">     2  </span> * com.sekati.data.XML2Object
-<span class="lineno" id="3">     3  </span> * @version 1.0.0
+<span class="lineno" id="3">     3  </span> * @version 1.0.1
 <span class="lineno" id="4">     4  </span> * @author jason m horwitz | sekati.com
 <span class="lineno" id="5">     5  </span> * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -76,7 +76,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="73">    73  </span>		<span class="key">if</span> (from.hasChildNodes ()) {
 <span class="lineno" id="74">    74  </span>			nodes = from.childNodes;
 <span class="lineno" id="75">    75  </span>			<span class="key">if</span> (position != undefined) {
-<span class="lineno" id="76">    76  </span>				<span class="key">var</span> old_path = path;
+<span class="lineno" id="76">    76  </span>				old_path = path;
 <span class="lineno" id="77">    77  </span>				path = path[position];
 <span class="lineno" id="78">    78  </span>			}
 <span class="lineno" id="79">    79  </span>			<span class="key">while</span> (nodes.length &gt; <span class="num_const">0</span>) {
@@ -87,7 +87,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="84">    84  </span>					__obj__.attributes = node.attributes;
 <span class="lineno" id="85">    85  </span>					__obj__.data = node.firstChild.nodeValue;
 <span class="lineno" id="86">    86  </span>					<span class="key">if</span> (position != undefined) {
-<span class="lineno" id="87">    87  </span>						<span class="key">var</span> old_path = path;
+<span class="lineno" id="87">    87  </span>						old_path = path;
 <span class="lineno" id="88">    88  </span>					}
 <span class="lineno" id="89">    89  </span>					<span class="key">if</span> (path[xmlName] != undefined) {
 <span class="lineno" id="90">    90  </span>						<span class="key">if</span> (path[xmlName].__proto__ == Array.prototype) {
