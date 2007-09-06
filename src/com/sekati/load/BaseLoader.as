@@ -1,6 +1,6 @@
 /**
  * com.sekati.load.BaseLoader
- * @version 1.0.7
+ * @version 1.1.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -9,11 +9,13 @@
  import com.sekati.core.CoreObject;
  import com.sekati.core.FWDepth;
  import com.sekati.display.BaseClip;
+ import com.sekati.display.StageDisplay;
+ import com.sekati.events.FramePulse;
  import com.sekati.utils.ClassUtils;
  import com.sekati.utils.Delegate;
 
 /**
- * generic root preloader - stops movie, preloads, then advances to defined frame label.
+ * Generic _root Preloader - stops movie, preloads, then advances to defined frame label.
  * {@code Usage: 
  * var preload:BaseLoader = new BaseLoader("finalFrameLabel");
  * }
@@ -30,49 +32,66 @@ class com.sekati.load.BaseLoader extends CoreObject {
 	/**
 	 * BaseLoader Constructor.
 	 * @param frameLabel (String) the root framelabel to advance to when preload is complete [default: "bootstrap"]
+	 * @return Void
 	 */
 	public function BaseLoader(frameLabel:String) {
 		super();
 		_nextFrameLabel = (!frameLabel) ? "bootstrap" : frameLabel;
 		_isLoaded = false;
 		_level0.stop();
-		_loader = ClassUtils.createEmptyMovieClip(com.sekati.display.BaseClip, _level0, "__BaseLoader__", {_depth:FWDepth.BaseLoader});
-		_loader.onEnterFrame = Delegate.create(this, preload);
+		_loader = ClassUtils.createEmptyMovieClip(com.sekati.display.BaseClip, _level0, "___BaseLoader", {_depth:FWDepth.BaseLoader});
+		FramePulse.$.addFrameListener(this);
 	}
 
-	private function preload():Void {
+	private function _onEnterFrame():Void {
 		_l = _level0.getBytesLoaded ();
 		_t = _level0.getBytesTotal ();
 		_p = Math.floor(_l/_t*100);
-		if (_t > 5 && _l >= _t && Stage.width > 5 && Stage.height > 5) {
-			_loader.onEnterFrame = null;
-			_loader.destroy();
+		if (_t > 5 && _l >= _t && StageDisplay.$.isReady) {
 			_isLoaded = true;
-			_level0.gotoAndStop(_nextFrameLabel);	
+			_level0.gotoAndStop(_nextFrameLabel);
+			this.destroy();
 		}
 	}
 
+	/**
+	 * Percent Loaded getter.
+	 * @return Number
+	 */
 	public function get percent():Number {
 		return _p;	
 	}
 
+	/**
+	 * bytesLoaded getter.
+	 * @return Number
+	 */
 	public function get bytesLoaded():Number {
 		return _l;	
 	}
 
+	/**
+	 * bytesTotal getter.
+	 * @return Number
+	 */
 	public function get bytesTotal():Number {
 		return _t;	
 	}
 
+	/**
+	 * isLoaded getter.
+	 * @return Boolean
+	 */
 	public function get isLoaded():Boolean {
 		return _isLoaded;	
 	}
 
 	/**
-	 * Destroy the Scroll.
+	 * Destroy the BaseLoader.
 	 * @return Void
 	 */	
 	public function destroy():Void {
+		FramePulse.$.removeFrameListener(this);
 		_loader.destroy();
 		super.destroy();
 	}

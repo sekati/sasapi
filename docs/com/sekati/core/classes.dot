@@ -24,10 +24,17 @@ strict digraph class_diagram {
     tooltip="com.sekati.core.CoreObject",
     shape="record"
   ];
+  TypeBootstrap[
+    label="Bootstrap",
+    URL="Bootstrap.html",
+    tooltip="com.sekati.core.Bootstrap",
+    shape="record"
+  ];
   TypeApp[
     label="App",
     URL="App.html",
     tooltip="com.sekati.core.App",
     shape="record"
   ];
+  TypeCoreObject -> TypeBootstrap;
 }

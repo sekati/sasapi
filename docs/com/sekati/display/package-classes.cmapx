@@ -1,5 +1,6 @@
 <map id="class_diagram" name="class_diagram">
-<area shape="rect" href="CoreClip.html" title="com.sekati.display.CoreClip" alt="" coords="148,8,236,56" />
-<area shape="rect" href="AbstractClip.html" title="com.sekati.display.AbstractClip" alt="" coords="285,8,402,56" />
-<area shape="rect" href="BaseClip.html" title="com.sekati.display.BaseClip" alt="" coords="9,8,97,56" />
+<area shape="rect" href="StageDisplay.html" title="com.sekati.display.StageDisplay" alt="" coords="9,80,129,128" />
+<area shape="rect" href="CoreClip.html" title="com.sekati.display.CoreClip" alt="" coords="180,8,268,56" />
+<area shape="rect" href="AbstractClip.html" title="com.sekati.display.AbstractClip" alt="" coords="317,8,434,56" />
+<area shape="rect" href="BaseClip.html" title="com.sekati.display.BaseClip" alt="" coords="25,8,113,56" />
 </map>

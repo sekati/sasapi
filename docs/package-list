@@ -7,7 +7,6 @@ com.sekati.ui
 com.sekati.crypt
 com.sekati.data
 com.sekati.load
-com.sekati.managers
 com.sekati.convert
 com.sekati.external
 com.sekati.geom
@@ -21,3 +20,4 @@ com.sekati.net
 com.sekati.reflect
 com.sekati.draw
 com.sekati.validate
+com.sekati.input

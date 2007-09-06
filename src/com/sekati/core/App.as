@@ -10,7 +10,6 @@
  import com.sekati.events.Broadcaster;
  import com.sekati.log.OutPanel;
  import com.sekati.net.NetBase;
- import com.sekati.managers.StageManager;
  import com.sekati.ui.ContextualMenu;
  import com.sekati.validate.StringValidation;
  import flash.external.ExternalInterface;
@@ -41,7 +40,6 @@
   * // Core Objects for framework setup:
   *	debug (Object) DebugPanel
   *	bc (Broadcaster) broadcaster
-  *	sl (Object) stage listener
   *	db (Object) storage object  to load external data in to
   *	mot (Object) mc_tween2 preset references
   *	col (Object) color preset references
@@ -68,7 +66,6 @@ class com.sekati.core.App {
 	public static var FLV_URI:String;
 	public static var debug:Object;
 	public static var bc:Object = Broadcaster.getInstance();
-	public static var sl:Object = StageManager.getInstance ();
 	public static var db:Object = new Object ();
 	public static var mot:Object = {e:"easeInOutQuint", e2:"easeOutQuint", e3:"easeInOutQuad", e4:"easeOutQuad", s:0.6, d:0.4};
 	public static var col:Object = {b:0x000000, w:0xFFFFFF, r:0xFF0000, g:0x00FF00, b:0x0000FF, y:0xFFFF00, c:0x00FFFF, m:0xFF00FF};
