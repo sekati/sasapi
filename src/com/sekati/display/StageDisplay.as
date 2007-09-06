@@ -1,6 +1,6 @@
 /**
  * com.sekati.display.StageDisplay
- * @version 1.0.1
+ * @version 1.0.3
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -11,6 +11,7 @@
  import com.sekati.events.Event;
  import com.sekati.events.FramePulse;
  import com.sekati.geom.Point;
+ import com.sekati.utils.Delegate;
  
 /**
  * StageDisplay eases Stage interfacing with added/simplified methods and properties. 
@@ -28,7 +29,7 @@ class com.sekati.display.StageDisplay extends CoreObject {
 	 */
 	 private function StageDisplay () {
 		super();
-		Stage.addListener (_instance);
+		Stage.addListener (this);
 		FramePulse.$.addFrameListener(this);
 	}
 	
@@ -55,7 +56,7 @@ class com.sekati.display.StageDisplay extends CoreObject {
 	 * Stage.onResize dispatches onStageResize event.
 	 * @return Void 
 	 */ 
-	private function onResize():Void {
+	public function onResize():Void {
 		Dispatcher.$.dispatchEvent(new Event(onStageResizeEVENT,_instance,{_width:_width, _height:_height}));	
 	}
 	
@@ -63,7 +64,7 @@ class com.sekati.display.StageDisplay extends CoreObject {
 	 * Stage.onFullScreen dispatches onStageFullscreen event.
 	 * @return Void
 	 */
-	private function onFullScreen(bFull:Boolean):Void {
+	public function onFullScreen(bFull:Boolean):Void {
 		Dispatcher.$.dispatchEvent(new Event(onStageFullscreenEVENT,_instance,{isFullscreen:bFull}));
 	}
 	
