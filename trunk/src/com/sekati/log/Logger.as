@@ -1,12 +1,11 @@
 /**
  * com.sekati.log.Logger
- * @version 1.2.0
+ * @version 1.2.2
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
- import com.sekati.core.CoreObject; 
  import com.sekati.events.Dispatcher;
  import com.sekati.log.Inspector;
  import com.sekati.log.LCBinding;
@@ -33,7 +32,7 @@
  * 
  * @see {@link com.sekati.log.Console}
  */
-class com.sekati.log.Logger extends CoreObject {
+class com.sekati.log.Logger {
 
 	private static var _instance:Logger;
 
@@ -61,7 +60,6 @@ class com.sekati.log.Logger extends CoreObject {
 	 * Singleton Private Constructor
 	 */
 	private function Logger() {
-		super();
 		resetLevels();
 		resetFilters();
 		_proxyObj = new Object();
@@ -93,7 +91,6 @@ class com.sekati.log.Logger extends CoreObject {
 	 	return Logger.getInstance();	
 	 }
 	 
-	//////////////////////////////////////////////////////////////
 	// Core Controllers
 	
 	/**
@@ -138,7 +135,7 @@ class com.sekati.log.Logger extends CoreObject {
 	public function set isIDE(b:Boolean):Void {
 		_isOutputIDE = b;	
 	}		
-	//////////////////////////////////////////////////////////////
+	
 	// Level Handlers
 
 	/**
@@ -193,7 +190,6 @@ class com.sekati.log.Logger extends CoreObject {
 		_output ("OBJECT", origin, insp);
 	}	
 	
-	//////////////////////////////////////////////////////////////
 	// Filter Handlers
 	
 	/**
@@ -279,7 +275,6 @@ class com.sekati.log.Logger extends CoreObject {
 	}
 	 */	
 	 
-	//////////////////////////////////////////////////////////////
 	// Output Handlers
 	
 	private function _output (level:String, origin, msg):Void {
@@ -309,7 +304,6 @@ class com.sekati.log.Logger extends CoreObject {
 	
 	}
 	
-	//////////////////////////////////////////////////////////////
 	// Level Overload	
 
 	// __resolve catches all wrapper & invented levels and processes them thru the proxy to _output: cool!
@@ -334,9 +328,6 @@ class com.sekati.log.Logger extends CoreObject {
 		_instance._output (n,o,s);
 	}	
 	
-	//////////////////////////////////////////////////////////////
-	// Destroy Handler
-	
 	/**
 	 * Destroy the Singleton instance.
 	 * @return Void
@@ -348,7 +339,5 @@ class com.sekati.log.Logger extends CoreObject {
 			delete _instance[i];	
 		}
 		delete _instance;
-		super.destroy();
-	}
-			
+	}			
 }

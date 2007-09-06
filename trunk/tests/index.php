@@ -1,7 +1,7 @@
 <?php
 /*
  * Unit Test Runner - Created on Sep 2, 2007
- * @version 1.0.0
+ * @version 1.0.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -66,6 +66,7 @@ function template ($swf) {
 	$str .= 'f.addParam("scale", "noScale");';
 	$str .= 'f.addParam("allowScriptAccess", "always");';
 	$str .= 'f.addParam("swLiveConnect", "true");';
+	$str .= 'f.addParam("allowFullScreen", "true");';
 	$str .= 'f.write();';
 	$str .= 'var mousewheel = new MouseWheel(f);';
 	$str .= '</script>';

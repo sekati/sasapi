@@ -29,7 +29,7 @@ class com.sekati.log.ConsoleStyle {
 	// style definition
 	public var CSS:Object = {
 		console:{
-			n:"$___Console___", x:5, y:5, w:CW, h:CH, minW:450, minH:150, maxW:Stage.width, maxH:Stage.height,
+			n:"___Console", x:5, y:5, w:CW, h:CH, minW:450, minH:150, maxW:Stage.width, maxH:Stage.height,
 			bg:{n:"bgMc", x:0, y:0, w:CW, h:CH, c:0x1D1D1D, a:95},
 			head:{
 				n:"headMc", x:0, y:0, w:CW, h:IH,

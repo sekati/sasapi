@@ -1,5 +1,5 @@
 /**
- * com.sekati.managers.KeyManager
+ * com.sekati.input.KeyManager
  * @version 1.0.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
@@ -12,7 +12,7 @@
 /**
  * Key Manager Class.
  */
-class com.sekati.managers.KeyManager {
+class com.sekati.input.KeyManager {
 	
 	private static var _instance:KeyManager;
 	private static var _this:KeyManager;

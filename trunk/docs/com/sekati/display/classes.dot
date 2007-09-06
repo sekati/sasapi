@@ -1,5 +1,11 @@
 strict digraph class_diagram {
   rankdir=LR;
+  TypeStageDisplay[
+    label="StageDisplay",
+    URL="StageDisplay.html",
+    tooltip="com.sekati.display.StageDisplay",
+    shape="record"
+  ];
   TypeCoreClip[
     label="CoreClip",
     URL="CoreClip.html",
