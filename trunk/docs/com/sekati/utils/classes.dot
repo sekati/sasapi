@@ -48,6 +48,12 @@ strict digraph class_diagram {
     tooltip="com.sekati.utils.Clone",
     shape="record"
   ];
+  TypeClipboard[
+    label="Clipboard",
+    URL="Clipboard.html",
+    tooltip="com.sekati.utils.Clipboard",
+    shape="record"
+  ];
   TypeClassUtils[
     label="ClassUtils",
     URL="ClassUtils.html",

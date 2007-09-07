@@ -1,6 +1,6 @@
 /**
  * com.sekati.draw.RoundRectangle
- * @version 1.0.3
+ * @version 1.0.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -31,9 +31,9 @@ class com.sekati.draw.RoundRectangle {
 	 */
 	public static function draw (mc:MovieClip, topLeft:Point, bottomRight:Point, cornerRadius:Number, fillColor:Number, fillAlpha:Number, strokeWeight:Number, strokeColor:Number, strokeAlpha:Number):Void{
 		var sw:Number = (!strokeWeight) ? undefined : strokeWeight;
-		var sc:Number = (!strokeColor) ? 0x000000 : strokeColor;
-		var sa:Number = (!strokeAlpha) ? 100 : strokeAlpha;
-		var fa:Number = (!fillAlpha) ? 100 : fillAlpha;
+		var sc:Number = (isNaN(strokeColor)) ? 0x000000 : strokeColor;
+		var sa:Number = (isNaN(strokeAlpha)) ? 100 : strokeAlpha;
+		var fa:Number = (isNaN(fillAlpha)) ? 100 : fillAlpha;
 
 		var x:Number = topLeft.x;
 		var y:Number = topLeft.y;

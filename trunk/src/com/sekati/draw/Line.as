@@ -1,6 +1,6 @@
 /**
  * com.sekati.draw.Line
- * @version 1.0.1
+ * @version 1.0.3
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -33,8 +33,8 @@ class com.sekati.draw.Line {
 	public function Line (mc:MovieClip, p1:Point, p2:Point, strokeWeight:Number, strokeColor:Number, strokeAlpha:Number) {
 		_mc = mc;
 		_sw = (!strokeWeight) ? undefined : strokeWeight;
-		_sc = (!strokeColor) ? 0x000000 : strokeColor;
-		_sa = (!strokeAlpha) ? 100 : strokeAlpha;
+		_sc = (isNaN(strokeColor)) ? 0x000000 : strokeColor;
+		_sa = (isNaN(strokeAlpha)) ? 100 : strokeAlpha;
 		_p1 = p1;
 		_p2 = p2;
 		draw();

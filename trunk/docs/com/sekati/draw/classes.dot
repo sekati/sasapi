@@ -12,6 +12,12 @@ strict digraph class_diagram {
     tooltip="com.sekati.draw.Tile",
     shape="record"
   ];
+  TypeShape[
+    label="Shape",
+    URL="Shape.html",
+    tooltip="com.sekati.draw.Shape",
+    shape="record"
+  ];
   TypeRoundRectangle[
     label="RoundRectangle",
     URL="RoundRectangle.html",
@@ -40,12 +46,6 @@ strict digraph class_diagram {
     label="Line",
     URL="Line.html",
     tooltip="com.sekati.draw.Line",
-    shape="record"
-  ];
-  TypeGraphic[
-    label="Graphic",
-    URL="Graphic.html",
-    tooltip="com.sekati.draw.Graphic",
     shape="record"
   ];
   TypeDrawUtils[
