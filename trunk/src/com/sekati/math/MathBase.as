@@ -1,6 +1,6 @@
 ﻿/**
  * com.sekati.math.MathBase
- * @version 1.1.0
+ * @version 1.1.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -9,13 +9,14 @@
  import com.sekati.math.Integer;
 
  /**
-  * static class wrapping various Math utilities
+  * Static class wrapping various Math utilities.
   */
 class com.sekati.math.MathBase {			
 
 	/**
 	 * Returns the highest value of all passed arguments
 	 * Like Math.max() but supports any number of args passed to it
+	 * @return Number
 	 */
 	public static function max ():Number {
 		return maxArray (arguments);
@@ -24,6 +25,7 @@ class com.sekati.math.MathBase {
 	/**
 	 * Returns the lowest value of all passed arguments
 	 * Like Math.min() but supports any number of args passed to it
+	 * @return Number
 	 */
 	public static function min ():Number {
 		return minArray (arguments);
@@ -32,6 +34,8 @@ class com.sekati.math.MathBase {
 	/**
 	 * Returns the highest value of all items in array
 	 * Like Math.max() but supports any number of items
+	 * @param a (Array)
+	 * @return Number
 	 */
 	public static function maxArray (a:Array):Number {
 		var val:Number = null;
@@ -46,6 +50,8 @@ class com.sekati.math.MathBase {
 	/**
 	 * Returns the lowest value of all items in array
 	 * Like Math.min() but supports any number of items
+	 * @param a (Array)
+	 * @return Number
 	 */
 	public static function minArray (a:Array):Number {
 		var val:Number = null;
@@ -59,6 +65,9 @@ class com.sekati.math.MathBase {
 
 	/**
 	 * Same as Math.foor with extra argument to specify number of decimals
+	 * @param val (Number)
+	 * @param decimal (Number)
+	 * @return Number
 	 */
 	public static function floor(val:Number, decimal:Number):Number {
 		var n:Number = Math.pow(10,decimal);
@@ -67,6 +76,9 @@ class com.sekati.math.MathBase {
 
 	/**
 	 * Round to a given amount of decimals
+	 * @param val (Number)
+	 * @param decimal (Number)
+	 * @return Number
 	 */
 	public static function round (val:Number, decimal:Number):Number {
 		return Math.round (val * Math.pow (10, decimal)) / Math.pow (10, decimal);
@@ -74,6 +86,8 @@ class com.sekati.math.MathBase {
 
 	/**
 	 * Round to nearest .5
+	 * @param val (Number)
+	 * @return Number
 	 * {@code Example:
 	 * 	trace(MathBase.roundHalf(4.47)); // returns 4.5
 	 * }
@@ -96,6 +110,10 @@ class com.sekati.math.MathBase {
 
 	/**
 	 * Will constrain a value to the defined boundaries
+	 * @param val (Number)
+	 * @param min (Number)
+	 * @param max (Number)
+	 * @return Number
 	 * {@code Examples:
 	 * val: 20, 2 to 5    this will give back 5 since 5 is the top boundary
 	 * val: 3, 2 to 5     this will give back 3
@@ -127,6 +145,8 @@ class com.sekati.math.MathBase {
 
 	/**
 	 * Check if number is Odd (convert to Integer if necessary)
+	 * @param n (Number)
+	 * @return Boolean
 	 */
 	public static function isOdd (n:Number):Boolean {
 		var int:Integer = new Integer(n);
@@ -135,14 +155,32 @@ class com.sekati.math.MathBase {
 
 	/**
 	 * Check if number is Even (convert to Integer if necessary)
+	 * @param n (Number)
+	 * @return Boolean
 	 */
 	public static function isEven (n:Number):Boolean {
 		var int:Integer = new Integer(n);
 		return (int%2 == 0);
 	}
+	
+	/**
+	 * Check if number is Prime (divisible only itself and one)
+	 * @param n (Number)
+	 * @return Boolean
+	 */
+	public static function isPrime (n:Number):Boolean {
+		var l:Number;
+		if (n > 2 && n % 2 == 0) return false;
+			for (var i:Number = 3, l = Math.sqrt(n); i <= l; i += 2) {
+				if (n % i == 0) return false;
+			}
+			return true;
+	}
 
 	/**
 	 * Check if number is an Integer
+	 * @param n (Number)
+	 * @return Boolean
 	 */
 	public static function isInteger (n:Number):Boolean {
 		return (n%1 == 0);
@@ -150,15 +188,20 @@ class com.sekati.math.MathBase {
 
 	/**
 	 * Check if number is Natural (positive Integer)
+	 * @param n (Number)
+	 * @return Boolean
 	 */
 	public static function isNatural(n:Number):Boolean {
 		return (n >= 0 && n%1 == 0);
 	}	
 
-	////////////////////////////////////////////////////////////////////////////////////////////
 	// RANDOMS
+	
 	/**
 	 * Returns a random number inside a specific range
+	 * @param start (Number)
+	 * @param end (Number)
+	 * @return Number
 	 */	
 	public static function rnd(start:Number, end:Number):Number {
 		return Math.round( Math.random()*(end-start))+start;
@@ -166,8 +209,13 @@ class com.sekati.math.MathBase {
 
 	/**
 	 * Returns a set of random numbers inside a specific range (unique numbers is optional)
+	 * @param min (Number)
+	 * @param max (Number)
+	 * @param count (Number)
+	 * @param unique (Boolean)
+	 * @return Array
 	 */
-	public static function inRangeSet (min:Number, max:Number, count:Number, unique:Boolean):Array {
+	public static function RandRangeSet (min:Number, max:Number, count:Number, unique:Boolean):Array {
 		var rnds:Array = new Array ();
 		if (unique && count <= max - min + 1) {
 			//unique
@@ -193,6 +241,9 @@ class com.sekati.math.MathBase {
 
 	/**
 	 * Returns a random float number within a given range
+	 * @param min (Number)
+	 * @param max (Number)
+	 * @return Number
 	 */
 	public static function randRangeFloat (min:Number, max:Number):Number {
 		return Math.random () * (max - min) + min;
@@ -200,6 +251,9 @@ class com.sekati.math.MathBase {
 
 	/**
 	 * Returns a random int number within a given range
+	 * @param min (Number)
+	 * @param max (Number)
+	 * @return Number
 	 */
 	public static function randRangeInt (min:Number, max:Number):Number {
 		return Math.floor (Math.random () * (max - min + 1) + min);
