@@ -18,10 +18,10 @@ strict digraph class_diagram {
     tooltip="com.sekati.data.SoundCenter",
     shape="record"
   ];
-  TypeSharedObj[
-    label="SharedObj",
-    URL="SharedObj.html",
-    tooltip="com.sekati.data.SharedObj",
+  TypeSO[
+    label="SO",
+    URL="SO.html",
+    tooltip="com.sekati.data.SO",
     shape="record"
   ];
   TypeLoopIterator[
