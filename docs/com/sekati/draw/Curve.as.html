@@ -3,7 +3,7 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span><span class="comment doc">/**
 <span class="lineno" id="2">     2  </span> * com.sekati.draw.Curve
-<span class="lineno" id="3">     3  </span> * @version 1.0.1
+<span class="lineno" id="3">     3  </span> * @version 1.0.3
 <span class="lineno" id="4">     4  </span> * @author jason m horwitz | sekati.com
 <span class="lineno" id="5">     5  </span> * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -38,8 +38,8 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="35">    35  </span>	<span class="key">public</span> <span class="key">function</span> Curve (mc:MovieClip, p1:Point, p2:Point, c:Point, strokeWeight:Number, strokeColor:Number, strokeAlpha:Number) {
 <span class="lineno" id="36">    36  </span>		_mc = mc;
 <span class="lineno" id="37">    37  </span>		_sw = (!strokeWeight) ? undefined : strokeWeight;
-<span class="lineno" id="38">    38  </span>		_sc = (!strokeColor) ? 0x000000 : strokeColor;
-<span class="lineno" id="39">    39  </span>		_sa = (!strokeAlpha) ? <span class="num_const">100</span> : strokeAlpha;
+<span class="lineno" id="38">    38  </span>		_sc = (isNaN(strokeColor)) ? 0x000000 : strokeColor;
+<span class="lineno" id="39">    39  </span>		_sa = (isNaN(strokeAlpha)) ? <span class="num_const">100</span> : strokeAlpha;
 <span class="lineno" id="40">    40  </span>		_p1 = p1;
 <span class="lineno" id="41">    41  </span>		_p2 = p2;
 <span class="lineno" id="42">    42  </span>		_c = c;

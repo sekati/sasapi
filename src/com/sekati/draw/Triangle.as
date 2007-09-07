@@ -1,6 +1,6 @@
 /**
  * com.sekati.draw.Triangle
- * @version 1.0.5
+ * @version 1.0.7
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -32,9 +32,9 @@ class com.sekati.draw.Triangle {
 	 */
 	public static function draw (mc:MovieClip, p1:Point, p2:Point, p3:Point, fillColor:Number, fillAlpha:Number, strokeWeight:Number, strokeColor:Number, strokeAlpha:Number):Void {
 		var sw:Number = (!strokeWeight) ? undefined : strokeWeight;
-		var sc:Number = (!strokeColor) ? 0x000000 : strokeColor;
-		var sa:Number = (!strokeAlpha) ? 100 : strokeAlpha;
-		var fa:Number = (!fillAlpha) ? 100 : fillAlpha;
+		var sc:Number = (isNaN(strokeColor)) ? 0x000000 : strokeColor;
+		var sa:Number = (isNaN(strokeAlpha)) ? 100 : strokeAlpha;
+		var fa:Number = (isNaN(fillAlpha)) ? 100 : fillAlpha;
 		
 		mc.clear();
 		mc.lineStyle (sw, sc, sa, true, "none", "square", "miter", 1.414);

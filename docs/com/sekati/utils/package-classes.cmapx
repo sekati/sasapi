@@ -1,12 +1,13 @@
 <map id="class_diagram" name="class_diagram">
-<area shape="rect" href="TextUtils.html" title="com.sekati.utils.TextUtils" alt="" coords="32,800,122,848" />
-<area shape="rect" href="StringUtils.html" title="com.sekati.utils.StringUtils" alt="" coords="26,728,128,776" />
-<area shape="rect" href="MovieClipUtils.html" title="com.sekati.utils.MovieClipUtils" alt="" coords="8,656,146,704" />
-<area shape="rect" href="FilterUtils.html" title="com.sekati.utils.FilterUtils" alt="" coords="28,584,126,632" />
-<area shape="rect" href="Delegate.html" title="com.sekati.utils.Delegate" alt="" coords="33,512,121,560" />
-<area shape="rect" href="DateUtils.html" title="com.sekati.utils.DateUtils" alt="" coords="30,440,124,488" />
-<area shape="rect" href="ColorUtils.html" title="com.sekati.utils.ColorUtils" alt="" coords="28,368,126,416" />
-<area shape="rect" href="Clone.html" title="com.sekati.utils.Clone" alt="" coords="41,296,113,344" />
+<area shape="rect" href="TextUtils.html" title="com.sekati.utils.TextUtils" alt="" coords="32,872,122,920" />
+<area shape="rect" href="StringUtils.html" title="com.sekati.utils.StringUtils" alt="" coords="26,800,128,848" />
+<area shape="rect" href="MovieClipUtils.html" title="com.sekati.utils.MovieClipUtils" alt="" coords="8,728,146,776" />
+<area shape="rect" href="FilterUtils.html" title="com.sekati.utils.FilterUtils" alt="" coords="28,656,126,704" />
+<area shape="rect" href="Delegate.html" title="com.sekati.utils.Delegate" alt="" coords="33,584,121,632" />
+<area shape="rect" href="DateUtils.html" title="com.sekati.utils.DateUtils" alt="" coords="30,512,124,560" />
+<area shape="rect" href="ColorUtils.html" title="com.sekati.utils.ColorUtils" alt="" coords="28,440,126,488" />
+<area shape="rect" href="Clone.html" title="com.sekati.utils.Clone" alt="" coords="41,368,113,416" />
+<area shape="rect" href="Clipboard.html" title="com.sekati.utils.Clipboard" alt="" coords="29,296,125,344" />
 <area shape="rect" href="ClassUtils.html" title="com.sekati.utils.ClassUtils" alt="" coords="28,224,126,272" />
 <area shape="rect" href="BitmapUtils.html" title="com.sekati.utils.BitmapUtils" alt="" coords="21,152,133,200" />
 <area shape="rect" href="ArrayUtils.html" title="com.sekati.utils.ArrayUtils" alt="" coords="26,80,128,128" />

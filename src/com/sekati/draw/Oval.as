@@ -1,6 +1,6 @@
 /**
  * com.sekati.draw.Oval
- * @version 1.0.3
+ * @version 1.0.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -37,10 +37,10 @@ class com.sekati.draw.Oval {
 	public function Oval (mc:MovieClip, center:Point, radius:Point, fillColor:Number, fillAlpha:Number, strokeWeight:Number, strokeColor:Number, strokeAlpha:Number) {
 		_mc = mc;
 		_fc = fillColor;
-		_fa = (!fillAlpha) ? 100 : fillAlpha;
+		_fa = (isNaN(fillAlpha)) ? 100 : fillAlpha;
 		_sw = (!strokeWeight) ? undefined : strokeWeight;
-		_sc = (!strokeColor) ? 0x000000 : strokeColor;
-		_sa = (!strokeAlpha) ? 100 : strokeAlpha;
+		_sc = (isNaN(strokeColor)) ? 0x000000 : strokeColor;
+		_sa = (isNaN(strokeAlpha)) ? 100 : strokeAlpha;
 		_center = center;
 		_radius = radius;
 		draw();

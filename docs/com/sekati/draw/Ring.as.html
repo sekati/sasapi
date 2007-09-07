@@ -3,7 +3,7 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span><span class="comment doc">/**
 <span class="lineno" id="2">     2  </span> * com.sekati.draw.Ring
-<span class="lineno" id="3">     3  </span> * @version 1.0.3
+<span class="lineno" id="3">     3  </span> * @version 1.0.5
 <span class="lineno" id="4">     4  </span> * @author jason m horwitz | sekati.com
 <span class="lineno" id="5">     5  </span> * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -28,7 +28,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="25">    25  </span>	 */</span>
 <span class="lineno" id="26">    26  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> draw (mc:MovieClip, p:Point, outerRadius:Number, innerRadius:Number, fillColor:Number, fillAlpha:Number):Void {
 <span class="lineno" id="27">    27  </span>		<span class="key">var</span> fc:Number = (!fillColor) ? 0x000000 : fillColor;		
-<span class="lineno" id="28">    28  </span>		<span class="key">var</span> fa:Number = (!fillAlpha) ? <span class="num_const">100</span> : fillAlpha;
+<span class="lineno" id="28">    28  </span>		<span class="key">var</span> fa:Number = (isNaN(fillAlpha)) ? <span class="num_const">100</span> : fillAlpha;
 <span class="lineno" id="29">    29  </span>		<span class="key">var</span> x:Number = p.x;
 <span class="lineno" id="30">    30  </span>		<span class="key">var</span> y:Number = p.y;
 <span class="lineno" id="31">    31  </span>		<span class="key">var</span> r1:Number = outerRadius;

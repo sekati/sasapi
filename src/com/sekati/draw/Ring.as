@@ -1,6 +1,6 @@
 /**
  * com.sekati.draw.Ring
- * @version 1.0.3
+ * @version 1.0.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -25,7 +25,7 @@ class com.sekati.draw.Ring {
 	 */
 	public static function draw (mc:MovieClip, p:Point, outerRadius:Number, innerRadius:Number, fillColor:Number, fillAlpha:Number):Void {
 		var fc:Number = (!fillColor) ? 0x000000 : fillColor;		
-		var fa:Number = (!fillAlpha) ? 100 : fillAlpha;
+		var fa:Number = (isNaN(fillAlpha)) ? 100 : fillAlpha;
 		var x:Number = p.x;
 		var y:Number = p.y;
 		var r1:Number = outerRadius;

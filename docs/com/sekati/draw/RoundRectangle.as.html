@@ -3,7 +3,7 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span><span class="comment doc">/**
 <span class="lineno" id="2">     2  </span> * com.sekati.draw.RoundRectangle
-<span class="lineno" id="3">     3  </span> * @version 1.0.3
+<span class="lineno" id="3">     3  </span> * @version 1.0.5
 <span class="lineno" id="4">     4  </span> * @author jason m horwitz | sekati.com
 <span class="lineno" id="5">     5  </span> * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -34,9 +34,9 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="31">    31  </span>	 */</span>
 <span class="lineno" id="32">    32  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> draw (mc:MovieClip, topLeft:Point, bottomRight:Point, cornerRadius:Number, fillColor:Number, fillAlpha:Number, strokeWeight:Number, strokeColor:Number, strokeAlpha:Number):Void{
 <span class="lineno" id="33">    33  </span>		<span class="key">var</span> sw:Number = (!strokeWeight) ? undefined : strokeWeight;
-<span class="lineno" id="34">    34  </span>		<span class="key">var</span> sc:Number = (!strokeColor) ? 0x000000 : strokeColor;
-<span class="lineno" id="35">    35  </span>		<span class="key">var</span> sa:Number = (!strokeAlpha) ? <span class="num_const">100</span> : strokeAlpha;
-<span class="lineno" id="36">    36  </span>		<span class="key">var</span> fa:Number = (!fillAlpha) ? <span class="num_const">100</span> : fillAlpha;
+<span class="lineno" id="34">    34  </span>		<span class="key">var</span> sc:Number = (isNaN(strokeColor)) ? 0x000000 : strokeColor;
+<span class="lineno" id="35">    35  </span>		<span class="key">var</span> sa:Number = (isNaN(strokeAlpha)) ? <span class="num_const">100</span> : strokeAlpha;
+<span class="lineno" id="36">    36  </span>		<span class="key">var</span> fa:Number = (isNaN(fillAlpha)) ? <span class="num_const">100</span> : fillAlpha;
 <span class="lineno" id="37">    37  </span>
 <span class="lineno" id="38">    38  </span>		<span class="key">var</span> x:Number = topLeft.x;
 <span class="lineno" id="39">    39  </span>		<span class="key">var</span> y:Number = topLeft.y;
