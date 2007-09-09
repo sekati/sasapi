@@ -9,7 +9,7 @@
  import com.sekati.except.Exception;
  
 /**
- * {@link Throwable} Illegal Operation {@link Exception} Error.
+ * Throwable Illegal Operation {@link Exception} Error.
  * An illegal operation has occurred that is not supported by the thower.
  */
 class com.sekati.except.IllegalOperationException extends Exception {

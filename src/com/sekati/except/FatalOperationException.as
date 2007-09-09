@@ -9,7 +9,7 @@
  import com.sekati.except.FatalException;
  
 /**
- * {@link Throwable} Fatal Operation {@link FatalException} Error.
+ * Throwable Fatal Operation {@link FatalException} Error.
  * A fatal operation has occurred that is not supported by the thower.
  */
 class com.sekati.except.FatalOperationException extends FatalException {

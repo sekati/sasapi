@@ -9,7 +9,7 @@
  import com.sekati.except.Exception;
  
 /**
- * {@link Throwable} Fatal {@link Exception} (logs with level type 'fatal').
+ * Throwable Fatal {@link Exception} (logs with level type 'fatal').
  */
 class com.sekati.except.FatalException extends Exception {
 	

@@ -9,7 +9,7 @@
  import com.sekati.except.Exception;
  
 /**
- * {@link Throwable} Illegal State {@link Exception} Error.
+ * Throwable Illegal State {@link Exception} Error.
  * A method has been invoked at an illegal or inappropriate time or state.
  */
 class com.sekati.except.IllegalStateException extends Exception {
