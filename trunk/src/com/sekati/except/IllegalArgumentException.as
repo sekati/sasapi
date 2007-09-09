@@ -1,5 +1,5 @@
 /**
- * com.sekati.except.Exception
+ * com.sekati.except.IllegalArgumentException
  * @version 1.0.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
@@ -9,21 +9,21 @@
  import com.sekati.except.Throwable;
  
 /**
- * Core SASAPI Exception to be subclassed for specificity and bubbling.
+ * Illegal Argument Exception Error {@link Throwable}.
  */
-class com.sekati.except.Exception extends Throwable {
+class com.sekati.except.IllegalArgumentException extends Throwable {
 	
-	private var name:String = "Exception Error";
+	private var name:String = "Illegal Argument Error";
 	private var type:String = "error";
 
 	/**
-	 * Exception Constructor
+	 * IllegalArgumentException Constructor
 	 * @param thrower (Object) origin of the error
 	 * @param message (String) error message to display
 	 * @param stack (Array) thrower arguments stack
 	 * @return Void
 	 */
-	 public function Exception(thrower:Object, message:String, stack:Array){
+	 public function IllegalArgumentException(thrower:Object, message:String, stack:Array){
 	 	super(thrower, message, stack);	
 	 }
 }
