@@ -1,0 +1,37 @@
+strict digraph class_diagram {
+  rankdir=LR;
+  TypeThrowable[
+    label="Throwable",
+    URL="Throwable.html",
+    tooltip="com.sekati.except.Throwable",
+    shape="record"
+  ];
+  TypeRecoverableException[
+    label="RecoverableException",
+    URL="RecoverableException.html",
+    tooltip="com.sekati.except.RecoverableException",
+    shape="record"
+  ];
+  TypeIllegalArgumentException[
+    label="IllegalArgumentException",
+    URL="IllegalArgumentException.html",
+    tooltip="com.sekati.except.IllegalArgumentException",
+    shape="record"
+  ];
+  TypeFatalException[
+    label="FatalException",
+    URL="FatalException.html",
+    tooltip="com.sekati.except.FatalException",
+    shape="record"
+  ];
+  TypeException[
+    label="Exception",
+    URL="Exception.html",
+    tooltip="com.sekati.except.Exception",
+    shape="record"
+  ];
+  TypeException -> TypeRecoverableException;
+  TypeThrowable -> TypeIllegalArgumentException;
+  TypeThrowable -> TypeFatalException;
+  TypeThrowable -> TypeException;
+}
