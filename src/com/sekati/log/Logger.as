@@ -11,6 +11,7 @@
  import com.sekati.log.LCBinding;
  import com.sekati.log.LogEvent;
  import com.sekati.time.StopWatch;
+ import com.sekati.validate.TypeValidation;
  
 /**
  * Logger is a multi-tiered debugging tool designed to clarify the debugging process.\
