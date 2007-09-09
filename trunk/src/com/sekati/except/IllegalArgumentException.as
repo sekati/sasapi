@@ -6,15 +6,16 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  
- import com.sekati.except.Throwable;
+ import com.sekati.except.Exception;
+ import com.sekati.except.Catcher;
  
 /**
- * Illegal Argument Exception Error {@link Throwable}.
+ * {@link Throwable} Illegal Argument {@link Exception} Error.
+ * A method has been invoked with an illegal or inappropriate argument.
  */
-class com.sekati.except.IllegalArgumentException extends Throwable {
+class com.sekati.except.IllegalArgumentException extends Exception {
 	
-	private var name:String = "Illegal Argument Error";
-	private var type:String = "error";
+	private var name:String = "Illegal Argument Exception Error";
 
 	/**
 	 * IllegalArgumentException Constructor

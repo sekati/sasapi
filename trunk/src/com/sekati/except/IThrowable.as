@@ -7,7 +7,7 @@
  */
  
 /**
- * Interface describing all {@link Throwable}'s.
+ * Interface describing all {@link com.sekati.except.Throwable}'s.
  */
 interface com.sekati.except.IThrowable {
 	

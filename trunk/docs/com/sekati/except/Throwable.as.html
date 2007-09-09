@@ -3,7 +3,7 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span><span class="comment doc">/**
 <span class="lineno" id="2">     2  </span> * com.sekati.except.Throwable
-<span class="lineno" id="3">     3  </span> * @version 1.0.0
+<span class="lineno" id="3">     3  </span> * @version 1.0.5
 <span class="lineno" id="4">     4  </span> * @author jason m horwitz | sekati.com
 <span class="lineno" id="5">     5  </span> * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -13,7 +13,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="10">    10  </span> <span class="key">import</span> com.sekati.log.Logger;
 <span class="lineno" id="11">    11  </span> 
 <span class="lineno" id="12">    12  </span><span class="comment doc">/**
-<span class="lineno" id="13">    13  </span> * Abstract Throwable class for mixin Exception classes.
+<span class="lineno" id="13">    13  </span> * Abstract Throwable mixin class for {@link com.sekati.except.Exception} classes.
 <span class="lineno" id="14">    14  </span> */</span>
 <span class="lineno" id="15">    15  </span><span class="key">class</span> com.sekati.except.Throwable <span class="key">extends</span> Error <span class="key">implements</span> IThrowable {
 <span class="lineno" id="16">    16  </span>
@@ -32,7 +32,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="29">    29  </span>	 * @return Void
 <span class="lineno" id="30">    30  </span>	 */</span>
 <span class="lineno" id="31">    31  </span>	<span class="key">private</span> <span class="key">function</span> Throwable(thrower:Object, errorCode:String, stack:Array) {
-<span class="lineno" id="32">    32  </span>		message = <span class="str_const">"@@@ "</span> + name + <span class="str_const">" ["</span> + thrower + <span class="str_const">"]:["</span> + stack + <span class="str_const">"]-&gt; "</span> + errorCode;
+<span class="lineno" id="32">    32  </span>		message = <span class="str_const">"@@@ "</span> + name + <span class="str_const">" ['"</span> + thrower + <span class="str_const">"']: "</span> + errorCode;
 <span class="lineno" id="33">    33  </span>		
 <span class="lineno" id="34">    34  </span>		<span class="key">if</span> (Logger.$.enabled == <span class="key">true</span>) Logger.$[type] (thrower, <span class="key">this</span>);	
 <span class="lineno" id="35">    35  </span>		_errorCode = errorCode;

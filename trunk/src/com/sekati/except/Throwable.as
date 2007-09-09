@@ -1,6 +1,6 @@
 /**
  * com.sekati.except.Throwable
- * @version 1.0.0
+ * @version 1.0.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -10,7 +10,7 @@
  import com.sekati.log.Logger;
  
 /**
- * Abstract Throwable class for mixin Exception classes.
+ * Abstract Throwable mixin class for {@link com.sekati.except.Exception} classes.
  */
 class com.sekati.except.Throwable extends Error implements IThrowable {
 
@@ -29,7 +29,7 @@ class com.sekati.except.Throwable extends Error implements IThrowable {
 	 * @return Void
 	 */
 	private function Throwable(thrower:Object, errorCode:String, stack:Array) {
-		message = "@@@ " + name + " [" + thrower + "]:[" + stack + "]-> " + errorCode;
+		message = "@@@ " + name + " ['" + thrower + "']: " + errorCode;
 		
 		if (Logger.$.enabled == true) Logger.$[type] (thrower, this);	
 		_errorCode = errorCode;
