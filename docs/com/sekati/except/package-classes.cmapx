@@ -1,0 +1,7 @@
+<map id="class_diagram" name="class_diagram">
+<area shape="rect" href="Throwable.html" title="com.sekati.except.Throwable" alt="" coords="9,80,110,128" />
+<area shape="rect" href="IllegalArgumentException.html" title="com.sekati.except.IllegalArgumentException" alt="" coords="161,8,379,56" />
+<area shape="rect" href="FatalException.html" title="com.sekati.except.FatalException" alt="" coords="203,80,337,128" />
+<area shape="rect" href="Exception.html" title="com.sekati.except.Exception" alt="" coords="222,152,318,200" />
+<area shape="rect" href="RecoverableException.html" title="com.sekati.except.RecoverableException" alt="" coords="430,152,619,200" />
+</map>
