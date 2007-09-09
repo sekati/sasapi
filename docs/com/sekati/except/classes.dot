@@ -6,10 +6,16 @@ strict digraph class_diagram {
     tooltip="com.sekati.except.Throwable",
     shape="record"
   ];
-  TypeRecoverableException[
-    label="RecoverableException",
-    URL="RecoverableException.html",
-    tooltip="com.sekati.except.RecoverableException",
+  TypeIllegalStateException[
+    label="IllegalStateException",
+    URL="IllegalStateException.html",
+    tooltip="com.sekati.except.IllegalStateException",
+    shape="record"
+  ];
+  TypeIllegalOperationException[
+    label="IllegalOperationException",
+    URL="IllegalOperationException.html",
+    tooltip="com.sekati.except.IllegalOperationException",
     shape="record"
   ];
   TypeIllegalArgumentException[
@@ -18,10 +24,28 @@ strict digraph class_diagram {
     tooltip="com.sekati.except.IllegalArgumentException",
     shape="record"
   ];
+  TypeFatalStateException[
+    label="FatalStateException",
+    URL="FatalStateException.html",
+    tooltip="com.sekati.except.FatalStateException",
+    shape="record"
+  ];
+  TypeFatalOperationException[
+    label="FatalOperationException",
+    URL="FatalOperationException.html",
+    tooltip="com.sekati.except.FatalOperationException",
+    shape="record"
+  ];
   TypeFatalException[
     label="FatalException",
     URL="FatalException.html",
     tooltip="com.sekati.except.FatalException",
+    shape="record"
+  ];
+  TypeFatalArgumentException[
+    label="FatalArgumentException",
+    URL="FatalArgumentException.html",
+    tooltip="com.sekati.except.FatalArgumentException",
     shape="record"
   ];
   TypeException[
@@ -30,8 +54,18 @@ strict digraph class_diagram {
     tooltip="com.sekati.except.Exception",
     shape="record"
   ];
-  TypeException -> TypeRecoverableException;
-  TypeThrowable -> TypeIllegalArgumentException;
-  TypeThrowable -> TypeFatalException;
+  TypeCatcher[
+    label="Catcher",
+    URL="Catcher.html",
+    tooltip="com.sekati.except.Catcher",
+    shape="record"
+  ];
+  TypeException -> TypeIllegalStateException;
+  TypeException -> TypeIllegalOperationException;
+  TypeException -> TypeIllegalArgumentException;
+  TypeFatalException -> TypeFatalStateException;
+  TypeFatalException -> TypeFatalOperationException;
+  TypeException -> TypeFatalException;
+  TypeFatalException -> TypeFatalArgumentException;
   TypeThrowable -> TypeException;
 }

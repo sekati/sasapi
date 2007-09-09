@@ -6,12 +6,12 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  
- import com.sekati.except.Throwable;
+ import com.sekati.except.Exception;
  
 /**
- * Fatal non-recoverable {@link Throwable} Exception logs with level type 'fatal'.
+ * {@link Throwable} Fatal {@link Exception} (logs with level type 'fatal').
  */
-class com.sekati.except.FatalException extends Throwable {
+class com.sekati.except.FatalException extends Exception {
 	
 	private var name:String = "Fatal Exception Error";
 	private var type:String = "fatal";

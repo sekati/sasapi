@@ -9,7 +9,19 @@
  import com.sekati.except.Throwable;
  
 /**
- * Core SASAPI Exception to be subclassed for specificity and bubbling.
+ * Core {@link Throwable} Exception error to be subclassed for error specificity and logging.
+ * {@code Usage:
+ * 	function test():Void {
+ * 		try {
+ * 			throw new Exception(this, "Test exception ErrorCode message", arguments);
+ * 		} catch (e:Exception) {
+ * 			Catcher.handle(e);
+ * 		}
+ * 	}
+ * 	test("hello world!", false, 13);
+ * }
+ * 
+ * @see {@link com.sekati.except.Catcher}
  */
 class com.sekati.except.Exception extends Throwable {
 	
