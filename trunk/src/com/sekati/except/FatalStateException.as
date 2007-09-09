@@ -9,7 +9,7 @@
  import com.sekati.except.FatalException;
  
 /**
- * {@link Throwable} Fatal State {@link FatalException} Error.
+ * Throwable Fatal State {@link FatalException} Error.
  * A method has been invoked at an illegal or inappropriate time or state.
  */
 class com.sekati.except.FatalStateException extends FatalException {

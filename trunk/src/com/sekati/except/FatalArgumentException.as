@@ -9,7 +9,7 @@
  import com.sekati.except.FatalException;
  
 /**
- * {@link Throwable} Fatal Argument {@link FatalException} Error.
+ * Throwable Fatal Argument {@link FatalException} Error.
  * A method has been invoked with an illegal or inappropriate argument.
  */
 class com.sekati.except.FatalArgumentException extends FatalException {

@@ -10,7 +10,7 @@
  import com.sekati.except.Catcher;
  
 /**
- * {@link Throwable} Illegal Argument {@link Exception} Error.
+ * Throwable Illegal Argument {@link Exception} Error.
  * A method has been invoked with an illegal or inappropriate argument.
  */
 class com.sekati.except.IllegalArgumentException extends Exception {

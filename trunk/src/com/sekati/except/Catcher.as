@@ -10,8 +10,7 @@
  import com.sekati.validate.TypeValidation;
  
 /**
- * Static class wrapping generic Exception handler.
- * @see {@link com.sekati.except.Exception}
+ * Generic {@link Exception} catch handler.
  */
 class com.sekati.except.Catcher {
 	
