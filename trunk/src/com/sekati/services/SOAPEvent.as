@@ -10,7 +10,7 @@
  import com.sekati.services.SOAPClient;
  
 /**
- * SoapEvent object for use by {@link Logger} for {@link Console}.
+ * SoapEvent for use by {@link Logger} for {@link Console}.
  */
 class com.sekati.services.SOAPEvent extends Event {
 	
@@ -23,9 +23,10 @@ class com.sekati.services.SOAPEvent extends Event {
 	private static var _target:SOAPClient = SOAPClient.getInstance();
 	
 	/**
-	 * Constructor creates a SoapEvent by {@link SoapClient} to be dispatched.
+	 * Constructor creates a SoapEvent via {@link SoapClient} to be dispatched.
 	 * @param type (String) - one of the Soap event types listed above.
-	 * @param data (Object) - contains Soap transaction data for connect, connectFaunt,callResult, callFault
+	 * @param data (Object) - contains Soap transaction data for connect, connectFaunt,callResult, callFault.
+	 * @return Void
 	 */
 	public function SOAPEvent (type:String, data:Object) {
 		super(type, _target, data);

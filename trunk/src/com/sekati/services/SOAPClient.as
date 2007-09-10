@@ -18,6 +18,7 @@
 
 /**
  * Soap Client class to be used with <a href="http://consume.sekati.com/?sid=swsdk">JNuSOAP</a>.<br>
+ * TODO Replace Singleton Dispatcher for call result handling granularity.
  * 
  * <br>Q: 'There are multiple possible ports in the WSDL file; please specify a service name and port name!?'
  * <br>A: add port to class instance, seach for "port" in the wsdl & see url's below for more info.

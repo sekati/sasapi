@@ -13,7 +13,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="10">    10  </span> <span class="key">import</span> com.sekati.services.SOAPClient;
 <span class="lineno" id="11">    11  </span> 
 <span class="lineno" id="12">    12  </span><span class="comment doc">/**
-<span class="lineno" id="13">    13  </span> * SoapEvent object for use by {@link Logger} for {@link Console}.
+<span class="lineno" id="13">    13  </span> * SoapEvent for use by {@link Logger} for {@link Console}.
 <span class="lineno" id="14">    14  </span> */</span>
 <span class="lineno" id="15">    15  </span><span class="key">class</span> com.sekati.services.SOAPEvent <span class="key">extends</span> Event {
 <span class="lineno" id="16">    16  </span>	
@@ -26,11 +26,12 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="23">    23  </span>	<span class="key">private</span> <span class="key">static</span> <span class="key">var</span> _target:SOAPClient = SOAPClient.getInstance();
 <span class="lineno" id="24">    24  </span>	
 <span class="lineno" id="25">    25  </span>	<span class="comment doc">/**
-<span class="lineno" id="26">    26  </span>	 * Constructor creates a SoapEvent by {@link SoapClient} to be dispatched.
+<span class="lineno" id="26">    26  </span>	 * Constructor creates a SoapEvent via {@link SoapClient} to be dispatched.
 <span class="lineno" id="27">    27  </span>	 * @param type (String) - one of the Soap event types listed above.
-<span class="lineno" id="28">    28  </span>	 * @param data (Object) - contains Soap transaction data for connect, connectFaunt,callResult, callFault
-<span class="lineno" id="29">    29  </span>	 */</span>
-<span class="lineno" id="30">    30  </span>	<span class="key">public</span> <span class="key">function</span> SOAPEvent (type:String, data:Object) {
-<span class="lineno" id="31">    31  </span>		<span class="key">super</span>(type, _target, data);
-<span class="lineno" id="32">    32  </span>	}
-<span class="lineno" id="33">    33  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of Sekati" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.services" class="button">Package</a></li><li><a href="SOAPEvent.html" title="Detail of com.sekati.services.SOAPEvent API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
+<span class="lineno" id="28">    28  </span>	 * @param data (Object) - contains Soap transaction data for connect, connectFaunt,callResult, callFault.
+<span class="lineno" id="29">    29  </span>	 * @return Void
+<span class="lineno" id="30">    30  </span>	 */</span>
+<span class="lineno" id="31">    31  </span>	<span class="key">public</span> <span class="key">function</span> SOAPEvent (type:String, data:Object) {
+<span class="lineno" id="32">    32  </span>		<span class="key">super</span>(type, _target, data);
+<span class="lineno" id="33">    33  </span>	}
+<span class="lineno" id="34">    34  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of Sekati" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.services" class="button">Package</a></li><li><a href="SOAPEvent.html" title="Detail of com.sekati.services.SOAPEvent API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>

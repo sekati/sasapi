@@ -1,0 +1,15 @@
+strict digraph class_diagram {
+  rankdir=LR;
+  TypeRemoteEvent[
+    label="RemoteEvent",
+    URL="RemoteEvent.html",
+    tooltip="com.sekati.remoting.RemoteEvent",
+    shape="record"
+  ];
+  TypeRemoteCall[
+    label="RemoteCall",
+    URL="RemoteCall.html",
+    tooltip="com.sekati.remoting.RemoteCall",
+    shape="record"
+  ];
+}

@@ -18,6 +18,7 @@ com.sekati.core
 com.sekati.demo
 com.sekati.net
 com.sekati.reflect
+com.sekati.remoting
 com.sekati.draw
 com.sekati.validate
 com.sekati.input
