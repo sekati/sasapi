@@ -1,0 +1,10 @@
+strict digraph interface_diagram {
+  rankdir=LR;
+  IRemoteCall[
+    label="IRemoteCall",
+    URL="IRemoteCall.html",
+    tooltip="com.sekati.remoting.IRemoteCall",
+    fontname="Times-Italic",
+    shape="record"
+  ];
+}
