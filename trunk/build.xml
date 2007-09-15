@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- *************************************************************************************
-		FDTKit Buildfile v1.2.7
+		FDTKit Buildfile v1.2.9
 		
 		@note	You must run this Buildfile in the same JRE as the workspace, be sure to
 				check this option in the launch configuration.
@@ -15,7 +15,7 @@
 <project name="Sekati ActionScript API" default="TestMovie" basedir=".">
 
 	<!-- FDTKit Structure -->
-	<property name="fdtkit" location="/Users/jason/workspace/fdtkit"/>
+	<property name="fdtkit" location="/Users/jason/workspaces/fdt/fdtkit"/>
 	<property name="fbin" location="${fdtkit}/bin"/>
 	<property name="fdoc" location="${fdtkit}/doc"/>
 	<property name="flib" location="${fdtkit}/lib"/>
