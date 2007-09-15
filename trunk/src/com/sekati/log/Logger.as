@@ -78,9 +78,7 @@ class com.sekati.log.Logger {
 	 * @return Logger
 	 */	
 	public static function getInstance ():Logger {
-		if (!_instance) {
-			_instance = new Logger();
-		}
+		if (!_instance) _instance = new Logger ();
 		return _instance;
 	}
 

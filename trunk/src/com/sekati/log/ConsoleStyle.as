@@ -103,9 +103,7 @@ class com.sekati.log.ConsoleStyle {
 	 * @return ConsoleStyle
 	 */	
 	public static function getInstance():ConsoleStyle {
-		if (!_instance) {
-			_instance = new ConsoleStyle();
-		}
+		if (!_instance) _instance = new ConsoleStyle();
 		return _instance;
 	}
 

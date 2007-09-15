@@ -38,9 +38,7 @@ class com.sekati.events.Multicaster extends CoreObject implements IMulticastable
 	 * @return Multicaster
 	 */
 	public static function getInstance ():Multicaster {
-		if (!_instance) {
-			_instance = new Multicaster ();
-		}
+		if (!_instance) _instance = new Multicaster ();
 		return _instance;
 	}
 

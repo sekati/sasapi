@@ -11,7 +11,7 @@
  import com.sekati.reflect.Stringifier;
  
 /**
- * The core object in the SASAPI framework.
+ * The core mixin object in the SASAPI framework.
  */
 class com.sekati.core.CoreObject extends Object implements CoreInterface {
 

@@ -38,9 +38,7 @@ class com.sekati.display.StageDisplay extends CoreObject {
 	 * @return StageDisplay
 	 */
 	public static function getInstance ():StageDisplay {
-		if (!_instance) {
-			_instance = new StageDisplay ();
-		}
+		if (!_instance) _instance = new StageDisplay ();
 		return _instance;
 	}
 

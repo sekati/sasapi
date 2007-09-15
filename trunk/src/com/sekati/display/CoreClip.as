@@ -10,7 +10,7 @@
  import com.sekati.display.ICoreClip;
 
 /**
- * Core UI mix-in that all interface subclasses should extend 
+ * Core UI mixin that all interface subclasses should extend 
  * instead of MovieClip for standardized UI initialization.<br><br>
  * 
  * Note: CoreClip should only be used for classes which will

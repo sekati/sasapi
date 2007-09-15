@@ -27,9 +27,7 @@ class com.sekati.core.Bootstrap extends CoreObject {
 	 * @return Bootstrap
 	 */
 	public static function getInstance ():Bootstrap {
-		if (!_instance) {
-			_instance = new Bootstrap ();
-		}
+		if (!_instance) _instance = new Bootstrap ();
 		return _instance;
 	}
 

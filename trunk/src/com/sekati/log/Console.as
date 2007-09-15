@@ -71,9 +71,7 @@ class com.sekati.log.Console {
 	 * @return Console
 	 */	
 	public static function getInstance():Console {
-		if (!_instance) {
-			_instance = new Console();
-		}
+		if (!_instance) _instance = new Console();
 		return _instance;
 	}
 

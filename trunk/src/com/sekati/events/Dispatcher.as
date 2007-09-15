@@ -55,9 +55,7 @@ class com.sekati.events.Dispatcher extends CoreObject implements IDispatchable {
 	 * @return Dispatcher
 	 */
 	public static function getInstance():Dispatcher {
-		if (!_instance) {
-			_instance = new Dispatcher();
-		}
+		if (!_instance) _instance = new Dispatcher();
 		return _instance;
 	}
 	
