@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- *************************************************************************************
-		FDTKit Buildfile v1.2.9
+		FDTKit Buildfile v1.3.0
 		
 		@note	You must run this Buildfile in the same JRE as the workspace, be sure to
 				check this option in the launch configuration.
 				
-		@setup	This Buildfile is currently scoped for OSX,Eclipse,Subclipse,FDT. If you
-				you would like to use it on Windows simply install Cygwin and adjust the 
-				necessary path properties.
+		@setup	This Buildfile is currently scoped for OSX,Eclipse, Subclipse, FDT. If 
+		        you would like to use it on Windows simply install Cygwin and adjust 
+		        the necessary path properties.
 			     
 		May 22, 2007 - jason m horwitz | Sekati LLC | sekati.com
      ************************************************************************************* -->
@@ -160,34 +160,7 @@
 			<arg value="${deploy_dest_user}@${deploy_dest_host}:${deploy_dest_path}"/>
 		</exec>
 	</target>
-	
-	<!-- TASK: create directory structure for a new project -->
-	<!--
-	<target name="create_project">
-
-		<mkdir dir="${deploy}"/>
-		<mkdir dir="${docs}"/>
-		<mkdir dir="${lib}"/>
-		<mkdir dir="${src}"/>
-		<mkdir dir="${tests}"/>
-
-		<mkdir dir="${deploy}/_archive"/>
-		<mkdir dir="${deploy}/assets"/>
-		<mkdir dir="${deploy}/css"/>
-		<mkdir dir="${deploy}/js"/>
-		<mkdir dir="${deploy}/php"/>
 		
-		<mkdir dir="${lib}/comps"/>
-		<mkdir dir="${lib}/fonts"/>
-		<mkdir dir="${lib}/misc"/>
-		<mkdir dir="${lib}/tools"/>
-
-		<copy todir="${build}">
-			<fileset dir="${project_template}/build"/>
-		</copy>
-	</target>
-	-->
-	
 	<!-- TASK: compile all fla's in src dir with Flash IDE -->	
 	<target name="build_project">
 	    <fdt.flashCompile>
