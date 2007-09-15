@@ -12,6 +12,12 @@ strict digraph class_diagram {
     tooltip="com.sekati.events.FramePulse",
     shape="record"
   ];
+  TypeEventBroadcaster[
+    label="EventBroadcaster",
+    URL="EventBroadcaster.html",
+    tooltip="com.sekati.events.EventBroadcaster",
+    shape="record"
+  ];
   TypeEvent[
     label="Event",
     URL="Event.html",

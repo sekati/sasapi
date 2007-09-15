@@ -1,7 +1,8 @@
 <map id="class_diagram" name="class_diagram">
-<area shape="rect" href="Multicaster.html" title="com.sekati.events.Multicaster" alt="" coords="10,296,117,344" />
-<area shape="rect" href="FramePulse.html" title="com.sekati.events.FramePulse" alt="" coords="9,224,118,272" />
-<area shape="rect" href="Event.html" title="com.sekati.events.Event" alt="" coords="28,152,100,200" />
-<area shape="rect" href="Dispatcher.html" title="com.sekati.events.Dispatcher" alt="" coords="13,80,114,128" />
-<area shape="rect" href="Broadcaster.html" title="com.sekati.events.Broadcaster" alt="" coords="9,8,118,56" />
+<area shape="rect" href="Multicaster.html" title="com.sekati.events.Multicaster" alt="" coords="32,368,138,416" />
+<area shape="rect" href="FramePulse.html" title="com.sekati.events.FramePulse" alt="" coords="30,296,140,344" />
+<area shape="rect" href="EventBroadcaster.html" title="com.sekati.events.EventBroadcaster" alt="" coords="8,224,162,272" />
+<area shape="rect" href="Event.html" title="com.sekati.events.Event" alt="" coords="49,152,121,200" />
+<area shape="rect" href="Dispatcher.html" title="com.sekati.events.Dispatcher" alt="" coords="34,80,136,128" />
+<area shape="rect" href="Broadcaster.html" title="com.sekati.events.Broadcaster" alt="" coords="30,8,140,56" />
 </map>
