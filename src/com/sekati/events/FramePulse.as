@@ -43,9 +43,7 @@ class com.sekati.events.FramePulse extends CoreObject implements IPulsable {
 	 * @return Dispatcher
 	 */
 	public static function getInstance():FramePulse {
-		if (!_instance) {
-			_instance = new FramePulse();
-		}
+		if (!_instance) _instance = new FramePulse();
 		return _instance;
 	}
 	

@@ -9,7 +9,7 @@
  import com.sekati.display.CoreClip;
 
 /**
- * Generic subclass implementation of {@link com.sekati.display.CoreClip}.
+ * Generic subclass implementation of {@link com.sekati.display.CoreClip} mixin.
  * To be used as template for all framework based extend movieclip UI classes.
  */
 class com.sekati.display.AbstractClip extends CoreClip {
