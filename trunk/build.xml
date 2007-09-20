@@ -9,7 +9,9 @@
 		        you would like to use it on Windows simply install Cygwin and adjust 
 		        the necessary path properties.
 			     
-		May 22, 2007 - jason m horwitz | Sekati LLC | sekati.com
+		May 22, 2007 - jason m horwitz | Sekati LLC | sekati [ . ] com
+		
+		Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
      ************************************************************************************* -->
 
 <project name="Sekati ActionScript API" default="TestMovie" basedir=".">
