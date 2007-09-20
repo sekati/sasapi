@@ -130,11 +130,11 @@ class com.sekati.log.Console {
 			getURL(_style.console.head.textfields.head.url,"_blank");	
 		};
 		_cmenu.addItem(_style.console.head.textfields.head.t, Delegate.create(this, cb), true);
-		_cmenu.addItem("Pause Log", Delegate.create(this, toggleLogEnable), true);
+		_cmenu.addItem("Stop Log", Delegate.create(this, toggleLogEnable), true);
 		_cmenu.addItem("Copy Log", Delegate.create(this, toClipboard), false);
 		_cmenu.addItem("Clear Log", Delegate.create(this, reset), false);
 		_cmenu.addItem("Minimize Console", Delegate.create(this, resize, _style.console.minW, _style.console.minH), true);
-		_cmenu.addItem("Maximize Console", Delegate.create(this, resize, _style.console.maxW, _style.console.maxH), false);
+		_cmenu.addItem("Maximize Console", Delegate.create(this, resize, _style.console.maxW-_console._x-10, _style.console.maxH-_console._y-10), false);
 	
 		// events
 		_head.onPress = Delegate.create (_console, startDrag, false, _style.console.x, _style.console.y, _style.console.maxW, _style.console.maxH);
@@ -284,11 +284,10 @@ class com.sekati.log.Console {
 	private function toggleLogEnable():Void {
 		if(Logger.$.enabled) {
 			Logger.$.enabled = false;
-			_cmenu.editItem("Resume Log", "Resume Log", Delegate.create(this, toggleLogEnable));
-			//_cmenu.addItem("Stop Log", Delegate.create(this, toggleLogEnable), true);
+			_cmenu.editItem("Stop Log", "Start Log", Delegate.create(this, toggleLogEnable));
 		} else {
 			Logger.$.enabled = true;
-			_cmenu.editItem("Pause Log", "Pause Log", Delegate.create(this, toggleLogEnable));
+			_cmenu.editItem("Start Log", "Stop Log", Delegate.create(this, toggleLogEnable));
 		}
 	}
 	
