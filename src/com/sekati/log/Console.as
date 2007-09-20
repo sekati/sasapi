@@ -1,6 +1,6 @@
 /**
  * com.sekati.log.Console
- * @version 1.2.3
+ * @version 1.2.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -134,8 +134,7 @@ class com.sekati.log.Console {
 		_cmenu.addItem("Copy Log", Delegate.create(this, toClipboard), false);
 		_cmenu.addItem("Clear Log", Delegate.create(this, reset), false);
 		_cmenu.addItem("Minimize Console", Delegate.create(this, resize, _style.console.minW, _style.console.minH), true);
-		_cmenu.addItem("Maximize Console", Delegate.create(this, resize, _style.console.maxW-_console._x-10, _style.console.maxH-_console._y-10), false);
-	
+		_cmenu.addItem("Maximize Console", Delegate.create(this, resize, Stage.width-_console._x-10, Stage.height-_console._y-10), false);
 		// events
 		_head.onPress = Delegate.create (_console, startDrag, false, _style.console.x, _style.console.y, _style.console.maxW, _style.console.maxH);
 		_head.onRelease = _head.onReleaseOutside = Delegate.create (_console, stopDrag);
