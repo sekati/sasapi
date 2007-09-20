@@ -1,6 +1,6 @@
 /**
  * com.sekati.log.Console
- * @version 1.2.1
+ * @version 1.2.3
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -13,6 +13,7 @@
  import com.sekati.log.ConsoleStyle;
  import com.sekati.log.LCBinding;
  import com.sekati.log.LogEvent;
+ import com.sekati.log.Logger;
  import com.sekati.math.MathBase;
  import com.sekati.ui.ContextualMenu;
  import com.sekati.ui.Scroll;
@@ -50,7 +51,6 @@ class com.sekati.log.Console {
 	// manager props
 	private var _logItems:Array;
 	private var _logIndex:Number;
-	private var _key:Object;
 	private var _items:Array;
 	
 	/**
@@ -130,30 +130,17 @@ class com.sekati.log.Console {
 			getURL(_style.console.head.textfields.head.url,"_blank");	
 		};
 		_cmenu.addItem(_style.console.head.textfields.head.t, Delegate.create(this, cb), true);
-		_cmenu.addItem("Play / Pause", null, true);
+		_cmenu.addItem("Pause Log", Delegate.create(this, toggleLogEnable), true);
 		_cmenu.addItem("Copy Log", Delegate.create(this, toClipboard), false);
 		_cmenu.addItem("Clear Log", Delegate.create(this, reset), false);
-		_cmenu.addItem("Minimize", Delegate.create(this, resize, _style.console.minW, _style.console.minH), true);
-		_cmenu.addItem("Maximize", Delegate.create(this, resize, _style.console.maxW, _style.console.maxH), false);
+		_cmenu.addItem("Minimize Console", Delegate.create(this, resize, _style.console.minW, _style.console.minH), true);
+		_cmenu.addItem("Maximize Console", Delegate.create(this, resize, _style.console.maxW, _style.console.maxH), false);
 	
 		// events
 		_head.onPress = Delegate.create (_console, startDrag, false, _style.console.x, _style.console.y, _style.console.maxW, _style.console.maxH);
 		_head.onRelease = _head.onReleaseOutside = Delegate.create (_console, stopDrag);
 		_resizer.onPress = Delegate.create(this, resizer_onPress);
 		_resizer.onRelease = _resizer.onReleaseOutside = Delegate.create(this, resizer_onRelease);
-		
-		// keylistener
-		_key = new Object ();
-		_key.onKeyDown = Delegate.create(_instance, key_onKeyDown);
-		/*
-		_key.onKeyDown = function ():Void  {
-			if (Key.isDown (Key.UP) && Key.isDown (Key.LEFT)) {
-				trace("key");
-				_console._visible = (!_console._visible) ? true : false;
-			}
-		};
-		*/
-		Key.addListener (_key);
 		
 		// resize console to fit swf
 		resize(Stage.width-_style.console.x*4, Stage.height-_style.console.y*4);
@@ -288,6 +275,21 @@ class com.sekati.log.Console {
 	private function onLogEvent (eventObj:Event):Void {
 		//trace ("eventObj{target:" + eventObj.target + ",type:" + eventObj.type + ",message:" + eventObj.data.message + "};");
 		addItem(eventObj.data);
+	}
+	
+	/**
+	 * Toggle Logger.enabled and contextual menu.
+	 * @return Void
+	 */
+	private function toggleLogEnable():Void {
+		if(Logger.$.enabled) {
+			Logger.$.enabled = false;
+			_cmenu.editItem("Resume Log", "Resume Log", Delegate.create(this, toggleLogEnable));
+			//_cmenu.addItem("Stop Log", Delegate.create(this, toggleLogEnable), true);
+		} else {
+			Logger.$.enabled = true;
+			_cmenu.editItem("Pause Log", "Pause Log", Delegate.create(this, toggleLogEnable));
+		}
 	}
 	
 	/**
