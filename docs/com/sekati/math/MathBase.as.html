@@ -3,7 +3,7 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span><span class="comment doc">/**
 <span class="lineno" id="2">     2  </span> * com.sekati.math.MathBase
-<span class="lineno" id="3">     3  </span> * @version 1.1.1
+<span class="lineno" id="3">     3  </span> * @version 1.1.5
 <span class="lineno" id="4">     4  </span> * @author jason m horwitz | sekati.com
 <span class="lineno" id="5">     5  </span> * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -196,72 +196,18 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="193">   193  </span>	 */</span>
 <span class="lineno" id="194">   194  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> isNatural(n:Number):Boolean {
 <span class="lineno" id="195">   195  </span>		<span class="key">return</span> (n &gt;= <span class="num_const">0</span> &amp;&amp; n%<span class="num_const">1</span> == <span class="num_const">0</span>);
-<span class="lineno" id="196">   196  </span>	}	
-<span class="lineno" id="197">   197  </span>
-<span class="lineno" id="198">   198  </span>	<span class="comment">// RANDOMS</span>
-<span class="lineno" id="199">   199  </span>	
-<span class="lineno" id="200">   200  </span>	<span class="comment doc">/**
-<span class="lineno" id="201">   201  </span>	 * Returns a random number inside a specific range
-<span class="lineno" id="202">   202  </span>	 * @param start (Number)
-<span class="lineno" id="203">   203  </span>	 * @param end (Number)
-<span class="lineno" id="204">   204  </span>	 * @return Number
-<span class="lineno" id="205">   205  </span>	 */</span>	
-<span class="lineno" id="206">   206  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> rnd(start:Number, end:Number):Number {
-<span class="lineno" id="207">   207  </span>		<span class="key">return</span> Math.round( Math.random()*(end-start))+start;
-<span class="lineno" id="208">   208  </span>	}
-<span class="lineno" id="209">   209  </span>
-<span class="lineno" id="210">   210  </span>	<span class="comment doc">/**
-<span class="lineno" id="211">   211  </span>	 * Returns a set of random numbers inside a specific range (unique numbers is optional)
-<span class="lineno" id="212">   212  </span>	 * @param min (Number)
-<span class="lineno" id="213">   213  </span>	 * @param max (Number)
-<span class="lineno" id="214">   214  </span>	 * @param count (Number)
-<span class="lineno" id="215">   215  </span>	 * @param unique (Boolean)
-<span class="lineno" id="216">   216  </span>	 * @return Array
-<span class="lineno" id="217">   217  </span>	 */</span>
-<span class="lineno" id="218">   218  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> RandRangeSet (min:Number, max:Number, count:Number, unique:Boolean):Array {
-<span class="lineno" id="219">   219  </span>		<span class="key">var</span> rnds:Array = <span class="key">new</span> Array ();
-<span class="lineno" id="220">   220  </span>		<span class="key">if</span> (unique &amp;&amp; count &lt;= max - min + <span class="num_const">1</span>) {
-<span class="lineno" id="221">   221  </span>			<span class="comment">//unique</span>
-<span class="lineno" id="222">   222  </span>			<span class="comment">// create num range array</span>
-<span class="lineno" id="223">   223  </span>			<span class="key">var</span> nums:Array = <span class="key">new</span> Array ();
-<span class="lineno" id="224">   224  </span>			<span class="key">for</span> (<span class="key">var</span> i:Number = min; i &lt;= max; i++) {
-<span class="lineno" id="225">   225  </span>				nums.push (i);
-<span class="lineno" id="226">   226  </span>			}
-<span class="lineno" id="227">   227  </span>			<span class="key">for</span> (<span class="key">var</span> j:Number = <span class="num_const">1</span>; j &lt;= count; j++) {
-<span class="lineno" id="228">   228  </span>				<span class="comment">// random number</span>
-<span class="lineno" id="229">   229  </span>				<span class="key">var</span> rn = Math.floor (Math.random () * nums.length);
-<span class="lineno" id="230">   230  </span>				rnds.push (nums[rn]);
-<span class="lineno" id="231">   231  </span>				nums.splice (rn, <span class="num_const">1</span>);
-<span class="lineno" id="232">   232  </span>			}
-<span class="lineno" id="233">   233  </span>		} <span class="key">else</span> {
-<span class="lineno" id="234">   234  </span>			<span class="comment">//non unique</span>
-<span class="lineno" id="235">   235  </span>			<span class="key">for</span> (<span class="key">var</span> k:Number = <span class="num_const">1</span>; k &lt;= count; k++) {
-<span class="lineno" id="236">   236  </span>				rnds.push (randRangeInt (min, max));
-<span class="lineno" id="237">   237  </span>			}
-<span class="lineno" id="238">   238  </span>		}
-<span class="lineno" id="239">   239  </span>		<span class="key">return</span> rnds;
-<span class="lineno" id="240">   240  </span>	}
-<span class="lineno" id="241">   241  </span>
-<span class="lineno" id="242">   242  </span>	<span class="comment doc">/**
-<span class="lineno" id="243">   243  </span>	 * Returns a random float number within a given range
-<span class="lineno" id="244">   244  </span>	 * @param min (Number)
-<span class="lineno" id="245">   245  </span>	 * @param max (Number)
-<span class="lineno" id="246">   246  </span>	 * @return Number
-<span class="lineno" id="247">   247  </span>	 */</span>
-<span class="lineno" id="248">   248  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> randRangeFloat (min:Number, max:Number):Number {
-<span class="lineno" id="249">   249  </span>		<span class="key">return</span> Math.random () * (max - min) + min;
-<span class="lineno" id="250">   250  </span>	}
-<span class="lineno" id="251">   251  </span>
-<span class="lineno" id="252">   252  </span>	<span class="comment doc">/**
-<span class="lineno" id="253">   253  </span>	 * Returns a random int number within a given range
-<span class="lineno" id="254">   254  </span>	 * @param min (Number)
-<span class="lineno" id="255">   255  </span>	 * @param max (Number)
-<span class="lineno" id="256">   256  </span>	 * @return Number
-<span class="lineno" id="257">   257  </span>	 */</span>
-<span class="lineno" id="258">   258  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> randRangeInt (min:Number, max:Number):Number {
-<span class="lineno" id="259">   259  </span>		<span class="key">return</span> Math.floor (Math.random () * (max - min + <span class="num_const">1</span>) + min);
-<span class="lineno" id="260">   260  </span>	}	
-<span class="lineno" id="261">   261  </span>	
-<span class="lineno" id="262">   262  </span>	<span class="key">private</span> <span class="key">function</span> MathBase(){
-<span class="lineno" id="263">   263  </span>	}
-<span class="lineno" id="264">   264  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of Sekati" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.math" class="button">Package</a></li><li><a href="MathBase.html" title="Detail of com.sekati.math.MathBase API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
+<span class="lineno" id="196">   196  </span>	}
+<span class="lineno" id="197">   197  </span>	
+<span class="lineno" id="198">   198  </span>	<span class="comment doc">/**
+<span class="lineno" id="199">   199  </span>	 * Returns a random number inside a specific range
+<span class="lineno" id="200">   200  </span>	 * @param start (Number)
+<span class="lineno" id="201">   201  </span>	 * @param end (Number)
+<span class="lineno" id="202">   202  </span>	 * @return Number
+<span class="lineno" id="203">   203  </span>	 */</span>	
+<span class="lineno" id="204">   204  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> rnd(start:Number, end:Number):Number {
+<span class="lineno" id="205">   205  </span>		<span class="key">return</span> Math.round( Math.random()*(end-start))+start;
+<span class="lineno" id="206">   206  </span>	}
+<span class="lineno" id="207">   207  </span>	
+<span class="lineno" id="208">   208  </span>	<span class="key">private</span> <span class="key">function</span> MathBase(){
+<span class="lineno" id="209">   209  </span>	}
+<span class="lineno" id="210">   210  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of Sekati" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.math" class="button">Package</a></li><li><a href="MathBase.html" title="Detail of com.sekati.math.MathBase API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>

@@ -8,13 +8,7 @@ document.quicknavBasePath="../../../index-files";
  Simple system clipboard management</td></tr><tr><td><a href="Clone.html">Clone</a></td><td>
  Object cloning utility</td></tr><tr><td><a href="ColorUtils.html">ColorUtils</a></td><td>
  Static class wrapping various Color utilities</td></tr><tr><td><a href="DateUtils.html">DateUtils</a></td><td>
- Static function for handling dates from db and converting them into readable strings
- 
- <pre> Usage:
- <span class="key">var</span> d = DateUtils.dateFromDB(<span class="str_const">"2006-06-01 12:10:45"</span>);
- trace(DateUtils.days[d.getDay()] + <span class="str_const">", "</span> + DateUtils.months[d.getMonth()] + <span class="str_const">" "</span> + d.getDate() + <span class="str_const">", "</span> + (d.getHours()%<span class="num_const">12</span>) + <span class="str_const">":"</span> + DateUtils.padTime(d.getMinutes()) + ((d.getHours() &gt; <span class="num_const">12</span>) ? <span class="str_const">"pm"</span> :<span class="str_const">"am"</span>));
- </pre>
-  </td></tr><tr><td><a href="Delegate.html">Delegate</a></td><td>
+ Static function for handling dates from db and converting them into readable strings</td></tr><tr><td><a href="Delegate.html">Delegate</a></td><td>
  The Delegate class creates a function wrapper to let you run a function in the context of
  the original object, rather than in the context of the second object, when you pass a
  function from one object to another<br/><br/>

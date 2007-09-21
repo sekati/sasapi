@@ -1,5 +1,11 @@
 strict digraph class_diagram {
   rankdir=LR;
+  TypeTimeConversion[
+    label="TimeConversion",
+    URL="TimeConversion.html",
+    tooltip="com.sekati.convert.TimeConversion",
+    shape="record"
+  ];
   TypeTempConversion[
     label="TempConversion",
     URL="TempConversion.html",
