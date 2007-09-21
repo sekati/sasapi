@@ -1,6 +1,6 @@
 /**
  * com.sekati.except.Catcher
- * @version 1.1.0
+ * @version 1.1.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -13,6 +13,15 @@
  
 /**
  * Generic {@link Exception} catch handler.
+ * {@code Usage:
+ * 	function test(isOk:Boolean):Void {
+ * 		try {
+ * 			throw new Exception(this,"An unknown Error has occurred",arguments);
+ * 		} catch (e:Exception) {
+ * 			Catcher.handle(e);
+ * 		}
+ * 	}
+ * }
  */
 class com.sekati.except.Catcher {
 	
