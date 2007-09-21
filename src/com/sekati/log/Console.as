@@ -1,6 +1,6 @@
 /**
  * com.sekati.log.Console
- * @version 1.2.5
+ * @version 1.2.9
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -13,7 +13,6 @@
  import com.sekati.log.ConsoleStyle;
  import com.sekati.log.LCBinding;
  import com.sekati.log.LogEvent;
- import com.sekati.log.Logger;
  import com.sekati.math.MathBase;
  import com.sekati.ui.ContextualMenu;
  import com.sekati.ui.Scroll;
@@ -49,6 +48,7 @@ class com.sekati.log.Console {
 	private var _metaItem:MovieClip;
 	
 	// manager props
+	private var _isEnabled:Boolean;
 	private var _logItems:Array;
 	private var _logIndex:Number;
 	private var _items:Array;
@@ -58,6 +58,7 @@ class com.sekati.log.Console {
 	 */
 	private function Console() {
 		_this = this;
+		_isEnabled = true;
 		_items = new Array();
 		_cs = ConsoleStyle.getInstance();
 		_style = _cs.CSS;
@@ -86,12 +87,10 @@ class com.sekati.log.Console {
 	 * Create the core Console UI
 	 */
 	private function createUI():Void {
-		// rect	- createStyledRect (target:MovieClip, style:Object)
-		// text - createStyledTextField (target:MovieClip, style:Object, str:String)
 		_console = _cs.createClip(_level0, _style.console);
 		_console._x = _style.console.x;
 		_console._y = _style.console.y;
-		_console._quality = "LOW";
+		//_console._quality = "LOW";
 		_bg = _cs.createStyledRectangle(_console, _style.console.bg);
 		
 		_head = _cs.createClip(_console, _style.console.head);
@@ -127,34 +126,22 @@ class com.sekati.log.Console {
 		// initialize contextMenu
 		_cmenu = new ContextualMenu(_console);
 		var cb:Function = function():Void {
-			getURL(_style.console.head.textfields.head.url,"_blank");	
+			getURL (_style.console.head.textfields.head.url,"_blank");	
 		};
-		_cmenu.addItem(_style.console.head.textfields.head.t, Delegate.create(this, cb), true);
-		_cmenu.addItem("Stop Log", Delegate.create(this, toggleLogEnable), true);
-		_cmenu.addItem("Copy Log", Delegate.create(this, toClipboard), false);
-		_cmenu.addItem("Clear Log", Delegate.create(this, reset), false);
-		_cmenu.addItem("Minimize Console", Delegate.create(this, resize, _style.console.minW, _style.console.minH), true);
-		_cmenu.addItem("Maximize Console", Delegate.create(this, resize, Stage.width-_console._x-10, Stage.height-_console._y-10), false);
+		_cmenu.addItem(_style.console.head.textfields.head.t, Delegate.create (this, cb), true);
+		_cmenu.addItem("Pause Console", Delegate.create (this, toggleLogEnable), true);
+		_cmenu.addItem("Copy Console Log", Delegate.create (this, toClipboard), true);
+		_cmenu.addItem("Clear Console Log", Delegate.create (this, reset), false);
+		_cmenu.addItem("Minimize Console", Delegate.create (this, resize, _style.console.minW, _style.console.minH), true);
+		_cmenu.addItem("Maximize Console", Delegate.create (this, resize, Stage.width-_console._x-10, Stage.height-_console._y-10), false);
 		// events
 		_head.onPress = Delegate.create (_console, startDrag, false, _style.console.x, _style.console.y, _style.console.maxW, _style.console.maxH);
 		_head.onRelease = _head.onReleaseOutside = Delegate.create (_console, stopDrag);
-		_resizer.onPress = Delegate.create(this, resizer_onPress);
-		_resizer.onRelease = _resizer.onReleaseOutside = Delegate.create(this, resizer_onRelease);
+		_resizer.onPress = Delegate.create (this, resizer_onPress);
+		_resizer.onRelease = _resizer.onReleaseOutside = Delegate.create (this, resizer_onRelease);
 		
 		// resize console to fit swf
-		resize(Stage.width-_style.console.x*4, Stage.height-_style.console.y*4);
-	}
-	
-	/**
-	 * Key Handler for all Console hotkeys.
-	 * @return Void
-	 */
-	private function key_onKeyDown(code:Number):Void {
-		//trace("keydel: "+code);
-		if (Key.isDown (Key.UP) && Key.isDown (Key.LEFT)) {
-			trace("key");
-			_console._visible = (!_console._visible) ? true : false;
-		}		
+		resize (Stage.width-_style.console.x*4, Stage.height-_style.console.y*4);
 	}
 	
 	/**
@@ -203,8 +190,8 @@ class com.sekati.log.Console {
 		_mask._height = mh;		
 		
 		// _gutter, _bar, update _scroll
-		_gutter._x = _bg._width - _gutter._width;
-		_gutter._height = _bg._height-_headBg._height;
+		_gutter._x = (_bg._width - _gutter._width);
+		_gutter._height = (_bg._height-_headBg._height);
 		_bar._x = _gutter._x;
 		
 		// dispatch new itemWidth to all ConsoleItems
@@ -216,7 +203,6 @@ class com.sekati.log.Console {
 	
 	private function resizeConsoleItem(itemIndex:Number, w:Number):Void {
 		var item:MovieClip = _items[itemIndex];
-		//trace(item+" onResizeEvent w:"+w);
 		
 		// resize
 		item._bg._width = w;
@@ -249,10 +235,12 @@ class com.sekati.log.Console {
 	 * @return 	MovieClip
 	 */
 	public function addItem (data:Object):MovieClip {
-		var item:MovieClip = ClassUtils.createEmptyMovieClip (com.sekati.log.ConsoleItem, _list, "consoleItem_"+data.id, {_x:0, _y:_list._height, _data:data});
-		updateScroll(item);
-		_items.push(item);
-		return item;
+		if(_isEnabled) {
+			var item:MovieClip = ClassUtils.createEmptyMovieClip (com.sekati.log.ConsoleItem, _list, "consoleItem_"+data.id, {_x:0, _y:_list._height, _data:data});
+			updateScroll(item);
+			_items.push(item);
+			return item;
+		}
 	}
 	
 	/**
@@ -261,8 +249,8 @@ class com.sekati.log.Console {
 	 * @return Void
 	 */
 	public function updateScroll(item:MovieClip):Void {
-		if(!_scroll.isMouseInArea() && !_scroll.isDragging() && _console._visible == true) {
-			_global['setTimeout'](_scroll,'slideContent',50, item._y+item._height, 0.02);
+		if(!_scroll.isDragging() && !_scroll.isMouseInArea() && !_console.hitTest( _level0._xmouse, _level0._ymouse, false)) {
+			_global['setTimeout'](_scroll,'slideContent',50, item._y+item._height, 0.2);
 		}
 	}
 	
@@ -272,8 +260,10 @@ class com.sekati.log.Console {
 	 * @return Void
 	 */ 
 	private function onLogEvent (eventObj:Event):Void {
-		//trace ("eventObj{target:" + eventObj.target + ",type:" + eventObj.type + ",message:" + eventObj.data.message + "};");
-		addItem(eventObj.data);
+		if (_isEnabled) {
+			//trace ("eventObj{target:" + eventObj.target + ",type:" + eventObj.type + ",message:" + eventObj.data.message + "};");
+			addItem(eventObj.data);
+		}
 	}
 	
 	/**
@@ -281,12 +271,12 @@ class com.sekati.log.Console {
 	 * @return Void
 	 */
 	private function toggleLogEnable():Void {
-		if(Logger.$.enabled) {
-			Logger.$.enabled = false;
-			_cmenu.editItem("Stop Log", "Start Log", Delegate.create(this, toggleLogEnable));
+		if(_isEnabled) {
+			_isEnabled = false;
+			_cmenu.editItem("Pause Console", "Resume Console", Delegate.create(this, toggleLogEnable));
 		} else {
-			Logger.$.enabled = true;
-			_cmenu.editItem("Start Log", "Stop Log", Delegate.create(this, toggleLogEnable));
+			_isEnabled = true;
+			_cmenu.editItem("Resume Console", "Pause Console", Delegate.create(this, toggleLogEnable));
 		}
 	}
 	
