@@ -6,6 +6,12 @@ strict digraph class_diagram {
     tooltip="com.sekati.math.RuleOf3",
     shape="record"
   ];
+  TypeRange[
+    label="Range",
+    URL="Range.html",
+    tooltip="com.sekati.math.Range",
+    shape="record"
+  ];
   TypeMathBase[
     label="MathBase",
     URL="MathBase.html",

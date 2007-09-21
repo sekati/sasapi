@@ -1,6 +1,6 @@
 ﻿/**
  * com.sekati.math.MathBase
- * @version 1.1.1
+ * @version 1.1.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -193,9 +193,7 @@ class com.sekati.math.MathBase {
 	 */
 	public static function isNatural(n:Number):Boolean {
 		return (n >= 0 && n%1 == 0);
-	}	
-
-	// RANDOMS
+	}
 	
 	/**
 	 * Returns a random number inside a specific range
@@ -206,58 +204,6 @@ class com.sekati.math.MathBase {
 	public static function rnd(start:Number, end:Number):Number {
 		return Math.round( Math.random()*(end-start))+start;
 	}
-
-	/**
-	 * Returns a set of random numbers inside a specific range (unique numbers is optional)
-	 * @param min (Number)
-	 * @param max (Number)
-	 * @param count (Number)
-	 * @param unique (Boolean)
-	 * @return Array
-	 */
-	public static function RandRangeSet (min:Number, max:Number, count:Number, unique:Boolean):Array {
-		var rnds:Array = new Array ();
-		if (unique && count <= max - min + 1) {
-			//unique
-			// create num range array
-			var nums:Array = new Array ();
-			for (var i:Number = min; i <= max; i++) {
-				nums.push (i);
-			}
-			for (var j:Number = 1; j <= count; j++) {
-				// random number
-				var rn = Math.floor (Math.random () * nums.length);
-				rnds.push (nums[rn]);
-				nums.splice (rn, 1);
-			}
-		} else {
-			//non unique
-			for (var k:Number = 1; k <= count; k++) {
-				rnds.push (randRangeInt (min, max));
-			}
-		}
-		return rnds;
-	}
-
-	/**
-	 * Returns a random float number within a given range
-	 * @param min (Number)
-	 * @param max (Number)
-	 * @return Number
-	 */
-	public static function randRangeFloat (min:Number, max:Number):Number {
-		return Math.random () * (max - min) + min;
-	}
-
-	/**
-	 * Returns a random int number within a given range
-	 * @param min (Number)
-	 * @param max (Number)
-	 * @return Number
-	 */
-	public static function randRangeInt (min:Number, max:Number):Number {
-		return Math.floor (Math.random () * (max - min + 1) + min);
-	}	
 	
 	private function MathBase(){
 	}
