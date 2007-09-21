@@ -73,7 +73,7 @@ class com.sekati.log.ConsoleStyle {
 					object:0x9900FF,
 					custom:0x0066FF}
 				},
-				origin:{n:"originTf", t:"origin", selectable:true, x:85, y:0, w:90, h:TH, c:0x6C8297, a:100},
+				origin:{n:"originTf", t:"origin", selectable:false, x:85, y:0, w:90, h:TH, c:0x6C8297, a:100},
 				message:{n:"messageTf", t:"message", selectable:true, x:180, y:0, w:650, h:TH, c:0xF7F7F7, a:100},
 				benchmark:{n:"benchmarkTf", t:"benchmark", x:835, y:0, w:51, h:TH, c:0x999999, a:100}					
 			}
