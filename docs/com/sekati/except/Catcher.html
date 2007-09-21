@@ -3,6 +3,15 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><link href="package-summary.html" title="Package com.sekati.except" rel="up"/><link href="../../../com/sekati/except/Exception.html" title="Class com.sekati.except.Exception" rel="prev"/><link href="../../../com/sekati/events/Multicaster.html" title="Class com.sekati.events.Multicaster" rel="next"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><h1>Class com.sekati.except.Catcher</h1><div class="type_hierachy"><ul><li><strong>com.sekati.except.Catcher</strong></li></ul></div><div class="type_description"><h2>Description</h2><p>
  Generic <a href="../../../com/sekati/except/Exception.html" class="class_name" title="Class com.sekati.except.Exception">Exception</a> catch handler.
+ <pre> Usage:
+ 	<span class="key">function</span> test(isOk:Boolean):Void {
+ 		<span class="key">try</span> {
+ 			<span class="key">throw</span> <span class="key">new</span> Exception(<span class="key">this</span>,<span class="str_const">"An unknown Error has occurred"</span>,arguments);
+ 		} <span class="key">catch</span> (e:Exception) {
+ 			Catcher.handle(e);
+ 		}
+ 	}
+ </pre>
  </p></div><div class="type_indexes"><div class="method_index"><h2>Method Index</h2><a href="#handle" title="static public function handle(e:Exception):String">handle()</a>, <a href="#toString" title="static public function toString():String">toString()</a></div></div><div class="type_details"><div class="method_detail_list"><h2>Method Detail</h2><div class="method_details alt_row"><a name="handle"></a><h3>handle</h3><code class="method_synopsis">static public function <strong class="method_name">handle</strong>(e:<a href="../../../com/sekati/except/Exception.html" class="class_name" title="Class com.sekati.except.Exception">Exception</a>):<span class="unresolved_type_name">String</span></code><div class="method_info"><p>
  A generic Exception handler that returns string data about the Exception for logging or tracing.
  </p><h4>Parameters</h4><table class="arguments extra_info" summary=""><tr><td><code>e</code></td><td>(Exception)
