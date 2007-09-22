@@ -178,6 +178,36 @@ class com.sekati.math.MathBase {
 	}
 
 	/**
+	 * Calculate the factorial of the integer.
+	 * @param n (Number) 
+	 * @return Number
+	 */ 
+	public static function factorial(n:Number):Number {
+		if (n == 0) return 1;
+		var d:Number = n.valueOf();
+		var i:Number = d-1;
+		while (i) {
+			d = d*i;
+			i--;
+		}
+		return d;
+	}
+		
+	/**
+	 * Return an array of divisors of the integer.
+	 * @param n (Number)
+	 * @return Number
+	 */
+	public static function getDivisors(n:Number):Array {
+		var r:Array = new Array();
+		for (var i:Number = 1, e:Number = n/2; i <= e; i++) {
+			if (n % i == 0) r.push(i);
+		}
+		if (n != 0) r.push(n.valueOf());
+		return r;
+	}
+
+	/**
 	 * Check if number is an Integer
 	 * @param n (Number)
 	 * @return Boolean

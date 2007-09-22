@@ -18,4 +18,10 @@ strict digraph class_diagram {
     tooltip="com.sekati.convert.BoolConversion",
     shape="record"
   ];
+  TypeBitConversion[
+    label="BitConversion",
+    URL="BitConversion.html",
+    tooltip="com.sekati.convert.BitConversion",
+    shape="record"
+  ];
 }
