@@ -1,6 +1,6 @@
 ﻿ /**
   * com.sekati.core.App
-  * @version 3.0.3
+  * @version 3.0.5
   * @author jason m horwitz | sekati.com
   * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
   * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -110,7 +110,7 @@ class com.sekati.core.App {
 		var oXML:XML = new XML ();
 		var o:Object = new Object ();
 		oXML.ignoreWhite = true;
-		var xmlLoaded = function (success:Boolean):Void {
+		var xmlLoaded:Function = function (success:Boolean):Void {
 			if (success) {
 				o = new XML2Object ().parseXML (oXML);
 				// dump object data into static App vars
