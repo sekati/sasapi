@@ -1,6 +1,6 @@
 ﻿/**
  * com.sekati.math.MathBase
- * @version 1.1.5
+ * @version 1.1.7
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -149,8 +149,9 @@ class com.sekati.math.MathBase {
 	 * @return Boolean
 	 */
 	public static function isOdd (n:Number):Boolean {
-		var int:Integer = new Integer(n);
-		return Boolean(int%2);	
+		var i:Integer = new Integer(n);
+		var e:Integer = new Integer(2);
+		return Boolean(i % e);	
 	}
 
 	/**
@@ -160,7 +161,8 @@ class com.sekati.math.MathBase {
 	 */
 	public static function isEven (n:Number):Boolean {
 		var int:Integer = new Integer(n);
-		return (int%2 == 0);
+		var e:Integer = new Integer(2);
+		return (int % e == 0);
 	}
 	
 	/**
@@ -169,12 +171,11 @@ class com.sekati.math.MathBase {
 	 * @return Boolean
 	 */
 	public static function isPrime (n:Number):Boolean {
-		var l:Number;
 		if (n > 2 && n % 2 == 0) return false;
-			for (var i:Number = 3, l = Math.sqrt(n); i <= l; i += 2) {
+			var l:Number = Math.sqrt(n);
+			for (var i:Number = 3; i <= l; i += 2) {
 				if (n % i == 0) return false;
 			}
-			return true;
 	}
 
 	/**
