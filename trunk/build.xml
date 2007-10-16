@@ -222,7 +222,7 @@
 	
 	<!-- TASK: compile all fla's in tests dir with Flash IDE -->	
 	<target name="build_tests">
-		 <fdt.flashCompile>
+		 <fdt.flashCompile failonerror="false">
 		   <fileset dir="${tests}">
 		    <include name="*.fla"/>
 		   </fileset>
