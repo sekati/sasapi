@@ -1,6 +1,6 @@
 /**
  * com.sekati.math.Range
- * @version 1.0.0
+ * @version 1.0.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -46,7 +46,7 @@ class com.sekati.math.Range {
 			}
 			for (var j:Number = 1; j <= count; j++) {
 				// random number
-				var rn = Math.floor (Math.random () * nums.length);
+				var rn:Number = Math.floor (Math.random () * nums.length);
 				rnds.push (nums[rn]);
 				nums.splice (rn, 1);
 			}
