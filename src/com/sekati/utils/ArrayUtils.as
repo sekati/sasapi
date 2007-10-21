@@ -1,6 +1,6 @@
 ﻿/**
  * com.sekati.utils.ArrayUtils
- * @version 1.1.5
+ * @version 1.1.9
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -183,7 +183,7 @@ class com.sekati.utils.ArrayUtils {
 	 * Search for a specific value of a property in an array of objects
 	 * @param objArr (Array) array of objects
 	 * @param prop (String) property to search
-	 * @param val (Object) value to locates
+	 * @param val (Object) value to locate
 	 * @param isCaseInsensitive (Boolean) - define whether prop and val should be case-insensitive [default: false]
 	 * @return Object - that matches property value
 	 */
@@ -196,6 +196,26 @@ class com.sekati.utils.ArrayUtils {
 			}		
 		}
 		return undefined;
+	}	
+	
+	/**
+	 * Return a new array sliced from original array based on a value property match
+	 * @param objArr (Array) array of objects
+	 * @param prop (String) property to search
+	 * @param val (Object) value to locate
+	 * @param isCaseInsensitive (Boolean) - define whether prop and val should be case-insensitive [default: false]
+	 * @return Array - array of objects that matches property value
+	 */
+	public static function sliceByPropVal(objArr:Array, prop:String, val:Object, isCaseInsensitive:Boolean):Array {
+		var a:Array = new Array();
+		for(var o in objArr) {
+			if (!isCaseInsensitive) {
+				if (objArr[o][prop] == val) a.push(objArr[o]);
+			} else {
+				if (objArr[o][prop].toUpperCase() == val.toUpperCase()) a.push(objArr[o]);	
+			}
+		}
+		return a;	
 	}		
 
 	/**
