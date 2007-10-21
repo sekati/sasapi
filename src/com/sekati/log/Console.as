@@ -1,11 +1,12 @@
 /**
  * com.sekati.log.Console
- * @version 1.2.9
+ * @version 1.3.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
+ import com.sekati.display.StageDisplay;
  import com.sekati.events.Dispatcher;
  import com.sekati.events.Event;
  import com.sekati.log.ConsoleFPSMonitor;
@@ -63,6 +64,7 @@ class com.sekati.log.Console {
 		_cs = ConsoleStyle.getInstance();
 		_style = _cs.CSS;
 		Dispatcher.$.addEventListener(LogEvent.onLogEVENT, Delegate.create (_this, onLogEvent));
+		Dispatcher.$.addEventListener(StageDisplay.onStageResizeEVENT, Delegate.create(_this, onStageResize));
 		LCBinding.connect(Delegate.create(_this, addItem));
 		createUI();
 	}
@@ -133,13 +135,16 @@ class com.sekati.log.Console {
 		_cmenu.addItem("Copy Console Log", Delegate.create (this, toClipboard), true);
 		_cmenu.addItem("Clear Console Log", Delegate.create (this, reset), false);
 		_cmenu.addItem("Minimize Console", Delegate.create (this, resize, _style.console.minW, _style.console.minH), true);
-		_cmenu.addItem("Maximize Console", Delegate.create (this, resize, Stage.width-_console._x-10, Stage.height-_console._y-10), false);
+		_cmenu.addItem("Maximize Console", Delegate.create (this, resize, _style.console.maxW, _style.console.maxH), false);
 		// events
-		_head.onPress = Delegate.create (_console, startDrag, false, _style.console.x, _style.console.y, _style.console.maxW, _style.console.maxH);
-		_head.onRelease = _head.onReleaseOutside = Delegate.create (_console, stopDrag);
-		_resizer.onPress = Delegate.create (this, resizer_onPress);
-		_resizer.onRelease = _resizer.onReleaseOutside = Delegate.create (this, resizer_onRelease);
-		
+		if(_style.console.head.isDraggable == true) {
+			_head.onPress = Delegate.create (_console, startDrag, false, _style.console.x, _style.console.y, _style.console.maxW, _style.console.maxH);
+			_head.onRelease = _head.onReleaseOutside = Delegate.create (_console, stopDrag);
+			_resizer.onPress = Delegate.create (this, resizer_onPress);
+			_resizer.onRelease = _resizer.onReleaseOutside = Delegate.create (this, resizer_onRelease);
+		} else {
+			_resizer._visible = false;	
+		}
 		// resize console to fit swf
 		resize (Stage.width-_style.console.x*4, Stage.height-_style.console.y*4);
 	}
@@ -148,6 +153,7 @@ class com.sekati.log.Console {
 	 * Resizing methods
 	 */
 	private function resizer_onPress():Void {
+		//_resizer.startDrag (false, (_console._x+_style.console.minW), (_console._y+_style.console.minH), Stage.width-50, Stage.height-50);
 		_resizer.startDrag (false, (_console._x+_style.console.minW), (_console._y+_style.console.minH), _style.console.maxW, _style.console.maxH);
 	}
 	private function resizer_onRelease():Void {
@@ -264,6 +270,16 @@ class com.sekati.log.Console {
 			//trace ("eventObj{target:" + eventObj.target + ",type:" + eventObj.type + ",message:" + eventObj.data.message + "};");
 			addItem(eventObj.data);
 		}
+	}
+	
+	/**
+	 * Handle Stage resize events
+	 * @param eventObj (Event)
+	 * @return Void
+	 */
+	private function onStageResize (eventObj:Event):Void {
+		_style.console.maxW = Stage.width, _style.console.maxH = Stage.height;
+		resize (Stage.width, Stage.height);
 	}
 	
 	/**
