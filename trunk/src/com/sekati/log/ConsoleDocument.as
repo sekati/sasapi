@@ -1,43 +1,39 @@
 /**
- * com.sekati.core.Document
- * @version 1.0.3
+ * com.sekati.log.ConsoleDocument
+ * @version 1.0.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  
- import com.sekati.core.App;
  import com.sekati.display.BaseClip;
- import com.sekati.log.Logger;
+ import com.sekati.log.Console;
 
 /**
- * Document controller simulates an AS3 DocumentClass
+ * ConsoleDocument controller simulates an AS3 DocumentClass
  * {@code Usage on first _root frame:
- * Document.main(this);
+ * ConsoleDocument.main(this);
  * }
- * @see {@link com.sekati.core.App}
  */
-class com.sekati.core.Document extends BaseClip {
-	
-	public var log:Logger;
+class com.sekati.log.ConsoleDocument extends BaseClip {
 	
 	/**
 	 * Constructor
 	 */
-	private function Document() {
+	private function ConsoleDocument() {
 		super();
 		init();
 	}
 	
 	/**
-	 * Link the Document class to the _root timeline via constructor simulating an AS3 document class.
+	 * Link the ConsoleDocument class to the _root timeline via constructor simulating an AS3 document class.
 	 * @param target (MovieClip)
 	 * @return Void
 	 */
 	 
 	public static function main(target:MovieClip):Void {
-		target.__proto__ = Document.prototype;
-		Function(Document).apply(target, null);
+		target.__proto__ = ConsoleDocument.prototype;
+		Function(ConsoleDocument).apply(target, null);
 	}
 	
 	/**
@@ -47,7 +43,6 @@ class com.sekati.core.Document extends BaseClip {
 	private function init():Void {
 		setMovieProps();
 		buildCompositions();
-		App.init();
 	}
 	
 	/**
@@ -63,7 +58,7 @@ class com.sekati.core.Document extends BaseClip {
 		fscommand ("fullscreen", "false");
 		Stage.align = "TL";
 		Stage.scaleMode = "noScale";
-		_quality = "HIGH";
+		_quality = "LOW";
 		_focusrect = false;
 	}
 	
@@ -72,10 +67,6 @@ class com.sekati.core.Document extends BaseClip {
 	 * @return Void
 	 */
 	private function buildCompositions():Void {
-		log = Logger.getInstance();
-		log.isIDE = true;
-		log.isLC = true;
-		log.isSWF = false;
-		log.info(this.toString(),"Document Initialized ...");
+		var console:Console = Console.getInstance();
 	}
 }

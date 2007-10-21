@@ -25,7 +25,7 @@ class com.sekati.log.LCBinding {
 	 */
 	public static function connect (handler:Function):Void {
 		LCBinding._rx.allowDomain = _rx.allowInsecureDomain = LCBinding.domain;
-		LCBinding._rx[LCBinding.methodName] = handler;	
+		LCBinding._rx[LCBinding.methodName] = handler;
 		LCBinding._rx.connect(LCBinding.connectionName);
 	}
 	

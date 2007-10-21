@@ -1,6 +1,6 @@
 /**
  * com.sekati.log.ConsoleStyle
- * @version 1.3.1
+ * @version 1.3.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -29,10 +29,10 @@ class com.sekati.log.ConsoleStyle {
 	// style definition
 	public var CSS:Object = {
 		console:{
-			n:"___Console", x:5, y:5, w:CW, h:CH, minW:450, minH:150, maxW:Stage.width, maxH:Stage.height,
+			n:"___Console", x:0, y:0, w:CW, h:CH, minW:450, minH:150, maxW:Stage.width, maxH:Stage.height,
 			bg:{n:"bgMc", x:0, y:0, w:CW, h:CH, c:0x1D1D1D, a:95},
 			head:{
-				n:"headMc", x:0, y:0, w:CW, h:IH,
+				n:"headMc", x:0, y:0, w:CW, h:IH, isDraggable:false,
 				bg:{n:"bcMc", x:0, y:0, w:CW, h:IH, c:0xFFFFFF, a:100},
 				textfields:{
 					head:{n:"headTf", t:"com.sekati.log.Console", url:"http://sasapi.googlecode.com/", x:5, y:-1, w:500, h:TH, c:0x6C8297, a:100}
