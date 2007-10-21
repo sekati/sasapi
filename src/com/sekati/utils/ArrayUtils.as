@@ -184,16 +184,19 @@ class com.sekati.utils.ArrayUtils {
 	 * @param objArr (Array) array of objects
 	 * @param prop (String) property to search
 	 * @param val (Object) value to locates
+	 * @param isCaseInsensitive (Boolean) - define whether prop and val should be case-insensitive [default: false]
 	 * @return Object - that matches property value
 	 */
-	public static function locatePropVal(objArr:Array, prop:String, val:Object) {
+	public static function locatePropVal(objArr:Array, prop:String, val:Object, isCaseInsensitive:Boolean):Object {
 		for(var o in objArr) {
-			if(objArr[o][prop] == val) {
-				return objArr[o];
-			}
+			if (!isCaseInsensitive) {
+				if (objArr[o][prop] == val) return objArr[o];
+			} else {
+				if (objArr[o][prop].toUpperCase() == val.toUpperCase()) return objArr[o];	
+			}		
 		}
 		return undefined;
-	}	
+	}		
 	
 	private function ArrayUtils(){
 	}
