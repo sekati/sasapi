@@ -197,6 +197,54 @@ class com.sekati.utils.ArrayUtils {
 		}
 		return undefined;
 	}		
+
+	/**
+	 * Return the index of the minimum value in a numeric array
+	 * @param a (Array)
+	 * @return Number - minimum value
+	 */
+	public static function min(a:Array):Number {
+		var i:Number = a.length;
+		var min = a[0];
+		var idx:Number = 0;
+		while (i-->1) {
+			if(a[i]<min) min = a[idx=i];
+		}
+		return idx;
+	}
+
+	/**
+	 * Return the index of the maximum value in a numeric array
+	 * @param a (Array)
+	 * @return Number - maximum value
+	 */	
+	public static function max(a:Array):Number {
+		var i:Number = a.length;
+		var max = a[0];
+		var idx:Number = 0;	
+		while(i-->1) {
+			if(a[i]>max) max = a[idx=i];
+		}
+		return idx;	
+	}
+
+	/**
+	 * Return the minimum value in a numeric array
+	 * @param a (Array)
+	 * @return Number - minimum value
+	 */	
+	public static function minVal(a:Array):Number {
+		return a[ArrayUtils.min(a)];
+	}
+
+	/**
+	 * Return the maximum value in a numeric array
+	 * @param a (Array)
+	 * @return Number - maximum value
+	 */	
+	public static function maxVal(a:Array):Number {
+		return a[ArrayUtils.max(a)];
+	}
 	
 	private function ArrayUtils(){
 	}
