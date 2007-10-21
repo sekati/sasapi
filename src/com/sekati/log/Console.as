@@ -242,6 +242,11 @@ class com.sekati.log.Console {
 	 */
 	public function addItem (data:Object):MovieClip {
 		if(_isEnabled) {
+			// reset when new swf is presented
+			if(data.id == 0) {
+				reset();
+				return;	
+			}
 			var item:MovieClip = ClassUtils.createEmptyMovieClip (com.sekati.log.ConsoleItem, _list, "consoleItem_"+data.id, {_x:0, _y:_list._height, _data:data});
 			updateScroll(item);
 			_items.push(item);
@@ -328,7 +333,8 @@ class com.sekati.log.Console {
 	 * @return Void
 	 */
 	public function destroy():Void {
-		Dispatcher.$.removeEventListener("LOG_EVENT",Delegate.create (_this, onLogEvent));
+		Dispatcher.$.removeEventListener(LogEvent.onLogEVENT,Delegate.create (_this, onLogEvent));
+		Dispatcher.$.removeEventListener(StageDisplay.onStageResizeEVENT, Delegate.create(_this, onStageResize));
 		LCBinding.disconnect();
 		_fps.destroy();
 	}

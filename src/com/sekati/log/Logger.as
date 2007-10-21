@@ -126,13 +126,13 @@ class com.sekati.log.Logger {
 	}
 	
 	public function set isLC(b:Boolean):Void {
-		_isOutputLC = b;	
+		_isOutputLC = b;
 	}
 	public function set isSWF(b:Boolean):Void {
 		_isOutputSWF = b;
 	}
 	public function set isIDE(b:Boolean):Void {
-		_isOutputIDE = b;	
+		_isOutputIDE = b;
 	}		
 	
 	// Level Handlers
