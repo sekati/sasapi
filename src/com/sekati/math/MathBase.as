@@ -141,7 +141,25 @@ class com.sekati.math.MathBase {
 		var n:Number = (!x) ? 1 : x;
 		var slope:Number = (y2 - y1) / (x2 - x1);
 		return (slope * (n - x1) + y1);
-	} 
+	}
+	
+	/**
+	 * Check if number is positive (zero is considered positive)
+	 * @param n (Number)
+	 * @return Boolean
+	 */
+	public static function isPositive (n:Number):Boolean {
+		return (n >= 0);
+	}
+
+	/**
+	 * Check if number is negative
+	 * @param n (Number)
+	 * @return Boolean
+	 */
+	public static function isNegative (n:Number):Boolean {
+		return (n < 0);
+	}	
 
 	/**
 	 * Check if number is Odd (convert to Integer if necessary)
