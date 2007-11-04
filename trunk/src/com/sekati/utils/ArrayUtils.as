@@ -1,6 +1,6 @@
 ﻿/**
  * com.sekati.utils.ArrayUtils
- * @version 1.2.0
+ * @version 1.2.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -197,6 +197,21 @@ class com.sekati.utils.ArrayUtils {
 		}
 		return undefined;
 	}	
+
+	/**
+	 * Search for a unique value property match and return its index in the array.
+	 * @param a (Array) array of objects
+	 * @param prop (String) property to search
+	 * @param val (Object) value to locate
+	 * @return Number - index of hit
+	 */
+	public static function locatePropValIndex(a:Array, prop:String, val:Object):Number{
+		for (var i:Number = 0; i < a.length; i++) {
+			if(a[i][prop] == val) {
+				return i;	
+			}
+		}	
+	}
 	
 	/**
 	 * Return a new array sliced from original array based on a value property match
@@ -216,8 +231,8 @@ class com.sekati.utils.ArrayUtils {
 			}
 		}
 		return a;	
-	}		
-
+	}	
+	
 	/**
 	 * Return the index of the minimum value in a numeric array
 	 * @param a (Array)
@@ -251,10 +266,10 @@ class com.sekati.utils.ArrayUtils {
 	/**
 	 * Return the minimum value in a numeric array
 	 * @param a (Array)
-	 * @return Number - minimum value
+	 * @return Number - minimum value (0 is returned with 0 length array)
 	 */	
 	public static function minVal(a:Array):Number {
-		return a[ArrayUtils.min(a)];
+		return ((a.length <= 0) ? 0 : a[ArrayUtils.max(a)]);
 	}
 
 	/**
@@ -263,7 +278,7 @@ class com.sekati.utils.ArrayUtils {
 	 * @return Number - maximum value
 	 */	
 	public static function maxVal(a:Array):Number {
-		return a[ArrayUtils.max(a)];
+		return ((a[ArrayUtils.max(a)] < 0) ? 0 : a[ArrayUtils.max(a)]);
 	}
 	
 	private function ArrayUtils(){
