@@ -1,6 +1,6 @@
 /**
  * com.sekati.utils.ObjectUtils
- * @version 1.0.0
+ * @version 1.0.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -17,7 +17,7 @@ class com.sekati.utils.Clone {
 	 * @return Object
 	 */
 	public static function create (o:Object):Object {
-		var obj = new Object();
+		var obj:Object = new Object();
 		var itype:Object;
 		for(var i in o) {
 			itype = typeof(o[i]);

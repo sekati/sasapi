@@ -1,6 +1,6 @@
 /**
  * com.sekati.crypt.RC4
- * @version 1.0.3
+ * @version 1.0.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -45,7 +45,7 @@ class com.sekati.crypt.RC4 implements ICipher {
 		return charsToStr(result);
 	}
 
-	private static function initialize(pwd:Array) {
+	private static function initialize(pwd:Array):Void {
 		var b:Number = 0;
 		var tempSwap:Number;
 		var intLength:Number = pwd.length;

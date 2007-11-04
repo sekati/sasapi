@@ -1,6 +1,6 @@
 ﻿/**
  * com.sekati.utils.StringUtils
- * @version 1.1.5
+ * @version 1.1.9
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -94,7 +94,7 @@ class com.sekati.utils.StringUtils {
 	 */
 	public static function trimCamel (str:String):String {
 		var o:String = new String ();
-		for (var i = 0; i < str.length; i++) {
+		for (var i:Number = 0;i < str.length; i++) {
 			if (str.charAt (i) != " ") {
 				if (justPassedSpace) {
 					o += str.charAt (i).toUpperCase ();
@@ -103,7 +103,7 @@ class com.sekati.utils.StringUtils {
 					o += str.charAt (i).toLowerCase ();
 				}
 			} else {
-				var justPassedSpace = true;
+				var justPassedSpace:Boolean = true;
 			}
 		}
 		return o;
@@ -124,7 +124,7 @@ class com.sekati.utils.StringUtils {
 	 * @return String
 	 */
 	public static function htmlEncode (str:String):String {
-		var s:String = str, a = new String ();
+		var s:String = str, a:Object = new String();
 		a = s.split ("&"), s = a.join ("&amp;");
 		a = s.split (" "), s = a.join ("&nbsp;");
 		a = s.split ("<"), s = a.join ("&lt;");
@@ -141,7 +141,7 @@ class com.sekati.utils.StringUtils {
 	public static function stripTags (str:String):String {
 		var s:Array = new Array ();
 		var c:Array = new Array ();
-		for (var i = 0; i < str.length; i++) {
+		for (var i:Number = 0; i < str.length; i++) {
 			if (str.charAt (i) == "<") {
 				s.push (i);
 			} else if (str.charAt (i) == ">") {
@@ -149,7 +149,7 @@ class com.sekati.utils.StringUtils {
 			}
 		}
 		var o:String = str.substring (0, s[0]);
-		for (var j = 0; j < c.length; j++) {
+		for (var j:Number = 0; j < c.length; j++) {
 			o += str.substring (c[j] + 1, s[j + 1]);
 		}
 		return o;

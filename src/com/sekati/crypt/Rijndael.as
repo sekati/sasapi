@@ -1,6 +1,6 @@
 /**
  * com.sekati.crypt.Rijndael
- * @version 1.0.3
+ * @version 1.0.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -109,7 +109,7 @@ class com.sekati.crypt.Rijndael implements ICipher {
 		if(dir == "encrypt") S = this.SBox;
 		else S = this.SBoxInverse;
 		for (var i:Number = 0; i<4; i++) {
-			for (var j = 0; j<this.Nb; j++) state[i][j] = S[state[i][j]];
+			for (var j:Number = 0; j<this.Nb; j++) state[i][j] = S[state[i][j]];
 		}
 	}
 

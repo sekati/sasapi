@@ -1,13 +1,12 @@
 /**
  * com.sekati.except.IllegalArgumentException
- * @version 1.0.5
+ * @version 1.0.7
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  
  import com.sekati.except.Exception;
- import com.sekati.except.Catcher;
  
 /**
  * Throwable Illegal Argument {@link Exception} Error.

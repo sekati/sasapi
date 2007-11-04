@@ -1,6 +1,6 @@
 ﻿/**
  * com.sekati.ui.Image
- * @version 2.5.1
+ * @version 2.5.2
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -73,7 +73,7 @@ class com.sekati.ui.Image extends CoreClip {
 		if (_this.img != undefined) {
 			_this.img.removeMovieClip ();
 		}
-		var img:MovieClip = _this.createEmptyMovieClip ("img", _this.getNextHighestDepth ());
+		_this.createEmptyMovieClip ("img", _this.getNextHighestDepth ());
 		// create box & enable spinner if a box color was passed
 		if (color) {
 			_this.createEmptyMovieClip ("box", _this.getNextHighestDepth ());
@@ -123,10 +123,10 @@ class com.sekati.ui.Image extends CoreClip {
 		_this.spinner._visible = true;
 		_this.spinner._alpha = 100;
 		delete _this.spinner.onEnterFrame;
-		_this.spinner.onEnterFrame = function () {
+		_this.spinner.onEnterFrame = function ():Void {
 			this._rotation -= 20;
 		};
-		_this.onEnterFrame = function () {
+		_this.onEnterFrame = function ():Void {
 			var l:Number = _this.img.getBytesLoaded ();
 			var t:Number = _this.img.getBytesTotal ();
 			if (l >= t && t > 5) {
@@ -136,7 +136,7 @@ class com.sekati.ui.Image extends CoreClip {
 				_this.img._alpha = 0;
 				_this.spinner._alpha = 100;
 				_this.img.alphaTo (100, 0.6, App.mot.e, 0.1);
-				var spinCb = function () {
+				var spinCb:Function = function ():Void {
 					delete _this.spinner.onEnterFrame;
 					_this.spinner._visible = false;
 					_this.spinner._alpha = 100;

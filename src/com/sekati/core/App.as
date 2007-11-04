@@ -1,6 +1,6 @@
 ﻿ /**
   * com.sekati.core.App
-  * @version 3.0.5
+  * @version 3.0.6
   * @author jason m horwitz | sekati.com
   * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
   * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -172,7 +172,7 @@ class com.sekati.core.App {
 	 * @return Object
 	 */
 	public static function getFlink ():Object {
-		var j = ExternalInterface.call ("getFlink");
+		var j:Object = ExternalInterface.call ("getFlink");
 		var a:Array = j.split ("/");
 		var p:String = (!a[1]) ? "" : a[1];
 		App.debug.trace ("* App.getFlink (" + p + ")");
@@ -198,10 +198,9 @@ class com.sekati.core.App {
 	 * @return String
 	 */
 	public static function getRef ():String {
-		var r = ExternalInterface.call ("getRef");
-		return r;
+		var r:Object = ExternalInterface.call ("getRef");
+		return String(r);
 	}
-
-	private function App() {
+	private function App() {
 	}
 }

@@ -1,6 +1,6 @@
 /**
  * com.sekati.services.AmbientOrb
- * @version 1.0.2
+ * @version 1.0.3
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -191,7 +191,7 @@ class com.sekati.services.AmbientOrb {
 	 * orb.config ( getColorByProp("name","red"), getAnimByProp("name","heartbeat"), "Orb Test" );
 	 * }
 	 */
-	public function config (colorId:String, animId:String, comment:String) {
+	public function config (colorId:String, animId:String, comment:String):Void {
 		if (!_devId) {
 			throw new Error ("@@@ com.sekati.services.AmbientOrb Error: Device ID not set");
 			return;
@@ -211,7 +211,7 @@ class com.sekati.services.AmbientOrb {
 		xm.ignoreWhite = true;
 		var query:String = _URI + "?devID=" + _devId + "&anim=" + animId + "&color=" + colorId + "&comment=" + escape (comment);
 		trace ("query string: " + query);
-		xm.onLoad = function (success) {
+		xm.onLoad = function (success:Boolean):Void {
 			var xObj:Object = xparse (xm);
 			trace ("object returned: " + xObj);
 		};
@@ -221,8 +221,8 @@ class com.sekati.services.AmbientOrb {
 	/**
 	 * xml parser
 	 */
-	private function xparse (n):Object {
-		var o = new String (n.firstChild.nodeValue), s, i, t, ndName;
+	private function xparse (n:XML):Object {
+		var o:String = new String (n.firstChild.nodeValue), s:Object, i:Number, t:Object;
 		for (s = (o == "null") ? n.firstChild : n.childNodes[1]; s != null; s = s.nextSibling) {
 			t = s.childNodes.length > 0 ? arguments.callee (s) : new String (s.nodeValue);
 			if (s.firstChild.nodeValue != undefined) {

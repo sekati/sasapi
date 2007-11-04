@@ -1,6 +1,6 @@
 ﻿/**
  * com.sekati.utils.ArrayUtils
- * @version 1.1.9
+ * @version 1.2.0
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -225,7 +225,7 @@ class com.sekati.utils.ArrayUtils {
 	 */
 	public static function min(a:Array):Number {
 		var i:Number = a.length;
-		var min = a[0];
+		var min:Number = a[0];
 		var idx:Number = 0;
 		while (i-->1) {
 			if(a[i]<min) min = a[idx=i];
@@ -240,7 +240,7 @@ class com.sekati.utils.ArrayUtils {
 	 */	
 	public static function max(a:Array):Number {
 		var i:Number = a.length;
-		var max = a[0];
+		var max:Number = a[0];
 		var idx:Number = 0;	
 		while(i-->1) {
 			if(a[i]>max) max = a[idx=i];

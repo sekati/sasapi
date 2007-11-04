@@ -1,6 +1,6 @@
 ﻿/**
  * com.sekati.ui.FLVPlayer
- * @version 1.1.5
+ * @version 1.1.7
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -185,12 +185,12 @@ class com.sekati.ui.FLVPlayer extends CoreClip {
 		}
 	}
 
-	private function pauseMemory () {
+	private function pauseMemory ():Void {
 		_wasPlaying = _movie.isPaused ();
 		_movie.pause ();
 	}
 
-	private function resumeMemory () {
+	private function resumeMemory ():Void {
 		if (!_wasPlaying) {
 			_movie.resume ();
 		}

@@ -1,6 +1,6 @@
 /**
  * com.sekati.log.Logger
- * @version 1.2.3
+ * @version 1.2.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -11,7 +11,6 @@
  import com.sekati.log.LCBinding;
  import com.sekati.log.LogEvent;
  import com.sekati.time.StopWatch;
- import com.sekati.validate.TypeValidation;
  
 /**
  * Logger is a multi-tiered debugging tool designed to clarify the debugging process.\
@@ -276,7 +275,7 @@ class com.sekati.log.Logger {
 	 
 	// Output Handlers
 	
-	private function _output (level:String, origin, msg):Void {
+	private function _output (level:String, origin:Object, msg:Object):Void {
 		// validate that we should be outputting this content: Logger enabled, level enabled, origin unfiltered & proper LogEvent.
 		if (_isEnabled == false || _levels[level] == false || isFiltered (origin) == true || !(level.toLowerCase().indexOf("__get__") <= -1)) {
 			return;
@@ -299,7 +298,7 @@ class com.sekati.log.Logger {
 		}
 	}
 	
-	public function setOutputMode(isLocal:Boolean, isRemote:Boolean, isIDE):Void {	
+	public function setOutputMode(isLocal:Boolean, isRemote:Boolean, isIDE:Boolean):Void {	
 	
 	}
 	
@@ -311,7 +310,7 @@ class com.sekati.log.Logger {
 			//trace("!!!!!!!!! logger returning: "+name+" reflects: "+Stringifier.stringify(LogEvent));
 			return;
 		}
-		var f:Function = function() {
+		var f:Function = function():Object {
 			arguments.unshift (name);
 			return __proxy.apply (_proxyObj, arguments);
 		};
@@ -319,7 +318,7 @@ class com.sekati.log.Logger {
 		return f;
 	}
 
-	private function __proxy (name:String) {
+	private function __proxy (name:String):Void {
 		arguments.shift ();
 		var n:String = String (name).toLowerCase ();
 		var o:String = String (arguments[0]);

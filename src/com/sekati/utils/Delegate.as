@@ -1,6 +1,6 @@
 ﻿/**
  * com.sekati.utils.Delegate
- * @version 1.0.0
+ * @version 1.0.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -39,10 +39,10 @@ class com.sekati.utils.Delegate extends Object {
 	 * @return Function
 	 */
 	static function create (obj:Object, func:Function):Function {
-		var f = function () {
-			var target = arguments.callee.target;
-			var func = arguments.callee.func;
-			var args = arguments.callee.args;
+		var f:Function = function():Function {
+			var target:Object = arguments.callee.target;
+			var func:Function = arguments.callee.func;
+			var args:Array = arguments.callee.args;
 			return func.apply (target, args.concat (arguments));
 		};
 		f.target = arguments.shift ();

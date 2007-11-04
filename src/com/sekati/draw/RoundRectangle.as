@@ -57,7 +57,7 @@ class com.sekati.draw.RoundRectangle {
 		mc.lineTo(x+w-cornerRadius, y);
 		
 		for(var i:Number = 0; i<8; i++){
-			var calcul, cx, cy, px, py;
+			var calcul:Number, cx:Number, cy:Number, px:Number, py:Number;
 			
 			calcul = Math.cos(angle+(theta/2))*cornerRadius/Math.cos(theta/2);
 			cx = (i==0 || i==1 || i==2 || i==3) ? x+w-cornerRadius+calcul : x+cornerRadius+calcul;

@@ -1,6 +1,6 @@
 /**
  * com.sekati.time.Throttle
- * @version 1.0.1
+ * @version 1.0.3
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -68,7 +68,7 @@ class com.sekati.time.Throttle extends CoreObject {
 		}
 	}
 
-	private function _doFunctionCall() {
+	private function _doFunctionCall():Void {
 		//trace('[Throttle] Calling Function at '+getTimer());
 		_finalCallPending = false;
 		_fn.call(null);		

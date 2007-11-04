@@ -1,6 +1,6 @@
 ﻿/**
  * com.sekati.utils.DateUtils
- * @version 1.0.5
+ * @version 1.0.7
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -104,7 +104,7 @@ class com.sekati.utils.DateUtils {
 	 * @param n (Number)
 	 * @return String
 	 */
-	public static function padTime (n):String {
+	public static function padTime (n:Number):String {
 		return (String (n).length < 2) ? ("0" + n) : n;
 	}
 
@@ -113,11 +113,11 @@ class com.sekati.utils.DateUtils {
 	 * @param dbDate (String) date in YYYY-MM-DD HH:MM:SS format
 	 * @return Date
 	 */
-	public static function dateFromDB (dbdate):Date {
-		var tmp = dbdate.split (" ");
-		var dates = tmp[0].split ("-");
-		var hours = tmp[1].split (":");
-		var d = new Date (dates[0], dates[1] - 1, dates[2], hours[0], hours[1], hours[2]);
+	public static function dateFromDB (dbdate:String):Date {
+		var tmp:Array = dbdate.split (" ");
+		var dates:Array = tmp[0].split ("-");
+		var hours:Array = tmp[1].split (":");
+		var d:Date = new Date (dates[0], dates[1] - 1, dates[2], hours[0], hours[1], hours[2]);
 		return d;
 	}
 

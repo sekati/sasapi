@@ -1,6 +1,6 @@
 ﻿/**
  * com.sekati.data.XML2Object
- * @version 1.0.1
+ * @version 1.0.3
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -58,9 +58,9 @@ class com.sekati.data.XML2Object {
 	/**
 	 * core of the XML2Object class
 	 */
-	private function translateXML (from, path, name, position) {
+	private function translateXML (from:Object, path:Object, name:Object, position:Object):Object {
 		var xmlName:String;
-		var nodes, node, old_path;
+		var nodes:Object, node:Object, old_path:Object;
 		if (path == undefined) {
 			path = this;
 			name = "oResult";
@@ -80,7 +80,7 @@ class com.sekati.data.XML2Object {
 				node = nodes.shift ();
 				xmlName = node.nodeName;
 				if (xmlName != undefined) {
-					var __obj__ = new Object ();
+					var __obj__:Object = new Object ();
 					__obj__.attributes = node.attributes;
 					__obj__.data = node.firstChild.nodeValue;
 					if (position != undefined) {
@@ -92,7 +92,7 @@ class com.sekati.data.XML2Object {
 							name = node.nodeName;
 							position = path[xmlName].length - 1;
 						} else {
-							var copyObj = path[xmlName];
+							var copyObj:Object = path[xmlName];
 							path[xmlName] = new Array ();
 							path[xmlName].push (copyObj);
 							path[xmlName].push (__obj__);
