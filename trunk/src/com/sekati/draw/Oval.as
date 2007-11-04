@@ -56,7 +56,7 @@ class com.sekati.draw.Oval {
 		if (!isNaN(_fc)) {
 			_mc.beginFill(_fc, _fa);
 		}
-		var angleMid, px, py, cx, cy;
+		var angleMid:Number, px:Number, py:Number, cx:Number, cy:Number;
 		var theta:Number = Math.PI/4;
 		
 		// calculate the distance for the control point

@@ -1,6 +1,6 @@
 /**
  * com.sekati.data.SO
- * @version 1.1.0
+ * @version 1.1.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -19,8 +19,8 @@ class com.sekati.data.SO extends CoreObject {
 	private var _this:SO;
 	private var _so:SharedObject;
 	private var _name:String;
-	private static var onSOStatusEVENT = "onSOStatus";
-	private static var onSOSyncEVENT = "onSOSync";
+	private static var onSOStatusEVENT:String = "onSOStatus";
+	private static var onSOSyncEVENT:String = "onSOSync";
  	
 	/**
 	 * SO Constructor

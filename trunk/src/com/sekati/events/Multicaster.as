@@ -1,6 +1,6 @@
 /**
  * com.sekati.events.Multicaster
- * @version 1.0.5
+ * @version 1.0.7
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -133,7 +133,7 @@ class com.sekati.events.Multicaster extends CoreObject implements IMulticastable
 	 * Will return either a number or a string
 	 */
 	private function getIndex(broadcasterObj:Object):Object{
-		var o = broadcasterObj;
+		var o:Object = broadcasterObj;
 		
 		if( TypeValidation.isString(o) || TypeValidation.isNumber(o) ){
 			return String(o);

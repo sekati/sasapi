@@ -57,7 +57,7 @@ class com.sekati.services.Flink {
 	 *  Flink.jsCall ("helloWorld", "boy", "jason");
 	 * }
 	 */
-	public static function jsCall () {
+	public static function jsCall ():Void {
 		ExternalInterface.call.apply (null, arguments);
 	}
 

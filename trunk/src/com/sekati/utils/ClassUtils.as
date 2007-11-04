@@ -1,6 +1,6 @@
 ﻿/**
  * com.sekati.utils.ClassUtils
- * @version 2.1.2
+ * @version 2.1.3
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -120,7 +120,7 @@ class com.sekati.utils.ClassUtils {
 	 * }
 	 */
 	public static function createInstance (classRef:Function, args:Array):Object {
-		var o = {__constructor__:classRef, __proto__:classRef.prototype};
+		var o:Object = {__constructor__:classRef, __proto__:classRef.prototype};
 		classRef.apply (o, args);
 		KeyFactory.inject(o);
 		return o;

@@ -1,6 +1,6 @@
 /**
  * com.sekati.validate.StringValidation
- * @version 1.0.1
+ * @version 1.0.3
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -60,7 +60,7 @@ class com.sekati.validate.StringValidation {
 	function isNumeric(str:String):Boolean {
 		var len:Number = str.length;
 		for (var i:Number = 0; i < len; i++) {
-			var code = str.charCodeAt(i);
+			var code:Number = str.charCodeAt(i);
 			if (code < 48 || code > 57) {
 				return true;
 			}

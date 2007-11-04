@@ -1,6 +1,6 @@
 /**
  * com.sekati.data.FLV
- * @version 1.1.5
+ * @version 1.1.7
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -19,7 +19,7 @@ class com.sekati.data.FLV extends CoreObject {
 	private var _this:FLV;
 	private var _ns:NetStream;
 	private var _nc:NetConnection;
-	private var _video;
+	private var _video:Video;
 	private var _videoURL:String;
 	private var _audio:Sound;
 	private var _audioContainer:MovieClip;
@@ -30,9 +30,9 @@ class com.sekati.data.FLV extends CoreObject {
 	private var _lastSeekableTime:Number;
 	
 	//event stubs
-	public function onProgress() {
+	public function onProgress():Void {
 	}
-	public function onEvent() {
+	public function onEvent():Void {
 	}
 	
 	//constructor
@@ -54,7 +54,7 @@ class com.sekati.data.FLV extends CoreObject {
 	 * @param audioContainer (MovieClip) audio becon holder
 	 * @return Void
 	 */
-	public function load (url:String, videoInstance, width:Number, height:Number, audioContainer:MovieClip):Void {
+	public function load (url:String, videoInstance:Video, width:Number, height:Number, audioContainer:MovieClip):Void {
 		_videoURL = url;
 		_video = videoInstance;
 		_audioContainer = audioContainer;
@@ -95,7 +95,7 @@ class com.sekati.data.FLV extends CoreObject {
 		onProgress (getPercent (), getPercentTimePlayed ());
 	}
 	
-	public function clean (scope, obj:String):Void {
+	public function clean(scope:MovieClip, obj:String):Void {
 		//deconstructor that will clean the beacon and then remove the instance
 		delete _audioContainer.onEnterFrame;
 		_audioContainer.onEnterFrame = null;
@@ -202,7 +202,7 @@ class com.sekati.data.FLV extends CoreObject {
 	}
 	
 	public function getBufferPercent ():Number {
-		var total = Math.min (_duration, _ns.bufferTime);
+		var total:Number = Math.min (_duration, _ns.bufferTime);
 		return Math.min (Math.round (_ns.bufferLength / total * 100), 100);
 	}
 	

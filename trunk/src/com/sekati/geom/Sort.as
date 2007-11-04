@@ -1,6 +1,6 @@
 /**
  * com.sekati.geom.Sort
- * @version 1.0.5
+ * @version 1.0.7
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -59,7 +59,7 @@ class com.sekati.geom.Sort extends CoreObject {
 		var _numPerRow:Number = (!numPerRow) ? Math.ceil((Stage.width-start.x)/(_w+_offset)) : numPerRow;
 		
 	    for (var i:Number=0; i<_items.length; i++) {
-	        if ((i%numPerRow) == 0) {
+	        if ((i%_numPerRow) == 0) {
 	            _xpos = _offset;
 	            _ypos += _h + _offset;
 	        } else {
@@ -124,7 +124,7 @@ class com.sekati.geom.Sort extends CoreObject {
 	 */
 	public function triangle(center:Point, sideLength:Number):Array {
 		var cY:Number = center.y-(sideLength/2);
-	    var perimeter:Number = sideLength*3;
+	    //var perimeter:Number = sideLength*3;
 	    var objBySide:Number = Math.floor(_items.length/3);
 	    var leftObj:Number = _items.length-objBySide*3;
 	    var posArray:Array = new Array();

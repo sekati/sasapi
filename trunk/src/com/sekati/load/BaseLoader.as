@@ -1,6 +1,6 @@
 /**
  * com.sekati.load.BaseLoader
- * @version 1.1.1
+ * @version 1.1.3
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -12,7 +12,6 @@
  import com.sekati.display.StageDisplay;
  import com.sekati.events.FramePulse;
  import com.sekati.utils.ClassUtils;
- import com.sekati.utils.Delegate;
 
 /**
  * Generic _root Preloader - stops movie, preloads, then advances to defined frame label.

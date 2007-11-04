@@ -56,7 +56,7 @@ class com.sekati.draw.Ring {
 		mc.moveTo(0, 0);
  		mc.lineTo(r2, 0);		
 
-		for (var j = 12; j > 0; j--) {
+		for (var j:Number = 12; j > 0; j--) {
 			endx = r2*Math.cos((j-1)*30*_rad);
 			endy = r2*Math.sin((j-1)*30*_rad);
 			ax = endx+r2*(0-a)*Math.cos(((j-1)*30-90)*_rad);
