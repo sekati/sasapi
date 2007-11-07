@@ -13,7 +13,7 @@ TERMS OF USE - EASING EQUATIONS
 
 Open source under the BSD License.
 
-Copyright © 2001 Robert Penner
+Copyright ï¿½ 2001 Robert Penner
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -33,7 +33,7 @@ class caurina.transitions.Equations {
 	 * There's no constructor.
 	 */
 	public function Equations () {
-		trace ("Equations is a static class and should not be instantiated.")
+		trace ("Equations is a static class and should not be instantiated.");
 	}
 
 	/**

@@ -61,7 +61,7 @@ class caurina.transitions.Tweener {
 	 * There's no constructor.
 	 */
 	public function Tweener () {
-		trace ("Tweener is an static class and should not be instantiated.")
+		trace ("Tweener is an static class and should not be instantiated.");
 	}
 
 

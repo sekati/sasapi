@@ -16,7 +16,7 @@ class caurina.transitions.SpecialPropertiesDefault {
 	 * There's no constructor.
 	 */
 	public function SpecialPropertiesDefault () {
-		trace ("SpecialProperties is an static class and should not be instantiated.")
+		trace ("SpecialProperties is an static class and should not be instantiated.");
 	}
 
 	/**

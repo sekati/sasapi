@@ -1,6 +1,6 @@
 ﻿ /**
   * com.sekati.core.App
-  * @version 3.0.6
+  * @version 3.0.7
   * @author jason m horwitz | sekati.com
   * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
   * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -46,7 +46,9 @@
   * }
   */
 class com.sekati.core.App {
-
+	
+	private static var BOOTSTRAP_RETRY:Number = 0;
+	private static var BOOTSTRAP_RETRY_MAX:Number = 5;
 	public static var PATH:String = (NetBase.isOnline()) ? NetBase.getPath() : "";
 	public static var CONF_URI:String = (!_root.conf_uri) ? App.PATH + "config.xml" : _root.conf_uri;
 	public static var APP_NAME:String;
@@ -103,6 +105,20 @@ class com.sekati.core.App {
 	}
 	
 	/**
+	 * a method in the bootstrap chain failed - make retry attempts at each phase.
+	 * @return Void
+	 */
+	private static function bootstrap_retry():Void {
+		if (App.BOOTSTRAP_RETRY < App.BOOTSTRAP_RETRY_MAX) {
+				trace ("!!! BOOTSTRAP FAILED ON "+_bootstrapChain[_bootstrapCounter]+"() !!! ::: BOOTSTRAP RETRY ATTEMPT: ["+App.BOOTSTRAP_RETRY+"/"+App.BOOTSTRAP_RETRY_MAX+"]");
+				App.BOOTSTRAP_RETRY++;
+				App[_bootstrapChain[_bootstrapCounter]] ();
+		} else {
+			trace ("!!! BOOTSTRAP FATALLY BOMBED WITH  "+_bootstrapChain+"() !!! ::: BOOTSTRAP RETRY ATTEMPT: ["+App.BOOTSTRAP_RETRY+"/"+App.BOOTSTRAP_RETRY_MAX+"] ::: Sorry, I tried but the application failed to boot.");
+		}
+	}	
+	
+	/**
 	 * loads and parses config.xml then broadcasts "onConfig"
 	 * @return Void
 	 */
@@ -148,6 +164,8 @@ class com.sekati.core.App {
 				delete o;
 				App.bc.broadcast ("onConfig");
 				App.bootstrap ();
+			} else {
+				bootstrap_retry();	
 			}
 		};
 		oXML.onLoad = xmlLoaded;
