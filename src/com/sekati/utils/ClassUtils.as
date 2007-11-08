@@ -1,6 +1,6 @@
 ﻿/**
  * com.sekati.utils.ClassUtils
- * @version 2.1.3
+ * @version 2.1.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -80,6 +80,45 @@ class com.sekati.utils.ClassUtils {
 		KeyFactory.inject(mc);
 		return mc;
 	}
+	
+	
+	/**
+	 * Attach a movie from a DLL swf's library (loads dll then attaches requested movie).
+	 * NOTE: you should insert a delay between your callback and methods calls in the shared library as it initializes.
+	 * @param dll (Function) url of the dll.swf which contains exported assets in its library
+	 * @param target (MovieClip) target scope to attachMovie within
+	 * @param idName (String) linkage id for exported MovieClip in library	
+	 * @param instanceName (String) created MovieClip instance name
+	 * @param initObject (Object) object of properties to create MovieClip with. Depth will automatically be created if none is specified
+	 * @param cb (Function) callback function to fire when dll has been loaded and clip attached
+	 * @return MovieClip
+	 * {@code Usage:
+	 * var mc0:MovieClip = ClassUtils.attachDllMovie("dll.swf", _root, "myDllExportedItem", "mc0", {_x:50, _y:50, _depth:20}, myCallBackFn);
+	 * }
+	 */
+	public static function attachDllMovie(dll:String, target:MovieClip, idName:String, instanceName:String, initObject:Object, cb:Function):MovieClip {
+		var depth:Number = (!initObject._depth) ? target.getNextHighestDepth () : initObject._depth;
+		var mc:MovieClip = target.createEmptyMovieClip(instanceName, depth);
+		var mcLoader:MovieClipLoader = new MovieClipLoader();
+		var onDLLLoaded:Function = function():Void {
+			mcLoader.removeListener(listener);
+			if(cb) cb();
+		};
+		var listener:Object = new Object();
+		listener.onLoadInit = function(mc:MovieClip):Void {
+				mc.attachMovie(idName, instanceName, mc.getNextHighestDepth());
+				target[instanceName] = target[instanceName][instanceName];
+				if (initObject) {
+					for (var i in initObject) {
+						if (i != "_depth") mc[i] = initObject[i];
+					}
+				}				
+				onDLLLoaded();
+		};
+		mcLoader.addListener(listener);
+		mcLoader.loadClip(dll, mc);
+		return mc;
+	}	
 
 	/**
 	 * extend a MovieClip instance (on stage) with class (various init options)
