@@ -102,7 +102,7 @@ class com.sekati.utils.ClassUtils {
 		var mcLoader:MovieClipLoader = new MovieClipLoader();
 		var onDLLLoaded:Function = function():Void {
 			mcLoader.removeListener(listener);
-			if(cb) cb();
+			if(cb) _global['setTimeout'](this, 'cb', 50);
 		};
 		var listener:Object = new Object();
 		listener.onLoadInit = function(mc:MovieClip):Void {
