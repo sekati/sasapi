@@ -1,6 +1,6 @@
 ﻿/**
  * com.sekati.utils.ClassUtils
- * @version 2.1.5
+ * @version 2.1.7
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
