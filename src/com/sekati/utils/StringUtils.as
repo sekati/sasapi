@@ -1,6 +1,6 @@
 ﻿/**
  * com.sekati.utils.StringUtils
- * @version 1.1.9
+ * @version 1.2.0
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -132,6 +132,22 @@ class com.sekati.utils.StringUtils {
 		a = s.split ('"'), s = a.join ("&quot;");
 		return s;
 	}
+	
+	/**
+	 * strip the zero off floated numbers
+	 * @param n (Number)
+	 * @return String
+	 */
+	private function stripZeroOnFloat(n:Number):String {
+		var str:String = "";
+		var a:Array = String(n).split(".");
+		if (a.length>1) {
+			str = (a[0] == "0") ? "."+a[1] : String(n);
+		} else {
+			str = String(n);
+		}
+		return str;
+	}		
 	
 	/**
 	 * strip html markup tags
