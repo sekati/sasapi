@@ -1,6 +1,6 @@
 ﻿/**
  * com.sekati.utils.StringUtils
- * @version 1.2.0
+ * @version 1.2.2
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -134,11 +134,32 @@ class com.sekati.utils.StringUtils {
 	}
 	
 	/**
+	 * decode html
+	 * @param t (String)
+	 * @return String
+	 */
+	public static function htmlDecode(t:String):String {
+		t = t.split("&reg;").join("¨");
+		t = t.split("&copy;").join("©");
+		t = t.split("&rsquo;").join("'");
+		t = t.split("&ldquo;").join('"');
+		t = t.split("&rdquo;").join('"');
+		t = t.split("&hellip;").join('...');
+		t = t.split("&middot;").join('*');
+		t = t.split("&ndash;").join('-');
+		t = t.split("&trade;").join('(TM)');
+		t = t.split("&egrave;").join();
+		t = t.split("&eacute;").join('Ž.');
+		t = t.split("&bull;").join('-');
+		return t;
+	}
+	
+	/**
 	 * strip the zero off floated numbers
 	 * @param n (Number)
 	 * @return String
-	 */
-	private function stripZeroOnFloat(n:Number):String {
+	 */	
+	public static function stripZeroOnFloat(n:Number):String {
 		var str:String = "";
 		var a:Array = String(n).split(".");
 		if (a.length>1) {
@@ -147,7 +168,78 @@ class com.sekati.utils.StringUtils {
 			str = String(n);
 		}
 		return str;
-	}		
+	}	
+
+	/**
+	 * strip the zero off floated numbers and remove Scientific Notation
+	 * @param n (Number)
+	 * @return String
+	 */
+	public static function stripZeroAndRepairFloat(n:Number):String {
+		var str:String;
+		var tmp:String;
+		var isZeroFloat:Boolean;
+		// +=1 to prevent scientific notation.
+		if(n < 1) {
+			tmp = String((n + 1));
+			isZeroFloat = true;
+		} else {
+			tmp = String(n);
+			isZeroFloat = false;	
+		}
+		// if we have a float strip the zero (or +=1) off!
+		var a:Array = tmp.split(".");
+		if (a.length > 1) {
+			str = (a[0] == "1" && isZeroFloat == true) ? "."+a[1] : tmp;
+		} else {
+			str = tmp;
+		}
+		return str;
+	}
+	
+	/**
+	 * Generate a set of random characters
+	 * @param amount (Number)
+	 * @return String
+	 */
+	public static function randChar(amount:Number):String {
+		var str:String = "";
+		for(var i:Number = 0; i < amount; i++) str += chr(Math.round(Math.random()*(126-33))+33);
+		return str;
+	}
+	
+	/**
+	 * Generate a set of random LowerCase characters
+	 * @param amount (Number)
+	 * @return String
+	 */	
+	public static function randLowerChar(amount:Number):String {
+		var str:String = "";
+		for(var i:Number = 0; i < amount; i++) str += chr(Math.round(Math.random()*(122-97))+97);
+		return str;
+	}
+	
+	/**
+	 * Generate a set of random Number characters
+	 * @param amount (Number)
+	 * @return String
+	 */		
+	public static function randNum(amount:Number):String {
+		var str:String = "";
+		for(var i:Number = 0; i < amount; i++) str += chr(Math.round(Math.random()*(57-48))+48);
+		return str;
+	}
+	
+	/**
+	 * Generate a set of random Special and Number characters
+	 * @param amount (Number)
+	 * @return String
+	 */		
+	public static function randSpecialChar(amount:Number):String {
+		var str:String = "";
+		for(var i:Number = 0; i < amount; i++) str += chr(Math.round(Math.random()*(64-33))+33);
+		return str;
+	}	
 	
 	/**
 	 * strip html markup tags
