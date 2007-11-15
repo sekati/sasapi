@@ -1,6 +1,6 @@
 ﻿ /**
   * com.sekati.core.App
-  * @version 3.0.7
+  * @version 3.0.9
   * @author jason m horwitz | sekati.com
   * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
   * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -8,11 +8,12 @@
   
  import com.sekati.data.XML2Object;
  import com.sekati.events.Broadcaster;
- import com.sekati.log.OutPanel;
+ import com.sekati.log.Logger;
  import com.sekati.net.NetBase;
  import com.sekati.ui.ContextualMenu;
  import com.sekati.validate.StringValidation;
  import flash.external.ExternalInterface;
+ import TextField.StyleSheet;
  
  /**
   * static class for centralizing & storing core application instances,  listeners,
@@ -20,29 +21,6 @@
   *
   * {@code Usage:
   *	com.sekati.core.App.init();
-  * 
-  * // Core Path Constants for framework init:
-  *	PATH (String) swf absolute url
-  *	CONF_URI (String) path to configuration xml file [customize via FlashVar conf_uri] 
-  * 
-  * // config.xml Properties:
-  *	APP_NAME (String) application name
-  *	CROSSDOMAIN_URI (String) location of crossdomain.xml policy file to load
-  *	DEBUG_ENABLE (Boolean) enable DebugPanel
-  *	FLINK_ENABLE (Boolean) enable flink deeplinking
-  *	TRACK_ENABLE (Boolean) enable google tracking
-  *	KEY_ENABLE (Boolean) enable key listeners
-  *	DATA_PATH (String) path to data feeds
-  *	BUFFER_TIME (Number) flv buffer time
-  *	COPY (String) misc copy
-  *	IMG (String) misc images 
-  *  
-  * // Core Objects for framework setup:
-  *	debug (Object) DebugPanel
-  *	bc (Broadcaster) broadcaster
-  *	db (Object) storage object  to load external data in to
-  *	mot (Object) mc_tween2 preset references
-  *	col (Object) color preset references
   * }
   */
 class com.sekati.core.App {
@@ -50,13 +28,15 @@ class com.sekati.core.App {
 	private static var BOOTSTRAP_RETRY:Number = 0;
 	private static var BOOTSTRAP_RETRY_MAX:Number = 5;
 	public static var PATH:String = (NetBase.isOnline()) ? NetBase.getPath() : "";
-	public static var CONF_URI:String = (!_root.conf_uri) ? App.PATH + "config.xml" : _root.conf_uri;
+	public static var CONF_URI:String = (!_root.conf_uri) ? App.PATH + "xml/config.xml" : _root.conf_uri;
 	public static var APP_NAME:String;
 	public static var CROSSDOMAIN_URI:String;
+	public static var CSS_URI:String;
 	public static var DEBUG_ENABLE:Boolean;
 	public static var FLINK_ENABLE:Boolean;
 	public static var TRACK_ENABLE:Boolean;
 	public static var KEY_ENABLE:Boolean;
+	
 	public static var DATA_PATH:String;
 	public static var BUFFER_TIME:Number;
 	public static var COPY1:String;
@@ -66,9 +46,11 @@ class com.sekati.core.App {
 	public static var IMG2:String;
 	public static var IMG3:String;
 	public static var FLV_URI:String;
-	public static var debug:Object;
+	
+	public static var log:Logger;
 	public static var bc:Object = Broadcaster.getInstance();
 	public static var db:Object = new Object ();
+	public static var css:TextField.StyleSheet = new StyleSheet ();
 	public static var mot:Object = {e:"easeInOutQuint", e2:"easeOutQuint", e3:"easeInOutQuad", e4:"easeOutQuad", s:0.6, d:0.4};
 	public static var col:Object = {b:0x000000, w:0xFFFFFF, r:0xFF0000, g:0x00FF00, b:0x0000FF, y:0xFFFF00, c:0x00FFFF, m:0xFF00FF};
 
@@ -77,7 +59,7 @@ class com.sekati.core.App {
 	 * _bootstrapChain (Array) list of methods to run to bootstrap App
 	 *  _bootstrapCounter (Number) bootstrap stage counter
 	 */
-	private static var _bootstrapChain:Array = ['loadConfig'];
+	private static var _bootstrapChain:Array = ['loadConfig', 'loadStyle'];
 	private static var _bootstrapCounter:Number = -1;
 	
 	/**
@@ -101,6 +83,7 @@ class com.sekati.core.App {
 			App[methodName] ();
 		} else {
 			App.bc.broadcast ("onAppConfigured");
+			App.log.status("App","@@@ onAppConfigured EVENT FIRED - Application Full INIT!");
 		}
 	}
 	
@@ -133,6 +116,7 @@ class com.sekati.core.App {
 				App.APP_NAME = o.config.attributes.name + " v" + o.config.attributes.version;
 				App.CROSSDOMAIN_URI = (o.config.crossdomain_uri.data != undefined) ? o.config.crossdomain_uri.data : "crossdomain.xml";
 				App.CROSSDOMAIN_URI = (StringValidation.isURL(App.CROSSDOMAIN_URI)) ? App.CROSSDOMAIN_URI : NetBase.getPath()+App.CROSSDOMAIN_URI;
+				App.CSS_URI = o.config.css_uri.data;
 				App.DEBUG_ENABLE = (o.config.debug_enable.data == "true") ? true : false;
 				App.FLINK_ENABLE = (o.config.flink_enable.data == "true") ? true : false;
 				App.TRACK_ENABLE = (o.config.track_enable.data == "true") ? true : false;
@@ -149,16 +133,17 @@ class com.sekati.core.App {
 				App.FLV_URI = o.config.flv.data;
 				// enact config.xml settings 
 				if (App.DEBUG_ENABLE == true) {
-					App.debug = OutPanel.getInstance();
-					App.debug.trace ("@@@ Debug enabled ...");
+					App.log = Logger.getInstance();
+					App.log.isIDE = true, App.log.isLC = true, App.log.isSWF = false;					
+					App.log.trace ("App","@@@ Debug enabled ...");
 				}
 				// enable context menu                    
-				App.debug.trace ("@@@ Setting ContextMenu ...");
+				App.log.trace ("@@@ Setting ContextMenu ...");
 				var cm:ContextualMenu = new ContextualMenu(_level0);
 				cm.addItem(App.APP_NAME);
 				
 				// load crossdomain policy 
-				App.debug.trace ("@@@ loading crossdomain policy: " + App.CROSSDOMAIN_URI);
+				App.log.trace (this, "@@@ loading crossdomain policy: " + App.CROSSDOMAIN_URI);
 				System.security.loadPolicyFile (App.CROSSDOMAIN_URI);
 				delete oXML;
 				delete o;
@@ -173,15 +158,37 @@ class com.sekati.core.App {
 	}
 	
 	/**
-	* wrappers to JavaScript tracking & flink deeplinking methods
-	* @param page (String) page to be tracked 
-	* @return Void
-	*/
+	 * load App stylesheet css from {@code CSS_URI} during {@link bootstrap} sequence.
+	 * @return Void
+	 * {@code Usage:
+	 * 	tf.styleSheet = App.css;
+	 * 	tf.htmlText = "<span class='righthead_credit'>Hello World</span>";
+	 * }
+	 */
+	private static function loadStyle():Void {
+		var _styleSheet:TextField.StyleSheet = new StyleSheet ();
+		_styleSheet.onLoad = function (success:Boolean):Void {
+			if (success) {
+				App.css = _styleSheet;
+				App.log.info("App", "$$$ - Styles loaded (App.CSS) ...");
+				App.bootstrap ();
+			} else {
+				bootstrap_retry();	
+			}
+		};
+		_styleSheet.load (App.CSS_URI);
+	}
+	
+	/**
+	 * wrappers to JavaScript tracking & flink deeplinking methods
+	 * @param page (String) page to be tracked 
+	 * @return Void
+	 */
 	public static function track (page:String):Void {
 		if (!App.TRACK_ENABLE) {
 			return;
 		}
-		App.debug.trace ("* App.track: " + "(" + page + ")");
+		App.log.trace ("App", "* App.track: " + "(" + page + ")");
 		ExternalInterface.call ("urchinTracker", page);
 	}
 	
@@ -193,7 +200,7 @@ class com.sekati.core.App {
 		var j:Object = ExternalInterface.call ("getFlink");
 		var a:Array = j.split ("/");
 		var p:String = (!a[1]) ? "" : a[1];
-		App.debug.trace ("* App.getFlink (" + p + ")");
+		App.log.trace ("App", "* App.getFlink (" + p + ")");
 		var flink:Object = {page:p};
 		return flink;
 	}
@@ -207,7 +214,7 @@ class com.sekati.core.App {
 		if (!App.FLINK_ENABLE) {
 			return;
 		}
-		App.debug.trace ("* App.setFlink (" + page + ")");
+		App.log.trace ("App", "* App.setFlink (" + page + ")");
 		ExternalInterface.call ("setFlink", null, page);
 	}
 	

@@ -1,0 +1,74 @@
+/**
+ * com.sekati.display.LiquidClip
+ * @version 1.0.2
+ * @author jason m horwitz | sekati.com | tendercreative.com
+ * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
+ * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
+ */
+ 
+ import com.sekati.display.UIClip;
+ import com.sekati.display.StageDisplay;
+ import com.sekati.events.Dispatcher;
+ import com.sekati.utils.Delegate;
+
+/**
+ * LiquidClip - mixin for any subclass which needs to respond to {@link com.lti.display.StageDisplay} events. 
+ * Extends {@link com.lti.display.UIClip} to allow for easy/automatic TextField CSS styling.
+ */
+class com.sekati.display.LiquidClip extends UIClip {
+	
+	/**
+	 * Constructor
+	 */
+	public function LiquidClip() {
+		super();
+		Dispatcher.$.addEventListener(StageDisplay.onStageResizeEVENT, Delegate.create (_this, _onResize));
+		Dispatcher.$.addEventListener(StageDisplay.onStageResizeCompleteEVENT, Delegate.create (_this, _onResizeComplete));
+	}
+
+	/**
+	 * Clip has been loaded and registered on Stage.
+	 * @return Void
+	 */
+	public function configUI():Void {
+		super.configUI();
+		_onResize();
+		_onResizeComplete();
+	}
+	
+	/**
+	 * Application has been Configured (Config & Data loaded).
+	 * NOTE: Automatically applies the application stylesheet to all TextField Objects!
+	 * @return Void
+	 */
+	public function onAppConfigured():Void {
+		super.onAppConfigured();
+	}
+	
+	/**
+	 * _onResize stub: fires when Stage resize has occurs.
+	 * @return Void
+	 */
+	public function _onResize():Void {
+		//App.log.info(_this, StageDisplay.onStageResizeEVENT+" Fired!");
+	}
+	
+	/**
+	 * _onResizeComplete stub: fires {@link App.STAGE_RESIZE_DELAY} milliseconds after a Stage resize has occured.
+	 * @return Void
+	 */	
+	public function _onResizeComplete():Void {
+		//App.log.info(_this, StageDisplay.onStageResizeCompleteEVENT+" Fired!");
+	}
+	
+	/**
+	 * Remove Dispatcher listeners onUnload.
+	 * @return Void
+	 */
+	public function onUnload():Void {
+		super.onUnload();
+		Dispatcher.$.removeEventListener(StageDisplay.onStageResizeEVENT, _this);	
+		Dispatcher.$.removeEventListener(StageDisplay.onStageResizeCompleteEVENT, _this);
+	}	
+	
+}
