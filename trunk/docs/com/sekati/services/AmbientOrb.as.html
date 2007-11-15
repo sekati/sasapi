@@ -3,7 +3,7 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span><span class="comment doc">/**
 <span class="lineno" id="2">     2  </span> * com.sekati.services.AmbientOrb
-<span class="lineno" id="3">     3  </span> * @version 1.0.2
+<span class="lineno" id="3">     3  </span> * @version 1.0.3
 <span class="lineno" id="4">     4  </span> * @author jason m horwitz | sekati.com
 <span class="lineno" id="5">     5  </span> * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -194,7 +194,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="191">   191  </span>	 * orb.config ( getColorByProp("name","red"), getAnimByProp("name","heartbeat"), "Orb Test" );
 <span class="lineno" id="192">   192  </span>	 * }
 <span class="lineno" id="193">   193  </span>	 */</span>
-<span class="lineno" id="194">   194  </span>	<span class="key">public</span> <span class="key">function</span> config (colorId:String, animId:String, comment:String) {
+<span class="lineno" id="194">   194  </span>	<span class="key">public</span> <span class="key">function</span> config (colorId:String, animId:String, comment:String):Void {
 <span class="lineno" id="195">   195  </span>		<span class="key">if</span> (!_devId) {
 <span class="lineno" id="196">   196  </span>			<span class="key">throw</span> <span class="key">new</span> Error (<span class="str_const">"@@@ com.sekati.services.AmbientOrb Error: Device ID not set"</span>);
 <span class="lineno" id="197">   197  </span>			<span class="key">return</span>;
@@ -214,7 +214,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="211">   211  </span>		xm.ignoreWhite = <span class="key">true</span>;
 <span class="lineno" id="212">   212  </span>		<span class="key">var</span> query:String = _URI + <span class="str_const">"?devID="</span> + _devId + <span class="str_const">"&amp;anim="</span> + animId + <span class="str_const">"&amp;color="</span> + colorId + <span class="str_const">"&amp;comment="</span> + escape (comment);
 <span class="lineno" id="213">   213  </span>		trace (<span class="str_const">"query string: "</span> + query);
-<span class="lineno" id="214">   214  </span>		xm.onLoad = <span class="key">function</span> (success) {
+<span class="lineno" id="214">   214  </span>		xm.onLoad = <span class="key">function</span> (success:Boolean):Void {
 <span class="lineno" id="215">   215  </span>			<span class="key">var</span> xObj:Object = xparse (xm);
 <span class="lineno" id="216">   216  </span>			trace (<span class="str_const">"object returned: "</span> + xObj);
 <span class="lineno" id="217">   217  </span>		};
@@ -224,8 +224,8 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="221">   221  </span>	<span class="comment doc">/**
 <span class="lineno" id="222">   222  </span>	 * xml parser
 <span class="lineno" id="223">   223  </span>	 */</span>
-<span class="lineno" id="224">   224  </span>	<span class="key">private</span> <span class="key">function</span> xparse (n):Object {
-<span class="lineno" id="225">   225  </span>		<span class="key">var</span> o = <span class="key">new</span> String (n.firstChild.nodeValue), s, i, t, ndName;
+<span class="lineno" id="224">   224  </span>	<span class="key">private</span> <span class="key">function</span> xparse (n:XML):Object {
+<span class="lineno" id="225">   225  </span>		<span class="key">var</span> o:String = <span class="key">new</span> String (n.firstChild.nodeValue), s:Object, i:Number, t:Object;
 <span class="lineno" id="226">   226  </span>		<span class="key">for</span> (s = (o == <span class="str_const">"null"</span>) ? n.firstChild : n.childNodes[<span class="num_const">1</span>]; s != <span class="key">null</span>; s = s.nextSibling) {
 <span class="lineno" id="227">   227  </span>			t = s.childNodes.length &gt; <span class="num_const">0</span> ? arguments.callee (s) : <span class="key">new</span> String (s.nodeValue);
 <span class="lineno" id="228">   228  </span>			<span class="key">if</span> (s.firstChild.nodeValue != undefined) {

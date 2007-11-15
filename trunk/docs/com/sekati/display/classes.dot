@@ -1,9 +1,63 @@
 strict digraph class_diagram {
   rankdir=LR;
+  TypeUIClip[
+    label="UIClip",
+    URL="UIClip.html",
+    tooltip="com.sekati.display.UIClip",
+    shape="record"
+  ];
+  TypeTweenClip[
+    label="TweenClip",
+    URL="TweenClip.html",
+    tooltip="com.sekati.display.TweenClip",
+    shape="record"
+  ];
+  TypeTextDisplay[
+    label="TextDisplay",
+    URL="TextDisplay.html",
+    tooltip="com.sekati.display.TextDisplay",
+    shape="record"
+  ];
   TypeStageDisplay[
     label="StageDisplay",
     URL="StageDisplay.html",
     tooltip="com.sekati.display.StageDisplay",
+    shape="record"
+  ];
+  TypeLiquidYClip[
+    label="LiquidYClip",
+    URL="LiquidYClip.html",
+    tooltip="com.sekati.display.LiquidYClip",
+    shape="record"
+  ];
+  TypeLiquidXClip[
+    label="LiquidXClip",
+    URL="LiquidXClip.html",
+    tooltip="com.sekati.display.LiquidXClip",
+    shape="record"
+  ];
+  TypeLiquidWClip[
+    label="LiquidWClip",
+    URL="LiquidWClip.html",
+    tooltip="com.sekati.display.LiquidWClip",
+    shape="record"
+  ];
+  TypeLiquidHClip[
+    label="LiquidHClip",
+    URL="LiquidHClip.html",
+    tooltip="com.sekati.display.LiquidHClip",
+    shape="record"
+  ];
+  TypeLiquidClip[
+    label="LiquidClip",
+    URL="LiquidClip.html",
+    tooltip="com.sekati.display.LiquidClip",
+    shape="record"
+  ];
+  TypeEventClip[
+    label="EventClip",
+    URL="EventClip.html",
+    tooltip="com.sekati.display.EventClip",
     shape="record"
   ];
   TypeCoreClip[
@@ -24,6 +78,14 @@ strict digraph class_diagram {
     tooltip="com.sekati.display.AbstractClip",
     shape="record"
   ];
+  TypeEventClip -> TypeUIClip;
+  TypeCoreClip -> TypeTweenClip;
+  TypeLiquidClip -> TypeLiquidYClip;
+  TypeLiquidClip -> TypeLiquidXClip;
+  TypeLiquidClip -> TypeLiquidWClip;
+  TypeLiquidClip -> TypeLiquidHClip;
+  TypeUIClip -> TypeLiquidClip;
+  TypeCoreClip -> TypeEventClip;
   TypeBaseClip -> TypeCoreClip;
   TypeCoreClip -> TypeAbstractClip;
 }

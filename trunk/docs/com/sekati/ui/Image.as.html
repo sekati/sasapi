@@ -3,7 +3,7 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span><span class="comment doc">/**
 <span class="lineno" id="2">     2  </span> * com.sekati.ui.Image
-<span class="lineno" id="3">     3  </span> * @version 2.5.1
+<span class="lineno" id="3">     3  </span> * @version 2.5.2
 <span class="lineno" id="4">     4  </span> * @author jason m horwitz | sekati.com
 <span class="lineno" id="5">     5  </span> * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -76,7 +76,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="73">    73  </span>		<span class="key">if</span> (_this.img != undefined) {
 <span class="lineno" id="74">    74  </span>			_this.img.removeMovieClip ();
 <span class="lineno" id="75">    75  </span>		}
-<span class="lineno" id="76">    76  </span>		<span class="key">var</span> img:MovieClip = _this.createEmptyMovieClip (<span class="str_const">"img"</span>, _this.getNextHighestDepth ());
+<span class="lineno" id="76">    76  </span>		_this.createEmptyMovieClip (<span class="str_const">"img"</span>, _this.getNextHighestDepth ());
 <span class="lineno" id="77">    77  </span>		<span class="comment">// create box &amp; enable spinner if a box color was passed</span>
 <span class="lineno" id="78">    78  </span>		<span class="key">if</span> (color) {
 <span class="lineno" id="79">    79  </span>			_this.createEmptyMovieClip (<span class="str_const">"box"</span>, _this.getNextHighestDepth ());
@@ -126,10 +126,10 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="123">   123  </span>		_this.spinner._visible = <span class="key">true</span>;
 <span class="lineno" id="124">   124  </span>		_this.spinner._alpha = <span class="num_const">100</span>;
 <span class="lineno" id="125">   125  </span>		<span class="key">delete</span> _this.spinner.onEnterFrame;
-<span class="lineno" id="126">   126  </span>		_this.spinner.onEnterFrame = <span class="key">function</span> () {
+<span class="lineno" id="126">   126  </span>		_this.spinner.onEnterFrame = <span class="key">function</span> ():Void {
 <span class="lineno" id="127">   127  </span>			<span class="key">this</span>._rotation -= <span class="num_const">20</span>;
 <span class="lineno" id="128">   128  </span>		};
-<span class="lineno" id="129">   129  </span>		_this.onEnterFrame = <span class="key">function</span> () {
+<span class="lineno" id="129">   129  </span>		_this.onEnterFrame = <span class="key">function</span> ():Void {
 <span class="lineno" id="130">   130  </span>			<span class="key">var</span> l:Number = _this.img.getBytesLoaded ();
 <span class="lineno" id="131">   131  </span>			<span class="key">var</span> t:Number = _this.img.getBytesTotal ();
 <span class="lineno" id="132">   132  </span>			<span class="key">if</span> (l &gt;= t &amp;&amp; t &gt; <span class="num_const">5</span>) {
@@ -139,7 +139,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="136">   136  </span>				_this.img._alpha = <span class="num_const">0</span>;
 <span class="lineno" id="137">   137  </span>				_this.spinner._alpha = <span class="num_const">100</span>;
 <span class="lineno" id="138">   138  </span>				_this.img.alphaTo (<span class="num_const">100</span>, <span class="num_const">0</span>.<span class="num_const">6</span>, App.mot.e, <span class="num_const">0</span>.<span class="num_const">1</span>);
-<span class="lineno" id="139">   139  </span>				<span class="key">var</span> spinCb = <span class="key">function</span> () {
+<span class="lineno" id="139">   139  </span>				<span class="key">var</span> spinCb:Function = <span class="key">function</span> ():Void {
 <span class="lineno" id="140">   140  </span>					<span class="key">delete</span> _this.spinner.onEnterFrame;
 <span class="lineno" id="141">   141  </span>					_this.spinner._visible = <span class="key">false</span>;
 <span class="lineno" id="142">   142  </span>					_this.spinner._alpha = <span class="num_const">100</span>;

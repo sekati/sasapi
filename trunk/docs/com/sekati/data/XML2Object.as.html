@@ -3,7 +3,7 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span><span class="comment doc">/**
 <span class="lineno" id="2">     2  </span> * com.sekati.data.XML2Object
-<span class="lineno" id="3">     3  </span> * @version 1.0.1
+<span class="lineno" id="3">     3  </span> * @version 1.0.3
 <span class="lineno" id="4">     4  </span> * @author jason m horwitz | sekati.com
 <span class="lineno" id="5">     5  </span> * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -61,9 +61,9 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="58">    58  </span>	<span class="comment doc">/**
 <span class="lineno" id="59">    59  </span>	 * core of the XML2Object class
 <span class="lineno" id="60">    60  </span>	 */</span>
-<span class="lineno" id="61">    61  </span>	<span class="key">private</span> <span class="key">function</span> translateXML (from, path, name, position) {
+<span class="lineno" id="61">    61  </span>	<span class="key">private</span> <span class="key">function</span> translateXML (from:Object, path:Object, name:Object, position:Object):Object {
 <span class="lineno" id="62">    62  </span>		<span class="key">var</span> xmlName:String;
-<span class="lineno" id="63">    63  </span>		<span class="key">var</span> nodes, node, old_path;
+<span class="lineno" id="63">    63  </span>		<span class="key">var</span> nodes:Object, node:Object, old_path:Object;
 <span class="lineno" id="64">    64  </span>		<span class="key">if</span> (path == undefined) {
 <span class="lineno" id="65">    65  </span>			path = <span class="key">this</span>;
 <span class="lineno" id="66">    66  </span>			name = <span class="str_const">"oResult"</span>;
@@ -83,7 +83,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="80">    80  </span>				node = nodes.shift ();
 <span class="lineno" id="81">    81  </span>				xmlName = node.nodeName;
 <span class="lineno" id="82">    82  </span>				<span class="key">if</span> (xmlName != undefined) {
-<span class="lineno" id="83">    83  </span>					<span class="key">var</span> __obj__ = <span class="key">new</span> Object ();
+<span class="lineno" id="83">    83  </span>					<span class="key">var</span> __obj__:Object = <span class="key">new</span> Object ();
 <span class="lineno" id="84">    84  </span>					__obj__.attributes = node.attributes;
 <span class="lineno" id="85">    85  </span>					__obj__.data = node.firstChild.nodeValue;
 <span class="lineno" id="86">    86  </span>					<span class="key">if</span> (position != undefined) {
@@ -95,7 +95,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="92">    92  </span>							name = node.nodeName;
 <span class="lineno" id="93">    93  </span>							position = path[xmlName].length - <span class="num_const">1</span>;
 <span class="lineno" id="94">    94  </span>						} <span class="key">else</span> {
-<span class="lineno" id="95">    95  </span>							<span class="key">var</span> copyObj = path[xmlName];
+<span class="lineno" id="95">    95  </span>							<span class="key">var</span> copyObj:Object = path[xmlName];
 <span class="lineno" id="96">    96  </span>							path[xmlName] = <span class="key">new</span> Array ();
 <span class="lineno" id="97">    97  </span>							path[xmlName].push (copyObj);
 <span class="lineno" id="98">    98  </span>							path[xmlName].push (__obj__);

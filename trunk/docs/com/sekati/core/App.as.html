@@ -3,7 +3,7 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span> <span class="comment doc">/**
 <span class="lineno" id="2">     2  </span>  * com.sekati.core.App
-<span class="lineno" id="3">     3  </span>  * @version 3.0.5
+<span class="lineno" id="3">     3  </span>  * @version 3.0.9
 <span class="lineno" id="4">     4  </span>  * @author jason m horwitz | sekati.com
 <span class="lineno" id="5">     5  </span>  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span>  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -11,115 +11,115 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="8">     8  </span>  
 <span class="lineno" id="9">     9  </span> <span class="key">import</span> com.sekati.data.XML2Object;
 <span class="lineno" id="10">    10  </span> <span class="key">import</span> com.sekati.events.Broadcaster;
-<span class="lineno" id="11">    11  </span> <span class="key">import</span> com.sekati.log.OutPanel;
+<span class="lineno" id="11">    11  </span> <span class="key">import</span> com.sekati.log.Logger;
 <span class="lineno" id="12">    12  </span> <span class="key">import</span> com.sekati.net.NetBase;
 <span class="lineno" id="13">    13  </span> <span class="key">import</span> com.sekati.ui.ContextualMenu;
 <span class="lineno" id="14">    14  </span> <span class="key">import</span> com.sekati.validate.StringValidation;
 <span class="lineno" id="15">    15  </span> <span class="key">import</span> flash.external.ExternalInterface;
-<span class="lineno" id="16">    16  </span> 
-<span class="lineno" id="17">    17  </span> <span class="comment doc">/**
-<span class="lineno" id="18">    18  </span>  * static class for centralizing &amp; storing core application instances,  listeners,
-<span class="lineno" id="19">    19  </span>  * broadcasters, debuggers, objects, vars &amp; constants.
-<span class="lineno" id="20">    20  </span>  *
-<span class="lineno" id="21">    21  </span>  * {@code Usage:
-<span class="lineno" id="22">    22  </span>  *	com.sekati.core.App.init();
-<span class="lineno" id="23">    23  </span>  * 
-<span class="lineno" id="24">    24  </span>  * // Core Path Constants for framework init:
-<span class="lineno" id="25">    25  </span>  *	PATH (String) swf absolute url
-<span class="lineno" id="26">    26  </span>  *	CONF_URI (String) path to configuration xml file [customize via FlashVar conf_uri] 
-<span class="lineno" id="27">    27  </span>  * 
-<span class="lineno" id="28">    28  </span>  * // config.xml Properties:
-<span class="lineno" id="29">    29  </span>  *	APP_NAME (String) application name
-<span class="lineno" id="30">    30  </span>  *	CROSSDOMAIN_URI (String) location of crossdomain.xml policy file to load
-<span class="lineno" id="31">    31  </span>  *	DEBUG_ENABLE (Boolean) enable DebugPanel
-<span class="lineno" id="32">    32  </span>  *	FLINK_ENABLE (Boolean) enable flink deeplinking
-<span class="lineno" id="33">    33  </span>  *	TRACK_ENABLE (Boolean) enable google tracking
-<span class="lineno" id="34">    34  </span>  *	KEY_ENABLE (Boolean) enable key listeners
-<span class="lineno" id="35">    35  </span>  *	DATA_PATH (String) path to data feeds
-<span class="lineno" id="36">    36  </span>  *	BUFFER_TIME (Number) flv buffer time
-<span class="lineno" id="37">    37  </span>  *	COPY (String) misc copy
-<span class="lineno" id="38">    38  </span>  *	IMG (String) misc images 
-<span class="lineno" id="39">    39  </span>  *  
-<span class="lineno" id="40">    40  </span>  * // Core Objects for framework setup:
-<span class="lineno" id="41">    41  </span>  *	debug (Object) DebugPanel
-<span class="lineno" id="42">    42  </span>  *	bc (Broadcaster) broadcaster
-<span class="lineno" id="43">    43  </span>  *	db (Object) storage object  to load external data in to
-<span class="lineno" id="44">    44  </span>  *	mot (Object) mc_tween2 preset references
-<span class="lineno" id="45">    45  </span>  *	col (Object) color preset references
-<span class="lineno" id="46">    46  </span>  * }
-<span class="lineno" id="47">    47  </span>  */</span>
-<span class="lineno" id="48">    48  </span><span class="key">class</span> com.sekati.core.App {
-<span class="lineno" id="49">    49  </span>
-<span class="lineno" id="50">    50  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> PATH:String = (NetBase.isOnline()) ? NetBase.getPath() : <span class="str_const">""</span>;
-<span class="lineno" id="51">    51  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> CONF_URI:String = (!_root.conf_uri) ? App.PATH + <span class="str_const">"config.xml"</span> : _root.conf_uri;
-<span class="lineno" id="52">    52  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> APP_NAME:String;
-<span class="lineno" id="53">    53  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> CROSSDOMAIN_URI:String;
-<span class="lineno" id="54">    54  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> DEBUG_ENABLE:Boolean;
-<span class="lineno" id="55">    55  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> FLINK_ENABLE:Boolean;
-<span class="lineno" id="56">    56  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> TRACK_ENABLE:Boolean;
-<span class="lineno" id="57">    57  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> KEY_ENABLE:Boolean;
-<span class="lineno" id="58">    58  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> DATA_PATH:String;
-<span class="lineno" id="59">    59  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> BUFFER_TIME:Number;
-<span class="lineno" id="60">    60  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> COPY1:String;
-<span class="lineno" id="61">    61  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> COPY2:String;
-<span class="lineno" id="62">    62  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> COPY3:String;
-<span class="lineno" id="63">    63  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> IMG1:String;
-<span class="lineno" id="64">    64  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> IMG2:String;
-<span class="lineno" id="65">    65  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> IMG3:String;
-<span class="lineno" id="66">    66  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> FLV_URI:String;
-<span class="lineno" id="67">    67  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> debug:Object;
-<span class="lineno" id="68">    68  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> bc:Object = Broadcaster.getInstance();
-<span class="lineno" id="69">    69  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> db:Object = <span class="key">new</span> Object ();
-<span class="lineno" id="70">    70  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> mot:Object = {e:<span class="str_const">"easeInOutQuint"</span>, e2:<span class="str_const">"easeOutQuint"</span>, e3:<span class="str_const">"easeInOutQuad"</span>, e4:<span class="str_const">"easeOutQuad"</span>, s:<span class="num_const">0</span>.<span class="num_const">6</span>, d:<span class="num_const">0</span>.<span class="num_const">4</span>};
-<span class="lineno" id="71">    71  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> col:Object = {b:0x000000, w:0xFFFFFF, r:0xFF0000, g:0x00FF00, b:0x0000FF, y:0xFFFF00, c:0x00FFFF, m:0xFF00FF};
-<span class="lineno" id="72">    72  </span>
-<span class="lineno" id="73">    73  </span>	<span class="comment doc">/**
-<span class="lineno" id="74">    74  </span>	 * App bootstrap props
-<span class="lineno" id="75">    75  </span>	 * _bootstrapChain (Array) list of methods to run to bootstrap App
-<span class="lineno" id="76">    76  </span>	 *  _bootstrapCounter (Number) bootstrap stage counter
-<span class="lineno" id="77">    77  </span>	 */</span>
-<span class="lineno" id="78">    78  </span>	<span class="key">private</span> <span class="key">static</span> <span class="key">var</span> _bootstrapChain:Array = [<span class="str_const">"loadConfig"</span>];
-<span class="lineno" id="79">    79  </span>	<span class="key">private</span> <span class="key">static</span> <span class="key">var</span> _bootstrapCounter:Number = -<span class="num_const">1</span>;
-<span class="lineno" id="80">    80  </span>	
-<span class="lineno" id="81">    81  </span>	<span class="comment doc">/**
-<span class="lineno" id="82">    82  </span>	 * init begins the bootstrap process
-<span class="lineno" id="83">    83  </span>	 * @return Void
-<span class="lineno" id="84">    84  </span>	 */</span>
-<span class="lineno" id="85">    85  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> init ():Void {
-<span class="lineno" id="86">    86  </span>		trace (<span class="str_const">"App init ..."</span>);
-<span class="lineno" id="87">    87  </span>		App.bc.broadcast (<span class="str_const">"onBootstrap"</span>);
-<span class="lineno" id="88">    88  </span>		App.bootstrap ();
-<span class="lineno" id="89">    89  </span>	}
-<span class="lineno" id="90">    90  </span>	
-<span class="lineno" id="91">    91  </span>	<span class="comment doc">/**
-<span class="lineno" id="92">    92  </span>	 *loop through bootstrapChain method array
-<span class="lineno" id="93">    93  </span>	 * @return Void
-<span class="lineno" id="94">    94  </span>	 */</span>
-<span class="lineno" id="95">    95  </span>	<span class="key">private</span> <span class="key">static</span> <span class="key">function</span> bootstrap ():Void {
-<span class="lineno" id="96">    96  </span>		App._bootstrapCounter++;
-<span class="lineno" id="97">    97  </span>		<span class="key">if</span> (_bootstrapCounter &lt; _bootstrapChain.length) {
-<span class="lineno" id="98">    98  </span>			<span class="key">var</span> methodName:String = App._bootstrapChain[App._bootstrapCounter];
-<span class="lineno" id="99">    99  </span>			App[methodName] ();
-<span class="lineno" id="100">   100  </span>		} <span class="key">else</span> {
-<span class="lineno" id="101">   101  </span>			App.bc.broadcast (<span class="str_const">"onAppConfigured"</span>);
-<span class="lineno" id="102">   102  </span>		}
-<span class="lineno" id="103">   103  </span>	}
-<span class="lineno" id="104">   104  </span>	
-<span class="lineno" id="105">   105  </span>	<span class="comment doc">/**
-<span class="lineno" id="106">   106  </span>	 * loads and parses config.xml then broadcasts "onConfig"
-<span class="lineno" id="107">   107  </span>	 * @return Void
-<span class="lineno" id="108">   108  </span>	 */</span>
-<span class="lineno" id="109">   109  </span>	<span class="key">private</span> <span class="key">static</span> <span class="key">function</span> loadConfig ():Void {
-<span class="lineno" id="110">   110  </span>		<span class="key">var</span> oXML:XML = <span class="key">new</span> XML ();
-<span class="lineno" id="111">   111  </span>		<span class="key">var</span> o:Object = <span class="key">new</span> Object ();
-<span class="lineno" id="112">   112  </span>		oXML.ignoreWhite = <span class="key">true</span>;
-<span class="lineno" id="113">   113  </span>		<span class="key">var</span> xmlLoaded:Function = <span class="key">function</span> (success:Boolean):Void {
-<span class="lineno" id="114">   114  </span>			<span class="key">if</span> (success) {
-<span class="lineno" id="115">   115  </span>				o = <span class="key">new</span> XML2Object ().parseXML (oXML);
-<span class="lineno" id="116">   116  </span>				<span class="comment">// dump object data into static App vars</span>
-<span class="lineno" id="117">   117  </span>				App.APP_NAME = o.config.attributes.name + <span class="str_const">" v"</span> + o.config.attributes.version;
-<span class="lineno" id="118">   118  </span>				App.CROSSDOMAIN_URI = (o.config.crossdomain_uri.data != undefined) ? o.config.crossdomain_uri.data : <span class="str_const">"crossdomain.xml"</span>;
-<span class="lineno" id="119">   119  </span>				App.CROSSDOMAIN_URI = (StringValidation.isURL(App.CROSSDOMAIN_URI)) ? App.CROSSDOMAIN_URI : NetBase.getPath()+App.CROSSDOMAIN_URI;
+<span class="lineno" id="16">    16  </span> <span class="key">import</span> TextField.StyleSheet;
+<span class="lineno" id="17">    17  </span> 
+<span class="lineno" id="18">    18  </span> <span class="comment doc">/**
+<span class="lineno" id="19">    19  </span>  * static class for centralizing &amp; storing core application instances,  listeners,
+<span class="lineno" id="20">    20  </span>  * broadcasters, debuggers, objects, vars &amp; constants.
+<span class="lineno" id="21">    21  </span>  *
+<span class="lineno" id="22">    22  </span>  * {@code Usage:
+<span class="lineno" id="23">    23  </span>  *	com.sekati.core.App.init();
+<span class="lineno" id="24">    24  </span>  * }
+<span class="lineno" id="25">    25  </span>  */</span>
+<span class="lineno" id="26">    26  </span><span class="key">class</span> com.sekati.core.App {
+<span class="lineno" id="27">    27  </span>	
+<span class="lineno" id="28">    28  </span>	<span class="key">private</span> <span class="key">static</span> <span class="key">var</span> BOOTSTRAP_RETRY:Number = <span class="num_const">0</span>;
+<span class="lineno" id="29">    29  </span>	<span class="key">private</span> <span class="key">static</span> <span class="key">var</span> BOOTSTRAP_RETRY_MAX:Number = <span class="num_const">5</span>;
+<span class="lineno" id="30">    30  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> PATH:String = (NetBase.isOnline()) ? NetBase.getPath() : <span class="str_const">""</span>;
+<span class="lineno" id="31">    31  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> CONF_URI:String = (!_root.conf_uri) ? App.PATH + <span class="str_const">"xml/config.xml"</span> : _root.conf_uri;
+<span class="lineno" id="32">    32  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> APP_NAME:String;
+<span class="lineno" id="33">    33  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> CROSSDOMAIN_URI:String;
+<span class="lineno" id="34">    34  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> CSS_URI:String;
+<span class="lineno" id="35">    35  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> DEBUG_ENABLE:Boolean;
+<span class="lineno" id="36">    36  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> FLINK_ENABLE:Boolean;
+<span class="lineno" id="37">    37  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> TRACK_ENABLE:Boolean;
+<span class="lineno" id="38">    38  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> KEY_ENABLE:Boolean;
+<span class="lineno" id="39">    39  </span>	
+<span class="lineno" id="40">    40  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> DATA_PATH:String;
+<span class="lineno" id="41">    41  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> BUFFER_TIME:Number;
+<span class="lineno" id="42">    42  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> COPY1:String;
+<span class="lineno" id="43">    43  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> COPY2:String;
+<span class="lineno" id="44">    44  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> COPY3:String;
+<span class="lineno" id="45">    45  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> IMG1:String;
+<span class="lineno" id="46">    46  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> IMG2:String;
+<span class="lineno" id="47">    47  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> IMG3:String;
+<span class="lineno" id="48">    48  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> FLV_URI:String;
+<span class="lineno" id="49">    49  </span>	
+<span class="lineno" id="50">    50  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> log:Logger;
+<span class="lineno" id="51">    51  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> bc:Object = Broadcaster.getInstance();
+<span class="lineno" id="52">    52  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> db:Object = <span class="key">new</span> Object ();
+<span class="lineno" id="53">    53  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> css:TextField.StyleSheet = <span class="key">new</span> StyleSheet ();
+<span class="lineno" id="54">    54  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> mot:Object = {e:<span class="str_const">"easeInOutQuint"</span>, e2:<span class="str_const">"easeOutQuint"</span>, e3:<span class="str_const">"easeInOutQuad"</span>, e4:<span class="str_const">"easeOutQuad"</span>, s:<span class="num_const">0</span>.<span class="num_const">6</span>, d:<span class="num_const">0</span>.<span class="num_const">4</span>};
+<span class="lineno" id="55">    55  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> col:Object = {b:0x000000, w:0xFFFFFF, r:0xFF0000, g:0x00FF00, b:0x0000FF, y:0xFFFF00, c:0x00FFFF, m:0xFF00FF};
+<span class="lineno" id="56">    56  </span>
+<span class="lineno" id="57">    57  </span>	<span class="comment doc">/**
+<span class="lineno" id="58">    58  </span>	 * App bootstrap props
+<span class="lineno" id="59">    59  </span>	 * _bootstrapChain (Array) list of methods to run to bootstrap App
+<span class="lineno" id="60">    60  </span>	 *  _bootstrapCounter (Number) bootstrap stage counter
+<span class="lineno" id="61">    61  </span>	 */</span>
+<span class="lineno" id="62">    62  </span>	<span class="key">private</span> <span class="key">static</span> <span class="key">var</span> _bootstrapChain:Array = [<span class="str_const">"loadConfig"</span>, <span class="str_const">"loadStyle"</span>];
+<span class="lineno" id="63">    63  </span>	<span class="key">private</span> <span class="key">static</span> <span class="key">var</span> _bootstrapCounter:Number = -<span class="num_const">1</span>;
+<span class="lineno" id="64">    64  </span>	
+<span class="lineno" id="65">    65  </span>	<span class="comment doc">/**
+<span class="lineno" id="66">    66  </span>	 * init begins the bootstrap process
+<span class="lineno" id="67">    67  </span>	 * @return Void
+<span class="lineno" id="68">    68  </span>	 */</span>
+<span class="lineno" id="69">    69  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> init ():Void {
+<span class="lineno" id="70">    70  </span>		trace (<span class="str_const">"App init ..."</span>);
+<span class="lineno" id="71">    71  </span>		App.bc.broadcast (<span class="str_const">"onBootstrap"</span>);
+<span class="lineno" id="72">    72  </span>		App.bootstrap ();
+<span class="lineno" id="73">    73  </span>	}
+<span class="lineno" id="74">    74  </span>	
+<span class="lineno" id="75">    75  </span>	<span class="comment doc">/**
+<span class="lineno" id="76">    76  </span>	 *loop through bootstrapChain method array
+<span class="lineno" id="77">    77  </span>	 * @return Void
+<span class="lineno" id="78">    78  </span>	 */</span>
+<span class="lineno" id="79">    79  </span>	<span class="key">private</span> <span class="key">static</span> <span class="key">function</span> bootstrap ():Void {
+<span class="lineno" id="80">    80  </span>		App._bootstrapCounter++;
+<span class="lineno" id="81">    81  </span>		<span class="key">if</span> (_bootstrapCounter &lt; _bootstrapChain.length) {
+<span class="lineno" id="82">    82  </span>			<span class="key">var</span> methodName:String = App._bootstrapChain[App._bootstrapCounter];
+<span class="lineno" id="83">    83  </span>			App[methodName] ();
+<span class="lineno" id="84">    84  </span>		} <span class="key">else</span> {
+<span class="lineno" id="85">    85  </span>			App.bc.broadcast (<span class="str_const">"onAppConfigured"</span>);
+<span class="lineno" id="86">    86  </span>			App.log.status(<span class="str_const">"App"</span>,<span class="str_const">"@@@ onAppConfigured EVENT FIRED - Application Full INIT!"</span>);
+<span class="lineno" id="87">    87  </span>		}
+<span class="lineno" id="88">    88  </span>	}
+<span class="lineno" id="89">    89  </span>	
+<span class="lineno" id="90">    90  </span>	<span class="comment doc">/**
+<span class="lineno" id="91">    91  </span>	 * a method in the bootstrap chain failed - make retry attempts at each phase.
+<span class="lineno" id="92">    92  </span>	 * @return Void
+<span class="lineno" id="93">    93  </span>	 */</span>
+<span class="lineno" id="94">    94  </span>	<span class="key">private</span> <span class="key">static</span> <span class="key">function</span> bootstrap_retry():Void {
+<span class="lineno" id="95">    95  </span>		<span class="key">if</span> (App.BOOTSTRAP_RETRY &lt; App.BOOTSTRAP_RETRY_MAX) {
+<span class="lineno" id="96">    96  </span>				trace (<span class="str_const">"!!! BOOTSTRAP FAILED ON "</span>+_bootstrapChain[_bootstrapCounter]+<span class="str_const">"() !!! ::: BOOTSTRAP RETRY ATTEMPT: ["</span>+App.BOOTSTRAP_RETRY+<span class="str_const">"/"</span>+App.BOOTSTRAP_RETRY_MAX+<span class="str_const">"]"</span>);
+<span class="lineno" id="97">    97  </span>				App.BOOTSTRAP_RETRY++;
+<span class="lineno" id="98">    98  </span>				App[_bootstrapChain[_bootstrapCounter]] ();
+<span class="lineno" id="99">    99  </span>		} <span class="key">else</span> {
+<span class="lineno" id="100">   100  </span>			trace (<span class="str_const">"!!! BOOTSTRAP FATALLY BOMBED WITH  "</span>+_bootstrapChain+<span class="str_const">"() !!! ::: BOOTSTRAP RETRY ATTEMPT: ["</span>+App.BOOTSTRAP_RETRY+<span class="str_const">"/"</span>+App.BOOTSTRAP_RETRY_MAX+<span class="str_const">"] ::: Sorry, I tried but the application failed to boot."</span>);
+<span class="lineno" id="101">   101  </span>		}
+<span class="lineno" id="102">   102  </span>	}	
+<span class="lineno" id="103">   103  </span>	
+<span class="lineno" id="104">   104  </span>	<span class="comment doc">/**
+<span class="lineno" id="105">   105  </span>	 * loads and parses config.xml then broadcasts "onConfig"
+<span class="lineno" id="106">   106  </span>	 * @return Void
+<span class="lineno" id="107">   107  </span>	 */</span>
+<span class="lineno" id="108">   108  </span>	<span class="key">private</span> <span class="key">static</span> <span class="key">function</span> loadConfig ():Void {
+<span class="lineno" id="109">   109  </span>		<span class="key">var</span> oXML:XML = <span class="key">new</span> XML ();
+<span class="lineno" id="110">   110  </span>		<span class="key">var</span> o:Object = <span class="key">new</span> Object ();
+<span class="lineno" id="111">   111  </span>		oXML.ignoreWhite = <span class="key">true</span>;
+<span class="lineno" id="112">   112  </span>		<span class="key">var</span> xmlLoaded:Function = <span class="key">function</span> (success:Boolean):Void {
+<span class="lineno" id="113">   113  </span>			<span class="key">if</span> (success) {
+<span class="lineno" id="114">   114  </span>				o = <span class="key">new</span> XML2Object ().parseXML (oXML);
+<span class="lineno" id="115">   115  </span>				<span class="comment">// dump object data into static App vars</span>
+<span class="lineno" id="116">   116  </span>				App.APP_NAME = o.config.attributes.name + <span class="str_const">" v"</span> + o.config.attributes.version;
+<span class="lineno" id="117">   117  </span>				App.CROSSDOMAIN_URI = (o.config.crossdomain_uri.data != undefined) ? o.config.crossdomain_uri.data : <span class="str_const">"crossdomain.xml"</span>;
+<span class="lineno" id="118">   118  </span>				App.CROSSDOMAIN_URI = (StringValidation.isURL(App.CROSSDOMAIN_URI)) ? App.CROSSDOMAIN_URI : NetBase.getPath()+App.CROSSDOMAIN_URI;
+<span class="lineno" id="119">   119  </span>				App.CSS_URI = o.config.css_uri.data;
 <span class="lineno" id="120">   120  </span>				App.DEBUG_ENABLE = (o.config.debug_enable.data == <span class="str_const">"true"</span>) ? <span class="key">true</span> : <span class="key">false</span>;
 <span class="lineno" id="121">   121  </span>				App.FLINK_ENABLE = (o.config.flink_enable.data == <span class="str_const">"true"</span>) ? <span class="key">true</span> : <span class="key">false</span>;
 <span class="lineno" id="122">   122  </span>				App.TRACK_ENABLE = (o.config.track_enable.data == <span class="str_const">"true"</span>) ? <span class="key">true</span> : <span class="key">false</span>;
@@ -136,75 +136,99 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="133">   133  </span>				App.FLV_URI = o.config.flv.data;
 <span class="lineno" id="134">   134  </span>				<span class="comment">// enact config.xml settings </span>
 <span class="lineno" id="135">   135  </span>				<span class="key">if</span> (App.DEBUG_ENABLE == <span class="key">true</span>) {
-<span class="lineno" id="136">   136  </span>					App.debug = OutPanel.getInstance();
-<span class="lineno" id="137">   137  </span>					App.debug.trace (<span class="str_const">"@@@ Debug enabled ..."</span>);
-<span class="lineno" id="138">   138  </span>				}
-<span class="lineno" id="139">   139  </span>				<span class="comment">// enable context menu                    </span>
-<span class="lineno" id="140">   140  </span>				App.debug.trace (<span class="str_const">"@@@ Setting ContextMenu ..."</span>);
-<span class="lineno" id="141">   141  </span>				<span class="key">var</span> cm:ContextualMenu = <span class="key">new</span> ContextualMenu(_level0);
-<span class="lineno" id="142">   142  </span>				cm.addItem(App.APP_NAME);
-<span class="lineno" id="143">   143  </span>				
-<span class="lineno" id="144">   144  </span>				<span class="comment">// load crossdomain policy </span>
-<span class="lineno" id="145">   145  </span>				App.debug.trace (<span class="str_const">"@@@ loading crossdomain policy: "</span> + App.CROSSDOMAIN_URI);
-<span class="lineno" id="146">   146  </span>				System.security.loadPolicyFile (App.CROSSDOMAIN_URI);
-<span class="lineno" id="147">   147  </span>				<span class="key">delete</span> oXML;
-<span class="lineno" id="148">   148  </span>				<span class="key">delete</span> o;
-<span class="lineno" id="149">   149  </span>				App.bc.broadcast (<span class="str_const">"onConfig"</span>);
-<span class="lineno" id="150">   150  </span>				App.bootstrap ();
-<span class="lineno" id="151">   151  </span>			}
-<span class="lineno" id="152">   152  </span>		};
-<span class="lineno" id="153">   153  </span>		oXML.onLoad = xmlLoaded;
-<span class="lineno" id="154">   154  </span>		oXML.load (App.CONF_URI);
-<span class="lineno" id="155">   155  </span>	}
-<span class="lineno" id="156">   156  </span>	
-<span class="lineno" id="157">   157  </span>	<span class="comment doc">/**
-<span class="lineno" id="158">   158  </span>	* wrappers to JavaScript tracking &amp; flink deeplinking methods
-<span class="lineno" id="159">   159  </span>	* @param page (String) page to be tracked 
-<span class="lineno" id="160">   160  </span>	* @return Void
-<span class="lineno" id="161">   161  </span>	*/</span>
-<span class="lineno" id="162">   162  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> track (page:String):Void {
-<span class="lineno" id="163">   163  </span>		<span class="key">if</span> (!App.TRACK_ENABLE) {
-<span class="lineno" id="164">   164  </span>			<span class="key">return</span>;
-<span class="lineno" id="165">   165  </span>		}
-<span class="lineno" id="166">   166  </span>		App.debug.trace (<span class="str_const">"* App.track: "</span> + <span class="str_const">"("</span> + page + <span class="str_const">")"</span>);
-<span class="lineno" id="167">   167  </span>		ExternalInterface.call (<span class="str_const">"urchinTracker"</span>, page);
-<span class="lineno" id="168">   168  </span>	}
-<span class="lineno" id="169">   169  </span>	
-<span class="lineno" id="170">   170  </span>	<span class="comment doc">/**
-<span class="lineno" id="171">   171  </span>	 * wrapper to getFlink JavaScript lib - returns object from deeplink anchor
-<span class="lineno" id="172">   172  </span>	 * @return Object
-<span class="lineno" id="173">   173  </span>	 */</span>
-<span class="lineno" id="174">   174  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> getFlink ():Object {
-<span class="lineno" id="175">   175  </span>		<span class="key">var</span> j = ExternalInterface.call (<span class="str_const">"getFlink"</span>);
-<span class="lineno" id="176">   176  </span>		<span class="key">var</span> a:Array = j.split (<span class="str_const">"/"</span>);
-<span class="lineno" id="177">   177  </span>		<span class="key">var</span> p:String = (!a[<span class="num_const">1</span>]) ? <span class="str_const">""</span> : a[<span class="num_const">1</span>];
-<span class="lineno" id="178">   178  </span>		App.debug.trace (<span class="str_const">"* App.getFlink ("</span> + p + <span class="str_const">")"</span>);
-<span class="lineno" id="179">   179  </span>		<span class="key">var</span> flink:Object = {page:p};
-<span class="lineno" id="180">   180  </span>		<span class="key">return</span> flink;
-<span class="lineno" id="181">   181  </span>	}
-<span class="lineno" id="182">   182  </span>	
-<span class="lineno" id="183">   183  </span>	<span class="comment doc">/**
-<span class="lineno" id="184">   184  </span>	 * wrapper to setFlink JavaScript lib - sets the current deeplink anchor
-<span class="lineno" id="185">   185  </span>	 * @param page (String)
-<span class="lineno" id="186">   186  </span>	 * @return Void
-<span class="lineno" id="187">   187  </span>	 */</span>
-<span class="lineno" id="188">   188  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> setFlink (page:String):Void {
-<span class="lineno" id="189">   189  </span>		<span class="key">if</span> (!App.FLINK_ENABLE) {
-<span class="lineno" id="190">   190  </span>			<span class="key">return</span>;
-<span class="lineno" id="191">   191  </span>		}
-<span class="lineno" id="192">   192  </span>		App.debug.trace (<span class="str_const">"* App.setFlink ("</span> + page + <span class="str_const">")"</span>);
-<span class="lineno" id="193">   193  </span>		ExternalInterface.call (<span class="str_const">"setFlink"</span>, <span class="key">null</span>, page);
-<span class="lineno" id="194">   194  </span>	}
-<span class="lineno" id="195">   195  </span>	
-<span class="lineno" id="196">   196  </span>	<span class="comment doc">/**
-<span class="lineno" id="197">   197  </span>	 * wrapper to Flink JavaScript lib - returns the entire current url
-<span class="lineno" id="198">   198  </span>	 * @return String
-<span class="lineno" id="199">   199  </span>	 */</span>
-<span class="lineno" id="200">   200  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> getRef ():String {
-<span class="lineno" id="201">   201  </span>		<span class="key">var</span> r = ExternalInterface.call (<span class="str_const">"getRef"</span>);
-<span class="lineno" id="202">   202  </span>		<span class="key">return</span> r;
-<span class="lineno" id="203">   203  </span>	}
-<span class="lineno" id="204">   204  </span>
-<span class="lineno" id="205">   205  </span>	<span class="key">private</span> <span class="key">function</span> App() {
+<span class="lineno" id="136">   136  </span>					App.log = Logger.getInstance();
+<span class="lineno" id="137">   137  </span>					App.log.isIDE = <span class="key">true</span>, App.log.isLC = <span class="key">true</span>, App.log.isSWF = <span class="key">false</span>;					
+<span class="lineno" id="138">   138  </span>					App.log.trace (<span class="str_const">"App"</span>,<span class="str_const">"@@@ Debug enabled ..."</span>);
+<span class="lineno" id="139">   139  </span>				}
+<span class="lineno" id="140">   140  </span>				<span class="comment">// enable context menu                    </span>
+<span class="lineno" id="141">   141  </span>				App.log.trace (<span class="str_const">"@@@ Setting ContextMenu ..."</span>);
+<span class="lineno" id="142">   142  </span>				<span class="key">var</span> cm:ContextualMenu = <span class="key">new</span> ContextualMenu(_level0);
+<span class="lineno" id="143">   143  </span>				cm.addItem(App.APP_NAME);
+<span class="lineno" id="144">   144  </span>				
+<span class="lineno" id="145">   145  </span>				<span class="comment">// load crossdomain policy </span>
+<span class="lineno" id="146">   146  </span>				App.log.trace (<span class="key">this</span>, <span class="str_const">"@@@ loading crossdomain policy: "</span> + App.CROSSDOMAIN_URI);
+<span class="lineno" id="147">   147  </span>				System.security.loadPolicyFile (App.CROSSDOMAIN_URI);
+<span class="lineno" id="148">   148  </span>				<span class="key">delete</span> oXML;
+<span class="lineno" id="149">   149  </span>				<span class="key">delete</span> o;
+<span class="lineno" id="150">   150  </span>				App.bc.broadcast (<span class="str_const">"onConfig"</span>);
+<span class="lineno" id="151">   151  </span>				App.bootstrap ();
+<span class="lineno" id="152">   152  </span>			} <span class="key">else</span> {
+<span class="lineno" id="153">   153  </span>				bootstrap_retry();	
+<span class="lineno" id="154">   154  </span>			}
+<span class="lineno" id="155">   155  </span>		};
+<span class="lineno" id="156">   156  </span>		oXML.onLoad = xmlLoaded;
+<span class="lineno" id="157">   157  </span>		oXML.load (App.CONF_URI);
+<span class="lineno" id="158">   158  </span>	}
+<span class="lineno" id="159">   159  </span>	
+<span class="lineno" id="160">   160  </span>	<span class="comment doc">/**
+<span class="lineno" id="161">   161  </span>	 * load App stylesheet css from {@code CSS_URI} during {@link bootstrap} sequence.
+<span class="lineno" id="162">   162  </span>	 * @return Void
+<span class="lineno" id="163">   163  </span>	 * {@code Usage:
+<span class="lineno" id="164">   164  </span>	 * 	tf.styleSheet = App.css;
+<span class="lineno" id="165">   165  </span>	 * 	tf.htmlText = "&lt;span class='righthead_credit'&gt;Hello World&lt;/span&gt;";
+<span class="lineno" id="166">   166  </span>	 * }
+<span class="lineno" id="167">   167  </span>	 */</span>
+<span class="lineno" id="168">   168  </span>	<span class="key">private</span> <span class="key">static</span> <span class="key">function</span> loadStyle():Void {
+<span class="lineno" id="169">   169  </span>		<span class="key">var</span> _styleSheet:TextField.StyleSheet = <span class="key">new</span> StyleSheet ();
+<span class="lineno" id="170">   170  </span>		_styleSheet.onLoad = <span class="key">function</span> (success:Boolean):Void {
+<span class="lineno" id="171">   171  </span>			<span class="key">if</span> (success) {
+<span class="lineno" id="172">   172  </span>				App.css = _styleSheet;
+<span class="lineno" id="173">   173  </span>				App.log.info(<span class="str_const">"App"</span>, <span class="str_const">"$$$ - Styles loaded (App.CSS) ..."</span>);
+<span class="lineno" id="174">   174  </span>				App.bootstrap ();
+<span class="lineno" id="175">   175  </span>			} <span class="key">else</span> {
+<span class="lineno" id="176">   176  </span>				bootstrap_retry();	
+<span class="lineno" id="177">   177  </span>			}
+<span class="lineno" id="178">   178  </span>		};
+<span class="lineno" id="179">   179  </span>		_styleSheet.load (App.CSS_URI);
+<span class="lineno" id="180">   180  </span>	}
+<span class="lineno" id="181">   181  </span>	
+<span class="lineno" id="182">   182  </span>	<span class="comment doc">/**
+<span class="lineno" id="183">   183  </span>	 * wrappers to JavaScript tracking &amp; flink deeplinking methods
+<span class="lineno" id="184">   184  </span>	 * @param page (String) page to be tracked 
+<span class="lineno" id="185">   185  </span>	 * @return Void
+<span class="lineno" id="186">   186  </span>	 */</span>
+<span class="lineno" id="187">   187  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> track (page:String):Void {
+<span class="lineno" id="188">   188  </span>		<span class="key">if</span> (!App.TRACK_ENABLE) {
+<span class="lineno" id="189">   189  </span>			<span class="key">return</span>;
+<span class="lineno" id="190">   190  </span>		}
+<span class="lineno" id="191">   191  </span>		App.log.trace (<span class="str_const">"App"</span>, <span class="str_const">"* App.track: "</span> + <span class="str_const">"("</span> + page + <span class="str_const">")"</span>);
+<span class="lineno" id="192">   192  </span>		ExternalInterface.call (<span class="str_const">"urchinTracker"</span>, page);
+<span class="lineno" id="193">   193  </span>	}
+<span class="lineno" id="194">   194  </span>	
+<span class="lineno" id="195">   195  </span>	<span class="comment doc">/**
+<span class="lineno" id="196">   196  </span>	 * wrapper to getFlink JavaScript lib - returns object from deeplink anchor
+<span class="lineno" id="197">   197  </span>	 * @return Object
+<span class="lineno" id="198">   198  </span>	 */</span>
+<span class="lineno" id="199">   199  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> getFlink ():Object {
+<span class="lineno" id="200">   200  </span>		<span class="key">var</span> j:Object = ExternalInterface.call (<span class="str_const">"getFlink"</span>);
+<span class="lineno" id="201">   201  </span>		<span class="key">var</span> a:Array = j.split (<span class="str_const">"/"</span>);
+<span class="lineno" id="202">   202  </span>		<span class="key">var</span> p:String = (!a[<span class="num_const">1</span>]) ? <span class="str_const">""</span> : a[<span class="num_const">1</span>];
+<span class="lineno" id="203">   203  </span>		App.log.trace (<span class="str_const">"App"</span>, <span class="str_const">"* App.getFlink ("</span> + p + <span class="str_const">")"</span>);
+<span class="lineno" id="204">   204  </span>		<span class="key">var</span> flink:Object = {page:p};
+<span class="lineno" id="205">   205  </span>		<span class="key">return</span> flink;
 <span class="lineno" id="206">   206  </span>	}
-<span class="lineno" id="207">   207  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of Sekati" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.core" class="button">Package</a></li><li><a href="App.html" title="Detail of com.sekati.core.App API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
+<span class="lineno" id="207">   207  </span>	
+<span class="lineno" id="208">   208  </span>	<span class="comment doc">/**
+<span class="lineno" id="209">   209  </span>	 * wrapper to setFlink JavaScript lib - sets the current deeplink anchor
+<span class="lineno" id="210">   210  </span>	 * @param page (String)
+<span class="lineno" id="211">   211  </span>	 * @return Void
+<span class="lineno" id="212">   212  </span>	 */</span>
+<span class="lineno" id="213">   213  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> setFlink (page:String):Void {
+<span class="lineno" id="214">   214  </span>		<span class="key">if</span> (!App.FLINK_ENABLE) {
+<span class="lineno" id="215">   215  </span>			<span class="key">return</span>;
+<span class="lineno" id="216">   216  </span>		}
+<span class="lineno" id="217">   217  </span>		App.log.trace (<span class="str_const">"App"</span>, <span class="str_const">"* App.setFlink ("</span> + page + <span class="str_const">")"</span>);
+<span class="lineno" id="218">   218  </span>		ExternalInterface.call (<span class="str_const">"setFlink"</span>, <span class="key">null</span>, page);
+<span class="lineno" id="219">   219  </span>	}
+<span class="lineno" id="220">   220  </span>	
+<span class="lineno" id="221">   221  </span>	<span class="comment doc">/**
+<span class="lineno" id="222">   222  </span>	 * wrapper to Flink JavaScript lib - returns the entire current url
+<span class="lineno" id="223">   223  </span>	 * @return String
+<span class="lineno" id="224">   224  </span>	 */</span>
+<span class="lineno" id="225">   225  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> getRef ():String {
+<span class="lineno" id="226">   226  </span>		<span class="key">var</span> r:Object = ExternalInterface.call (<span class="str_const">"getRef"</span>);
+<span class="lineno" id="227">   227  </span>		<span class="key">return</span> String(r);
+<span class="lineno" id="228">   228  </span>	}
+<span class="lineno" id="229">   229  </span><span class="lineno" id="230">   230  </span>	<span class="key">private</span> <span class="key">function</span> App() {
+<span class="lineno" id="231">   231  </span>	}
+<span class="lineno" id="232">   232  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of Sekati" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.core" class="button">Package</a></li><li><a href="App.html" title="Detail of com.sekati.core.App API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>

@@ -54,6 +54,12 @@ strict digraph class_diagram {
     tooltip="com.sekati.log.ConsoleFPSMonitor",
     shape="record"
   ];
+  TypeConsoleDocument[
+    label="ConsoleDocument",
+    URL="ConsoleDocument.html",
+    tooltip="com.sekati.log.ConsoleDocument",
+    shape="record"
+  ];
   TypeConsole[
     label="Console",
     URL="Console.html",
