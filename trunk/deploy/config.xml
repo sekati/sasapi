@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Sekati Framework Core App Configuration - by jason m horwitz / sekati.com -->
-<config name="Sekati Framework" version="0.9.8">
+<config name="Sekati Framework" version="0.9.9.1">
 
 	<!-- crossdomain should live on same dom/subdom as SWF-->
 	<crossdomain_uri><![CDATA[/crossdomain.xml]]></crossdomain_uri>
+	
+	<!-- data feed -->
+	<data_uri><![CDATA[php/data.php]]></data_uri>
+	
+	<!-- application stylesheet -->
+	<css_uri><![CDATA[css/app_style.css]]></css_uri>	
 	
 	<!-- instantiate DebugPanel -->
 	<debug_enable>true</debug_enable>
