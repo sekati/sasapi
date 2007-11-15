@@ -3,7 +3,7 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span><span class="comment doc">/**
 <span class="lineno" id="2">     2  </span> * com.sekati.data.FLV
-<span class="lineno" id="3">     3  </span> * @version 1.1.5
+<span class="lineno" id="3">     3  </span> * @version 1.1.7
 <span class="lineno" id="4">     4  </span> * @author jason m horwitz | sekati.com
 <span class="lineno" id="5">     5  </span> * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -22,7 +22,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="19">    19  </span>	<span class="key">private</span> <span class="key">var</span> _this:FLV;
 <span class="lineno" id="20">    20  </span>	<span class="key">private</span> <span class="key">var</span> _ns:NetStream;
 <span class="lineno" id="21">    21  </span>	<span class="key">private</span> <span class="key">var</span> _nc:NetConnection;
-<span class="lineno" id="22">    22  </span>	<span class="key">private</span> <span class="key">var</span> _video;
+<span class="lineno" id="22">    22  </span>	<span class="key">private</span> <span class="key">var</span> _video:Video;
 <span class="lineno" id="23">    23  </span>	<span class="key">private</span> <span class="key">var</span> _videoURL:String;
 <span class="lineno" id="24">    24  </span>	<span class="key">private</span> <span class="key">var</span> _audio:Sound;
 <span class="lineno" id="25">    25  </span>	<span class="key">private</span> <span class="key">var</span> _audioContainer:MovieClip;
@@ -33,9 +33,9 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="30">    30  </span>	<span class="key">private</span> <span class="key">var</span> _lastSeekableTime:Number;
 <span class="lineno" id="31">    31  </span>	
 <span class="lineno" id="32">    32  </span>	<span class="comment">//event stubs</span>
-<span class="lineno" id="33">    33  </span>	<span class="key">public</span> <span class="key">function</span> onProgress() {
+<span class="lineno" id="33">    33  </span>	<span class="key">public</span> <span class="key">function</span> onProgress():Void {
 <span class="lineno" id="34">    34  </span>	}
-<span class="lineno" id="35">    35  </span>	<span class="key">public</span> <span class="key">function</span> onEvent() {
+<span class="lineno" id="35">    35  </span>	<span class="key">public</span> <span class="key">function</span> onEvent():Void {
 <span class="lineno" id="36">    36  </span>	}
 <span class="lineno" id="37">    37  </span>	
 <span class="lineno" id="38">    38  </span>	<span class="comment">//constructor</span>
@@ -57,7 +57,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="54">    54  </span>	 * @param audioContainer (MovieClip) audio becon holder
 <span class="lineno" id="55">    55  </span>	 * @return Void
 <span class="lineno" id="56">    56  </span>	 */</span>
-<span class="lineno" id="57">    57  </span>	<span class="key">public</span> <span class="key">function</span> load (url:String, videoInstance, width:Number, height:Number, audioContainer:MovieClip):Void {
+<span class="lineno" id="57">    57  </span>	<span class="key">public</span> <span class="key">function</span> load (url:String, videoInstance:Video, width:Number, height:Number, audioContainer:MovieClip):Void {
 <span class="lineno" id="58">    58  </span>		_videoURL = url;
 <span class="lineno" id="59">    59  </span>		_video = videoInstance;
 <span class="lineno" id="60">    60  </span>		_audioContainer = audioContainer;
@@ -98,7 +98,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="95">    95  </span>		onProgress (getPercent (), getPercentTimePlayed ());
 <span class="lineno" id="96">    96  </span>	}
 <span class="lineno" id="97">    97  </span>	
-<span class="lineno" id="98">    98  </span>	<span class="key">public</span> <span class="key">function</span> clean (scope, obj:String):Void {
+<span class="lineno" id="98">    98  </span>	<span class="key">public</span> <span class="key">function</span> clean(scope:MovieClip, obj:String):Void {
 <span class="lineno" id="99">    99  </span>		<span class="comment">//deconstructor that will clean the beacon and then remove the instance</span>
 <span class="lineno" id="100">   100  </span>		<span class="key">delete</span> _audioContainer.onEnterFrame;
 <span class="lineno" id="101">   101  </span>		_audioContainer.onEnterFrame = <span class="key">null</span>;
@@ -205,7 +205,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="202">   202  </span>	}
 <span class="lineno" id="203">   203  </span>	
 <span class="lineno" id="204">   204  </span>	<span class="key">public</span> <span class="key">function</span> getBufferPercent ():Number {
-<span class="lineno" id="205">   205  </span>		<span class="key">var</span> total = Math.min (_duration, _ns.bufferTime);
+<span class="lineno" id="205">   205  </span>		<span class="key">var</span> total:Number = Math.min (_duration, _ns.bufferTime);
 <span class="lineno" id="206">   206  </span>		<span class="key">return</span> Math.min (Math.round (_ns.bufferLength / total * <span class="num_const">100</span>), <span class="num_const">100</span>);
 <span class="lineno" id="207">   207  </span>	}
 <span class="lineno" id="208">   208  </span>	

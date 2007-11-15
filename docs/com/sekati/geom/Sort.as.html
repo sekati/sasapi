@@ -3,7 +3,7 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span><span class="comment doc">/**
 <span class="lineno" id="2">     2  </span> * com.sekati.geom.Sort
-<span class="lineno" id="3">     3  </span> * @version 1.0.5
+<span class="lineno" id="3">     3  </span> * @version 1.0.7
 <span class="lineno" id="4">     4  </span> * @author jason m horwitz | sekati.com
 <span class="lineno" id="5">     5  </span> * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -62,7 +62,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="59">    59  </span>		<span class="key">var</span> _numPerRow:Number = (!numPerRow) ? Math.ceil((Stage.width-start.x)/(_w+_offset)) : numPerRow;
 <span class="lineno" id="60">    60  </span>		
 <span class="lineno" id="61">    61  </span>	    <span class="key">for</span> (<span class="key">var</span> i:Number=<span class="num_const">0</span>; i&lt;_items.length; i++) {
-<span class="lineno" id="62">    62  </span>	        <span class="key">if</span> ((i%numPerRow) == <span class="num_const">0</span>) {
+<span class="lineno" id="62">    62  </span>	        <span class="key">if</span> ((i%_numPerRow) == <span class="num_const">0</span>) {
 <span class="lineno" id="63">    63  </span>	            _xpos = _offset;
 <span class="lineno" id="64">    64  </span>	            _ypos += _h + _offset;
 <span class="lineno" id="65">    65  </span>	        } <span class="key">else</span> {
@@ -127,7 +127,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="124">   124  </span>	 */</span>
 <span class="lineno" id="125">   125  </span>	<span class="key">public</span> <span class="key">function</span> triangle(center:Point, sideLength:Number):Array {
 <span class="lineno" id="126">   126  </span>		<span class="key">var</span> cY:Number = center.y-(sideLength/<span class="num_const">2</span>);
-<span class="lineno" id="127">   127  </span>	    <span class="key">var</span> perimeter:Number = sideLength*<span class="num_const">3</span>;
+<span class="lineno" id="127">   127  </span>	    <span class="comment">//var perimeter:Number = sideLength*3;</span>
 <span class="lineno" id="128">   128  </span>	    <span class="key">var</span> objBySide:Number = Math.floor(_items.length/<span class="num_const">3</span>);
 <span class="lineno" id="129">   129  </span>	    <span class="key">var</span> leftObj:Number = _items.length-objBySide*<span class="num_const">3</span>;
 <span class="lineno" id="130">   130  </span>	    <span class="key">var</span> posArray:Array = <span class="key">new</span> Array();

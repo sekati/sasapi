@@ -3,7 +3,7 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span><span class="comment doc">/**
 <span class="lineno" id="2">     2  </span> * com.sekati.utils.DateUtils
-<span class="lineno" id="3">     3  </span> * @version 1.0.5
+<span class="lineno" id="3">     3  </span> * @version 1.0.7
 <span class="lineno" id="4">     4  </span> * @author jason m horwitz | sekati.com
 <span class="lineno" id="5">     5  </span> * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -107,7 +107,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="104">   104  </span>	 * @param n (Number)
 <span class="lineno" id="105">   105  </span>	 * @return String
 <span class="lineno" id="106">   106  </span>	 */</span>
-<span class="lineno" id="107">   107  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> padTime (n):String {
+<span class="lineno" id="107">   107  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> padTime (n:Number):String {
 <span class="lineno" id="108">   108  </span>		<span class="key">return</span> (String (n).length &lt; <span class="num_const">2</span>) ? (<span class="str_const">"0"</span> + n) : n;
 <span class="lineno" id="109">   109  </span>	}
 <span class="lineno" id="110">   110  </span>
@@ -116,11 +116,11 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="113">   113  </span>	 * @param dbDate (String) date in YYYY-MM-DD HH:MM:SS format
 <span class="lineno" id="114">   114  </span>	 * @return Date
 <span class="lineno" id="115">   115  </span>	 */</span>
-<span class="lineno" id="116">   116  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> dateFromDB (dbdate):Date {
-<span class="lineno" id="117">   117  </span>		<span class="key">var</span> tmp = dbdate.split (<span class="str_const">" "</span>);
-<span class="lineno" id="118">   118  </span>		<span class="key">var</span> dates = tmp[<span class="num_const">0</span>].split (<span class="str_const">"-"</span>);
-<span class="lineno" id="119">   119  </span>		<span class="key">var</span> hours = tmp[<span class="num_const">1</span>].split (<span class="str_const">":"</span>);
-<span class="lineno" id="120">   120  </span>		<span class="key">var</span> d = <span class="key">new</span> Date (dates[<span class="num_const">0</span>], dates[<span class="num_const">1</span>] - <span class="num_const">1</span>, dates[<span class="num_const">2</span>], hours[<span class="num_const">0</span>], hours[<span class="num_const">1</span>], hours[<span class="num_const">2</span>]);
+<span class="lineno" id="116">   116  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> dateFromDB (dbdate:String):Date {
+<span class="lineno" id="117">   117  </span>		<span class="key">var</span> tmp:Array = dbdate.split (<span class="str_const">" "</span>);
+<span class="lineno" id="118">   118  </span>		<span class="key">var</span> dates:Array = tmp[<span class="num_const">0</span>].split (<span class="str_const">"-"</span>);
+<span class="lineno" id="119">   119  </span>		<span class="key">var</span> hours:Array = tmp[<span class="num_const">1</span>].split (<span class="str_const">":"</span>);
+<span class="lineno" id="120">   120  </span>		<span class="key">var</span> d:Date = <span class="key">new</span> Date (dates[<span class="num_const">0</span>], dates[<span class="num_const">1</span>] - <span class="num_const">1</span>, dates[<span class="num_const">2</span>], hours[<span class="num_const">0</span>], hours[<span class="num_const">1</span>], hours[<span class="num_const">2</span>]);
 <span class="lineno" id="121">   121  </span>		<span class="key">return</span> d;
 <span class="lineno" id="122">   122  </span>	}
 <span class="lineno" id="123">   123  </span>

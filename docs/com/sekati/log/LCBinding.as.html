@@ -28,7 +28,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="25">    25  </span>	 */</span>
 <span class="lineno" id="26">    26  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> connect (handler:Function):Void {
 <span class="lineno" id="27">    27  </span>		LCBinding._rx.allowDomain = _rx.allowInsecureDomain = LCBinding.domain;
-<span class="lineno" id="28">    28  </span>		LCBinding._rx[LCBinding.methodName] = handler;	
+<span class="lineno" id="28">    28  </span>		LCBinding._rx[LCBinding.methodName] = handler;
 <span class="lineno" id="29">    29  </span>		LCBinding._rx.connect(LCBinding.connectionName);
 <span class="lineno" id="30">    30  </span>	}
 <span class="lineno" id="31">    31  </span>	

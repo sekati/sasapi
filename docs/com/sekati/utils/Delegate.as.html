@@ -3,7 +3,7 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span><span class="comment doc">/**
 <span class="lineno" id="2">     2  </span> * com.sekati.utils.Delegate
-<span class="lineno" id="3">     3  </span> * @version 1.0.0
+<span class="lineno" id="3">     3  </span> * @version 1.0.1
 <span class="lineno" id="4">     4  </span> * @author jason m horwitz | sekati.com
 <span class="lineno" id="5">     5  </span> * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -42,10 +42,10 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="39">    39  </span>	 * @return Function
 <span class="lineno" id="40">    40  </span>	 */</span>
 <span class="lineno" id="41">    41  </span>	<span class="key">static</span> <span class="key">function</span> create (obj:Object, func:Function):Function {
-<span class="lineno" id="42">    42  </span>		<span class="key">var</span> f = <span class="key">function</span> () {
-<span class="lineno" id="43">    43  </span>			<span class="key">var</span> target = arguments.callee.target;
-<span class="lineno" id="44">    44  </span>			<span class="key">var</span> func = arguments.callee.func;
-<span class="lineno" id="45">    45  </span>			<span class="key">var</span> args = arguments.callee.args;
+<span class="lineno" id="42">    42  </span>		<span class="key">var</span> f:Function = <span class="key">function</span>():Function {
+<span class="lineno" id="43">    43  </span>			<span class="key">var</span> target:Object = arguments.callee.target;
+<span class="lineno" id="44">    44  </span>			<span class="key">var</span> func:Function = arguments.callee.func;
+<span class="lineno" id="45">    45  </span>			<span class="key">var</span> args:Array = arguments.callee.args;
 <span class="lineno" id="46">    46  </span>			<span class="key">return</span> func.apply (target, args.concat (arguments));
 <span class="lineno" id="47">    47  </span>		};
 <span class="lineno" id="48">    48  </span>		f.target = arguments.shift ();

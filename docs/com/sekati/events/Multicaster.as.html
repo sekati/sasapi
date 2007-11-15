@@ -3,7 +3,7 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span><span class="comment doc">/**
 <span class="lineno" id="2">     2  </span> * com.sekati.events.Multicaster
-<span class="lineno" id="3">     3  </span> * @version 1.0.5
+<span class="lineno" id="3">     3  </span> * @version 1.0.7
 <span class="lineno" id="4">     4  </span> * @author jason m horwitz | sekati.com
 <span class="lineno" id="5">     5  </span> * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -136,7 +136,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="133">   133  </span>	 * Will return either a number or a string
 <span class="lineno" id="134">   134  </span>	 */</span>
 <span class="lineno" id="135">   135  </span>	<span class="key">private</span> <span class="key">function</span> getIndex(broadcasterObj:Object):Object{
-<span class="lineno" id="136">   136  </span>		<span class="key">var</span> o = broadcasterObj;
+<span class="lineno" id="136">   136  </span>		<span class="key">var</span> o:Object = broadcasterObj;
 <span class="lineno" id="137">   137  </span>		
 <span class="lineno" id="138">   138  </span>		<span class="key">if</span>( TypeValidation.isString(o) || TypeValidation.isNumber(o) ){
 <span class="lineno" id="139">   139  </span>			<span class="key">return</span> String(o);

@@ -3,7 +3,7 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span><span class="comment doc">/**
 <span class="lineno" id="2">     2  </span> * com.sekati.validate.StringValidation
-<span class="lineno" id="3">     3  </span> * @version 1.0.1
+<span class="lineno" id="3">     3  </span> * @version 1.0.3
 <span class="lineno" id="4">     4  </span> * @author jason m horwitz | sekati.com
 <span class="lineno" id="5">     5  </span> * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -63,7 +63,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="60">    60  </span>	<span class="key">function</span> isNumeric(str:String):Boolean {
 <span class="lineno" id="61">    61  </span>		<span class="key">var</span> len:Number = str.length;
 <span class="lineno" id="62">    62  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = <span class="num_const">0</span>; i &lt; len; i++) {
-<span class="lineno" id="63">    63  </span>			<span class="key">var</span> code = str.charCodeAt(i);
+<span class="lineno" id="63">    63  </span>			<span class="key">var</span> code:Number = str.charCodeAt(i);
 <span class="lineno" id="64">    64  </span>			<span class="key">if</span> (code &lt; <span class="num_const">48</span> || code &gt; <span class="num_const">57</span>) {
 <span class="lineno" id="65">    65  </span>				<span class="key">return</span> <span class="key">true</span>;
 <span class="lineno" id="66">    66  </span>			}

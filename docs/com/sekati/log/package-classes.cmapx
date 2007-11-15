@@ -1,12 +1,13 @@
 <map id="class_diagram" name="class_diagram">
-<area shape="rect" href="OutPanel.html" title="com.sekati.log.OutPanel" alt="" coords="50,656,141,704" />
-<area shape="rect" href="Out.html" title="com.sekati.log.Out" alt="" coords="60,584,132,632" />
-<area shape="rect" href="Logger.html" title="com.sekati.log.Logger" alt="" coords="58,512,133,560" />
-<area shape="rect" href="LogEvent.html" title="com.sekati.log.LogEvent" alt="" coords="49,440,142,488" />
-<area shape="rect" href="LCBinding.html" title="com.sekati.log.LCBinding" alt="" coords="44,368,148,416" />
-<area shape="rect" href="Inspector.html" title="com.sekati.log.Inspector" alt="" coords="50,296,141,344" />
-<area shape="rect" href="ConsoleStyle.html" title="com.sekati.log.ConsoleStyle" alt="" coords="36,224,156,272" />
-<area shape="rect" href="ConsoleItem.html" title="com.sekati.log.ConsoleItem" alt="" coords="37,152,154,200" />
-<area shape="rect" href="ConsoleFPSMonitor.html" title="com.sekati.log.ConsoleFPSMonitor" alt="" coords="9,80,182,128" />
+<area shape="rect" href="OutPanel.html" title="com.sekati.log.OutPanel" alt="" coords="50,728,141,776" />
+<area shape="rect" href="Out.html" title="com.sekati.log.Out" alt="" coords="60,656,132,704" />
+<area shape="rect" href="Logger.html" title="com.sekati.log.Logger" alt="" coords="58,584,133,632" />
+<area shape="rect" href="LogEvent.html" title="com.sekati.log.LogEvent" alt="" coords="49,512,142,560" />
+<area shape="rect" href="LCBinding.html" title="com.sekati.log.LCBinding" alt="" coords="44,440,148,488" />
+<area shape="rect" href="Inspector.html" title="com.sekati.log.Inspector" alt="" coords="50,368,141,416" />
+<area shape="rect" href="ConsoleStyle.html" title="com.sekati.log.ConsoleStyle" alt="" coords="36,296,156,344" />
+<area shape="rect" href="ConsoleItem.html" title="com.sekati.log.ConsoleItem" alt="" coords="37,224,154,272" />
+<area shape="rect" href="ConsoleFPSMonitor.html" title="com.sekati.log.ConsoleFPSMonitor" alt="" coords="9,152,182,200" />
+<area shape="rect" href="ConsoleDocument.html" title="com.sekati.log.ConsoleDocument" alt="" coords="16,80,176,128" />
 <area shape="rect" href="Console.html" title="com.sekati.log.Console" alt="" coords="54,8,137,56" />
 </map>

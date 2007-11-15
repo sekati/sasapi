@@ -3,7 +3,7 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span><span class="comment doc">/**
 <span class="lineno" id="2">     2  </span> * com.sekati.math.MathBase
-<span class="lineno" id="3">     3  </span> * @version 1.1.5
+<span class="lineno" id="3">     3  </span> * @version 1.1.7
 <span class="lineno" id="4">     4  </span> * @author jason m horwitz | sekati.com
 <span class="lineno" id="5">     5  </span> * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -144,100 +144,119 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="141">   141  </span>		<span class="key">var</span> n:Number = (!x) ? <span class="num_const">1</span> : x;
 <span class="lineno" id="142">   142  </span>		<span class="key">var</span> slope:Number = (y2 - y1) / (x2 - x1);
 <span class="lineno" id="143">   143  </span>		<span class="key">return</span> (slope * (n - x1) + y1);
-<span class="lineno" id="144">   144  </span>	} 
-<span class="lineno" id="145">   145  </span>
+<span class="lineno" id="144">   144  </span>	}
+<span class="lineno" id="145">   145  </span>	
 <span class="lineno" id="146">   146  </span>	<span class="comment doc">/**
-<span class="lineno" id="147">   147  </span>	 * Check if number is Odd (convert to Integer if necessary)
+<span class="lineno" id="147">   147  </span>	 * Check if number is positive (zero is considered positive)
 <span class="lineno" id="148">   148  </span>	 * @param n (Number)
 <span class="lineno" id="149">   149  </span>	 * @return Boolean
 <span class="lineno" id="150">   150  </span>	 */</span>
-<span class="lineno" id="151">   151  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> isOdd (n:Number):Boolean {
-<span class="lineno" id="152">   152  </span>		<span class="key">var</span> int:Integer = <span class="key">new</span> Integer(n);
-<span class="lineno" id="153">   153  </span>		<span class="key">return</span> Boolean(int%<span class="num_const">2</span>);	
-<span class="lineno" id="154">   154  </span>	}
-<span class="lineno" id="155">   155  </span>
-<span class="lineno" id="156">   156  </span>	<span class="comment doc">/**
-<span class="lineno" id="157">   157  </span>	 * Check if number is Even (convert to Integer if necessary)
-<span class="lineno" id="158">   158  </span>	 * @param n (Number)
-<span class="lineno" id="159">   159  </span>	 * @return Boolean
-<span class="lineno" id="160">   160  </span>	 */</span>
-<span class="lineno" id="161">   161  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> isEven (n:Number):Boolean {
-<span class="lineno" id="162">   162  </span>		<span class="key">var</span> int:Integer = <span class="key">new</span> Integer(n);
-<span class="lineno" id="163">   163  </span>		<span class="key">return</span> (int%<span class="num_const">2</span> == <span class="num_const">0</span>);
-<span class="lineno" id="164">   164  </span>	}
-<span class="lineno" id="165">   165  </span>	
-<span class="lineno" id="166">   166  </span>	<span class="comment doc">/**
-<span class="lineno" id="167">   167  </span>	 * Check if number is Prime (divisible only itself and one)
-<span class="lineno" id="168">   168  </span>	 * @param n (Number)
-<span class="lineno" id="169">   169  </span>	 * @return Boolean
-<span class="lineno" id="170">   170  </span>	 */</span>
-<span class="lineno" id="171">   171  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> isPrime (n:Number):Boolean {
-<span class="lineno" id="172">   172  </span>		<span class="key">var</span> l:Number;
-<span class="lineno" id="173">   173  </span>		<span class="key">if</span> (n &gt; <span class="num_const">2</span> &amp;&amp; n % <span class="num_const">2</span> == <span class="num_const">0</span>) <span class="key">return</span> <span class="key">false</span>;
-<span class="lineno" id="174">   174  </span>			<span class="key">for</span> (<span class="key">var</span> i:Number = <span class="num_const">3</span>, l = Math.sqrt(n); i &lt;= l; i += <span class="num_const">2</span>) {
-<span class="lineno" id="175">   175  </span>				<span class="key">if</span> (n % i == <span class="num_const">0</span>) <span class="key">return</span> <span class="key">false</span>;
-<span class="lineno" id="176">   176  </span>			}
-<span class="lineno" id="177">   177  </span>			<span class="key">return</span> <span class="key">true</span>;
-<span class="lineno" id="178">   178  </span>	}
-<span class="lineno" id="179">   179  </span>
-<span class="lineno" id="180">   180  </span>	<span class="comment doc">/**
-<span class="lineno" id="181">   181  </span>	 * Calculate the factorial of the integer.
-<span class="lineno" id="182">   182  </span>	 * @param n (Number) 
-<span class="lineno" id="183">   183  </span>	 * @return Number
-<span class="lineno" id="184">   184  </span>	 */</span> 
-<span class="lineno" id="185">   185  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> factorial(n:Number):Number {
-<span class="lineno" id="186">   186  </span>		<span class="key">if</span> (n == <span class="num_const">0</span>) <span class="key">return</span> <span class="num_const">1</span>;
-<span class="lineno" id="187">   187  </span>		<span class="key">var</span> d:Number = n.valueOf();
-<span class="lineno" id="188">   188  </span>		<span class="key">var</span> i:Number = d-<span class="num_const">1</span>;
-<span class="lineno" id="189">   189  </span>		<span class="key">while</span> (i) {
-<span class="lineno" id="190">   190  </span>			d = d*i;
-<span class="lineno" id="191">   191  </span>			i--;
-<span class="lineno" id="192">   192  </span>		}
-<span class="lineno" id="193">   193  </span>		<span class="key">return</span> d;
-<span class="lineno" id="194">   194  </span>	}
-<span class="lineno" id="195">   195  </span>		
-<span class="lineno" id="196">   196  </span>	<span class="comment doc">/**
-<span class="lineno" id="197">   197  </span>	 * Return an array of divisors of the integer.
-<span class="lineno" id="198">   198  </span>	 * @param n (Number)
-<span class="lineno" id="199">   199  </span>	 * @return Number
-<span class="lineno" id="200">   200  </span>	 */</span>
-<span class="lineno" id="201">   201  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> getDivisors(n:Number):Array {
-<span class="lineno" id="202">   202  </span>		<span class="key">var</span> r:Array = <span class="key">new</span> Array();
-<span class="lineno" id="203">   203  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = <span class="num_const">1</span>, e:Number = n/<span class="num_const">2</span>; i &lt;= e; i++) {
-<span class="lineno" id="204">   204  </span>			<span class="key">if</span> (n % i == <span class="num_const">0</span>) r.push(i);
-<span class="lineno" id="205">   205  </span>		}
-<span class="lineno" id="206">   206  </span>		<span class="key">if</span> (n != <span class="num_const">0</span>) r.push(n.valueOf());
-<span class="lineno" id="207">   207  </span>		<span class="key">return</span> r;
-<span class="lineno" id="208">   208  </span>	}
-<span class="lineno" id="209">   209  </span>
-<span class="lineno" id="210">   210  </span>	<span class="comment doc">/**
-<span class="lineno" id="211">   211  </span>	 * Check if number is an Integer
-<span class="lineno" id="212">   212  </span>	 * @param n (Number)
-<span class="lineno" id="213">   213  </span>	 * @return Boolean
-<span class="lineno" id="214">   214  </span>	 */</span>
-<span class="lineno" id="215">   215  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> isInteger (n:Number):Boolean {
-<span class="lineno" id="216">   216  </span>		<span class="key">return</span> (n%<span class="num_const">1</span> == <span class="num_const">0</span>);
-<span class="lineno" id="217">   217  </span>	}
-<span class="lineno" id="218">   218  </span>
-<span class="lineno" id="219">   219  </span>	<span class="comment doc">/**
-<span class="lineno" id="220">   220  </span>	 * Check if number is Natural (positive Integer)
-<span class="lineno" id="221">   221  </span>	 * @param n (Number)
-<span class="lineno" id="222">   222  </span>	 * @return Boolean
-<span class="lineno" id="223">   223  </span>	 */</span>
-<span class="lineno" id="224">   224  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> isNatural(n:Number):Boolean {
-<span class="lineno" id="225">   225  </span>		<span class="key">return</span> (n &gt;= <span class="num_const">0</span> &amp;&amp; n%<span class="num_const">1</span> == <span class="num_const">0</span>);
-<span class="lineno" id="226">   226  </span>	}
-<span class="lineno" id="227">   227  </span>	
-<span class="lineno" id="228">   228  </span>	<span class="comment doc">/**
-<span class="lineno" id="229">   229  </span>	 * Returns a random number inside a specific range
-<span class="lineno" id="230">   230  </span>	 * @param start (Number)
-<span class="lineno" id="231">   231  </span>	 * @param end (Number)
-<span class="lineno" id="232">   232  </span>	 * @return Number
-<span class="lineno" id="233">   233  </span>	 */</span>	
-<span class="lineno" id="234">   234  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> rnd(start:Number, end:Number):Number {
-<span class="lineno" id="235">   235  </span>		<span class="key">return</span> Math.round( Math.random()*(end-start))+start;
+<span class="lineno" id="151">   151  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> isPositive (n:Number):Boolean {
+<span class="lineno" id="152">   152  </span>		<span class="key">return</span> (n &gt;= <span class="num_const">0</span>);
+<span class="lineno" id="153">   153  </span>	}
+<span class="lineno" id="154">   154  </span>
+<span class="lineno" id="155">   155  </span>	<span class="comment doc">/**
+<span class="lineno" id="156">   156  </span>	 * Check if number is negative
+<span class="lineno" id="157">   157  </span>	 * @param n (Number)
+<span class="lineno" id="158">   158  </span>	 * @return Boolean
+<span class="lineno" id="159">   159  </span>	 */</span>
+<span class="lineno" id="160">   160  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> isNegative (n:Number):Boolean {
+<span class="lineno" id="161">   161  </span>		<span class="key">return</span> (n &lt; <span class="num_const">0</span>);
+<span class="lineno" id="162">   162  </span>	}	
+<span class="lineno" id="163">   163  </span>
+<span class="lineno" id="164">   164  </span>	<span class="comment doc">/**
+<span class="lineno" id="165">   165  </span>	 * Check if number is Odd (convert to Integer if necessary)
+<span class="lineno" id="166">   166  </span>	 * @param n (Number)
+<span class="lineno" id="167">   167  </span>	 * @return Boolean
+<span class="lineno" id="168">   168  </span>	 */</span>
+<span class="lineno" id="169">   169  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> isOdd (n:Number):Boolean {
+<span class="lineno" id="170">   170  </span>		<span class="key">var</span> i:Integer = <span class="key">new</span> Integer(n);
+<span class="lineno" id="171">   171  </span>		<span class="key">var</span> e:Integer = <span class="key">new</span> Integer(<span class="num_const">2</span>);
+<span class="lineno" id="172">   172  </span>		<span class="key">return</span> Boolean(i % e);	
+<span class="lineno" id="173">   173  </span>	}
+<span class="lineno" id="174">   174  </span>
+<span class="lineno" id="175">   175  </span>	<span class="comment doc">/**
+<span class="lineno" id="176">   176  </span>	 * Check if number is Even (convert to Integer if necessary)
+<span class="lineno" id="177">   177  </span>	 * @param n (Number)
+<span class="lineno" id="178">   178  </span>	 * @return Boolean
+<span class="lineno" id="179">   179  </span>	 */</span>
+<span class="lineno" id="180">   180  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> isEven (n:Number):Boolean {
+<span class="lineno" id="181">   181  </span>		<span class="key">var</span> int:Integer = <span class="key">new</span> Integer(n);
+<span class="lineno" id="182">   182  </span>		<span class="key">var</span> e:Integer = <span class="key">new</span> Integer(<span class="num_const">2</span>);
+<span class="lineno" id="183">   183  </span>		<span class="key">return</span> (int % e == <span class="num_const">0</span>);
+<span class="lineno" id="184">   184  </span>	}
+<span class="lineno" id="185">   185  </span>	
+<span class="lineno" id="186">   186  </span>	<span class="comment doc">/**
+<span class="lineno" id="187">   187  </span>	 * Check if number is Prime (divisible only itself and one)
+<span class="lineno" id="188">   188  </span>	 * @param n (Number)
+<span class="lineno" id="189">   189  </span>	 * @return Boolean
+<span class="lineno" id="190">   190  </span>	 */</span>
+<span class="lineno" id="191">   191  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> isPrime (n:Number):Boolean {
+<span class="lineno" id="192">   192  </span>		<span class="key">if</span> (n &gt; <span class="num_const">2</span> &amp;&amp; n % <span class="num_const">2</span> == <span class="num_const">0</span>) <span class="key">return</span> <span class="key">false</span>;
+<span class="lineno" id="193">   193  </span>			<span class="key">var</span> l:Number = Math.sqrt(n);
+<span class="lineno" id="194">   194  </span>			<span class="key">for</span> (<span class="key">var</span> i:Number = <span class="num_const">3</span>; i &lt;= l; i += <span class="num_const">2</span>) {
+<span class="lineno" id="195">   195  </span>				<span class="key">if</span> (n % i == <span class="num_const">0</span>) <span class="key">return</span> <span class="key">false</span>;
+<span class="lineno" id="196">   196  </span>			}
+<span class="lineno" id="197">   197  </span>	}
+<span class="lineno" id="198">   198  </span>
+<span class="lineno" id="199">   199  </span>	<span class="comment doc">/**
+<span class="lineno" id="200">   200  </span>	 * Calculate the factorial of the integer.
+<span class="lineno" id="201">   201  </span>	 * @param n (Number) 
+<span class="lineno" id="202">   202  </span>	 * @return Number
+<span class="lineno" id="203">   203  </span>	 */</span> 
+<span class="lineno" id="204">   204  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> factorial(n:Number):Number {
+<span class="lineno" id="205">   205  </span>		<span class="key">if</span> (n == <span class="num_const">0</span>) <span class="key">return</span> <span class="num_const">1</span>;
+<span class="lineno" id="206">   206  </span>		<span class="key">var</span> d:Number = n.valueOf();
+<span class="lineno" id="207">   207  </span>		<span class="key">var</span> i:Number = d-<span class="num_const">1</span>;
+<span class="lineno" id="208">   208  </span>		<span class="key">while</span> (i) {
+<span class="lineno" id="209">   209  </span>			d = d*i;
+<span class="lineno" id="210">   210  </span>			i--;
+<span class="lineno" id="211">   211  </span>		}
+<span class="lineno" id="212">   212  </span>		<span class="key">return</span> d;
+<span class="lineno" id="213">   213  </span>	}
+<span class="lineno" id="214">   214  </span>		
+<span class="lineno" id="215">   215  </span>	<span class="comment doc">/**
+<span class="lineno" id="216">   216  </span>	 * Return an array of divisors of the integer.
+<span class="lineno" id="217">   217  </span>	 * @param n (Number)
+<span class="lineno" id="218">   218  </span>	 * @return Number
+<span class="lineno" id="219">   219  </span>	 */</span>
+<span class="lineno" id="220">   220  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> getDivisors(n:Number):Array {
+<span class="lineno" id="221">   221  </span>		<span class="key">var</span> r:Array = <span class="key">new</span> Array();
+<span class="lineno" id="222">   222  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = <span class="num_const">1</span>, e:Number = n/<span class="num_const">2</span>; i &lt;= e; i++) {
+<span class="lineno" id="223">   223  </span>			<span class="key">if</span> (n % i == <span class="num_const">0</span>) r.push(i);
+<span class="lineno" id="224">   224  </span>		}
+<span class="lineno" id="225">   225  </span>		<span class="key">if</span> (n != <span class="num_const">0</span>) r.push(n.valueOf());
+<span class="lineno" id="226">   226  </span>		<span class="key">return</span> r;
+<span class="lineno" id="227">   227  </span>	}
+<span class="lineno" id="228">   228  </span>
+<span class="lineno" id="229">   229  </span>	<span class="comment doc">/**
+<span class="lineno" id="230">   230  </span>	 * Check if number is an Integer
+<span class="lineno" id="231">   231  </span>	 * @param n (Number)
+<span class="lineno" id="232">   232  </span>	 * @return Boolean
+<span class="lineno" id="233">   233  </span>	 */</span>
+<span class="lineno" id="234">   234  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> isInteger (n:Number):Boolean {
+<span class="lineno" id="235">   235  </span>		<span class="key">return</span> (n%<span class="num_const">1</span> == <span class="num_const">0</span>);
 <span class="lineno" id="236">   236  </span>	}
-<span class="lineno" id="237">   237  </span>	
-<span class="lineno" id="238">   238  </span>	<span class="key">private</span> <span class="key">function</span> MathBase(){
-<span class="lineno" id="239">   239  </span>	}
-<span class="lineno" id="240">   240  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of Sekati" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.math" class="button">Package</a></li><li><a href="MathBase.html" title="Detail of com.sekati.math.MathBase API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
+<span class="lineno" id="237">   237  </span>
+<span class="lineno" id="238">   238  </span>	<span class="comment doc">/**
+<span class="lineno" id="239">   239  </span>	 * Check if number is Natural (positive Integer)
+<span class="lineno" id="240">   240  </span>	 * @param n (Number)
+<span class="lineno" id="241">   241  </span>	 * @return Boolean
+<span class="lineno" id="242">   242  </span>	 */</span>
+<span class="lineno" id="243">   243  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> isNatural(n:Number):Boolean {
+<span class="lineno" id="244">   244  </span>		<span class="key">return</span> (n &gt;= <span class="num_const">0</span> &amp;&amp; n%<span class="num_const">1</span> == <span class="num_const">0</span>);
+<span class="lineno" id="245">   245  </span>	}
+<span class="lineno" id="246">   246  </span>	
+<span class="lineno" id="247">   247  </span>	<span class="comment doc">/**
+<span class="lineno" id="248">   248  </span>	 * Returns a random number inside a specific range
+<span class="lineno" id="249">   249  </span>	 * @param start (Number)
+<span class="lineno" id="250">   250  </span>	 * @param end (Number)
+<span class="lineno" id="251">   251  </span>	 * @return Number
+<span class="lineno" id="252">   252  </span>	 */</span>	
+<span class="lineno" id="253">   253  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> rnd(start:Number, end:Number):Number {
+<span class="lineno" id="254">   254  </span>		<span class="key">return</span> Math.round( Math.random()*(end-start))+start;
+<span class="lineno" id="255">   255  </span>	}
+<span class="lineno" id="256">   256  </span>	
+<span class="lineno" id="257">   257  </span>	<span class="key">private</span> <span class="key">function</span> MathBase(){
+<span class="lineno" id="258">   258  </span>	}
+<span class="lineno" id="259">   259  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of Sekati" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.math" class="button">Package</a></li><li><a href="MathBase.html" title="Detail of com.sekati.math.MathBase API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
