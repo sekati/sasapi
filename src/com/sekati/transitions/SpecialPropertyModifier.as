@@ -7,7 +7,7 @@
  * @private
  */
 
-class caurina.transitions.SpecialPropertyModifier {
+class com.sekati.transitions.SpecialPropertyModifier {
 
 	public var modifyValues:Function;
 	public var getValue:Function;

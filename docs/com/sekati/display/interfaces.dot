@@ -1,5 +1,19 @@
 strict digraph interface_diagram {
   rankdir=LR;
+  ITweenClip[
+    label="ITweenClip",
+    URL="ITweenClip.html",
+    tooltip="com.sekati.display.ITweenClip",
+    fontname="Times-Italic",
+    shape="record"
+  ];
+  ILiquidClip[
+    label="ILiquidClip",
+    URL="ILiquidClip.html",
+    tooltip="com.sekati.display.ILiquidClip",
+    fontname="Times-Italic",
+    shape="record"
+  ];
   ICoreClip[
     label="ICoreClip",
     URL="ICoreClip.html",
@@ -14,5 +28,7 @@ strict digraph interface_diagram {
     fontname="Times-Italic",
     shape="record"
   ];
+  IBaseClip -> ITweenClip;
+  IBaseClip -> ILiquidClip;
   IBaseClip -> ICoreClip;
 }

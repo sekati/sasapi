@@ -14,7 +14,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="11">    11  </span>
 <span class="lineno" id="12">    12  </span><span class="comment doc">/**
 <span class="lineno" id="13">    13  </span> * UIClip - any clip which needs to respond to StageResize or StageResizeComplete (delayed) events to create Liquid Layout 
-<span class="lineno" id="14">    14  </span> * via {@link com.sekati.events Dispatcher} which extends {@link com.lti.display.EventClip} for Broadcaster event core. Class
+<span class="lineno" id="14">    14  </span> * via {@link com.sekati.events Dispatcher} which extends {@link com.sekati.display.EventClip} for Broadcaster event core. Class
 <span class="lineno" id="15">    15  </span> * also adds some wrappers to {@link com.sekati.display.TextDisplay} for automatic styling.
 <span class="lineno" id="16">    16  </span> */</span>
 <span class="lineno" id="17">    17  </span><span class="key">class</span> com.sekati.display.UIClip <span class="key">extends</span> EventClip {
@@ -26,31 +26,14 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="23">    23  </span>		<span class="key">super</span>();
 <span class="lineno" id="24">    24  </span>		TextDisplay.clear(_this);
 <span class="lineno" id="25">    25  </span>	}
-<span class="lineno" id="26">    26  </span>
+<span class="lineno" id="26">    26  </span>	
 <span class="lineno" id="27">    27  </span>	<span class="comment doc">/**
-<span class="lineno" id="28">    28  </span>	 * Clip has been loaded and registered on Stage.
-<span class="lineno" id="29">    29  </span>	 * @return Void
-<span class="lineno" id="30">    30  </span>	 */</span>
-<span class="lineno" id="31">    31  </span>	<span class="key">public</span> <span class="key">function</span> configUI():Void {
-<span class="lineno" id="32">    32  </span>		<span class="comment">// moved to constructor as was causing issues with Graph/Nav.</span>
-<span class="lineno" id="33">    33  </span>		<span class="comment">//TextDisplay.clear(_this);</span>
-<span class="lineno" id="34">    34  </span>	}
+<span class="lineno" id="28">    28  </span>	 * Application has been Configured (Config &amp; Data loaded).
+<span class="lineno" id="29">    29  </span>	 * NOTE: Automatically applies the application stylesheet to all TextField Objects!
+<span class="lineno" id="30">    30  </span>	 * @return Void
+<span class="lineno" id="31">    31  </span>	 */</span>
+<span class="lineno" id="32">    32  </span>	<span class="key">public</span> <span class="key">function</span> onAppConfigured():Void {
+<span class="lineno" id="33">    33  </span>		TextDisplay.style(_this);
+<span class="lineno" id="34">    34  </span>	}	
 <span class="lineno" id="35">    35  </span>	
-<span class="lineno" id="36">    36  </span>	<span class="comment doc">/**
-<span class="lineno" id="37">    37  </span>	 * Application has been Configured (Config &amp; Data loaded).
-<span class="lineno" id="38">    38  </span>	 * NOTE: Automatically applies the application stylesheet to all TextField Objects!
-<span class="lineno" id="39">    39  </span>	 * @return Void
-<span class="lineno" id="40">    40  </span>	 */</span>
-<span class="lineno" id="41">    41  </span>	<span class="key">public</span> <span class="key">function</span> onAppConfigured():Void {
-<span class="lineno" id="42">    42  </span>		TextDisplay.style(_this);
-<span class="lineno" id="43">    43  </span>	}
-<span class="lineno" id="44">    44  </span>	
-<span class="lineno" id="45">    45  </span>	<span class="comment doc">/**
-<span class="lineno" id="46">    46  </span>	 * Remove Dispatcher listeners onUnload.
-<span class="lineno" id="47">    47  </span>	 * @return Void
-<span class="lineno" id="48">    48  </span>	 */</span>
-<span class="lineno" id="49">    49  </span>	<span class="key">public</span> <span class="key">function</span> onUnload():Void {
-<span class="lineno" id="50">    50  </span>		<span class="key">super</span>.onUnload();
-<span class="lineno" id="51">    51  </span>	}	
-<span class="lineno" id="52">    52  </span>	
-<span class="lineno" id="53">    53  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of Sekati" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.display" class="button">Package</a></li><li><a href="UIClip.html" title="Detail of com.sekati.display.UIClip API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
+<span class="lineno" id="36">    36  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of Sekati" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.display" class="button">Package</a></li><li><a href="UIClip.html" title="Detail of com.sekati.display.UIClip API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>

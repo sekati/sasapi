@@ -6,12 +6,6 @@ strict digraph class_diagram {
     tooltip="com.sekati.display.UIClip",
     shape="record"
   ];
-  TypeTweenClip[
-    label="TweenClip",
-    URL="TweenClip.html",
-    tooltip="com.sekati.display.TweenClip",
-    shape="record"
-  ];
   TypeTextDisplay[
     label="TextDisplay",
     URL="TextDisplay.html",
@@ -79,7 +73,6 @@ strict digraph class_diagram {
     shape="record"
   ];
   TypeEventClip -> TypeUIClip;
-  TypeCoreClip -> TypeTweenClip;
   TypeLiquidClip -> TypeLiquidYClip;
   TypeLiquidClip -> TypeLiquidXClip;
   TypeLiquidClip -> TypeLiquidWClip;

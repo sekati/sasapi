@@ -5,7 +5,7 @@
  * @version		1.0.0
  */
 
-class caurina.transitions.AuxFunctions {
+class com.sekati.transitions.AuxFunctions {
 
 	/**
 	 * Gets the R (xx0000) bits from a number

@@ -7,10 +7,10 @@
  * @version		1.0.2
  */
 
-import caurina.transitions.Tweener;
-import caurina.transitions.AuxFunctions;
+import com.sekati.transitions.Tweener;
+import com.sekati.transitions.AuxFunctions;
 
-class caurina.transitions.SpecialPropertiesDefault {
+class com.sekati.transitions.SpecialPropertiesDefault {
 
 	/**
 	 * There's no constructor.

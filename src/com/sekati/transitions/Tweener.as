@@ -32,16 +32,21 @@ http://code.google.com/p/tweener/
 http://code.google.com/p/tweener/wiki/License
 */
 
-import caurina.transitions.Equations;
-import caurina.transitions.AuxFunctions;
-import caurina.transitions.SpecialPropertiesDefault;
-import caurina.transitions.SpecialProperty;
-import caurina.transitions.SpecialPropertyModifier;
-import caurina.transitions.SpecialPropertySplitter;
-import caurina.transitions.TweenListObj;
-import caurina.transitions.PropertyInfoObj;
+import com.sekati.transitions.Equations;
+import com.sekati.transitions.AuxFunctions;
+import com.sekati.transitions.SpecialPropertiesDefault;
+import com.sekati.transitions.SpecialProperty;
+import com.sekati.transitions.SpecialPropertyModifier;
+import com.sekati.transitions.SpecialPropertySplitter;
+import com.sekati.transitions.TweenListObj;
+import com.sekati.transitions.PropertyInfoObj;
 
-class caurina.transitions.Tweener {
+/**
+ * Tweener - {@link http://code.google.com/p/tweener}
+ * @see {@link http://hosted.zeh.com.br/tweener/docs/en-us}
+ * @see {@link http://hosted.zeh.com.br/tweener/docs/en-us/misc/transitions.html}
+ */
+class com.sekati.transitions.Tweener {
 
 	private static var _engineExists:Boolean = false;		// Whether or not the engine is currently running
 	private static var _inited:Boolean = false;				// Whether or not the class has been initiated
@@ -93,7 +98,7 @@ class caurina.transitions.Tweener {
 		if (arguments.length < 2 || arguments[0] == undefined) return false;
 
 		var rScopes:Array = new Array(); // List of objects to tween
-		var i:Number, j:Number, istr:String, jstr:String;
+		var i:Number, istr:String;
 
 		if (arguments[0] instanceof Array) {
 			// The first argument is an array
@@ -233,7 +238,7 @@ class caurina.transitions.Tweener {
 		if (arguments.length < 2 || arguments[0] == undefined) return false;
 
 		var rScopes:Array = new Array(); // List of objects to tween
-		var i:Number, j:Number;
+		var i:Number;
 
 		if (arguments[0] instanceof Array) {
 			// The first argument is an array
@@ -840,7 +845,7 @@ class caurina.transitions.Tweener {
 
 		var randomDepth:Number = Math.floor(Math.random() * 999999);
 		var fmc:MovieClip = _root.createEmptyMovieClip(getControllerName(), 31338+randomDepth);
-		fmc.onEnterFrame = function() {
+		fmc.onEnterFrame = function():Void {
 			Tweener.onEnterFrame();
 		};
 

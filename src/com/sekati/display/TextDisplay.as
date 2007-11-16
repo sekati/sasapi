@@ -1,6 +1,6 @@
 /**
  * com.sekati.display.TextDisplay
- * @version 1.0.3
+ * @version 1.0.5
  * @author jason m horwitz | sekati.com | tendercreative.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -8,7 +8,7 @@
  
  import com.sekati.core.App;
  import com.sekati.effects.TextEffects;
-  import com.sekati.effects.AnimHandler;
+ import com.sekati.effects.AnimHandler;
  import com.sekati.validate.TypeValidation;
  
 /**

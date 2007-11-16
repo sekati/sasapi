@@ -3,68 +3,80 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span><span class="comment doc">/**
 <span class="lineno" id="2">     2  </span> * com.sekati.display.BaseClip
-<span class="lineno" id="3">     3  </span> * @version 1.0.3
+<span class="lineno" id="3">     3  </span> * @version 1.0.5
 <span class="lineno" id="4">     4  </span> * @author jason m horwitz | sekati.com
 <span class="lineno" id="5">     5  </span> * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
 <span class="lineno" id="7">     7  </span> */</span>
 <span class="lineno" id="8">     8  </span> 
-<span class="lineno" id="9">     9  </span>  <span class="key">import</span> com.sekati.display.IBaseClip;
-<span class="lineno" id="10">    10  </span>  <span class="key">import</span> com.sekati.core.KeyFactory;
-<span class="lineno" id="11">    11  </span>  <span class="key">import</span> com.sekati.reflect.Stringifier;
-<span class="lineno" id="12">    12  </span>  <span class="key">import</span> com.sekati.utils.MovieClipUtils;
-<span class="lineno" id="13">    13  </span> 
-<span class="lineno" id="14">    14  </span><span class="comment doc">/**
-<span class="lineno" id="15">    15  </span> * This is the foundational MovieClip class and should be
-<span class="lineno" id="16">    16  </span> * thought of as the main building block of the SASAPI framework.
-<span class="lineno" id="17">    17  </span> * @see {@link com.sekati.display.CoreClip}
-<span class="lineno" id="18">    18  </span> */</span>
-<span class="lineno" id="19">    19  </span><span class="key">class</span> com.sekati.display.BaseClip <span class="key">extends</span> MovieClip <span class="key">implements</span> IBaseClip {
-<span class="lineno" id="20">    20  </span>	
-<span class="lineno" id="21">    21  </span>	<span class="key">private</span> <span class="key">var</span> _this:MovieClip;
-<span class="lineno" id="22">    22  </span>	<span class="key">private</span> <span class="key">var</span> __isClean:Boolean;
-<span class="lineno" id="23">    23  </span>	
-<span class="lineno" id="24">    24  </span>	<span class="key">public</span> <span class="key">function</span> BaseClip() {
-<span class="lineno" id="25">    25  </span>		_this = <span class="key">this</span>;
-<span class="lineno" id="26">    26  </span>		__isClean = <span class="key">false</span>;
-<span class="lineno" id="27">    27  </span>		KeyFactory.inject(_this);
-<span class="lineno" id="28">    28  </span>	}
-<span class="lineno" id="29">    29  </span>
-<span class="lineno" id="30">    30  </span>	<span class="comment doc">/**
-<span class="lineno" id="31">    31  </span>	 * if destroy hasnt already been called manually
-<span class="lineno" id="32">    32  </span>	 * run it onUnload.
-<span class="lineno" id="33">    33  </span>	 */</span>
-<span class="lineno" id="34">    34  </span>	<span class="key">public</span> <span class="key">function</span> onUnload():Void {
-<span class="lineno" id="35">    35  </span>		<span class="key">if</span>(!__isClean) {
-<span class="lineno" id="36">    36  </span>			destroy();
-<span class="lineno" id="37">    37  </span>		}	
-<span class="lineno" id="38">    38  </span>	}
-<span class="lineno" id="39">    39  </span>	
-<span class="lineno" id="40">    40  </span>	<span class="comment doc">/**
-<span class="lineno" id="41">    41  </span>	 * Destroy object elements and events for proper garbage collection.
-<span class="lineno" id="42">    42  </span>	 * This is a generic destroy method to insure that, at a minimum, the 
-<span class="lineno" id="43">    43  </span>	 * enterFrame and clip itself are removed when destroy is called. 
-<span class="lineno" id="44">    44  </span>	 * This behavior can be overwritten by BaseClip's subclasses. 
-<span class="lineno" id="45">    45  </span>	 * If you wish to use BaseClip's destroy in addition to your subclass 
-<span class="lineno" id="46">    46  </span>	 * destroy you may do so via: 
-<span class="lineno" id="47">    47  </span>	 * {@code
-<span class="lineno" id="48">    48  </span>	 * 	super.destroy(); 
-<span class="lineno" id="49">    49  </span>	 * }
-<span class="lineno" id="50">    50  </span>	 */</span>	
-<span class="lineno" id="51">    51  </span>	<span class="key">public</span> <span class="key">function</span> destroy():Void {
-<span class="lineno" id="52">    52  </span>		__isClean = <span class="key">true</span>;
-<span class="lineno" id="53">    53  </span>		_this.onEnterFrame = <span class="key">null</span>;
-<span class="lineno" id="54">    54  </span>		<span class="key">for</span>(<span class="key">var</span> i <span class="key">in</span> _this) {
-<span class="lineno" id="55">    55  </span>			MovieClipUtils.rmClip(_this[i]);	
-<span class="lineno" id="56">    56  </span>		}
-<span class="lineno" id="57">    57  </span>		MovieClipUtils.rmClip(_this);		
-<span class="lineno" id="58">    58  </span>	}
-<span class="lineno" id="59">    59  </span>
-<span class="lineno" id="60">    60  </span>	<span class="comment doc">/**
-<span class="lineno" id="61">    61  </span>	 * return reflective output
-<span class="lineno" id="62">    62  </span>	 * @return String
-<span class="lineno" id="63">    63  </span>	 */</span>	
-<span class="lineno" id="64">    64  </span>	<span class="key">public</span> <span class="key">function</span> toString():String {
-<span class="lineno" id="65">    65  </span>		<span class="key">return</span> Stringifier.stringify(<span class="key">this</span>);
-<span class="lineno" id="66">    66  </span>	}
-<span class="lineno" id="67">    67  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of Sekati" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.display" class="button">Package</a></li><li><a href="BaseClip.html" title="Detail of com.sekati.display.BaseClip API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
+<span class="lineno" id="9">     9  </span> <span class="key">import</span> com.sekati.display.IBaseClip;
+<span class="lineno" id="10">    10  </span> <span class="key">import</span> com.sekati.display.ITweenClip;
+<span class="lineno" id="11">    11  </span> <span class="key">import</span> com.sekati.core.KeyFactory;
+<span class="lineno" id="12">    12  </span> <span class="key">import</span> com.sekati.reflect.Stringifier;
+<span class="lineno" id="13">    13  </span> <span class="key">import</span> com.sekati.transitions.Tweener;
+<span class="lineno" id="14">    14  </span> <span class="key">import</span> com.sekati.utils.MovieClipUtils;
+<span class="lineno" id="15">    15  </span> 
+<span class="lineno" id="16">    16  </span><span class="comment doc">/**
+<span class="lineno" id="17">    17  </span> * This is the foundational MovieClip class and should be
+<span class="lineno" id="18">    18  </span> * thought of as the main building block of the SASAPI framework.
+<span class="lineno" id="19">    19  </span> * @see {@link com.sekati.display.CoreClip}
+<span class="lineno" id="20">    20  </span> */</span>
+<span class="lineno" id="21">    21  </span><span class="key">class</span> com.sekati.display.BaseClip <span class="key">extends</span> MovieClip <span class="key">implements</span> IBaseClip, ITweenClip {
+<span class="lineno" id="22">    22  </span>
+<span class="lineno" id="23">    23  </span>	<span class="key">private</span> <span class="key">var</span> _this:MovieClip;
+<span class="lineno" id="24">    24  </span>	<span class="key">private</span> <span class="key">var</span> __isClean:Boolean;
+<span class="lineno" id="25">    25  </span>	
+<span class="lineno" id="26">    26  </span>	<span class="key">public</span> <span class="key">function</span> BaseClip() {
+<span class="lineno" id="27">    27  </span>		_this = <span class="key">this</span>;
+<span class="lineno" id="28">    28  </span>		__isClean = <span class="key">false</span>;
+<span class="lineno" id="29">    29  </span>		KeyFactory.inject(_this);
+<span class="lineno" id="30">    30  </span>	}
+<span class="lineno" id="31">    31  </span>
+<span class="lineno" id="32">    32  </span>	<span class="comment doc">/**
+<span class="lineno" id="33">    33  </span>	 * if destroy hasnt already been called manually
+<span class="lineno" id="34">    34  </span>	 * run it onUnload.
+<span class="lineno" id="35">    35  </span>	 */</span>
+<span class="lineno" id="36">    36  </span>	<span class="key">public</span> <span class="key">function</span> onUnload():Void {
+<span class="lineno" id="37">    37  </span>		<span class="key">if</span>(!__isClean) {
+<span class="lineno" id="38">    38  </span>			destroy();
+<span class="lineno" id="39">    39  </span>		}	
+<span class="lineno" id="40">    40  </span>	}
+<span class="lineno" id="41">    41  </span>	
+<span class="lineno" id="42">    42  </span>	<span class="comment doc">/**
+<span class="lineno" id="43">    43  </span>	 * Destroy object elements and events for proper garbage collection.
+<span class="lineno" id="44">    44  </span>	 * This is a generic destroy method to insure that, at a minimum, the 
+<span class="lineno" id="45">    45  </span>	 * enterFrame and clip itself are removed when destroy is called. 
+<span class="lineno" id="46">    46  </span>	 * This behavior can be overwritten by BaseClip's subclasses. 
+<span class="lineno" id="47">    47  </span>	 * If you wish to use BaseClip's destroy in addition to your subclass 
+<span class="lineno" id="48">    48  </span>	 * destroy you may do so via: 
+<span class="lineno" id="49">    49  </span>	 * {@code
+<span class="lineno" id="50">    50  </span>	 * 	super.destroy(); 
+<span class="lineno" id="51">    51  </span>	 * }
+<span class="lineno" id="52">    52  </span>	 */</span>	
+<span class="lineno" id="53">    53  </span>	<span class="key">public</span> <span class="key">function</span> destroy():Void {
+<span class="lineno" id="54">    54  </span>		__isClean = <span class="key">true</span>;
+<span class="lineno" id="55">    55  </span>		_this.onEnterFrame = <span class="key">null</span>;
+<span class="lineno" id="56">    56  </span>		<span class="key">for</span>(<span class="key">var</span> i <span class="key">in</span> _this) {
+<span class="lineno" id="57">    57  </span>			MovieClipUtils.rmClip(_this[i]);	
+<span class="lineno" id="58">    58  </span>		}
+<span class="lineno" id="59">    59  </span>		MovieClipUtils.rmClip(_this);		
+<span class="lineno" id="60">    60  </span>	}
+<span class="lineno" id="61">    61  </span>	
+<span class="lineno" id="62">    62  </span>	<span class="comment doc">/**
+<span class="lineno" id="63">    63  </span>	 * A very basic wrapper to apply a tween to the current object via {@link com.sekati.transitions.Tweener.addTween}
+<span class="lineno" id="64">    64  </span>	 * @see {@link http://hosted.zeh.com.br/tweener/docs/en-us/}
+<span class="lineno" id="65">    65  </span>	 * @param tweenerObject (Object)
+<span class="lineno" id="66">    66  </span>	 * @return Boolean
+<span class="lineno" id="67">    67  </span>	 */</span>
+<span class="lineno" id="68">    68  </span>	<span class="key">public</span> <span class="key">function</span> tween (tweenerObject:Object):Void {
+<span class="lineno" id="69">    69  </span>		Tweener.addTween (_this, tweenerObject);
+<span class="lineno" id="70">    70  </span>	}	
+<span class="lineno" id="71">    71  </span>
+<span class="lineno" id="72">    72  </span>	<span class="comment doc">/**
+<span class="lineno" id="73">    73  </span>	 * return reflective output
+<span class="lineno" id="74">    74  </span>	 * @return String
+<span class="lineno" id="75">    75  </span>	 */</span>	
+<span class="lineno" id="76">    76  </span>	<span class="key">public</span> <span class="key">function</span> toString():String {
+<span class="lineno" id="77">    77  </span>		<span class="key">return</span> Stringifier.stringify(<span class="key">this</span>);
+<span class="lineno" id="78">    78  </span>	}
+<span class="lineno" id="79">    79  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of Sekati" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.display" class="button">Package</a></li><li><a href="BaseClip.html" title="Detail of com.sekati.display.BaseClip API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>

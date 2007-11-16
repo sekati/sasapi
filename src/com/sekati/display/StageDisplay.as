@@ -187,6 +187,6 @@ class com.sekati.display.StageDisplay extends CoreObject {
 	 */
 	public function destroy():Void {
 		FramePulse.$.removeFrameListener(this);
-		super.destroy();	
+		super.destroy();
 	}
 }
