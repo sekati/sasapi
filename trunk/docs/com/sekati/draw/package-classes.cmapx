@@ -1,12 +1,12 @@
 <map id="class_diagram" name="class_diagram">
-<area shape="rect" href="Triangle.html" title="com.sekati.draw.Triangle" alt="" coords="40,656,122,704" />
-<area shape="rect" href="Tile.html" title="com.sekati.draw.Tile" alt="" coords="45,584,117,632" />
-<area shape="rect" href="Shape.html" title="com.sekati.draw.Shape" alt="" coords="45,512,117,560" />
-<area shape="rect" href="RoundRectangle.html" title="com.sekati.draw.RoundRectangle" alt="" coords="9,440,153,488" />
-<area shape="rect" href="Ring.html" title="com.sekati.draw.Ring" alt="" coords="45,368,117,416" />
-<area shape="rect" href="Rectangle.html" title="com.sekati.draw.Rectangle" alt="" coords="33,296,129,344" />
-<area shape="rect" href="Oval.html" title="com.sekati.draw.Oval" alt="" coords="45,224,117,272" />
-<area shape="rect" href="Line.html" title="com.sekati.draw.Line" alt="" coords="45,152,117,200" />
-<area shape="rect" href="DrawUtils.html" title="com.sekati.draw.DrawUtils" alt="" coords="32,80,130,128" />
-<area shape="rect" href="Curve.html" title="com.sekati.draw.Curve" alt="" coords="45,8,117,56" />
+<area shape="rect" href="Triangle.html" title="com.sekati.draw.Triangle" alt="" coords="32,656,104,704" />
+<area shape="rect" href="Tile.html" title="com.sekati.draw.Tile" alt="" coords="32,584,104,632" />
+<area shape="rect" href="Shape.html" title="com.sekati.draw.Shape" alt="" coords="32,512,104,560" />
+<area shape="rect" href="RoundRectangle.html" title="com.sekati.draw.RoundRectangle" alt="" coords="9,440,126,488" />
+<area shape="rect" href="Ring.html" title="com.sekati.draw.Ring" alt="" coords="32,368,104,416" />
+<area shape="rect" href="Rectangle.html" title="com.sekati.draw.Rectangle" alt="" coords="28,296,108,344" />
+<area shape="rect" href="Oval.html" title="com.sekati.draw.Oval" alt="" coords="32,224,104,272" />
+<area shape="rect" href="Line.html" title="com.sekati.draw.Line" alt="" coords="32,152,104,200" />
+<area shape="rect" href="DrawUtils.html" title="com.sekati.draw.DrawUtils" alt="" coords="29,80,106,128" />
+<area shape="rect" href="Curve.html" title="com.sekati.draw.Curve" alt="" coords="32,8,104,56" />
 </map>

@@ -4,12 +4,18 @@ strict digraph class_diagram {
     label="RemoteEvent",
     URL="RemoteEvent.html",
     tooltip="com.sekati.remoting.RemoteEvent",
+    fontname="Verdana",
+    fontsize="9"
+    color="#729b12"
     shape="record"
   ];
   TypeRemoteCall[
     label="RemoteCall",
     URL="RemoteCall.html",
     tooltip="com.sekati.remoting.RemoteCall",
+    fontname="Verdana",
+    fontsize="9"
+    color="#729b12"
     shape="record"
   ];
 }

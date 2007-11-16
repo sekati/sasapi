@@ -1,7 +1,7 @@
 <map id="interface_diagram" name="interface_diagram">
-<area shape="rect" href="IPulsable.html" title="com.sekati.events.IPulsable" alt="" coords="29,296,122,344" />
-<area shape="rect" href="IMulticastable.html" title="com.sekati.events.IMulticastable" alt="" coords="10,224,141,272" />
-<area shape="rect" href="IEvent.html" title="com.sekati.events.IEvent" alt="" coords="40,152,112,200" />
-<area shape="rect" href="IDispatchable.html" title="com.sekati.events.IDispatchable" alt="" coords="13,80,138,128" />
-<area shape="rect" href="IBroadcastable.html" title="com.sekati.events.IBroadcastable" alt="" coords="8,8,144,56" />
+<area shape="rect" href="IPulsable.html" title="com.sekati.events.IPulsable" alt="" coords="26,296,101,344" />
+<area shape="rect" href="IMulticastable.html" title="com.sekati.events.IMulticastable" alt="" coords="12,224,116,272" />
+<area shape="rect" href="IEvent.html" title="com.sekati.events.IEvent" alt="" coords="28,152,100,200" />
+<area shape="rect" href="IDispatchable.html" title="com.sekati.events.IDispatchable" alt="" coords="12,80,116,128" />
+<area shape="rect" href="IBroadcastable.html" title="com.sekati.events.IBroadcastable" alt="" coords="9,8,118,56" />
 </map>

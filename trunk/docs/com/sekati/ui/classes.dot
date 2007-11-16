@@ -4,30 +4,45 @@ strict digraph class_diagram {
     label="Scroll",
     URL="Scroll.html",
     tooltip="com.sekati.ui.Scroll",
+    fontname="Verdana",
+    fontsize="9"
+    color="#729b12"
     shape="record"
   ];
   TypeScreenProtector[
     label="ScreenProtector",
     URL="ScreenProtector.html",
     tooltip="com.sekati.ui.ScreenProtector",
+    fontname="Verdana",
+    fontsize="9"
+    color="#729b12"
     shape="record"
   ];
   TypeImage[
     label="Image",
     URL="Image.html",
     tooltip="com.sekati.ui.Image",
+    fontname="Verdana",
+    fontsize="9"
+    color="#729b12"
     shape="record"
   ];
   TypeFLVPlayer[
     label="FLVPlayer",
     URL="FLVPlayer.html",
     tooltip="com.sekati.ui.FLVPlayer",
+    fontname="Verdana",
+    fontsize="9"
+    color="#729b12"
     shape="record"
   ];
   TypeContextualMenu[
     label="ContextualMenu",
     URL="ContextualMenu.html",
     tooltip="com.sekati.ui.ContextualMenu",
+    fontname="Verdana",
+    fontsize="9"
+    color="#729b12"
     shape="record"
   ];
 }

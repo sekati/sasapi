@@ -1,11 +1,11 @@
 <map id="class_diagram" name="class_diagram">
-<area shape="rect" href="TweenListObj.html" title="com.sekati.transitions.TweenListObj" alt="" coords="48,584,176,632" />
-<area shape="rect" href="Tweener.html" title="com.sekati.transitions.Tweener" alt="" coords="69,512,154,560" />
-<area shape="rect" href="SpecialPropertySplitter.html" title="com.sekati.transitions.SpecialPropertySplitter" alt="" coords="14,440,209,488" />
-<area shape="rect" href="SpecialPropertyModifier.html" title="com.sekati.transitions.SpecialPropertyModifier" alt="" coords="9,368,214,416" />
-<area shape="rect" href="SpecialProperty.html" title="com.sekati.transitions.SpecialProperty" alt="" coords="42,296,181,344" />
-<area shape="rect" href="SpecialPropertiesDefault.html" title="com.sekati.transitions.SpecialPropertiesDefault" alt="" coords="8,224,216,272" />
-<area shape="rect" href="PropertyInfoObj.html" title="com.sekati.transitions.PropertyInfoObj" alt="" coords="40,152,184,200" />
-<area shape="rect" href="Equations.html" title="com.sekati.transitions.Equations" alt="" coords="64,80,160,128" />
-<area shape="rect" href="AuxFunctions.html" title="com.sekati.transitions.AuxFunctions" alt="" coords="49,8,174,56" />
+<area shape="rect" href="TweenListObj.html" title="com.sekati.transitions.TweenListObj" alt="" coords="41,584,142,632" />
+<area shape="rect" href="Tweener.html" title="com.sekati.transitions.Tweener" alt="" coords="56,512,128,560" />
+<area shape="rect" href="SpecialPropertySplitter.html" title="com.sekati.transitions.SpecialPropertySplitter" alt="" coords="12,440,172,488" />
+<area shape="rect" href="SpecialPropertyModifier.html" title="com.sekati.transitions.SpecialPropertyModifier" alt="" coords="10,368,173,416" />
+<area shape="rect" href="SpecialProperty.html" title="com.sekati.transitions.SpecialProperty" alt="" coords="34,296,149,344" />
+<area shape="rect" href="SpecialPropertiesDefault.html" title="com.sekati.transitions.SpecialPropertiesDefault" alt="" coords="8,224,176,272" />
+<area shape="rect" href="PropertyInfoObj.html" title="com.sekati.transitions.PropertyInfoObj" alt="" coords="33,152,150,200" />
+<area shape="rect" href="Equations.html" title="com.sekati.transitions.Equations" alt="" coords="52,80,132,128" />
+<area shape="rect" href="AuxFunctions.html" title="com.sekati.transitions.AuxFunctions" alt="" coords="41,8,142,56" />
 </map>

@@ -4,6 +4,9 @@ strict digraph class_diagram {
     label="BaseLoader",
     URL="BaseLoader.html",
     tooltip="com.sekati.load.BaseLoader",
+    fontname="Verdana",
+    fontsize="9"
+    color="#729b12"
     shape="record"
   ];
 }
