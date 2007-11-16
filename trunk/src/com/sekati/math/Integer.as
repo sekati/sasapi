@@ -1,6 +1,6 @@
 /**
  * com.sekati.math.Integer
- * @version 1.0.0
+ * @version 1.0.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -22,7 +22,7 @@ class com.sekati.math.Integer extends Number {
 		if (n == Infinity || n == -Infinity) {
 			throw new Error ("Infinity cannot be evaluated to an integer");
 		} else {
-			_int = n-n%1;
+			_int = n - n % 1;
 		}
 	}
 

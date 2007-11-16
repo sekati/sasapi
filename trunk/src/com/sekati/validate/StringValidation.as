@@ -1,6 +1,6 @@
 /**
  * com.sekati.validate.StringValidation
- * @version 1.0.3
+ * @version 1.0.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -29,7 +29,7 @@ class com.sekati.validate.StringValidation {
 	 * @return Boolean
 	 */
 	public static function isURL (str:String):Boolean {
-		return (str.substring (0, 7) == "http://");
+		return (str.substring (0, 7) == "http://" || str.substring (0, 8) == "https://");
 	}		
 
 	/**
