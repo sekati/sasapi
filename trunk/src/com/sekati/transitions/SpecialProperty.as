@@ -6,7 +6,7 @@
  * @version		1.0.1
  */
 
-class caurina.transitions.SpecialProperty {
+class com.sekati.transitions.SpecialProperty {
 
 	private var parameters:Array;
 

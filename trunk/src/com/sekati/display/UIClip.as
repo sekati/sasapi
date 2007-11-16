@@ -11,7 +11,7 @@
 
 /**
  * UIClip - any clip which needs to respond to StageResize or StageResizeComplete (delayed) events to create Liquid Layout 
- * via {@link com.sekati.events Dispatcher} which extends {@link com.lti.display.EventClip} for Broadcaster event core. Class
+ * via {@link com.sekati.events Dispatcher} which extends {@link com.sekati.display.EventClip} for Broadcaster event core. Class
  * also adds some wrappers to {@link com.sekati.display.TextDisplay} for automatic styling.
  */
 class com.sekati.display.UIClip extends EventClip {
@@ -23,15 +23,6 @@ class com.sekati.display.UIClip extends EventClip {
 		super();
 		TextDisplay.clear(_this);
 	}
-
-	/**
-	 * Clip has been loaded and registered on Stage.
-	 * @return Void
-	 */
-	public function configUI():Void {
-		// moved to constructor as was causing issues with Graph/Nav.
-		//TextDisplay.clear(_this);
-	}
 	
 	/**
 	 * Application has been Configured (Config & Data loaded).
@@ -40,14 +31,6 @@ class com.sekati.display.UIClip extends EventClip {
 	 */
 	public function onAppConfigured():Void {
 		TextDisplay.style(_this);
-	}
-	
-	/**
-	 * Remove Dispatcher listeners onUnload.
-	 * @return Void
-	 */
-	public function onUnload():Void {
-		super.onUnload();
 	}	
 	
 }

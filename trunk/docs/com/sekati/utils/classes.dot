@@ -6,12 +6,6 @@ strict digraph class_diagram {
     tooltip="com.sekati.utils.TextUtils",
     shape="record"
   ];
-  TypeStringUtils[
-    label="StringUtils",
-    URL="StringUtils.html",
-    tooltip="com.sekati.utils.StringUtils",
-    shape="record"
-  ];
   TypeMovieClipUtils[
     label="MovieClipUtils",
     URL="MovieClipUtils.html",

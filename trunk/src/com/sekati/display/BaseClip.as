@@ -1,23 +1,25 @@
 /**
  * com.sekati.display.BaseClip
- * @version 1.0.3
+ * @version 1.0.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  
-  import com.sekati.display.IBaseClip;
-  import com.sekati.core.KeyFactory;
-  import com.sekati.reflect.Stringifier;
-  import com.sekati.utils.MovieClipUtils;
+ import com.sekati.display.IBaseClip;
+ import com.sekati.display.ITweenClip;
+ import com.sekati.core.KeyFactory;
+ import com.sekati.reflect.Stringifier;
+ import com.sekati.transitions.Tweener;
+ import com.sekati.utils.MovieClipUtils;
  
 /**
  * This is the foundational MovieClip class and should be
  * thought of as the main building block of the SASAPI framework.
  * @see {@link com.sekati.display.CoreClip}
  */
-class com.sekati.display.BaseClip extends MovieClip implements IBaseClip {
-	
+class com.sekati.display.BaseClip extends MovieClip implements IBaseClip, ITweenClip {
+
 	private var _this:MovieClip;
 	private var __isClean:Boolean;
 	
@@ -56,6 +58,16 @@ class com.sekati.display.BaseClip extends MovieClip implements IBaseClip {
 		}
 		MovieClipUtils.rmClip(_this);		
 	}
+	
+	/**
+	 * A very basic wrapper to apply a tween to the current object via {@link com.sekati.transitions.Tweener.addTween}
+	 * @see {@link http://hosted.zeh.com.br/tweener/docs/en-us/}
+	 * @param tweenerObject (Object)
+	 * @return Boolean
+	 */
+	public function tween (tweenerObject:Object):Void {
+		Tweener.addTween (_this, tweenerObject);
+	}	
 
 	/**
 	 * return reflective output

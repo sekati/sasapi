@@ -1,15 +1,14 @@
 <map id="class_diagram" name="class_diagram">
-<area shape="rect" href="UIClip.html" title="com.sekati.display.UIClip" alt="" coords="484,152,556,200" />
-<area shape="rect" href="LiquidClip.html" title="com.sekati.display.LiquidClip" alt="" coords="606,152,708,200" />
-<area shape="rect" href="TweenClip.html" title="com.sekati.display.TweenClip" alt="" coords="325,80,426,128" />
+<area shape="rect" href="UIClip.html" title="com.sekati.display.UIClip" alt="" coords="484,116,556,164" />
+<area shape="rect" href="LiquidClip.html" title="com.sekati.display.LiquidClip" alt="" coords="606,116,708,164" />
 <area shape="rect" href="TextDisplay.html" title="com.sekati.display.TextDisplay" alt="" coords="13,80,125,128" />
 <area shape="rect" href="StageDisplay.html" title="com.sekati.display.StageDisplay" alt="" coords="9,8,129,56" />
-<area shape="rect" href="LiquidYClip.html" title="com.sekati.display.LiquidYClip" alt="" coords="760,44,877,92" />
-<area shape="rect" href="LiquidXClip.html" title="com.sekati.display.LiquidXClip" alt="" coords="760,116,877,164" />
-<area shape="rect" href="LiquidWClip.html" title="com.sekati.display.LiquidWClip" alt="" coords="758,188,878,236" />
-<area shape="rect" href="LiquidHClip.html" title="com.sekati.display.LiquidHClip" alt="" coords="760,260,877,308" />
-<area shape="rect" href="EventClip.html" title="com.sekati.display.EventClip" alt="" coords="328,152,424,200" />
+<area shape="rect" href="LiquidYClip.html" title="com.sekati.display.LiquidYClip" alt="" coords="760,8,877,56" />
+<area shape="rect" href="LiquidXClip.html" title="com.sekati.display.LiquidXClip" alt="" coords="760,80,877,128" />
+<area shape="rect" href="LiquidWClip.html" title="com.sekati.display.LiquidWClip" alt="" coords="758,152,878,200" />
+<area shape="rect" href="LiquidHClip.html" title="com.sekati.display.LiquidHClip" alt="" coords="760,224,877,272" />
+<area shape="rect" href="EventClip.html" title="com.sekati.display.EventClip" alt="" coords="328,116,424,164" />
 <area shape="rect" href="CoreClip.html" title="com.sekati.display.CoreClip" alt="" coords="180,152,268,200" />
-<area shape="rect" href="AbstractClip.html" title="com.sekati.display.AbstractClip" alt="" coords="317,224,434,272" />
+<area shape="rect" href="AbstractClip.html" title="com.sekati.display.AbstractClip" alt="" coords="317,188,434,236" />
 <area shape="rect" href="BaseClip.html" title="com.sekati.display.BaseClip" alt="" coords="25,152,113,200" />
 </map>
