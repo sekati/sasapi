@@ -1,7 +1,7 @@
 <map id="class_diagram" name="class_diagram">
-<area shape="rect" href="Scroll.html" title="com.sekati.ui.Scroll" alt="" coords="45,296,117,344" />
-<area shape="rect" href="ScreenProtector.html" title="com.sekati.ui.ScreenProtector" alt="" coords="12,224,150,272" />
-<area shape="rect" href="Image.html" title="com.sekati.ui.Image" alt="" coords="45,152,117,200" />
-<area shape="rect" href="FLVPlayer.html" title="com.sekati.ui.FLVPlayer" alt="" coords="30,80,132,128" />
-<area shape="rect" href="ContextualMenu.html" title="com.sekati.ui.ContextualMenu" alt="" coords="8,8,154,56" />
+<area shape="rect" href="Scroll.html" title="com.sekati.ui.Scroll" alt="" coords="32,296,104,344" />
+<area shape="rect" href="ScreenProtector.html" title="com.sekati.ui.ScreenProtector" alt="" coords="9,224,126,272" />
+<area shape="rect" href="Image.html" title="com.sekati.ui.Image" alt="" coords="32,152,104,200" />
+<area shape="rect" href="FLVPlayer.html" title="com.sekati.ui.FLVPlayer" alt="" coords="28,80,108,128" />
+<area shape="rect" href="ContextualMenu.html" title="com.sekati.ui.ContextualMenu" alt="" coords="9,8,126,56" />
 </map>

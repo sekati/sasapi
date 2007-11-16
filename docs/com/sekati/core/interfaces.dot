@@ -4,7 +4,9 @@ strict digraph interface_diagram {
     label="CoreInterface",
     URL="CoreInterface.html",
     tooltip="com.sekati.core.CoreInterface",
-    fontname="Times-Italic",
+    fontname="Verdana-Italic",
+    fontsize="9"
+    color="#2d5492"
     shape="record"
   ];
 }

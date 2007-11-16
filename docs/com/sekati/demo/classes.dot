@@ -4,24 +4,36 @@ strict digraph class_diagram {
     label="Test",
     URL="Test.html",
     tooltip="com.sekati.demo.Test",
+    fontname="Verdana",
+    fontsize="9"
+    color="#729b12"
     shape="record"
   ];
   TypeImageBox[
     label="ImageBox",
     URL="ImageBox.html",
     tooltip="com.sekati.demo.ImageBox",
+    fontname="Verdana",
+    fontsize="9"
+    color="#729b12"
     shape="record"
   ];
   TypeFilterBtn[
     label="FilterBtn",
     URL="FilterBtn.html",
     tooltip="com.sekati.demo.FilterBtn",
+    fontname="Verdana",
+    fontsize="9"
+    color="#729b12"
     shape="record"
   ];
   TypeContentBox[
     label="ContentBox",
     URL="ContentBox.html",
     tooltip="com.sekati.demo.ContentBox",
+    fontname="Verdana",
+    fontsize="9"
+    color="#729b12"
     shape="record"
   ];
 }
