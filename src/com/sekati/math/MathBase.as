@@ -1,6 +1,6 @@
 ﻿/**
  * com.sekati.math.MathBase
- * @version 1.1.7
+ * @version 1.1.9
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -253,6 +253,34 @@ class com.sekati.math.MathBase {
 	public static function rnd(start:Number, end:Number):Number {
 		return Math.round( Math.random()*(end-start))+start;
 	}
+	
+	/**
+	 * Correct "roundoff errors" in floating point math.
+	 * @param n (Number)
+	 * @param precision (Number) - optional [default: returns (10000 * number) / 10000]
+	 * @return Number
+	 * @see {@link http://www.zeuslabs.us/2007/01/30/flash-floating-point-number-errors/} 
+	 */
+	public static function sanitizeFloat(n:Number, precision:Number):Number {
+		var p:Number = (!precision) ? 5 : int(precision);
+		var c:Number = Math.pow(10, p);
+		return Math.round(c * n) / c;
+	}
+	
+	/**
+	 * Evaluate if two numbers are nearly equal
+	 * @param n1 (Number)
+	 * @param n2 (Number)
+	 * @param precision (Number) - optional [default: 0.00001 <diff> -0.00001]
+	 * @return Boolean
+	 * @see {@link http://www.zeuslabs.us/2007/01/30/flash-floating-point-number-errors/}
+	 */
+	public static function fuzzyEval(n1:Number, n2:Number, precision:Number):Boolean {
+		var d:Number = n1 - n2;
+		var p:Number = (!precision) ? 5 : int(precision);
+		var r:Number = Math.pow(10, -p);
+		return d <r && d > -r;
+	}	
 	
 	private function MathBase(){
 	}
