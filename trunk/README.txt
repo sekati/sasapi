@@ -20,7 +20,7 @@ II. Documentation
 	needed.
 	
 	Documentation:	http://docs.sekati.com/
-	Unit Tests:	http://sasapi.sekati.com/tests/
+	Unit Tests:		http://sasapi.sekati.com/tests/
 
 
 III. Feedback
@@ -28,5 +28,5 @@ III. Feedback
 	I am interested in feedback of every kind, be it a bug, feature request or question.
 
 	Bug Report / Feature Request:	http://code.google.com/p/sasapi/issues/list
-	Project Wiki:			http://code.google.com/p/sasapi/w/list
+	Project Wiki:					http://code.google.com/p/sasapi/w/list
 
