@@ -3,7 +3,7 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span><span class="comment doc">/**
 <span class="lineno" id="2">     2  </span> * com.sekati.math.MathBase
-<span class="lineno" id="3">     3  </span> * @version 1.1.7
+<span class="lineno" id="3">     3  </span> * @version 1.1.9
 <span class="lineno" id="4">     4  </span> * @author jason m horwitz | sekati.com
 <span class="lineno" id="5">     5  </span> * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -257,6 +257,34 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="254">   254  </span>		<span class="key">return</span> Math.round( Math.random()*(end-start))+start;
 <span class="lineno" id="255">   255  </span>	}
 <span class="lineno" id="256">   256  </span>	
-<span class="lineno" id="257">   257  </span>	<span class="key">private</span> <span class="key">function</span> MathBase(){
-<span class="lineno" id="258">   258  </span>	}
-<span class="lineno" id="259">   259  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of Sekati" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.math" class="button">Package</a></li><li><a href="MathBase.html" title="Detail of com.sekati.math.MathBase API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
+<span class="lineno" id="257">   257  </span>	<span class="comment doc">/**
+<span class="lineno" id="258">   258  </span>	 * Correct "roundoff errors" in floating point math.
+<span class="lineno" id="259">   259  </span>	 * @param n (Number)
+<span class="lineno" id="260">   260  </span>	 * @param precision (Number) - optional [default: returns (10000 * number) / 10000]
+<span class="lineno" id="261">   261  </span>	 * @return Number
+<span class="lineno" id="262">   262  </span>	 * @see {@link http://www.zeuslabs.us/2007/01/30/flash-floating-point-number-errors/} 
+<span class="lineno" id="263">   263  </span>	 */</span>
+<span class="lineno" id="264">   264  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> sanitizeFloat(n:Number, precision:Number):Number {
+<span class="lineno" id="265">   265  </span>		<span class="key">var</span> p:Number = (!precision) ? <span class="num_const">5</span> : int(precision);
+<span class="lineno" id="266">   266  </span>		<span class="key">var</span> c:Number = Math.pow(<span class="num_const">10</span>, p);
+<span class="lineno" id="267">   267  </span>		<span class="key">return</span> Math.round(c * n) / c;
+<span class="lineno" id="268">   268  </span>	}
+<span class="lineno" id="269">   269  </span>	
+<span class="lineno" id="270">   270  </span>	<span class="comment doc">/**
+<span class="lineno" id="271">   271  </span>	 * Evaluate if two numbers are nearly equal
+<span class="lineno" id="272">   272  </span>	 * @param n1 (Number)
+<span class="lineno" id="273">   273  </span>	 * @param n2 (Number)
+<span class="lineno" id="274">   274  </span>	 * @param precision (Number) - optional [default: 0.00001 &lt;diff&gt; -0.00001]
+<span class="lineno" id="275">   275  </span>	 * @return Boolean
+<span class="lineno" id="276">   276  </span>	 * @see {@link http://www.zeuslabs.us/2007/01/30/flash-floating-point-number-errors/}
+<span class="lineno" id="277">   277  </span>	 */</span>
+<span class="lineno" id="278">   278  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> fuzzyEval(n1:Number, n2:Number, precision:Number):Boolean {
+<span class="lineno" id="279">   279  </span>		<span class="key">var</span> d:Number = n1 - n2;
+<span class="lineno" id="280">   280  </span>		<span class="key">var</span> p:Number = (!precision) ? <span class="num_const">5</span> : int(precision);
+<span class="lineno" id="281">   281  </span>		<span class="key">var</span> r:Number = Math.pow(<span class="num_const">10</span>, -p);
+<span class="lineno" id="282">   282  </span>		<span class="key">return</span> d &lt;r &amp;&amp; d &gt; -r;
+<span class="lineno" id="283">   283  </span>	}	
+<span class="lineno" id="284">   284  </span>	
+<span class="lineno" id="285">   285  </span>	<span class="key">private</span> <span class="key">function</span> MathBase(){
+<span class="lineno" id="286">   286  </span>	}
+<span class="lineno" id="287">   287  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of Sekati" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.math" class="button">Package</a></li><li><a href="MathBase.html" title="Detail of com.sekati.math.MathBase API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
