@@ -95,6 +95,7 @@
 			<arg line='-output ${docs}'/>
 			<arg line="-templates-path '${flex2}/asdoc/templates'"/>
 		</exec>
+		<copydir src="${flex2}/asdoc/templates/images" dest="${docs}/images"/>
 	</target>
 	
 	
