@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- *************************************************************************************
+		FDTKit Buildfile v1.5.1
+		
+		@note	You must run this Buildfile in the same JRE as the workspace. To configure
+		        this: Run -> External Tools -> JRE -> Run in the same JRE as the workspace
+				
+		@setup	This Buildfile is currently scoped for OSX,Eclipse, Subclipse, FDT. If 
+		        you would like to use it on Windows simply install Cygwin and adjust 
+		        the necessary path properties.
+			     
+		May 22, 2007 - jason m horwitz | Sekati LLC | sekati.com
+		
+		Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
+     ************************************************************************************* -->
+
+<project name="Sekati ActionScript API - AS3" default="TestMovie" basedir=".">
+
+	
+	<property file="build.fdtkit.properties"/>
+	<property file="build.project.properties"/>
+	
+	
+    <target name="batch_document" description="batch run a set of documentation tasks">
+        <antcall target="sloc_count"/>
+        <antcall target="document_as2api"/>
+        <antcall target="deploy_documentation"/>
+    </target>
+	
+	
+    <target name="batch_project" description="batch run a set of project tasks">
+    	<antcall target="build_project"/>
+        <antcall target="deploy_project"/>
+    </target>
+	
+	
+    <target name="create_project_structure" description="create a new project structure">
+    	<echo message="Creating Project Structure ..."/>
+		<mkdir dir="${deploy}"/>
+    	<echo message="Creating: ${deploy}"/>
+    	<mkdir dir="${deploy_archive}"/>
+    	<echo message="Creating: ${deploy_archive}"/>
+    	<mkdir dir="${deploy_assets}"/>
+    	<echo message="Creating: ${deploy_assets}"/>
+    	<mkdir dir="${deploy_css}"/>
+    	<echo message="Creating: ${deploy_css}"/>
+    	<mkdir dir="${deploy_js}"/>
+    	<echo message="Creating: ${deploy_js}"/>
+    	<mkdir dir="${deploy_php}"/>
+    	<echo message="Creating: ${deploy_php}"/>
+    	<mkdir dir="${deploy_xml}"/>
+    	<echo message="Creating: ${deploy_xml}"/>    	
+    	<mkdir dir="${docs}"/>
+    	<echo message="Creating: ${docs}"/>
+    	<mkdir dir="${lib}"/>
+    	<echo message="Creating: ${lib}"/>
+    	<mkdir dir="${lib_assets}"/>
+    	<echo message="Creating: ${lib_assets}"/>
+    	<mkdir dir="${lib_comps}"/>
+    	<echo message="Creating: ${lib_comps}"/>
+    	<mkdir dir="${lib_fonts}"/>
+    	<echo message="Creating: ${lib_fonts}"/>
+    	<mkdir dir="${tests}"/>
+    	<echo message="Creating: ${tests}"/>
+    	<mkdir dir="${src}"/>
+    	<echo message="Creating: ${src}"/>
+    	<echo message="Project Structure Created Successfully! Now refresh your project in Eclipse (right click on the project and select 'Refresh')"/>
+    </target>	
+	
+	
+	<target name="document_cleanup" description="remove all old documentation files">
+		<defaultexcludes echo="true"/>
+		<delete includeemptydirs="true">
+			<fileset dir="${docs}" includes="**/*" excludes="**/.svn"/>
+		</delete>	
+	</target>
+	
+	
+	<target name="document_as2api" description="run as2api to build documentation">
+		<exec dir="${as2api.dir}" executable="${ruby}" failonerror="true">
+			<arg line='${as2api.rb}'/>
+			<arg line='package-spec ${package}'/>
+			<arg line='--classpath ${src}'/>
+			<arg line='--output-dir ${docs}'/>
+			<arg line='--title ${ant.project.name}'/>
+			<arg line='--sources'/>
+			<arg line='--progress'/>
+        	<arg line='--draw-diagram'/>
+        	<arg line='--dot-exe ${dot}'/>
+		</exec>
+		<copy file="${ftemplates}/as2api/doc_sekati_index.html" tofile="${docs}/index.html" overwrite="true"  failonerror="true"/>
+		<copy file="${ftemplates}/as2api/doc_sekati_style.css" tofile="${docs}/style.css" overwrite="true"  failonerror="true"/>
+		<copy file="${ftemplates}/as2api/doc_sekati_unnatural.css" tofile="${docs}/unnatural.css" overwrite="true"  failonerror="true"/>
+	</target>
+	
+	
+	<target name="document_naturaldocs" description="run naturaldocs to build documentation">		
+		<exec executable="${naturaldocs}" failonerror="true">
+			<arg line='-i ${src}'/>
+			<arg line='-o FramedHTML ${docs}'/>
+			<arg line='-p ${docs}/_ndp'/>
+			<arg line='-s Small'/>
+			<arg line='-r'/>
+		</exec>
+	</target>	
+
+	
+	<target name="document_asdoc" description="run asdoc to build documentation for AS3 classes">
+		<exec executable="${asdoc}" failonerror="true">
+			<arg line = "-source-path ${src} -doc-sources ${src}/com/ -window-title 'Documentation' -output ${docs} -templates-path '${flex2}/asdoc/templates'" />
+		</exec>
+	</target>
+	
+	
+	<target name="deploy_documentation" description="rsync+ssh documentation to target server">
+		<exec executable="${rsync}">
+			<arg value="-ave ssh"/>
+			<arg value="--delete"/>
+			<arg value="--force"/>
+			<arg value="--progress"/>
+			<arg value="--exclude=${deploy_excludes}"/>
+			<arg value="${deploy_source_docpath}"/>
+			<arg value="${deploy_dest_user}@${deploy_dest_host}:${deploy_dest_docpath}"/>
+		</exec>
+	</target>		
+	
+
+	<target name="deploy_project" description="rsync+ssh project to target server">
+		<exec executable="${rsync}">
+			<arg value="-ave ssh"/>
+			<arg value="--delete"/>
+			<arg value="--force"/>
+			<arg value="--progress"/>
+			<arg value="--exclude=${deploy_excludes}"/>
+			<arg value="${deploy_source_path}"/>
+			<arg value="${deploy_dest_user}@${deploy_dest_host}:${deploy_dest_path}"/>
+		</exec>
+	</target>
+		
+
+	<target name="build_project" description="compile all fla's in src dir with Flash IDE">
+	    <fdt.flashCompile>
+	        <fileset dir="${src}">
+	        	 <include name="*.fla"/>
+	        </fileset>
+	    </fdt.flashCompile>
+	</target>
+	
+
+	<target name="build_target" description="build target fla with Flash IDE">
+		<fdt.flashCompile>
+	        <fileset dir="${src}">
+	            <include name="${target_fla}"/>
+	        </fileset>
+	    </fdt.flashCompile>		
+	</target>
+	
+
+	<target name="build_tests" description="compile all fla's in tests dir with Flash IDE">
+		 <fdt.flashCompile failonerror="false">
+		   <fileset dir="${tests}">
+		    <include name="*.fla"/>
+		   </fileset>
+		  </fdt.flashCompile>
+	</target>	
+
+
+    <target name="build_mtasc" description="compile target fla in src dir with mtasc">
+        <exec executable="${mtasc}" dir="." failonerror="true">
+            <arg line="-cp ${corelib}"/>
+            <arg line="-cp ${classpath}"/>
+            <arg line="-v -version 8 -mx -swf"/>
+            <arg line="${target_swf} ${main_class}"/>
+        </exec>
+    </target>	
+	
+
+	<target name="launch_external" description="launch target swf in FlashPlayer">
+    	<fdt.extSWFViewer.startSWF file="${target_swf}" width="${movie.width}" height="${movie.height}" flashvars="${movie.flashvars}"/>
+    </target>
+    		
+
+    <target name="launch_fdt" description="launch target swf in FDT viewer">
+    	<fdt.viewDocument location="${target_swf}"/>
+    </target>
+	
+	
+	<target name="sloc_count" description="count source lines of code">
+		<exec executable="${sloccount}" />
+	</target>	
+
+	
+	<target name="TestMovie" description="compile current opened fla in src dir with Flash IDE (clear's ASO cache and saves FLA)">
+		<echo message="@@@@@ Clearing ASO Cache, saving FLA, and executing TestMovie() in IDE @@@@@"/>
+		<exec executable="open"><arg line="${compile.jsfl}"/></exec>
+	</target>	
+	
+</project>
