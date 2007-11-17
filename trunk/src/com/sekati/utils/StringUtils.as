@@ -1,6 +1,6 @@
 ﻿﻿/**
  * com.sekati.utils.StringUtils
- * @version 1.2.2
+ * @version 1.2.3
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -168,7 +168,21 @@ class com.sekati.utils.StringUtils {
 			str = String(n);
 		}
 		return str;
-	}	
+	}
+	
+	/**
+	 * Remove scientific notation from very small floats when casting to String.
+	 * @param n (Number)
+	 * @return String
+	 * {@code Usage: 
+	 * 	trace( String(0.0000001) ); // returns 1e-7
+	 * 	trace( floatToString(0.0000001) ); // returns 00000001
+	 * }
+	 */
+	public static function floatToString(n:Number):String {
+		var s:String = String(n);
+		return (n < 1 && (s.indexOf(".") <= -1 || s.indexOf("e") <= -1)) ? "0." + String(n + 1).split(".")[1] : s;
+	}
 
 	/**
 	 * strip the zero off floated numbers and remove Scientific Notation
