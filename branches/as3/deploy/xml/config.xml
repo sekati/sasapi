@@ -25,5 +25,11 @@
 	
 	<!-- data uri's (paths to xml, php, wsdl, html links, etc) -->
 	<data_path><![CDATA[xml/]]></data_path>
+	
+	<gallery>
+		<img uri="assets/test0.jpg"/>
+		<img uri="assets/test1.jpg"/>
+		<img uri="assets/test2.jpg"/>
+	</gallery>
 
 </config>
