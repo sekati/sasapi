@@ -22,9 +22,8 @@
 	
 	
     <target name="batch_document" description="batch run a set of documentation tasks">
-        <antcall target="sloc_count"/>
+    	<antcall target="sloc_count"/>
         <antcall target="document_asdoc"/>
-        <antcall target="deploy_documentation"/>
     </target>
 	
 	
