@@ -7,16 +7,18 @@
  * @version		1.0.2
  */
 
-import com.sekati.transitions.Tweener;
-import com.sekati.transitions.AuxFunctions;
+import caurina.transitions.Tweener;
+import caurina.transitions.AuxFunctions;
+import flash.filters.BitmapFilter;
+import flash.filters.BlurFilter;
 
-class com.sekati.transitions.SpecialPropertiesDefault {
+class caurina.transitions.SpecialPropertiesDefault {
 
 	/**
 	 * There's no constructor.
 	 */
 	public function SpecialPropertiesDefault () {
-		trace ("SpecialProperties is an static class and should not be instantiated.");
+		trace ("SpecialProperties is an static class and should not be instantiated.")
 	}
 
 	/**
@@ -44,6 +46,14 @@ class com.sekati.transitions.SpecialPropertiesDefault {
 
 		// Scale splitter properties
 		Tweener.registerSpecialPropertySplitter("_scale", _scale_splitter);
+
+		// Filter tweening properties - BlurFilter
+		Tweener.registerSpecialProperty("_blur_blurX", _filter_property_get, _filter_property_set, [BlurFilter, "blurX"]);
+		Tweener.registerSpecialProperty("_blur_blurY", _filter_property_get, _filter_property_set, [BlurFilter, "blurY"]);
+		Tweener.registerSpecialProperty("_blur_quality", _filter_property_get, _filter_property_set, [BlurFilter, "quality"]);
+
+		// Filter tweening splitter properties
+		Tweener.registerSpecialPropertySplitter("_filter", _filter_splitter);
 
 		// Bezier modifiers
 		Tweener.registerSpecialPropertyModifier("_bezier", _bezier_modifier, _bezier_get);
@@ -126,6 +136,29 @@ class com.sekati.transitions.SpecialPropertiesDefault {
 		var nArray:Array = new Array();
 		nArray.push({name:"_xscale", value: p_value});
 		nArray.push({name:"_yscale", value: p_value});
+		return nArray;
+	}
+
+
+	// ----------------------------------------------------------------------------------------------------------------------------------
+	// filters
+
+	/**
+	 * Splits the _filter, _blur, etc parameter into specific filter variables
+	 *
+	 * @param		p_value				BitmapFilter	A BitmapFilter instance
+	 * @return							Array			An array containing the .name and .value of all new properties
+	 */
+	public static function _filter_splitter (p_value:BitmapFilter):Array {
+		var nArray:Array = new Array();
+		if (p_value instanceof BlurFilter) {
+			nArray.push({name:"_blur_blurX",		value:BlurFilter(p_value).blurX});
+			nArray.push({name:"_blur_blurY",		value:BlurFilter(p_value).blurY});
+			nArray.push({name:"_blur_quality",		value:BlurFilter(p_value).quality});
+		} else {
+			// ?
+			trace ("??");
+		}
 		return nArray;
 	}
 
@@ -245,6 +278,62 @@ class com.sekati.transitions.SpecialPropertiesDefault {
 	public static function _autoAlpha_set (p_obj:Object, p_value:Number):Void {
 		p_obj._alpha = p_value;
 		p_obj._visible = p_value > 0;
+	}
+
+
+	// ----------------------------------------------------------------------------------------------------------------------------------
+	// filters
+
+	/**
+	 * (filters)
+	 * Generic function for the properties of filter objects
+	 */
+	public static function _filter_property_get (p_obj:Object, p_parameters:Array):Number {
+		var f:Array = p_obj.filters;
+		var i:Number;
+		var filterClass:Object = p_parameters[0];
+		var propertyName:String = p_parameters[1];
+		for (i = 0; i < f.length; i++) {
+			if (f[i] instanceof filterClass) return (f[i][propertyName]);
+		}
+
+		// No value found for this property - no filter instance found using this class!
+		// Must return default desired values
+		var defaultValues:Object;
+		switch (filterClass) {
+			case BlurFilter:
+				defaultValues = {blurX:0, blurY:0, quality:NaN};
+				break;
+		}
+		// When returning NaN, the Tweener engine sets the starting value as being the same as the final value
+		// When returning null, the Tweener engine doesn't tween it at all, just setting it to the final value
+		return defaultValues[propertyName];
+	}
+
+	public static function _filter_property_set (p_obj:Object, p_value:Number, p_parameters:Array):Void {
+		var f:Array = p_obj.filters;
+		var i:Number;
+		var filterClass:Object = p_parameters[0];
+		var propertyName:String = p_parameters[1];
+		for (i = 0; i < f.length; i++) {
+			if (f[i] instanceof filterClass) {
+				f[i][propertyName] = p_value;
+				p_obj.filters = f;
+				return;
+			}
+		}
+
+		// The correct filter class wasn't found - create a new one
+		if (f == undefined) f = new Array();
+		var fi:BitmapFilter;
+		switch (filterClass) {
+			case BlurFilter:
+				fi = new BlurFilter(0, 0);
+				break;
+		}
+		fi[propertyName] = p_value;
+		f.push(fi);
+		p_obj.filters = f;
 	}
 
 

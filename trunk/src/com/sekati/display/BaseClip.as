@@ -1,6 +1,6 @@
 /**
  * com.sekati.display.BaseClip
- * @version 1.0.6
+ * @version 1.0.7
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -10,9 +10,9 @@
  import com.sekati.display.ITweenClip;
  import com.sekati.core.KeyFactory;
  import com.sekati.reflect.Stringifier;
- import com.sekati.transitions.Tweener;
  import com.sekati.utils.MovieClipUtils;
- 
+ import caurina.transitions.Tweener;
+
 /**
  * This is the foundational MovieClip class and should be
  * thought of as the main building block of the SASAPI framework.

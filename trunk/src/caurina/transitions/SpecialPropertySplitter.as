@@ -6,7 +6,7 @@
  * @version		1.0.0
  */
 
-class com.sekati.transitions.SpecialPropertySplitter {
+class caurina.transitions.SpecialPropertySplitter {
 
 	public var parameters:Array;
 

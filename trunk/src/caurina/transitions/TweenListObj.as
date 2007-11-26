@@ -4,9 +4,9 @@
  * @author		Nate Chatellier, Zeh Fernando
  * @version		1.0.4
  */
-import com.sekati.transitions.AuxFunctions;
+import caurina.transitions.AuxFunctions;
 
-class com.sekati.transitions.TweenListObj {
+class caurina.transitions.TweenListObj {
 
 	public var scope					:Object;	// Object affected by this tweening
 	public var properties				:Object;	// List of properties that are tweened (PropertyInfoObj instances)
