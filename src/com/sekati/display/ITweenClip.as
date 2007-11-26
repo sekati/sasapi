@@ -17,9 +17,14 @@ interface com.sekati.display.ITweenClip extends IBaseClip {
 	
 	/**
 	 * wraps {@link com.sekati.transitions.Tweener.addTween}
-	 * @param tweenerObject
 	 * @return Void
 	 */
 	function tween(tweenerObject:Object):Void;
+	
+	/**
+	 * wrap {@link com.sekati.transitions.Tweener.removeTweens}
+	 * @return Void 
+	 */
+	function stopTween():Void;
 	
 }
