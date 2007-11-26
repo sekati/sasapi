@@ -1,6 +1,6 @@
 /**
  * com.sekati.display.StageDisplay
- * @version 1.0.7
+ * @version 1.1.0
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -19,13 +19,14 @@
 class com.sekati.display.StageDisplay extends CoreObject {
 	
 	private static var _instance:StageDisplay;
-	private static var _resizeDelayMs:Number = 500;
-	private static var _resizeIntervalId:Number;	
 	
 	public static var onStageResizeEVENT:String = "onStageResize";
 	public static var onStageResizeCompleteEVENT:String = "onStageResizeComplete";
-	public static var onStageFullscreenEVENT:String = "onStageFullscreen";
+	public static var onStageFullScreenEVENT:String = "onStageFullScreen";
 	public static var onStageReadyEVENT:String = "onStageReady";
+	
+	private static var _resizeDelayMs:Number = 500;
+	private static var _resizeIntervalId:Number;		
 	
 	/**
 	 * Singleton Private Constructor
@@ -41,7 +42,7 @@ class com.sekati.display.StageDisplay extends CoreObject {
 	 * @return StageDisplay
 	 */
 	public static function getInstance ():StageDisplay {
-		if (!_instance) _instance = new StageDisplay ();
+		if (!_instance) _instance = new StageDisplay();
 		return _instance;
 	}
 
@@ -59,7 +60,7 @@ class com.sekati.display.StageDisplay extends CoreObject {
 	 */ 
 	public function onResize():Void {
 		if (_resizeIntervalId != null) clearResizeInt();
-		Dispatcher.$.dispatchEvent(new Event(onStageResizeEVENT,_instance,{_width:_width, _height:_height}));	
+		Dispatcher.$.dispatchEvent(new Event(onStageResizeEVENT, _instance, {_width:_width, _height:_height}));	
 	}
 	
 	/**
@@ -68,7 +69,7 @@ class com.sekati.display.StageDisplay extends CoreObject {
 	 */
 	public function onResizeComplete():Void {
 		trace("@@@ onResizeComplete Fired! ("+_resizeDelayMs+"ms expired since last resize)");
-		Dispatcher.$.dispatchEvent(new Event(onStageResizeCompleteEVENT,_instance,{_width:_width, _height:_height}));
+		Dispatcher.$.dispatchEvent(new Event(onStageResizeCompleteEVENT, _instance, {_width:_width, _height:_height}));
 		clearResizeInt();
 	}	
 	
@@ -77,7 +78,8 @@ class com.sekati.display.StageDisplay extends CoreObject {
 	 * @return Void
 	 */
 	public function onFullScreen(bFull:Boolean):Void {
-		Dispatcher.$.dispatchEvent(new Event(onStageFullscreenEVENT,_instance,{isFullscreen:bFull}));
+		trace("@@@ onFullScreen Fired! ("+bFull+")");
+		Dispatcher.$.dispatchEvent(new Event(onStageFullScreenEVENT, _instance, {isFullscreen:bFull}));
 	}
 
 	/**
@@ -96,7 +98,7 @@ class com.sekati.display.StageDisplay extends CoreObject {
 	private function _onEnterFrame():Void {
 		if (isReady){
 			FramePulse.$.removeFrameListener(this);
-			Dispatcher.$.dispatchEvent(new Event(onStageReadyEVENT,_instance,{isReady:isReady}));	
+			Dispatcher.$.dispatchEvent(new Event(onStageReadyEVENT, _instance, {isReady:isReady}));	
 		}
 	}	
 	
@@ -177,7 +179,7 @@ class com.sekati.display.StageDisplay extends CoreObject {
 	 * toggle Stage.displayState between "normal" and "fullScreen".
 	 * @return Void
 	 */
-	public function toggleFullscreen():Void {	
+	public function toggleFullScreen():Void {	
 		_fullscreen = !_fullscreen;
 	}
 	
