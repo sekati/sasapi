@@ -1,6 +1,6 @@
 /**
  * com.sekati.display.ITweenClip
- * @version 1.0.1
+ * @version 1.0.2
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -17,8 +17,9 @@ interface com.sekati.display.ITweenClip extends IBaseClip {
 	
 	/**
 	 * wraps {@link com.sekati.transitions.Tweener.addTween}
-	 * @return Boolean
+	 * @param tweenerObject
+	 * @return Void
 	 */
-	function tween():Boolean;
+	function tween(tweenerObject:Object):Void;
 	
 }
