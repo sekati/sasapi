@@ -5,7 +5,7 @@
  * @version		1.0.0
  */
 
-class com.sekati.transitions.AuxFunctions {
+class caurina.transitions.AuxFunctions {
 
 	/**
 	 * Gets the R (xx0000) bits from a number
@@ -64,8 +64,8 @@ class com.sekati.transitions.AuxFunctions {
 		for (var pName:String in p_object) totalProperties ++;
 		return totalProperties;
 	}
-    
-    /* Takes a variable number of objects as parameters and "adds" their properties, form left to right. If a latter object defines a property as null, it will be removed from the final object
+
+	/* Takes a variable number of objects as parameters and "adds" their properties, form left to right. If a latter object defines a property as null, it will be removed from the final object
 	* @param		args				Object(s)	A variable number of objects
 	* @return							Object		An object with the sum of all paremeters added as properties.
 	*/
@@ -79,7 +79,7 @@ class com.sekati.transitions.AuxFunctions {
 				    // delete in case is null
 					delete finalObject[prop];
 				}else{
-					finalObject[prop] = currentObject[prop];
+					finalObject[prop] = currentObject[prop]
 				}
 			}
 		}

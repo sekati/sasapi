@@ -7,8 +7,8 @@
  * @private
  */
 
-class com.sekati.transitions.PropertyInfoObj {
-
+class caurina.transitions.PropertyInfoObj {
+	
 	public var valueStart				:Number;	// Starting value of the tweening (null if not started yet)
 	public var valueComplete			:Number;	// Final desired value
 	public var hasModifier				:Boolean;	// Whether or not it has a modifier function
