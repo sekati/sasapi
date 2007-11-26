@@ -1,6 +1,6 @@
 	/**
  * com.sekati.display.LiquidClip
- * @version 1.0.5
+ * @version 1.0.6
  * @author jason m horwitz | sekati.com | tendercreative.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -14,7 +14,7 @@
 
 /**
  * LiquidClip - mixin for any subclass which needs to respond to {@link com.sekati.display.StageDisplay} 
- * events such as onResize or onResizeComplete. 
+ * events such as onResize, onResizeComplete or onFullScreen. 
  * Note: Extends {@link com.sekati.display.UIClip} to allow for easy/automatic TextField CSS styling.
  */
 class com.sekati.display.LiquidClip extends UIClip implements ILiquidClip {
@@ -26,6 +26,7 @@ class com.sekati.display.LiquidClip extends UIClip implements ILiquidClip {
 		super();
 		Dispatcher.$.addEventListener(StageDisplay.onStageResizeEVENT, Delegate.create (_this, _onResize));
 		Dispatcher.$.addEventListener(StageDisplay.onStageResizeCompleteEVENT, Delegate.create (_this, _onResizeComplete));
+		Dispatcher.$.addEventListener(StageDisplay.onStageFullScreenEVENT, Delegate.create (_this, _onFullScreen));
 	}
 
 	/**
@@ -48,11 +49,11 @@ class com.sekati.display.LiquidClip extends UIClip implements ILiquidClip {
 	}
 	
 	/**
-	 * _onResize stub: fires when Stage resize has occurs.
+	 * _onFullscreen stub: fires when Stage resize has occurs.
 	 * @return Void
 	 */
 	public function _onResize():Void {
-		//App.log.info(_this, StageDisplay.onStageResizeEVENT+" Fired!");
+		//App.log.info(_this, StageDisplay.onStageFullScreenEVENT+" Fired!");
 	}
 	
 	/**
@@ -63,6 +64,10 @@ class com.sekati.display.LiquidClip extends UIClip implements ILiquidClip {
 		//App.log.info(_this, StageDisplay.onStageResizeCompleteEVENT+" Fired!");
 	}
 	
+	public function _onFullScreen():Void {
+		//App.log.info(_this, StageDisplay.onStageResizeCompleteEVENT+" Fired!");
+	}
+	
 	/**
 	 * Remove Dispatcher listeners onUnload.
 	 * @return Void
@@ -70,6 +75,7 @@ class com.sekati.display.LiquidClip extends UIClip implements ILiquidClip {
 	public function onUnload():Void {
 		Dispatcher.$.removeEventListener(StageDisplay.onStageResizeEVENT, _this);	
 		Dispatcher.$.removeEventListener(StageDisplay.onStageResizeCompleteEVENT, _this);
+		Dispatcher.$.removeEventListener(StageDisplay.onStageFullScreenEVENT, _this);
 		super.onUnload();
 	}	
 	
