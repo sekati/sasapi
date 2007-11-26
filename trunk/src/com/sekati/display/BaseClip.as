@@ -1,6 +1,6 @@
 /**
  * com.sekati.display.BaseClip
- * @version 1.0.5
+ * @version 1.0.6
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -63,11 +63,20 @@ class com.sekati.display.BaseClip extends MovieClip implements IBaseClip, ITween
 	 * A very basic wrapper to apply a tween to the current object via {@link com.sekati.transitions.Tweener.addTween}
 	 * @see {@link http://hosted.zeh.com.br/tweener/docs/en-us/}
 	 * @param tweenerObject (Object)
-	 * @return Boolean
+	 * @return Void
 	 */
 	public function tween (tweenerObject:Object):Void {
 		Tweener.addTween (_this, tweenerObject);
-	}	
+	}
+	
+	/**
+	 * Remove any or all Tweener tweens using arguments array.
+	 * @param arguments
+	 * @return Void 
+	 */
+	public function stopTween():Void {
+		Tweener.removeTweens(_this, arguments);
+	}
 
 	/**
 	 * return reflective output
