@@ -1,6 +1,6 @@
 ﻿/**
  * com.sekati.services.SOAPClient
- * @version 1.0.3
+ * @version 1.0.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -121,7 +121,7 @@ class com.sekati.services.SOAPClient extends CoreObject implements ISOAPClient {
 	 */
 	private function connectLoad (wsdl:String):Void {
 		_isConnected = true;
-		Dispatcher.$.dispatchEvent(new SOAPEvent(SOAPEvent.onConnectEVENT, {wsdl:_wsdl}));
+		Dispatcher.$.dispatchEvent(new SOAPEvent(SOAPEvent.CONNECT, {wsdl:_wsdl}));
 		if (_isVerbose) Logger.$.status(_instance.toString(), "Webservice Connection SUCCESS Load: '"+_wsdl+"'");		
 	}
 	
@@ -132,7 +132,7 @@ class com.sekati.services.SOAPClient extends CoreObject implements ISOAPClient {
 	 */
 	private function connectFault(fault:Object):Void {
 		_isConnected = false;
-		Dispatcher.$.dispatchEvent(new SOAPEvent(SOAPEvent.onConnectFaultEVENT, {fault:fault}));
+		Dispatcher.$.dispatchEvent(new SOAPEvent(SOAPEvent.FAULT, {fault:fault}));
 		if (_isVerbose) Logger.$.fatal(_instance.toString(), "Webservice Connection FAILURE Fault: '"+_wsdl+"'\nfaultstring: "+fault.faultstring+"\nfaultcode: "+fault.faultcode+"\ndetail: "+fault.detail+"\nfaultactor: "+fault.faultactor+"\nfault: "+fault);		
 	}
 	
@@ -143,7 +143,7 @@ class com.sekati.services.SOAPClient extends CoreObject implements ISOAPClient {
 	 * @return Void
 	 */
 	private function callResult(method:String, result:Object):Void {
-		Dispatcher.$.dispatchEvent(new SOAPEvent(SOAPEvent.onCallResultEVENT, {method:method, result:result}));	
+		Dispatcher.$.dispatchEvent(new SOAPEvent(SOAPEvent.CALL_RESULT, {method:method, result:result}));	
 		if (_isVerbose) {
 			Logger.$.info(_instance.toString(), "Webservice Call Result: '"+method+"'\nresult ("+TypeValidation.getType(result).name+"): "+result);
 		}
@@ -156,7 +156,7 @@ class com.sekati.services.SOAPClient extends CoreObject implements ISOAPClient {
 	 * @return Void
 	 */
 	private function callFault(method:String, response:Object, request:Object, fault:Object):Void {
-		Dispatcher.$.dispatchEvent(new SOAPEvent(SOAPEvent.onCallFaultEVENT, {method:method, fault:fault}));
+		Dispatcher.$.dispatchEvent(new SOAPEvent(SOAPEvent.CALL_FAULT, {method:method, fault:fault}));
 		if (_isVerbose) {
 			var props:String="", call:String="";
 			for(var i:String in SOAPCall) props += "\nSOAPCall Properties: "+i+"  "+this[i];
