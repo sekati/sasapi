@@ -3,7 +3,7 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span><span class="comment doc">/**
 <span class="lineno" id="2">     2  </span> * com.sekati.display.BaseClip
-<span class="lineno" id="3">     3  </span> * @version 1.0.5
+<span class="lineno" id="3">     3  </span> * @version 1.0.7
 <span class="lineno" id="4">     4  </span> * @author jason m horwitz | sekati.com
 <span class="lineno" id="5">     5  </span> * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -13,9 +13,9 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="10">    10  </span> <span class="key">import</span> com.sekati.display.ITweenClip;
 <span class="lineno" id="11">    11  </span> <span class="key">import</span> com.sekati.core.KeyFactory;
 <span class="lineno" id="12">    12  </span> <span class="key">import</span> com.sekati.reflect.Stringifier;
-<span class="lineno" id="13">    13  </span> <span class="key">import</span> com.sekati.transitions.Tweener;
-<span class="lineno" id="14">    14  </span> <span class="key">import</span> com.sekati.utils.MovieClipUtils;
-<span class="lineno" id="15">    15  </span> 
+<span class="lineno" id="13">    13  </span> <span class="key">import</span> com.sekati.utils.MovieClipUtils;
+<span class="lineno" id="14">    14  </span> <span class="key">import</span> caurina.transitions.Tweener;
+<span class="lineno" id="15">    15  </span>
 <span class="lineno" id="16">    16  </span><span class="comment doc">/**
 <span class="lineno" id="17">    17  </span> * This is the foundational MovieClip class and should be
 <span class="lineno" id="18">    18  </span> * thought of as the main building block of the SASAPI framework.
@@ -66,17 +66,26 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="63">    63  </span>	 * A very basic wrapper to apply a tween to the current object via {@link com.sekati.transitions.Tweener.addTween}
 <span class="lineno" id="64">    64  </span>	 * @see {@link http://hosted.zeh.com.br/tweener/docs/en-us/}
 <span class="lineno" id="65">    65  </span>	 * @param tweenerObject (Object)
-<span class="lineno" id="66">    66  </span>	 * @return Boolean
+<span class="lineno" id="66">    66  </span>	 * @return Void
 <span class="lineno" id="67">    67  </span>	 */</span>
 <span class="lineno" id="68">    68  </span>	<span class="key">public</span> <span class="key">function</span> tween (tweenerObject:Object):Void {
 <span class="lineno" id="69">    69  </span>		Tweener.addTween (_this, tweenerObject);
-<span class="lineno" id="70">    70  </span>	}	
-<span class="lineno" id="71">    71  </span>
+<span class="lineno" id="70">    70  </span>	}
+<span class="lineno" id="71">    71  </span>	
 <span class="lineno" id="72">    72  </span>	<span class="comment doc">/**
-<span class="lineno" id="73">    73  </span>	 * return reflective output
-<span class="lineno" id="74">    74  </span>	 * @return String
-<span class="lineno" id="75">    75  </span>	 */</span>	
-<span class="lineno" id="76">    76  </span>	<span class="key">public</span> <span class="key">function</span> toString():String {
-<span class="lineno" id="77">    77  </span>		<span class="key">return</span> Stringifier.stringify(<span class="key">this</span>);
-<span class="lineno" id="78">    78  </span>	}
-<span class="lineno" id="79">    79  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of Sekati" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.display" class="button">Package</a></li><li><a href="BaseClip.html" title="Detail of com.sekati.display.BaseClip API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
+<span class="lineno" id="73">    73  </span>	 * Remove any or all Tweener tweens using arguments array.
+<span class="lineno" id="74">    74  </span>	 * @param arguments
+<span class="lineno" id="75">    75  </span>	 * @return Void 
+<span class="lineno" id="76">    76  </span>	 */</span>
+<span class="lineno" id="77">    77  </span>	<span class="key">public</span> <span class="key">function</span> stopTween():Void {
+<span class="lineno" id="78">    78  </span>		Tweener.removeTweens(_this, arguments);
+<span class="lineno" id="79">    79  </span>	}
+<span class="lineno" id="80">    80  </span>
+<span class="lineno" id="81">    81  </span>	<span class="comment doc">/**
+<span class="lineno" id="82">    82  </span>	 * return reflective output
+<span class="lineno" id="83">    83  </span>	 * @return String
+<span class="lineno" id="84">    84  </span>	 */</span>	
+<span class="lineno" id="85">    85  </span>	<span class="key">public</span> <span class="key">function</span> toString():String {
+<span class="lineno" id="86">    86  </span>		<span class="key">return</span> Stringifier.stringify(<span class="key">this</span>);
+<span class="lineno" id="87">    87  </span>	}
+<span class="lineno" id="88">    88  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of Sekati" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.display" class="button">Package</a></li><li><a href="BaseClip.html" title="Detail of com.sekati.display.BaseClip API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
