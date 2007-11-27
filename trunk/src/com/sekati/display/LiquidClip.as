@@ -27,6 +27,8 @@ class com.sekati.display.LiquidClip extends UIClip implements ILiquidClip {
 		Dispatcher.$.addEventListener(StageDisplay.onStageResizeEVENT, Delegate.create (_this, _onResize));
 		Dispatcher.$.addEventListener(StageDisplay.onStageResizeCompleteEVENT, Delegate.create (_this, _onResizeComplete));
 		Dispatcher.$.addEventListener(StageDisplay.onStageFullScreenEVENT, Delegate.create (_this, _onFullScreen));
+		_onResize();
+		_onResizeComplete();		
 	}
 
 	/**
