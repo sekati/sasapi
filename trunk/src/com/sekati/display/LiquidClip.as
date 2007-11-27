@@ -1,6 +1,6 @@
 	/**
  * com.sekati.display.LiquidClip
- * @version 1.0.6
+ * @version 1.0.7
  * @author jason m horwitz | sekati.com | tendercreative.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -46,6 +46,8 @@ class com.sekati.display.LiquidClip extends UIClip implements ILiquidClip {
 	 */
 	public function onAppConfigured():Void {
 		super.onAppConfigured();
+		_onResize();
+		_onResizeComplete();		
 	}
 	
 	/**
