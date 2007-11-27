@@ -3,7 +3,7 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span><span class="comment doc">/**
 <span class="lineno" id="2">     2  </span> * com.sekati.utils.StringUtils
-<span class="lineno" id="3">     3  </span> * @version 1.2.2
+<span class="lineno" id="3">     3  </span> * @version 1.2.3
 <span class="lineno" id="4">     4  </span> * @author jason m horwitz | sekati.com
 <span class="lineno" id="5">     5  </span> * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -171,152 +171,166 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="168">   168  </span>			str = String(n);
 <span class="lineno" id="169">   169  </span>		}
 <span class="lineno" id="170">   170  </span>		<span class="key">return</span> str;
-<span class="lineno" id="171">   171  </span>	}	
-<span class="lineno" id="172">   172  </span>
+<span class="lineno" id="171">   171  </span>	}
+<span class="lineno" id="172">   172  </span>	
 <span class="lineno" id="173">   173  </span>	<span class="comment doc">/**
-<span class="lineno" id="174">   174  </span>	 * strip the zero off floated numbers and remove Scientific Notation
+<span class="lineno" id="174">   174  </span>	 * Remove scientific notation from very small floats when casting to String.
 <span class="lineno" id="175">   175  </span>	 * @param n (Number)
 <span class="lineno" id="176">   176  </span>	 * @return String
-<span class="lineno" id="177">   177  </span>	 */</span>
-<span class="lineno" id="178">   178  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> stripZeroAndRepairFloat(n:Number):String {
-<span class="lineno" id="179">   179  </span>		<span class="key">var</span> str:String;
-<span class="lineno" id="180">   180  </span>		<span class="key">var</span> tmp:String;
-<span class="lineno" id="181">   181  </span>		<span class="key">var</span> isZeroFloat:Boolean;
-<span class="lineno" id="182">   182  </span>		<span class="comment">// +=1 to prevent scientific notation.</span>
-<span class="lineno" id="183">   183  </span>		<span class="key">if</span>(n &lt; <span class="num_const">1</span>) {
-<span class="lineno" id="184">   184  </span>			tmp = String((n + <span class="num_const">1</span>));
-<span class="lineno" id="185">   185  </span>			isZeroFloat = <span class="key">true</span>;
-<span class="lineno" id="186">   186  </span>		} <span class="key">else</span> {
-<span class="lineno" id="187">   187  </span>			tmp = String(n);
-<span class="lineno" id="188">   188  </span>			isZeroFloat = <span class="key">false</span>;	
-<span class="lineno" id="189">   189  </span>		}
-<span class="lineno" id="190">   190  </span>		<span class="comment">// if we have a float strip the zero (or +=1) off!</span>
-<span class="lineno" id="191">   191  </span>		<span class="key">var</span> a:Array = tmp.split(<span class="str_const">"."</span>);
-<span class="lineno" id="192">   192  </span>		<span class="key">if</span> (a.length &gt; <span class="num_const">1</span>) {
-<span class="lineno" id="193">   193  </span>			str = (a[<span class="num_const">0</span>] == <span class="str_const">"1"</span> &amp;&amp; isZeroFloat == <span class="key">true</span>) ? <span class="str_const">"."</span>+a[<span class="num_const">1</span>] : tmp;
-<span class="lineno" id="194">   194  </span>		} <span class="key">else</span> {
-<span class="lineno" id="195">   195  </span>			str = tmp;
-<span class="lineno" id="196">   196  </span>		}
-<span class="lineno" id="197">   197  </span>		<span class="key">return</span> str;
-<span class="lineno" id="198">   198  </span>	}
-<span class="lineno" id="199">   199  </span>	
-<span class="lineno" id="200">   200  </span>	<span class="comment doc">/**
-<span class="lineno" id="201">   201  </span>	 * Generate a set of random characters
-<span class="lineno" id="202">   202  </span>	 * @param amount (Number)
-<span class="lineno" id="203">   203  </span>	 * @return String
-<span class="lineno" id="204">   204  </span>	 */</span>
-<span class="lineno" id="205">   205  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> randChar(amount:Number):String {
-<span class="lineno" id="206">   206  </span>		<span class="key">var</span> str:String = <span class="str_const">""</span>;
-<span class="lineno" id="207">   207  </span>		<span class="key">for</span>(<span class="key">var</span> i:Number = <span class="num_const">0</span>; i &lt; amount; i++) str += chr(Math.round(Math.random()*(<span class="num_const">126</span>-<span class="num_const">33</span>))+<span class="num_const">33</span>);
-<span class="lineno" id="208">   208  </span>		<span class="key">return</span> str;
-<span class="lineno" id="209">   209  </span>	}
-<span class="lineno" id="210">   210  </span>	
-<span class="lineno" id="211">   211  </span>	<span class="comment doc">/**
-<span class="lineno" id="212">   212  </span>	 * Generate a set of random LowerCase characters
-<span class="lineno" id="213">   213  </span>	 * @param amount (Number)
-<span class="lineno" id="214">   214  </span>	 * @return String
-<span class="lineno" id="215">   215  </span>	 */</span>	
-<span class="lineno" id="216">   216  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> randLowerChar(amount:Number):String {
-<span class="lineno" id="217">   217  </span>		<span class="key">var</span> str:String = <span class="str_const">""</span>;
-<span class="lineno" id="218">   218  </span>		<span class="key">for</span>(<span class="key">var</span> i:Number = <span class="num_const">0</span>; i &lt; amount; i++) str += chr(Math.round(Math.random()*(<span class="num_const">122</span>-<span class="num_const">97</span>))+<span class="num_const">97</span>);
-<span class="lineno" id="219">   219  </span>		<span class="key">return</span> str;
-<span class="lineno" id="220">   220  </span>	}
-<span class="lineno" id="221">   221  </span>	
-<span class="lineno" id="222">   222  </span>	<span class="comment doc">/**
-<span class="lineno" id="223">   223  </span>	 * Generate a set of random Number characters
-<span class="lineno" id="224">   224  </span>	 * @param amount (Number)
-<span class="lineno" id="225">   225  </span>	 * @return String
-<span class="lineno" id="226">   226  </span>	 */</span>		
-<span class="lineno" id="227">   227  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> randNum(amount:Number):String {
-<span class="lineno" id="228">   228  </span>		<span class="key">var</span> str:String = <span class="str_const">""</span>;
-<span class="lineno" id="229">   229  </span>		<span class="key">for</span>(<span class="key">var</span> i:Number = <span class="num_const">0</span>; i &lt; amount; i++) str += chr(Math.round(Math.random()*(<span class="num_const">57</span>-<span class="num_const">48</span>))+<span class="num_const">48</span>);
-<span class="lineno" id="230">   230  </span>		<span class="key">return</span> str;
-<span class="lineno" id="231">   231  </span>	}
-<span class="lineno" id="232">   232  </span>	
-<span class="lineno" id="233">   233  </span>	<span class="comment doc">/**
-<span class="lineno" id="234">   234  </span>	 * Generate a set of random Special and Number characters
-<span class="lineno" id="235">   235  </span>	 * @param amount (Number)
-<span class="lineno" id="236">   236  </span>	 * @return String
-<span class="lineno" id="237">   237  </span>	 */</span>		
-<span class="lineno" id="238">   238  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> randSpecialChar(amount:Number):String {
-<span class="lineno" id="239">   239  </span>		<span class="key">var</span> str:String = <span class="str_const">""</span>;
-<span class="lineno" id="240">   240  </span>		<span class="key">for</span>(<span class="key">var</span> i:Number = <span class="num_const">0</span>; i &lt; amount; i++) str += chr(Math.round(Math.random()*(<span class="num_const">64</span>-<span class="num_const">33</span>))+<span class="num_const">33</span>);
-<span class="lineno" id="241">   241  </span>		<span class="key">return</span> str;
-<span class="lineno" id="242">   242  </span>	}	
-<span class="lineno" id="243">   243  </span>	
-<span class="lineno" id="244">   244  </span>	<span class="comment doc">/**
-<span class="lineno" id="245">   245  </span>	 * strip html markup tags
-<span class="lineno" id="246">   246  </span>	 * @param str (String)
-<span class="lineno" id="247">   247  </span>	 * @return String
-<span class="lineno" id="248">   248  </span>	 */</span>
-<span class="lineno" id="249">   249  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> stripTags (str:String):String {
-<span class="lineno" id="250">   250  </span>		<span class="key">var</span> s:Array = <span class="key">new</span> Array ();
-<span class="lineno" id="251">   251  </span>		<span class="key">var</span> c:Array = <span class="key">new</span> Array ();
-<span class="lineno" id="252">   252  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = <span class="num_const">0</span>; i &lt; str.length; i++) {
-<span class="lineno" id="253">   253  </span>			<span class="key">if</span> (str.charAt (i) == <span class="str_const">"&lt;"</span>) {
-<span class="lineno" id="254">   254  </span>				s.push (i);
-<span class="lineno" id="255">   255  </span>			} <span class="key">else</span> <span class="key">if</span> (str.charAt (i) == <span class="str_const">"&gt;"</span>) {
-<span class="lineno" id="256">   256  </span>				c.push (i);
-<span class="lineno" id="257">   257  </span>			}
-<span class="lineno" id="258">   258  </span>		}
-<span class="lineno" id="259">   259  </span>		<span class="key">var</span> o:String = str.substring (<span class="num_const">0</span>, s[<span class="num_const">0</span>]);
-<span class="lineno" id="260">   260  </span>		<span class="key">for</span> (<span class="key">var</span> j:Number = <span class="num_const">0</span>; j &lt; c.length; j++) {
-<span class="lineno" id="261">   261  </span>			o += str.substring (c[j] + <span class="num_const">1</span>, s[j + <span class="num_const">1</span>]);
-<span class="lineno" id="262">   262  </span>		}
-<span class="lineno" id="263">   263  </span>		<span class="key">return</span> o;
-<span class="lineno" id="264">   264  </span>	}
-<span class="lineno" id="265">   265  </span>	
-<span class="lineno" id="266">   266  </span>	<span class="comment doc">/**
-<span class="lineno" id="267">   267  </span>	 * detect html breaks
-<span class="lineno" id="268">   268  </span>	 * @param str (String)
-<span class="lineno" id="269">   269  </span>	 * @return Boolean
-<span class="lineno" id="270">   270  </span>	 */</span>
-<span class="lineno" id="271">   271  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> detectBr (str:String):Boolean {
-<span class="lineno" id="272">   272  </span>		<span class="key">return</span> (str.split (<span class="str_const">"&lt;br"</span>).length &gt; <span class="num_const">1</span>) ? <span class="key">true</span> : <span class="key">false</span>;
-<span class="lineno" id="273">   273  </span>	}
-<span class="lineno" id="274">   274  </span>	
-<span class="lineno" id="275">   275  </span>	<span class="comment doc">/**
-<span class="lineno" id="276">   276  </span>	 * convert single quotes to double quotes
-<span class="lineno" id="277">   277  </span>	 * @param str (String)
-<span class="lineno" id="278">   278  </span>	 * @return String
-<span class="lineno" id="279">   279  </span>	 */</span>
-<span class="lineno" id="280">   280  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> toDoubleQuote (str:String):String {
-<span class="lineno" id="281">   281  </span>		<span class="key">var</span> sq:String = <span class="str_const">"'"</span>;
-<span class="lineno" id="282">   282  </span>		<span class="key">var</span> dq:String = String.fromCharCode (<span class="num_const">34</span>);
-<span class="lineno" id="283">   283  </span>		<span class="key">return</span> str.split (sq).join (dq);
-<span class="lineno" id="284">   284  </span>	}
-<span class="lineno" id="285">   285  </span>	
-<span class="lineno" id="286">   286  </span>	<span class="comment doc">/**
-<span class="lineno" id="287">   287  </span>	 * convert double quotes to single quotes
-<span class="lineno" id="288">   288  </span>	 * @param str (String)
-<span class="lineno" id="289">   289  </span>	 * @return String
-<span class="lineno" id="290">   290  </span>	 */</span>
-<span class="lineno" id="291">   291  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> toSingleQuote (str:String):String {
-<span class="lineno" id="292">   292  </span>		<span class="key">var</span> sq:String = <span class="str_const">"'"</span>;
-<span class="lineno" id="293">   293  </span>		<span class="key">var</span> dq:String = String.fromCharCode (<span class="num_const">34</span>);
-<span class="lineno" id="294">   294  </span>		<span class="key">return</span> str.split (dq).join (sq);
-<span class="lineno" id="295">   295  </span>	}
-<span class="lineno" id="296">   296  </span>	
-<span class="lineno" id="297">   297  </span>	<span class="comment doc">/**
-<span class="lineno" id="298">   298  </span>	 * Remove all formatting and return cleaned numbers from string.
-<span class="lineno" id="299">   299  </span>	 * @param str (String)
-<span class="lineno" id="300">   300  </span>	 * @return String
-<span class="lineno" id="301">   301  </span>	 * {@code Usage: 
-<span class="lineno" id="302">   302  </span>	 * 	StringUtils.toNumeric("123-123-1234"); // returns 1221231234 
-<span class="lineno" id="303">   303  </span>	 * }
+<span class="lineno" id="177">   177  </span>	 * {@code Usage: 
+<span class="lineno" id="178">   178  </span>	 * 	trace( String(0.0000001) ); // returns 1e-7
+<span class="lineno" id="179">   179  </span>	 * 	trace( floatToString(0.0000001) ); // returns 00000001
+<span class="lineno" id="180">   180  </span>	 * }
+<span class="lineno" id="181">   181  </span>	 */</span>
+<span class="lineno" id="182">   182  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> floatToString(n:Number):String {
+<span class="lineno" id="183">   183  </span>		<span class="key">var</span> s:String = String(n);
+<span class="lineno" id="184">   184  </span>		<span class="key">return</span> (n &lt; <span class="num_const">1</span> &amp;&amp; (s.indexOf(<span class="str_const">"."</span>) &lt;= -<span class="num_const">1</span> || s.indexOf(<span class="str_const">"e"</span>) &lt;= -<span class="num_const">1</span>)) ? <span class="str_const">"0."</span> + String(n + <span class="num_const">1</span>).split(<span class="str_const">"."</span>)[<span class="num_const">1</span>] : s;
+<span class="lineno" id="185">   185  </span>	}
+<span class="lineno" id="186">   186  </span>
+<span class="lineno" id="187">   187  </span>	<span class="comment doc">/**
+<span class="lineno" id="188">   188  </span>	 * strip the zero off floated numbers and remove Scientific Notation
+<span class="lineno" id="189">   189  </span>	 * @param n (Number)
+<span class="lineno" id="190">   190  </span>	 * @return String
+<span class="lineno" id="191">   191  </span>	 */</span>
+<span class="lineno" id="192">   192  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> stripZeroAndRepairFloat(n:Number):String {
+<span class="lineno" id="193">   193  </span>		<span class="key">var</span> str:String;
+<span class="lineno" id="194">   194  </span>		<span class="key">var</span> tmp:String;
+<span class="lineno" id="195">   195  </span>		<span class="key">var</span> isZeroFloat:Boolean;
+<span class="lineno" id="196">   196  </span>		<span class="comment">// +=1 to prevent scientific notation.</span>
+<span class="lineno" id="197">   197  </span>		<span class="key">if</span>(n &lt; <span class="num_const">1</span>) {
+<span class="lineno" id="198">   198  </span>			tmp = String((n + <span class="num_const">1</span>));
+<span class="lineno" id="199">   199  </span>			isZeroFloat = <span class="key">true</span>;
+<span class="lineno" id="200">   200  </span>		} <span class="key">else</span> {
+<span class="lineno" id="201">   201  </span>			tmp = String(n);
+<span class="lineno" id="202">   202  </span>			isZeroFloat = <span class="key">false</span>;	
+<span class="lineno" id="203">   203  </span>		}
+<span class="lineno" id="204">   204  </span>		<span class="comment">// if we have a float strip the zero (or +=1) off!</span>
+<span class="lineno" id="205">   205  </span>		<span class="key">var</span> a:Array = tmp.split(<span class="str_const">"."</span>);
+<span class="lineno" id="206">   206  </span>		<span class="key">if</span> (a.length &gt; <span class="num_const">1</span>) {
+<span class="lineno" id="207">   207  </span>			str = (a[<span class="num_const">0</span>] == <span class="str_const">"1"</span> &amp;&amp; isZeroFloat == <span class="key">true</span>) ? <span class="str_const">"."</span>+a[<span class="num_const">1</span>] : tmp;
+<span class="lineno" id="208">   208  </span>		} <span class="key">else</span> {
+<span class="lineno" id="209">   209  </span>			str = tmp;
+<span class="lineno" id="210">   210  </span>		}
+<span class="lineno" id="211">   211  </span>		<span class="key">return</span> str;
+<span class="lineno" id="212">   212  </span>	}
+<span class="lineno" id="213">   213  </span>	
+<span class="lineno" id="214">   214  </span>	<span class="comment doc">/**
+<span class="lineno" id="215">   215  </span>	 * Generate a set of random characters
+<span class="lineno" id="216">   216  </span>	 * @param amount (Number)
+<span class="lineno" id="217">   217  </span>	 * @return String
+<span class="lineno" id="218">   218  </span>	 */</span>
+<span class="lineno" id="219">   219  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> randChar(amount:Number):String {
+<span class="lineno" id="220">   220  </span>		<span class="key">var</span> str:String = <span class="str_const">""</span>;
+<span class="lineno" id="221">   221  </span>		<span class="key">for</span>(<span class="key">var</span> i:Number = <span class="num_const">0</span>; i &lt; amount; i++) str += chr(Math.round(Math.random()*(<span class="num_const">126</span>-<span class="num_const">33</span>))+<span class="num_const">33</span>);
+<span class="lineno" id="222">   222  </span>		<span class="key">return</span> str;
+<span class="lineno" id="223">   223  </span>	}
+<span class="lineno" id="224">   224  </span>	
+<span class="lineno" id="225">   225  </span>	<span class="comment doc">/**
+<span class="lineno" id="226">   226  </span>	 * Generate a set of random LowerCase characters
+<span class="lineno" id="227">   227  </span>	 * @param amount (Number)
+<span class="lineno" id="228">   228  </span>	 * @return String
+<span class="lineno" id="229">   229  </span>	 */</span>	
+<span class="lineno" id="230">   230  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> randLowerChar(amount:Number):String {
+<span class="lineno" id="231">   231  </span>		<span class="key">var</span> str:String = <span class="str_const">""</span>;
+<span class="lineno" id="232">   232  </span>		<span class="key">for</span>(<span class="key">var</span> i:Number = <span class="num_const">0</span>; i &lt; amount; i++) str += chr(Math.round(Math.random()*(<span class="num_const">122</span>-<span class="num_const">97</span>))+<span class="num_const">97</span>);
+<span class="lineno" id="233">   233  </span>		<span class="key">return</span> str;
+<span class="lineno" id="234">   234  </span>	}
+<span class="lineno" id="235">   235  </span>	
+<span class="lineno" id="236">   236  </span>	<span class="comment doc">/**
+<span class="lineno" id="237">   237  </span>	 * Generate a set of random Number characters
+<span class="lineno" id="238">   238  </span>	 * @param amount (Number)
+<span class="lineno" id="239">   239  </span>	 * @return String
+<span class="lineno" id="240">   240  </span>	 */</span>		
+<span class="lineno" id="241">   241  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> randNum(amount:Number):String {
+<span class="lineno" id="242">   242  </span>		<span class="key">var</span> str:String = <span class="str_const">""</span>;
+<span class="lineno" id="243">   243  </span>		<span class="key">for</span>(<span class="key">var</span> i:Number = <span class="num_const">0</span>; i &lt; amount; i++) str += chr(Math.round(Math.random()*(<span class="num_const">57</span>-<span class="num_const">48</span>))+<span class="num_const">48</span>);
+<span class="lineno" id="244">   244  </span>		<span class="key">return</span> str;
+<span class="lineno" id="245">   245  </span>	}
+<span class="lineno" id="246">   246  </span>	
+<span class="lineno" id="247">   247  </span>	<span class="comment doc">/**
+<span class="lineno" id="248">   248  </span>	 * Generate a set of random Special and Number characters
+<span class="lineno" id="249">   249  </span>	 * @param amount (Number)
+<span class="lineno" id="250">   250  </span>	 * @return String
+<span class="lineno" id="251">   251  </span>	 */</span>		
+<span class="lineno" id="252">   252  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> randSpecialChar(amount:Number):String {
+<span class="lineno" id="253">   253  </span>		<span class="key">var</span> str:String = <span class="str_const">""</span>;
+<span class="lineno" id="254">   254  </span>		<span class="key">for</span>(<span class="key">var</span> i:Number = <span class="num_const">0</span>; i &lt; amount; i++) str += chr(Math.round(Math.random()*(<span class="num_const">64</span>-<span class="num_const">33</span>))+<span class="num_const">33</span>);
+<span class="lineno" id="255">   255  </span>		<span class="key">return</span> str;
+<span class="lineno" id="256">   256  </span>	}	
+<span class="lineno" id="257">   257  </span>	
+<span class="lineno" id="258">   258  </span>	<span class="comment doc">/**
+<span class="lineno" id="259">   259  </span>	 * strip html markup tags
+<span class="lineno" id="260">   260  </span>	 * @param str (String)
+<span class="lineno" id="261">   261  </span>	 * @return String
+<span class="lineno" id="262">   262  </span>	 */</span>
+<span class="lineno" id="263">   263  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> stripTags (str:String):String {
+<span class="lineno" id="264">   264  </span>		<span class="key">var</span> s:Array = <span class="key">new</span> Array ();
+<span class="lineno" id="265">   265  </span>		<span class="key">var</span> c:Array = <span class="key">new</span> Array ();
+<span class="lineno" id="266">   266  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = <span class="num_const">0</span>; i &lt; str.length; i++) {
+<span class="lineno" id="267">   267  </span>			<span class="key">if</span> (str.charAt (i) == <span class="str_const">"&lt;"</span>) {
+<span class="lineno" id="268">   268  </span>				s.push (i);
+<span class="lineno" id="269">   269  </span>			} <span class="key">else</span> <span class="key">if</span> (str.charAt (i) == <span class="str_const">"&gt;"</span>) {
+<span class="lineno" id="270">   270  </span>				c.push (i);
+<span class="lineno" id="271">   271  </span>			}
+<span class="lineno" id="272">   272  </span>		}
+<span class="lineno" id="273">   273  </span>		<span class="key">var</span> o:String = str.substring (<span class="num_const">0</span>, s[<span class="num_const">0</span>]);
+<span class="lineno" id="274">   274  </span>		<span class="key">for</span> (<span class="key">var</span> j:Number = <span class="num_const">0</span>; j &lt; c.length; j++) {
+<span class="lineno" id="275">   275  </span>			o += str.substring (c[j] + <span class="num_const">1</span>, s[j + <span class="num_const">1</span>]);
+<span class="lineno" id="276">   276  </span>		}
+<span class="lineno" id="277">   277  </span>		<span class="key">return</span> o;
+<span class="lineno" id="278">   278  </span>	}
+<span class="lineno" id="279">   279  </span>	
+<span class="lineno" id="280">   280  </span>	<span class="comment doc">/**
+<span class="lineno" id="281">   281  </span>	 * detect html breaks
+<span class="lineno" id="282">   282  </span>	 * @param str (String)
+<span class="lineno" id="283">   283  </span>	 * @return Boolean
+<span class="lineno" id="284">   284  </span>	 */</span>
+<span class="lineno" id="285">   285  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> detectBr (str:String):Boolean {
+<span class="lineno" id="286">   286  </span>		<span class="key">return</span> (str.split (<span class="str_const">"&lt;br"</span>).length &gt; <span class="num_const">1</span>) ? <span class="key">true</span> : <span class="key">false</span>;
+<span class="lineno" id="287">   287  </span>	}
+<span class="lineno" id="288">   288  </span>	
+<span class="lineno" id="289">   289  </span>	<span class="comment doc">/**
+<span class="lineno" id="290">   290  </span>	 * convert single quotes to double quotes
+<span class="lineno" id="291">   291  </span>	 * @param str (String)
+<span class="lineno" id="292">   292  </span>	 * @return String
+<span class="lineno" id="293">   293  </span>	 */</span>
+<span class="lineno" id="294">   294  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> toDoubleQuote (str:String):String {
+<span class="lineno" id="295">   295  </span>		<span class="key">var</span> sq:String = <span class="str_const">"'"</span>;
+<span class="lineno" id="296">   296  </span>		<span class="key">var</span> dq:String = String.fromCharCode (<span class="num_const">34</span>);
+<span class="lineno" id="297">   297  </span>		<span class="key">return</span> str.split (sq).join (dq);
+<span class="lineno" id="298">   298  </span>	}
+<span class="lineno" id="299">   299  </span>	
+<span class="lineno" id="300">   300  </span>	<span class="comment doc">/**
+<span class="lineno" id="301">   301  </span>	 * convert double quotes to single quotes
+<span class="lineno" id="302">   302  </span>	 * @param str (String)
+<span class="lineno" id="303">   303  </span>	 * @return String
 <span class="lineno" id="304">   304  </span>	 */</span>
-<span class="lineno" id="305">   305  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> toNumeric (str:String):String {
-<span class="lineno" id="306">   306  </span>		<span class="key">var</span> len:Number = str.length;
-<span class="lineno" id="307">   307  </span>		<span class="key">var</span> result:String = <span class="str_const">""</span>;
-<span class="lineno" id="308">   308  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = <span class="num_const">0</span>; i &lt; len; i++) {
-<span class="lineno" id="309">   309  </span>			<span class="key">var</span> code:Number = str.charCodeAt(i);
-<span class="lineno" id="310">   310  </span>			<span class="key">if</span> (code &gt;= <span class="num_const">48</span> &amp;&amp; code &lt;= <span class="num_const">57</span>) {
-<span class="lineno" id="311">   311  </span>				result += str.substr(i, <span class="num_const">1</span>);
-<span class="lineno" id="312">   312  </span>			}
-<span class="lineno" id="313">   313  </span>		}
-<span class="lineno" id="314">   314  </span>		<span class="key">return</span> result;
-<span class="lineno" id="315">   315  </span>	}
-<span class="lineno" id="316">   316  </span>	
-<span class="lineno" id="317">   317  </span>	<span class="key">private</span> <span class="key">function</span> StringUtils(){
-<span class="lineno" id="318">   318  </span>	}	
-<span class="lineno" id="319">   319  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of Sekati" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.utils" class="button">Package</a></li><li><a href="StringUtils.html" title="Detail of com.sekati.utils.StringUtils API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
+<span class="lineno" id="305">   305  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> toSingleQuote (str:String):String {
+<span class="lineno" id="306">   306  </span>		<span class="key">var</span> sq:String = <span class="str_const">"'"</span>;
+<span class="lineno" id="307">   307  </span>		<span class="key">var</span> dq:String = String.fromCharCode (<span class="num_const">34</span>);
+<span class="lineno" id="308">   308  </span>		<span class="key">return</span> str.split (dq).join (sq);
+<span class="lineno" id="309">   309  </span>	}
+<span class="lineno" id="310">   310  </span>	
+<span class="lineno" id="311">   311  </span>	<span class="comment doc">/**
+<span class="lineno" id="312">   312  </span>	 * Remove all formatting and return cleaned numbers from string.
+<span class="lineno" id="313">   313  </span>	 * @param str (String)
+<span class="lineno" id="314">   314  </span>	 * @return String
+<span class="lineno" id="315">   315  </span>	 * {@code Usage: 
+<span class="lineno" id="316">   316  </span>	 * 	StringUtils.toNumeric("123-123-1234"); // returns 1221231234 
+<span class="lineno" id="317">   317  </span>	 * }
+<span class="lineno" id="318">   318  </span>	 */</span>
+<span class="lineno" id="319">   319  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">function</span> toNumeric (str:String):String {
+<span class="lineno" id="320">   320  </span>		<span class="key">var</span> len:Number = str.length;
+<span class="lineno" id="321">   321  </span>		<span class="key">var</span> result:String = <span class="str_const">""</span>;
+<span class="lineno" id="322">   322  </span>		<span class="key">for</span> (<span class="key">var</span> i:Number = <span class="num_const">0</span>; i &lt; len; i++) {
+<span class="lineno" id="323">   323  </span>			<span class="key">var</span> code:Number = str.charCodeAt(i);
+<span class="lineno" id="324">   324  </span>			<span class="key">if</span> (code &gt;= <span class="num_const">48</span> &amp;&amp; code &lt;= <span class="num_const">57</span>) {
+<span class="lineno" id="325">   325  </span>				result += str.substr(i, <span class="num_const">1</span>);
+<span class="lineno" id="326">   326  </span>			}
+<span class="lineno" id="327">   327  </span>		}
+<span class="lineno" id="328">   328  </span>		<span class="key">return</span> result;
+<span class="lineno" id="329">   329  </span>	}
+<span class="lineno" id="330">   330  </span>	
+<span class="lineno" id="331">   331  </span>	<span class="key">private</span> <span class="key">function</span> StringUtils(){
+<span class="lineno" id="332">   332  </span>	}	
+<span class="lineno" id="333">   333  </span>}</pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of Sekati" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.utils" class="button">Package</a></li><li><a href="StringUtils.html" title="Detail of com.sekati.utils.StringUtils API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
