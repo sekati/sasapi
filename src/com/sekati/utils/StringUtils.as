@@ -1,4 +1,4 @@
-﻿﻿/**
+﻿/**
  * com.sekati.utils.StringUtils
  * @version 1.2.3
  * @author jason m horwitz | sekati.com

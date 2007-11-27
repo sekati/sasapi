@@ -1,6 +1,6 @@
 /**
  * com.sekati.services.SOAPEvent
- * @version 1.0.0
+ * @version 1.0.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -14,11 +14,10 @@
  */
 class com.sekati.services.SOAPEvent extends Event {
 	
-	public static var onConnectEVENT:String = "onSoapConnect";
-	public static var onConnectFaultEVENT:String = "onSoapConnectFault";
-	
-	public static var onCallResultEVENT:String = "onSoapCallResult";
-	public static var onCallFaultEVENT:String = "onSoapCallFault";
+	public static var CONNECT:String = "onSoapConnect";
+	public static var FAULT:String = "onSoapConnectFault";
+	public static var CALL_RESULT:String = "onSoapCallResult";
+	public static var CALL_FAULT:String = "onSoapCallFault";
 	
 	private static var _target:SOAPClient = SOAPClient.getInstance();
 	
