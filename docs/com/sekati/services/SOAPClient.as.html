@@ -3,7 +3,7 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span><span class="comment doc">/**
 <span class="lineno" id="2">     2  </span> * com.sekati.services.SOAPClient
-<span class="lineno" id="3">     3  </span> * @version 1.0.3
+<span class="lineno" id="3">     3  </span> * @version 1.0.5
 <span class="lineno" id="4">     4  </span> * @author jason m horwitz | sekati.com
 <span class="lineno" id="5">     5  </span> * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -124,7 +124,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="121">   121  </span>	 */</span>
 <span class="lineno" id="122">   122  </span>	<span class="key">private</span> <span class="key">function</span> connectLoad (wsdl:String):Void {
 <span class="lineno" id="123">   123  </span>		_isConnected = <span class="key">true</span>;
-<span class="lineno" id="124">   124  </span>		Dispatcher.$.dispatchEvent(<span class="key">new</span> SOAPEvent(SOAPEvent.onConnectEVENT, {wsdl:_wsdl}));
+<span class="lineno" id="124">   124  </span>		Dispatcher.$.dispatchEvent(<span class="key">new</span> SOAPEvent(SOAPEvent.CONNECT, {wsdl:_wsdl}));
 <span class="lineno" id="125">   125  </span>		<span class="key">if</span> (_isVerbose) Logger.$.status(_instance.toString(), <span class="str_const">"Webservice Connection SUCCESS Load: '"</span>+_wsdl+<span class="str_const">"'"</span>);		
 <span class="lineno" id="126">   126  </span>	}
 <span class="lineno" id="127">   127  </span>	
@@ -135,7 +135,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="132">   132  </span>	 */</span>
 <span class="lineno" id="133">   133  </span>	<span class="key">private</span> <span class="key">function</span> connectFault(fault:Object):Void {
 <span class="lineno" id="134">   134  </span>		_isConnected = <span class="key">false</span>;
-<span class="lineno" id="135">   135  </span>		Dispatcher.$.dispatchEvent(<span class="key">new</span> SOAPEvent(SOAPEvent.onConnectFaultEVENT, {fault:fault}));
+<span class="lineno" id="135">   135  </span>		Dispatcher.$.dispatchEvent(<span class="key">new</span> SOAPEvent(SOAPEvent.FAULT, {fault:fault}));
 <span class="lineno" id="136">   136  </span>		<span class="key">if</span> (_isVerbose) Logger.$.fatal(_instance.toString(), <span class="str_const">"Webservice Connection FAILURE Fault: '"</span>+_wsdl+<span class="str_const">"'\nfaultstring: "</span>+fault.faultstring+<span class="str_const">"\nfaultcode: "</span>+fault.faultcode+<span class="str_const">"\ndetail: "</span>+fault.detail+<span class="str_const">"\nfaultactor: "</span>+fault.faultactor+<span class="str_const">"\nfault: "</span>+fault);		
 <span class="lineno" id="137">   137  </span>	}
 <span class="lineno" id="138">   138  </span>	
@@ -146,7 +146,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="143">   143  </span>	 * @return Void
 <span class="lineno" id="144">   144  </span>	 */</span>
 <span class="lineno" id="145">   145  </span>	<span class="key">private</span> <span class="key">function</span> callResult(method:String, result:Object):Void {
-<span class="lineno" id="146">   146  </span>		Dispatcher.$.dispatchEvent(<span class="key">new</span> SOAPEvent(SOAPEvent.onCallResultEVENT, {method:method, result:result}));	
+<span class="lineno" id="146">   146  </span>		Dispatcher.$.dispatchEvent(<span class="key">new</span> SOAPEvent(SOAPEvent.CALL_RESULT, {method:method, result:result}));	
 <span class="lineno" id="147">   147  </span>		<span class="key">if</span> (_isVerbose) {
 <span class="lineno" id="148">   148  </span>			Logger.$.info(_instance.toString(), <span class="str_const">"Webservice Call Result: '"</span>+method+<span class="str_const">"'\nresult ("</span>+TypeValidation.getType(result).name+<span class="str_const">"): "</span>+result);
 <span class="lineno" id="149">   149  </span>		}
@@ -159,7 +159,7 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="156">   156  </span>	 * @return Void
 <span class="lineno" id="157">   157  </span>	 */</span>
 <span class="lineno" id="158">   158  </span>	<span class="key">private</span> <span class="key">function</span> callFault(method:String, response:Object, request:Object, fault:Object):Void {
-<span class="lineno" id="159">   159  </span>		Dispatcher.$.dispatchEvent(<span class="key">new</span> SOAPEvent(SOAPEvent.onCallFaultEVENT, {method:method, fault:fault}));
+<span class="lineno" id="159">   159  </span>		Dispatcher.$.dispatchEvent(<span class="key">new</span> SOAPEvent(SOAPEvent.CALL_FAULT, {method:method, fault:fault}));
 <span class="lineno" id="160">   160  </span>		<span class="key">if</span> (_isVerbose) {
 <span class="lineno" id="161">   161  </span>			<span class="key">var</span> props:String=<span class="str_const">""</span>, call:String=<span class="str_const">""</span>;
 <span class="lineno" id="162">   162  </span>			<span class="key">for</span>(<span class="key">var</span> i:String <span class="key">in</span> SOAPCall) props += <span class="str_const">"\nSOAPCall Properties: "</span>+i+<span class="str_const">"  "</span>+<span class="key">this</span>[i];

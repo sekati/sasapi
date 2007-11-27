@@ -3,7 +3,7 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span> <span class="comment doc">/**
 <span class="lineno" id="2">     2  </span>  * com.sekati.core.App
-<span class="lineno" id="3">     3  </span>  * @version 3.0.9
+<span class="lineno" id="3">     3  </span>  * @version 3.1.0
 <span class="lineno" id="4">     4  </span>  * @author jason m horwitz | sekati.com
 <span class="lineno" id="5">     5  </span>  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span>  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -13,49 +13,49 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="10">    10  </span> <span class="key">import</span> com.sekati.events.Broadcaster;
 <span class="lineno" id="11">    11  </span> <span class="key">import</span> com.sekati.log.Logger;
 <span class="lineno" id="12">    12  </span> <span class="key">import</span> com.sekati.net.NetBase;
-<span class="lineno" id="13">    13  </span> <span class="key">import</span> com.sekati.ui.ContextualMenu;
-<span class="lineno" id="14">    14  </span> <span class="key">import</span> com.sekati.validate.StringValidation;
-<span class="lineno" id="15">    15  </span> <span class="key">import</span> flash.external.ExternalInterface;
-<span class="lineno" id="16">    16  </span> <span class="key">import</span> TextField.StyleSheet;
-<span class="lineno" id="17">    17  </span> 
-<span class="lineno" id="18">    18  </span> <span class="comment doc">/**
-<span class="lineno" id="19">    19  </span>  * static class for centralizing &amp; storing core application instances,  listeners,
-<span class="lineno" id="20">    20  </span>  * broadcasters, debuggers, objects, vars &amp; constants.
-<span class="lineno" id="21">    21  </span>  *
-<span class="lineno" id="22">    22  </span>  * {@code Usage:
-<span class="lineno" id="23">    23  </span>  *	com.sekati.core.App.init();
-<span class="lineno" id="24">    24  </span>  * }
-<span class="lineno" id="25">    25  </span>  */</span>
-<span class="lineno" id="26">    26  </span><span class="key">class</span> com.sekati.core.App {
-<span class="lineno" id="27">    27  </span>	
-<span class="lineno" id="28">    28  </span>	<span class="key">private</span> <span class="key">static</span> <span class="key">var</span> BOOTSTRAP_RETRY:Number = <span class="num_const">0</span>;
-<span class="lineno" id="29">    29  </span>	<span class="key">private</span> <span class="key">static</span> <span class="key">var</span> BOOTSTRAP_RETRY_MAX:Number = <span class="num_const">5</span>;
-<span class="lineno" id="30">    30  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> PATH:String = (NetBase.isOnline()) ? NetBase.getPath() : <span class="str_const">""</span>;
-<span class="lineno" id="31">    31  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> CONF_URI:String = (!_root.conf_uri) ? App.PATH + <span class="str_const">"xml/config.xml"</span> : _root.conf_uri;
-<span class="lineno" id="32">    32  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> APP_NAME:String;
-<span class="lineno" id="33">    33  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> CROSSDOMAIN_URI:String;
-<span class="lineno" id="34">    34  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> CSS_URI:String;
-<span class="lineno" id="35">    35  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> DEBUG_ENABLE:Boolean;
-<span class="lineno" id="36">    36  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> FLINK_ENABLE:Boolean;
-<span class="lineno" id="37">    37  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> TRACK_ENABLE:Boolean;
-<span class="lineno" id="38">    38  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> KEY_ENABLE:Boolean;
-<span class="lineno" id="39">    39  </span>	
-<span class="lineno" id="40">    40  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> DATA_PATH:String;
-<span class="lineno" id="41">    41  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> BUFFER_TIME:Number;
-<span class="lineno" id="42">    42  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> COPY1:String;
-<span class="lineno" id="43">    43  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> COPY2:String;
-<span class="lineno" id="44">    44  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> COPY3:String;
-<span class="lineno" id="45">    45  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> IMG1:String;
-<span class="lineno" id="46">    46  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> IMG2:String;
-<span class="lineno" id="47">    47  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> IMG3:String;
-<span class="lineno" id="48">    48  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> FLV_URI:String;
-<span class="lineno" id="49">    49  </span>	
-<span class="lineno" id="50">    50  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> log:Logger;
-<span class="lineno" id="51">    51  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> bc:Object = Broadcaster.getInstance();
-<span class="lineno" id="52">    52  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> db:Object = <span class="key">new</span> Object ();
-<span class="lineno" id="53">    53  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> css:TextField.StyleSheet = <span class="key">new</span> StyleSheet ();
-<span class="lineno" id="54">    54  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> mot:Object = {e:<span class="str_const">"easeInOutQuint"</span>, e2:<span class="str_const">"easeOutQuint"</span>, e3:<span class="str_const">"easeInOutQuad"</span>, e4:<span class="str_const">"easeOutQuad"</span>, s:<span class="num_const">0</span>.<span class="num_const">6</span>, d:<span class="num_const">0</span>.<span class="num_const">4</span>};
-<span class="lineno" id="55">    55  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> col:Object = {b:0x000000, w:0xFFFFFF, r:0xFF0000, g:0x00FF00, b:0x0000FF, y:0xFFFF00, c:0x00FFFF, m:0xFF00FF};
+<span class="lineno" id="13">    13  </span> <span class="key">import</span> com.sekati.transitions.Mot;
+<span class="lineno" id="14">    14  </span> <span class="key">import</span> com.sekati.ui.ContextualMenu;
+<span class="lineno" id="15">    15  </span> <span class="key">import</span> com.sekati.validate.StringValidation;
+<span class="lineno" id="16">    16  </span> <span class="key">import</span> flash.external.ExternalInterface;
+<span class="lineno" id="17">    17  </span> <span class="key">import</span> TextField.StyleSheet;
+<span class="lineno" id="18">    18  </span> 
+<span class="lineno" id="19">    19  </span> <span class="comment doc">/**
+<span class="lineno" id="20">    20  </span>  * static class for centralizing &amp; storing core application instances,  listeners,
+<span class="lineno" id="21">    21  </span>  * broadcasters, debuggers, objects, vars &amp; constants.
+<span class="lineno" id="22">    22  </span>  *
+<span class="lineno" id="23">    23  </span>  * {@code Usage:
+<span class="lineno" id="24">    24  </span>  *	com.sekati.core.App.init();
+<span class="lineno" id="25">    25  </span>  * }
+<span class="lineno" id="26">    26  </span>  */</span>
+<span class="lineno" id="27">    27  </span><span class="key">class</span> com.sekati.core.App {
+<span class="lineno" id="28">    28  </span>	
+<span class="lineno" id="29">    29  </span>	<span class="key">private</span> <span class="key">static</span> <span class="key">var</span> BOOTSTRAP_RETRY:Number = <span class="num_const">0</span>;
+<span class="lineno" id="30">    30  </span>	<span class="key">private</span> <span class="key">static</span> <span class="key">var</span> BOOTSTRAP_RETRY_MAX:Number = <span class="num_const">5</span>;
+<span class="lineno" id="31">    31  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> PATH:String = (NetBase.isOnline()) ? NetBase.getPath() : <span class="str_const">""</span>;
+<span class="lineno" id="32">    32  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> CONF_URI:String = (!_root.conf_uri) ? App.PATH + <span class="str_const">"xml/config.xml"</span> : _root.conf_uri;
+<span class="lineno" id="33">    33  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> APP_NAME:String;
+<span class="lineno" id="34">    34  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> CROSSDOMAIN_URI:String;
+<span class="lineno" id="35">    35  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> CSS_URI:String;
+<span class="lineno" id="36">    36  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> DEBUG_ENABLE:Boolean;
+<span class="lineno" id="37">    37  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> FLINK_ENABLE:Boolean;
+<span class="lineno" id="38">    38  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> TRACK_ENABLE:Boolean;
+<span class="lineno" id="39">    39  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> KEY_ENABLE:Boolean;
+<span class="lineno" id="40">    40  </span>	
+<span class="lineno" id="41">    41  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> DATA_PATH:String;
+<span class="lineno" id="42">    42  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> BUFFER_TIME:Number;
+<span class="lineno" id="43">    43  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> COPY1:String;
+<span class="lineno" id="44">    44  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> COPY2:String;
+<span class="lineno" id="45">    45  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> COPY3:String;
+<span class="lineno" id="46">    46  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> IMG1:String;
+<span class="lineno" id="47">    47  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> IMG2:String;
+<span class="lineno" id="48">    48  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> IMG3:String;
+<span class="lineno" id="49">    49  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> FLV_URI:String;
+<span class="lineno" id="50">    50  </span>	
+<span class="lineno" id="51">    51  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> log:Logger;
+<span class="lineno" id="52">    52  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> bc:Object = Broadcaster.getInstance();
+<span class="lineno" id="53">    53  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> db:Object = <span class="key">new</span> Object ();
+<span class="lineno" id="54">    54  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> css:TextField.StyleSheet = <span class="key">new</span> StyleSheet ();
+<span class="lineno" id="55">    55  </span>	<span class="key">public</span> <span class="key">static</span> <span class="key">var</span> mot:Object = Mot.m;
 <span class="lineno" id="56">    56  </span>
 <span class="lineno" id="57">    57  </span>	<span class="comment doc">/**
 <span class="lineno" id="58">    58  </span>	 * App bootstrap props
