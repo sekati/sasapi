@@ -60,7 +60,7 @@ class com.sekati.layout.Propcaster extends CoreObject {
 	 * shorthand singleton accessor getter
 	 */
 	 public static function get $():Propcaster {
-	 	return Proportioncaster.getInstance();	
+	 	return Propcaster.getInstance();	
 	 }
 	
 	/**
