@@ -6,6 +6,7 @@ com.sekati.services
 com.sekati.ui
 com.sekati.crypt
 com.sekati.data
+com.sekati.layout
 com.sekati.load
 com.sekati.convert
 com.sekati.external
