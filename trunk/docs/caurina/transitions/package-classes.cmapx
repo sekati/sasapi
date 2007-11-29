@@ -1,0 +1,11 @@
+<map id="class_diagram" name="class_diagram">
+<area shape="rect" href="TweenListObj.html" title="caurina.transitions.TweenListObj" alt="" coords="41,584,142,632" />
+<area shape="rect" href="Tweener.html" title="caurina.transitions.Tweener" alt="" coords="56,512,128,560" />
+<area shape="rect" href="SpecialPropertySplitter.html" title="caurina.transitions.SpecialPropertySplitter" alt="" coords="12,440,172,488" />
+<area shape="rect" href="SpecialPropertyModifier.html" title="caurina.transitions.SpecialPropertyModifier" alt="" coords="10,368,173,416" />
+<area shape="rect" href="SpecialProperty.html" title="caurina.transitions.SpecialProperty" alt="" coords="34,296,149,344" />
+<area shape="rect" href="SpecialPropertiesDefault.html" title="caurina.transitions.SpecialPropertiesDefault" alt="" coords="8,224,176,272" />
+<area shape="rect" href="PropertyInfoObj.html" title="caurina.transitions.PropertyInfoObj" alt="" coords="33,152,150,200" />
+<area shape="rect" href="Equations.html" title="caurina.transitions.Equations" alt="" coords="52,80,132,128" />
+<area shape="rect" href="AuxFunctions.html" title="caurina.transitions.AuxFunctions" alt="" coords="41,8,142,56" />
+</map>
