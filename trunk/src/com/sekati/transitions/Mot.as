@@ -1,7 +1,7 @@
 
 /**
  * com.sekati.transitions.Mot
- * @version 1.0.1
+ * @version 1.0.2
  * @author jason m horwitz | sekati.com | tendercreative.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -32,9 +32,16 @@ class com.sekati.transitions.Mot {
 	public static var col:Object = {b:0x000000, w:0xFFFFFF, r:0xFF0000, g:0x00FF00, b:0x0000FF, y:0xFFFF00, c:0x00FFFF, m:0xFF00FF};
 	
 	// preset templates
-	public static var base0:Object = { time:t.s, transition:io.quint };
-	public static var base1:Object = { time:t.s, transition:io.quad };
-	public static var base2:Object = { time:t.s, transition:io.expo };
+	public static function get base0():Object { 
+		return { time:t.s, transition:io.quint };
+	}
+	
+	public static function get base1():Object {
+		return { time:t.s, transition:io.quad };
+	}
+	public static function get base2():Object {
+		return { time:t.s, transition:io.expo };
+	}
 	
 	public static function get fadeIn():Object {
 		return Mot.fadeTo(100);	
