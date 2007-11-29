@@ -41,7 +41,7 @@ class com.sekati.layout.Propcaster extends CoreObject {
 		super();
 		trace("*** - Proportioncaster Initialized ...");
 		_this = this;
-		_tracker = ClassUtils.createEmptyMovieClip(com.sekati.display.BaseClip, _root, "__prop_track_rect__", {_x:0, _y:0, _alpha:10, _visible:true});
+		_tracker = ClassUtils.createEmptyMovieClip(com.sekati.display.BaseClip, _root, "__prop_track_rect__", {_x:0, _y:0, _alpha:100, _visible:false});
 		Rectangle.draw(_tracker, new Point(0,0), new Point(_proportionW, _proportionH), 0xFF00FF, 100, 0);
 		Dispatcher.$.addEventListener(StageDisplay.onStageResizeEVENT, Delegate.create (_this, update));
 		update();
