@@ -1,6 +1,6 @@
 ﻿/**
  * com.sekati.utils.AlignUtils
- * @version 1.0.5
+ * @version 1.0.6
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -31,7 +31,7 @@ class com.sekati.utils.AlignUtils {
 	/**
 	 * vertical  center  align object to target
 	 */
-	public static  function yAlignCenter (item:Object):Void {
+	public static  function yAlignCenter (item:Object,target:Object):Void {
 		item._y=int(target._height / 2 - item._height / 2);
 	}
 
