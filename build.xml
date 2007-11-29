@@ -80,6 +80,7 @@
 		<exec dir="${as2api.dir}" executable="${ruby}" failonerror="true">
 			<arg line='${as2api.rb}'/>
 			<arg line='package-spec ${package}'/>
+			<arg line='package-spec ${package2}'/>
 			<arg line='--classpath ${src}'/>
 			<arg line='--output-dir ${docs}'/>
 			<arg line='--title ${ant.project.name}'/>
