@@ -1,6 +1,6 @@
 ﻿ /**
   * com.sekati.core.App
-  * @version 3.1.0
+  * @version 3.1.1
   * @author jason m horwitz | sekati.com
   * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
   * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -10,7 +10,7 @@
  import com.sekati.events.Broadcaster;
  import com.sekati.log.Logger;
  import com.sekati.net.NetBase;
- import com.sekati.transitions.Mot;
+ //import com.sekati.transitions.Mot;
  import com.sekati.ui.ContextualMenu;
  import com.sekati.validate.StringValidation;
  import flash.external.ExternalInterface;
@@ -52,7 +52,8 @@ class com.sekati.core.App {
 	public static var bc:Object = Broadcaster.getInstance();
 	public static var db:Object = new Object ();
 	public static var css:TextField.StyleSheet = new StyleSheet ();
-	public static var mot:Object = Mot.m;
+	public static var mot:Object = {e:"easeInOutQuint", e2:"easeOutQuint", e3:"easeInOutQuad", e4:"easeOutQuad", e5:"easeInOutQuart", e6:"easeOutQuart", e7:"easeInOutExpo", e8:"easeOutExpo", s:0.3, s2:0.5, d:0.5};
+	//public static var mot:Object = Mot.m;
 
 	/**
 	 * App bootstrap props
