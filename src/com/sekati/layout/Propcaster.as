@@ -1,6 +1,6 @@
 /**
  * com.sekati.layout.Propcaster
- * @version 1.0.1
+ * @version 1.0.2
  * @author jason m horwitz | sekati.com | tendercreative.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -41,7 +41,7 @@ class com.sekati.layout.Propcaster extends CoreObject {
 		super();
 		trace("*** - Proportioncaster Initialized ...");
 		_this = this;
-		_tracker = ClassUtils.createEmptyMovieClip(com.sekati.display.BaseClip, _root, "__prop_track_rect__", {_x:0, _y:0, _alpha:100, _visible:false});
+		_tracker = ClassUtils.createEmptyMovieClip(com.sekati.display.BaseClip, _root, "__prop_track_rect__", {_x:0, _y:0, _alpha:10, _visible:true});
 		Rectangle.draw(_tracker, new Point(0,0), new Point(_proportionW, _proportionH), 0xFF00FF, 100, 0);
 		Dispatcher.$.addEventListener(StageDisplay.onStageResizeEVENT, Delegate.create (_this, update));
 		update();
@@ -116,12 +116,20 @@ class com.sekati.layout.Propcaster extends CoreObject {
 	public function get h():Number {
 		return _tracker._height;
 	}
-	
+
+	/**
+	 * return bottom of "viewport"
+	 * @return Number
+	 */
+	public function get bottom():Number {
+		return y+h;	
+	}
+
 	/**
 	 * proportion getter
 	 * @return Object
 	 */
 	public function get p():Object {
-		return {x:x, y:y, w:w, h:h};
+		return {x:x, y:y, w:w, h:h, b:bottom};
 	}
 }
