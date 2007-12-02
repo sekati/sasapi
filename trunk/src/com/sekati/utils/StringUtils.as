@@ -1,6 +1,6 @@
 ﻿/**
  * com.sekati.utils.StringUtils
- * @version 1.2.3
+ * @version 1.2.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -151,6 +151,7 @@ class com.sekati.utils.StringUtils {
 		t = t.split("&egrave;").join();
 		t = t.split("&eacute;").join('Ž.');
 		t = t.split("&bull;").join('-');
+		t = t.split("&amp;").join("&");
 		return t;
 	}
 	
