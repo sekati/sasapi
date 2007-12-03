@@ -3,7 +3,7 @@
 document.quicknavBasePath="../../../index-files";
 //--></script><link href="../../../style.css" title="JavaDoc" rel="stylesheet" type="text/css"/><link href="../../../unnatural.css" title="Unnatural" rel="alternate stylesheet" type="text/css"/><link href="../../../overview-summary.html" title="Overview" rel="top"/><meta name="generator" content="http://www.badgers-in-foil.co.uk/projects/as2api/"/></head><body><pre><span class="lineno" id="1">     1  </span><span class="comment doc">/**
 <span class="lineno" id="2">     2  </span> * com.sekati.layout.Propcaster
-<span class="lineno" id="3">     3  </span> * @version 1.0.1
+<span class="lineno" id="3">     3  </span> * @version 1.0.2
 <span class="lineno" id="4">     4  </span> * @author jason m horwitz | sekati.com | tendercreative.com
 <span class="lineno" id="5">     5  </span> * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
 <span class="lineno" id="6">     6  </span> * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -119,13 +119,21 @@ document.quicknavBasePath="../../../index-files";
 <span class="lineno" id="116">   116  </span>	<span class="key">public</span> <span class="key">function</span> get h():Number {
 <span class="lineno" id="117">   117  </span>		<span class="key">return</span> _tracker._height;
 <span class="lineno" id="118">   118  </span>	}
-<span class="lineno" id="119">   119  </span>	
+<span class="lineno" id="119">   119  </span>
 <span class="lineno" id="120">   120  </span>	<span class="comment doc">/**
-<span class="lineno" id="121">   121  </span>	 * proportion getter
-<span class="lineno" id="122">   122  </span>	 * @return Object
+<span class="lineno" id="121">   121  </span>	 * return bottom of "viewport"
+<span class="lineno" id="122">   122  </span>	 * @return Number
 <span class="lineno" id="123">   123  </span>	 */</span>
-<span class="lineno" id="124">   124  </span>	<span class="key">public</span> <span class="key">function</span> get p():Object {
-<span class="lineno" id="125">   125  </span>		<span class="key">return</span> {x:x, y:y, w:w, h:h};
+<span class="lineno" id="124">   124  </span>	<span class="key">public</span> <span class="key">function</span> get bottom():Number {
+<span class="lineno" id="125">   125  </span>		<span class="key">return</span> y+h;	
 <span class="lineno" id="126">   126  </span>	}
-<span class="lineno" id="127">   127  </span>}
-<span class="lineno" id="128">   128  </span></pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of Sekati" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.layout" class="button">Package</a></li><li><a href="Propcaster.html" title="Detail of com.sekati.layout.Propcaster API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
+<span class="lineno" id="127">   127  </span>
+<span class="lineno" id="128">   128  </span>	<span class="comment doc">/**
+<span class="lineno" id="129">   129  </span>	 * proportion getter
+<span class="lineno" id="130">   130  </span>	 * @return Object
+<span class="lineno" id="131">   131  </span>	 */</span>
+<span class="lineno" id="132">   132  </span>	<span class="key">public</span> <span class="key">function</span> get p():Object {
+<span class="lineno" id="133">   133  </span>		<span class="key">return</span> {x:x, y:y, w:w, h:h, b:bottom};
+<span class="lineno" id="134">   134  </span>	}
+<span class="lineno" id="135">   135  </span>}
+<span class="lineno" id="136">   136  </span></pre><ul class="main_nav" id="main_nav"><li><a href="../../../overview-summary.html" title="Overview of Sekati" class="button">Overview</a></li><li><a href="package-summary.html" title="Overview of package com.sekati.layout" class="button">Package</a></li><li><a href="Propcaster.html" title="Detail of com.sekati.layout.Propcaster API" class="button">Class</a></li><li><span class="button nav_current">Source</span></li><li><a href="../../../index-files/index.html" title="Alpabetical index of types and members" class="button">Index</a></li></ul><div class="footer"><a href="http://www.badgers-in-foil.co.uk/projects/as2api/" title="ActionScript 2 API Documentation Generator">as2api</a></div></body></html>
