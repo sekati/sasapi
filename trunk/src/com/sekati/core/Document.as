@@ -1,6 +1,6 @@
 /**
  * com.sekati.core.Document
- * @version 1.0.3
+ * @version 1.0.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -9,7 +9,8 @@
  import com.sekati.core.App;
  import com.sekati.display.BaseClip;
  import com.sekati.log.Logger;
-
+ import caurina.transitions.properties.*;
+ 
 /**
  * Document controller simulates an AS3 DocumentClass
  * {@code Usage on first _root frame:
@@ -77,5 +78,11 @@ class com.sekati.core.Document extends BaseClip {
 		log.isLC = true;
 		log.isSWF = false;
 		log.info(this.toString(),"Document Initialized ...");
+		// add Tweener specialProperties shortcuts
+		FilterShortcuts.init();
+ 		ColorShortcuts.init();
+ 		DisplayShortcuts.init();
+ 		TextShortcuts.init();
+ 		//SoundShortcuts.init();	
 	}
 }
