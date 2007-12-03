@@ -99,6 +99,15 @@ strict digraph class_diagram {
     color="#729b12"
     shape="record"
   ];
+  TypeBitmapImageClip[
+    label="BitmapImageClip",
+    URL="BitmapImageClip.html",
+    tooltip="com.sekati.display.BitmapImageClip",
+    fontname="Verdana",
+    fontsize="9"
+    color="#729b12"
+    shape="record"
+  ];
   TypeBaseClip[
     label="BaseClip",
     URL="BaseClip.html",
@@ -126,5 +135,6 @@ strict digraph class_diagram {
   TypeUIClip -> TypeLiquidClip;
   TypeCoreClip -> TypeEventClip;
   TypeBaseClip -> TypeCoreClip;
+  TypeBaseClip -> TypeBitmapImageClip;
   TypeCoreClip -> TypeAbstractClip;
 }
