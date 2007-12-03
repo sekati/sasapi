@@ -45,15 +45,6 @@ strict digraph class_diagram {
     color="#729b12"
     shape="record"
   ];
-  TypeSpecialPropertiesDefault[
-    label="SpecialPropertiesDefault",
-    URL="SpecialPropertiesDefault.html",
-    tooltip="caurina.transitions.SpecialPropertiesDefault",
-    fontname="Verdana",
-    fontsize="9"
-    color="#729b12"
-    shape="record"
-  ];
   TypePropertyInfoObj[
     label="PropertyInfoObj",
     URL="PropertyInfoObj.html",
