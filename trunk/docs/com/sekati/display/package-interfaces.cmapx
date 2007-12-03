@@ -1,6 +1,7 @@
 <map id="interface_diagram" name="interface_diagram">
-<area shape="rect" href="ITweenClip.html" title="com.sekati.display.ITweenClip" alt="" coords="133,8,221,56" />
-<area shape="rect" href="ILiquidClip.html" title="com.sekati.display.ILiquidClip" alt="" coords="135,80,218,128" />
-<area shape="rect" href="ICoreClip.html" title="com.sekati.display.ICoreClip" alt="" coords="138,152,215,200" />
-<area shape="rect" href="IBaseClip.html" title="com.sekati.display.IBaseClip" alt="" coords="7,80,85,128" />
+<area shape="rect" href="ITweenClip.html" title="com.sekati.display.ITweenClip" alt="" coords="154,8,242,56" />
+<area shape="rect" href="ILiquidClip.html" title="com.sekati.display.ILiquidClip" alt="" coords="157,80,240,128" />
+<area shape="rect" href="ICoreClip.html" title="com.sekati.display.ICoreClip" alt="" coords="160,152,237,200" />
+<area shape="rect" href="IBitmapImageClip.html" title="com.sekati.display.IBitmapImageClip" alt="" coords="134,224,262,272" />
+<area shape="rect" href="IBaseClip.html" title="com.sekati.display.IBaseClip" alt="" coords="8,116,85,164" />
 </map>
