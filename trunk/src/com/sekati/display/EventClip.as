@@ -1,6 +1,6 @@
 /**
  * com.sekati.display.EventClip
- * @version 1.0.5
+ * @version 1.0.7
  * @author jason m horwitz | sekati.com | tendercreative.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -27,10 +27,13 @@ class com.sekati.display.EventClip extends CoreClip {
 	 * @see {@link com.sekati.events.Broadcaster.broadcast()}
 	 * @return Void
 	 */
+	/* 
 	public function broadcast():Void {
 		Broadcaster.$.broadcast.apply(this, arguments);
 	}
-	/**
+	 */
+	
+	/**
 	 * Remove from Event Dispatchers and Broadcasters onUnload.
 	 * @return Void
 	 */
