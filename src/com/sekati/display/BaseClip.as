@@ -1,6 +1,6 @@
 /**
  * com.sekati.display.BaseClip
- * @version 1.0.7
+ * @version 1.1.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -9,8 +9,10 @@
  import com.sekati.display.IBaseClip;
  import com.sekati.display.ITweenClip;
  import com.sekati.core.KeyFactory;
+ import com.sekati.except.IllegalArgumentException;
  import com.sekati.reflect.Stringifier;
  import com.sekati.utils.MovieClipUtils;
+ import com.sekati.validate.TypeValidation;
  import caurina.transitions.Tweener;
 
 /**
@@ -60,22 +62,36 @@ class com.sekati.display.BaseClip extends MovieClip implements IBaseClip, ITween
 	}
 	
 	/**
-	 * A very basic wrapper to apply a tween to the current object via {@link com.sekati.transitions.Tweener.addTween}
+	 * Built-in {@link com.sekati.transitions.Tweener.addTween} wrapper. The method 
+	 * accepts either one argument (TweenerObject) or two arguments (target, TweenerObject).
+	 * {@code Usage:
+	 * 	tween({_x:100, time:1, transition:"linear"});
+	 * 	tween(someOtherMc, {_x:100, time:1, transition:"linear"});
+	 * }
 	 * @see {@link http://hosted.zeh.com.br/tweener/docs/en-us/}
-	 * @param tweenerObject (Object)
 	 * @return Void
 	 */
-	public function tween (tweenerObject:Object):Void {
-		Tweener.addTween (_this, tweenerObject);
+	public function tween():Void {
+		if (arguments.length == 1) {
+			Tweener.addTween(_this, arguments[0]);
+		} else if (TypeValidation.isMovieClip(arguments[0]) || TypeValidation.isTextField(arguments[0])) {
+			Tweener.addTween(arguments[0], arguments[1]);	
+		} else {
+			throw new IllegalArgumentException(this, "BaseClip.tween requires either (tweenerObject) or (target, tweenerObject) arguments.", arguments);
+		}
 	}
 	
 	/**
-	 * Remove any or all Tweener tweens using arguments array.
+	 * Remove any or all Tweener tweens on the instance object using arguments array.
 	 * @param arguments
-	 * @return Void 
+	 * @return Void
 	 */
 	public function stopTween():Void {
-		Tweener.removeTweens(_this, arguments);
+		var args:Array = [_this];
+		for (var i:Number = 0; i < arguments.length; i++) {
+			args.push(arguments[i]);
+		}
+		Tweener.removeTweens.apply(this, args);
 	}
 
 	/**
