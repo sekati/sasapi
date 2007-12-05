@@ -18,6 +18,15 @@ strict digraph interface_diagram {
     color="#2d5492"
     shape="record"
   ];
+  IImageClip[
+    label="IImageClip",
+    URL="IImageClip.html",
+    tooltip="com.sekati.display.IImageClip",
+    fontname="Verdana-Italic",
+    fontsize="9"
+    color="#2d5492"
+    shape="record"
+  ];
   ICoreClip[
     label="ICoreClip",
     URL="ICoreClip.html",
@@ -47,6 +56,7 @@ strict digraph interface_diagram {
   ];
   IBaseClip -> ITweenClip;
   IBaseClip -> ILiquidClip;
+  IBaseClip -> IImageClip;
   IBaseClip -> ICoreClip;
   IBaseClip -> IBitmapImageClip;
 }
