@@ -81,6 +81,15 @@ strict digraph class_diagram {
     color="#729b12"
     shape="record"
   ];
+  TypeImageClip[
+    label="ImageClip",
+    URL="ImageClip.html",
+    tooltip="com.sekati.display.ImageClip",
+    fontname="Verdana",
+    fontsize="9"
+    color="#729b12"
+    shape="record"
+  ];
   TypeEventClip[
     label="EventClip",
     URL="EventClip.html",
@@ -133,6 +142,7 @@ strict digraph class_diagram {
   TypeLiquidClip -> TypeLiquidWClip;
   TypeLiquidClip -> TypeLiquidHClip;
   TypeUIClip -> TypeLiquidClip;
+  TypeBaseClip -> TypeImageClip;
   TypeCoreClip -> TypeEventClip;
   TypeBaseClip -> TypeCoreClip;
   TypeBaseClip -> TypeBitmapImageClip;
