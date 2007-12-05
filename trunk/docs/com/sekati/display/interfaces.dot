@@ -58,5 +58,5 @@ strict digraph interface_diagram {
   IBaseClip -> ILiquidClip;
   IBaseClip -> IImageClip;
   IBaseClip -> ICoreClip;
-  IImageClip -> IBitmapImageClip;
+  IBaseClip -> IBitmapImageClip;
 }
