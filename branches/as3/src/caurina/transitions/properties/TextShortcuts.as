@@ -1,4 +1,4 @@
-package com.sekati.transitions.properties {
+package caurina.transitions.properties {
 
 	/**
 	 * properties.TextShortcuts
@@ -9,8 +9,8 @@ package com.sekati.transitions.properties {
 	 * @version		1.0.0
 	 */
 
-	import com.sekati.transitions.Tweener;
-	import com.sekati.transitions.AuxFunctions;
+	import caurina.transitions.Tweener;
+	import caurina.transitions.AuxFunctions;
 
 	import flash.text.TextFormat;
 

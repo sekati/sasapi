@@ -1,4 +1,4 @@
-package com.sekati.transitions.properties {
+package caurina.transitions.properties {
 
 	/**
 	 * properties.CurveModifiers
@@ -9,7 +9,7 @@ package com.sekati.transitions.properties {
 	 * @version		1.0.0
 	 */
 
-	import com.sekati.transitions.Tweener;
+	import caurina.transitions.Tweener;
 
 	public class CurveModifiers {
 

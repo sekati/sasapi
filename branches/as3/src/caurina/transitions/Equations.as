@@ -25,7 +25,7 @@ Redistribution and use in source and binary forms, with or without modification,
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-package com.sekati.transitions {
+package caurina.transitions {
 	
 	public class Equations {
 	
@@ -507,7 +507,7 @@ package com.sekati.transitions {
 		public static function easeInElastic (t:Number, b:Number, c:Number, d:Number, p_params:Object = null):Number {
 			if (t==0) return b;
 			if ((t/=d)==1) return b+c;
-			var p:Number = !Boolean(p_params) || isNaN(p_params.p_period) ? d*.3 : p_params.period;
+			var p:Number = !Boolean(p_params) || isNaN(p_params.period) ? d*.3 : p_params.period;
 			var s:Number;
 			var a:Number = !Boolean(p_params) || isNaN(p_params.amplitude) ? 0 : p_params.amplitude;
 			if (!Boolean(a) || a < Math.abs(c)) {
@@ -533,7 +533,7 @@ package com.sekati.transitions {
 		public static function easeOutElastic (t:Number, b:Number, c:Number, d:Number, p_params:Object = null):Number {
 			if (t==0) return b;
 			if ((t/=d)==1) return b+c;
-			var p:Number = !Boolean(p_params) || isNaN(p_params.p_period) ? d*.3 : p_params.period;
+			var p:Number = !Boolean(p_params) || isNaN(p_params.period) ? d*.3 : p_params.period;
 			var s:Number;
 			var a:Number = !Boolean(p_params) || isNaN(p_params.amplitude) ? 0 : p_params.amplitude;
 			if (!Boolean(a) || a < Math.abs(c)) {
@@ -559,7 +559,7 @@ package com.sekati.transitions {
 		public static function easeInOutElastic (t:Number, b:Number, c:Number, d:Number, p_params:Object = null):Number {
 			if (t==0) return b;
 			if ((t/=d/2)==2) return b+c;
-			var p:Number = !Boolean(p_params) || isNaN(p_params.p_period) ? d*(.3*1.5) : p_params.period;
+			var p:Number = !Boolean(p_params) || isNaN(p_params.period) ? d*(.3*1.5) : p_params.period;
 			var s:Number;
 			var a:Number = !Boolean(p_params) || isNaN(p_params.amplitude) ? 0 : p_params.amplitude;
 			if (!Boolean(a) || a < Math.abs(c)) {

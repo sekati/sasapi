@@ -1,4 +1,4 @@
-package com.sekati.transitions.properties {
+package caurina.transitions.properties {
 
 	/**
 	 * properties.DisplayShortcuts.as
@@ -12,7 +12,7 @@ package com.sekati.transitions.properties {
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
 
-	import com.sekati.transitions.Tweener;
+	import caurina.transitions.Tweener;
 
 	public class DisplayShortcuts {
 

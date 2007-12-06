@@ -1,4 +1,4 @@
-package com.sekati.transitions {
+package caurina.transitions {
 
 	/**
 	 * SpecialPropertyModifier

@@ -1,4 +1,4 @@
-package com.sekati.transitions.properties {
+package caurina.transitions.properties {
 
 	/**
 	 * properties.SoundShortcuts
@@ -11,7 +11,7 @@ package com.sekati.transitions.properties {
 
 	import flash.media.SoundTransform;
 
-	import com.sekati.transitions.Tweener;
+	import caurina.transitions.Tweener;
 
 	public class SoundShortcuts {
 

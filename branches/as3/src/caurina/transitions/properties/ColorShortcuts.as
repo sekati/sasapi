@@ -1,4 +1,4 @@
-package com.sekati.transitions.properties {
+package caurina.transitions.properties {
 
 	/**
 	 * properties.ColorShortcuts
@@ -12,8 +12,8 @@ package com.sekati.transitions.properties {
 	import flash.geom.ColorTransform;
 	import flash.filters.ColorMatrixFilter;
 
-	import com.sekati.transitions.Tweener;
-	import com.sekati.transitions.AuxFunctions;
+	import caurina.transitions.Tweener;
+	import caurina.transitions.AuxFunctions;
 
 	public class ColorShortcuts {
 

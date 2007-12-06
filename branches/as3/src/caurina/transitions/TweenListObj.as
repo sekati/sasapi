@@ -1,5 +1,5 @@
-﻿package com.sekati.transitions {
-    import com.sekati.transitions.AuxFunctions;
+﻿package caurina.transitions {
+    import caurina.transitions.AuxFunctions;
 	/**
 	 * The tween list object. Stores all of the properties and information that pertain to individual tweens.
 	 *

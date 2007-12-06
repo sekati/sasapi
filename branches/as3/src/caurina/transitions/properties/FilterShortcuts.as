@@ -1,4 +1,4 @@
-package com.sekati.transitions.properties {
+package caurina.transitions.properties {
 
 	/**
 	 * properties.FilterShortcuts
@@ -22,8 +22,8 @@ package com.sekati.transitions.properties {
 	import flash.filters.GradientGlowFilter;
 	import flash.geom.Point;
 
-	import com.sekati.transitions.Tweener;
-	import com.sekati.transitions.AuxFunctions;
+	import caurina.transitions.Tweener;
+	import caurina.transitions.AuxFunctions;
 
 	public class FilterShortcuts {
 
