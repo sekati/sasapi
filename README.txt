@@ -4,7 +4,7 @@ THE SEKATI ACTIONSCRIPT API (SASAPI) FRAMEWORK - http://sasapi.googlecode.com - 
 
 I. Introduction
 
-	SASAPI is a multipurpose Actionscript 2.0 framework designed to bootstrap the development 
+	SASAPI is a multipurpose ActionScript 2.0 framework designed to bootstrap the development 
 	process for flash (>=8) sites and applications. It is the accumulated bi-product of much 
 	personal and professional actionscript work, and boasts a flexible structure, large 
 	collection of useful classes, utilities, test files and application skeletons.
