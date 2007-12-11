@@ -7,7 +7,6 @@
  * @version		1.0.0
  */
 
-import flash.geom.Point;
 import flash.geom.Rectangle;
 
 import caurina.transitions.Tweener;
@@ -18,7 +17,7 @@ class caurina.transitions.properties.DisplayShortcuts {
 	 * There's no constructor.
 	 */
 	public function DisplayShortcuts () {
-		trace ("This is an static class and should not be instantiated.")
+		trace ("This is an static class and should not be instantiated.");
 	}
 
 	/**

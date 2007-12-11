@@ -15,7 +15,7 @@ class caurina.transitions.properties.SoundShortcuts {
 	 * There's no constructor.
 	 */
 	public function SoundShortcuts () {
-		trace ("This is an static class and should not be instantiated.")
+		trace ("This is an static class and should not be instantiated.");
 	}
 
 	/**

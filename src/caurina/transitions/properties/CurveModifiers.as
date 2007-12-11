@@ -15,7 +15,7 @@ class caurina.transitions.properties.CurveModifiers {
 	 * There's no constructor.
 	 */
 	public function CurveModifiers () {
-		trace ("This is an static class and should not be instantiated.")
+		trace ("This is an static class and should not be instantiated.");
 	}
 
 	/**
