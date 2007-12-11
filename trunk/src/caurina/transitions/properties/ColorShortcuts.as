@@ -29,7 +29,7 @@ class caurina.transitions.properties.ColorShortcuts {
 	 * There's no constructor.
 	 */
 	public function ColorShortcuts () {
-		trace ("This is an static class and should not be instantiated.")
+		trace ("This is an static class and should not be instantiated.");
 	}
 
 	/**
@@ -385,7 +385,7 @@ class caurina.transitions.properties.ColorShortcuts {
 				angleToSplit = 0;
 			}
 			hues[angleToSplit].angle = (hues[0].angle + hues[1].angle)/2;
-			hues[angleToSplit].matrix = getHueMatrix(hues[angleToSplit].angle)
+			hues[angleToSplit].matrix = getHueMatrix(hues[angleToSplit].angle);
 			hues[angleToSplit].distance = getHueDistance(mtx, hues[angleToSplit].matrix);
 		}
 

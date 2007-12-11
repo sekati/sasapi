@@ -29,7 +29,7 @@ class caurina.transitions.properties.FilterShortcuts {
 	 * There's no constructor.
 	 */
 	public function FilterShortcuts () {
-		trace ("This is an static class and should not be instantiated.")
+		trace ("This is an static class and should not be instantiated.");
 	}
 
 	/**
