@@ -79,7 +79,7 @@ class caurina.transitions.AuxFunctions {
 				    // delete in case is null
 					delete finalObject[prop];
 				}else{
-					finalObject[prop] = currentObject[prop]
+					finalObject[prop] = currentObject[prop];
 				}
 			}
 		}
