@@ -1,6 +1,6 @@
 /**
  * com.sekati.display.BaseClip
- * @version 1.1.1
+ * @version 1.1.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -55,9 +55,13 @@ class com.sekati.display.BaseClip extends MovieClip implements IBaseClip, ITween
 	public function destroy():Void {
 		__isClean = true;
 		_this.onEnterFrame = null;
+		/*
+		 * VERY DANGEROUS BUGS CAN OCCUR WHEN EXTENDING 
+		 * BASECLIP WITH THIS LOOP INCLUDED!
 		for(var i in _this) {
 			MovieClipUtils.rmClip(_this[i]);	
 		}
+		 */
 		MovieClipUtils.rmClip(_this);		
 	}
 	
