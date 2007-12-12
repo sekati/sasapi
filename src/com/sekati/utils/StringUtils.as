@@ -1,6 +1,6 @@
 ﻿/**
  * com.sekati.utils.StringUtils
- * @version 1.2.5
+ * @version 1.2.6
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -50,6 +50,15 @@ class com.sekati.utils.StringUtils {
 	public static function removeSpaces (str:String):String {
 		return replace (str, " ", "");
 	}
+	
+	/**
+	 * remove tabs
+	 * @param str (String)
+	 * @return String
+	 */
+	public static function removeTabs(str:String):String {
+		return replace(str, "	", "");	
+	}	
 
 	/**
 	 * remove spaces at end and beginning of the string only
