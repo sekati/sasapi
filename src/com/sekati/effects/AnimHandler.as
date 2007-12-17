@@ -1,6 +1,6 @@
 /**
  * com.sekati.effects.AnimHandler
- * @version 1.0.1
+ * @version 1.0.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -42,6 +42,7 @@ class com.sekati.effects.AnimHandler {
 		var cName:String = "$__" + tf._name + "__anim__";
 		var oldAnim:BaseClip = tf._parent[cName];
 		if (oldAnim) {
+			oldAnim.onEnterFrame = null;
 			oldAnim.destroy();
 		}		
 	}	
