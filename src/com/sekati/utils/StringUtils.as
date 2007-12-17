@@ -1,6 +1,6 @@
 ﻿/**
  * com.sekati.utils.StringUtils
- * @version 1.2.7
+ * @version 1.3.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -201,12 +201,21 @@ class com.sekati.utils.StringUtils {
 	}
 	
 	/**
+	 * add zero in front of floated number
+	 * @param n (Number)
+	 * @return String
+	 */
+	public static function padZeroOnFloat( n:Number ):String {
+		return ( n > 1 || n < 0 ) ? String( n ) : ( "0." + String(n).split(".")[1] );	
+	}
+	
+	/**
 	 * Remove scientific notation from very small floats when casting to String.
 	 * @param n (Number)
 	 * @return String
 	 * {@code Usage: 
 	 * 	trace( String(0.0000001) ); // returns 1e-7
-	 * 	trace( floatToString(0.0000001) ); // returns 00000001
+	 * 	trace( floatToString(0.0000001) ); // returns .00000001
 	 * }
 	 */
 	public static function floatToString(n:Number):String {
