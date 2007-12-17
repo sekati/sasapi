@@ -1,6 +1,6 @@
 /**
  * com.sekati.math.Range
- * @version 1.0.1
+ * @version 1.0.2
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -22,7 +22,7 @@ class com.sekati.math.Range {
 	public static function isInRange (n:Number, min:Number, max:Number, blacklist:Array):Boolean {	
 		if (n == null || typeof(n) != "number") return false;
 		if(blacklist.length > 0) {
-			for(var i:Object in blacklist) if(n == blacklist[i]) return false;
+			for(var i:String in blacklist) if(n == blacklist[i]) return false;
 		}
 		return (n >= min && n <= max);
 	}
