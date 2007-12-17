@@ -1,6 +1,6 @@
 ﻿/**
  * com.sekati.utils.StringUtils
- * @version 1.2.6
+ * @version 1.2.7
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -116,6 +116,26 @@ class com.sekati.utils.StringUtils {
 			}
 		}
 		return o;
+	}
+
+	/**
+	 * format a number with commas - ie. 10000 -> 10,000
+	 * @param inNum (Object) String or Number
+	 * @return String
+	 */
+	public static function commaFormatNumber(inNum:Object):String {
+		var tmp:String = String(inNum);
+		//step through backwards and insert commas
+		var outString:String = "";
+		var l:Number = tmp.length;
+		for (var i:Number = 0; i < l; i++) {
+			if (i%3 ==0 && i > 0) {
+				//insert commas
+				outString = ","+outString;
+			}
+			outString = tmp.substr(l-(i+1), 1) + outString;
+		}
+		return outString;		
 	}
 
 	/**
