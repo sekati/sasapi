@@ -1,6 +1,6 @@
 /**
  * com.sekati.net.NetBase
- * @version 1.0.0
+ * @version 1.0.1
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -18,11 +18,11 @@ class com.sekati.net.NetBase {
 	 * @return String
 	 * {@code Usage:
 	 * 	// run from http://localhost/myProject/site.swf
-	 * 	trace(StringUtils.getPath()); // returns "http://localhost/myProject/"
+	 * 	trace(NetBase.getPath()); // returns "http://localhost/myProject/"
 	 * }
 	 */
 	public static function getPath ():String {
-		return(_root._url.substr (0, _root._url.lastIndexOf ('/') + 1));
+		return( _root._url.substr( 0, _root._url.lastIndexOf( '/' ) + 1 ) );
 	}
 
 	/**
