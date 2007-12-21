@@ -14,11 +14,11 @@
 		Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
      ************************************************************************************* -->
 
-<project name="Sekati ActionScript API" default="TestMovie" basedir=".">
+<project name="Sekati ActionScript API" default="TestMovie" basedir="../">
 
 	
-	<property file="build/build.fdtkit.properties"/>
-	<property file="build/build.project.properties"/>
+	<property file="build.fdtkit.properties"/>
+	<property file="build.project.properties"/>
 	
 	
     <target name="batch_document" description="batch run a set of documentation tasks">
