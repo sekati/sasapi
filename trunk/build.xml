@@ -17,8 +17,8 @@
 <project name="Sekati ActionScript API" default="TestMovie" basedir=".">
 
 	
-	<property file="build.fdtkit.properties"/>
-	<property file="build.project.properties"/>
+	<property file="build/build.fdtkit.properties"/>
+	<property file="build/build.project.properties"/>
 	
 	
     <target name="batch_document" description="batch run a set of documentation tasks">
