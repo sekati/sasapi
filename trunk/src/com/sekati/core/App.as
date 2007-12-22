@@ -10,10 +10,10 @@
  import com.sekati.events.Broadcaster;
  import com.sekati.log.Logger;
  import com.sekati.net.NetBase;
- //import com.sekati.transitions.Mot;
+ import com.sekati.services.Urchin;
  import com.sekati.ui.ContextualMenu;
  import com.sekati.validate.StringValidation;
- import flash.external.ExternalInterface;
+ //import flash.external.ExternalInterface;
  import TextField.StyleSheet;
  
  /**
@@ -26,17 +26,21 @@
   */
 class com.sekati.core.App {
 	
-	private static var BOOTSTRAP_RETRY:Number = 0;
-	private static var BOOTSTRAP_RETRY_MAX:Number = 5;
+	public static var APP_NAME:String;
 	public static var PATH:String = (NetBase.isOnline()) ? NetBase.getPath() : "";
 	public static var CONF_URI:String = (!_root.conf_uri) ? App.PATH + "xml/config.xml" : _root.conf_uri;
-	public static var APP_NAME:String;
+	
 	public static var CROSSDOMAIN_URI:String;
+	public static var DATA_URI:String;
 	public static var CSS_URI:String;
+	
 	public static var DEBUG_ENABLE:Boolean;
 	public static var FLINK_ENABLE:Boolean;
 	public static var TRACK_ENABLE:Boolean;
 	public static var KEY_ENABLE:Boolean;
+	
+	private static var BOOTSTRAP_RETRY:Number = 0;
+	private static var BOOTSTRAP_RETRY_MAX:Number = 5;	
 	
 	public static var DATA_PATH:String;
 	public static var BUFFER_TIME:Number;
@@ -53,14 +57,13 @@ class com.sekati.core.App {
 	public static var db:Object = new Object ();
 	public static var css:TextField.StyleSheet = new StyleSheet ();
 	public static var mot:Object = {e:"easeInOutQuint", e2:"easeOutQuint", e3:"easeInOutQuad", e4:"easeOutQuad", e5:"easeInOutQuart", e6:"easeOutQuart", e7:"easeInOutExpo", e8:"easeOutExpo", s:0.3, s2:0.5, d:0.5};
-	//public static var mot:Object = Mot.m;
 
 	/**
 	 * App bootstrap props
 	 * _bootstrapChain (Array) list of methods to run to bootstrap App
 	 *  _bootstrapCounter (Number) bootstrap stage counter
 	 */
-	private static var _bootstrapChain:Array = ['loadConfig', 'loadStyle'];
+	private static var _bootstrapChain:Array = ['loadConfig', 'loadStyle', 'loadData'];
 	private static var _bootstrapCounter:Number = -1;
 	
 	/**
@@ -68,7 +71,8 @@ class com.sekati.core.App {
 	 * @return Void
 	 */
 	public static function init ():Void {
-		trace ("App init ...");
+		trace ("*** - App Initialized ...\n");
+		Urchin.track("home");
 		App.bc.broadcast ("onBootstrap");
 		App.bootstrap ();
 	}
