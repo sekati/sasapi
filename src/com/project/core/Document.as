@@ -18,7 +18,7 @@
  * }
  * @see {@link com.sekati.core.App}
  */
-class com.sekati.core.Document extends BaseClip {
+class com.project.core.Document extends BaseClip {
 	
 	public var log:Logger;
 	
