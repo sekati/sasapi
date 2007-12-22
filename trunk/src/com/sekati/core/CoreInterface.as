@@ -10,7 +10,7 @@
  * The core interface in the SASAPI framework.
  */
 interface com.sekati.core.CoreInterface {
-	
+
 	/**
 	 * Clean and destroy object instance contents/self for garbage collection.
 	 * Always call destroy() before deleting last object pointer.
@@ -24,5 +24,4 @@ interface com.sekati.core.CoreInterface {
 	 * @return String
 	 */		
 	function toString():String;
-	
 }

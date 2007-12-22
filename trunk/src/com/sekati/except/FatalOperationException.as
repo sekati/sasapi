@@ -5,15 +5,15 @@
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
- 
- import com.sekati.except.FatalException;
- 
+
+import com.sekati.except.FatalException;
+
 /**
  * Throwable Fatal Operation {@link FatalException} Error.
  * A fatal operation has occurred that is not supported by the thower.
  */
 class com.sekati.except.FatalOperationException extends FatalException {
-	
+
 	private var name:String = "Fatal Operation Exception Error";
 
 	/**
@@ -23,7 +23,7 @@ class com.sekati.except.FatalOperationException extends FatalException {
 	 * @param stack (Array) thrower arguments stack
 	 * @return Void
 	 */
-	 public function FatalOperationException(thrower:Object, message:String, stack:Array){
-	 	super(thrower, message, stack);	
-	 }
+	public function FatalOperationException(thrower:Object, message:String, stack:Array) {
+		super( thrower, message, stack );	
+	}
 }

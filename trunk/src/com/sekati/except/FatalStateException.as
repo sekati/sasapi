@@ -5,15 +5,15 @@
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
- 
- import com.sekati.except.FatalException;
- 
+
+import com.sekati.except.FatalException;
+
 /**
  * Throwable Fatal State {@link FatalException} Error.
  * A method has been invoked at an illegal or inappropriate time or state.
  */
 class com.sekati.except.FatalStateException extends FatalException {
-	
+
 	private var name:String = "Fatal State Exception Error";
 
 	/**
@@ -23,7 +23,7 @@ class com.sekati.except.FatalStateException extends FatalException {
 	 * @param stack (Array) thrower arguments stack
 	 * @return Void
 	 */
-	 public function FatalStateException(thrower:Object, message:String, stack:Array){
-	 	super(thrower, message, stack);	
-	 }
+	public function FatalStateException(thrower:Object, message:String, stack:Array) {
+		super( thrower, message, stack );	
+	}
 }

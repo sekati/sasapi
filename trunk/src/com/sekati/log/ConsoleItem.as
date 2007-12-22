@@ -5,11 +5,11 @@
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
- 
- import com.sekati.display.BaseClip;
- import com.sekati.log.ConsoleStyle;
- import com.sekati.utils.Delegate;
- 
+
+import com.sekati.display.BaseClip;
+import com.sekati.log.ConsoleStyle;
+import com.sekati.utils.Delegate;
+
 /**
  * Console Item UI
  * {@code Usage:
@@ -20,7 +20,7 @@
  * @see {@link com.sekati.log.Console}
  */
 class com.sekati.log.ConsoleItem extends BaseClip {
-	
+
 	// data = {id:Number, type:String, origin:String, message:String, benchmark:Number, _isMeta:Boolean}
 	public var _data:Object;
 	private var _cs:ConsoleStyle;
@@ -32,25 +32,25 @@ class com.sekati.log.ConsoleItem extends BaseClip {
 	public var _originTf:TextField;
 	public var _messageTf:TextField;
 	public var _benchmarkTf:TextField;
-	
+
 	/**
 	 * ConsoleItem Constructor.
 	 */
 	public function ConsoleItem() {	
 		//trace("ConsoleItem: "+_this._name+".__RUID = "+_this.__RUID+";");
-		_cs = ConsoleStyle.getInstance();
+		_cs = ConsoleStyle.getInstance( );
 		_style = (!_data._isMeta) ? _cs.CSS.item : _cs.CSS.meta_item;
 		
 		// rect	- createStyledRect (target:MovieClip, layout:Object, color:Object)
-		_bg = _cs.createStyledRectangle(_this, _style.bg);
-		_line = _cs.createStyledRectangle(_this, _style.line);
+		_bg = _cs.createStyledRectangle( _this, _style.bg );
+		_line = _cs.createStyledRectangle( _this, _style.line );
 		
 		// text - createStyledTextField (target:MovieClip, layout:Object, color:Object, str:String)
-		_idTf = _cs.createStyledTextField(_this, _style.textfields.id, _data.id);
-		_typeTf = _cs.createStyledTextField(_this, _style.textfields.type, _data.type);
-		_originTf = _cs.createStyledTextField(_this, _style.textfields.origin, _data.origin);
-		_messageTf = _cs.createStyledTextField(_this, _style.textfields.message, _data.message);
-		_benchmarkTf = _cs.createStyledTextField(_this, _style.textfields.benchmark, _data.benchmark);
+		_idTf = _cs.createStyledTextField( _this, _style.textfields.id, _data.id );
+		_typeTf = _cs.createStyledTextField( _this, _style.textfields.type, _data.type );
+		_originTf = _cs.createStyledTextField( _this, _style.textfields.origin, _data.origin );
+		_messageTf = _cs.createStyledTextField( _this, _style.textfields.message, _data.message );
+		_benchmarkTf = _cs.createStyledTextField( _this, _style.textfields.benchmark, _data.benchmark );
 		
 		// alignments
 		//_bg._height = _messageTf._height;
@@ -60,16 +60,16 @@ class com.sekati.log.ConsoleItem extends BaseClip {
 		_line._y = tallestTf._height;	
 				
 		// event
-		_bg.onPress = Delegate.create(_this, toClipboard);
+		_bg.onPress = Delegate.create( _this, toClipboard );
 		//_bg.useHandCursor = false;		
 	}
-	
+
 	/**
 	 * Copy string data to clipboard.
 	 * @return Void
 	 */	
 	private function toClipboard():Void {
-		System.setClipboard (toString());
+		System.setClipboard( toString( ) );
 	}
 
 	/**
@@ -78,16 +78,16 @@ class com.sekati.log.ConsoleItem extends BaseClip {
 	 */
 	public function toString():String {
 		var tab:String = "\t";
-		var str:String = _idTf.text +tab+ _typeTf.text +tab+ _originTf.text +tab+ _messageTf.text +tab+ _benchmarkTf.text;
+		var str:String = _idTf.text + tab + _typeTf.text + tab + _originTf.text + tab + _messageTf.text + tab + _benchmarkTf.text;
 		return str;		
 	}
-		
+
 	/**
 	 * calls superclasses BaseClip.destroy and executes its own destroy behaviors.
 	 * @return Void
 	 */
 	public function destroy():Void {
-		super.destroy();
+		super.destroy( );
 		//trace(_this._name+" ConsoleItem destroy()");
 	}	
 }

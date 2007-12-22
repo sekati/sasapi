@@ -6,13 +6,13 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  
- import com.sekati.validate.StringValidation;
- 
+import com.sekati.validate.StringValidation;
+
 /**
  * static class wrapping various Network utilities
  */
 class com.sekati.net.NetBase {
-	
+
 	/**
 	 * return the URL Path swf is running under
 	 * @return String
@@ -21,7 +21,7 @@ class com.sekati.net.NetBase {
 	 * 	trace(NetBase.getPath()); // returns "http://localhost/myProject/"
 	 * }
 	 */
-	public static function getPath ():String {
+	public static function getPath():String {
 		return( _root._url.substr( 0, _root._url.lastIndexOf( '/' ) + 1 ) );
 	}
 
@@ -29,10 +29,10 @@ class com.sekati.net.NetBase {
 	 * check if we are online the swf is being executed over http.
 	 * @return Boolean
 	 */
-	public static function isOnline ():Boolean {
-		return StringValidation.isURL(_root._url);
+	public static function isOnline():Boolean {
+		return StringValidation.isURL( _root._url );
 	}
-	
+
 	/**
 	 * add a cache killing querystring to url
 	 * @param url (String)
@@ -41,10 +41,10 @@ class com.sekati.net.NetBase {
 	 * 	var ckUrl = NetBase.noCacheUrl("http://localhost/page.html"); // returns: http://localhost/page.html?030533
 	 * }
 	 */
-	public static function noCacheUrl (url:String):String {
-		return url + "?" + new Date().getTime();	
+	public static function noCacheUrl(url:String):String {
+		return url + "?" + new Date( ).getTime( );	
 	}
-	
+
 	private function NetBase() {	
 	}
 }

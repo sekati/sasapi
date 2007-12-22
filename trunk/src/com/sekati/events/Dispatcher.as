@@ -6,10 +6,10 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
- import com.sekati.core.CoreObject;
- import com.sekati.events.Event;
- import com.sekati.events.IDispatchable;
- import mx.events.EventDispatcher;
+import com.sekati.core.CoreObject;
+import com.sekati.events.Event;
+import com.sekati.events.IDispatchable;
+import mx.events.EventDispatcher;
 
 /**
  * A centralized EventDispatcher to decouple event listeners & dispatchers from direct addressing.
@@ -45,27 +45,27 @@ class com.sekati.events.Dispatcher extends CoreObject implements IDispatchable {
 	 * Singleton Private Constructor: initializes centralized management of mx.events.EventDispatcher
 	 */
 	private function Dispatcher() {
-		super();
-		_manager = new Object ();
-		EventDispatcher.initialize (_manager);
+		super( );
+		_manager = new Object( );
+		EventDispatcher.initialize( _manager );
 	}
 
 	/**
- 	 * Singleton Accessor
+	 * Singleton Accessor
 	 * @return Dispatcher
 	 */
 	public static function getInstance():Dispatcher {
-		if (!_instance) _instance = new Dispatcher();
+		if (!_instance) _instance = new Dispatcher( );
 		return _instance;
 	}
-	
+
 	/**
 	 * shorthand singleton accessor getter
 	 */
-	 public static function get $():Dispatcher {
-	 	return Dispatcher.getInstance();	
-	 }
-	
+	public static function get $():Dispatcher {
+		return Dispatcher.getInstance( );	
+	}
+
 	/**
 	 * Add the event listener to the centralized event manager
 	 * @param event (String) the name of the event ("click", "change", etc)
@@ -73,9 +73,9 @@ class com.sekati.events.Dispatcher extends CoreObject implements IDispatchable {
 	 * @return Void
 	 */
 	public function addEventListener(event:String, handler:Object):Void {
-		_manager.addEventListener(event,handler);
+		_manager.addEventListener( event, handler );
 	}
-	
+
 	/**
 	 * Remove the event listener from the centralized event manager
 	 * @param event (String) the name of the event ("click", "change", etc)
@@ -83,9 +83,9 @@ class com.sekati.events.Dispatcher extends CoreObject implements IDispatchable {
 	 * @return Void
 	 */
 	public function removeEventListener(event:String, handler:Object):Void {
-		_manager.removeEventListener(event,handler);
+		_manager.removeEventListener( event, handler );
 	}
-	
+
 	/**
 	 * Dispatch the event to all listeners via the centralized event manager
 	 * @param e (Event) an Event or one of its subclasses describing the event
@@ -95,9 +95,9 @@ class com.sekati.events.Dispatcher extends CoreObject implements IDispatchable {
 	 * }
 	 */
 	public function dispatchEvent(e:Event):Void {
-		_manager.dispatchEvent(e);
+		_manager.dispatchEvent( e );
 	}
-	
+
 	/**
 	 * Bubbles event up the chain. The target property is added on the route
 	 * and then replaced by the new target.
@@ -105,10 +105,10 @@ class com.sekati.events.Dispatcher extends CoreObject implements IDispatchable {
 	 * @return Void
 	 */
 	public function bubbleEvent(e:Event):Void {
-		e.bubble(this);
-		dispatchEvent(e);
+		e.bubble( this );
+		dispatchEvent( e );
 	}
-	
+
 	/**
 	 * Wrapper to dispatchEvent: creates an Event object and dispatchs it to all event listeners
 	 * {@code Usage:
@@ -120,10 +120,10 @@ class com.sekati.events.Dispatcher extends CoreObject implements IDispatchable {
 	 * @return Void
 	 */
 	public function broadcastEvent(_type:String, _target:Object, _data:Object):Void {
- 		var event:Event = new Event(_type, _target, _data);
- 		_manager.dispatchEvent(event);
+		var event:Event = new Event( _type, _target, _data );
+		_manager.dispatchEvent( event );
 	}
-	
+
 	/**
 	 * Destroy singleton instance.
 	 * @return Void
@@ -131,6 +131,6 @@ class com.sekati.events.Dispatcher extends CoreObject implements IDispatchable {
 	public function destroy():Void {
 		delete _manager;
 		delete _instance;
-		super.destroy();
+		super.destroy( );
 	}	
 }

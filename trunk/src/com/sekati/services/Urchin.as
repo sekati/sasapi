@@ -1,12 +1,13 @@
 ﻿/**
  * com.sekati.services.Urchin
- * @version 2.0.1
+ * @version 2.0.2
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
-
- import flash.external.ExternalInterface;
+ 
+import com.sekati.core.App;
+import flash.external.ExternalInterface;
 
 /**
  * Easily add Google Analytics (Urchin) tracking of Flash events
@@ -34,7 +35,7 @@ class com.sekati.services.Urchin {
 	 *  Urchin.setBase("homepage"); // set optional webroot [default: "site"]
 	 * }
 	 */
-	public static function setBase (base:String):Void {
+	public static function setBase(base:String):Void {
 		_base = (base) ? '/' + base + '/' : _base;
 	}
 
@@ -42,7 +43,7 @@ class com.sekati.services.Urchin {
 	 * return site base
 	 * @return String
 	 */
-	public static function getBase ():String {
+	public static function getBase():String {
 		return (_base);
 	}
 
@@ -54,12 +55,13 @@ class com.sekati.services.Urchin {
 	 * 	Urchin.track("projects/page1");	// register '/homepage/projects/page1'
 	 * }
 	 */
-	public static function track (pg:String):Void {
+	public static function track(pg:String):Void {
+		if( !App.TRACK_ENABLE ) return;
 		var pv:String = _base + pg;
-		trace ("*** Urchin.track ('" + pv + "')");
-		ExternalInterface.call ("urchinTracker", pv);
+		App.log.info( "Urchin", "* Urchin.track ('" + pv + "')" );
+		ExternalInterface.call( "urchinTracker", pv );
 	}
-	
-	private function Urchin(){
+
+	private function Urchin() {
 	}
 }

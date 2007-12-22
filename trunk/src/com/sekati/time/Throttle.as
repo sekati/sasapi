@@ -8,8 +8,8 @@
  * Sourced/adapted from bumpslide lib
  */
  
- import com.sekati.core.CoreObject;
- 
+import com.sekati.core.CoreObject;
+
 /**
  * Throttle time between method calls
  * {@code Usage:
@@ -32,8 +32,8 @@ class com.sekati.time.Throttle extends CoreObject {
 	 * @param proxyFunc (Function) Function to throttle calls to
 	 * @param ms (Number) millisecond delay between calls
 	 */
-	public function Throttle (proxyFunc:Function, msDelay:Number) {
-		super();
+	public function Throttle(proxyFunc:Function, msDelay:Number) {
+		super( );
 		_fn = proxyFunc;
 		_delay = msDelay;
 	}
@@ -42,17 +42,17 @@ class com.sekati.time.Throttle extends CoreObject {
 	 * trigger call to method
 	 */
 	public function trigger():Void {	
-		clearInterval(_finalInt);	
+		clearInterval( _finalInt );	
 		if(_isThrottled) {
 			//trace('[Throttle] Forcing Wait...');
 			_finalCallPending = true;
 			return;
 		} else {
-			_doFunctionCall();
+			_doFunctionCall( );
 			_finalCallPending = false;
 			_isThrottled = true;		
-			clearInterval(_delayInt);
-			_delayInt = setInterval(this, 'clearThrottle', _delay);
+			clearInterval( _delayInt );
+			_delayInt = setInterval( this, 'clearThrottle', _delay );
 		}
 	}
 
@@ -60,25 +60,25 @@ class com.sekati.time.Throttle extends CoreObject {
 	 * clear throttling
 	 */
 	public function clearThrottle():Void {
-		clearInterval(_delayInt);		
+		clearInterval( _delayInt );		
 		_isThrottled = false;
 		if(_finalCallPending) {
 			//trace('[Throttle] Doing Final Call...');
-			_doFunctionCall();
+			_doFunctionCall( );
 		}
 	}
 
 	private function _doFunctionCall():Void {
 		//trace('[Throttle] Calling Function at '+getTimer());
 		_finalCallPending = false;
-		_fn.call(null);		
+		_fn.call( null );		
 	}
-	
+
 	/**
 	 * Destroy instance.
 	 */
 	public function destroy():Void {
-		clearThrottle();
-		super.destroy();
+		clearThrottle( );
+		super.destroy( );
 	}	
 }

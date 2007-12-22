@@ -6,7 +6,7 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
- import com.sekati.display.IBaseClip;
+import com.sekati.display.IBaseClip;
 
 /**
  * Interface describing {@link com.sekati.display.CoreClip} which
@@ -24,5 +24,4 @@ interface com.sekati.display.IImageClip extends IBaseClip {
 	 * Unload the img object from the {@link com.sekati.display.ImageClip}
 	 */
 	function unload():Void;
-	
 }

@@ -5,9 +5,9 @@
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
-
- import flash.display.BitmapData;
- import flash.geom.Matrix;
+ 
+import flash.display.BitmapData;
+import flash.geom.Matrix;
 
 /**
  * Static class wrapping variousBitmap utilities.
@@ -26,12 +26,12 @@ class com.sekati.utils.BitmapUtils {
 	 * BitmapUtils.copy(img, img, false, true);  //overwrites itself
 	 * }
 	 */
-	public static function copy (src:MovieClip, target:MovieClip, deleteSource:Boolean, cacheAsBitmap:Boolean):Void {
-		var bdo:BitmapData = new BitmapData (src._width, src._height, true, 0);
-		target.attachBitmap (bdo, target.getNextHighestDepth (), "auto", true);
-		bdo.draw (src);
+	public static function copy(src:MovieClip, target:MovieClip, deleteSource:Boolean, cacheAsBitmap:Boolean):Void {
+		var bdo:BitmapData = new BitmapData( src._width, src._height, true, 0 );
+		target.attachBitmap( bdo, target.getNextHighestDepth( ), "auto", true );
+		bdo.draw( src );
 		if (deleteSource) {
-			src.removeMovieClip ();
+			src.removeMovieClip( );
 		}
 		if (cacheAsBitmap) {
 			target.cacheAsBitmap = true;
@@ -44,25 +44,25 @@ class com.sekati.utils.BitmapUtils {
 	 * @param scale (Number)
 	 * @return Array
 	 */	
-	public static function getPixelData (src:Object, scale:Number):Array {
-		var pixels:Array = new Array ();
-		var bitmap:BitmapData = new BitmapData (src._width, src._height);
-		var matrix:Matrix = new Matrix ();
-		matrix.scale (scale, scale);
-		bitmap.draw (src, matrix);
+	public static function getPixelData(src:Object, scale:Number):Array {
+		var pixels:Array = new Array( );
+		var bitmap:BitmapData = new BitmapData( src._width, src._height );
+		var matrix:Matrix = new Matrix( );
+		matrix.scale( scale, scale );
+		bitmap.draw( src, matrix );
 		var w:Number = bitmap.width;
 		var h:Number = bitmap.height;
 		var tmp:String;
-		for (var a:Number = 0; a <= w; a++) {
-			for (var b:Number = 0; b <= h; b++) {
-				tmp = bitmap.getPixel32 (a, b).toString (16);
-				pixels.push (tmp.substr (1));
+		for (var a:Number = 0; a <= w ; a++) {
+			for (var b:Number = 0; b <= h ; b++) {
+				tmp = bitmap.getPixel32( a, b ).toString( 16 );
+				pixels.push( tmp.substr( 1 ) );
 			}
 		}
-		bitmap.dispose ();
+		bitmap.dispose( );
 		return pixels;
 	}
-	
-	private function BitmapUtils(){
+
+	private function BitmapUtils() {
 	}
 }

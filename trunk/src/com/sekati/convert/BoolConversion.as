@@ -10,7 +10,7 @@
  * Boolean Conversion utilities
  */
 class com.sekati.convert.BoolConversion {
-	
+
 	/**
 	 * Convert string to boolean
 	 * @param str (String) boolean string ("1", "true", "yes", "on")
@@ -19,15 +19,15 @@ class com.sekati.convert.BoolConversion {
 	 * 	var b:Boolean = BoolConversion.toBoolean("true");
 	 * }
 	 */
-	public static function toBoolean (str:String):Boolean {
-		var b:String = str.toLowerCase();
+	public static function toBoolean(str:String):Boolean {
+		var b:String = str.toLowerCase( );
 		if (b == "1" || b == "true" || b == "yes" || b == "on") {
 			return true;
 		} else if ( b == "0" || b == "false" || b == "no" || b == "off") {
 			return false;
 		}
 	}
-	
+
 	/**
 	 * Convert boolean value to string
 	 * @param b (Boolean)
@@ -41,6 +41,6 @@ class com.sekati.convert.BoolConversion {
 		return str;
 	}
 
-	private function BoolConversion(){
+	private function BoolConversion() {
 	}
 }

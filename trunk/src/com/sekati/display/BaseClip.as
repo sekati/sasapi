@@ -5,15 +5,15 @@
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
- 
- import com.sekati.display.IBaseClip;
- import com.sekati.display.ITweenClip;
- import com.sekati.core.KeyFactory;
- import com.sekati.except.IllegalArgumentException;
- import com.sekati.reflect.Stringifier;
- import com.sekati.utils.MovieClipUtils;
- import com.sekati.validate.TypeValidation;
- import caurina.transitions.Tweener;
+
+import com.sekati.display.IBaseClip;
+import com.sekati.display.ITweenClip;
+import com.sekati.core.KeyFactory;
+import com.sekati.except.IllegalArgumentException;
+import com.sekati.reflect.Stringifier;
+import com.sekati.utils.MovieClipUtils;
+import com.sekati.validate.TypeValidation;
+import caurina.transitions.Tweener;
 
 /**
  * This is the foundational MovieClip class and should be
@@ -24,11 +24,11 @@ class com.sekati.display.BaseClip extends MovieClip implements IBaseClip, ITween
 
 	private var _this:MovieClip;
 	private var __isClean:Boolean;
-	
+
 	public function BaseClip() {
 		_this = this;
 		__isClean = false;
-		KeyFactory.inject(_this);
+		KeyFactory.inject( _this );
 	}
 
 	/**
@@ -37,10 +37,10 @@ class com.sekati.display.BaseClip extends MovieClip implements IBaseClip, ITween
 	 */
 	public function onUnload():Void {
 		if(!__isClean) {
-			destroy();
+			destroy( );
 		}	
 	}
-	
+
 	/**
 	 * Destroy object elements and events for proper garbage collection.
 	 * This is a generic destroy method to insure that, at a minimum, the 
@@ -59,12 +59,12 @@ class com.sekati.display.BaseClip extends MovieClip implements IBaseClip, ITween
 		 * VERY DANGEROUS BUGS CAN OCCUR WHEN EXTENDING 
 		 * BASECLIP WITH THIS LOOP INCLUDED!
 		for(var i in _this) {
-			MovieClipUtils.rmClip(_this[i]);	
+		MovieClipUtils.rmClip(_this[i]);	
 		}
 		 */
-		MovieClipUtils.rmClip(_this);		
+		MovieClipUtils.rmClip( _this );		
 	}
-	
+
 	/**
 	 * Built-in {@link com.sekati.transitions.Tweener.addTween} wrapper. The method 
 	 * accepts either one argument (TweenerObject) or two arguments (target, TweenerObject).
@@ -77,25 +77,25 @@ class com.sekati.display.BaseClip extends MovieClip implements IBaseClip, ITween
 	 */
 	public function tween():Void {
 		if (arguments.length == 1) {
-			Tweener.addTween(_this, arguments[0]);
-		} else if (TypeValidation.isMovieClip(arguments[0]) || TypeValidation.isTextField(arguments[0])) {
-			Tweener.addTween(arguments[0], arguments[1]);	
+			Tweener.addTween( _this, arguments[0] );
+		} else if (TypeValidation.isMovieClip( arguments[0] ) || TypeValidation.isTextField( arguments[0] )) {
+			Tweener.addTween( arguments[0], arguments[1] );	
 		} else {
-			throw new IllegalArgumentException(this, "BaseClip.tween requires either (tweenerObject) or (target, tweenerObject) arguments.", arguments);
+			throw new IllegalArgumentException( this, "BaseClip.tween requires either (tweenerObject) or (target, tweenerObject) arguments.", arguments );
 		}
 	}
-	
+
 	/**
 	 * Remove any or all Tweener tweens on the instance object using arguments array.
 	 * @param arguments
 	 * @return Void
 	 */
 	public function stopTween():Void {
-		var args:Array = [_this];
-		for (var i:Number = 0; i < arguments.length; i++) {
-			args.push(arguments[i]);
+		var args:Array = [ _this ];
+		for (var i:Number = 0; i < arguments.length ; i++) {
+			args.push( arguments[i] );
 		}
-		Tweener.removeTweens.apply(this, args);
+		Tweener.removeTweens.apply( this, args );
 	}
 
 	/**
@@ -103,6 +103,6 @@ class com.sekati.display.BaseClip extends MovieClip implements IBaseClip, ITween
 	 * @return String
 	 */	
 	public function toString():String {
-		return Stringifier.stringify(this);
+		return Stringifier.stringify( this );
 	}
 }

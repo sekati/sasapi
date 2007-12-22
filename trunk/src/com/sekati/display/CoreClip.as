@@ -6,12 +6,11 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
- import com.sekati.display.BaseClip;
- import com.sekati.display.IBaseClip;
- import com.sekati.display.ICoreClip;
- import com.sekati.display.ITweenClip;
-
-/**
+import com.sekati.display.BaseClip;
+import com.sekati.display.IBaseClip;
+import com.sekati.display.ICoreClip;
+import com.sekati.display.ITweenClip;
+/**
  * Core UI mixin that all interface subclasses should extend 
  * instead of MovieClip for standardized UI initialization.<br><br>
  * 
@@ -24,24 +23,21 @@
  * @see {@link com.sekati.display.AbstractClip}
  */
 class com.sekati.display.CoreClip extends BaseClip implements ICoreClip, IBaseClip, ITweenClip {
-
-	/**
+	/**
 	 * Private Constructor; class is initialized via the MovieClip.onLoad event.
 	 */
 	private function CoreClip() {
-		super();
+		super( );
 	}
-
-	/**
+	/**
 	 * onLoad does core setup when clip registers on stage via onLoad. 
 	 * Do not override this in subclasses; instead override configUI.
 	 * @return Void
 	 */
 	public function onLoad():Void {
-		configUI();
+		configUI( );
 	}
-
-	/**
+	/**
 	 * Configure UI and initialize behavior; should be overwritten by subclasses.
 	 */
 	public function configUI():Void {

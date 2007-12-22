@@ -5,9 +5,9 @@
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
- 
- import com.sekati.geom.Point;
- 
+
+import com.sekati.geom.Point;
+
 /**
  * Rectangle drawing utility.
  */
@@ -29,33 +29,33 @@ class com.sekati.draw.Rectangle {
 	 * 	Rectangle.draw(box, new Point(50, 50), new Point(100, 100), 0xff00ff, 100, 1, 0x00fffff, 100);
 	 * }
 	 */
-	public static function draw (mc:MovieClip, topLeft:Point, bottomRight:Point, fillColor:Number, fillAlpha:Number, strokeWeight:Number, strokeColor:Number, strokeAlpha:Number):Void {
+	public static function draw(mc:MovieClip, topLeft:Point, bottomRight:Point, fillColor:Number, fillAlpha:Number, strokeWeight:Number, strokeColor:Number, strokeAlpha:Number):Void {
 		var sw:Number = (!strokeWeight) ? undefined : strokeWeight;
-		var sc:Number = (isNaN(strokeColor)) ? 0x000000 : strokeColor;
-		var sa:Number = (isNaN(strokeAlpha)) ? 100 : strokeAlpha;
-		var fa:Number = (isNaN(fillAlpha)) ? 100 : fillAlpha;
+		var sc:Number = (isNaN( strokeColor )) ? 0x000000 : strokeColor;
+		var sa:Number = (isNaN( strokeAlpha )) ? 100 : strokeAlpha;
+		var fa:Number = (isNaN( fillAlpha )) ? 100 : fillAlpha;
 				
 		var tl:Number = topLeft.x;
 		var bl:Number = topLeft.y;
 		var tr:Number = bottomRight.x;
 		var br:Number = bottomRight.y;
 		
-		mc.clear();
-		mc.lineStyle (sw, sc, sa, true, "none", "square", "miter", 1.414);
-		if (!isNaN(fillColor)) {
-			mc.beginFill (fillColor, fa);
+		mc.clear( );
+		mc.lineStyle( sw, sc, sa, true, "none", "square", "miter", 1.414 );
+		if (!isNaN( fillColor )) {
+			mc.beginFill( fillColor, fa );
 		}
-		mc.moveTo (tl,bl);
-		mc.lineTo (tr,bl);
-		mc.lineTo (tr,br);
-		mc.lineTo (tl,br);
-		if (!isNaN(fillColor)) {
-			mc.endFill ();
+		mc.moveTo( tl, bl );
+		mc.lineTo( tr, bl );
+		mc.lineTo( tr, br );
+		mc.lineTo( tl, br );
+		if (!isNaN( fillColor )) {
+			mc.endFill( );
 		} else {
-			mc.lineTo (bl,tl);
+			mc.lineTo( bl, tl );
 		}
 	}
-	
-	private function Rectangle(){
+
+	private function Rectangle() {
 	}
 }
