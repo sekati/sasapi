@@ -10,15 +10,14 @@
  * Interface describing all {@link com.sekati.except.Throwable}'s.
  */
 interface com.sekati.except.IThrowable {
-	
+
 	public function getErrorCode():String;
-	
+
 	public function getThrower():Object;
-	
+
 	public function getStack():Array;
-	
+
 	public function getType():String;
-	
+
 	public function getName():String;
-	
 }

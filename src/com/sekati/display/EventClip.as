@@ -5,23 +5,23 @@
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
- 
- import com.sekati.display.CoreClip;
- import com.sekati.events.Broadcaster;
+
+import com.sekati.display.CoreClip;
+import com.sekati.events.Broadcaster;
 
 /**
  * Event driven core Clip - recieves {@link com.sekati.events.Broadcaster} events.
  */
 class com.sekati.display.EventClip extends CoreClip {
-	
+
 	/**
 	 * Constructor
 	 */
 	public function EventClip() {
-		super();
-		Broadcaster.$.subscribe(_this);
+		super( );
+		Broadcaster.$.subscribe( _this );
 	}
-	
+
 	/**
 	 * Simple broadcast wrapper.
 	 * @see {@link com.sekati.events.Broadcaster.broadcast()}
@@ -29,7 +29,7 @@ class com.sekati.display.EventClip extends CoreClip {
 	 */
 	/* 
 	public function broadcast():Void {
-		Broadcaster.$.broadcast.apply(this, arguments);
+	Broadcaster.$.broadcast.apply(this, arguments);
 	}
 	 */
 	
@@ -38,8 +38,7 @@ class com.sekati.display.EventClip extends CoreClip {
 	 * @return Void
 	 */
 	public function onUnload():Void {
-		super.onUnload();
-		Broadcaster.$.unsubscribe(_this);
+		super.onUnload( );
+		Broadcaster.$.unsubscribe( _this );
 	}
-
 }

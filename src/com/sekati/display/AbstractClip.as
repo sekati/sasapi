@@ -6,7 +6,7 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
- import com.sekati.display.CoreClip;
+import com.sekati.display.CoreClip;
 
 /**
  * Generic subclass implementation of {@link com.sekati.display.CoreClip} mixin.
@@ -25,7 +25,7 @@ class com.sekati.display.AbstractClip extends CoreClip {
 	 * @return Void
 	 */
 	private function configUI():Void {
-		trace(toString()+" | "+_this._name+" [cacheAsBitmap:"+_this.cacheAsBitmap+", __RUID:"+_this.__RUID+"]");
+		trace( toString( ) + " | " + _this._name + " [cacheAsBitmap:" + _this.cacheAsBitmap + ", __RUID:" + _this.__RUID + "]" );
 	}
 
 	/**
@@ -33,7 +33,7 @@ class com.sekati.display.AbstractClip extends CoreClip {
 	 * @return Void
 	 */
 	private function destroy():Void {
-		trace(toString()+" | "+_this._name+"  called destroy()");
-		super.destroy();
+		trace( toString( ) + " | " + _this._name + "  called destroy()" );
+		super.destroy( );
 	}
 }

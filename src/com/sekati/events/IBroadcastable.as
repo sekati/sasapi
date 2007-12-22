@@ -5,9 +5,9 @@
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
- 
- import com.sekati.core.CoreInterface;
- 
+
+import com.sekati.core.CoreInterface;
+
 /**
  * Interface describing Event Broadcasters such as {@link com.sekati.events.Broadcaster}.
  */
@@ -24,5 +24,4 @@ interface com.sekati.events.IBroadcastable extends CoreInterface {
 	function addListener(o:Object):Number;
 
 	function removeListener(o:Object):Boolean;
-	
 }

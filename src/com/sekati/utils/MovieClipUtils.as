@@ -6,10 +6,10 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  
- /**
-  * Static class wrapping various MovieClip utilities.
-  * @see {@link com.sekati.utils.ClassUtils}
-  */
+/**
+ * Static class wrapping various MovieClip utilities.
+ * @see {@link com.sekati.utils.ClassUtils}
+ */
 class com.sekati.utils.MovieClipUtils {
 
 	/**
@@ -17,9 +17,9 @@ class com.sekati.utils.MovieClipUtils {
 	 * @param mc (MovieClip)
 	 * @return Void
 	 */
-	public static function rmClip (mc:MovieClip):Void {
-		mc.swapDepths (mc._parent.getNextHighestDepth());
-		mc.removeMovieClip ();
+	public static function rmClip(mc:MovieClip):Void {
+		mc.swapDepths( mc._parent.getNextHighestDepth( ) );
+		mc.removeMovieClip( );
 	}
 
 	/**
@@ -30,20 +30,20 @@ class com.sekati.utils.MovieClipUtils {
 		mc.cacheAsBitmap = true;
 		for (var i in mc) {
 			if (typeof (mc[i]) == "movieclip") {
-				MovieClipUtils.recursiveCache (mc[i]);
+				MovieClipUtils.recursiveCache( mc[i] );
 			}
 		}
 	}
-	
+
 	/**
 	 * simple HitTest wrapper
 	 * @param mc mc (MovieClip)
 	 * @return Boolean
 	 */
 	public static function hitTest(mc:MovieClip):Boolean {
-		return (mc.hitTest(_root._xmouse, _root._ymouse, true));
+		return (mc.hitTest( _root._xmouse, _root._ymouse, true ));
 	}
-	
-	private function MovieClipUtils(){
+
+	private function MovieClipUtils() {
 	}
 }

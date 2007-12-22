@@ -6,7 +6,7 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
- import com.sekati.crypt.IHash;
+import com.sekati.crypt.IHash;
 
 /**
  * Runtime Unique ID's for runtime Object management and identification.
@@ -31,7 +31,7 @@ class com.sekati.crypt.RUID implements IHash {
 	public static function getCurrentId():Number {
 		return _id;	
 	}
-	
-	private function RUID(){
+
+	private function RUID() {
 	}
 }

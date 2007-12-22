@@ -6,7 +6,7 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
- import com.sekati.crypt.IHash;
+import com.sekati.crypt.IHash;
 
 /**
  * Validate a number with the Luhn Algorithm (aka Mod10) which is standard for pre-validating card numbers before 
@@ -14,15 +14,16 @@
  * @see <a href="http://en.wikipedia.org/wiki/Luhn_algorithm">http://en.wikipedia.org/wiki/Luhn_algorithm</a>
  */
 class com.sekati.crypt.Luhn implements IHash {
+
 	/**
 	 * Validate a credit card number with mod10
 	 * @param strNumber (String) 
 	 * @return Boolean
 	 */
-	public static function mod10 (strNumber:String):Boolean {
+	public static function mod10(strNumber:String):Boolean {
 		
 		// Seperate each number into it's own index in an array.
-		var aNumbers:Array = strNumber.split("");
+		var aNumbers:Array = strNumber.split( "" );
 		
 		// Hold the sums of some calculations that will be made shortly.
 		var nSum_1:Number = 0;
@@ -34,9 +35,9 @@ class com.sekati.crypt.Luhn implements IHash {
 		var nParity:Number = aNumbers.length % 2;
 		
 		// Loop through the card numbers.
-		for(var i:Number=0; i<aNumbers.length; i++) {
+		for(var i:Number = 0; i < aNumbers.length ; i++) {
 			// Type cast each digit to a number.
-			aNumbers[i] = Number(aNumbers[i]);
+			aNumbers[i] = Number( aNumbers[i] );
 			
 			// Compare the parity of the index to the parity of the card number length
 			// to determine how the value of the current index is handled.
@@ -60,7 +61,7 @@ class com.sekati.crypt.Luhn implements IHash {
 		// If the sum is divisible by '10', the card number is valid.
 		return (nSum_Total % 10 == 0);
 	}
-	
-	private function Luhn(){
+
+	private function Luhn() {
 	}
 }

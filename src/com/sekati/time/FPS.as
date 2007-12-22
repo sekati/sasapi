@@ -5,10 +5,10 @@
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
-
- import com.sekati.core.CoreObject;
- import com.sekati.events.FramePulse;
  
+import com.sekati.core.CoreObject;
+import com.sekati.events.FramePulse;
+
 /**
  * Monitor the current applications framerate (fps).
  * {@code Usage:
@@ -35,41 +35,42 @@ class com.sekati.time.FPS extends CoreObject {
 	 * @param cb (Function) callback to pass (currentFps:Number, averageFps:Number, currentTrend:String, averageTrend:String)
 	 * @param updateEachFrame (Number) frame ticks between cb updates
 	 */
-	public function FPS (cb:Function, updateEachFrame:Number) {
-		super();
+	public function FPS(cb:Function, updateEachFrame:Number) {
+		super( );
 		_this = this;
 		_frame = 1;
 		_cb = cb;
 		_updateEachFrame = (updateEachFrame != null) ? updateEachFrame : 1;
-		_now = getTimer();
-		FramePulse.getInstance().addFrameListener(_this);		
+		_now = getTimer( );
+		FramePulse.getInstance( ).addFrameListener( _this );		
 	}
-	 	 	 
+
 	/**
 	 * handle onEnterFrame Pulse
-	 */ 
+	 */
+	 
 	private function _onEnterFrame():Void {
-		var cur:Number = Math.round(1000/(getTimer()-_now));
+		var cur:Number = Math.round( 1000 / (getTimer( ) - _now) );
 		_currentTrend = (cur >= _currentFps) ? "+" : "-";
 		_currentFps = cur;
-		_now = getTimer();
-		var avg:Number = Math.round((_frame/(_now/1000)));
+		_now = getTimer( );
+		var avg:Number = Math.round( (_frame / (_now / 1000)) );
 		_averageTrend = (avg >= _averageFps) ? "+" : "-";	
 		_averageFps = avg;
 		// cb on each X frame
 		if(_frame % _updateEachFrame == 0) {
-			_cb (_currentFps, _averageFps, _currentTrend, _averageTrend);
+			_cb( _currentFps, _averageFps, _currentTrend, _averageTrend );
 		}
 		_frame++;
 	}
-	
+
 	/**
 	 * Destroy the FPS Singleton instance.
 	 * @return Void
 	 */
 	public function destroy():Void {
-		FramePulse.$.removeFrameListener(_this);
+		FramePulse.$.removeFrameListener( _this );
 		delete _this;
-		super.destroy();
+		super.destroy( );
 	}	
 }

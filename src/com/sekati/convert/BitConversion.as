@@ -1,3 +1,4 @@
+
 /**
  * com.sekati.convert.BitConversion
  * @version 1.0.0
@@ -26,55 +27,54 @@ class com.sekati.convert.BitConversion {
 	private static var EXABYTE:Number = 9.223372037e+18;
 
 	public static function byte2bit(n:Number):Number {
-		return n*BYTE;
+		return n * BYTE;
 	}
 
 	public static function kilobit2bit(n:Number):Number {
-		return n*KILOBIT;
+		return n * KILOBIT;
 	}
 
 	public static function kilobyte2bit(n:Number):Number {
-		return n*KILOBYTE;	
+		return n * KILOBYTE;	
 	}
 
 	public static function megabit2bit(n:Number):Number {
-		return n*MEGABIT;
+		return n * MEGABIT;
 	}
 
 	public static function megabyte2bit(n:Number):Number {
-		return n*MEGABYTE;
+		return n * MEGABYTE;
 	}			
 
 	public static function gigabit2bit(n:Number):Number {
-		return n*GIGABIT;
+		return n * GIGABIT;
 	}
 
 	public static function gigabyte2bit(n:Number):Number {
-		return n*GIGABYTE;
+		return n * GIGABYTE;
 	}
-	
+
 	public static function terabit2bit(n:Number):Number {
-		return n*TERABIT;	
+		return n * TERABIT;	
 	}
 
 	public static function terabyte2bit(n:Number):Number {
-		return n*TERABYTE;
+		return n * TERABYTE;
 	}
 
 	public static function petaabit2bit(n:Number):Number {
-		return n*PETABIT;	
+		return n * PETABIT;	
 	}
 
 	public static function petabyte2bit(n:Number):Number {
-		return n*PETABYTE;
+		return n * PETABYTE;
 	}
-	
+
 	public static function exabit2bit(n:Number):Number {
-		return n*EXABIT;	
+		return n * EXABIT;	
 	}
 
 	public static function exabyte2bit(n:Number):Number {
-		return n*EXABYTE;
+		return n * EXABYTE;
 	}	
-	
 }

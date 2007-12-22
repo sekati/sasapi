@@ -1,4 +1,4 @@
-﻿/**
+﻿/**
  * com.sekati.data.XML2Object
  * @version 1.0.3
  * @author jason m horwitz | sekati.com
@@ -26,21 +26,18 @@
  * }
  */
 class com.sekati.data.XML2Object {
-	
-	private var oResult:Object = new Object ();
+	private var oResult:Object = new Object( );
 	private var oXML:XML;
-	
-	/**
+	/**
 	 * return the xml passed in the parseXML method
 	 * {@code Usage: 
 	 * 	theXML = XML2Object.xml
 	 * }
 	 */
-	public function get xml ():XML {
+	public function get xml():XML {
 		return oXML;
 	}
-	
-	/**
+	/**
 	 * parse an XMLObject
 	 * @param sFile (XML)
 	 * @return  Object - the contents of the parsed XML
@@ -48,17 +45,16 @@ class com.sekati.data.XML2Object {
 	 * 	XML2Object.parseXML( theXMLtoParse );
 	 * }
 	 */
-	function parseXML (sFile:XML):Object {
-		this.oResult = new Object ();
+	function parseXML(sFile:XML):Object {
+		this.oResult = new Object( );
 		this.oXML = sFile;
-		this.oResult = this.translateXML ();
+		this.oResult = this.translateXML( );
 		return this.oResult;
 	}
-	
-	/**
+	/**
 	 * core of the XML2Object class
 	 */
-	private function translateXML (from:Object, path:Object, name:Object, position:Object):Object {
+	private function translateXML(from:Object, path:Object, name:Object, position:Object):Object {
 		var xmlName:String;
 		var nodes:Object, node:Object, old_path:Object;
 		if (path == undefined) {
@@ -67,20 +63,20 @@ class com.sekati.data.XML2Object {
 		}
 		path = path[name];
 		if (from == undefined) {
-			from = new XML (this.xml.toString ());
+			from = new XML( this.xml.toString( ) );
 			from.ignoreWhite = true;
 		}
-		if (from.hasChildNodes ()) {
+		if (from.hasChildNodes( )) {
 			nodes = from.childNodes;
 			if (position != undefined) {
 				old_path = path;
 				path = path[position];
 			}
 			while (nodes.length > 0) {
-				node = nodes.shift ();
+				node = nodes.shift( );
 				xmlName = node.nodeName;
 				if (xmlName != undefined) {
-					var __obj__:Object = new Object ();
+					var __obj__:Object = new Object( );
 					__obj__.attributes = node.attributes;
 					__obj__.data = node.firstChild.nodeValue;
 					if (position != undefined) {
@@ -88,14 +84,14 @@ class com.sekati.data.XML2Object {
 					}
 					if (path[xmlName] != undefined) {
 						if (path[xmlName].__proto__ == Array.prototype) {
-							path[xmlName].push (__obj__);
+							path[xmlName].push( __obj__ );
 							name = node.nodeName;
 							position = path[xmlName].length - 1;
 						} else {
 							var copyObj:Object = path[xmlName];
-							path[xmlName] = new Array ();
-							path[xmlName].push (copyObj);
-							path[xmlName].push (__obj__);
+							path[xmlName] = new Array( );
+							path[xmlName].push( copyObj );
+							path[xmlName].push( __obj__ );
 							name = xmlName;
 							position = path[xmlName].length - 1;
 						}
@@ -105,8 +101,8 @@ class com.sekati.data.XML2Object {
 						position = undefined;
 					}
 				}
-				if (node.hasChildNodes ()) {
-					this.translateXML (node, path, name, position);
+				if (node.hasChildNodes( )) {
+					this.translateXML( node, path, name, position );
 				}
 			}
 		}

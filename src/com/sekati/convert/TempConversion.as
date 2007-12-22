@@ -10,7 +10,7 @@
  * Temperature Conversion utilities
  */
 class com.sekati.convert.TempConversion {
-	
+
 	/**
 	 * Convert fahrenheit to celsius
 	 * @param f (Number) fahrenheit value
@@ -20,9 +20,9 @@ class com.sekati.convert.TempConversion {
 	public static function f2c(f:Number, p:Number):Number {
 		var d:String;
 		var r:Number = (5 / 9) * (f - 32);
-		var s:Array = r.toString ().split (".");
+		var s:Array = r.toString( ).split( "." );
 		if (s[1] != undefined) {
-			d = s[1].substr (0, p);
+			d = s[1].substr( 0, p );
 		} else {
 			var i:Number = p;
 			while (i > 0) {
@@ -31,7 +31,7 @@ class com.sekati.convert.TempConversion {
 			}
 		}
 		var c:String = s[0] + "." + d;
-		return Number (c);		
+		return Number( c );		
 	}
 
 	/**
@@ -43,9 +43,9 @@ class com.sekati.convert.TempConversion {
 	public static function c2f(c:Number, p:Number):Number {
 		var d:String;
 		var r:Number = (c / (5 / 9)) + 32;
-		var s:Array = r.toString ().split (".");
+		var s:Array = r.toString( ).split( "." );
 		if (s[1] != undefined) {
-			d = s[1].substr (0, p);
+			d = s[1].substr( 0, p );
 		} else {
 			var i:Number = p;
 			while (i > 0) {
@@ -54,9 +54,9 @@ class com.sekati.convert.TempConversion {
 			}
 		}
 		var f:String = s[0] + "." + d;
-		return Number (f);		
+		return Number( f );		
 	}
-		
-	private function TempConversion(){
+
+	private function TempConversion() {
 	}
 }

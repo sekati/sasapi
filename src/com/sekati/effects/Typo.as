@@ -10,7 +10,7 @@
  * Typo Text Effects
  */
 class com.sekati.effects.Typo {
-	
+
 	/**
 	 * Generate a set of random characters
 	 * @param x (Number) of characters to generate
@@ -20,19 +20,19 @@ class com.sekati.effects.Typo {
 	private static function genChars(x:Number,n:Boolean):String {
 		var str:String = "";
 		var sc:Number,ec:Number;
-		if(n == true){ 
+		if(n == true) { 
 			sc = 33; 
 			ec = 64; 
 		} else { 
 			sc = 33; 
 			ec = 126; 
 		}	
-		for(var i:Number=0; i<x; i++){ 
-			str += chr(Math.round(Math.random()*(ec-sc))+sc); 
+		for(var i:Number = 0; i < x ; i++) { 
+			str += chr( Math.round( Math.random( ) * (ec - sc) ) + sc ); 
 		}
 		return str;
 	}
-	
+
 	/**
 	 * Detect spaces in one string and insert them into the other
 	 * @param s1 (String) pull spaces from
@@ -44,20 +44,18 @@ class com.sekati.effects.Typo {
 	 */
 	private static function commonSpace(s1:String,s2:String):String {
 		var str:String = "";
-		for (var i:Number = 0; i < s2.length; i++) {
-			str += (s1.charAt(i) == " ") ? " " : s2.charAt(i);
+		for (var i:Number = 0; i < s2.length ; i++) {
+			str += (s1.charAt( i ) == " ") ? " " : s2.charAt( i );
 		}
 		return str;
 	}
-	
+
 	public static function writein():Void {
-		
 	}
-	
+
 	public static function writeout():Void {
-		
 	}	
-	
-	private function Typo(){
+
+	private function Typo() {
 	}
 }

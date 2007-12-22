@@ -6,23 +6,15 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  
- import com.sekati.core.CoreInterface;
- 
-/**
+import com.sekati.core.CoreInterface;
+/**
  * Interface describing {@link com.sekati.ui.Scroll} and other Scrollable ui classes.
  */
 interface com.sekati.ui.IScrollable extends CoreInterface {
-	
-	function init():Void;
-	
-	function slideContent(pos:Number, sec:Number):Void;
-	
-	function slideScroller(pos:Number, sec:Number):Void;
-	
-	function isScrollable():Boolean;
-	
-	function isDragging():Boolean;
-	
-	function isMouseInArea():Boolean;
-	
+	function init():Void;
+	function slideContent(pos:Number, sec:Number):Void;
+	function slideScroller(pos:Number, sec:Number):Void;
+	function isScrollable():Boolean;
+	function isDragging():Boolean;
+	function isMouseInArea():Boolean;
 }

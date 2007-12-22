@@ -10,20 +10,20 @@
  * Simple system clipboard management.
  */
 class com.sekati.utils.Clipboard {
-	
+
 	private static var _str:String = "";
-	
+
 	/**
 	 * Push content to the System clipboard
 	 * @param content (Object)
 	 * @return Void
 	 */
-	public static function push (content:Object):Void {
-		var str:String = String(content);
-		_str += str+"\r";
-		System.setClipboard(_str);
+	public static function push(content:Object):Void {
+		var str:String = String( content );
+		_str += str + "\r";
+		System.setClipboard( _str );
 	}
-	
+
 	/**
 	 * Pop content out of the System clipboard and clear it.
 	 * @return String
@@ -31,9 +31,9 @@ class com.sekati.utils.Clipboard {
 	public static function pop():String {
 		return _str;
 		_str = "";
-		System.setClipboard(" ");
+		System.setClipboard( " " );
 	}	
-	
-	private function Clipboard(){
+
+	private function Clipboard() {
 	}
 }

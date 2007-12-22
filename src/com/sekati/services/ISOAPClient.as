@@ -6,15 +6,14 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  
- import com.sekati.core.CoreInterface;
- 
+import com.sekati.core.CoreInterface;
+
 /**
  * Interface describing {@link SOAPClient}.
  */
 interface com.sekati.services.ISOAPClient extends CoreInterface {
-	
-	function connect (wsdl:String, port:String):Void;
-	
-	function call (method:String, args:Array):Void;
-	
+
+	function connect(wsdl:String, port:String):Void;
+
+	function call(method:String, args:Array):Void;
 }

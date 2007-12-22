@@ -26,10 +26,10 @@ class com.sekati.reflect.Reflection {
 	 * }
 	 */
 	public static function getFullyQualifiedClassName(o:Object):String {
-		o = (typeof (o) == "function") ? Function (o).prototype : o.__proto__;
-		return (Reflection._containsDefinition(o)) ? Reflection._getFullyQualifiedClassName(o) : Reflection._buildDefinition("", _global, o);
+		o = (typeof (o) == "function") ? Function( o ).prototype : o.__proto__;
+		return (Reflection._containsDefinition( o )) ? Reflection._getFullyQualifiedClassName( o ) : Reflection._buildDefinition( "", _global, o );
 	}
-	
+
 	/**
 	 * Get the Class Name Definition from a class instance.
 	 * @param o (Object) instance object to identify.
@@ -39,10 +39,10 @@ class com.sekati.reflect.Reflection {
 	 * }
 	 */	
 	public static function getClassName(o:Object):String {
-		var s:String = Reflection.getFullyQualifiedClassName(o);
-		return s.substr(s.lastIndexOf(".")+1);
+		var s:String = Reflection.getFullyQualifiedClassName( o );
+		return s.substr( s.lastIndexOf( "." ) + 1 );
 	}
-	
+
 	/**
 	 * Get the Class Package Definition from a class instance.
 	 * @param o (Object) instance object to identify.
@@ -52,10 +52,10 @@ class com.sekati.reflect.Reflection {
 	 * }
 	 */
 	public static function getPackageName(o:Object):String {
-		var s:String = Reflection.getFullyQualifiedClassName(o);
-		return s.slice(0, s.lastIndexOf ("."));
+		var s:String = Reflection.getFullyQualifiedClassName( o );
+		return s.slice( 0, s.lastIndexOf( "." ) );
 	}	
-	
+
 	/**
 	 * Build the class instance definition and cache it as a property in the Object instance for future use.
 	 * @param s (String) package start string.
@@ -63,28 +63,28 @@ class com.sekati.reflect.Reflection {
 	 * @param o (Object) instance object to identify.
 	 * @return String - the fully qualified class definition, if unable to locate Object name will be tried and if all else fails "undefined.Origin" is returned.
 	 */	
-	private static function _buildDefinition (s:String, pkg:Object, o:Object):String {
+	private static function _buildDefinition(s:String, pkg:Object, o:Object):String {
 		for (var p:String in pkg) {
 			var cProto:Function = pkg[p];
 			if (cProto.__constructor__ === Object) {
-				p = Reflection._buildDefinition (s + p + ".", cProto, o);
+				p = Reflection._buildDefinition( s + p + ".", cProto, o );
 				if (p) return p;
 			} else if (cProto.prototype === o) {
-				Reflection._setFullyQualifiedClassName (o, s + p);
+				Reflection._setFullyQualifiedClassName( o, s + p );
 				return s + p;				
 			}
 		}
 	}
-	
+
 	/**
 	 * Check if the instance already contains a cached FQCN
 	 * @param o (Object) instance object
 	 * @return Boolean
 	 */
 	private static function _containsDefinition(o:Object):Boolean {
-		return Boolean(o.__FQCN.length > 0);
+		return Boolean( o.__FQCN.length > 0 );
 	}
-	
+
 	/**
 	 * Return the cached FQCN
 	 * @param o (Object) instance object
@@ -93,7 +93,7 @@ class com.sekati.reflect.Reflection {
 	private static function _getFullyQualifiedClassName(o:Object):String {
 		return o.__FQCN;
 	}
-	
+
 	/**
 	 * Cache the FQCN as a property in the object instance.
 	 * @param o (Object) instance object
@@ -101,9 +101,9 @@ class com.sekati.reflect.Reflection {
 	 */
 	private static function _setFullyQualifiedClassName(o:Object, s:String):Void {
 		o.__fullyQualifiedClassName = s;
-		_global.ASSetPropFlags (o, ["__FQCN"], 7, 1);
+		_global.ASSetPropFlags( o, [ "__FQCN" ], 7, 1 );
 	}
-	
-	private function Reflection(){
+
+	private function Reflection() {
 	}
 }

@@ -5,11 +5,11 @@
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
- 
- import com.sekati.except.IThrowable;
- import com.sekati.log.Logger;
- import com.sekati.reflect.Stringifier;
- 
+
+import com.sekati.except.IThrowable;
+import com.sekati.log.Logger;
+import com.sekati.reflect.Stringifier;
+
 /**
  * Abstract Throwable mixin class for {@link com.sekati.except.Exception} classes.
  */
@@ -21,7 +21,7 @@ class com.sekati.except.Throwable extends Error implements IThrowable {
 	private var _errorCode:String;
 	private var _stack:Array;
 	private var _thrower:Object;	
-	
+
 	/**
 	 * Throwable Private Constructor
 	 * @param errorCode (String)
@@ -31,12 +31,12 @@ class com.sekati.except.Throwable extends Error implements IThrowable {
 	 */
 	private function Throwable(thrower:Object, errorCode:String, stack:Array) {
 		message = "@@@ " + name + " ['" + thrower + "']: " + errorCode;
-		Logger.$[type] (Stringifier.stringify(this), this);	
+		Logger.$[type]( Stringifier.stringify( this ), this );	
 		_errorCode = errorCode;
 		_thrower = thrower;
 		_stack = stack;
 	}
-	
+
 	/**
 	 * Return the localized error code message.
 	 * @return String
@@ -52,7 +52,7 @@ class com.sekati.except.Throwable extends Error implements IThrowable {
 	public function getThrower():Object {
 		return _thrower;	
 	}
-	
+
 	/**
 	 * Return the thrower argument stack
 	 * that generated the error.
@@ -61,7 +61,7 @@ class com.sekati.except.Throwable extends Error implements IThrowable {
 	public function getStack():Array {
 		return _stack;
 	}
-	
+
 	/**
 	 * Return the {@link com.sekati.log.Logger} level type.
 	 * @return String
@@ -69,7 +69,7 @@ class com.sekati.except.Throwable extends Error implements IThrowable {
 	public function getType():String {
 		return type;	
 	}
-	
+
 	/**
 	 * Return the Throwable Exception name.
 	 * @return String
@@ -77,5 +77,4 @@ class com.sekati.except.Throwable extends Error implements IThrowable {
 	public function getName():String {
 		return name;	
 	}
-	
 }

@@ -5,11 +5,10 @@
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
- 
-  import com.sekati.core.CoreObject;
-  import com.sekati.events.IEvent;
- 
-/**
+
+import com.sekati.core.CoreObject;
+import com.sekati.events.IEvent;
+/**
  * SASAPI Base Event class, works similarly to the AS3 Event class<br><br>
  * 
  * The {@link com.sekati.events.Dispatcher} class excepts an object with at least one property: 'type:String'
@@ -19,13 +18,11 @@
  * you wish to pass along with the event.
  */
 class com.sekati.events.Event extends CoreObject implements IEvent {
-
-	private var _type:String;
+	private var _type:String;
 	private var _target:Object;
 	private var _data:Object;
 	private var _route:Array;
-
-	/**
+	/**
 	 * Constructor creates an event object fit for dispatching
 	 * Note: the contents of the data parameter are copied to
 	 * the Event object for legacy support.
@@ -34,29 +31,25 @@ class com.sekati.events.Event extends CoreObject implements IEvent {
 	 * @param data (Object) optional data to pass with the event
 	 * @return Void
 	 */
-	public function Event (type:String, target:Object, data:Object) {
+	public function Event(type:String, target:Object, data:Object) {
 		_type = type;
 		_target = target;
 		_data = data;
 		// clone _data properties to the Event instance
 		for (var i in _data) this[i] = _data[i];
-		_route = new Array();
+		_route = new Array( );
 	}
-
-	public function get type():String {
+	public function get type():String {
 		return _type;	
 	}
-
-	public function get target():Object {
+	public function get target():Object {
 		return _target;
 	}
-
-	public function get data():Object {
+	public function get data():Object {
 		return _data;	
 	}
-
-	public function bubble(newTarget:Object):Void {
-		_route.push(_target);
+	public function bubble(newTarget:Object):Void {
+		_route.push( _target );
 		_target = newTarget;
 	}	
 }

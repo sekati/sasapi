@@ -12,5 +12,4 @@
  * @see <a href="http://en.wikipedia.org/wiki/Marker_interface_pattern">http://en.wikipedia.org/wiki/Marker_interface_pattern</a>
  */
 interface com.sekati.crypt.ICipher {
-
 }

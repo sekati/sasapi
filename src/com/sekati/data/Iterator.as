@@ -5,30 +5,30 @@
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
- 
- import com.sekati.core.CoreObject;
- 
+
+import com.sekati.core.CoreObject;
+
 /**
  * Data Array Iterator Class.
  */
 class com.sekati.data.Iterator extends CoreObject {
-	
+
 	private var _data:Array;
 	private var _i:Number;
-	
+
 	/**
 	 * Iterator Constructor
 	 * @param data (Array) data array
 	 * @throws Error on missing data arg.
 	 */
 	public function Iterator(data:Array) {
-		super();
+		super( );
 		if(!data) {
-			throw new Error ("@@@ "+this.toString()+" Error: instance constructor expects data:Array argument.");
+			throw new Error( "@@@ " + this.toString( ) + " Error: instance constructor expects data:Array argument." );
 			return;	
 		} else {
 			_data = data;
-			reset();
+			reset( );
 		}
 	}
 
@@ -37,7 +37,7 @@ class com.sekati.data.Iterator extends CoreObject {
 	 * @return Object
 	 */
 	public function next():Object {
-		return hasNext() ? _data[_i++] : null;
+		return hasNext( ) ? _data[_i++] : null;
 	}
 
 	/**
@@ -45,7 +45,7 @@ class com.sekati.data.Iterator extends CoreObject {
 	 * @return Object
 	 */
 	public function previous():Object {
-		return hasPrevious() ? _data[_i--] : null;
+		return hasPrevious( ) ? _data[_i--] : null;
 	}
 
 	/**
@@ -69,7 +69,7 @@ class com.sekati.data.Iterator extends CoreObject {
 	 * @return Boolean
 	 */
 	public function hasNext():Boolean {
-		return _i+1<_data.length;
+		return _i + 1 < _data.length;
 	}
 
 	/**
@@ -77,7 +77,7 @@ class com.sekati.data.Iterator extends CoreObject {
 	 * @return Boolean
 	 */
 	public function hasPrevious():Boolean {
-		return _i-1>=0;
+		return _i - 1 >= 0;
 	}
 
 	/**
@@ -85,7 +85,7 @@ class com.sekati.data.Iterator extends CoreObject {
 	 * @return Number
 	 */
 	public function nextIndex():Number {
-		return Math.min(_i+1, _data.length);
+		return Math.min( _i + 1, _data.length );
 	}
 
 	/**
@@ -93,7 +93,7 @@ class com.sekati.data.Iterator extends CoreObject {
 	 * @return Number
 	 */
 	public function previousIndex():Number {
-		return Math.max(_i-1, -1);
+		return Math.max( _i - 1, -1 );
 	}
 
 	/**

@@ -1,3 +1,4 @@
+
 /**
  * com.sekati.math.RuleOfThree
  * @version 1.0.1
@@ -27,7 +28,7 @@ class com.sekati.math.RuleOf3 extends Number {
 	 * @param zeroPercentValue (Number)
 	 * @throws Error on fault. 
 	 */
-	public function RuleOf3 (partialValue:Number, totalValue:Number, partialPercent:Number, totalPercent:Number, zeroPercentValue:Number) {
+	public function RuleOf3(partialValue:Number, totalValue:Number, partialPercent:Number, totalPercent:Number, zeroPercentValue:Number) {
 		//defaults to 0% == 0
 		if (zeroPercentValue == null) {
 			zeroPercentValue = 0;
@@ -51,7 +52,7 @@ class com.sekati.math.RuleOf3 extends Number {
 			return;
 		}
 		//error
-		throw new Error("@@@ com.sekati.math.RuleOf3 Error: could not calculate faulty arguments.");
+		throw new Error( "@@@ com.sekati.math.RuleOf3 Error: could not calculate faulty arguments." );
 	}
 
 	/**
@@ -67,6 +68,6 @@ class com.sekati.math.RuleOf3 extends Number {
 	 * @return String
 	 */
 	public function toString():String {
-		return _n.toString();
+		return _n.toString( );
 	}
 }

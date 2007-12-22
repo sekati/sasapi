@@ -10,22 +10,22 @@
  * Object cloning utility.
  */
 class com.sekati.utils.Clone {
-	
+
 	/**
 	 * Create a cloned object thru recursively coping of contents
 	 * @param o (Object) to be cloned
 	 * @return Object
 	 */
-	public static function create (o:Object):Object {
-		var obj:Object = new Object();
+	public static function create(o:Object):Object {
+		var obj:Object = new Object( );
 		var itype:Object;
 		for(var i in o) {
 			itype = typeof(o[i]);
-			obj[i] = (itype=='object'||itype=='array') ? Clone.create (o[i]) : o[i];
+			obj[i] = (itype == 'object' || itype == 'array') ? Clone.create( o[i] ) : o[i];
 		}
 		return obj;
 	}	
-	
-	private function Clone(){
+
+	private function Clone() {
 	}
 }

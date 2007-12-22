@@ -5,9 +5,9 @@
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
- 
- import com.sekati.except.Throwable;
- 
+
+import com.sekati.except.Throwable;
+
 /**
  * Core {@link Throwable} Exception error to be subclassed for error specificity and logging.
  * {@code Usage:
@@ -24,7 +24,7 @@
  * @see {@link com.sekati.except.Catcher}
  */
 class com.sekati.except.Exception extends Throwable {
-	
+
 	private var name:String = "Exception Error";
 	private var type:String = "error";
 
@@ -35,7 +35,7 @@ class com.sekati.except.Exception extends Throwable {
 	 * @param stack (Array) thrower arguments stack
 	 * @return Void
 	 */
-	 public function Exception(thrower:Object, message:String, stack:Array){
-	 	super(thrower, message, stack);	
-	 }
+	public function Exception(thrower:Object, message:String, stack:Array) {
+		super( thrower, message, stack );	
+	}
 }

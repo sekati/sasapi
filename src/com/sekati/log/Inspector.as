@@ -1,3 +1,4 @@
+
 /**
  * com.sekati.log.Inspector
  * @version 1.0.5
@@ -22,9 +23,9 @@ class com.sekati.log.Inspector {
 	/**
 	 * Constructor - passthru to {@link recurse} loop.
 	 */
-	public function Inspector(){
+	public function Inspector() {
 		_result = "";
-		recurse.apply(this,arguments);
+		recurse.apply( this, arguments );
 	}
 
 	/**
@@ -35,7 +36,7 @@ class com.sekati.log.Inspector {
 	 * @param maxPathLength (Number) optional max path to be used with padding
 	 * @return Void
 	 */	
-	private function recurse (obj:Object, path:String, level:Number, maxPathLength:Number):Void {
+	private function recurse(obj:Object, path:String, level:Number, maxPathLength:Number):Void {
 		var padding:String;
 		var paddingChar:String = " ";
 		var parentType:String;
@@ -50,7 +51,7 @@ class com.sekati.log.Inspector {
 		}
 		//maxPathLength (only defined initially)   
 		if (maxPathLength == null) {
-			maxPathLength = paddingRecursion (obj, path) + 3;
+			maxPathLength = paddingRecursion( obj, path ) + 3;
 		}
 		//calculate parents type   
 		parentType = (obj instanceof Array) ? "array" : typeof (obj);
@@ -61,12 +62,12 @@ class com.sekati.log.Inspector {
 			currentType = (obj[i] instanceof Array) ? "array" : typeof (obj[i]);
 			//find how much padding is needed for this item to print
 			padding = "";
-			for (var j:Number = 0; j < maxPathLength - newPath.length; j++) {
+			for (var j:Number = 0; j < maxPathLength - newPath.length ; j++) {
 				padding += paddingChar;
 			}
 			_result += (newPath + padding + obj[i] + "  (" + currentType + ")\n");
 			//go deeper
-			recurse (obj[i], newPath, level + 1, maxPathLength);
+			recurse( obj[i], newPath, level + 1, maxPathLength );
 		}
 	}
 
@@ -74,7 +75,7 @@ class com.sekati.log.Inspector {
 	 * Recurse through everything to find what the biggest path string 
 	 * will be - strictly for formatting purposes.
 	 */
-	private function paddingRecursion (obj:Object, path:String, longestPath:Number):Number {
+	private function paddingRecursion(obj:Object, path:String, longestPath:Number):Number {
 		var parentType:String;
 		if (longestPath == null) {
 			longestPath = 0;
@@ -88,7 +89,7 @@ class com.sekati.log.Inspector {
 				longestPath = newPath.length;
 			}
 			//outside recursion   
-			var outsideRecursion:Number = paddingRecursion (obj[i], newPath, longestPath);
+			var outsideRecursion:Number = paddingRecursion( obj[i], newPath, longestPath );
 			if (outsideRecursion > longestPath) {
 				longestPath = outsideRecursion;
 			}

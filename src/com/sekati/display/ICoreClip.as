@@ -6,7 +6,7 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
- import com.sekati.display.IBaseClip;
+import com.sekati.display.IBaseClip;
 
 /**
  * Interface describing {@link com.sekati.display.CoreClip} which
@@ -25,5 +25,4 @@ interface com.sekati.display.ICoreClip extends IBaseClip {
 	 * to configure the clip UI and initialize its behavior.
 	 */
 	function configUI():Void;
-	
 }

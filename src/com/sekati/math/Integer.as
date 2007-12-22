@@ -20,7 +20,7 @@ class com.sekati.math.Integer extends Number {
 	 */
 	public function Integer(n:Number) {
 		if (n == Infinity || n == -Infinity) {
-			throw new Error ("Infinity cannot be evaluated to an integer");
+			throw new Error( "Infinity cannot be evaluated to an integer" );
 		} else {
 			_int = n - n % 1;
 		}
@@ -39,6 +39,6 @@ class com.sekati.math.Integer extends Number {
 	 * @return String
 	 */
 	public function toString():String {
-		return _int.toString();
+		return _int.toString( );
 	}
 }

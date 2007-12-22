@@ -1,4 +1,5 @@
-﻿/**
+﻿
+/**
  * com.sekati.utils.ArrayUtils
  * @version 1.2.1
  * @author jason m horwitz | sekati.com
@@ -6,9 +7,9 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  
- /**
-  * Static class wrapping various Array utilities.
-  */
+/**
+ * Static class wrapping various Array utilities.
+ */
 class com.sekati.utils.ArrayUtils {
 
 	/**
@@ -18,11 +19,11 @@ class com.sekati.utils.ArrayUtils {
 	 * @param nIndex (Number)
 	 * @return Array
 	 */
-	public static function insert (a:Array, objElement:Object, nIndex:Number):Array {
-		var aA:Array = a.slice(0, nIndex - 1);
-		var aB:Array = a.slice(nIndex, a.length - 1);
-		aA.push (objElement);
-		return ArrayUtils.merge(aA, aB);
+	public static function insert(a:Array, objElement:Object, nIndex:Number):Array {
+		var aA:Array = a.slice( 0, nIndex - 1 );
+		var aB:Array = a.slice( nIndex, a.length - 1 );
+		aA.push( objElement );
+		return ArrayUtils.merge( aA, aB );
 	}
 
 	/**
@@ -31,10 +32,10 @@ class com.sekati.utils.ArrayUtils {
 	 * @param objElement (Object)
 	 * @return Array
 	 */
-	public static function remove (a:Array, objElement:Object):Array {
-		for(var i:Number = 0; i < a.length; i++) {
+	public static function remove(a:Array, objElement:Object):Array {
+		for(var i:Number = 0; i < a.length ; i++) {
 			if (a[i] === objElement) {
-				a.splice(i, 1);
+				a.splice( i, 1 );
 			}
 		}
 		return a;
@@ -46,13 +47,13 @@ class com.sekati.utils.ArrayUtils {
 	 * @param objElement (Object)
 	 * @return Number
 	 */	
-	public static function search (a:Array, objElement:Object):Number {
-		for (var i:Number = 0; i < a.length; i++) {
+	public static function search(a:Array, objElement:Object):Number {
+		for (var i:Number = 0; i < a.length ; i++) {
 			if (a[i] === objElement) {
 				return i;
 			}
 		}
- 		return null;
+		return null;
 	}
 
 	/**
@@ -60,10 +61,10 @@ class com.sekati.utils.ArrayUtils {
 	 * @param a (Array)
 	 * @return Void
 	 */
-	public static function shuffle (a:Array):Void {
-		for (var i:Number = 0; i < a.length; i++) {
+	public static function shuffle(a:Array):Void {
+		for (var i:Number = 0; i < a.length ; i++) {
 			var tmp:Object = a[i];
-			var randomNum:Number = random (a.length);
+			var randomNum:Number = random( a.length );
 			a[i] = a[randomNum];
 			a[randomNum] = tmp;
 		}
@@ -74,8 +75,8 @@ class com.sekati.utils.ArrayUtils {
 	 * @param a (Array)
 	 * @return Array
 	 */
-	public static function clone (a:Array):Array {
-		return a.concat();
+	public static function clone(a:Array):Array {
+		return a.concat( );
 	}
 
 	/**
@@ -84,10 +85,10 @@ class com.sekati.utils.ArrayUtils {
 	 * @param aB (Array)
 	 * @return Array
 	 */
-	public static function merge (aA:Array, aB:Array):Array {
-		var aC:Array = ArrayUtils.clone(aB);
-		for(var i:Number = aA.length - 1; i > -1; i--) {
-			aC.unshift(aA[i]);
+	public static function merge(aA:Array, aB:Array):Array {
+		var aC:Array = ArrayUtils.clone( aB );
+		for(var i:Number = aA.length - 1; i > -1 ; i--) {
+			aC.unshift( aA[i] );
 		}
 		return aC;
 	}	
@@ -101,13 +102,13 @@ class com.sekati.utils.ArrayUtils {
 	 * @return Array
 	 * @throws Error on invalid array index
 	 */
-	public static function swap (a:Array, nA:Number, nB:Number):Array {
+	public static function swap(a:Array, nA:Number, nB:Number):Array {
 		if (nA >= a.length || nA < 0) {
-			throw new Error ("@@@ com.sekati.utils.ArrayUtils.swap() Error: Index 'A' (" + nA + ") is not a valid index in the array '" + a.toString() + "'.");
+			throw new Error( "@@@ com.sekati.utils.ArrayUtils.swap() Error: Index 'A' (" + nA + ") is not a valid index in the array '" + a.toString( ) + "'." );
 			return a;
 		}
 		if(nB >= a.length || nB < 0) {
-			throw new Error ("@@@ com.sekati.utils.ArrayUtils.swap() Error: Index 'A' (" + nB + ") is not a valid index in the array '" + a.toString() + "'.");
+			throw new Error( "@@@ com.sekati.utils.ArrayUtils.swap() Error: Index 'A' (" + nB + ") is not a valid index in the array '" + a.toString( ) + "'." );
 			return a;
 		}
 		var objElement:Object = a[nA];
@@ -121,11 +122,11 @@ class com.sekati.utils.ArrayUtils {
 	 * @param a (Array)
 	 * @return Array
 	 */
-	public static function asort (a:Array):Array {
+	public static function asort(a:Array):Array {
 		var aFn:Function = function (element1:String, element2:String):Boolean {
-			return element1.toUpperCase() > element2.toUpperCase();
+			return element1.toUpperCase( ) > element2.toUpperCase( );
 		};
-		return a.sort (aFn);
+		return a.sort( aFn );
 	}
 
 	/**
@@ -133,12 +134,12 @@ class com.sekati.utils.ArrayUtils {
 	 * @param a (Array)
 	 * @return Array
 	 */
-	public static function removeDuplicate (a:Array):Array {
-		a.sort ();
-		var o:Array = new Array ();
-		for (var i:Number = 0; i < a.length; i++) {
+	public static function removeDuplicate(a:Array):Array {
+		a.sort( );
+		var o:Array = new Array( );
+		for (var i:Number = 0; i < a.length ; i++) {
 			if (a[i] != a[i + 1]) {
-				o.push (a[i]);
+				o.push( a[i] );
 			}
 		}
 		return o;
@@ -150,10 +151,10 @@ class com.sekati.utils.ArrayUtils {
 	 * @param aB (Array)	
 	 * @return Boolean
 	 */	
-	public static function matchValues (aA:Array, aB:Array):Boolean {
-		for (var f:Number = 0; f < aA.length; f++) {
-			for (var l:Number = 0; l < aB.length; l++) {
-				if (aB[l].toLowerCase () === aA[f].toLowerCase ()) {
+	public static function matchValues(aA:Array, aB:Array):Boolean {
+		for (var f:Number = 0; f < aA.length ; f++) {
+			for (var l:Number = 0; l < aB.length ; l++) {
+				if (aB[l].toLowerCase( ) === aA[f].toLowerCase( )) {
 					return true;
 				}
 			}
@@ -171,14 +172,14 @@ class com.sekati.utils.ArrayUtils {
 		if(aA.length != aB.length) {
 			return false;
 		}
-		for(var i:Number = 0; i < aA.length; i++) {
+		for(var i:Number = 0; i < aA.length ; i++) {
 			if(aA[i] !== aB[i]) {
 				return false;
 			}
 		}
 		return true;
 	}
-	
+
 	/**
 	 * Search for a specific value of a property in an array of objects
 	 * @param objArr (Array) array of objects
@@ -192,7 +193,7 @@ class com.sekati.utils.ArrayUtils {
 			if (!isCaseInsensitive) {
 				if (objArr[o][prop] == val) return objArr[o];
 			} else {
-				if (objArr[o][prop].toUpperCase() == val.toUpperCase()) return objArr[o];	
+				if (objArr[o][prop].toUpperCase( ) == val.toUpperCase( )) return objArr[o];	
 			}		
 		}
 		return undefined;
@@ -205,14 +206,14 @@ class com.sekati.utils.ArrayUtils {
 	 * @param val (Object) value to locate
 	 * @return Number - index of hit
 	 */
-	public static function locatePropValIndex(a:Array, prop:String, val:Object):Number{
-		for (var i:Number = 0; i < a.length; i++) {
+	public static function locatePropValIndex(a:Array, prop:String, val:Object):Number {
+		for (var i:Number = 0; i < a.length ; i++) {
 			if(a[i][prop] == val) {
 				return i;	
 			}
 		}	
 	}
-	
+
 	/**
 	 * Return a new array sliced from original array based on a value property match
 	 * @param objArr (Array) array of objects
@@ -222,17 +223,17 @@ class com.sekati.utils.ArrayUtils {
 	 * @return Array - array of objects that matches property value
 	 */
 	public static function sliceByPropVal(objArr:Array, prop:String, val:Object, isCaseInsensitive:Boolean):Array {
-		var a:Array = new Array();
+		var a:Array = new Array( );
 		for(var o in objArr) {
 			if (!isCaseInsensitive) {
-				if (objArr[o][prop] == val) a.push(objArr[o]);
+				if (objArr[o][prop] == val) a.push( objArr[o] );
 			} else {
-				if (objArr[o][prop].toUpperCase() == val.toUpperCase()) a.push(objArr[o]);	
+				if (objArr[o][prop].toUpperCase( ) == val.toUpperCase( )) a.push( objArr[o] );	
 			}
 		}
 		return a;	
 	}	
-	
+
 	/**
 	 * Return the index of the minimum value in a numeric array
 	 * @param a (Array)
@@ -242,8 +243,8 @@ class com.sekati.utils.ArrayUtils {
 		var i:Number = a.length;
 		var min:Number = a[0];
 		var idx:Number = 0;
-		while (i-->1) {
-			if(a[i]<min) min = a[idx=i];
+		while (i-- > 1) {
+			if(a[i] < min) min = a[idx = i];
 		}
 		return idx;
 	}
@@ -257,8 +258,8 @@ class com.sekati.utils.ArrayUtils {
 		var i:Number = a.length;
 		var max:Number = a[0];
 		var idx:Number = 0;	
-		while(i-->1) {
-			if(a[i]>max) max = a[idx=i];
+		while(i-- > 1) {
+			if(a[i] > max) max = a[idx = i];
 		}
 		return idx;	
 	}
@@ -269,7 +270,7 @@ class com.sekati.utils.ArrayUtils {
 	 * @return Number - minimum value (0 is returned with 0 length array)
 	 */	
 	public static function minVal(a:Array):Number {
-		return ((a.length <= 0) ? 0 : a[ArrayUtils.max(a)]);
+		return ((a.length <= 0) ? 0 : a[ArrayUtils.max( a )]);
 	}
 
 	/**
@@ -278,9 +279,9 @@ class com.sekati.utils.ArrayUtils {
 	 * @return Number - maximum value
 	 */	
 	public static function maxVal(a:Array):Number {
-		return ((a[ArrayUtils.max(a)] < 0) ? 0 : a[ArrayUtils.max(a)]);
+		return ((a[ArrayUtils.max( a )] < 0) ? 0 : a[ArrayUtils.max( a )]);
 	}
-	
-	private function ArrayUtils(){
+
+	private function ArrayUtils() {
 	}
 }

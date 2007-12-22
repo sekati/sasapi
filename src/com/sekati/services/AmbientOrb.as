@@ -1,6 +1,7 @@
+
 /**
  * com.sekati.services.AmbientOrb
- * @version 1.0.3
+ * @version 1.0.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -18,7 +19,7 @@ class com.sekati.services.AmbientOrb {
 
 	private var _devId:String;
 	private static var _URI:String = "http://myambient.com:8080/java/my_devices/submitdata.jsp";	
-	private static var _SPECTRUM:Array = [{id:"0", hex:"0xFF0000", name:"red"}, 
+	private static var _SPECTRUM:Array = [ {id:"0", hex:"0xFF0000", name:"red"}, 
 								 {id:"1", hex:"0xFF2B00", name:"light red"}, 
 								 {id:"2", hex:"0xFF5500", name:"dark orange"}, 
 								 {id:"3", hex:"0xFF8000", name:"orange"}, 
@@ -54,8 +55,8 @@ class com.sekati.services.AmbientOrb {
 								 {id:"33", hex:"0xFF0080", name:"magenta +3"}, 
 								 {id:"34", hex:"0xFF0055", name:"magenta +4"}, 
 								 {id:"35", hex:"0xFF002B", name:"magenta +5"}, 
-								 {id:"36", hex:"0xFFFFFF", name:"white"}];
-	private static var _ANIM:Array = [{id:"0", name:"none"}, 
+								 {id:"36", hex:"0xFFFFFF", name:"white"} ];
+	private static var _ANIM:Array = [ {id:"0", name:"none"}, 
 							 {id:"1", name:"very slow"}, 
 							 {id:"2", name:"slow"}, 
 							 {id:"3", name:"medium slow"}, 
@@ -64,8 +65,8 @@ class com.sekati.services.AmbientOrb {
 							 {id:"6", name:"fast"}, 
 							 {id:"7", name:"very fast"}, 
 							 {id:"8", name:"crescendo"}, 
-							 {id:"9", name:"heartbeat"}];
-	private static var _CODE:Array = [{id:"0", type:"OK", desc:"data inserted OK"}, 
+							 {id:"9", name:"heartbeat"} ];
+	private static var _CODE:Array = [ {id:"0", type:"OK", desc:"data inserted OK"}, 
 							 {id:"1", type:"error", desc:"'color' term not defined. Must be number between 0 - 36."}, 
 							 {id:"2", type:"error", desc:"error parsing 'color' term. Must be number between 0 - 36."}, 
 							 {id:"3", type:"error", desc:"'color' value out of range. . Must be number between 0 - 36."}, 
@@ -78,57 +79,57 @@ class com.sekati.services.AmbientOrb {
 							 {id:"10", type:"error", desc:"The specified devID is not in the Ambient database."}, 
 							 {id:"11", type:"warning", desc:"The comment contains invalid characters. Ignoring comment."}, 
 							 {id:"12", type:"error", desc:"Unspecific error"}, 
-							 {id:"13", type:"error", desc:"You are not authorized to submit data to this account (not yet implemented)"}];
-							 
- 	/**
- 	 * Constructor
- 	 * @param devId (String) - orb device id to be controlled by this instance
- 	 * @return Void
- 	 */
+							 {id:"13", type:"error", desc:"You are not authorized to submit data to this account (not yet implemented)"} ];
+
+	/**
+	 * Constructor
+	 * @param devId (String) - orb device id to be controlled by this instance
+	 * @return Void
+	 */
 	public function AmbientOrb(devId:String) {
 		_devId = devId;
 	}
-	
+
 	/**
 	 * devId setter
 	 * @param (String) instance device Id
 	 * @return Void
 	 */
-	public function set devId (devId:String):Void {
+	public function set devId(devId:String):Void {
 		if (devId) {
 			_devId = devId;
 		}
 	}
-	
+
 	/**
 	 * devId getter
 	 * @return String - instance device id
 	 */
-	public function get devId ():String {
+	public function get devId():String {
 		return _devId;	
 	}
-	
+
 	/**
 	 * spectrum getter
 	 */
 	public function get spectrum():Array {
 		return _SPECTRUM;
 	}
-	
+
 	/**
 	 * anim getter
 	 */
 	public function get anim():Array {
 		return _ANIM;
 	}
-	
+
 	/**
 	 * server code getter
 	 */
 	public function get code():Array {
 		return _CODE;
 	}		
-	
+
 	/**
 	 * locate a color object by one of its properties
 	 * @param prop (String) - acceptable props: "id", "hex", "name"
@@ -137,15 +138,15 @@ class com.sekati.services.AmbientOrb {
 	 * @throws Error on failed match
 	 */
 	public function getColorByProp(prop:String,key:String):Object {
-		for (var i:Number = 0; i< _SPECTRUM.length; i++) {
+		for (var i:Number = 0; i < _SPECTRUM.length ; i++) {
 			var o:Object = _SPECTRUM[i];
-			if(o[prop].toUpperCase() == key.toUpperCase()) {
+			if(o[prop].toUpperCase( ) == key.toUpperCase( )) {
 				return o;	
 			}
 		}
-		throw new Error ("@@@ com.sekati.services.AmbientOrb Error: could not find match for "+prop+": "+key);
+		throw new Error( "@@@ com.sekati.services.AmbientOrb Error: could not find match for " + prop + ": " + key );
 	}
-	
+
 	/**
 	 * locate an animation by one of its properties
 	 * @param prop (String) - acceptable props: "id", "name"
@@ -154,32 +155,33 @@ class com.sekati.services.AmbientOrb {
 	 * @throws Error on failed match
 	 */
 	public function getAnimByProp(prop:String,key:String):Object {
-		for (var i:Number = 0; i< _ANIM.length; i++) {
+		for (var i:Number = 0; i < _ANIM.length ; i++) {
 			var o:Object = _ANIM[i];
-			if(o[prop].toUpperCase() == key.toUpperCase()) {
+			if(o[prop].toUpperCase( ) == key.toUpperCase( )) {
 				return o;	
 			}
 		}
-		throw new Error ("@@@ com.sekati.services.AmbientOrb Error: could not find match for "+prop+": "+key);		
+		throw new Error( "@@@ com.sekati.services.AmbientOrb Error: could not find match for " + prop + ": " + key );		
 	}
-	
+
 	/**
 	 * locate a server code by one of its properties
 	 * @param prop (String) - acceptable props: "id", "desc"
 	 * @param key (String) - value to match by, e.g: "Unspecific error"
 	 * @return Object - the matched _CODE object
 	 * @throws Error on failed match
-	 */ 
+	 */
+	 
 	public function getCodeByProp(prop:String,key:String):Object {
-		for (var i:Number = 0; i< _CODE.length; i++) {
+		for (var i:Number = 0; i < _CODE.length ; i++) {
 			var o:Object = _CODE[i];
-			if(o[prop].toUpperCase() == key.toUpperCase()) {
+			if(o[prop].toUpperCase( ) == key.toUpperCase( )) {
 				return o;	
 			}
 		}
-		throw new Error ("@@@ com.sekati.services.AmbientOrb Error: could not find match for "+prop+": "+key);		
+		throw new Error( "@@@ com.sekati.services.AmbientOrb Error: could not find match for " + prop + ": " + key );		
 	}
-	
+
 	/**
 	 * send new configuration to the ambient orb device id
 	 * @param colorId (String)
@@ -191,40 +193,40 @@ class com.sekati.services.AmbientOrb {
 	 * orb.config ( getColorByProp("name","red"), getAnimByProp("name","heartbeat"), "Orb Test" );
 	 * }
 	 */
-	public function config (colorId:String, animId:String, comment:String):Void {
+	public function config(colorId:String, animId:String, comment:String):Void {
 		if (!_devId) {
-			throw new Error ("@@@ com.sekati.services.AmbientOrb Error: Device ID not set");
+			throw new Error( "@@@ com.sekati.services.AmbientOrb Error: Device ID not set" );
 			return;
 		}
 		if (!colorId) {
-			throw new Error ("@@@ com.sekati.services.AmbientOrb Error: invalid config colorId arg");
+			throw new Error( "@@@ com.sekati.services.AmbientOrb Error: invalid config colorId arg" );
 			return;
 		}
 		if (!animId) {
-			throw new Error ("@@@ com.sekati.services.AmbientOrb Error: invalid config animId arg");
+			throw new Error( "@@@ com.sekati.services.AmbientOrb Error: invalid config animId arg" );
 			return;
 		}
 		if (!comment) {
 			comment = "com.sekati.services.AmbientOrb";
 		}
-		var xm:XML = new XML ();
+		var xm:XML = new XML( );
 		xm.ignoreWhite = true;
-		var query:String = _URI + "?devID=" + _devId + "&anim=" + animId + "&color=" + colorId + "&comment=" + escape (comment);
-		trace ("query string: " + query);
+		var query:String = _URI + "?devID=" + _devId + "&anim=" + animId + "&color=" + colorId + "&comment=" + escape( comment );
+		trace( "query string: " + query );
 		xm.onLoad = function (success:Boolean):Void {
-			var xObj:Object = xparse (xm);
-			trace ("object returned: " + xObj);
+			var xObj:Object = xparse( xm );
+			trace( "object returned: " + xObj );
 		};
-		xm.load (query);
+		xm.load( query );
 	}
-	
+
 	/**
 	 * xml parser
 	 */
-	private function xparse (n:XML):Object {
-		var o:String = new String (n.firstChild.nodeValue), s:Object, i:Number, t:Object;
-		for (s = (o == "null") ? n.firstChild : n.childNodes[1]; s != null; s = s.nextSibling) {
-			t = s.childNodes.length > 0 ? arguments.callee (s) : new String (s.nodeValue);
+	private function xparse(n:XML):Object {
+		var o:String = new String( n.firstChild.nodeValue ), s:Object, i:Number, t:Object;
+		for (s = (o == "null") ? n.firstChild : n.childNodes[1]; s != null ; s = s.nextSibling) {
+			t = s.childNodes.length > 0 ? arguments.callee( s ) : new String( s.nodeValue );
 			if (s.firstChild.nodeValue != undefined) {
 				t.val = s.firstChild.nodeValue;
 			}
@@ -233,9 +235,9 @@ class com.sekati.services.AmbientOrb {
 			}
 			if (o[s.nodeName] != undefined) {
 				if (!(o[s.nodeName] instanceof Array)) {
-					o[s.nodeName] = [o[s.nodeName]];
+					o[s.nodeName] = [ o[s.nodeName] ];
 				}
-				o[s.nodeName].push (t);
+				o[s.nodeName].push( t );
 			} else {
 				o[s.nodeName] = t;
 			}

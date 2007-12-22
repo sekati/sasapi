@@ -5,19 +5,19 @@
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
- 
- import com.sekati.display.BaseClip;
- import com.sekati.draw.*;
- import com.sekati.utils.ClassUtils;
- 
+
+import com.sekati.display.BaseClip;
+import com.sekati.draw.*;
+import com.sekati.utils.ClassUtils;
+
 /**
  * Shape is the core class for 
  * creating clips of drawn shapes.
  */
 class com.sekati.draw.Shape {
-	
+
 	private var _mc:MovieClip;
-	
+
 	/**
 	 * Shape Constructor
 	 * @param target (MovieClip)
@@ -25,7 +25,6 @@ class com.sekati.draw.Shape {
 	 * @return Void
 	 */
 	public function Shape(target:MovieClip, initObject:Object) {
-		_mc = ClassUtils.createEmptyMovieClip(com.sekati.display.BaseClip, target, "__Shape", initObject);
+		_mc = ClassUtils.createEmptyMovieClip( com.sekati.display.BaseClip, target, "__Shape", initObject );
 	}
-	
 }

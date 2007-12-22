@@ -6,13 +6,12 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  
- import com.sekati.core.CoreInterface;
- 
+import com.sekati.core.CoreInterface;
+
 /**
  * Interface describing {@link RemoteCall}. 
  */
 interface com.sekati.remoting.IRemoteCall extends CoreInterface {
-	
+
 	public function call():Void;
-	
 }
