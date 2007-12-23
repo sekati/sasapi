@@ -1,6 +1,6 @@
 /**
  * com.sekati.ui.ScreenProtector
- * @version 0.9.9
+ * @version 1.0.0
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -30,7 +30,7 @@ class com.sekati.ui.ScreenProtector extends CoreObject {
 	 */
 	public function ScreenProtector() {
 		super( );
-		_cover = ClassUtils.createEmptyMovieClip( com.sekati.display.BaseClip, _level0, "__ScreenProtector__", {_x:0, _y:0, _alpha:0, _depth:FWDepth.ScreenProtector} );
+		_cover = ClassUtils.createEmptyMovieClip( com.sekati.display.BaseClip, _root, "__ScreenProtector__", {_x:0, _y:0, _alpha:0, _depth:FWDepth.ScreenProtector} );
 		Rectangle.draw( _cover, new Point( 0, 0 ), new Point( Stage.width, Stage.height ), 0xFF00FF, 0 );
 		_cover.onPress = new Function( );
 		_cover.useHandCursor = false;

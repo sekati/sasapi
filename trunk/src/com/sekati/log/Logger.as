@@ -1,6 +1,6 @@
 /**
  * com.sekati.log.Logger
- * @version 1.2.5
+ * @version 1.2.6
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -48,6 +48,7 @@ class com.sekati.log.Logger {
 	// default level stubs
 	public var trace:Function;
 	public var info:Function;
+	public var notice:Function;	
 	public var status:Function;
 	public var warn:Function;
 	public var error:Function;
@@ -292,7 +293,7 @@ class com.sekati.log.Logger {
 		}		
 		// dispatch event to output panel
 		if(_isOutputIDE) {
-			trace( id + "\t" + level.toUpperCase( ) + "\t" + origin + "\t" + msg + "\t(" + benchmark + " ms)" );
+			trace( id +" " + level.toUpperCase( ) + "\t " + origin + "\t " + msg + "\t (" + benchmark + " ms)" );
 		}
 	}
 

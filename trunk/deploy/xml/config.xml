@@ -1,28 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Sekati Framework Core App Configuration - by jason m horwitz / sekati.com -->
+<!-- 
+	SASAPI Core Configuration
+	jason m horwitz | sekati.com
+	Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
+	Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
+-->
 <config name="Sekati Framework" version="1.0.0">
-
-	<!-- crossdomain should live on same dom/subdom as SWF-->
 	<crossdomain_uri><![CDATA[/crossdomain.xml]]></crossdomain_uri>
-	
-	<!-- data feed -->
 	<data_uri><![CDATA[xml/data.xml]]></data_uri>
-	
-	<!-- application stylesheet -->
-	<css_uri><![CDATA[css/app_style.css]]></css_uri>	
-	
-	<!-- instantiate DebugPanel -->
+	<css_uri><![CDATA[css/app_style.css]]></css_uri>
 	<debug_enable>true</debug_enable>
-
-	<!-- allow flash to change address bar to deeplink playlist/video -->
 	<flink_enable>true</flink_enable>
-	
-	<!-- use Google Analytics tracking -->
 	<track_enable>true</track_enable>
-	
-	<!-- use key listeners -->
 	<key_enable>true</key_enable>
-		
-	<!-- define FLV buffer settings: higher will result in choppy seeking but play smoother: default is 0.1, a good average is 4 -->
-	<buffer_time>4</buffer_time>
+	<flv_buffer_time>4</flv_buffer_time>
 </config>

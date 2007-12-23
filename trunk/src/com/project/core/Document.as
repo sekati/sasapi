@@ -6,7 +6,7 @@
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
 
-import com.sekati.core.App;
+import com.project.core.Bootstrap;
 import com.sekati.display.BaseClip;
 import com.sekati.log.Logger;
 import caurina.transitions.properties.*;
@@ -21,6 +21,7 @@ import caurina.transitions.properties.*;
 class com.project.core.Document extends BaseClip {
 
 	public var log:Logger;
+	private var bootstrap:Bootstrap;
 
 	/**
 	 * Constructor
@@ -47,7 +48,6 @@ class com.project.core.Document extends BaseClip {
 	private function init():Void {
 		setMovieProps( );
 		buildCompositions( );
-		App.init( );
 	}
 
 	/**
@@ -55,6 +55,7 @@ class com.project.core.Document extends BaseClip {
 	 * @return Void
 	 */
 	private function setMovieProps():Void {
+		//trace( "*** Setting Movie Properties ..." );
 		System.security.allowInsecureDomain( "*" );
 		System.security.allowDomain( "*" );
 		fscommand( "swLiveConnect", "true" );
@@ -72,16 +73,19 @@ class com.project.core.Document extends BaseClip {
 	 * @return Void
 	 */
 	private function buildCompositions():Void {
+		trace( "*** - Document Initialized ..." );
+		bootstrap = new Bootstrap( );
+		
 		log = Logger.getInstance( );
 		log.isIDE = true;
 		log.isLC = true;
 		log.isSWF = false;
-		log.info( this.toString( ), "Document Initialized ..." );
-		// add Tweener specialProperties shortcuts
+		
+		// Tweener initialization ...
 		FilterShortcuts.init( );
 		ColorShortcuts.init( );
 		DisplayShortcuts.init( );
 		TextShortcuts.init( );
- 		//SoundShortcuts.init();	
+		SoundShortcuts.init( );	
 	}
 }

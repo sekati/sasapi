@@ -1,6 +1,6 @@
 /**
  * com.sekati.events.FramePulse
- * @version 1.0.5
+ * @version 1.1.0
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -32,7 +32,7 @@ class com.sekati.events.FramePulse extends CoreObject implements IPulsable {
 	 */
 	private function FramePulse() {
 		AsBroadcaster.initialize( this );
-		_mc = ClassUtils.createEmptyMovieClip( com.sekati.display.BaseClip, _level0, "___FramePulse", {_depth:FWDepth.FramePulse} );
+		_mc = ClassUtils.createEmptyMovieClip( com.sekati.display.BaseClip, _root, "___FramePulse", {_depth:FWDepth.FramePulse} );
 		_f = Delegate.create( this, broadcastMessage, onEnterFrameEVENT );
 	}
 

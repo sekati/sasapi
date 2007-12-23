@@ -1,6 +1,6 @@
 /**
  * com.sekati.data.FLV
- * @version 1.1.7
+ * @version 1.2.0
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -72,7 +72,7 @@ class com.sekati.data.FLV extends CoreObject {
 		//_video.smoothing = true;
 		_video.attachVideo( _ns );
 		//define buffer settings - higher will make loops and seeks VERY choppy, but play smoother: default is 0.1, good avg is 4
-		var buffer:Number = (!App.BUFFER_TIME) ? 4 : App.BUFFER_TIME;
+		var buffer:Number = (!App.FLV_BUFFER_TIME) ? 4 : App.FLV_BUFFER_TIME;
 		//trace ("App.BUFFER_TIME: " + App.BUFFER_TIME);
 		_ns.setBufferTime( buffer );
 		//define NetStream & NetConnection events triggers
