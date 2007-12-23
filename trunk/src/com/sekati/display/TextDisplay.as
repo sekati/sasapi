@@ -1,6 +1,6 @@
 /**
  * com.sekati.display.TextDisplay
- * @version 1.0.5
+ * @version 1.1.0
  * @author jason m horwitz | sekati.com | tendercreative.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -9,6 +9,7 @@
 import com.sekati.core.App;
 import com.sekati.effects.TextEffects;
 import com.sekati.effects.AnimHandler;
+import com.sekati.transitions.Mot;
 import com.sekati.validate.TypeValidation;
 /**
  * TextDisplay - utilities for uniformly styling, clearing, and animating text in display clip classes.
@@ -56,7 +57,7 @@ class com.sekati.display.TextDisplay {
 						o[i]._alpha = 0;
 						o[i]._visible = false;
 					} else {
-						o[i].alphaTo( 0, 1, App.mot.e2, 0.1 * i, function():Void { 							o[i]._visible = false; 						} );	
+						o[i].alphaTo( 0, 1, Mot.o.quint, 0.1 * i, function():Void { 							o[i]._visible = false; 						} );	
 					}
 				}
 			}	
@@ -79,7 +80,7 @@ class com.sekati.display.TextDisplay {
 						o[i]._visible = true;
 					} else {
 						o[i]._visible = true;
-						o[i].alphaTo( 100, 0.3, App.mot.e2, 0.1 * i );							
+						o[i].alphaTo( 100, 0.3, Mot.o.quint, 0.1 * i );							
 					}
 				}
 			}	
