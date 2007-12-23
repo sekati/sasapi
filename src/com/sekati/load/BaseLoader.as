@@ -1,11 +1,11 @@
 /**
  * com.sekati.load.BaseLoader
- * @version 1.1.3
+ * @version 1.2.0
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
-
+ 
 import com.sekati.core.CoreObject;
 import com.sekati.core.FWDepth;
 import com.sekati.display.BaseClip;
@@ -35,7 +35,7 @@ class com.sekati.load.BaseLoader extends CoreObject {
 		_nextFrameLabel = (!frameLabel) ? "bootstrap" : frameLabel;
 		_isLoaded = false;
 		_level0.stop( );
-		_loader = ClassUtils.createEmptyMovieClip( com.sekati.display.BaseClip, _level0, "___BaseLoader", {_depth:FWDepth.BaseLoader} );
+		_loader = ClassUtils.createEmptyMovieClip( com.sekati.display.BaseClip, _root, "___BaseLoader", {_depth:FWDepth.BaseLoader} );
 		FramePulse.$.addFrameListener( this );
 	}
 	private function _onEnterFrame():Void {
