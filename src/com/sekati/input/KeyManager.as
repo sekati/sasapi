@@ -1,12 +1,13 @@
 /**
  * com.sekati.input.KeyManager
- * @version 1.0.1
+ * @version 1.0.5
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
  
 //import com.sekati.events.Dispatcher;
+import com.sekati.log.Logger;
 import com.sekati.utils.Delegate;
 
 /**
@@ -32,14 +33,14 @@ class com.sekati.input.KeyManager {
 
 	private function onKeyDown():Void {
 		//Dispatcher.$.dispatchEvent();	
-		trace( "KeyDown ::: ascii:" + Key.getAscii( ) + ", keycode:" + Key.getCode( ) );
+		Logger.$.status(_this, "KeyDown ::: ascii:" + Key.getAscii( ) + ", keycode:" + Key.getCode( ) );
 		if ((Key.getCode( ) == Key.LEFT) && (Key.getCode( ) == Key.getCode.UP)) {
-			trace( "HOTKEY" );
+			//trace( "HOTKEY" );
 		}
 	}
 
 	private function onKeyUp():Void {
-		trace( "The ASCII code for the KeyUp is: " + Key.getAscii( ) );	
+		Logger.$.status(_this, "The ASCII code for the KeyUp is: " + Key.getAscii( ) );	
 	}
 
 	public function hotKey(k:Array):Boolean {
