@@ -21,6 +21,9 @@ import TextField.StyleSheet;
  */
 class com.sekati.core.App {
 
+	public static var VERSION:String = 'SASAPI v1.0.0 | http://sasapi.googlecode.com | http://sekati.com';
+	public static var AUTHOR:String = 'Copyright (C) 2007  jason m horwitz, sekati.com, Sekat LLC. All Rights Reserved.';
+	
 	public static var APP_NAME:String;
 	public static var PATH:String = ( NetBase.isOnline( ) ) ? NetBase.getPath( ) : "";
 	public static var CONF_URI:String = ( !_root.conf_uri ) ? App.PATH + "xml/config.xml" : _root.conf_uri;
