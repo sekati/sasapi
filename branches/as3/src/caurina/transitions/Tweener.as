@@ -3,7 +3,7 @@
  * Transition controller for movieclips, sounds, textfields and other objects
  *
  * @author		Zeh Fernando, Nate Chatellier, Arthur Debert
- * @version		1.31.67
+ * @version		1.31.69
  */
 
 /*
@@ -62,7 +62,7 @@ package caurina.transitions {
 		 * @private
 		 */
 		public function Tweener () {
-			trace ("Tweener is a static class and should not be instantiated.")
+			trace ("Tweener is a static class and should not be instantiated.");
 		}
 
 		// ==================================================================================================================================
@@ -92,7 +92,7 @@ package caurina.transitions {
 		public static function addTween (p_scopes:Object = null, p_parameters:Object = null):Boolean {
 			if (!Boolean(p_scopes)) return false;
 
-			var i:Number, j:Number, istr:String, jstr:String;
+			var i:Number, j:Number, istr:String;
 
 			var rScopes:Array; // List of objects to tween
 			if (p_scopes is Array) {
@@ -182,7 +182,6 @@ package caurina.transitions {
 			var nProperties:Object;
 			var nTween:TweenListObj;
 			var myT:Number;
-			var cTime:Number;
 	
 			for (i = 0; i < rScopes.length; i++) {
 				// Makes a copy of the properties
@@ -267,7 +266,7 @@ package caurina.transitions {
 		public static function addCaller (p_scopes:Object = null, p_parameters:Object = null):Boolean {
 			if (!Boolean(p_scopes)) return false;
 	
-			var i:Number, j:Number;
+			var i:Number;
 	
 			var rScopes:Array; // List of objects to tween
 			if (p_scopes is Array) {
@@ -1002,7 +1001,7 @@ package caurina.transitions {
 			var i:uint;
 
 			for (i = 0; i<_tweenList.length; i++) {
-				if (_tweenList[i].scope == p_scope) {
+				if (Boolean(_tweenList[i]) && _tweenList[i].scope == p_scope) {
 					return true;
 				}
 			}
@@ -1022,7 +1021,7 @@ package caurina.transitions {
  			var tList:Array = new Array();
 
 			for (i = 0; i<_tweenList.length; i++) {
-				if (_tweenList[i].scope == p_scope) {
+				if (Boolean(_tweenList[i]) && _tweenList[i].scope == p_scope) {
 					for (pName in _tweenList[i].properties) tList.push(pName);
 				}
 			}
@@ -1041,7 +1040,7 @@ package caurina.transitions {
 			var c:Number = 0;
 
 			for (i = 0; i<_tweenList.length; i++) {
-				if (_tweenList[i].scope == p_scope) {
+				if (Boolean(_tweenList[i]) && _tweenList[i].scope == p_scope) {
 					c += AuxFunctions.getObjectLength(_tweenList[i].properties);
 				}
 			}
@@ -1085,7 +1084,7 @@ package caurina.transitions {
 		 * @return							String		The number of the current Tweener version
 		 */
 		public static function getVersion():String {
-			return "AS3 1.31.67";
+			return "AS3 1.31.69";
 		}
 
 
