@@ -123,6 +123,9 @@
 			<arg line='-output ${docs}'/>
 			<arg line="-templates-path '${flex2}/asdoc/templates'"/>
 			<!--
+			<arg line="-exclude-classes com.sekati.transitions caurina.transitions"/>
+			<arg line='-exclude-dependencies=true'/>
+			<arg line='-doc-namespaces com.sekati.*'/>
 			<arg line="-keep-xml"/>
 			<arg line="-skip-xsl"/>
 			<arg line="-show-actionscript-warnings=false"/>
@@ -193,7 +196,7 @@
             <arg line="${target_swf} ${main_class}"/>
         </exec>
     </target>
-	
+	 
 	
 	<target name="sloc_count" description="count source lines of code">
 		<exec executable="${sloccount}" />
