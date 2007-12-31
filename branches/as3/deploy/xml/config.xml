@@ -6,7 +6,7 @@
 	<crossdomain_uri><![CDATA[/crossdomain.xml]]></crossdomain_uri>
 	
 	<!-- data feed -->
-	<data_uri><![CDATA[php/data.php]]></data_uri>
+	<data_uri><![CDATA[xml/data.xml]]></data_uri>
 	
 	<!-- application stylesheet -->
 	<css_uri><![CDATA[css/app_style.css]]></css_uri>	

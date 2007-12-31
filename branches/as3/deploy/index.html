@@ -6,7 +6,7 @@
 				@ www.sekati.com    
 -->
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>SEKATI.FRAMEWORK</title>
+<title>SEKATI.FRAMEWORK.AS3</title>
 <link rel="shortcut icon" href="favicon.ico" />
 <meta name="copyright" content="Copyright (c) 2007 Sekati.com. All Rights Reserved." />
 <meta name="description" content="Sekati Framework" />
@@ -39,12 +39,12 @@ urchinTracker();
 	var f = new swfIN("framework.swf", "framework", "100%", "100%");
 	//-------------------------------------------------------------------------------------
 	// Optional FlashVars to define config.xml and crossdomain.xml location
-	//f.addVar("conf_uri", "http://dev.sekati.com/sasapi/config.xml");
-	//f.addVar("crossdomain_uri","http://dev.sekati.com/sasapi/crossdomain.xml");
+	f.addVar("conf_uri", "xml/config.xml");
+	f.addVar("crossdomain_uri","crossdomain.xml");
 	//-------------------------------------------------------------------------------------
 	f.minSize(800, 600);
 	f.useExpressInstall();
-	f.detect(8, "d", "no_flash");
+	f.detect(9, "d", "no_flash");
 	f.addParam("bgcolor", "#000000");
 	f.addParam("menu", "true");
 	f.addParam("quality", "high");
