@@ -82,36 +82,6 @@
 		<delete includeemptydirs="true">
 			<fileset dir="${docs}" includes="**/*" excludes="**/.svn"/>
 		</delete>	
-	</target>
-	
-	
-	<target name="document_as2api" description="run as2api to build documentation">
-		<exec dir="${as2api.dir}" executable="${ruby}" failonerror="true">
-			<arg line='${as2api.rb}'/>
-			<arg line='package-spec ${package}'/>
-			<arg line='package-spec ${package2}'/>
-			<arg line='--classpath ${src}'/>
-			<arg line='--output-dir ${docs}'/>
-			<arg line='--title ${ant.project.name}'/>
-			<arg line='--sources'/>
-			<arg line='--progress'/>
-        	<arg line='--draw-diagram'/>
-        	<arg line='--dot-exe ${dot}'/>
-		</exec>
-		<copy file="${ftemplates}/as2api/doc_sekati_index.html" tofile="${docs}/index.html" overwrite="true"  failonerror="true"/>
-		<copy file="${ftemplates}/as2api/doc_sekati_style.css" tofile="${docs}/style.css" overwrite="true"  failonerror="true"/>
-		<copy file="${ftemplates}/as2api/doc_sekati_unnatural.css" tofile="${docs}/unnatural.css" overwrite="true"  failonerror="true"/>
-	</target>
-	
-	
-	<target name="document_naturaldocs" description="run naturaldocs to build documentation">		
-		<exec executable="${naturaldocs}" failonerror="true">
-			<arg line='-i ${src}'/>
-			<arg line='-o FramedHTML ${docs}'/>
-			<arg line='-p ${docs}/_ndp'/>
-			<arg line='-s Small'/>
-			<arg line='-r'/>
-		</exec>
 	</target>	
 
 
