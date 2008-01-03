@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataTypeTest>
-	<test id="([int:0])">([String:Hello World!])</test>
-	<test id="([int:1])">([Function:testFn])</test>
-	<test id="([int:2])">([MovieClip:Document])</test>
-	<test id="([int:3])">([Sprite:TestBox])</test>
+	<test id="[Type(int:0)]">[Type(String:Hello World!)]</test>
+	<test id="[Type(int:1)]">[Type(Function:testFn)]</test>
+	<test id="[Type(int:2)]">[Type(MovieClip:Document)]</test>
+	<test id="[Type(int:3)]">[Type(Sprite:TestBox)]</test>
+	<test id="[Type(int:4)]">[Type(Class:Sprite)]</test>
 </dataTypeTest>
