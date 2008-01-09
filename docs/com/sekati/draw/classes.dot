@@ -54,6 +54,15 @@ strict digraph class_diagram {
     color="#729b12"
     shape="record"
   ];
+  TypePolygon[
+    label="Polygon",
+    URL="Polygon.html",
+    tooltip="com.sekati.draw.Polygon",
+    fontname="Verdana",
+    fontsize="9"
+    color="#729b12"
+    shape="record"
+  ];
   TypeOval[
     label="Oval",
     URL="Oval.html",

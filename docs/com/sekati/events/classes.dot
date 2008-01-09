@@ -1,5 +1,14 @@
 strict digraph class_diagram {
   rankdir=LR;
+  TypeLcBroadcaster[
+    label="LcBroadcaster",
+    URL="LcBroadcaster.html",
+    tooltip="com.sekati.events.LcBroadcaster",
+    fontname="Verdana",
+    fontsize="9"
+    color="#729b12"
+    shape="record"
+  ];
   TypeFramePulse[
     label="FramePulse",
     URL="FramePulse.html",
