@@ -26,7 +26,7 @@ class com.sekati.draw.Rectangle {
 	 * @return Void
 	 * {@code Usage:
 	 * 	var box:MovieClip = this.createEmptyMovieClip ("box", this.getNextHighestDepth ());
-	 * 	Rectangle.draw(box, new Point(50, 50), new Point(100, 100), 0xff00ff, 100, 1, 0x00fffff, 100);
+	 * 	Rectangle.draw(box, new Point(50, 50), new Point(100, 100), 0xff00ff, 100, 1, 0x00ffff, 100);
 	 * }
 	 */
 	public static function draw(mc:MovieClip, topLeft:Point, bottomRight:Point, fillColor:Number, fillAlpha:Number, strokeWeight:Number, strokeColor:Number, strokeAlpha:Number):Void {
