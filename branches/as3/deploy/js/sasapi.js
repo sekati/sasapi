@@ -1,10 +1,14 @@
 /**
  * SASAPI Javascript Companion Library
- * @version 1.0.5
+ * @version 1.0.6
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
  */
+
+var jsReady = false;
+function isReady() { return jsReady; }
+function pageInit() { jsReady = true; }
 
 if (typeof sekati == "undefined") var sekati = new Object();
 
