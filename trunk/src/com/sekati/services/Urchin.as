@@ -1,6 +1,6 @@
 ﻿/**
  * com.sekati.services.Urchin
- * @version 2.0.2
+ * @version 2.0.3
  * @author jason m horwitz | sekati.com
  * Copyright (C) 2007  jason m horwitz, Sekat LLC. All Rights Reserved.
  * Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
@@ -26,7 +26,7 @@ import flash.external.ExternalInterface;
  */
 class com.sekati.services.Urchin {
 
-	private static var _base:String = '/site/';
+	private static var _base:String = '/swf/';
 
 	/**
 	 * set site base
