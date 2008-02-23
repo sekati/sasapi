@@ -3,7 +3,7 @@
 
 = Credits =
 
-SASAPI was built and is maintained by  [http://sekati.com Jason M Horwitz] <sekati (AT) gmail.com>, thanks largely to the direct and indirect contributions via knowledge and code sharing of several friends, colleagues and other open source projects.
+SASAPI was built and is maintained by  [http://sekati.com Jason M Horwitz] <sekati (a) gmail.com>, thanks largely to the direct and indirect contributions via knowledge and code sharing of several friends, colleagues and other open source projects.
 
 I have tried to make mention in source comments when code was derived, adapted or adopted, or from others work. However, since I tend to keep wretched track of these things in the heat of the moment (or the middle of the night), I would like to use this space to direct your attention to this excellent, though not at all comprehensive list of individuals who's work deserves attention:
 
