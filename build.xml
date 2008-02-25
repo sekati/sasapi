@@ -19,7 +19,7 @@
 		        
      ************************************************************************************* -->
 
-<project name="Sekati ActionScript API" default="TestMovie" basedir=".">
+<project name="SASAPI" default="TestMovie" basedir=".">
 
 	
 	<property file="/Applications/inde/workspace/fdtkit/build/fdtkit.properties"/>
