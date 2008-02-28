@@ -7,22 +7,23 @@ SASAPI was built and is maintained by  [http://sekati.com Jason M Horwitz], than
 
 I have tried to make mention in source comments when code was derived, adapted or adopted, or from others work. However, since I tend to keep wretched track of these things in the heat of the moment (or the middle of the night), I would like to use this space to direct your attention to this excellent, though not at all comprehensive list of individuals who's work deserves attention:
 
-= Notes to Project Members =
+== Notes to Project Members ==
 
 Upon contributing work to FDTKit you may [http://fdt.powerflasher.com/index.php?page=os apply to PowerFlashers for an FDT3 OS License] as a new project member.
 
 
-= People of mention =
+== People of mention ==
 
   * [http://partlyhuman.com/ Roger Braunstein]
   * [http://nectere.ca/ Francis Turmel]
   * [http://tendercreative.com Cory Clarke]
 
 
-= Projects of mention =
+== Projects of mention ==
 
   * [http://code.google.com/p/tweener/ Tweener]
   * [http://code.google.com/p/papervision3d/ Papervision 3d]
   * [http://code.google.com/p/swfin/ swfIN]
   * [http://www.badgers-in-foil.co.uk/projects/as2api/ as2api]
   * [http://osflash.org/ OSFlash]
+
