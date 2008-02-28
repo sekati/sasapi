@@ -23,7 +23,7 @@ Upon contributing work to FDTKit you may [http://fdt.powerflasher.com/index.php?
 
 == Places of mention ==
 
-  * [http://tendercreative.com TENDER] who has dedicated billable hours to this Open Source project.
+  * [http://tendercreative.com TENDER] - who has dedicated billable hours to this Open Source project (whenever we can find them ;-).
 
 == Projects of mention ==
 
