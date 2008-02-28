@@ -29,3 +29,8 @@ I have tried to make mention in source comments whenever code was derived, adapt
   * [http://code.google.com/p/swfin/ swfIN]
   * [http://www.badgers-in-foil.co.uk/projects/as2api/ as2api]
   * [http://osflash.org/ OSFlash]
+
+
+== Notes to Project Members ==
+
+Upon contributing work to the project you may [http://fdt.powerflasher.com/index.php?page=os apply to PowerFlashers for an FDT3 OS License] as a project member.
