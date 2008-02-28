@@ -21,8 +21,8 @@ Upon contributing work to FDTKit you may [http://fdt.powerflasher.com/index.php?
 
 = Projects of mention =
 
-  * [http://osflash.org/ OSFlash]
   * [http://code.google.com/p/tweener/ Tweener]
-  * [http://osflash.org/projects/pixlib pixlib]
+  * [http://code.google.com/p/papervision3d/ Papervision 3d]
   * [http://code.google.com/p/swfin/ swfIN]
   * [http://www.badgers-in-foil.co.uk/projects/as2api/ as2api]
+  * [http://osflash.org/ OSFlash]
