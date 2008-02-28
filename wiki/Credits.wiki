@@ -10,12 +10,11 @@ I have tried to make mention in source comments whenever code was derived, adapt
 
 == People of mention ==
 
-  * [http://tendercreative.com Cory Clarke]
   * [http://partlyhuman.com/ Roger Braunstein]
   * [http://www.mosessupposes.com/ Moses Gunesch]
   * [http://nectere.ca/ Francis Turmel]
   * [http://lmnopj.com/PJ Ahlberg]
-
+  * [http://tendercreative.com Cory Clarke]
 
 == Places of mention ==
 
