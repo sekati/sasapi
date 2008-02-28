@@ -3,4 +3,4 @@
 
 = Documentation =
 
-You may [http://docs.sekati.com/sasapi/ view the SASAPI Documentation online], which is also packaged in each [http://code.google.com/p/sasapi/downloads/list Revision Download].
+You may view the [http://docs.sekati.com/sasapi/ SASAPI Documentation] online. It is also included in each [http://code.google.com/p/sasapi/downloads/list Packaged Download Revision] and can be browsed and checked out via  [http://code.google.com/p/sasapi/source/browse SVN].
