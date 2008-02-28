@@ -1,5 +1,5 @@
 #summary How do I work this?
-#labels Phase-Implementation
+#labels Phase-Implementation,Phase-Support,Phase-Deploy
 
 = Documentation =
 
