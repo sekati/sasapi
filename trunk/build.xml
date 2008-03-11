@@ -22,7 +22,7 @@
 <project name="SASAPI" default="TestMovie" basedir=".">
 
 	
-	<property file="/Applications/inde/workspace/fdtkit/build/fdtkit.properties"/>
+	<property file="build/fdtkit.properties"/>
 	<property file="build/project.properties"/>
 	
 	
